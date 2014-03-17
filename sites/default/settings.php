@@ -596,7 +596,24 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] 
     header('Location: http://www.baltimorecity.gov'. $_SERVER['REQUEST_URI']); 
     exit();
   }
+
+  // Force caching on the live site
+  $conf['cache'] = 1;
+  $conf['block_cache'] = 1;
+  $conf['cache_lifetime'] = 1800; // 30 min
+  $conf['page_cache_maximum_age'] = 3600; // 1 hr
+  $conf['page_compression'] = 1;
+  $conf['preprocess_css'] = 1;
+  $conf['preprocess_js'] = 1;
 }
+
+
+// Ifsight-specific api settings
+$conf['smtp_host'] = 'smtp.sendgrid.com';
+$conf['smtp_username'] = 'ifsight';
+$conf['smtp_password'] = 'jaayo23gao';
+
+$conf['media_inkfilepicker_key'] = 'ATxjuAKOSdK6lcZxoK2Awz';
 
 
 # Make domain access work on Pantheon
