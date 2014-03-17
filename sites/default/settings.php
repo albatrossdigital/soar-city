@@ -600,4 +600,4 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] 
 
 # Make domain access work on Pantheon
 # See http://helpdesk.getpantheon.com/customer/portal/articles/381152-reading-pantheon-environment-configuration for details
-require_once DRUPAL_ROOT . '/path/to/modules/domain/settings.inc';
+require_once DRUPAL_ROOT . '/sites/all/modules/contrib/domain/settings.inc';
