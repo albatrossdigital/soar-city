@@ -5,12 +5,3 @@ version = VERSION
 core = 7.x
 files[] = shortcut.test
 configure = admin/config/user-interface/shortcut
-<<<<<<< HEAD
-=======
-
-; Information added by Drupal.org packaging script on 2014-01-15
-version = "7.26"
-project = "drupal"
-datestamp = "1389815930"
-
->>>>>>> eadd0047a3fa3e341d16dc868f12d8f25a4c1e61
