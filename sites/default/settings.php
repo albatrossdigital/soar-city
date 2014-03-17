@@ -1,5 +1,9 @@
 <?php
 
+# Make domain access work on Pantheon
+extract(json_decode($_SERVER['PRESSFLOW_SETTINGS'], TRUE));
+
+
 /**
  * @file
  * Drupal site-specific configuration file.
@@ -561,9 +565,6 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  */
 # $conf['pressflow_smart_start'] = TRUE;
 
-# Domain access settings
-include DRUPAL_ROOT . '/sites/all/modules/contrib/domain/settings.inc';
-
 
 // All Pantheon Environments.
 /*if (defined('PANTHEON_ENVIRONMENT')) {
@@ -595,3 +596,8 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] 
     exit();
   }
 }
+
+
+# Make domain access work on Pantheon
+# See http://helpdesk.getpantheon.com/customer/portal/articles/381152-reading-pantheon-environment-configuration for details
+require_once DRUPAL_ROOT . '/path/to/modules/domain/settings.inc';
