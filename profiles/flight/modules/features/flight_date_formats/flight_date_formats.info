@@ -1,0 +1,23 @@
+core = "7.x"
+dependencies[] = "strongarm"
+description = "Creates and sets Date Formats and Date Types to typical North American defaults."
+features[ctools][] = "strongarm:strongarm:1"
+features[variable][] = "date_format_long"
+features[variable][] = "date_format_long_date"
+features[variable][] = "date_format_medium"
+features[variable][] = "date_format_medium_date"
+features[variable][] = "date_format_short"
+features[variable][] = "date_format_short_date"
+features[variable][] = "date_format_time"
+name = "Flight Date Formats"
+package = "Flight"
+php = "5.2.4"
+project = "flight_date_formats"
+version = "7.x-1.0-beta1"
+
+; Information added by Drupal.org packaging script on 2014-03-14
+version = "7.x-2.0-beta1+3-dev"
+core = "7.x"
+project = "flight"
+datestamp = "1394784207"
+

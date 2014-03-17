@@ -546,6 +546,14 @@ function image_field_update_instance($instance, $prior_instance) {
  *   The Drupal file path to the original image.
  */
 function image_path_flush($path) {
+<<<<<<< HEAD
+  // Pantheon optimization: one bulk operation is better.
+  if (function_exists('pantheon_api_image_path_flush')) {
+    pantheon_api_image_path_flush($path);
+    return;
+  }
+=======
+>>>>>>> eadd0047a3fa3e341d16dc868f12d8f25a4c1e61
   $styles = image_styles();
   foreach ($styles as $style) {
     $image_path = image_style_path($style['name'], $path);

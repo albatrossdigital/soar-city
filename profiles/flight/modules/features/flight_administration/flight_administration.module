@@ -1,0 +1,59 @@
+<?php
+/**
+ * @file
+ */
+
+
+include_once('flight_administration.features.inc');
+
+/**
+ * Implements hook_block_info().
+ */
+function flight_administration_block_info() {
+  $blocks['create_new'] = array(
+    'info' => t('Create new...'),
+  );
+  return $blocks;
+}
+
+
+/**
+ * Implements hook_block_view().
+ */
+function flight_administration_block_view($delta = '') {
+  switch ($delta) {
+    
+    // Build the html/text preview tabs
+    
+    case 'create_new':
+      $block['title'] = t('Create new...');
+      // TODO: we should really cycle through all of the content types that the person has permission to create
+      $info = entity_get_info('node');
+      $links = array();
+      foreach ($info['bundles'] as $type => $bundle_info) {
+        if (user_access ('create ' . $type . ' content')) {
+          $links[] = array(
+            'href'  => 'node/add/' . $type,
+            'title' => $bundle_info['label'],
+            'attributes' => array('class' => array('create-' . $type)),
+          );
+        } //if
+      } //foreach
+      
+      if (module_exists('party') && user_access('create parties')) {
+        $links[] = array(
+          'href'  => 'party/add/individual',
+          'title' => t('Create Contact'),
+          'attributes' => array('class' => array('create-contact')),
+        );
+      }
+      dpm($links);
+      
+      $block['content'] = theme('links', array('links' => $links, 'attributes' => array('class' => array('create', 'item-list')) ));
+      
+      //$block['content'] = '<ul class="item-list create"><li class="first create-blog"><a class="create-blog" href="/node/add/blog">Blog Post</a></li><li class="first create-page"><a href="/node/add/page">Page</a></li><li class="create-form"><a href="/node/add/form">Form</a></li><li class="create-donation"><a href="/node/add/donation">Donation Page</a></li><li class="create-issue"><a href="/node/add/issue">Issue Page</a></li><li class="create-contact"><a href="/party/add/individual">Contact</a></li></ul>';
+
+      break;
+  }
+  return $block;
+}

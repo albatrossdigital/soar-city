@@ -1,0 +1,287 @@
+// @file
+// Place your mixins here. Feel free to roll your own mixins.
+
+// clearix override
+@mixin clearfix()
+  &:after
+    content: "."
+    display: block
+    height: 0
+    clear: both
+    visibility: hidden
+
+  /* IE6 */
+  & * html
+    height: 1%
+  
+  /* IE7 */
+  .clearfix *:first-child + html & 
+    min-height: 1%
+
+//***********************************
+// Sprite Definitions
+//
+// Create folder in images/ called icons/ place any .png files in there,
+// and reference them by their file name
+//***********************************
+
+//@import "compass/utilities/sprites/base"
+
+//$disable-magic-sprite-selectors: true
+
+// Use these lines for traditional compass sprites
+// see http://compass-style.org/help/tutorials/spriting/
+//@import "icons/*.png";
+
+//@include all-icons-sprites;
+
+// Use this style for sprites inside media queries
+// for use with +get-sprite() mixin
+//$sprites: sprite-map("sprites/*.png")
+
+// shortcut for sprites
+@mixin s-image($sprite, $offset-x: 0, $offset-y: 0, $repeat: no-repeat, $height: true, $width: true, $hover: false)
+  +get-sprite($sprites, $sprite, $offset-x, $offset-y, $repeat, $height, $width, $hover)
+
+// shortcut for hover images
+@mixin s-image-hover($sprite, $hover: "#{$sprite}-hover")
+  +s-image($sprite, 0, 0, no-repeat, true, true, $hover)
+
+
+
+/***********************************
+// Silent Extends
+//
+// Silent extends help cut down on the length of compiled css by routing
+// each call to the extend at the top of the css file.
+//
+// They cannot as of SASS 3.2.5 be used within media queries
+//
+//***********************************
+
+// general
+// -----------------------------------
+// use the +e() mixin
+
+%hide
+  display: none
+
+%show
+  display: block
+
+%offscreen
+  position: absolute
+  left: -10000px
+  top: auto
+  width: 1px
+  height: 1px
+  overflow: hidden
+  display: inline
+
+// backgrounds
+// -----------------------------------
+// use the +b() mixin
+
+%background-reset
+  background: transparent
+
+// text colors
+// -----------------------------------
+// use the +c() mixin
+
+%color-normal
+  color: $body-font-color
+
+%color-link
+  color: $anchor-font-color
+
+%color-hover
+  color: $anchor-font-color-hover
+
+// fonts
+// -----------------------------------
+// use the +f() mixin
+
+%font-normal
+  font-family: $body-font-family
+  font-style: $body-font-weight
+  font-weight: $body-font-weight
+
+%font-alt
+  font-family: $ff-alt
+  font-style: normal
+  font-weight: $font-weight-normal
+
+%font-alt-bold
+  @extend %font-alt
+  font-weight: $font-weight-bold
+
+%font-reset
+  @extend %font-normal
+  font-size: $base-font-size
+  line-height: $base-line-height
+
+%font-reset-full
+  @extend %font-reset
+  color: $body-font-color
+  text-transform: none
+
+
+// headers
+// -----------------------------------
+// use the +h() mixin
+
+%header-core
+  font-family: $header-font-family
+  font-weight: $header-font-weight
+  font-style: $header-font-style
+  color: $header-font-color
+  text-rendering: $header-text-rendering
+  margin-top: $header-top-margin
+  margin-bottom: $header-bottom-margin
+  line-height: $header-line-height
+
+%header-1
+  @extend %header-core
+  font-size: $h1-font-size
+
+%header-2
+  @extend %header-core
+  font-size: $h2-font-size
+
+%header-3
+  @extend %header-core
+  font-size: $h3-font-size
+
+%header-4
+  @extend %header-core
+  font-size: $h4-font-size
+
+%header-5
+  @extend %header-core
+  font-size: $h5-font-size
+
+%header-6
+  @extend %header-core
+  font-size: $h6-font-size
+
+// general extend
+// use: +e(hide)
+@mixin e($extend)
+  @extend %#{$extend}
+
+// extend for backgrounds
+// use: +b(reset)
+@mixin b($extend)
+  @extend %background-#{$extend}
+
+// extend for text color
+// use: +c(normal)
+@mixin c($extend)
+  @extend %color-#{$extend}
+
+// extend for font styles
+// use: +f(reset)
+@mixin f($extend)
+  @extend %font-#{$extend}
+
+// extend for header styles
+// use: +h(1)
+@mixin h($extend)
+  @extend %header-#{$extend}
+
+
+//***********************************
+// Helpers
+//
+//***********************************
+
+@mixin disable-while-loading($loading: '&', $loaded: '[data-uuid]', $icon: false)
+  @if $icon
+    +icon(spinner, 53px, $gray)
+
+    &:before
+      +simple-center-both(50px)
+      height: 50px
+      z-index: 1
+      width: 50px
+      +rotation
+
+  #{$loading}
+    +opacity(.2)
+    +transition(opacity ease-in .2s)
+    @if $icon
+      position: relative
+      z-index: 0
+  
+    @if $loaded
+      &#{$loaded}
+        +opacity(1)
+        @if $icon
+          position: absolute
+          z-index: 2
+
+
+//***********************************
+// Responsive tables
+// 
+// restric
+// http://dbushell.com/2012/01/05/responsive-tables-2/
+//***********************************
+
+@mixin mobile-tables($table-border: $gray, $min-height: 44px)
+  display: block
+  position: relative
+  width: 100% 
+  border-collapse: collapse 
+  border-spacing: 0
+
+  &.sticky-header
+    display: none!important    
+
+  thead,
+  tbody
+    border: 1px solid $table-border
+
+  thead
+    border-right: 0!important
+    display: block 
+    float: left
+    max-width: 50%
+
+    tr
+      display: block
+
+  tbody  
+    border-left: 0!important
+    display: block!important
+    width: auto 
+    position: relative 
+    overflow-x: auto 
+    white-space: nowrap
+
+    tr  
+      display: inline-block!important
+      vertical-align: top
+
+  tr
+    border: none!important
+    padding: 0!important 
+
+  th,
+  td
+    font-size: ($table-row-font-size)!important
+    margin: 0 
+    min-height: $min-height
+    padding: 0.7em!important
+    vertical-align: top
+
+  th
+    display: block!important
+    text-align: left 
+
+    &, & > *
+      +ellipsis
+
+  td
+    display: block!important

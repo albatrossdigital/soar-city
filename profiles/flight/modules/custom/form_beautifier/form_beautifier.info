@@ -1,0 +1,15 @@
+; $Id: form_beautifier.info,v 1.1 2009/11/18 02:45:27 davexoxide Exp $
+name = "Form Beautifier"
+description = "A Collection of jQuery Scripts that can make your forms look good."
+core = 7.x
+package = Other
+; Information added by drupal.org packaging script on 2009-11-18
+
+
+
+; Information added by Drupal.org packaging script on 2014-03-14
+version = "7.x-2.0-beta1+3-dev"
+core = "7.x"
+project = "flight"
+datestamp = "1394784207"
+

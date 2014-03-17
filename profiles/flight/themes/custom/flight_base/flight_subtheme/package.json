@@ -1,0 +1,16 @@
+{
+  "name": "flight_subtheme",
+  "version": "0.0.1",
+  "devDependencies": {
+    "node-sass": "~0.7.0",
+    "grunt-drush": "*",
+    "grunt": "~0.4.1",
+    "grunt-contrib-compass": "~0.2.0",
+    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-stripmq": "git://github.com/aschmoe/grunt-stripmq.git"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}

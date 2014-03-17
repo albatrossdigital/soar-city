@@ -2,6 +2,11 @@ name = Minimal
 description = Start with only a few modules enabled.
 version = VERSION
 core = 7.x
+<<<<<<< HEAD
+hidden = TRUE
+dependencies[] = block
+dependencies[] = dblog
+=======
 dependencies[] = block
 dependencies[] = dblog
 
@@ -10,3 +15,4 @@ version = "7.26"
 project = "drupal"
 datestamp = "1389815930"
 
+>>>>>>> eadd0047a3fa3e341d16dc868f12d8f25a4c1e61

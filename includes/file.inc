@@ -475,6 +475,13 @@ function file_ensure_htaccess() {
  *   already present. Defaults to FALSE.
  */
 function file_create_htaccess($directory, $private = TRUE, $force_overwrite = FALSE) {
+<<<<<<< HEAD
+  if (isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
+    // Skip on Pantheon since we use nginx and this can hang.
+    return;
+  }
+=======
+>>>>>>> eadd0047a3fa3e341d16dc868f12d8f25a4c1e61
   if (file_uri_scheme($directory)) {
     $directory = file_stream_wrapper_uri_normalize($directory);
   }

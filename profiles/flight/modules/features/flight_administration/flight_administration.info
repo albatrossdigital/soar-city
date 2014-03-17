@@ -1,0 +1,26 @@
+name = Flight Administration
+description = Sets up the dashboard and administration menus.
+core = 7.x
+package = Flight
+dependencies[] = admin_views
+dependencies[] = block
+dependencies[] = context
+dependencies[] = ctools
+dependencies[] = ds
+dependencies[] = features
+dependencies[] = field_group
+dependencies[] = menu
+dependencies[] = views
+dependencies[] = views_bulk_operations
+features[ctools][] = context:context:3
+features[ctools][] = ds:ds:1
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = flight_admin_nodes
+
+; Information added by Drupal.org packaging script on 2014-03-14
+version = "7.x-2.0-beta1+3-dev"
+core = "7.x"
+project = "flight"
+datestamp = "1394784207"
+

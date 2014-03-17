@@ -1,4 +1,9 @@
+<<<<<<< HEAD
+
+CONTENTS OF THIS FILE
+=======
 CONTENTS OF THIS FILE 
+>>>>>>> eadd0047a3fa3e341d16dc868f12d8f25a4c1e61
 ---------------------
 
  * About Drupal

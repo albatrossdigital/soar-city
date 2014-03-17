@@ -1,0 +1,41 @@
+name = Flight Input Formats
+description = Sets up the standard Flight input formats and CKEditor profile
+core = 7.x
+package = Flight
+version = 7.x-1.0-alpha1
+project = flight_input_formats
+dependencies[] = ckeditor
+dependencies[] = ckeditor_link
+dependencies[] = ckeditor_link_file
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = filter
+dependencies[] = flight_wysiwyg_filter
+dependencies[] = media
+dependencies[] = media_wysiwyg
+dependencies[] = oembed
+dependencies[] = strongarm
+dependencies[] = wysiwyg_template
+datestamp = 1379120528
+features[ckeditor_profile][] = CKEditor Global Profile
+features[ckeditor_profile][] = Flight
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[filter][] = filtered_html
+features[filter][] = full_html
+features[filter][] = plain_text
+features[user_permission][] = access ckeditor link
+features[user_permission][] = use text format filtered_html
+features[user_permission][] = use text format full_html
+features[variable][] = pathauto_node_pattern
+features[wysiwyg_template][] = faq_list
+features[wysiwyg_template][] = foundation_two_columns_equal
+features[wysiwyg_template][] = foundation_two_columns_left_side
+features[wysiwyg_template][] = image_with_caption
+
+; Information added by Drupal.org packaging script on 2014-03-14
+version = "7.x-2.0-beta1+3-dev"
+core = "7.x"
+project = "flight"
+datestamp = "1394784207"
+

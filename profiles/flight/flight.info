@@ -1,0 +1,179 @@
+; Packaging information for flight
+name = "Flight"
+description = "A bare-bones distribution with Twitter Bootstrap, Context and the new Edit module."
+version = VERSION
+core = "7.x"
+
+# TODO: Fix media+ckeditor. Patches: http://drupal.org/node/1504696#comment-7233648, http://drupal.org/node/1962868
+# TODO: Add slideshow feature
+
+
+; **************************************
+; * Drupal core modules
+; **************************************
+dependencies[] = block
+dependencies[] = node
+dependencies[] = contextual
+dependencies[] = help
+dependencies[] = image
+dependencies[] = list
+dependencies[] = menu
+dependencies[] = number
+dependencies[] = options
+dependencies[] = path
+dependencies[] = taxonomy
+dependencies[] = dblog
+dependencies[] = shortcut
+dependencies[] = field_ui
+dependencies[] = file
+#dependencies[] = rdf
+#dependencies[] = search
+#dependencies[] = overlay
+#dependencies[] = toolbar
+#dependencies[] = dashboard
+
+
+; **************************************
+; * Flight-specific modules below
+; **************************************
+
+; Flight - Contrib - Foundation
+dependencies[] = entity
+dependencies[] = entityreference
+dependencies[] = ctools
+dependencies[] = views
+dependencies[] = views_ui
+dependencies[] = context
+dependencies[] = context_ui
+dependencies[] = ds
+dependencies[] = ds_extras
+dependencies[] = foundation_formatters
+dependencies[] = ds_ui
+dependencies[] = stringoverrides
+dependencies[] = googleanalytics
+dependencies[] = features
+dependencies[] = strongarm
+dependencies[] = bean
+dependencies[] = bean_admin_ui
+dependencies[] = block_class
+dependencies[] = libraries
+dependencies[] = advagg
+dependencies[] = simplehtmldom
+dependencies[] = menu_trail_by_path
+dependencies[] = smtp
+#dependencies[] = override_node_options
+#dependencies[] = entitycache
+#dependencies[] = purge
+#dependencies[] = magic
+dependencies[] = underscore
+
+
+; Flight - Contrib - User Interface
+dependencies[] = jquery_update
+dependencies[] = admin_menu
+dependencies[] = admin_menu_toolbar
+dependencies[] = navbar
+dependencies[] = admin_select
+dependencies[] = admin_views
+dependencies[] = ckeditor
+;dependencies[] = wysiwyg_filter
+dependencies[] = wysiwyg_template
+dependencies[] = module_filter
+dependencies[] = filter_perms
+dependencies[] = menu_block
+dependencies[] = menu_firstchild
+#dependencies[] = typekit
+
+
+; Flight - Contrib - Field UI and Content Types
+dependencies[] = field_group
+dependencies[] = email
+dependencies[] = select_or_other
+dependencies[] = link
+#dependencies[] = webform
+#dependencies[] = form_builder
+#dependencies[] = form_builder_webform
+#dependencies[] = feeds
+#dependencies[] = feeds_ui
+#dependencies[] = feeds_import
+
+
+; Flight - Contrib - SEO
+dependencies[] = pathauto
+dependencies[] = pathauto_persist
+dependencies[] = redirect
+dependencies[] = googleanalytics
+dependencies[] = metatag
+dependencies[] = metatag_ui
+dependencies[] = metatag_opengraph
+#dependencies[] = linkchecker
+dependencies[] = share42
+#dependencies[] = page_title
+
+
+; Flight - Contrib - Media
+dependencies[] = media
+dependencies[] = file_entity
+dependencies[] = media_internet
+dependencies[] = oembedcore
+dependencies[] = oembed
+dependencies[] = media_oembed
+dependencies[] = focal_point
+dependencies[] = plupload
+dependencies[] = multiform
+dependencies[] = media_bulk_upload
+dependencies[] = media_wysiwyg
+dependencies[] = media_wysiwyg_view_mode
+dependencies[] = media_inkfilepicker
+
+
+; Flight - Contrib - Workflow
+dependencies[] = workbench
+dependencies[] = workbench_media
+#dependencies[] = workbench_moderation
+#dependencies[] = scheduler
+#dependencies[] = scheduler_workbench
+
+
+; Flight - Contrib - Views addons
+dependencies[] = draggableviews
+dependencies[] = views_data_export
+dependencies[] = views_infinite_scroll
+dependencies[] = views_foundation
+
+
+; Flight - Contrib - Devel
+dependencies[] = devel
+#dependencies[] = drupalforfirebug
+
+
+; Flight - Contrib - Standard Features
+dependencies[] = flight_config
+dependencies[] = flight_wysiwyg_filter
+dependencies[] = flight_date_formats
+dependencies[] = flight_input_formats
+dependencies[] = flight_permissions
+dependencies[] = flight_administration
+dependencies[] = flight_page
+dependencies[] = flight_media
+dependencies[] = flight_bean
+
+
+; Flight - Contrib - Optional Features
+#dependencies[] = flight_news
+#dependencies[] = flight_events
+#dependencies[] = flight_webform
+#dependencies[] = flight_slideshow
+#dependencies[] = flight_highlights
+#dependencies[] = flight_workbench
+;@todo: Create flight_sitemap feature
+
+files[] = flight.profile
+
+
+; Information added by Drupal.org packaging script on 2014-03-14
+version = "7.x-2.0-beta1+3-dev"
+core = "7.x"
+project = "flight"
+datestamp = "1394784207"
+

@@ -1,0 +1,59 @@
+Changes for beta2
+- Switched to using the adminimal base admin theme
+
+Changes for beta1
+- Remade all features (content types, reach_blocks, reach_input_formats)
+- Restructured drupal-org.make to make it more clear (and easier to remove modules in the future)
+- Updated to Foundation 5.x
+- Numerous module compatibility fixes
+
+Changes for alpha3
+- Depreciation of the 1.x branch: We weren't supporting it
+- Removal of all references to media_multiselect
+- Structural overhaul of the drupal-org.make file to improve comments and group together modules.  Some work remains.
+- Rebuilding of all features, fixing permissions, setting up ds view for all content types
+- Stable(ish) releases of media, file_entity and ckeditor so media truely does work out of the box
+- Cleaned up flight beans, displays
+- Added filefile focus
+- Adding workbench suite, and related modules
+- Finally fixing all module depends issues with media_inkfilepicker. It is no longer installed by default.
+
+Changes for alpha2
+- Removed media_multiselect
+- Switched base theme from Bootstrap-based theme (open_framework) to Zurb Foundation theme (zurb_foundation). Added jquery_update dependency.
+- Replaced views_bootstrap with views_foundation.
+- Added magic theme helper module.
+- Added wysiwyg_filter for more advanced Rich Text input format control (allowing class attributes, etc).
+- Added workbench and suite of modules, including scheduler_workbench.
+- Added linkchecker.
+- Added patched version of wysiwyg_template to add CKEditor templates.
+- Added webform and form_builder modules.
+- Added views_data_export, views_infinite_scroll.
+- Switched from toolbar to navbar. Added breakpoints dependency.
+- Media: added picture, manualcrop, media_multiselect (sandbox project).
+- Added share42 for share buttons.
+- Added menublock, menu_firstchild modules.
+- Added pathauto_persist to fix bug with pathauto, redirect modules.
+- Added entityreference.
+- Added migrate modules for modules/migrate dir (default uninstalled).
+- Added fields and standardized features and feature permissions.
+
+- @todo: Update flight_slideshow to use views_foundation.
+- @todo: Update flight_media: picture presets, fix oembed video presets.
+- @todo: What to do about share42 library (add documentation?).
+- @todo: Add ckeditor templates to reach_input_formats.
+- @todo: Add docs about mediacrop dependencies (until they are added to the whitelist)
+
+
+Todo before uptading exising sites
+====================
+* PoT: Move feeds into sites/all
+* Move flight_blocks into sites/all
+* flight_media?
+
+
+
+@todo: respond to:
+https://drupal.org/node/2159403
+https://drupal.org/comment/8312617#comment-8312617
+https://drupal.org/comment/8312617#comment-8312617

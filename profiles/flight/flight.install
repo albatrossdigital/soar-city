@@ -1,0 +1,114 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the flight installation profile.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ *
+ * @see system_install()
+ */
+function flight_install() {
+  // Themes
+  $default_theme = 'flight_subtheme';
+  $admin_theme = 'flight_admin';
+
+  // Enable some standard blocks.
+  $blocks = array(
+    array(
+      'module' => 'system',
+      'delta' => 'main',
+      'theme' => $default_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+    ),
+    array(
+      'module' => 'system',
+      'delta' => 'main',
+      'theme' => $admin_theme,
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'content',
+      'pages' => '',
+      'cache' => -1,
+    ),
+  );
+  $query = db_insert('block')->fields(array('module', 'delta', 'theme', 'status', 'weight', 'region', 'pages', 'cache'));
+  foreach ($blocks as $block) {
+    $query->values($block);
+  }
+  $query->execute();
+
+  // Delete the Quick edit block that is automatically put in the first sidebar by the edit module
+  // This doesn't always work here so we also do it in flight_config.install
+  db_query('DELETE FROM {block} WHERE module = :module;', array(':module' => 'edit'));
+
+  // Enable user picture support and set the default to a square thumbnail option.
+  variable_set('user_pictures', '1');
+  variable_set('user_picture_dimensions', '1024x1024');
+  variable_set('user_picture_file_size', '800');
+  variable_set('user_picture_style', 'thumbnail');
+
+  // Only administrators can create user accounts.
+  variable_set('user_register', USER_REGISTER_ADMINISTRATORS_ONLY);
+
+  // Enable default permissions for system roles.
+  //$filtered_html_permission = filter_permission_name($filtered_html_format);
+  //user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content', $filtered_html_permission));
+  //user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('access content', $filtered_html_permission));
+
+  // Create a default role for site administrators, with all available permissions assigned.
+  $admin_role = new stdClass();
+  $admin_role->name = 'administrator';
+  $admin_role->weight = 2;
+  user_role_save($admin_role);
+  // Set this as the administrator role.
+  //variable_set('user_admin_role', $admin_role->rid);
+
+  // Assign user 1 the "administrator" role.
+  db_insert('users_roles')
+    ->fields(array('uid' => 1, 'rid' => $admin_role->rid))
+    ->execute();
+
+  // Create a Home link in the main menu.
+  $item = array(
+    'link_title' => st('Home'),
+    'link_path' => '<front>',
+    'menu_name' => 'main-menu',
+  );
+  menu_link_save($item);
+
+  // Update the menu router information.
+  menu_rebuild();
+
+  // Set the default theme.
+  variable_set('theme_default', $default_theme);
+  // Zurb Foundation needs jQuery 1.7
+  variable_set('jquery_update_jquery_version', '1.7');
+  variable_set('jquery_update_jquery_admin_version', '1.5');
+
+  // Enable the admin theme.
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', $admin_theme)
+    ->execute();
+  variable_set('admin_theme', $admin_theme);
+  variable_set('node_admin_theme', '1');
+
+  // Set admin_menu as the admin_select toolbar for uid=1
+  $account = user_load(1);
+  $edit = array();
+  $edit['data']['admin_select'] = 'admin_menu';
+  user_save($account, $edit);
+
+  // Note: Text formats are added as part of the flight_input_formats feature
+  // We want to revert this feature to get the Flight profile as the default CKEditor profile for Rich Text formats.
+  features_revert(array('flight_input_formats'));
+}

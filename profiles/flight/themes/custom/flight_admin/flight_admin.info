@@ -1,0 +1,16 @@
+
+name = Flight Admin
+description = Adds minor UI improvements to the Seven theme.
+base theme = adminimal
+core = 7.x
+engine = phptemplate
+
+stylesheets[screen][] = flight-admin.css
+
+
+; Information added by Drupal.org packaging script on 2014-03-14
+version = "7.x-2.0-beta1+3-dev"
+core = "7.x"
+project = "flight"
+datestamp = "1394784207"
+

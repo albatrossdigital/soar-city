@@ -1,0 +1,22 @@
+; flight make file for local development
+core = "7.x"
+api = "2"
+
+projects[drupal][version] = "7.x"
+; include the d.o. profile base
+includes[] = "drupal-org.make"
+
+; +++++ TODO modules without versions +++++
+
+projects[menu_toolbar_coop][version] = "" ; TODO add version
+projects[menu_toolbar_coop][subdir] = "custom"
+
+; +++++ Libraries +++++
+
+; flight
+#libraries[flight][directory_name] = "flight"
+#libraries[flight][type] = "profile"
+#libraries[flight][destination] = "../../profiles"
+#libraries[flight][download][type] = "get"
+#libraries[flight][download][url] = "http://ftp.drupal.org/files/projects/flight-7.x-1.x-dev.tar.gz"
+

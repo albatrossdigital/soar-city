@@ -1,0 +1,13 @@
+name = Flight Config
+description = Tweaks to the UI and helper functions used in the Flight distribution
+core = 7.x
+
+
+
+
+; Information added by Drupal.org packaging script on 2014-03-14
+version = "7.x-2.0-beta1+3-dev"
+core = "7.x"
+project = "flight"
+datestamp = "1394784207"
+
