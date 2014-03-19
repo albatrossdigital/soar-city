@@ -1,0 +1,14 @@
+name = Social Profile Field
+description = Handle social profile links and show as an icons.
+package = Social
+core = 7.x
+
+; Migrate handler.
+files[] = social_profile_field.migrate.inc
+
+; Information added by drupal.org packaging script on 2013-04-23
+version = "7.x-1.0-beta3"
+core = "7.x"
+project = "social_profile_field"
+datestamp = "1366730112"
+
