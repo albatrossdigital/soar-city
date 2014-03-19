@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Flight City Entity feature.
+ */
+
+include_once 'flight_city_entity.features.inc';
