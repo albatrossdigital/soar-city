@@ -62,6 +62,70 @@ function flight_events_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-event-field_address'
+  $field_instances['node-event-field_address'] = array(
+    'bundle' => 'event',
+    'default_value' => array(
+      0 => array(
+        'element_key' => 'node|event|field_address|und|0',
+        'thoroughfare' => '',
+        'premise' => '',
+        'locality' => '',
+        'administrative_area' => '',
+        'postal_code' => '',
+        'country' => 'US',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'addressfield',
+        'settings' => array(
+          'format_handlers' => array(
+            0 => 'address',
+          ),
+          'use_widget_handlers' => 1,
+        ),
+        'type' => 'addressfield_default',
+        'weight' => 8,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_address',
+    'label' => 'Address',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'addressfield',
+      'settings' => array(
+        'available_countries' => array(
+          'US' => 'US',
+        ),
+        'format_handlers' => array(
+          'address' => 'address',
+          'address-hide-country' => 'address-hide-country',
+          'organisation' => 0,
+          'name-full' => 0,
+          'name-oneline' => 0,
+        ),
+      ),
+      'type' => 'addressfield_standard',
+      'weight' => 11,
+    ),
+  );
+
   // Exported field_instance: 'node-event-field_attachment'
   $field_instances['node-event-field_attachment'] = array(
     'bundle' => 'event',
@@ -134,46 +198,34 @@ function flight_events_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
-        'module' => 'date',
-        'settings' => array(
-          'edit' => array(
-            'editor' => 'form',
-          ),
-          'format_type' => 'long',
-          'fromto' => 'both',
-          'multiple_from' => '',
-          'multiple_number' => '',
-          'multiple_to' => '',
-        ),
-        'type' => 'date_default',
-        'weight' => 1,
-      ),
-      'teaser' => array(
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
-          'edit' => array(
-            'editor' => 'form',
-          ),
           'format_type' => 'long',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_repeat_rule' => 'show',
         ),
         'type' => 'date_default',
-        'weight' => 2,
+        'weight' => 7,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_date',
     'label' => 'Date',
     'required' => 0,
     'settings' => array(
-      'default_format' => 'medium',
       'default_value' => 'now',
-      'default_value2' => 'blank',
+      'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
       'user_register_form' => FALSE,
@@ -182,65 +234,42 @@ function flight_events_field_default_field_instances() {
       'active' => 1,
       'module' => 'date',
       'settings' => array(
-        'increment' => 1,
-        'input_format' => 'm/d/Y - H:i:s',
+        'increment' => 15,
+        'input_format' => 'm/d/Y - g:i:sa',
         'input_format_custom' => '',
         'label_position' => 'above',
-        'repeat_collapsed' => 0,
+        'repeat_collapsed' => 1,
         'text_parts' => array(),
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 1,
+      'weight' => 10,
     ),
   );
 
   // Exported field_instance: 'node-event-field_location'
   $field_instances['node-event-field_location'] = array(
     'bundle' => 'event',
-    'default_value' => array(
-      0 => array(
-        'administrative_area' => '',
-        'country' => 'AF',
-        'dependent_locality' => '',
-        'element_key' => 'node|event|field_location|und|0',
-        'locality' => '',
-        'name_line' => '',
-        'postal_code' => '',
-        'premise' => '',
-        'sub_administrative_area' => '',
-        'sub_premise' => '',
-        'thoroughfare' => '',
-        'xal' => '',
-        'xnl' => '<NameDetails/>
-',
-      ),
-    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
-        'module' => 'addressfield',
+        'label' => 'above',
+        'module' => 'geofield',
         'settings' => array(
-          'edit' => array(
-            'editor' => 'form',
-          ),
-          'format_handlers' => array(
-            0 => 'address',
-          ),
-          'use_widget_handlers' => 1,
+          'data' => 'full',
         ),
-        'type' => 'addressfield_default',
-        'weight' => 5,
+        'type' => 'geofield_wkt',
+        'weight' => 9,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_location',
     'label' => 'Location',
@@ -250,18 +279,26 @@ function flight_events_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'addressfield',
+      'module' => 'geocoder',
       'settings' => array(
-        'available_countries' => array(
-          'US' => 'US',
+        'delta_handling' => 'default',
+        'geocoder_field' => 'field_address',
+        'geocoder_handler' => 'google',
+        'handler_settings' => array(
+          'google' => array(
+            'all_results' => 0,
+            'geometry_type' => 'point',
+            'reject_results' => array(
+              'APPROXIMATE' => 0,
+              'GEOMETRIC_CENTER' => 0,
+              'RANGE_INTERPOLATED' => 0,
+              'ROOFTOP' => 0,
+            ),
+          ),
         ),
-        'format_handlers' => array(
-          0 => 'address',
-        ),
-        'name_format' => 'name_line',
       ),
-      'type' => 'addressfield_standard',
-      'weight' => 2,
+      'type' => 'geocoder',
+      'weight' => 12,
     ),
   );
 
@@ -364,6 +401,7 @@ function flight_events_field_default_field_instances() {
           'image_style' => 'large',
           'image_style_large' => '',
           'image_style_medium' => '',
+          'image_style_retina' => '',
           'image_style_small' => '',
           'link_field' => '',
           'placeholder_dimensions' => '',
@@ -475,6 +513,7 @@ function flight_events_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Address');
   t('Attachments');
   t('Date');
   t('Description');

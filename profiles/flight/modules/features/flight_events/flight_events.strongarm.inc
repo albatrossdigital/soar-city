@@ -46,6 +46,9 @@ function flight_events_strongarm() {
         'redirect' => array(
           'weight' => '7',
         ),
+        'domain' => array(
+          'weight' => '1',
+        ),
       ),
       'display' => array(),
     ),

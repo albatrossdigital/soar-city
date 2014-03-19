@@ -77,7 +77,8 @@ function flight_events_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_date',
-      1 => 'field_location',
+      1 => 'field_address',
+      2 => 'field_location',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
