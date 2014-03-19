@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Flight City Program feature.
+ */
+
+include_once 'flight_city_program.features.inc';
