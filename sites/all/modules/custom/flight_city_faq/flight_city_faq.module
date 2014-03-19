@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Flight City FAQ feature.
+ */
+
+include_once 'flight_city_faq.features.inc';
