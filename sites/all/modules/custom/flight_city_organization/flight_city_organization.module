@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Flight City Organization feature.
+ */
+
+include_once 'flight_city_organization.features.inc';
