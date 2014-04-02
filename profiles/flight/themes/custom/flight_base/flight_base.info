@@ -140,10 +140,3 @@ settings[zurb_foundation_disable_core_css] = 0
 settings[zurb_foundation_html_tags] = 1
 settings[zurb_foundation_messages_modal] = 0
 settings[zurb_foundation_pager_center] = 1
-
-; Information added by Drupal.org packaging script on 2014-03-14
-version = "7.x-2.0-beta1+3-dev"
-core = "7.x"
-project = "flight"
-datestamp = "1394784207"
-

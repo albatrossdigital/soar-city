@@ -1,0 +1,6 @@
+{
+  "name": "Flight Subtheme",
+  "dependencies": {
+    "foundation": "~5.2.1"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "flight_city",
+  "version": "0.0.1",
+  "devDependencies": {
+    "node-sass": "~0.7.0",
+    "grunt-drush": "*",
+    "grunt": "~0.4.1",
+    "grunt-contrib-compass": "~0.2.0",
+    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-stripmq": "git://github.com/aschmoe/grunt-stripmq.git",
+    "gulp-watch": "~0.5.3",
+    "gulp-compass": "~1.1.8",
+    "gulp": "~3.6.0",
+    "gulp-rename": "~1.2.0",
+    "gulp-clean": "~0.2.4",
+    "gulp-concat": "~2.2.0",
+    "gulp-minify-css": "~0.3.0",
+    "gulp-uglify": "~0.2.1",
+    "gulp-notify": "~1.2.5",
+    "gulp-jshint": "~1.5.3",
+    "gulp-cache": "~0.1.3",
+    "gulp-livereload": "~1.2.0",
+    "tiny-lr": "0.0.5"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}

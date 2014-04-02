@@ -1,0 +1,66 @@
+
+
+$orbit-button-height: rem-calc(55)
+$orbit-button-width: grid-calc(5, 12)/3.2
+
+// Orbit
+//-----------------------------------------------------------------------------
+
+.orbit-container
+  +expand-row(true)
+  width: auto
+
+ul[data-orbit]
+  +list-clear
+
+  h2
+    a
+      +c(link-alt)
+
+  & ~ .orbit-prev,
+  & ~ .orbit-next
+    color: $blue-dark
+    text-indent: 0!important
+
+    &:before
+      width: 100%!important
+
+    span 
+      display: none!important
+
+    &:hover
+      background: rgba($black-true, 0.05)
+
+    &:active
+      background: rgba($blue-dark, 0.1)
+
+  & ~ .orbit-prev
+    +icon-replace(long-arrow-left, $orbit-button-width, $orbit-button-height, rem-calc(25))
+
+  & ~ .orbit-next
+    +icon-replace(long-arrow-right, $orbit-button-width, $orbit-button-height, rem-calc(25))
+
+.orbit-timer
+  display: none!important
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($medium-up)
+
+  // Orbit
+  //-----------------------------------------------------------------------------
+
+  ul[data-orbit]
+    
+
++respond($large-up)
+
+  // Orbit
+  //-----------------------------------------------------------------------------
+
+  ul[data-orbit]
+
