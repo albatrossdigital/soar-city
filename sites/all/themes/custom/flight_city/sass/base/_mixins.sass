@@ -425,6 +425,20 @@
 //
 //***********************************
 
+@function common-border-val($color: $gray, $width: 1px)
+
+  @return solid $color $width
+
+@mixin common-border($direction: bottom, $color: $gray, $width: 1px)
+
+  $selector: border
+
+  @if $direction
+    $selector: border-#{$direction}
+
+  #{$selector}: common-border-val($color, $width)
+
+
 @mixin disable-while-loading($loading: '&', $loaded: '[data-uuid]', $icon: false, $size: rem-calc(50), $color: $gray)
   @if $icon
     +icon(spinner, ($size*(53/50)), $color)

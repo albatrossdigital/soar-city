@@ -11,15 +11,12 @@
       <?php endif; ?>
         <nav class="top-bar"<?php print $top_bar_options; ?>>
           <ul class="title-area">
-            <li class="name"><h1><?php print $linked_site_name; ?></h1></li>
+            <li class="name"><?php if ($linked_logo): print $linked_logo; endif; ?></li>
             <li class="toggle-topbar menu-icon"><a href="#"><span><?php print $top_bar_menu_text; ?></span></a></li>
           </ul>
           <section class="top-bar-section">
-            <?php if ($top_bar_main_menu) :?>
-              <?php print $top_bar_main_menu; ?>
-            <?php endif; ?>
-            <?php if ($top_bar_secondary_menu) :?>
-              <?php print $top_bar_secondary_menu; ?>
+            <?php if (!empty($page['topbar'])): ?>
+              <?php print render($page['topbar']); ?>
             <?php endif; ?>
           </section>
         </nav>
@@ -69,15 +66,16 @@
     <?php endif; ?>
     <!-- End title, slogan and menu -->
 
-    <?php if (!empty($page['header'])): ?>
-      <!--.l-header-region -->
-      <section class="l-header-region row">
-        <div class="medium-12 columns">
-          <?php print render($page['header']); ?>
-        </div>
-      </section>
+    <!--.l-header-region -->
+    <section class="l-header-region row">
+      <div class="medium-6 columns">
+        <h1 class="site-title"><?php print $site_name; ?></h1>
+      </div>
+      <div class="medium-6 columns">
+        <?php print render($page['header']); ?>
+      </div>
+    </section>
       <!--/.l-header-region -->
-    <?php endif; ?>
 
   </header>
   <!--/.l-header -->

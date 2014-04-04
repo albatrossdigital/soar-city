@@ -1,13 +1,15 @@
 
 
-$orbit-button-height: rem-calc(55)
-$orbit-button-width: grid-calc(5, 12)/3.2
+$orbit-button-height: rem-calc(40)
+$orbit-button-width: rem-calc(40)
+$orbit-button-font-size: rem-calc(30)
+
 
 // Orbit
 //-----------------------------------------------------------------------------
 
 .orbit-container
-  +expand-row(true)
+  //+expand-row(true)
   width: auto
 
 ul[data-orbit]
@@ -19,7 +21,7 @@ ul[data-orbit]
 
   & ~ .orbit-prev,
   & ~ .orbit-next
-    color: $blue-dark
+    color: $gray
     text-indent: 0!important
 
     &:before
@@ -29,16 +31,16 @@ ul[data-orbit]
       display: none!important
 
     &:hover
-      background: rgba($black-true, 0.05)
+      background: none
 
     &:active
-      background: rgba($blue-dark, 0.1)
+      background: none
 
   & ~ .orbit-prev
-    +icon-replace(long-arrow-left, $orbit-button-width, $orbit-button-height, rem-calc(25))
+    +icon-replace(chevron-left, $orbit-button-width, $orbit-button-height, $orbit-button-font-size)
 
   & ~ .orbit-next
-    +icon-replace(long-arrow-right, $orbit-button-width, $orbit-button-height, rem-calc(25))
+    +icon-replace(chevron-right, $orbit-button-width, $orbit-button-height, $orbit-button-font-size)
 
 .orbit-timer
   display: none!important

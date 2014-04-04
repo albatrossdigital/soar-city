@@ -80,6 +80,7 @@ scripts[] = js/scripts.js
 ; You'll use this variable in page.tpl.php:
 ;   <?php print render($page['header']); ?>
 
+regions[topbar]              = Topbar
 regions[header]              = Header
 regions[help]                = Help
 regions[highlighted]         = Highlighted
@@ -118,7 +119,7 @@ regions[footer]              = Footer
 ; Theme settings:
 
 ; Top Bar.
-settings[zurb_foundation_top_bar_enable] = 2
+settings[zurb_foundation_top_bar_enable] = 1
 settings[zurb_foundation_top_bar_grid] = 0
 settings[zurb_foundation_top_bar_sticky] = 0
 settings[zurb_foundation_top_bar_menu_text] = 'Menu'

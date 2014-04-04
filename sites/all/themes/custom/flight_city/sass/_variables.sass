@@ -8,12 +8,36 @@
 // Colors
 // ------------------------------------------------------
 
-$black: #333
+$black: #111
 $black-true: #000
 
 $white: #fff
 
-$gray: #e1e1e1
+$gray: #ccc
+$gray-dark: #626262
+
+$blue-dark: #42484f
+$blue: #5eb5cb
+$blue-link: #007ba8
+
+$green: #6aa880
+
+$gold: #deb64b
+$yellow: #f2c54b
+
+$orange: #fa973f
+
+$red: #e55454
+
+$purple: #627cc0
+
+// Social
+
+$blue-twitter: #28aae1
+$blue-facebook: #3460a1
+$red-youtube: #ee3138
+$blue-linkin: #136d9d
+$pink-flickr: #ed2a90
 
 
 
@@ -25,6 +49,8 @@ $ff-alt: 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', sans-serif
 
 $font-weight-normal: normal
 $font-weight-bold: bold
+
+
 
 // Foundation by ZURB
 // foundation.zurb.com
@@ -1156,16 +1182,16 @@ $header-font-family: $ff-alt
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: #333;
-// $topbar-bg: $topbar-bg-color;
+$topbar-bg-color: $blue-dark
+$topbar-bg: $topbar-bg-color
 
 // Height and margin
-// $topbar-height: 45px;
+$topbar-height: rem-calc(57)
 // $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
 // $topbar-title-weight: normal;
-// $topbar-title-font-size: rem-calc(17);
+$topbar-title-font-size: 1rem
 // $topbar-link-text-transform: none;
 
 // Style the top bar dropdown elements
@@ -1178,16 +1204,17 @@ $header-font-family: $ff-alt
 // $topbar-dropdown-toggle-alpha: 0.4;
 
 // Set the link colors and styles for top-level nav
-// $topbar-link-color: #fff;
-// $topbar-link-color-hover: #fff;
-// $topbar-link-color-active: #fff;
-// $topbar-link-color-active-hover: #fff;
+$topbar-link-color: $white
+$topbar-link-color-hover: darken($white, 10%)
+$topbar-link-color-active: $gold
+$topbar-link-color-active-hover: $gold
 // $topbar-link-weight: normal;
-// $topbar-link-font-size: rem-calc(13);
+$topbar-link-font-size: $topbar-title-font-size
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
-// $topbar-link-bg-hover: #272727;
-// $topbar-link-bg-active: $primary-color;
-// $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
+$topbar-link-bg-hover: $topbar-bg-color
+$topbar-link-bg-active: $topbar-bg-color
+$topbar-link-bg-active-hover: $topbar-bg-color
+
 // $topbar-link-font-family: $body-font-family;
 
 // $topbar-button-font-size: 0.75rem;
