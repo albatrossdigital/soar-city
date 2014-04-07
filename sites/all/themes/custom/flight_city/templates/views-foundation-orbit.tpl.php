@@ -21,7 +21,7 @@
 
 ?>
 
-<ul id="orbit-<?=$view->dom_id?>" data-orbit data-options="orbit_transition_class:transitioning; timer:false; bullets:false; animation:slide; slide_number:false;">
+<ul id="orbit-<?=$view->dom_id?>" data-orbit data-options="resume_on_mouseout:true; orbit_transition_class:transitioning; timer:false; bullets:false; animation:slide; slide_number:false; navigation_arrows:true;">
   <?php foreach ($rows as $id => $row): ?>
   <li>
     <?php print $row; ?>

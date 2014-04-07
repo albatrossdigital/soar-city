@@ -1,0 +1,39 @@
+
+// Entity link blocks
+// --------------------------
+
+$icon-area-dimension: rem-calc(90) 
+$icon-area-font-size: rem-calc(45)
+
+
+.field-collection-item-field-link-collection
+  position: relative
+  text-align: center
+
+  i 
+    color: $white
+    font-size: $icon-area-font-size
+    line-height: $icon-area-dimension
+    margin-right: 0
+    opacity: 0.75
+    position: relative
+    z-index: 2
+
+  &.active
+    i 
+      opacity: 1
+
+  i, .color-link
+    height: $icon-area-dimension
+    width: $icon-area-dimension
+
+  .field-name-field-link
+    padding-top: $paragraph-margin-bottom
+
+.color-link
+  left: 50%
+  top: 0
+  margin-left: -($icon-area-dimension/2)
+  position: absolute
+  +border-radius(100%)
+  z-index: 1
