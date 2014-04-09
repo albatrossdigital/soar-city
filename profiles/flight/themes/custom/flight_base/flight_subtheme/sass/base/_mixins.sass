@@ -1,7 +1,235 @@
+
+
+//***********************************
+// START FLIGHT MIXINS
+// available from base for reference
+//***********************************
+
+// sets element as visible
+// use on :before / :after
+//
+//** $display: sets display
+//** $direction: position absolute? use: left, right, top, bottom
+//** $amount: amount to set $direction as absolute
+//
+// @mixin before-as-image($display: block, $direction: false, $amount: 0)
+
+// simple list clear: padding, margin, list-style 
+//
+// @mixin list-clear()
+
+
+// simple inline list
+//
+// @mixin list-float()
+
+
+// hit all headers
+//
+// @mixin all-headers()
+
+
+// makes div an overflow ellipse
+//
+// @mixin ellipsis()
+
+
+// hit all form inputs
+//
+//** $select: also hit select
+//
+// @mixin all-form-inputs($select: true)
+
+
+// strips foundation button styling into a link
+//
+//** $color: color of link
+//** $hover: hover color of link
+//
+// @mixin undo-button($color: $anchor-font-color, $hover: $anchor-font-color-hover)
+
+
+// Grid / Layout
+
+
+// Gets em-compensated value (useful for headers, buttons)
+// not especially useful now rem's are being used
+//
+//** $size: desired em
+//** $element: size to modify by (eg. $h2-font-size)
+//
+// @function compensate-size($size, $element, $base: rem-calc($rem-base))
+
+
+// add / remove column padding 
+//
+//** $half: true - sets padding to column-gutter/2, otherwise uses value passed as padding. Use 0 to remove
+//** $modify: if value present passes padding through compensate-size
+//
+// @mixin column-padding($half: true, $modify: false)
+
+
+// expand row - expands a div with negative margins
+//
+//** $half: true - sets margin to column-gutter/2, otherwise uses value passed as margin. Use 0 to remove
+//** $modify: if value present passes padding through compensate-size
+//
+// @mixin expand-row($half: true, $modify: false)
+
+
+// runs both column padding and expand row with same value
+//
+//** $half: true - sets margin to column-gutter/2, otherwise uses value passed as margin. Use 0 to remove
+//** $modify: if value present passes padding through compensate-size
+//
+// @mixin expand-and-padding($half: true, $modify: false)
+
+
+// fakes a column if proper html structure doesn't allow
+//
+//** $position: first or last sets padding to 0 accordingly, 
+//** $columns: column count
+//
+// @mixin fake-column($position: first, $columns: ($total-columns/2))
+
+
+// quick even columns using fake column
+// accepts list of selectors
+//
+//** $selectors: list of css selectors to run through
+//** $column-counts: list of column widths (eg. "2 4 2"), or false if just equal
+//** $property: simple poperty in list format to add to all fake columns (eg. "display block")
+//
+// @mixin quick-columns($selectors, $column-counts: false, $property: false)
+
+
+// Border for columns or interior elements that don't have the proper width
+// Like border on a row is too wide
+//
+//** $margin: what margin the border should have, use negative to expand border
+//** $padding: padding added to element 
+//** $border: border property (eg. 1px solid black)
+//** $direction: top or bottom, places border either above or below
+//** $hide: optional selector to hide border, defaults to last/first child depending on direction 
+//
+// @mixin nice-row-border($margin: $column-gutter/2, $padding: 1em, $border: 1px solid $gray, $direction: bottom, $hide: false)
+
+
+// centers an element
+//
+// @mixin centered()
+
+
+// centers an element with a max width
+//
+//** $width: max-width element should take
+//
+// @mixin max-width-center($width: $grid-max-width)
+
+
+// Responsive
+
+// takes content and puts it inside the $media query... simple shortcut
+//
+//** $media: a media query, (eg. $small-only, $large-up, ect)
+// @mixin respond($media)
+
+
+//************************************
+// Sprites
+//************************************
+
+// simple background sprite, does not use compass
+//
+//** $x: x position
+//** $y: y position
+//** $img: file name, assumes in /images
+//** $repeat: repeat settings
+//
+// @mixin image-sprite($x, $y, $img: "sprite.png", $repeat: no-repeat)
+
+
+// text replacing sprite
+//
+//** $width: width of element
+//** $height: height of element
+//** $left: x position
+//** $top: : y position
+//** $img: file name, assumes in /images
+//** $repeat: repeat settings
+//
+// @mixin image-replace($width, $height, $left, $top, $img: "sprite.png", $repeat: no-repeat)
+
+
+// Compass sprite mixin, can be used inside media queries
+// http://compass-style.org/reference/compass/helpers/sprites/
+//
+//** $map: name of sprite map 
+//** $sprite: name of image file 
+//** $offset-x: x offset 
+//** $offset-y: y offset 
+//** $repeat: repeat settings 
+//** $height: true if auto set to size of image 
+//** $width: true if auto set to size of image 
+//** $hover: if hover effect insert name of hover sprite
+//
+// @mixin get-sprite($map, $sprite, $offset-x: 0, $offset-y: 0, $repeat: no-repeat, $height: true, $width: true, $hover: false)
+
+
+//***********************************
+// Animations
+//***********************************
+
+
+// Default variables
+//
+//** $animation-time: 1s!default
+//** $animation-rotation-border-color-inactive: #eee!default
+//** $animation-rotation-border-color: #ddd!default
+//** $animation-rotation-border-width: rem-calc(2)!default
+
+
+// Sets up css animation
+//
+//** $time: Speed
+//
+// @mixin rotation($time: $animation-time)
+
+
+// prints out rotation definition
+//
+// @mixin rotation-init
+
+
+// Active spinner
+//
+//** $border-color: color of active spinner 
+//** $time: Speed
+//
+// @mixin spinner-active($border-color: $animation-rotation-border-color, $time: $animation-time)
+
+
+// Spinner container
+// 
+//** $dimensions: size of spinner in list format
+//** $border-color-inactive: color of
+//** $border-width: width of spinner border
+//
+// @mixin spinner-core($dimensions, $border-color-inactive: $animation-rotation-border-color-inactive, $border-width: $animation-rotation-border-width)
+
+
+//***********************************
+// END FLIGHT MIXINS
+// 
+//***********************************
+
+
+
 // @file
 // Place your mixins here. Feel free to roll your own mixins.
 
 // clearix override
+//
 @mixin clearfix()
   &:after
     content: "."
@@ -17,6 +245,7 @@
   /* IE7 */
   .clearfix *:first-child + html & 
     min-height: 1%
+
 
 //***********************************
 // Sprite Definitions
@@ -196,15 +425,15 @@
 //
 //***********************************
 
-@mixin disable-while-loading($loading: '&', $loaded: '[data-uuid]', $icon: false)
+@mixin disable-while-loading($loading: '&', $loaded: '[data-uuid]', $icon: false, $size: rem-calc(50), $color: $gray)
   @if $icon
-    +icon(spinner, 53px, $gray)
+    +icon(spinner, ($size*(53/50)), $color)
 
     &:before
-      +simple-center-both(50px)
-      height: 50px
+      +simple-center-both($size)
+      height: $size
       z-index: 1
-      width: 50px
+      width: $size
       +rotation
 
   #{$loading}

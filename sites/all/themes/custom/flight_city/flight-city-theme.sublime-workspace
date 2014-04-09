@@ -1,0 +1,625 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"margin-t",
+				"margin-bottom"
+			],
+			[
+				"fixed-header",
+				"fixed-header-z-index"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"font-",
+				"font-size"
+			],
+			[
+				"padding-",
+				"padding-top"
+			],
+			[
+				"margin-",
+				"margin-bottom"
+			],
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"marin",
+				"margin-bottom"
+			],
+			[
+				"paddin",
+				"padding-left"
+			],
+			[
+				"padi",
+				"padding-top"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"padding",
+				"padding-bottom"
+			],
+			[
+				"no",
+				"nowrap"
+			],
+			[
+				"whi",
+				"white-space"
+			],
+			[
+				"local-navi",
+				"local-navigation-item-height"
+			],
+			[
+				"local",
+				"local-navigation-height"
+			],
+			[
+				"body",
+				"body-bg"
+			],
+			[
+				"ab",
+				"absolute"
+			],
+			[
+				"border",
+				"border-bottom"
+			],
+			[
+				"addition",
+				"additional-wide-width"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"transition-",
+				"transition-delay	compass"
+			],
+			[
+				"body-",
+				"body-font-color"
+			],
+			[
+				"line",
+				"line-height"
+			],
+			[
+				"taxonomy",
+				"taxonomy_term"
+			],
+			[
+				"drupal",
+				"drupal_render"
+			],
+			[
+				"modif",
+				"modifier"
+			],
+			[
+				"taxonomty",
+				"taxonomy_term_load_multiple"
+			],
+			[
+				"mar",
+				"margin-bottom"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "bower.json",
+			"settings":
+			{
+				"buffer_size": 84,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"pakc",
+				"Package Control: Install Package"
+			],
+			[
+				"git",
+				"Git: Status"
+			],
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 476.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/alex/workspace/baltimore/sites/dev.baltimore.local/settings.php",
+		"/home/alex/workspace/schlow-library/sites/all/themes/schlow/template.php",
+		"/home/alex/workspace/schlow-library/sites/all/themes/schlow/sass/components/_icons.sass",
+		"/home/alex/workspace/schlow-library/sites/all/themes/schlow/sass/components/_type.sass",
+		"/home/alex/workspace/schlow-library/sites/all/themes/schlow/sass/base/_mixins.sass",
+		"/home/alex/workspace/schlow-library/sites/all/themes/schlow/sass/_variables.sass",
+		"/home/alex/workspace/schlow-library/sites/all/themes/schlow/ds_layouts/zf_3col_nested/zf_3col_nested.png",
+		"/home/alex/workspace/schlow-library/index.php",
+		"/home/alex/workspace/hopelink/index.php",
+		"/home/alex/workspace/schlow-library/sites/all/themes/schlow/js/foundation/foundation.min.js",
+		"/home/alex/workspace/schlow-library/sites/all/modules/custom/flight_library_carousels/angular-carousel.min.css",
+		"/home/alex/workspace/schlow-library/sites/all/modules/custom/flight_library_carousels/js/angular-carousel.min.js",
+		"/home/alex/workspace/schlow-library/sites/all/modules/custom/flight_library_carousels/js/angular-mobile.js",
+		"/home/alex/workspace/meteor/profilio/collections/docs.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/modules/contrib/wysiwyg_template/wysiwyg_template.features.inc",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/flight-libraries.make",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/modules/contrib/ckeditor/ckeditor.module",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/modules/contrib/ckeditor/ckeditor.api.php",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/README.txt",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/drupal-org.make",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/modules/contrib/wysiwyg_template/wysiwyg_template.module",
+		"/home/alex/Downloads/underscore/underscore.module",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/modules/contrib/ckeditor/includes/ckeditor.page.inc",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/libraries/ckeditor/ckeditor.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/modules/contrib/media/includes/media.admin.inc",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/modules/contrib/media/wysiwyg_plugins/media.inc",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/newflight.local/themes/newflight/js/scripts.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/newflight.local/themes/newflight/Gruntfile.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/newflight.local/themes/newflight/.jshintrc",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/newflight.local/themes/newflight/.jshintrc.js",
+		"/home/alex/workspace/npc/npc/sites/all/modules/@imagexmedia/@features/npc_net_calculator/npc_net_calculator.views_default.inc",
+		"/home/alex/workspace/npc/npc/sites/all/modules/@imagexmedia/@features/npc_net_calculator/npc_net_calculator.module",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/sass/layout/_aside.sass",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/install.sh",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/sass/base/_drupal.sass",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/sass/base/_elements.sass",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/sass/components/_forms.sass",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/sass/theme/_press.sass",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/sass/layout/_page.sass",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/sass/ie.sass",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/sass/theme/_front-page.sass",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/currystone.info",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/custom/flight_base/sass/_mixins.sass",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/sass/base/_mixins.sass",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/sass/components/_media.sass",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/sass/theme/_news.sass",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/sass/custom.sass",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/sass/layout/_header.sass",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/js/vendor/waypoints.min.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/js/foundation/foundation.min.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/contrib/zurb-foundation/js/foundation/foundation.section.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/ds_layouts/zurb_section/zurb-section.tpl.php",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/js/vendor/jquery.ba-throttle-debounce.min.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/contrib/zurb-foundation/inc/theme.inc",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/contrib/zurb-foundation/theme-settings.php",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/contrib/zurb-foundation/template.php",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/js/foundation/foundation.tooltips.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/contrib/zurb-foundation/js/foundation/foundation.magellan.js",
+		"/home/alex/workspace/drupal-8-albatross/themes/zurb-foundation/Gruntfile.js",
+		"/home/alex/Downloads/zurb-foundation/zurb_foundation.info.yml",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/templates/page.tpl.php",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/js/scripts.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/contrib/zurb-foundation/js/foundation/foundation.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/contrib/zurb-foundation/js/foundation/foundation.tooltips.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/js/jquery.fittext.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/modules/custom/currystone_front/js/application.js",
+		"/home/alex/workspace/currystone/BigText/demo/simpleDemoDiv.html",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/modules/custom/currystone_front/js/currystone_front_app.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/js/bigtext.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/modules/contrib/entity/entity.module",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/custom/flight_base/Gruntfile.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/newflight.local/themes/flight_subtheme/config.rb",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/all/modules/styleguide/styleguide.styleguide.inc",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/all/modules/styleguide/styleguide.theme.inc",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/all/modules/styleguide/styleguide.module",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/all/modules/styleguide/styleguide.api.php",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/newflight.local/themes/flight_subtheme/scss/custom.scss",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/custom/flight_base/flight_subtheme/scss/custom.scss",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/custom/flight_base/flight_subtheme/scss/base/_init.scss",
+		"/home/alex/workspace/flight_test/drupal-7.22/sites/all/themes/custom/flight_base/Gruntfile.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/sites/newflight.local/themes/flight_subtheme/package.json",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/custom/flight_base/flight_subtheme/scss/base/_mixins.scss",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/custom/flight_base/config.rb",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/custom/flight_base/flight_subtheme/.gitignore",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/custom/flight_base/sass/_include.sass",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/custom/flight_base/README.txt",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/custom/flight_base/template.php",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/custom/flight_base/sass/_variables.sass",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/custom/flight_base/newtheme/js/scripts.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/custom/flight_base/node_modules/grunt-sass-convert/Gruntfile.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/custom/flight_base/node_modules/grunt-sass-convert/tasks/sass-convert.js",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/custom/flight_base/package.json",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/custom/flight_base/newtheme/config.rb",
+		"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/custom/flight_base/newtheme/sass/custom.scss",
+		"/home/alex/workspace/flight_test/flight_base/flight_subtheme/Gruntfile.js",
+		"/home/alex/workspace/flight_test/drupal-7.22/sites/all/themes/custom/flight_base/sass/_mixins.sass",
+		"/home/alex/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/alex/workspace/flight_test/drupal-7.22/sites/virginia.local/modules/custom/law_review_articles/law_review_articles.strongarm.inc",
+		"/home/alex/workspace/flight_test/drupal-7.22/sites/virginia.local/modules/contrib/menu_trail_by_path/menu_trail_by_path.module",
+		"/home/alex/workspace/flight_test/drupal-7.22/sites/virginia.local/modules/custom/law_review_articles/js/law_review_articles_form.js",
+		"/home/alex/workspace/flight_test/drupal-7.22/sites/all/modules/features/flight_slideshow/flight_slideshow.module",
+		"/home/alex/workspace/flight_test/drupal-7.22/sites/virginia.local/modules/custom/law_review_articles/law_review_articles.variable.inc",
+		"/home/alex/workspace/flight_test/drupal-7.22/sites/all/modules/custom/sharrre/sharrre.js",
+		"/home/alex/workspace/meteor/nyc-landlord-watchlist/client/sass/components/_landlords.sass",
+		"/home/alex/workspace/meteor/nyc-landlord-watchlist/client/sass/main.sass",
+		"/home/alex/workspace/meteor/nyc-landlord-watchlist/Procfile",
+		"/home/alex/workspace/meteor/profilio/packages/foundation-accounts/login_buttons.html"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/modules/contrib/media",
+			"/home/alex/workspace/flight_9_13/drupal-7.23/sites/currystone.local/themes/currystone/sass",
+			"/home/alex/workspace/flight_9_13/drupal-7.23/profiles/flight/themes/custom/flight_base",
+			"/home/alex/workspace/flight_test/drupal-7.22/sites/virginia.local/themes/uva/sass"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"large-12",
+			"$variables",
+			"flight_subtheme",
+			"large-12",
+			"currentBookPage",
+			"currentBook",
+			"currentSport",
+			"scope",
+			"mymodule",
+			"flight_w",
+			"ocr",
+			"config",
+			"plugin",
+			"replace",
+			"init",
+			"wysiwyg",
+			"media_admin_config_browser",
+			"media__wysiwyg_allowed_type",
+			"keys",
+			"wysiwyg_filter_filter_wysiwyg_process",
+			"Click",
+			"quot",
+			"black",
+			"remarkup",
+			"dgd7_tip",
+			"module",
+			"border-b",
+			"#",
+			"    ",
+			"//",
+			"media-",
+			"-core",
+			"core",
+			"orbit",
+			"50%",
+			":roo",
+			"::roo",
+			"line-",
+			"$medium-row-width-px",
+			"-px",
+			"@media #{$medium}",
+			"@media #{$medium-only}",
+			"@media #{$small}",
+			"z-i",
+			"h2",
+			"-title-height",
+			"fixed",
+			"h-next",
+			"-next",
+			"small",
+			"item-loading",
+			"$dimentions",
+			"spinner-size",
+			"+spinner",
+			"spinner-core",
+			"item-open",
+			"item-loadin",
+			"item-loa",
+			"small",
+			".item-loaded &",
+			"fixed",
+			"winner-left-waypoint",
+			"l-hea",
+			"fixed-header(",
+			"fixed-header",
+			"flex",
+			"15px",
+			"section.tags",
+			"tags",
+			"n.tags",
+			".tags",
+			"tags",
+			"paddin",
+			"pla",
+			"addit",
+			"addtion",
+			"portrait",
+			"3d",
+			"header",
+			"$small",
+			"important",
+			"menu",
+			"top",
+			"small",
+			"@return",
+			"font-size:",
+			"header-",
+			"colum",
+			" -",
+			"$small-",
+			"sections",
+			"open and",
+			"nth",
+			"nav",
+			"top-",
+			"Knockout ",
+			"admin",
+			" \n",
+			"grey",
+			"fake",
+			"z-",
+			"$h4",
+			"anchor-",
+			"orbit",
+			"50px",
+			".play_border",
+			"}",
+			"{",
+			";",
+			"orbit",
+			"alert",
+			"bold",
+			"cons",
+			");\n",
+			"section",
+			"flight_subtheme",
+			"</title>",
+			"<title><a",
+			"prefix",
+			"#suff",
+			"hello",
+			"autoc",
+			";\n",
+			"$link-hover-color",
+			"$link-color",
+			"$text-color",
+			"STARTER",
+			"initial"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"large-10",
+			"$vars",
+			"schlow",
+			"large-10",
+			"currentBookPage",
+			"section.currentBook",
+			"flight_library_carousels",
+			"flight_wysiwyg_filter",
+			"//",
+			"  ",
+			"#",
+			"$width",
+			"+responder($medium)",
+			"+responder($medium-only)",
+			"+responder($small)",
+			"-title-height-px",
+			"$dimensions",
+			"convert-spinner",
+			"spinner-size",
+			"$mobile",
+			"medium",
+			"font-size:",
+			"@return",
+			"$medium-",
+			"&:before",
+			"",
+			"currystone",
+			"</div>",
+			"<div class=\"title\"><a",
+			"suffix",
+			"$anchor-font-color-hover",
+			"$anchor-font-color",
+			"$body-font-color",
+			"flight_base",
+			"",
+			"law_review_board",
+			"law_review_symposia",
+			"law_review_articles"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "bower.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 84,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sublime Better JavaScript/JSON.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "flight-city-theme.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 289.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

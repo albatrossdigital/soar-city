@@ -23,3 +23,36 @@
 
 .item-list .pager li
   padding: 0
+
+
+// Krumo
+.alert-box 
+  .krumo-root
+    color: $black
+
+  p, ul
+    &:last-child
+      margin-bottom: 0
+
+
+.label-inline
+  +f(alt)
+  font-size: $h5-font-size
+  margin-right: 0.25em
+
+  &, & + *
+    display: inline-block
+
+
+// Ajax throbbers
+.ajax-progress-throbber
+
+  .throbber
+    background-image: none
+    +spinner-core(15px)
+    +spinner-active
+
+  .pager &
+    position: absolute
+    margin-left: rem-calc(-9)
+    margin-top: rem-calc(-21)

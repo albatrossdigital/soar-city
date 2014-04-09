@@ -1,0 +1,85 @@
+
+
+$orbit-button-height: rem-calc(40)
+$orbit-button-width: rem-calc(40)
+$orbit-button-font-size: rem-calc(55)
+
+
+// Orbit
+//-----------------------------------------------------------------------------
+
+.orbit-container
+  //+expand-row(true)
+  width: auto
+
+ul[data-orbit]
+  +list-clear
+
+  h2
+    a
+      +c(link-alt)
+
+  & ~ .orbit-prev,
+  & ~ .orbit-next
+    color: $gray
+    text-indent: 0!important
+
+    &:before
+      width: 100%!important
+
+    span 
+      display: none!important
+
+    &:hover
+      background: none
+
+    &:active
+      background: none
+
+  & ~ .orbit-prev
+    +icon-replace(angle-left, $orbit-button-width, $orbit-button-height, $orbit-button-font-size)
+
+  & ~ .orbit-next
+    +icon-replace(angle-right, $orbit-button-width, $orbit-button-height, $orbit-button-font-size)
+
+.orbit-timer
+  display: none!important
+
+
+// Traditional caption????
+//-----------------------------------------------------------------------------
+.carousel-caption
+  @if $orbit-caption-position == "bottom"
+    position: absolute
+    bottom: 0
+  @else if $orbit-caption-position == "under"
+    position: relative
+  
+
+  background-color: $orbit-caption-bg
+  color: $orbit-caption-font-color
+  width: 100%
+  padding: $orbit-caption-padding
+  font-size: $orbit-caption-font-size
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($medium-up)
+
+  // Orbit
+  //-----------------------------------------------------------------------------
+
+  ul[data-orbit]
+    
+
++respond($large-up)
+
+  // Orbit
+  //-----------------------------------------------------------------------------
+
+  ul[data-orbit]
+
