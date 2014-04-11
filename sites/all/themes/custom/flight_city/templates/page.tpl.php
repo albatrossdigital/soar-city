@@ -110,7 +110,7 @@
     <!--/.l-help -->
   <?php endif; ?>
 
-  <main role="main" class="row l-main">
+  <main role="main" class="row l-main"><div id="dnn_ContentPane">
     <div class="<?php print $main_grid; ?> main columns">
       <?php if (!empty($page['highlighted'])): ?>
         <div class="highlight panel callout">
@@ -154,7 +154,7 @@
         <?php print render($page['sidebar_second']); ?>
       </aside>
     <?php endif; ?>
-  </main>
+  </div></main>
   <!--/.main-->
 
   <?php if (!empty($page['triptych_first']) || !empty($page['triptych_middle']) || !empty($page['triptych_last'])): ?>
