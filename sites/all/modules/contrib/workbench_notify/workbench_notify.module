@@ -1,0 +1,246 @@
+<?php
+
+/**
+ * @file
+ * Workbench Notify Module.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function workbench_notify_menu() {
+
+  $items['admin/config/workbench/notify'] = array(
+    'title' => 'Workbench Notify',
+    'description' => 'Notify users who can moderate contents on worbench access section based on taxonomy.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('workbench_notify_settings'),
+    'access arguments' => array('administer workbench notify'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'workbench_notify.admin.inc',
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function workbench_notify_permission() {
+  return array(
+    'administer workbench notify' => array(
+      'title' => t('Administer Workbench Notify'),
+      'description' => t('Perform administration tasks related to Workbench Notify.'),
+    ),
+  );
+}
+
+/**
+ * Function to get all the parents of the workbench access's section.
+ *
+ * For an active taxonomy scheme.
+ */
+function workbench_notify_scheme_taxonomy_get_parents($node) {
+
+  $sections = $node->workbench_access;
+  $terms = taxonomy_term_load_multiple($sections);
+
+  // Get all parents.
+  foreach ($terms as $term) {
+    $parents = taxonomy_get_parents_all($term->tid);
+
+    if (!empty($parents)) {
+      foreach ($parents as $parent) {
+        $tid = $parent->tid;
+        $voc_name = $parent->vocabulary_machine_name;
+        if (!in_array($tid, $sections)) {
+          $sections[$tid] = $tid;
+        }
+      }
+      // Add the vocabulary name.
+      $sections[$voc_name] = $voc_name;
+    }
+  };
+
+  return $sections;
+
+}
+
+/**
+ * Function to get all the parents of the workbench access's section.
+ *
+ * For an active menu scheme.
+ */
+function workbench_notify_scheme_menu_get_parents($node) {
+
+  $sections = $node->workbench_access;
+
+  // Get the menu parent items.
+  $query = db_select('menu_links', 'm');
+  $query->fields('m', array('plid', 'menu_name'));
+  for ($i = 1; $i <= 9; $i++) {
+    $query->fields('m', array('p' . $i));
+  }
+  $query->condition('mlid', $sections, 'IN');
+  $result = $query->execute();
+
+  foreach ($result as $record) {
+    $menu_name = $record->menu_name;
+
+    // Add all the parents to $sections.
+    for ($i = 1; $i <= 9; $i++) {
+      $p = 'p' . $i;
+      $parent = $record->$p;
+
+      if ($parent == '0') {
+        break;
+      }
+
+      if (!in_array($parent, $sections)) {
+        $sections[$parent] = $parent;
+      }
+    }
+    // Add the menu's name to $sections.
+    if (!in_array($menu_name, $sections)) {
+      $sections[$menu_name] = $menu_name;
+    }
+  }
+
+  return $sections;
+
+}
+
+/**
+ * Function to get all the editors of workbench access section.
+ *
+ * Filter by the roles specified in workbench notify settings
+ * for individually editors.
+ */
+function workbench_notify_get_editors($roles, $sections) {
+
+  $editors = array(
+    'email' => array(),
+    'name' => array(),
+  );
+
+  // Get the editors individually specified in
+  // workbench access editoral assignments by editor.
+  // Filter by the roles specified in workbench notify settings.
+  $query = db_select('users', 'u');
+  $query->fields('u', array('mail', 'name'));
+  $query->join('workbench_access_user', 'w', 'u.uid = w.uid');
+  $query->join('users_roles', 'r', 'u.uid = r.uid');
+  $query->condition('r.rid', $roles, 'IN');
+  $query->condition('access_id', $sections, 'IN');
+  $result = $query->execute();
+
+  foreach ($result as $record) {
+    $mail = $record->mail;
+    $name = $record->name;
+    if (!in_array($mail, $editors['email'])) {
+      $editors['email'][] = $mail;
+    }
+    if (!in_array($name, $editors['name'])) {
+      $editors['name'][] = $name;
+    }
+  }
+
+  // Get all the editors specified by their role.
+  $query = db_select('users', 'u');
+  $query->fields('u', array('mail', 'name'));
+  $query->join('users_roles', 'r', 'u.uid = r.uid');
+  $query->join('workbench_access_role', 'w', 'r.rid = w.rid');
+  $query->condition('access_id', $sections, 'IN');
+  $result = $query->execute();
+
+  foreach ($result as $record) {
+    $mail = $record->mail;
+    $name = $record->name;
+
+    if (!in_array($mail, $editors['email'])) {
+      $editors['email'][] = $mail;
+    }
+    if (!in_array($name, $editors['name'])) {
+      $editors['name'][] = $name;
+    }
+  }
+
+  return $editors;
+
+}
+
+/**
+ * Implements hook_workbench_moderation_transition().
+ */
+function workbench_notify_workbench_moderation_transition($node, $previous_state, $new_state) {
+
+  $transition_state = variable_get('workbench_notify_transition_state');
+  $states = explode(',', $transition_state);
+  $roles = variable_get('workbench_notify_roles');
+  $display = variable_get('workbench_notify_display_message');
+  $active_scheme = variable_get('workbench_access');
+
+  if (empty($transition_state)) {
+    return;
+  }
+
+  if ($previous_state != $states[0] || $new_state != $states[1]) {
+    return;
+  }
+
+  // Get the node's sections and all the section parent.
+  if ($active_scheme == 'taxonomy') {
+    $sections = workbench_notify_scheme_taxonomy_get_parents($node);
+  }
+  elseif ($active_scheme == 'menu') {
+    $sections = workbench_notify_scheme_menu_get_parents($node);
+  }
+
+  // Get all the editors of workbench access section.
+  $editors = workbench_notify_get_editors($roles, $sections);
+
+  $to = implode($editors['email'], ",");
+  $names = implode($editors['name'], ", ");
+
+  if (empty($to)) {
+    return;
+  }
+
+  // Sent the email.
+  $sent = workbench_notify_send_notifications($to, $node);
+
+  if ($display == 1 && $sent['result'] == TRUE) {
+    drupal_set_message(t("your contribution has been notified to the section's editors : @names.", array('@names' => $names)));
+  }
+
+}
+
+/**
+ * Function to send the email notification.
+ */
+function workbench_notify_send_notifications($to, $node) {
+
+  global $user;
+  $from = variable_get('workbench_notify_from');
+  $params = array();
+  $params['subject'] = variable_get('workbench_notify_subject');
+  $params['body'] = variable_get('workbench_notify_message');
+  $params['node'] = $node;
+  $params['user'] = $user;
+
+  $language = user_preferred_language($user);
+
+  return drupal_mail('workbench_notify', 'notify', $to, $language, $params, $from, TRUE);
+
+}
+
+/**
+ * Implements hook_mail().
+ */
+function workbench_notify_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'notify':
+      $message['subject'] = t(token_replace($params['subject'], $params));
+      $message['body'][] = t(token_replace($params['body'], $params));
+      break;
+  }
+}
