@@ -1,0 +1,21 @@
+diff --git a/modules/media_wysiwyg/js/media_wysiwyg.filter.js b/modules/media_wysiwyg/js/media_wysiwyg.filter.js
+index 4a0ac0d..344dd9b 100644
+--- a/modules/media_wysiwyg/js/media_wysiwyg.filter.js
++++ b/modules/media_wysiwyg/js/media_wysiwyg.filter.js
+@@ -101,6 +101,16 @@
+      */
+     syncAttributesToFields: function(file_info) {
+       // If the title attribute has changed, ensure the title field is updated.
++      if (!file_info) {
++        file_info = {};
++      }
++      if (!file_info.attributes) {
++        file_info.attributes = {};
++      }
++      if (!file_info.fields) {
++        file_info.fields = {};
++      }
++      // If the title attribute has changed, ensure the title field is updated.
+       var titleAttr  = file_info.attributes.title || false;
+       var titleField = file_info.fields['field_file_image_title_text[und][0][value]'] || false;
+       if (titleAttr !== titleField) {

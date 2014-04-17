@@ -1,0 +1,30 @@
+diff --git a/modules/media_wysiwyg/js/media_wysiwyg.filter.js b/modules/media_wysiwyg/js/media_wysiwyg.filter.js
+index 7de50af..2dede11 100644
+--- a/modules/media_wysiwyg/js/media_wysiwyg.filter.js
++++ b/modules/media_wysiwyg/js/media_wysiwyg.filter.js
+@@ -56,18 +56,17 @@
+       content = content.replace(/[\s]\/\>/g, '>');
+ 
+       // Re-build the macros in case any element has changed in the editor.
+-      $('.media-element', content).each(function(i, element) {
+-        var markup = Drupal.media.filter.outerHTML($(element));
+-          macro = Drupal.media.filter.create_macro($(element));
+-
++      // Wrap the content to be able to properly use replaceWith() and html().
++      content =  $('<div>' + content + '</div>');
++      content.find('.media-element').replaceWith(function() {
++        var markup = Drupal.media.filter.outerHTML($(this));
++          macro = Drupal.media.filter.create_macro($(this));
+         // Store the macro => html for more efficient rendering in
+         // replaceTokenWithPlaceholder().
+         Drupal.settings.tagmap[macro] = markup;
+-        // Replace the media element with its macro.
+-        content = content.replace(markup, macro);
++        return macro;
+       });
+-
+-      return content;
++      return content.html();
+     },
+ 
+     /**
