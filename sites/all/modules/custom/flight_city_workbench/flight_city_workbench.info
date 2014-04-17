@@ -1,0 +1,5 @@
+name = Flight City Workbench
+description = Workflow related views, rules to send emails, other workbench Customizations
+core = 7.x
+package = Flight City
+features[features_api][] = api:2
