@@ -4,6 +4,9 @@
  * @file
  * Drupal site-specific configuration file.
  *
+ * Foo.
+ *
+ *
  * IMPORTANT NOTE:
  * This file may have been set to read-only by the Drupal installation program.
  * If you make changes to this file, be sure to protect it again after making
