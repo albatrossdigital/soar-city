@@ -4,9 +4,6 @@
  * @file
  * Drupal site-specific configuration file.
  *
- * Foo.
- *
- *
  * IMPORTANT NOTE:
  * This file may have been set to read-only by the Drupal installation program.
  * If you make changes to this file, be sure to protect it again after making
@@ -213,15 +210,7 @@
  *   );
  * @endcode
  */
-$databases['default']['default'] = array(
-   'driver' => 'mysql',
-   'database' => 'baltimore',
-   'username' => 'root',
-   'password' => 'super_pug',
-   'host' => 'localhost',
-   'prefix' => '',
-   'collation' => 'utf8_general_ci',
-);
+$databases = array();
 
 /**
  * Access control for update.php script.
@@ -275,9 +264,7 @@ $drupal_hash_salt = '';
  * It is not allowed to have a trailing slash; Drupal will add it
  * for you.
  */
-
-#$base_url = 'http://baltimore';  // NO trailing slash!
-
+# $base_url = 'http://www.example.com';  // NO trailing slash!
 
 /**
  * PHP settings:
@@ -334,7 +321,7 @@ ini_set('session.cookie_lifetime', 2000000);
  * between your various domains. Make sure to always start the $cookie_domain
  * with a leading dot, as per RFC 2109.
  */
-#$cookie_domain = '';
+$cookie_domain = '.baltimore.ifsight.com';
 
 /**
  * Variable overrides:
@@ -576,7 +563,7 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
 
 # Make domain access work on Pantheon
 # See http://helpdesk.getpantheon.com/customer/portal/articles/381152-reading-pantheon-environment-configuration for details
-//extract(json_decode($_SERVER['PRESSFLOW_SETTINGS'], TRUE));
+extract(json_decode($_SERVER['PRESSFLOW_SETTINGS'], TRUE));
 
 
 
@@ -601,8 +588,6 @@ if (defined('PANTHEON_ENVIRONMENT')) {
   // Explicitly set page_cache_maximum_age as database won't be available.
   $conf['page_cache_maximum_age'] = 300;
 }*/
-
-//$conf['plupload_library_path'] = "profiles/flight/libraries/plupload";
 
 // Redirect all domains to TLD
 if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
