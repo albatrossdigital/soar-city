@@ -1,45 +1,19 @@
-/* @file
- * This file is a custom file that loads all files. Each non-base layer
- * can be disabled.
- *
- * Do not name this file "STARTER.scss". This file should be named
- * THEMENAME.scss. If you used the drush command to generate this subtheme,
- * it should be named for you.
- *
- * This application file (THEMENAME.scss) is where all the partials are
- * imported.
- *
- * Theme styles are categorized using SMACSS standards. They utilize
- * categorization of styles into various categories. Those categories are the
- * following:
- *
- * - Base: CSS reset/normalize plus HTML element styling.
- * - Layout: Macro arrangement of a web page, including any grid systems.
- * - Modules: Dictate minor layout modules or reusable elements.
- * - States: Describe the appearance of a module in various states.
- * - Theme: Specific customizations for your subtheme.
- * For more information about this new Drupal css file standard, please review
- * the following:
- * - https://drupal.org/node/1887922
- * - http://smacss.com/
 
-// Base
-// Init file contains required imports. Here's where we include normalize,
-// and Foundation 5.
 @import base/init
 
-@import "components/icons-fontawesome"
+// SET VISIBLE
+
+$include-html-classes: true
+$include-print-styles: false
+
+// Global Zurb Foundation variables.
+@import "vendor/foundation/settings"
+// Comment out this import if you don't want to use normalize.
+@import "vendor/normalize"
+// Comment out this import below if you are customizing you imports below.
+@import "vendor/_foundation.scss"
 
 @import base/mixins
-
-// Import our mixins early so they can be used by other partials.
-// Optional.
-//@import "base/mixins";
-
-// Common file is where you place common utility classes to extend or
-// parametrics.
-// Optional.
-// @import "base/common";
 
 // Fix for some Drupal CSS quirks (Drupalisms).
 @import base/drupal
@@ -48,11 +22,7 @@
 // Optional.
 @import "base/elements"
 
-
 // Modules
-// @import "modules/block";
-
-// /@import "modules/topbar"
 @import "modules/button"
 
 // custom ckeditor styles
@@ -71,9 +41,3 @@ body
 // rows should just be 100%
 .row
   max-width: 100%!important
-
-// States
-// @import "states/collapse";
-
-// Older IE support
-// @import "vendor/ie";

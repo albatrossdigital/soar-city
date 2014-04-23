@@ -1,64 +1,75 @@
 // Load plugins
 var gulp = require('gulp'),
+    gutil = require('gulp-util'),
     compass = require('gulp-compass'),
-    minifycss = require('gulp-minify-css'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
-    rename = require('gulp-rename'),
     clean = require('gulp-clean'),
+    connect = require('gulp-connect'),
     concat = require('gulp-concat'),
     notify = require('gulp-notify'),
-    cache = require('gulp-cache'),
-    livereload = require('gulp-livereload'),
-    lr = require('tiny-lr'),
-    server = lr();
+    runSequence = require('run-sequence');
+
+var sources = {
+  sass: ['sass/**/*.sass'],
+  js: ['js/**/*.js', '!js/**/*min.js'],
+  clean: ['css/']
+};
+
+var destinations = {
+  css: 'css/',
+  js: 'js/'
+};
+
+gulp.task('connect', connect.server({
+  root: [sources.css],
+  livereload: true,
+  open: {
+    browser: 'chromium-browser'
+  }
+}));
  
 // Styles
 gulp.task('styles', function() {
-  return gulp.src(['sass/**/*.sass'])
+  return gulp.src(sources.sass)
     .pipe(compass({ 
       config_file: './config.rb', 
       css: 'css',
       sass: 'sass'
     }))
-    .pipe(gulp.dest('css'))
-    .pipe(livereload(server))
-    .pipe(notify({ message: 'Styles task complete' }));
+    .pipe(gulp.dest(destinations.css))
+    .pipe(connect.reload());
 });
  
 // Scripts
 gulp.task('scripts', function() {
-  return gulp.src(['js/**/*.js', '!js/**/*min.js'])
+  return gulp.src(sources.js)
     .pipe(jshint('.jshintrc'))
-    .pipe(notify({ message: 'Scripts task complete' }));
+    .pipe(connect.reload());
 });
  
 // Clean
 gulp.task('clean', function() {
-  return gulp.src(['dist/styles', 'dist/scripts', 'dist/images'], {read: false})
+  return gulp.src([destinations.css], {read: false})
     .pipe(clean());
 });
  
 // Default task
-gulp.task('default', [], function() {
-    gulp.start('styles', 'scripts');
+gulp.task('build', function() {
+  runSequence('clean', ['styles', 'scripts']);
 });
  
 // Watch
 gulp.task('watch', function() {
- 
-  // Listen on port 35729
-  server.listen(35729, function (err) {
-    if (err) {
-      return console.log(err)
-    };
- 
-    // Watch .scss files
-    gulp.watch('sass/**/*.sass', ['styles']).pipe;
- 
-    // Watch .js files
-    gulp.watch('js/**/*.js', ['scripts']);
- 
-  });
- 
+  // Watch .scss files
+  gulp.watch('sass/**/*.sass', ['styles']);
+  // Watch .js files
+  gulp.watch('js/**/*.js', ['scripts']);
 });
+
+gulp.task('default', [
+  'build',
+  'connect',
+  'watch'
+]);
+

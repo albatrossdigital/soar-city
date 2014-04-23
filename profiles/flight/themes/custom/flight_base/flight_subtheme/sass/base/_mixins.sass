@@ -1,4 +1,7 @@
-
+// import compass
+@import compass
+// get icons
+@import "components/icons-fontawesome"
 
 //***********************************
 // START FLIGHT MIXINS
@@ -218,6 +221,17 @@
 // @mixin spinner-core($dimensions, $border-color-inactive: $animation-rotation-border-color-inactive, $border-width: $animation-rotation-border-width)
 
 
+// Flight variables
+//
+// ******************************************************
+
+$animation-time: 0.75s
+$animation-rotation-border-color-inactive: $gray
+$animation-rotation-border-color: $gray-dark
+$animation-rotation-border-width: rem-calc(2)!default
+
++rotation-init
+
 //***********************************
 // END FLIGHT MIXINS
 // 
@@ -321,11 +335,23 @@
 %color-normal
   color: $body-font-color
 
-%color-link
+%color-link-color
   color: $anchor-font-color
 
-%color-hover
+%color-hover-color
   color: $anchor-font-color-hover
+
+%color-link
+  @extend %color-link-color
+
+  &:hover
+    @extend %color-hover-color
+
+%color-link-alt
+  @extend %color-link-color
+
+  &:hover
+    @extend %color-hover-color
 
 // fonts
 // -----------------------------------
@@ -449,6 +475,27 @@
         @if $icon
           position: absolute
           z-index: 2
+
+
+// Adds a webkit scrollbar
+@mixin webkit-scrollbar($color1, $color2, $width: emCalc(10), $height: emCalc(10), $radius-outer: 0, $radius-inner: 0)
+  
+  &::-webkit-scrollbar
+    background-color: $color2
+
+    &:vertical
+      width: $width
+
+    &:horizontal
+      height: $height
+
+  &::-webkit-scrollbar-thumb
+    border-radius: $radius-inner
+    background-color: $color1
+
+  &::-webkit-scrollbar-track
+    border-radius: $radius-outer
+    background-color: $color2
 
 
 //***********************************

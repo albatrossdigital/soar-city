@@ -16,8 +16,40 @@
  * Implements template_preprocess_page
  *
  */
-//function flight_subtheme_preprocess_page(&$variables) {
-//}
+function flight_subtheme_preprocess_page(&$vars) {
+  // Set section title explicitly
+  if(!isset($vars['section_title'])) {
+    $vars['section_title'] = FALSE;
+  }
+
+  // Convenience variables
+  if (!empty($vars['page']['sidebar_first'])){
+    $left = $vars['page']['sidebar_first'];
+  }
+
+  if (!empty($vars['page']['sidebar_second'])) {
+    $right = $vars['page']['sidebar_second'];
+  }
+
+  // Dynamic sidebars
+  if (!empty($left) && !empty($right)) {
+    $vars['main_grid'] = 'medium-6 medium-push-3';
+    $vars['sidebar_first_grid'] = 'medium-3 medium-pull-6';
+    $vars['sidebar_sec_grid'] = 'medium-3';
+  } elseif (empty($left) && !empty($right)) {
+    $vars['main_grid'] = 'medium-9';
+    $vars['sidebar_first_grid'] = '';
+    $vars['sidebar_sec_grid'] = 'medium-3';
+  } elseif (!empty($left) && empty($right)) {
+    $vars['main_grid'] = 'medium-9 medium-push-3';
+    $vars['sidebar_first_grid'] = 'medium-3 medium-pull-9';
+    $vars['sidebar_sec_grid'] = '';
+  } else {
+    $vars['main_grid'] = 'medium-12';
+    $vars['sidebar_first_grid'] = '';
+    $vars['sidebar_sec_grid'] = '';
+  }
+}
 
 /**
  * Implements template_preprocess_node

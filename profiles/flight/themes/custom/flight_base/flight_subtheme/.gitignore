@@ -5,3 +5,5 @@ robots.txt
 node_modules
 components
 .bin
+*.sublime-workspace
+foundation

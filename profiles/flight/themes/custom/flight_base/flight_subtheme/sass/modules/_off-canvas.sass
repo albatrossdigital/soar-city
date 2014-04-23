@@ -1,0 +1,131 @@
+
+
+.off-canvas-wrap
+  overflow: hidden
+  max-width: 100%
+
+
+// Main Menu
+// ------------------------------------------------------
+
+$off-menu-border: lighten($blue, 2%)
+
+.right-off-canvas-menu
+
+  .menu-name-main-menu
+    
+    ul
+      +list-clear()
+
+    a
+      +icon-after($fa-var-angle-right, $off-menu-border)
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($mobile-to-menu)
+
+  // Topbar
+  // ------------------------------------------------------
+
+  .header-menu-wrap
+    float: none!important
+
+    .block
+      width: (100%/3)
+
+    .button
+      padding-left: 0
+      padding-right: 0
+      width: 100%
+
+  // Logo, ect
+  // ------------------------------------------------------
+
+  // logo
+  .title-area > a
+    display: block
+    max-width: 60%
+
+  // Main Menu
+  // ------------------------------------------------------
+
+  .right-off-canvas-menu
+    padding-top: $header-menu-height
+    padding-left: 0
+    padding-right: 0
+
+    & > *
+      max-width: $off-canvas-width
+      +column-padding()
+      overflow: hidden
+
+    #cart-wrapper, .menu-name-main-menu
+      +expand-row()
+      border-top: 2px solid $off-menu-border
+
+    #cart-wrapper
+      padding: 0 $column-gutter/2
+      height: $header-menu-height
+
+    .menu-name-main-menu
+
+      a
+        +horizontal-menu-link($white, $off-menu-border)
+        display: block
+        padding: 0 $column-gutter/2
+
+        &:after
+          float: right
+          line-height: $header-menu-height
+          padding-right: 0
+
+        &:hover, &:active
+          border-color: lighten($blue, 3%)
+          background: darken($blue, 3%)
+
+          &:after
+            color: $white
+
+      .active-trail, .active
+        a
+          color: $blue-dark 
+          background: darken($blue, 3%)
+
+
+
++respond($past-menu)
+
+  // Main Menu
+  // ------------------------------------------------------
+
+  .right-off-canvas-menu
+    background: none
+    position: relative!important
+    overflow: visible
+    padding-top: 0
+    height: auto!important
+    +translate3d(0, 0, 0)
+    +box-sizing(border-box)
+    width: grid-calc(9, 12)!important
+    z-index: 1
+
+    .menu-name-main-menu
+      border-top: 0
+      margin-top: rem-calc(15)
+      +expand-row(0)
+      
+      ul 
+        +clearfix
+        float: right 
+        +main-menu-style-horizontal(true)
+
+        li
+          margin-bottom: 0
+
+      a
+        &:after
+          display: none

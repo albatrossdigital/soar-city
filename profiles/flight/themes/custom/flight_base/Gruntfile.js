@@ -31,17 +31,6 @@ module.exports = function (grunt) {
             rename: function(dest) {
               return dest + "<%= themeName %>.info";
             }
-          },
-          {
-            expand: true,
-            cwd: 'flight_subtheme',
-            src: [
-              'flight_subtheme.png'
-            ],
-            dest: '<%= themeName %>/',
-            rename: function(dest) {
-              return dest + "<%= themeName %>.png";
-            }
           }
         ]
       },
