@@ -63,12 +63,13 @@ module.exports = function(grunt) {
     stripmq: {
       options: {
         stripBase: true,
-        minWidth: 641,
+        minWidth: 40,
         maxWidth: 1280
       },
       files: {
         src: [
-          'css/flight_subtheme.css',
+          'css/custom-foundation.css',
+          'css/custom.css',
         ],
         dest: 'css/ie-mq.css'
       },

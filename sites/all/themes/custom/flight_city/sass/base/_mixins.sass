@@ -1,4 +1,7 @@
-
+// import compass
+@import compass
+// get icons
+@import "components/icons-fontawesome"
 
 //***********************************
 // START FLIGHT MIXINS
@@ -218,6 +221,18 @@
 // @mixin spinner-core($dimensions, $border-color-inactive: $animation-rotation-border-color-inactive, $border-width: $animation-rotation-border-width)
 
 
+// Flight variables
+//
+// ******************************************************
+
+$animation-time: 0.75s
+$animation-rotation-border-color-inactive: $gray
+$animation-rotation-border-color: $gray-dark
+$animation-rotation-border-width: rem-calc(2)!default
+
++rotation-init
+
+
 //***********************************
 // END FLIGHT MIXINS
 // 
@@ -321,11 +336,24 @@
 %color-normal
   color: $body-font-color
 
-%color-link
+%color-link-color
   color: $anchor-font-color
 
-%color-hover
+%color-hover-color
   color: $anchor-font-color-hover
+
+%color-link
+  @extend %color-link-color
+
+  &:hover
+    @extend %color-hover-color
+
+%color-link-alt
+  @extend %color-link-color
+
+  &:hover
+    @extend %color-hover-color
+
 
 // fonts
 // -----------------------------------

@@ -29,6 +29,7 @@ base theme = flight_base
 ; For CSS users, load the app.css file:
 ; stylesheets[all][] = css/app.css
 ; Comment the app.css file (above) if you're using sass to preprocess css:
+stylesheets[all][] = css/custom-foundation.css
 stylesheets[all][] = css/custom.css
 
 ; Block loading of foundation.min.css from the base theme. This file should either

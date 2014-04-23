@@ -12,12 +12,6 @@
  *
  * @ingroup views_templates
  */
-  
-  drupal_add_js(array(
-    'flightOrbit' => array(
-      $view->dom_id => 'orbit-' . $view->dom_id
-    )
-  ), 'setting');
 
 ?>
 
