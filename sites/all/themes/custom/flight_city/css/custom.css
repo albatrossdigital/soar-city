@@ -2302,7 +2302,7 @@ html, body {
 
 /* line 24, ../sass/layout/_upper.sass */
 .l-messages .alert-box:first-child {
-  margin-top: 2.14286rem;
+  margin-top: 1.42857rem;
 }
 
 @media only screen and (min-width: 45.78571em) {
