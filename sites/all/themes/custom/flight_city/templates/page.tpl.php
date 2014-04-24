@@ -45,16 +45,6 @@
   </header>
   <!--/.l-header -->
 
-  <?php if ($messages && !$zurb_foundation_messages_modal): ?>
-    <!--/.l-messages -->
-    <section class="l-messages row">
-      <div class="medium-12 columns">
-        <?php if ($messages): print $messages; endif; ?>
-      </div>
-    </section>
-    <!--/.l-messages -->
-  <?php endif; ?>
-
   <?php if (!empty($page['featured'])): ?>
     <!--/.featured -->
     <section class="l-featured row">
@@ -74,6 +64,16 @@
       </div>
     </section>
     <!--/.l-help -->
+  <?php endif; ?>
+
+  <?php if ($messages && !$zurb_foundation_messages_modal): ?>
+    <!--/.l-messages -->
+    <section class="l-messages row">
+      <div class="medium-12 columns">
+        <?php if ($messages): print $messages; endif; ?>
+      </div>
+    </section>
+    <!--/.l-messages -->
   <?php endif; ?>
 
   <main role="main" class="row l-main"><div id="dnn_ContentPane">

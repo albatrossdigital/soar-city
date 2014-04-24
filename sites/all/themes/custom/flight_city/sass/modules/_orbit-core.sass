@@ -83,26 +83,28 @@ ul[data-orbit]
   // Orbit
   //-----------------------------------------------------------------------------
   $expand-orbit: rem-calc(40)
+
+  .l-featured
   
-  .orbit-container
-    +expand-row($expand-orbit)
-    +column-padding($expand-orbit)
+    .orbit-container
+      +expand-row($expand-orbit)
+      +column-padding($expand-orbit)
+
+      ul[data-orbit]
+        overflow: hidden
 
     ul[data-orbit]
-      overflow: hidden
 
-  ul[data-orbit]
+      & ~ .orbit-prev,
+      & ~ .orbit-next
+        color: $gray
 
-    & ~ .orbit-prev,
-    & ~ .orbit-next
-      color: $gray
+        &:hover
+          color: darken($gray, 10%)
 
-      &:hover
-        color: darken($gray, 10%)
+      & ~ .orbit-prev
+        //margin-left: rem-calc(-30)
 
-    & ~ .orbit-prev
-      //margin-left: rem-calc(-30)
-
-    & ~ .orbit-next
-      //margin-right: rem-calc(-30)
+      & ~ .orbit-next
+        //margin-right: rem-calc(-30)
 

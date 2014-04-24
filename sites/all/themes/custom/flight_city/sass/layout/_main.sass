@@ -1,1 +1,30 @@
 // Non-modular or client styles for the .l-content region.
+
+
+// Main Content
+// ----------------------------------------------------------------------------
+
+.main > 
+
+  // tabs
+  ul.button-group
+    margin-bottom: $small-region-pad-small
+  
+    li.active
+      a
+        +button-style($primary-color)
+
+    a
+      margin-bottom: rem-calc(5)
+      border-color: $gray
+
+  // action links
+  ul.action-links
+    +list-float
+
+    a
+      +button($button-tny, $success-color, true)
+      +border-radius(3px)
+
+.block-workbench
+  margin-bottom: $small-region-pad-small
