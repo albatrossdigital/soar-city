@@ -2302,11 +2302,15 @@ html, body {
 
 /* line 24, ../sass/layout/_upper.sass */
 .l-messages .alert-box:first-child {
-  margin-top: 1.42857rem;
+  margin-top: 0.85714rem;
+}
+/* line 27, ../sass/layout/_upper.sass */
+.l-help ~ .l-messages .alert-box:first-child {
+  margin-top: 0;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 39, ../sass/layout/_upper.sass */
+  /* line 42, ../sass/layout/_upper.sass */
   .l-featured:after {
     padding-top: 1.5625rem;
   }
