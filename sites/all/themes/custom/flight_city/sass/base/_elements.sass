@@ -10,6 +10,56 @@
 // h1, h2, h3,
 // h4, h5, h6 {}
 
+h1
+  font-size: $h2-font-size
+
+h2
+  font-size: $h3-font-size
+
+h3
+  font-size: $h4-font-size
+  +f(weight-bold)
+
+h4
+  font-size: $h4-font-size
+  +f(weight-bold)
+
+h5
+  font-weight: $font-weight-normal
+  font-size: 1rem
+
+h6
+  font-size: 1rem
+
+// force bold + italics
+h1, h2
+  +f(alt)
+
+  strong, strong &,
+    +f(weight-normal)
+
+  em, em &
+    font-style: normal
+
+// Always normal
+h5
+  strong, strong &, 
+    +f(weight-normal)
+
++all-headers
+  a 
+    color: $black
+
+    &:hover
+      color: $blue-link
+
+    &:active
+      color: $blue-link-active
+
+
+
+
+
 // Anchors
 //-----------------------------------------------------------------------------
 // a {}
@@ -19,6 +69,9 @@
 // a.active,
 // a:active,
 // a:hover {}
+
+a:active
+  color: $blue-link-active
 
 // Form Input
 //-----------------------------------------------------------------------------
@@ -56,3 +109,20 @@
 // }
 
 // select {}
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($medium-up)
+
+  h1
+    font-size: $h1-font-size
+
+  h2
+    font-size: $h2-font-size
+
+  h3
+    font-size: $h3-font-size

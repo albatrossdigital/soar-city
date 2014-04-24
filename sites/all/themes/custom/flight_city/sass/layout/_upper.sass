@@ -1,13 +1,31 @@
 
+// Messages
+// ----------------------------------------------------------------------------
+
+.l-messages
+  .alert-box:first-child
+    margin-top: rem-calc(30)
+
 
 // Featured
 // --------------------------
 
-$featured-region-spacing: rem-calc(30)
-
 .l-featured
+  padding-top: $small-region-pad-small
+  +nice-row-border($column-gutter/2, rem-calc(5), $common-border, bottom, hidden)
+
   .block
-    margin-bottom: $featured-region-spacing
+    margin-bottom: $small-region-pad-large
+
+
+// Help / Breadcrumbs
+// --------------------------
+
+.l-help
+  padding-top: $small-region-pad-small
+
+.breadcrumbs
+
 
 
 // *
@@ -16,3 +34,10 @@ $featured-region-spacing: rem-calc(30)
 // ******************************************************
 
 +respond($medium-up)
+  // Featured
+  // --------------------------
+
+  .l-featured
+
+    &:after
+      padding-top: $medium-region-pad-large

@@ -1,0 +1,30 @@
+
+$breadcrumbs-height-px: 26px
+$breadcrumbs-height: rem-calc(26px)
+
+.breadcrumbs
+  margin-bottom: rem-calc(12)
+
+  li
+    position: relative
+    padding-left: rem-calc(24)
+
+    // separator
+    &:before
+      @extend %icons-core
+      font-size: 38px
+      position: absolute
+      left: 0
+      top: rem-calc(-6)
+
+
+    // All
+    a
+      line-height: $breadcrumbs-height
+
+    &:first-child
+      padding-left: 0
+
+      a
+        color: $gray-bread-crumb
+        +icon-button-replace($fa-var-home, $breadcrumbs-height-px)

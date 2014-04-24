@@ -1,8 +1,23 @@
 (function ($, Drupal) {
 
+  // Register custom media query
+  Foundation.utils.register_media('before-menu', 'before-menu');
+  Foundation.utils.register_media('past-menu', 'past-menu');
+
+  // Triggers callback after image is loaded
+  function triggerImageSize($imageWrapper, callback) {
+    if(!$imageWrapper.hasClass('size-processing')) {
+      $imageWrapper.addClass('size-processing');
+
+      Foundation.utils.image_loaded($('img', $imageWrapper), function() {
+        $imageWrapper.removeClass('size-processing');
+        callback();
+      });
+    }
+  }
+
   Drupal.behaviors.flight_city = {
     attach: function(context, settings) {
-      // Get your Yeti started.
 
       // orbits helper
       $('ul[data-orbit]', context).once('orbit-helper', function() {
