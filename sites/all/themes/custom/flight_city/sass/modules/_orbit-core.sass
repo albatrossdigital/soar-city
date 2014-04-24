@@ -15,13 +15,15 @@ $orbit-button-font-size: rem-calc(55)
 ul[data-orbit]
   +list-clear
 
-  h2
-    a
-      +c(link-alt)
+  h4
+    color: $white
+    
+    a 
+      +c(link-white)
 
   & ~ .orbit-prev,
   & ~ .orbit-next
-    color: $gray
+    +c(link-white)
     text-indent: 0!important
 
     &:before
@@ -80,6 +82,27 @@ ul[data-orbit]
 
   // Orbit
   //-----------------------------------------------------------------------------
+  $expand-orbit: rem-calc(40)
+  
+  .orbit-container
+    +expand-row($expand-orbit)
+    +column-padding($expand-orbit)
+
+    ul[data-orbit]
+      overflow: hidden
 
   ul[data-orbit]
+
+    & ~ .orbit-prev,
+    & ~ .orbit-next
+      color: $gray
+
+      &:hover
+        color: darken($gray, 10%)
+
+    & ~ .orbit-prev
+      //margin-left: rem-calc(-30)
+
+    & ~ .orbit-next
+      //margin-right: rem-calc(-30)
 

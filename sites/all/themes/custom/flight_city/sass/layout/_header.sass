@@ -1,5 +1,30 @@
 // Non-modular or client styles for .l-header region.
 
 .l-header-region
-  $local-border: common-border-val()
-  +nice-row-border($column-gutter/2, 1rem, $local-border, bottom, hidden)
+  padding-top: $small-region-pad-large
+  +nice-row-border($column-gutter/2, rem-calc(5), $common-border, bottom, hidden)
+
+
+// Entity Branding
+// ------------------------------------------------------
+
+#entity-title
+  font-size: $h1-font-size
+  margin: 0
+  padding: rem-calc(8 0)
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($mobile-to-menu)
+
+
++respond($medium)
+  .l-header-region
+    //padding-bottom: $medium-region-pad-small
+    padding-top: $medium-region-pad-large
+
+
++respond($past-menu)

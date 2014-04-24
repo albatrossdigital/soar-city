@@ -1,0 +1,38 @@
+
+
+// Define new media query
+
+meta.before-menu
+  font-family: "/#{$mobile-to-menu}/"
+  max-width: upper-bound($menu-range)
+
+
+meta.past-menu 
+  font-family: "/#{$past-menu}/"
+  min-width: $menu-break-plus
+
+html body.admin-menu
+  margin-top: 0px !important
+
+  & > .page
+    margin-top: rem-calc(30)
+
+html,body
+  max-width: 100%
+
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($medium-up)
+
+  // sticky footer
+  //+sticky-footer(rem-calc(310), ".page", "#footer-push", ".l-footer")
+
+
++respond($past-menu)
+  
+  //+sticky-footer(rem-calc(245), ".page", "#footer-push", ".l-footer")

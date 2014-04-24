@@ -1,1 +1,21 @@
 // Non-modular or client styles for asides or sidebars.
+
+// side menus
+
+[role=complementary] 
+  .block-menu
+    +side-bar-menu
+    
+  .block
+    margin-bottom: rem-calc(20)
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($medium-up)
+  [role=complementary] 
+    .block
+      margin-bottom: rem-calc(55)

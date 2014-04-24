@@ -13,6 +13,7 @@ $off-menu-border: lighten($blue, 2%)
 .right-off-canvas-menu
 
   .menu-name-main-menu
+    +main-menu-style()
     
     ul
       +list-clear()
@@ -28,33 +29,12 @@ $off-menu-border: lighten($blue, 2%)
 
 +respond($mobile-to-menu)
 
-  // Topbar
-  // ------------------------------------------------------
-
-  .header-menu-wrap
-    float: none!important
-
-    .block
-      width: (100%/3)
-
-    .button
-      padding-left: 0
-      padding-right: 0
-      width: 100%
-
-  // Logo, ect
-  // ------------------------------------------------------
-
-  // logo
-  .title-area > a
-    display: block
-    max-width: 60%
 
   // Main Menu
   // ------------------------------------------------------
 
   .right-off-canvas-menu
-    padding-top: $header-menu-height
+    padding-top: $topbar-height
     padding-left: 0
     padding-right: 0
 
@@ -69,26 +49,26 @@ $off-menu-border: lighten($blue, 2%)
 
     #cart-wrapper
       padding: 0 $column-gutter/2
-      height: $header-menu-height
+      height: $topbar-height
 
     .menu-name-main-menu
+      +main-menu-style()
 
       a
-        +horizontal-menu-link($white, $off-menu-border)
         display: block
         padding: 0 $column-gutter/2
 
         &:after
           float: right
-          line-height: $header-menu-height
+          line-height: $topbar-height
           padding-right: 0
 
         &:hover, &:active
-          border-color: lighten($blue, 3%)
-          background: darken($blue, 3%)
+          //background: $topbar-link-bg-hover
+          //color: $color-hover
 
           &:after
-            color: $white
+            //color: $white
 
       .active-trail, .active
         a
@@ -99,6 +79,12 @@ $off-menu-border: lighten($blue, 2%)
 
 +respond($past-menu)
 
+  .move-left > .inner-wrap
+    +translate3d(0, 0, 0)
+
+  .toggle-off-canvas
+    display: none
+
   // Main Menu
   // ------------------------------------------------------
 
@@ -108,20 +94,19 @@ $off-menu-border: lighten($blue, 2%)
     overflow: visible
     padding-top: 0
     height: auto!important
+    float: left
     +translate3d(0, 0, 0)
     +box-sizing(border-box)
-    width: grid-calc(9, 12)!important
+    width: auto!important
     z-index: 1
 
     .menu-name-main-menu
       border-top: 0
-      margin-top: rem-calc(15)
-      +expand-row(0)
+      +main-menu-style-horizontal()
       
       ul 
         +clearfix
-        float: right 
-        +main-menu-style-horizontal(true)
+        float: right
 
         li
           margin-bottom: 0

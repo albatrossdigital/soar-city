@@ -1,5 +1,6 @@
 // import compass
-@import compass
+@import "compass/css3"
+@import "compass/utilities"
 // get icons
 @import "components/icons-fontawesome"
 
@@ -326,6 +327,10 @@ $animation-rotation-border-width: rem-calc(2)!default
 // -----------------------------------
 // use the +b() mixin
 
+%background-gray
+  background: $gray-lighter
+  margin-bottom: $small-region-pad-large
+
 %background-reset
   background: transparent
 
@@ -354,14 +359,32 @@ $animation-rotation-border-width: rem-calc(2)!default
   &:hover
     @extend %color-hover-color
 
+%color-link-gray
+  color: $gray
+
+  &:hover
+    color: darken($gray, 10%)
+
+%color-link-white
+  color: $white
+
+  &:hover
+    color: darken($white, 10%)
+
 
 // fonts
 // -----------------------------------
 // use the +f() mixin
 
+%font-weight-normal
+  font-weight: $font-weight-normal
+
+%font-weight-bold
+  font-weight: $font-weight-bold
+
 %font-normal
   font-family: $body-font-family
-  font-style: $body-font-weight
+  font-style: $body-font-style
   font-weight: $body-font-weight
 
 %font-alt
@@ -371,6 +394,14 @@ $animation-rotation-border-width: rem-calc(2)!default
 
 %font-alt-bold
   @extend %font-alt
+
+%font-alt-alt
+  font-family: $ff-alt-alt
+  font-style: normal
+  font-weight: $font-weight-normal
+
+%font-alt-alt-bold
+  @extend %font-alt-alt
   font-weight: $font-weight-bold
 
 %font-reset
@@ -389,9 +420,6 @@ $animation-rotation-border-width: rem-calc(2)!default
 // use the +h() mixin
 
 %header-core
-  font-family: $header-font-family
-  font-weight: $header-font-weight
-  font-style: $header-font-style
   color: $header-font-color
   text-rendering: $header-text-rendering
   margin-top: $header-top-margin
@@ -400,22 +428,27 @@ $animation-rotation-border-width: rem-calc(2)!default
 
 %header-1
   @extend %header-core
+  @extend %font-alt
   font-size: $h1-font-size
 
 %header-2
   @extend %header-core
+  @extend %font-alt
   font-size: $h2-font-size
 
 %header-3
   @extend %header-core
+  @extend %font-alt-alt-bold
   font-size: $h3-font-size
 
 %header-4
   @extend %header-core
+  @extend %font-alt-alt-bold
   font-size: $h4-font-size
 
 %header-5
   @extend %header-core
+  @extend %font-alt-alt
   font-size: $h5-font-size
 
 %header-6
@@ -457,6 +490,9 @@ $animation-rotation-border-width: rem-calc(2)!default
 
   @return solid $color $width
 
+// Set var
+$common-border: common-border-val()
+
 @mixin common-border($direction: bottom, $color: $gray, $width: 1px)
 
   $selector: border
@@ -491,6 +527,105 @@ $animation-rotation-border-width: rem-calc(2)!default
         @if $icon
           position: absolute
           z-index: 2
+
+
+//***********************************
+// Layout elements
+//
+//***********************************
+
+@mixin background-box($padding: $small-region-pad-large)
+  +b(gray)
+  padding: $padding
+
+
+//***********************************
+// Menu Styles
+//
+//***********************************
+
+
+// Side bar menu styles
+@mixin side-bar-menu($menu: 'ul.menu', $title: 'h2.block-title', $active: 'a.active')
+  
+  #{$title}
+    margin-top: rem-calc(20)
+    +h(4)
+
+  #{$menu}
+    +side-nav
+
+    li
+      border-bottom: $side-nav-divider-size $side-nav-divider-style $side-nav-divider-color
+
+      &:first-child
+        border-top: $side-nav-divider-size $side-nav-divider-style $side-nav-divider-color
+
+    a
+      border-left: 3px solid transparent
+      padding: rem-calc(10 20 10 17)
+
+    #{$active}
+      border-left-color: $gold 
+
+$main-menu-border-size: rem-calc(3)
+
+// Main menu Link Style
+@mixin  main-menu-link($color: $topbar-link-color, $color-hover: $topbar-link-color-hover, $border-color-hover: $gray)
+  color: $color
+  font-family: $topbar-link-font-family
+  font-size: $topbar-link-font-size
+  font-weight: $topbar-link-weight
+  padding:  0
+  border-top: $main-menu-border-size solid transparent
+  background: $topbar-link-bg
+  height: $topbar-height
+  text-transform: $topbar-link-text-transform
+  line-height: $topbar-height - $main-menu-border-size
+  display: inline-block
+
+  &:hover
+    background: $topbar-link-bg-hover
+    color: $color-hover
+
+// Main menu Active link style
+@mixin  main-menu-link-active($color: $topbar-link-color-active, $color-hover: $topbar-link-color-active-hover)
+  color: $color
+  border-top-color: $color
+  background: $topbar-link-bg-active
+
+  &:hover
+    background: $topbar-link-bg-active-hover
+    border-top-color: darken($color, 10%)
+    color: darken($color, 10%)
+
+
+// Main menu stlyes
+@mixin main-menu-style($container: 'li', $active: '.active, .active-trail')
+  +list-clear
+
+  #{$container}
+    padding: 0
+    display: block
+    margin-bottom: rem-calc(5)
+
+    a
+      +main-menu-link()
+
+    &#{$active}
+      a
+        +main-menu-link-active()
+
+// Main menu in horizontal
+@mixin main-menu-style-horizontal($include: false, $container: 'li', $active: '.active, .active-trail')
+  @if $include
+    +main-menu-style($container, $active)
+
+  #{$container}
+    display: inline-block
+
+    a
+      padding: 0 $topbar-link-padding
 
 
 //***********************************

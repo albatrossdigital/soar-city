@@ -4,13 +4,20 @@
  * Implements template_preprocess_html().
  *
  */
-//function flight_city_preprocess_html(&$variables) {
-//  // Add conditional CSS for IE. To use uncomment below and add IE css file
-//  drupal_add_css(path_to_theme() . '/css/ie.css', array('weight' => CSS_THEME, 'browsers' => array('!IE' => FALSE), 'preprocess' => FALSE));
-//
-//  // Need legacy support for IE downgrade to Foundation 2 or use JS file below
-//  // drupal_add_js('http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE7.js', 'external');
-//}
+function flight_city_preprocess_html(&$vars) {
+
+  // Need legacy support for IE downgrade to Foundation 2 or use JS file below
+  drupal_add_js('//use.typekit.net/tyn0pry.js', array(
+    'type' => 'external',
+    'scope' => 'header',
+    'weight' => 0,
+  ));
+  drupal_add_js('try{Typekit.load();}catch(e){}', array(
+    'type' => 'inline',
+    'scope' => 'header',
+    'weight' => 1,
+  ));
+}
 
 /**
  * Implements template_preprocess_page
@@ -20,6 +27,11 @@ function flight_city_preprocess_page(&$vars) {
   // Set section title explicitly
   if(!isset($vars['section_title'])) {
     $vars['section_title'] = FALSE;
+  }
+
+  // Set section title explicitly
+  if(!isset($vars['entity_title'])) {
+    $vars['entity_title'] = $vars['site_name'];
   }
 
   // Convenience variables
@@ -146,16 +158,13 @@ function flight_city_preprocess_page(&$vars) {
  * Implements hook_form_alter()
  * Example of using foundation sexy buttons
  */
-//function flight_city_form_alter(&$form, &$form_state, $form_id) {
-//  // Sexy submit buttons
-//  if (!empty($form['actions']) && !empty($form['actions']['submit'])) {
-//    $classes = (is_array($form['actions']['submit']['#attributes']['class']))
-//      ? $form['actions']['submit']['#attributes']['class']
-//      : array();
-//    $classes = array_merge($classes, array('secondary', 'button', 'radius'));
-//    $form['actions']['submit']['#attributes']['class'] = $classes;
-//  }
-//}
+function flight_city_form_alter(&$form, &$form_state, $form_id) {
+  // Sexy submit buttons
+  if (!empty($form['actions']) && !empty($form['actions']['submit'])) {
+    $classes = array('primary', 'button');
+    $form['actions']['submit']['#attributes']['class'] = $classes;
+  }
+}
 
 /**
  * Implements hook_form_FORM_ID_alter()

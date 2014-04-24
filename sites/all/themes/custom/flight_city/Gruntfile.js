@@ -73,6 +73,32 @@ module.exports = function(grunt) {
         ],
         dest: 'css/ie-mq.css'
       },
+    },
+    buildIcons: {
+       options: {
+        processors: [
+          {
+            pattern: /asdas/gi,
+            handler: function(context, matchParams) {
+                return 'img="static/path/to/image.png"';
+            }
+          }
+        ]
+      },
+      files: [
+        {
+          src: 'css/fontawesome-icons.css',
+          dest: 'documentation/dist/icons/icons-fontawesome.html'
+        }
+      ]
+    },
+    copyIcons: {
+      files: [
+        {
+          src: 'css/fontawesome-icons.css',
+          dest: 'documentation/dist/icons/css/'
+        }
+      ]
     }
   });
 
@@ -83,5 +109,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
   grunt.registerTask('build', ['sass','stripmq']);
+  grunt.registerTask('icons', ['sass', 'buildIcons', 'copyIcons']);
   grunt.registerTask('default', ['watch','compass','jshint']);
 }
