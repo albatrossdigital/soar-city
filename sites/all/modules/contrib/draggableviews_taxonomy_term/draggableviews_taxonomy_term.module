@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * Implements hook_views_api().
+ */
+function draggableviews_taxonomy_term_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'draggableviews_taxonomy_term'),
+  );
+}
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function draggableviews_taxonomy_term_ctools_plugin_directory($module, $plugin) {
+  if (($module == 'draggableviews') && ($plugin == 'handler' || $plugin == 'hierarchy_handler')) {
+    return 'handlers';
+  }  
+}
+
+/**
+ * Implementes hook_preprocess_views_view_table().
+ */
+function draggableviews_taxonomy_term_preprocess_views_view_table(&$vars) {
+    $display = $vars['view']->display[$vars['view']->current_display];
+    if(isset($display->handler->handlers['field']['draggableviews'])){
+        $order_view = $display->handler->handlers['field']['draggableviews']->view;
+        if (!empty($order_view->field['draggableviews']->options['draggableviews']['hierarchy_handler'])) {
+            $hierarchy_handler_object = draggableviews_get_handler_class($order_view->field['draggableviews']->options['draggableviews']['hierarchy_handler'], 'hierarchy_handler');
+            foreach ($vars['rows'] as $key => $row) {
+              $first_column = current(array_keys($row));
+              $field = (object) array('view' => $vars['view']);
+              $depth = $hierarchy_handler_object->get_depth($field, $key);
+              $vars['rows'][$key][$first_column] = theme('indentation', array('size' => $depth)) . $vars['rows'][$key][$first_column];
+              $vars['row_classes'][$key][] = 'depth-' . $depth;
+            }
+        }
+    }
+}
