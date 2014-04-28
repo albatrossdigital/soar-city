@@ -17,7 +17,7 @@ function flight_city_preprocess_html(&$vars) {
     'scope' => 'header',
     'weight' => 1,
   ));
-  drupal_add_js(drupal_get_path('theme', 'charities') . '/js/vendor/rem.js', array(
+  drupal_add_js(drupal_get_path('theme', 'flight_city') . '/js/vendor/rem.js', array(
     'type' => 'file',
     'scope' => 'footer'
   ));
