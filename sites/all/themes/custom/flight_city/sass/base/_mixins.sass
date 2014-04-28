@@ -1,6 +1,8 @@
 // import compass
 @import "compass/css3"
 @import "compass/utilities"
+
+$fa-include-css: false
 // get icons
 @import "components/icons-fontawesome"
 
@@ -545,6 +547,34 @@ $common-border: common-border-val()
 //***********************************
 
 
+@mixin side-bar-menu-dynamic($levels: 3, $wrapper: '.menu-block-wrapper', $active-parent: 'li.active-trail:not(.active)')
+  max-width: 100%
+  overflow: hidden
+
+  #{$wrapper}
+    //padding-right: ($levels - 1) * (100%)
+    width: $levels*(100%)
+    float: left
+
+    @for $i from 1 through ($levels)
+
+      &.level_#{$i}
+        margin-left: ($i) * (-100%)
+
+    ul
+      float: left
+      margin-left: 0
+      width: (100%)/$levels
+    
+    [data-menu-back]
+      a
+        +nice-icon(chevron-left)
+        border: none
+
+
+
+
+
 // Side bar menu styles
 @mixin side-bar-menu($menu: 'ul.menu', $title: 'h2.block-title', $active: 'a.active')
   
@@ -566,7 +596,12 @@ $common-border: common-border-val()
       padding: rem-calc(10 20 10 17)
 
     #{$active}
-      border-left-color: $gold 
+      border-left-color: $gold
+
+    
+
+
+
 
 $main-menu-border-size: rem-calc(3)
 

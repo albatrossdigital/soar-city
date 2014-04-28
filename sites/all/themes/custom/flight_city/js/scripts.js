@@ -44,6 +44,15 @@
           });
         });
       });
+
+      // add back options
+      $('[data-menu-back]').click(function(e) {
+        var $self = $(this),
+          level = $self.data('menu-back');
+        // switch classes
+        $self.parents('div').addClass('level_' + level).removeClass('level_' + (level + 1));
+        e.preventDefault();
+      });
     }
   };
 

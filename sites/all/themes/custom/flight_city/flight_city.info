@@ -29,8 +29,13 @@ base theme = flight_base
 ; For CSS users, load the app.css file:
 ; stylesheets[all][] = css/app.css
 ; Comment the app.css file (above) if you're using sass to preprocess css:
+stylesheets[all][] = css/fontawesome.css
 stylesheets[all][] = css/custom-foundation.css
 stylesheets[all][] = css/custom.css
+
+; Conditional style sheet
+stylesheets-conditional[lt IE 9][all][] = css/ie-mq.css
+stylesheets-conditional[lt IE 9][all][] = css/vendor/ie.css
 
 ; Block loading of foundation.min.css from the base theme. This file should either
 ; not exist or be blank in your subtheme. See https://drupal.org/node/263967

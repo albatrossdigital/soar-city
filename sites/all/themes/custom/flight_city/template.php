@@ -17,6 +17,10 @@ function flight_city_preprocess_html(&$vars) {
     'scope' => 'header',
     'weight' => 1,
   ));
+  drupal_add_js(drupal_get_path('theme', 'charities') . '/js/vendor/rem.js', array(
+    'type' => 'file',
+    'scope' => 'footer'
+  ));
 }
 
 /**
@@ -70,48 +74,73 @@ function flight_city_preprocess_page(&$vars) {
 //function flight_city_preprocess_node(&$variables) {
 //}
 
+function _flight_city_child_menu_back_button($menu_item) {
+  $menu_item['#below'] = array();
+  $menu_item['#attributes'] = array(
+    'data-menu-back' => $menu_item['#original_link']['depth'] - 1
+  );
+  $set_zero = array(
+    'has_children', 'plid', 'mlid', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6'
+  );
+  foreach ($set_zero as  $value) {
+    $menu_item['#original_link'][$value] = 0;
+  }
+  $menu_item['#title'] = 'Back';
+  return $menu_item;
+}
+
+function _flight_city_child_menu_recurse($current_menu, &$menus, &$active, $parent = FALSE) {
+  $count = count($menus) + 1;
+  $menu_level = 'level_' . $count;
+  $menus[$menu_level] = array();
+  // We have a parent, so add back button
+  //dpm($parent);
+  if($parent) {
+    $menus[$menu_level]['back'] = _flight_city_child_menu_back_button($parent);
+    //dpm($menus);
+  }
+  // run through menu items
+  foreach($current_menu as $key => $value) {
+    $menus[$menu_level][$key] = $value;
+    if(is_array($value)) {
+
+      // children
+      $children = !empty($value['#below']);
+
+      // active item, record level
+      if(!empty($value['#attributes']) && in_array('active', $value['#attributes']['class'])) {
+        $active = ($children) ? $value['#original_link']['depth'] : $value['#original_link']['depth'] - 1;
+      }
+      // we have children, so recurse
+      if($children) {
+        _flight_city_child_menu_recurse($value['#below'], $menus, $active, $value);
+        $menus[$menu_level][$key]['#below'] = array();
+      }
+    }
+  }
+}
+
+
 /**
  * Implements hook_preprocess_block()
  */
-//function flight_city_preprocess_block(&$variables) {
-//  // Add wrapping div with global class to all block content sections.
-//  $variables['content_attributes_array']['class'][] = 'block-content';
-//
-//  // Convenience variable for classes based on block ID
-//  $block_id = $variables['block']->module . '-' . $variables['block']->delta;
-//
-//  // Add classes based on a specific block
-//  switch ($block_id) {
-//    // System Navigation block
-//    case 'system-navigation':
-//      // Custom class for entire block
-//      $variables['classes_array'][] = 'system-nav';
-//      // Custom class for block title
-//      $variables['title_attributes_array']['class'][] = 'system-nav-title';
-//      // Wrapping div with custom class for block content
-//      $variables['content_attributes_array']['class'] = 'system-nav-content';
-//      break;
-//
-//    // User Login block
-//    case 'user-login':
-//      // Hide title
-//      $variables['title_attributes_array']['class'][] = 'element-invisible';
-//      break;
-//
-//    // Example of adding Foundation classes
-//    case 'block-foo': // Target the block ID
-//      // Set grid column or mobile classes or anything else you want.
-//      $variables['classes_array'][] = 'six columns';
-//      break;
-//  }
-//
-//  // Add template suggestions for blocks from specific modules.
-//  switch($variables['elements']['#block']->module) {
-//    case 'menu':
-//      $variables['theme_hook_suggestions'][] = 'block__nav';
-//    break;
-//  }
-//}
+function flight_city_preprocess_menu_block_wrapper(&$vars) {
+  if($vars['delta'] == 'main-menu') {
+    //dpm($vars);
+    // Set variables
+    $menus = array();
+    $active = 0;
+    // Recurse through menu, adding all children menus as children
+    _flight_city_child_menu_recurse($vars['content'], $menus, $active);
+    //dpm($menus);
+    if(!empty($menus)) {
+      $number = count($menus);
+      $vars['content'] = $menus;
+      $vars['classes_array'][] = 'level_' . $active;
+    }
+  }
+}
+
 
 //function flight_city_preprocess_views_view(&$variables) {
 //}

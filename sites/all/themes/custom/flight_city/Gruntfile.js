@@ -108,7 +108,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-stripmq');
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
-  grunt.registerTask('build', ['sass','stripmq']);
-  grunt.registerTask('icons', ['sass', 'buildIcons', 'copyIcons']);
+  grunt.registerTask('build', ['compass','stripmq']);
+  grunt.registerTask('icons', ['compass', 'buildIcons', 'copyIcons']);
   grunt.registerTask('default', ['watch','compass','jshint']);
 }

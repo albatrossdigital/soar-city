@@ -3,8 +3,14 @@
 // side menus
 
 [role=complementary] 
-  .block-menu
-    +side-bar-menu
+  // Sidebar styles
+  .block
+    +side-bar-menu('& > ul, .menu-block-wrapper ul')
+
+  .block-domain-menu-block
+    // make main menu slide-able
+    +side-bar-menu-dynamic
+
     
   .block
     margin-bottom: rem-calc(20)
