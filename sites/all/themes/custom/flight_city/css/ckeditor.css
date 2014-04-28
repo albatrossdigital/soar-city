@@ -6575,17 +6575,30 @@ i[class^="fa"] {
 }
 
 /********************************** */
-/* line 381, ../sass/base/_mixins.sass */
+/* line 377, ../sass/base/_mixins.sass */
+h1 a a, h2 a a, h3 a a, h4 a a, h5 a a, h6 a a {
+  color: #111111;
+}
+/* line 380, ../sass/base/_mixins.sass */
+h1 a a:hover, h2 a a:hover, h3 a a:hover, h4 a a:hover, h5 a a:hover, h6 a a:hover {
+  color: #0a83a1;
+}
+/* line 383, ../sass/base/_mixins.sass */
+h1 a a:active, h2 a a:active, h3 a a:active, h4 a a:active, h5 a a:active, h6 a a:active {
+  color: #07b1db;
+}
+
+/* line 391, ../sass/base/_mixins.sass */
 h1 strong, strong h1, h2 strong, strong h2, h5 strong, strong h5 {
   font-weight: 400;
 }
 
-/* line 384, ../sass/base/_mixins.sass */
+/* line 394, ../sass/base/_mixins.sass */
 h3, h4 {
   font-weight: 700;
 }
 
-/* line 392, ../sass/base/_mixins.sass */
+/* line 402, ../sass/base/_mixins.sass */
 .label-inline, h1, h2 {
   font-family: "ff-tisa-web-pro";
   font-style: normal;
@@ -6717,36 +6730,23 @@ h1 em, em h1, h2 em, em h2 {
   font-style: normal;
 }
 
-/* line 50, ../sass/base/_elements.sass */
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-  color: #111111;
-}
-/* line 53, ../sass/base/_elements.sass */
-h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
-  color: #0a83a1;
-}
-/* line 56, ../sass/base/_elements.sass */
-h1 a:active, h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active {
-  color: #07b1db;
-}
-
-/* line 73, ../sass/base/_elements.sass */
+/* line 66, ../sass/base/_elements.sass */
 a:active {
   color: #07b1db;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 121, ../sass/base/_elements.sass */
+  /* line 114, ../sass/base/_elements.sass */
   h1 {
     font-size: 2.85714rem;
   }
 
-  /* line 124, ../sass/base/_elements.sass */
+  /* line 117, ../sass/base/_elements.sass */
   h2 {
     font-size: 2.14286rem;
   }
 
-  /* line 127, ../sass/base/_elements.sass */
+  /* line 120, ../sass/base/_elements.sass */
   h3 {
     font-size: 1.57143rem;
   }
