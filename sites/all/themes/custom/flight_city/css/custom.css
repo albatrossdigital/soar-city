@@ -512,11 +512,11 @@ html, body {
   margin-bottom: 0.625rem;
 }
 
-/* line 581, ../sass/base/_mixins.sass */
+/* line 582, ../sass/base/_mixins.sass */
 [role=complementary] .block h2.block-title {
   margin-top: 1.42857rem;
 }
-/* line 585, ../sass/base/_mixins.sass */
+/* line 586, ../sass/base/_mixins.sass */
 [role=complementary] .block > ul, [role=complementary] .block .menu-block-wrapper ul {
   display: block;
   margin: 0;
@@ -553,20 +553,20 @@ html, body {
   list-style: none;
   border-top-color: #dddddd;
 }
-/* line 588, ../sass/base/_mixins.sass */
+/* line 589, ../sass/base/_mixins.sass */
 [role=complementary] .block > ul li, [role=complementary] .block .menu-block-wrapper ul li {
   border-bottom: 1px solid #dddddd;
 }
-/* line 591, ../sass/base/_mixins.sass */
+/* line 592, ../sass/base/_mixins.sass */
 [role=complementary] .block > ul li:first-child, [role=complementary] .block .menu-block-wrapper ul li:first-child {
   border-top: 1px solid #dddddd;
 }
-/* line 594, ../sass/base/_mixins.sass */
+/* line 595, ../sass/base/_mixins.sass */
 [role=complementary] .block > ul a, [role=complementary] .block .menu-block-wrapper ul a {
   border-left: 3px solid transparent;
   padding: 0.71429rem 1.42857rem 0.71429rem 1.21429rem;
 }
-/* line 598, ../sass/base/_mixins.sass */
+/* line 599, ../sass/base/_mixins.sass */
 [role=complementary] .block > ul a.active, [role=complementary] .block .menu-block-wrapper ul a.active {
   border-left-color: #deb64b;
 }
@@ -579,26 +579,31 @@ html, body {
 [role=complementary] .block-domain-menu-block .menu-block-wrapper {
   width: 300%;
   float: left;
+  -webkit-transition: all ease-in;
+  -webkit-transition-delay: 0.3s;
+  -moz-transition: all ease-in 0.3s;
+  -o-transition: all ease-in 0.3s;
+  transition: all ease-in 0.3s;
 }
-/* line 561, ../sass/base/_mixins.sass */
+/* line 562, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper.level_1 {
   margin-left: -100%;
 }
-/* line 561, ../sass/base/_mixins.sass */
+/* line 562, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper.level_2 {
   margin-left: -200%;
 }
-/* line 561, ../sass/base/_mixins.sass */
+/* line 562, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper.level_3 {
   margin-left: -300%;
 }
-/* line 564, ../sass/base/_mixins.sass */
+/* line 565, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper ul {
   float: left;
   margin-left: 0;
   width: 33.33333%;
 }
-/* line 570, ../sass/base/_mixins.sass */
+/* line 571, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper [data-menu-back] a {
   border: none;
 }
@@ -1103,13 +1108,13 @@ ul[data-orbit] ~ .orbit-next:before {
   padding: 0;
   margin: 0;
 }
-/* line 642, ../sass/base/_mixins.sass */
+/* line 643, ../sass/base/_mixins.sass */
 .right-off-canvas-menu .menu-name-main-menu li {
   padding: 0;
   display: block;
   margin-bottom: 0.35714rem;
 }
-/* line 647, ../sass/base/_mixins.sass */
+/* line 648, ../sass/base/_mixins.sass */
 .right-off-canvas-menu .menu-name-main-menu li a {
   color: white;
   font-family: "open-sans";
@@ -1123,18 +1128,18 @@ ul[data-orbit] ~ .orbit-next:before {
   line-height: 3.85714rem;
   display: inline-block;
 }
-/* line 622, ../sass/base/_mixins.sass */
+/* line 623, ../sass/base/_mixins.sass */
 .right-off-canvas-menu .menu-name-main-menu li a:hover {
   background: #42484f;
   color: #e6e6e6;
 }
-/* line 651, ../sass/base/_mixins.sass */
+/* line 652, ../sass/base/_mixins.sass */
 .right-off-canvas-menu .menu-name-main-menu li.active a, .right-off-canvas-menu .menu-name-main-menu li .active-trail a {
   color: #deb64b;
   border-top-color: #deb64b;
   background: #42484f;
 }
-/* line 632, ../sass/base/_mixins.sass */
+/* line 633, ../sass/base/_mixins.sass */
 .right-off-canvas-menu .menu-name-main-menu li.active a:hover, .right-off-canvas-menu .menu-name-main-menu li .active-trail a:hover {
   background: #42484f;
   border-top-color: #d0a226;
@@ -1185,13 +1190,13 @@ ul[data-orbit] ~ .orbit-next:before {
     padding: 0;
     margin: 0;
   }
-  /* line 642, ../sass/base/_mixins.sass */
+  /* line 643, ../sass/base/_mixins.sass */
   .right-off-canvas-menu .menu-name-main-menu li {
     padding: 0;
     display: block;
     margin-bottom: 0.35714rem;
   }
-  /* line 647, ../sass/base/_mixins.sass */
+  /* line 648, ../sass/base/_mixins.sass */
   .right-off-canvas-menu .menu-name-main-menu li a {
     color: white;
     font-family: "open-sans";
@@ -1205,18 +1210,18 @@ ul[data-orbit] ~ .orbit-next:before {
     line-height: 3.85714rem;
     display: inline-block;
   }
-  /* line 622, ../sass/base/_mixins.sass */
+  /* line 623, ../sass/base/_mixins.sass */
   .right-off-canvas-menu .menu-name-main-menu li a:hover {
     background: #42484f;
     color: #e6e6e6;
   }
-  /* line 651, ../sass/base/_mixins.sass */
+  /* line 652, ../sass/base/_mixins.sass */
   .right-off-canvas-menu .menu-name-main-menu li.active a, .right-off-canvas-menu .menu-name-main-menu li .active-trail a {
     color: #deb64b;
     border-top-color: #deb64b;
     background: #42484f;
   }
-  /* line 632, ../sass/base/_mixins.sass */
+  /* line 633, ../sass/base/_mixins.sass */
   .right-off-canvas-menu .menu-name-main-menu li.active a:hover, .right-off-canvas-menu .menu-name-main-menu li .active-trail a:hover {
     background: #42484f;
     border-top-color: #d0a226;
@@ -1277,11 +1282,11 @@ ul[data-orbit] ~ .orbit-next:before {
   .right-off-canvas-menu .menu-name-main-menu {
     border-top: 0;
   }
-  /* line 659, ../sass/base/_mixins.sass */
+  /* line 660, ../sass/base/_mixins.sass */
   .right-off-canvas-menu .menu-name-main-menu li {
     display: inline-block;
   }
-  /* line 662, ../sass/base/_mixins.sass */
+  /* line 663, ../sass/base/_mixins.sass */
   .right-off-canvas-menu .menu-name-main-menu li a {
     padding: 0 1.35714rem;
   }
