@@ -77,7 +77,6 @@ $icon-area-font-size: rem-calc(45)
   +nice-row-border($column-gutter/2, rem-calc(20), 1px solid $gray, bottom, hidden)
   
   .group-left, .group-right
-    min-height: rem-calc(120)
 
   // right side
   .group-right
@@ -86,3 +85,20 @@ $icon-area-font-size: rem-calc(45)
 
   i
     margin-left: rem-calc(1)
+
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($medium-up)
+
+  // Side by side views
+  // --------------------------
+
+  .vocabulary-event-category.view-mode-teaser
+    
+    .group-left, .group-right
+      min-height: rem-calc(120)

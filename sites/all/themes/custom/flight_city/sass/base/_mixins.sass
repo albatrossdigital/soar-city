@@ -550,6 +550,35 @@ $common-border: common-border-val()
           position: absolute
           z-index: 2
 
+// shortcut for nice row border
+// node teasers
+
+@mixin nice-teaser-border($size: normal)
+  +clearfix
+
+  &:after
+    visibility: visible
+
+  @if $size == normal
+    +nice-row-border($column-gutter/2, rem-calc(35), 1px solid $gray, bottom, hidden)
+
+// Make columns fixed size
+@mixin fixed-size-columns($width: rem-calc(120), $core: true, $fixed: '.group-left', $other: '.group-right', $direction: 'left')
+  
+  #{$fixed}
+    width: $width
+    @if $core
+      z-index: 1
+
+  #{$other}
+    padding-#{$direction}: $width + $column-gutter/2
+    @if $core
+      float: none!important
+      width: 100%
+
+
+
+
 
 //***********************************
 // Layout elements
@@ -559,6 +588,7 @@ $common-border: common-border-val()
 @mixin background-box($padding: $small-region-pad-large)
   +b(gray)
   padding: $padding
+
 
 
 //***********************************

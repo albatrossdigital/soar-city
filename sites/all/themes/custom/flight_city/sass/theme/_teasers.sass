@@ -1,0 +1,42 @@
+
+// Common teasers
+// ----------------------------------------------------------------------------
+
+
+// 2 column teasers with fixed width left side
+// ----------------------------------------------------------------------------
+
+.node-teaser.node-event,
+.vocabulary-event-category.view-mode-teaser
+
+
+.node-teaser.node-event .date-calendar,
+.vocabulary-event-category.view-mode-teaser .circle-icon
+  max-width: rem-calc(90)
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($small-only)
+
+
+  // 2 column teasers with fixed width left side
+  // ----------------------------------------------------------------------------
+
+  .node-teaser.node-event .date-calendar,
+  .vocabulary-event-category.view-mode-teaser .circle-icon
+    margin: 0 auto $paragraph-margin-bottom
+
+
++respond($medium-up)
+
+
+  // 2 column teasers with fixed width left side
+  // ----------------------------------------------------------------------------
+
+  .node-teaser.node-event,
+  .vocabulary-event-category.view-mode-teaser
+    +fixed-size-columns(rem-calc(120))
