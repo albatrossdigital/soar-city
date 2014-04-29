@@ -1075,32 +1075,44 @@ ul[data-orbit] ~ .orbit-next:before {
 
 /* line 53, ../sass/modules/_orbit-core.sass */
 .carousel-caption {
-  position: absolute;
-  bottom: 0;
-  background-color: rgba(51, 51, 51, 0.8);
+  position: relative;
+  background-color: rgba(17, 17, 17, 0.7);
   color: white;
   width: 100%;
   padding: 0.71429rem 1rem;
   font-size: 1rem;
 }
 
+@media only screen and (max-width: 45.71429em) {
+  /* line 75, ../sass/modules/_orbit-core.sass */
+  .carousel-caption {
+    background-color: #111111;
+  }
+}
+@media only screen and (min-width: 45.78571em) {
+  /* line 87, ../sass/modules/_orbit-core.sass */
+  .carousel-caption {
+    position: absolute;
+    bottom: 0;
+  }
+}
 @media only screen and (min-width: 68.64286em) {
-  /* line 92, ../sass/modules/_orbit-core.sass */
+  /* line 100, ../sass/modules/_orbit-core.sass */
   .l-featured .orbit-container {
     margin-left: -2.85714rem;
     margin-right: -2.85714rem;
     padding-left: 2.85714rem;
     padding-right: 2.85714rem;
   }
-  /* line 96, ../sass/modules/_orbit-core.sass */
+  /* line 104, ../sass/modules/_orbit-core.sass */
   .l-featured .orbit-container ul[data-orbit] {
     overflow: hidden;
   }
-  /* line 101, ../sass/modules/_orbit-core.sass */
+  /* line 109, ../sass/modules/_orbit-core.sass */
   .l-featured ul[data-orbit] ~ .orbit-prev, .l-featured ul[data-orbit] ~ .orbit-next {
     color: #cccccc;
   }
-  /* line 105, ../sass/modules/_orbit-core.sass */
+  /* line 113, ../sass/modules/_orbit-core.sass */
   .l-featured ul[data-orbit] ~ .orbit-prev:hover, .l-featured ul[data-orbit] ~ .orbit-next:hover {
     color: #b3b3b3;
   }
@@ -1436,29 +1448,38 @@ ul[data-orbit] ~ .orbit-next:before {
     min-height: 8.57143rem;
   }
 }
-/* line 13, ../sass/theme/_teasers.sass */
+/* line 568, ../sass/base/_mixins.sass */
+.vocabulary-event-category.view-mode-teaser .group-left {
+  width: 8.57143rem;
+  z-index: 1;
+}
+/* line 573, ../sass/base/_mixins.sass */
+.vocabulary-event-category.view-mode-teaser .group-right {
+  padding-left: 9.28571rem;
+  float: none !important;
+  width: 100%;
+}
+
+/* line 12, ../sass/theme/_teasers.sass */
 .node-teaser.node-event .date-calendar,
 .vocabulary-event-category.view-mode-teaser .circle-icon {
   max-width: 6.42857rem;
 }
 
 @media only screen and (max-width: 45.71429em) {
-  /* line 29, ../sass/theme/_teasers.sass */
-  .node-teaser.node-event .date-calendar,
-  .vocabulary-event-category.view-mode-teaser .circle-icon {
+  /* line 28, ../sass/theme/_teasers.sass */
+  .node-teaser.node-event .date-calendar {
     margin: 0 auto 1.42857rem;
   }
 }
 @media only screen and (min-width: 45.78571em) {
   /* line 568, ../sass/base/_mixins.sass */
-  .node-teaser.node-event .group-left,
-  .vocabulary-event-category.view-mode-teaser .group-left {
+  .node-teaser.node-event .group-left {
     width: 8.57143rem;
     z-index: 1;
   }
   /* line 573, ../sass/base/_mixins.sass */
-  .node-teaser.node-event .group-right,
-  .vocabulary-event-category.view-mode-teaser .group-right {
+  .node-teaser.node-event .group-right {
     padding-left: 9.28571rem;
     float: none !important;
     width: 100%;

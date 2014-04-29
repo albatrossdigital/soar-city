@@ -6,9 +6,8 @@
 // 2 column teasers with fixed width left side
 // ----------------------------------------------------------------------------
 
-.node-teaser.node-event,
 .vocabulary-event-category.view-mode-teaser
-
+  +fixed-size-columns(rem-calc(120))
 
 .node-teaser.node-event .date-calendar,
 .vocabulary-event-category.view-mode-teaser .circle-icon
@@ -26,8 +25,7 @@
   // 2 column teasers with fixed width left side
   // ----------------------------------------------------------------------------
 
-  .node-teaser.node-event .date-calendar,
-  .vocabulary-event-category.view-mode-teaser .circle-icon
+  .node-teaser.node-event .date-calendar
     margin: 0 auto $paragraph-margin-bottom
 
 
@@ -37,6 +35,5 @@
   // 2 column teasers with fixed width left side
   // ----------------------------------------------------------------------------
 
-  .node-teaser.node-event,
-  .vocabulary-event-category.view-mode-teaser
+  .node-teaser.node-event
     +fixed-size-columns(rem-calc(120))

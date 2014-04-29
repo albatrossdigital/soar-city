@@ -51,13 +51,8 @@ ul[data-orbit]
 // Traditional caption????
 //-----------------------------------------------------------------------------
 .carousel-caption
-  @if $orbit-caption-position == "bottom"
-    position: absolute
-    bottom: 0
-  @else if $orbit-caption-position == "under"
-    position: relative
-  
 
+  position: relative
   background-color: $orbit-caption-bg
   color: $orbit-caption-font-color
   width: 100%
@@ -73,12 +68,25 @@ ul[data-orbit]
 // *
 // ******************************************************
 
++respond($small-only)
+
+  // Traditional caption????
+  //-----------------------------------------------------------------------------
+  .carousel-caption
+    background-color: $black
+
 +respond($medium-up)
 
   // Orbit
   //-----------------------------------------------------------------------------
 
   ul[data-orbit]
+
+  // Traditional caption????
+  //-----------------------------------------------------------------------------
+  .carousel-caption
+    position: absolute
+    bottom: 0
     
 
 +respond($large-up)
