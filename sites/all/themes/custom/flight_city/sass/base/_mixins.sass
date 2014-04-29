@@ -356,10 +356,10 @@ $animation-rotation-border-width: rem-calc(2)!default
     @extend %color-hover-color
 
 %color-link-alt
-  @extend %color-link-color
+  color: $blue-link-alt
 
   &:hover
-    @extend %color-hover-color
+    color: darken($blue-link-alt, 10%)
 
 %color-link-gray
   color: $gray
@@ -374,15 +374,25 @@ $animation-rotation-border-width: rem-calc(2)!default
     color: darken($white, 10%)
 
 %color-link-header
+  color: $black
+
+  &:hover
+    color: $blue-link
+
+  &:active
+    color: $blue-link-active
+
+%color-link-header-full
   a 
     color: $black
 
-    &:hover
+  &:hover
+    a
       color: $blue-link
 
-    &:active
+  &:active
+    a
       color: $blue-link-active
-
 
 // fonts
 // -----------------------------------
@@ -584,8 +594,6 @@ $common-border: common-border-val()
 
 
 
-
-
 // Side bar menu styles
 @mixin side-bar-menu($menu: 'ul.menu', $title: 'h2.block-title', $active: 'a.active')
   
@@ -610,8 +618,6 @@ $common-border: common-border-val()
       border-left-color: $gold
 
     
-
-
 
 
 $main-menu-border-size: rem-calc(3)
@@ -672,6 +678,36 @@ $main-menu-border-size: rem-calc(3)
 
     a
       padding: 0 $topbar-link-padding
+
+
+
+//***********************************
+// Calendar
+//
+//***********************************
+
+@mixin calendar-box($first: '.date-display-single > *:first-child', $second: '.date-display-single > *:last-child')
+  border: common-border-val($gray-border)
+  text-align: center
+  padding: rem-calc(12 0)
+  position: relative
+  +f(alt-alt)
+  text-transform: uppercase
+
+  &:before
+    +before-as-image(block, top)
+    background: $gold
+    height: rem-calc(3)
+    width: 100%
+  
+  #{$first}
+    font-size: rem-calc(16)
+
+  #{$second}
+    font-size: rem-calc(36)
+    padding: rem-calc(12 0 6 0)
+
+
 
 
 //***********************************

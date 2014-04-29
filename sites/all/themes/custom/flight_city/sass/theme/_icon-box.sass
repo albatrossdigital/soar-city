@@ -1,3 +1,88 @@
 
-.bean-linkbox 
+
+// Entity link blocks
+// --------------------------
+
+$icon-area-dimension: rem-calc(90) 
+$icon-area-font-size: rem-calc(45)
+
+
+// Block level
+.bean-linkbox,
+.block-views-event-categories-block
   margin-bottom: $small-region-pad-large
+
+
+// Wrapper
+.field-collection-item-field-link-collection,
+.vocabulary-event-category.view-mode-teaser
+  cursor: pointer
+  position: relative
+  text-align: center
+  +c(link-header-full)
+  
+  .field-name-field-link
+    padding-top: $paragraph-margin-bottom
+
+  &:hover,
+  &.active
+
+    i 
+      opacity: 1
+
+// Icon section
+.circle-icon
+  i 
+    color: $white
+    font-size: $icon-area-font-size
+    line-height: $icon-area-dimension
+    margin-right: 0
+    opacity: 0.5
+    position: relative
+    z-index: 2
+
+  i, .color-link
+    height: $icon-area-dimension
+    width: $icon-area-dimension
+
+.color-link
+  left: 50%
+  top: 0
+  margin-left: -($icon-area-dimension/2)
+  position: absolute
+  +border-radius(100%)
+  z-index: 1
+
+
+// Animated hover actions
+.field-collection-item-field-link-collection,
+.vocabulary-event-category.view-mode-teaser
+  &:hover,
+  &.active
+
+    .circle-icon
+      margin-top: rem-calc(-8)
+      padding-bottom: rem-calc(8)
+
+  .circle-icon
+    display: block
+    +transition(all ease-in 0.05s)
+    position: relative
+
+
+// Side by side views
+// --------------------------
+
+.vocabulary-event-category.view-mode-teaser
+  +nice-row-border($column-gutter/2, rem-calc(20), 1px solid $gray, bottom, hidden)
+  
+  .group-left, .group-right
+    min-height: rem-calc(120)
+
+  // right side
+  .group-right
+    text-align: left
+    padding-top: rem-calc(20)
+
+  i
+    margin-left: rem-calc(1)

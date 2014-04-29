@@ -1,0 +1,73 @@
+
+// Event views
+// ---------------------------------------------------------------------------- 
+
+// event filters
+.block-views-exp-calendar-list
+  form 
+    padding: rem-calc(0 20)
+
+  input, select
+    max-width: 100%
+    margin-bottom: 0
+
+  .views-exposed-widget
+    padding: 0
+
+  .views-widget-filter-field_date_value
+    .form-item
+      label, 
+      .description
+        +e(hide)
+
+  // "To" label
+  .form-type-date-popup.form-item-date-min
+    position: relative
+
+    &:after
+      background: $white
+      content: "To"
+      position: absolute
+      height: $column-gutter
+      bottom: $column-gutter/2
+      left: 50%
+      margin-left: rem-calc(-60/2)
+      width: rem-calc(60)
+      text-align: center
+
+  // borders
+  .form-item 
+    &.form-type-textfield,
+    &.form-type-select
+      +nice-row-border((-$column-gutter), $column-gutter, $common-border, bottom, hidden)
+
+  .views-exposed-widget .form-submit
+    margin-top: 0
+
+
+// Event nodes
+// ---------------------------------------------------------------------------- 
+
+.node-event
+  
+
+// teaser
+
+.node-teaser.node-event
+  .field-name-title
+    a
+      +c(link-alt)
+
+  .group-left
+
+  // Calendar date
+  .date-calendar
+    +calendar-box
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($medium-up)

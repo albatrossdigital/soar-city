@@ -129,64 +129,97 @@ ul[data-orbit] ~ .orbit-next:before {
 }
 
 /********************************** */
+/* line 313, ../sass/base/_mixins.sass */
+.block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item label,
+.block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item .description {
+  display: none;
+}
+
 /* line 332, ../sass/base/_mixins.sass */
 .page-user.not-logged-in .main > form {
   background: #f3f3f3;
   margin-bottom: 1.5625rem;
 }
 
+/* line 358, ../sass/base/_mixins.sass */
+.node-teaser.node-event .field-name-title a {
+  color: #0076a3;
+}
+/* line 361, ../sass/base/_mixins.sass */
+.node-teaser.node-event .field-name-title a:hover {
+  color: #005170;
+}
+
 /* line 370, ../sass/base/_mixins.sass */
-ul[data-orbit] h4 a, ul[data-orbit] ~ .orbit-prev, ul[data-orbit] ~ .orbit-next {
+ul[data-orbit] h2 a, ul[data-orbit] h3 a, ul[data-orbit] h4 a, ul[data-orbit] ~ .orbit-prev, ul[data-orbit] ~ .orbit-next, .carousel-caption a {
   color: white;
 }
 /* line 373, ../sass/base/_mixins.sass */
-ul[data-orbit] h4 a:hover, ul[data-orbit] ~ .orbit-prev:hover, ul[data-orbit] ~ .orbit-next:hover {
+ul[data-orbit] h2 a:hover, ul[data-orbit] h3 a:hover, ul[data-orbit] h4 a:hover, ul[data-orbit] ~ .orbit-prev:hover, ul[data-orbit] ~ .orbit-next:hover, .carousel-caption a:hover {
   color: #e6e6e6;
 }
 
-/* line 377, ../sass/base/_mixins.sass */
-h1 a a, h2 a a, h3 a a, h4 a a, h5 a a, h6 a a, .field-collection-item-field-link-collection a a {
+/* line 376, ../sass/base/_mixins.sass */
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   color: #111111;
 }
-/* line 380, ../sass/base/_mixins.sass */
-h1 a a:hover, h2 a a:hover, h3 a a:hover, h4 a a:hover, h5 a a:hover, h6 a a:hover, .field-collection-item-field-link-collection a a:hover {
+/* line 379, ../sass/base/_mixins.sass */
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
   color: #0a83a1;
 }
-/* line 383, ../sass/base/_mixins.sass */
-h1 a a:active, h2 a a:active, h3 a a:active, h4 a a:active, h5 a a:active, h6 a a:active, .field-collection-item-field-link-collection a a:active {
+/* line 382, ../sass/base/_mixins.sass */
+h1 a:active, h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active {
   color: #07b1db;
 }
 
-/* line 391, ../sass/base/_mixins.sass */
-h1 strong, strong h1, h2 strong, strong h2, h5 strong, strong h5 {
+/* line 386, ../sass/base/_mixins.sass */
+.field-collection-item-field-link-collection a,
+.vocabulary-event-category.view-mode-teaser a {
+  color: #111111;
+}
+/* line 390, ../sass/base/_mixins.sass */
+.field-collection-item-field-link-collection:hover a,
+.vocabulary-event-category.view-mode-teaser:hover a {
+  color: #0a83a1;
+}
+/* line 394, ../sass/base/_mixins.sass */
+.field-collection-item-field-link-collection:active a,
+.vocabulary-event-category.view-mode-teaser:active a {
+  color: #07b1db;
+}
+
+/* line 401, ../sass/base/_mixins.sass */
+h1 strong, strong h1, h2 strong, strong h2, h5 strong, strong h5, .views-exposed-form label {
   font-weight: 400;
 }
 
-/* line 394, ../sass/base/_mixins.sass */
+/* line 404, ../sass/base/_mixins.sass */
 h3, h4 {
   font-weight: 700;
 }
 
-/* line 402, ../sass/base/_mixins.sass */
+/* line 412, ../sass/base/_mixins.sass */
 .label-inline, h1, h2 {
   font-family: "ff-tisa-web-pro";
   font-style: normal;
   font-weight: 400;
 }
 
-/* line 410, ../sass/base/_mixins.sass */
-[role=complementary] .block h2.block-title, fieldset legend {
+/* line 420, ../sass/base/_mixins.sass */
+[role=complementary] .block h2.block-title, fieldset legend, .more-link,
+.field-name-node-link, .node-teaser.node-event .date-calendar {
   font-family: "open-sans";
   font-style: normal;
   font-weight: 400;
 }
 
-/* line 415, ../sass/base/_mixins.sass */
-[role=complementary] .block h2.block-title, fieldset legend {
+/* line 425, ../sass/base/_mixins.sass */
+[role=complementary] .block h2.block-title, fieldset legend, .more-link,
+.field-name-node-link {
   font-weight: 700;
 }
 
-/* line 434, ../sass/base/_mixins.sass */
+/* line 444, ../sass/base/_mixins.sass */
 [role=complementary] .block h2.block-title, fieldset legend {
   color: #111111;
   text-rendering: optimizeLegibility;
@@ -195,7 +228,7 @@ h3, h4 {
   line-height: 1.4;
 }
 
-/* line 456, ../sass/base/_mixins.sass */
+/* line 466, ../sass/base/_mixins.sass */
 [role=complementary] .block h2.block-title, fieldset legend {
   font-size: 1.14286rem;
 }
@@ -435,11 +468,11 @@ html, body {
     padding-top: 1.5625rem;
   }
 }
-/* line 10, ../sass/layout/_main.sass */
+/* line 13, ../sass/layout/_main.sass */
 .main > ul.button-group {
   margin-bottom: 0.625rem;
 }
-/* line 14, ../sass/layout/_main.sass */
+/* line 17, ../sass/layout/_main.sass */
 .main > ul.button-group li.active a {
   background-color: #0a83a1;
   border-color: #0eb7e1;
@@ -453,12 +486,12 @@ html, body {
 .main > ul.button-group li.active a:hover, .main > ul.button-group li.active a:focus {
   color: white;
 }
-/* line 17, ../sass/layout/_main.sass */
+/* line 20, ../sass/layout/_main.sass */
 .main > ul.button-group a {
   margin-bottom: 0.35714rem;
   border-color: #cccccc;
 }
-/* line 22, ../sass/layout/_main.sass */
+/* line 25, ../sass/layout/_main.sass */
 .main > ul.action-links {
   list-style: none;
   padding: 0;
@@ -468,7 +501,7 @@ html, body {
 .main > ul.action-links li {
   display: inline-block;
 }
-/* line 25, ../sass/layout/_main.sass */
+/* line 28, ../sass/layout/_main.sass */
 .main > ul.action-links a {
   border-style: solid;
   border-width: 0px;
@@ -507,16 +540,28 @@ html, body {
   color: white;
 }
 
-/* line 29, ../sass/layout/_main.sass */
+/* line 32, ../sass/layout/_main.sass */
 .block-workbench {
   margin-bottom: 0.625rem;
 }
 
-/* line 592, ../sass/base/_mixins.sass */
+@media only screen and (min-width: 45.78571em) {
+  /* line 56, ../sass/layout/_main.sass */
+  .main .block-title {
+    font-size: 2.85714rem;
+    margin-bottom: 2.14286rem;
+  }
+
+  /* line 61, ../sass/layout/_main.sass */
+  .medium-push-3.main {
+    margin-left: 4.16667%;
+  }
+}
+/* line 600, ../sass/base/_mixins.sass */
 [role=complementary] .block h2.block-title {
   margin-top: 1.42857rem;
 }
-/* line 596, ../sass/base/_mixins.sass */
+/* line 604, ../sass/base/_mixins.sass */
 [role=complementary] .block > ul, [role=complementary] .block .menu-block-wrapper ul {
   display: block;
   margin: 0;
@@ -553,20 +598,20 @@ html, body {
   list-style: none;
   border-top-color: #dddddd;
 }
-/* line 599, ../sass/base/_mixins.sass */
+/* line 607, ../sass/base/_mixins.sass */
 [role=complementary] .block > ul li, [role=complementary] .block .menu-block-wrapper ul li {
   border-bottom: 1px solid #dddddd;
 }
-/* line 602, ../sass/base/_mixins.sass */
+/* line 610, ../sass/base/_mixins.sass */
 [role=complementary] .block > ul li:first-child, [role=complementary] .block .menu-block-wrapper ul li:first-child {
   border-top: 1px solid #dddddd;
 }
-/* line 605, ../sass/base/_mixins.sass */
+/* line 613, ../sass/base/_mixins.sass */
 [role=complementary] .block > ul a, [role=complementary] .block .menu-block-wrapper ul a {
   border-left: 3px solid transparent;
   padding: 0.71429rem 1.42857rem 0.71429rem 1.21429rem;
 }
-/* line 609, ../sass/base/_mixins.sass */
+/* line 617, ../sass/base/_mixins.sass */
 [role=complementary] .block > ul a.active, [role=complementary] .block .menu-block-wrapper ul a.active {
   border-left-color: #deb64b;
 }
@@ -575,7 +620,7 @@ html, body {
   max-width: 100%;
   overflow: hidden;
 }
-/* line 564, ../sass/base/_mixins.sass */
+/* line 574, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper {
   width: 300%;
   float: left;
@@ -585,25 +630,25 @@ html, body {
   -o-transition: all ease-in 0.3s;
   transition: all ease-in 0.3s;
 }
-/* line 572, ../sass/base/_mixins.sass */
+/* line 582, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper.level_1 {
   margin-left: -100%;
 }
-/* line 572, ../sass/base/_mixins.sass */
+/* line 582, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper.level_2 {
   margin-left: -200%;
 }
-/* line 572, ../sass/base/_mixins.sass */
+/* line 582, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper.level_3 {
   margin-left: -300%;
 }
-/* line 575, ../sass/base/_mixins.sass */
+/* line 585, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper ul {
   float: left;
   margin-left: 0;
   width: 33.33333%;
 }
-/* line 581, ../sass/base/_mixins.sass */
+/* line 591, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper [data-menu-back] a {
   border: none;
 }
@@ -628,89 +673,51 @@ html, body {
     margin-bottom: 3.92857rem;
   }
 }
-/* line 9, ../sass/modules/_block.sass */
-.field-collection-item-field-link-collection {
-  position: relative;
-  text-align: center;
-}
-/* line 13, ../sass/modules/_block.sass */
-.field-collection-item-field-link-collection i {
-  color: white;
-  font-size: 3.21429rem;
-  line-height: 6.42857rem;
-  margin-right: 0;
-  opacity: 0.75;
-  position: relative;
-  z-index: 2;
-}
-/* line 23, ../sass/modules/_block.sass */
-.field-collection-item-field-link-collection.active i {
-  opacity: 1;
-}
-/* line 26, ../sass/modules/_block.sass */
-.field-collection-item-field-link-collection i, .field-collection-item-field-link-collection .color-link {
-  height: 6.42857rem;
-  width: 6.42857rem;
-}
-/* line 30, ../sass/modules/_block.sass */
-.field-collection-item-field-link-collection .field-name-field-link {
-  padding-top: 1.42857rem;
-}
-
-/* line 36, ../sass/modules/_block.sass */
-.color-link {
-  left: 50%;
-  top: 0;
-  margin-left: -3.21429rem;
-  position: absolute;
-  -webkit-border-radius: 100%;
-  -moz-border-radius: 100%;
-  -ms-border-radius: 100%;
-  -o-border-radius: 100%;
-  border-radius: 100%;
-  z-index: 1;
-}
-
 /* line 6, ../sass/components/_forms.sass */
 .page-user.not-logged-in .main > form {
   padding: 1.5625rem;
 }
 
-/* line 18, ../sass/components/_forms.sass */
+/* line 29, ../sass/components/_forms.sass */
+.container-inline-date .form-item, .container-inline-date .form-item input {
+  width: 100%;
+}
+
+/* line 36, ../sass/components/_forms.sass */
 .confirm-parent, .password-parent, .password-suggestions {
   max-width: 100%;
 }
 
-/* line 21, ../sass/components/_forms.sass */
+/* line 39, ../sass/components/_forms.sass */
 .password-strength {
   display: none;
 }
 
-/* line 25, ../sass/components/_forms.sass */
+/* line 43, ../sass/components/_forms.sass */
 div.form-type-password-confirm {
   padding-top: 0;
 }
-/* line 28, ../sass/components/_forms.sass */
+/* line 46, ../sass/components/_forms.sass */
 div.form-type-password-confirm > label {
   display: none;
 }
-/* line 31, ../sass/components/_forms.sass */
+/* line 49, ../sass/components/_forms.sass */
 div.form-type-password-confirm .form-item {
   padding-top: 0.71429rem;
   width: 100%;
 }
-/* line 35, ../sass/components/_forms.sass */
+/* line 53, ../sass/components/_forms.sass */
 div.form-type-password-confirm .description {
   margin-top: -0.57143rem;
   margin-bottom: 1.71429rem;
 }
 
-/* line 40, ../sass/components/_forms.sass */
+/* line 58, ../sass/components/_forms.sass */
 div.form-item div.password-suggestions {
   display: none !important;
 }
 
-/* line 43, ../sass/components/_forms.sass */
+/* line 61, ../sass/components/_forms.sass */
 div.password-confirm {
   font-size: 0.9em;
   margin-top: 0;
@@ -718,15 +725,15 @@ div.password-confirm {
   color: white;
   position: relative;
 }
-/* line 50, ../sass/components/_forms.sass */
+/* line 68, ../sass/components/_forms.sass */
 div.password-confirm:before {
   content: "Matches:";
-  color: #4d4d4d;
+  color: #111111;
   position: absolute;
   bottom: 0;
   right: 1.92857rem;
 }
-/* line 57, ../sass/components/_forms.sass */
+/* line 75, ../sass/components/_forms.sass */
 div.password-confirm span.error, div.password-confirm span.ok {
   display: inline-block;
   font-size: 0.75em;
@@ -737,17 +744,17 @@ div.password-confirm span.error, div.password-confirm span.ok {
   text-align: center;
   width: 1.71429rem;
 }
-/* line 67, ../sass/components/_forms.sass */
+/* line 85, ../sass/components/_forms.sass */
 div.password-confirm span.ok {
   background: #6aa880;
 }
 
-/* line 74, ../sass/components/_forms.sass */
+/* line 93, ../sass/components/_forms.sass */
 .form-item {
   margin-bottom: 0;
   margin-top: 0;
 }
-/* line 80, ../sass/components/_forms.sass */
+/* line 99, ../sass/components/_forms.sass */
 .form-item input ~ .description,
 .form-item select ~ .description {
   margin-top: -0.57143rem;
@@ -773,33 +780,33 @@ input[type="color"] {
   margin-bottom: 1.57143rem;
 }
 
-/* line 87, ../sass/components/_forms.sass */
+/* line 106, ../sass/components/_forms.sass */
 input[type="checkbox"], input[type="radio"] {
   margin-bottom: 0;
 }
 
-/* line 90, ../sass/components/_forms.sass */
+/* line 109, ../sass/components/_forms.sass */
 .form-type-checkbox, .form-type-radio {
   margin-bottom: 1rem;
 }
 
-/* line 96, ../sass/components/_forms.sass */
+/* line 117, ../sass/components/_forms.sass */
 html.js .form-item-autocomplete {
   position: relative;
 }
-/* line 100, ../sass/components/_forms.sass */
+/* line 121, ../sass/components/_forms.sass */
 html.js .form-autocomplete ~ .field-suffix {
   position: relative;
   display: block;
   width: 100%;
 }
-/* line 105, ../sass/components/_forms.sass */
+/* line 126, ../sass/components/_forms.sass */
 html.js .form-autocomplete-wrap {
   margin-top: -1.92857rem;
   position: absolute;
   right: 0.57143rem;
 }
-/* line 110, ../sass/components/_forms.sass */
+/* line 131, ../sass/components/_forms.sass */
 html.js .spinner {
   display: inline-block;
   height: 1.07143rem;
@@ -824,11 +831,11 @@ html.js .spinner:before {
   border-right: 0.125rem solid transparent;
   border-radius: 100%;
 }
-/* line 114, ../sass/components/_forms.sass */
+/* line 135, ../sass/components/_forms.sass */
 html.js input.form-autocomplete {
   background-image: none;
 }
-/* line 117, ../sass/components/_forms.sass */
+/* line 138, ../sass/components/_forms.sass */
 html.js input.form-autocomplete.throbbing ~ .field-suffix .spinner {
   -webkit-animation: rotation 0.75s infinite linear;
   -moz-animation: rotation 0.75s infinite linear;
@@ -840,14 +847,14 @@ html.js input.form-autocomplete.throbbing ~ .field-suffix .spinner:before {
   border-top-color: #626262;
 }
 
-/* line 125, ../sass/components/_forms.sass */
+/* line 146, ../sass/components/_forms.sass */
 fieldset legend {
   margin-left: 0;
   margin-bottom: 1em;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 139, ../sass/components/_forms.sass */
+  /* line 160, ../sass/components/_forms.sass */
   .page-user.not-logged-in div.main > ul.button-group, .page-user.not-logged-in div.main > form {
     max-width: 75%;
     margin-right: auto;
@@ -855,11 +862,11 @@ fieldset legend {
     float: none;
     display: block;
   }
-  /* line 143, ../sass/components/_forms.sass */
+  /* line 164, ../sass/components/_forms.sass */
   .page-user.not-logged-in div.main > form {
     padding: 5.35714rem;
   }
-  /* line 146, ../sass/components/_forms.sass */
+  /* line 167, ../sass/components/_forms.sass */
   .page-user.not-logged-in div.main > form > div {
     max-width: 25rem;
     margin-right: auto;
@@ -869,24 +876,24 @@ fieldset legend {
   }
 }
 @media only screen and (min-width: 59em) {
-  /* line 163, ../sass/components/_forms.sass */
+  /* line 184, ../sass/components/_forms.sass */
   .locality-block .form-item:first-child {
     margin-right: 2%;
     width: 44%;
   }
-  /* line 167, ../sass/components/_forms.sass */
+  /* line 188, ../sass/components/_forms.sass */
   .locality-block .form-item:nth-child(2) {
     margin-right: 2%;
     width: 34%;
   }
-  /* line 171, ../sass/components/_forms.sass */
+  /* line 192, ../sass/components/_forms.sass */
   .locality-block .form-item:last-child {
     margin-right: 0;
     width: 18%;
   }
 }
 @media only screen and (min-width: 68.64286em) {
-  /* line 178, ../sass/components/_forms.sass */
+  /* line 199, ../sass/components/_forms.sass */
   .page-user.not-logged-in div.main > ul.button-group, .page-user.not-logged-in div.main > form {
     max-width: 60%;
   }
@@ -1003,7 +1010,7 @@ ul[data-orbit] {
   margin: 0;
 }
 /* line 18, ../sass/modules/_orbit-core.sass */
-ul[data-orbit] h4 {
+ul[data-orbit] h2, ul[data-orbit] h3, ul[data-orbit] h4 {
   color: white;
 }
 /* line 24, ../sass/modules/_orbit-core.sass */
@@ -1076,22 +1083,22 @@ ul[data-orbit] ~ .orbit-next:before {
 }
 
 @media only screen and (min-width: 68.64286em) {
-  /* line 89, ../sass/modules/_orbit-core.sass */
+  /* line 92, ../sass/modules/_orbit-core.sass */
   .l-featured .orbit-container {
     margin-left: -2.85714rem;
     margin-right: -2.85714rem;
     padding-left: 2.85714rem;
     padding-right: 2.85714rem;
   }
-  /* line 93, ../sass/modules/_orbit-core.sass */
+  /* line 96, ../sass/modules/_orbit-core.sass */
   .l-featured .orbit-container ul[data-orbit] {
     overflow: hidden;
   }
-  /* line 98, ../sass/modules/_orbit-core.sass */
+  /* line 101, ../sass/modules/_orbit-core.sass */
   .l-featured ul[data-orbit] ~ .orbit-prev, .l-featured ul[data-orbit] ~ .orbit-next {
     color: #cccccc;
   }
-  /* line 102, ../sass/modules/_orbit-core.sass */
+  /* line 105, ../sass/modules/_orbit-core.sass */
   .l-featured ul[data-orbit] ~ .orbit-prev:hover, .l-featured ul[data-orbit] ~ .orbit-next:hover {
     color: #b3b3b3;
   }
@@ -1108,13 +1115,13 @@ ul[data-orbit] ~ .orbit-next:before {
   padding: 0;
   margin: 0;
 }
-/* line 653, ../sass/base/_mixins.sass */
+/* line 659, ../sass/base/_mixins.sass */
 .right-off-canvas-menu .menu-name-main-menu li {
   padding: 0;
   display: block;
   margin-bottom: 0.35714rem;
 }
-/* line 658, ../sass/base/_mixins.sass */
+/* line 664, ../sass/base/_mixins.sass */
 .right-off-canvas-menu .menu-name-main-menu li a {
   color: white;
   font-family: "open-sans";
@@ -1128,18 +1135,18 @@ ul[data-orbit] ~ .orbit-next:before {
   line-height: 3.85714rem;
   display: inline-block;
 }
-/* line 633, ../sass/base/_mixins.sass */
+/* line 639, ../sass/base/_mixins.sass */
 .right-off-canvas-menu .menu-name-main-menu li a:hover {
   background: #42484f;
   color: #e6e6e6;
 }
-/* line 662, ../sass/base/_mixins.sass */
+/* line 668, ../sass/base/_mixins.sass */
 .right-off-canvas-menu .menu-name-main-menu li.active a, .right-off-canvas-menu .menu-name-main-menu li .active-trail a {
   color: #deb64b;
   border-top-color: #deb64b;
   background: #42484f;
 }
-/* line 643, ../sass/base/_mixins.sass */
+/* line 649, ../sass/base/_mixins.sass */
 .right-off-canvas-menu .menu-name-main-menu li.active a:hover, .right-off-canvas-menu .menu-name-main-menu li .active-trail a:hover {
   background: #42484f;
   border-top-color: #d0a226;
@@ -1190,13 +1197,13 @@ ul[data-orbit] ~ .orbit-next:before {
     padding: 0;
     margin: 0;
   }
-  /* line 653, ../sass/base/_mixins.sass */
+  /* line 659, ../sass/base/_mixins.sass */
   .right-off-canvas-menu .menu-name-main-menu li {
     padding: 0;
     display: block;
     margin-bottom: 0.35714rem;
   }
-  /* line 658, ../sass/base/_mixins.sass */
+  /* line 664, ../sass/base/_mixins.sass */
   .right-off-canvas-menu .menu-name-main-menu li a {
     color: white;
     font-family: "open-sans";
@@ -1210,18 +1217,18 @@ ul[data-orbit] ~ .orbit-next:before {
     line-height: 3.85714rem;
     display: inline-block;
   }
-  /* line 633, ../sass/base/_mixins.sass */
+  /* line 639, ../sass/base/_mixins.sass */
   .right-off-canvas-menu .menu-name-main-menu li a:hover {
     background: #42484f;
     color: #e6e6e6;
   }
-  /* line 662, ../sass/base/_mixins.sass */
+  /* line 668, ../sass/base/_mixins.sass */
   .right-off-canvas-menu .menu-name-main-menu li.active a, .right-off-canvas-menu .menu-name-main-menu li .active-trail a {
     color: #deb64b;
     border-top-color: #deb64b;
     background: #42484f;
   }
-  /* line 643, ../sass/base/_mixins.sass */
+  /* line 649, ../sass/base/_mixins.sass */
   .right-off-canvas-menu .menu-name-main-menu li.active a:hover, .right-off-canvas-menu .menu-name-main-menu li .active-trail a:hover {
     background: #42484f;
     border-top-color: #d0a226;
@@ -1282,11 +1289,11 @@ ul[data-orbit] ~ .orbit-next:before {
   .right-off-canvas-menu .menu-name-main-menu {
     border-top: 0;
   }
-  /* line 670, ../sass/base/_mixins.sass */
+  /* line 676, ../sass/base/_mixins.sass */
   .right-off-canvas-menu .menu-name-main-menu li {
     display: inline-block;
   }
-  /* line 673, ../sass/base/_mixins.sass */
+  /* line 679, ../sass/base/_mixins.sass */
   .right-off-canvas-menu .menu-name-main-menu li a {
     padding: 0 1.35714rem;
   }
@@ -1322,11 +1329,177 @@ ul[data-orbit] ~ .orbit-next:before {
   }
 }
 /* line 3, ../sass/theme/_hero.sass */
-.bean-slideshow {
+.bean-slideshow,
+.block-views-calendar-block-3 {
   margin-bottom: 1.5625rem;
 }
 
-/* line 2, ../sass/theme/_icon-box.sass */
-.bean-linkbox {
+/* line 11, ../sass/theme/_icon-box.sass */
+.bean-linkbox,
+.block-views-event-categories-block {
   margin-bottom: 1.5625rem;
+}
+
+/* line 17, ../sass/theme/_icon-box.sass */
+.field-collection-item-field-link-collection,
+.vocabulary-event-category.view-mode-teaser {
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+}
+/* line 24, ../sass/theme/_icon-box.sass */
+.field-collection-item-field-link-collection .field-name-field-link,
+.vocabulary-event-category.view-mode-teaser .field-name-field-link {
+  padding-top: 1.42857rem;
+}
+/* line 30, ../sass/theme/_icon-box.sass */
+.field-collection-item-field-link-collection:hover i, .field-collection-item-field-link-collection.active i,
+.vocabulary-event-category.view-mode-teaser:hover i,
+.vocabulary-event-category.view-mode-teaser.active i {
+  opacity: 1;
+}
+
+/* line 35, ../sass/theme/_icon-box.sass */
+.circle-icon i {
+  color: white;
+  font-size: 3.21429rem;
+  line-height: 6.42857rem;
+  margin-right: 0;
+  opacity: 0.5;
+  position: relative;
+  z-index: 2;
+}
+/* line 44, ../sass/theme/_icon-box.sass */
+.circle-icon i, .circle-icon .color-link {
+  height: 6.42857rem;
+  width: 6.42857rem;
+}
+
+/* line 48, ../sass/theme/_icon-box.sass */
+.color-link {
+  left: 50%;
+  top: 0;
+  margin-left: -3.21429rem;
+  position: absolute;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
+  z-index: 1;
+}
+
+/* line 63, ../sass/theme/_icon-box.sass */
+.field-collection-item-field-link-collection:hover .circle-icon, .field-collection-item-field-link-collection.active .circle-icon,
+.vocabulary-event-category.view-mode-teaser:hover .circle-icon,
+.vocabulary-event-category.view-mode-teaser.active .circle-icon {
+  margin-top: -0.57143rem;
+  padding-bottom: 0.57143rem;
+}
+/* line 67, ../sass/theme/_icon-box.sass */
+.field-collection-item-field-link-collection .circle-icon,
+.vocabulary-event-category.view-mode-teaser .circle-icon {
+  display: block;
+  -webkit-transition: all ease-in;
+  -webkit-transition-delay: 0.05s;
+  -moz-transition: all ease-in 0.05s;
+  -o-transition: all ease-in 0.05s;
+  transition: all ease-in 0.05s;
+  position: relative;
+}
+
+/* line 202, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
+.vocabulary-event-category.view-mode-teaser:after {
+  content: "";
+  display: block;
+  border-bottom: 1px solid #cccccc;
+  margin-left: 0.71429rem;
+  margin-right: 0.71429rem;
+  padding-top: 1.42857rem;
+  margin-bottom: 1.42857rem;
+}
+/* line 79, ../sass/theme/_icon-box.sass */
+.vocabulary-event-category.view-mode-teaser .group-left, .vocabulary-event-category.view-mode-teaser .group-right {
+  min-height: 8.57143rem;
+}
+/* line 83, ../sass/theme/_icon-box.sass */
+.vocabulary-event-category.view-mode-teaser .group-right {
+  text-align: left;
+  padding-top: 1.42857rem;
+}
+/* line 87, ../sass/theme/_icon-box.sass */
+.vocabulary-event-category.view-mode-teaser i {
+  margin-left: 0.07143rem;
+}
+
+/* line 7, ../sass/theme/_events.sass */
+.block-views-exp-calendar-list form {
+  padding: 0 1.42857rem;
+}
+/* line 10, ../sass/theme/_events.sass */
+.block-views-exp-calendar-list input, .block-views-exp-calendar-list select {
+  max-width: 100%;
+  margin-bottom: 0;
+}
+/* line 14, ../sass/theme/_events.sass */
+.block-views-exp-calendar-list .views-exposed-widget {
+  padding: 0;
+}
+/* line 24, ../sass/theme/_events.sass */
+.block-views-exp-calendar-list .form-type-date-popup.form-item-date-min {
+  position: relative;
+}
+/* line 27, ../sass/theme/_events.sass */
+.block-views-exp-calendar-list .form-type-date-popup.form-item-date-min:after {
+  background: white;
+  content: "To";
+  position: absolute;
+  height: 1.42857rem;
+  bottom: 0.71429rem;
+  left: 50%;
+  margin-left: -2.14286rem;
+  width: 4.28571rem;
+  text-align: center;
+}
+/* line 202, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
+.block-views-exp-calendar-list .form-item.form-type-textfield:after, .block-views-exp-calendar-list .form-item.form-type-select:after {
+  content: "";
+  display: block;
+  border-bottom: solid #cccccc 1px;
+  margin-left: -1.42857rem;
+  margin-right: -1.42857rem;
+  padding-top: 1.42857rem;
+  margin-bottom: 1.42857rem;
+}
+/* line 44, ../sass/theme/_events.sass */
+.block-views-exp-calendar-list .views-exposed-widget .form-submit {
+  margin-top: 0;
+}
+
+/* line 64, ../sass/theme/_events.sass */
+.node-teaser.node-event .date-calendar {
+  border: solid #dddddd 1px;
+  text-align: center;
+  padding: 0.85714rem 0;
+  position: relative;
+  text-transform: uppercase;
+}
+/* line 697, ../sass/base/_mixins.sass */
+.node-teaser.node-event .date-calendar:before {
+  content: "";
+  display: block;
+  top: 0;
+  position: absolute;
+  background: #deb64b;
+  height: 0.21429rem;
+  width: 100%;
+}
+/* line 703, ../sass/base/_mixins.sass */
+.node-teaser.node-event .date-calendar .date-display-single > *:first-child {
+  font-size: 1.14286rem;
+}
+/* line 706, ../sass/base/_mixins.sass */
+.node-teaser.node-event .date-calendar .date-display-single > *:last-child {
+  font-size: 2.57143rem;
+  padding: 0.85714rem 0 0.42857rem 0;
 }

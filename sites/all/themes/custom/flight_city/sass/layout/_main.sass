@@ -4,27 +4,59 @@
 // Main Content
 // ----------------------------------------------------------------------------
 
-.main > 
+.main 
+  .block-title
 
-  // tabs
-  ul.button-group
-    margin-bottom: $small-region-pad-small
-  
-    li.active
+  & > 
+
+    // tabs
+    ul.button-group
+      margin-bottom: $small-region-pad-small
+    
+      li.active
+        a
+          +button-style($primary-color)
+
       a
-        +button-style($primary-color)
+        margin-bottom: rem-calc(5)
+        border-color: $gray
 
-    a
-      margin-bottom: rem-calc(5)
-      border-color: $gray
+    // action links
+    ul.action-links
+      +list-float
 
-  // action links
-  ul.action-links
-    +list-float
-
-    a
-      +button($button-tny, $success-color, true)
-      +border-radius(3px)
+      a
+        +button($button-tny, $success-color, true)
+        +border-radius(3px)
 
 .block-workbench
   margin-bottom: $small-region-pad-small
+
+
+
+// Common fields
+// ----------------------------------------------------------------------------
+
+.more-link,
+.field-name-node-link
+  +f(alt-alt-bold)
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($medium-up)
+
+  // Main Content
+  // ----------------------------------------------------------------------------
+
+  .main 
+    .block-title
+      font-size: $h1-font-size
+      margin-bottom: rem-calc(30)
+
+  // center main in columns
+  .medium-push-3.main
+    margin-left: (grid-calc(1, 12)/2)

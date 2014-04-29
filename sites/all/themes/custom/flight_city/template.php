@@ -53,11 +53,11 @@ function flight_city_preprocess_page(&$vars) {
     $vars['sidebar_first_grid'] = 'medium-3 medium-pull-6';
     $vars['sidebar_sec_grid'] = 'medium-3';
   } elseif (empty($left) && !empty($right)) {
-    $vars['main_grid'] = 'medium-9';
+    $vars['main_grid'] = 'medium-8';
     $vars['sidebar_first_grid'] = '';
     $vars['sidebar_sec_grid'] = 'medium-3';
   } elseif (!empty($left) && empty($right)) {
-    $vars['main_grid'] = 'medium-9 medium-push-3';
+    $vars['main_grid'] = 'medium-8 medium-push-3';
     $vars['sidebar_first_grid'] = 'medium-3 medium-pull-9';
     $vars['sidebar_sec_grid'] = '';
   } else {

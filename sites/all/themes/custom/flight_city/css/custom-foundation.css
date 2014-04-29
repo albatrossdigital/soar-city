@@ -3815,12 +3815,12 @@ form .row textarea.columns {
 /* line 332, ../sass/vendor/foundation/components/_forms.scss */
 label {
   font-size: 1rem;
-  color: #4d4d4d;
+  color: #111111;
   cursor: pointer;
   display: block;
   font-weight: normal;
   line-height: 1.5;
-  margin-bottom: 0;
+  margin-bottom: 0.85714rem;
   /* Styles for required inputs */
 }
 /* line 333, ../sass/vendor/foundation/components/_forms.scss */
@@ -3836,7 +3836,7 @@ label.inline {
 /* line 336, ../sass/vendor/foundation/components/_forms.scss */
 label small {
   text-transform: capitalize;
-  color: #676767;
+  color: #353535;
 }
 
 /* line 342, ../sass/vendor/foundation/components/_forms.scss */
@@ -3973,10 +3973,10 @@ input[type="url"],
 textarea {
   -webkit-appearance: none;
   background-color: white;
-  font-family: inherit;
-  border: 1px solid #cccccc;
+  font-family: "open-sans";
+  border: 1px solid #bbbbbb;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-  color: rgba(0, 0, 0, 0.75);
+  color: #111111;
   display: block;
   font-size: 1rem;
   margin: 0 0 1.14286rem 0;
@@ -3986,25 +3986,7 @@ textarea {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  transition: box-shadow 0.45s, border-color 0.45s ease-in-out;
-}
-/* line 129, ../sass/vendor/foundation/components/_global.scss */
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="date"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="month"]:focus,
-input[type="week"]:focus,
-input[type="email"]:focus,
-input[type="number"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="time"]:focus,
-input[type="url"]:focus,
-textarea:focus {
-  box-shadow: 0 0 5px #999999;
-  border-color: #999999;
+  transition: all 0.15s linear;
 }
 /* line 124, ../sass/vendor/foundation/components/_forms.scss */
 input[type="text"]:focus,
@@ -4092,7 +4074,7 @@ select {
   background-image: url("data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==");
   background-repeat: no-repeat;
   background-position: 97% center;
-  border: 1px solid #cccccc;
+  border: 1px solid #bbbbbb;
   padding: 0.57143rem;
   font-size: 1rem;
   border-radius: 0;
@@ -4210,7 +4192,7 @@ span.error, small.error {
 }
 /* line 473, ../sass/vendor/foundation/components/_forms.scss */
 .error > label > small {
-  color: #676767;
+  color: #353535;
   background: transparent;
   padding: 0;
   text-transform: capitalize;
