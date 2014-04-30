@@ -40,12 +40,22 @@ meta.foundation-data-attribute-namespace {
 }
 
 /* line 43, ../sass/components/_icons-fontawesome.sass */
-i[class^="fa"], [role=complementary] .block-domain-menu-block .menu-block-wrapper [data-menu-back] a:before, .breadcrumbs li:before, .breadcrumbs li:first-child a:before, ul[data-orbit] ~ .orbit-prev:before, ul[data-orbit] ~ .orbit-next:before, .right-off-canvas-menu .menu-name-main-menu a:after {
+i[class^="fa"], [role=complementary] .block-domain-menu-block .menu-block-wrapper [data-menu-back] a:before, .breadcrumbs li:before, ul[data-orbit] ~ .orbit-prev:before, ul[data-orbit] ~ .orbit-next:before, .right-off-canvas-menu .menu-name-main-menu a:after {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
   line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 52, ../sass/components/_icons-fontawesome.sass */
+a.social-icon.Facebook:before, a.social-icon.Twitter:before, a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, .breadcrumbs li:first-child a:before {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -60,24 +70,64 @@ i[class^="fa"], [role=complementary] .block-domain-menu-block .menu-block-wrappe
 
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
  * readers do not read off random characters that represent icons */
-/* line 115, ../sass/components/_icons-fontawesome.sass */
+/* line 136, ../sass/components/_icons-fontawesome.sass */
 i[class^="fa"] {
   margin-right: 0.75em;
 }
 
-/* line 1182, ../sass/components/_icons-fontawesome.sass */
+/* line 1203, ../sass/components/_icons-fontawesome.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper [data-menu-back] a:before {
   content: "\f053";
 }
 
-/* line 2430, ../sass/components/_icons-fontawesome.sass */
+/* line 1734, ../sass/components/_icons-fontawesome.sass */
+a.social-icon.Twitter:before {
+  content: "\f099";
+}
+
+/* line 1742, ../sass/components/_icons-fontawesome.sass */
+a.social-icon.Facebook:before {
+  content: "\f09a";
+}
+
+/* line 2067, ../sass/components/_icons-fontawesome.sass */
+a.social-icon.Pinterest:before {
+  content: "\f0d2";
+}
+
+/* line 2091, ../sass/components/_icons-fontawesome.sass */
+a.social-icon.Googleplus:before {
+  content: "\f0d5";
+}
+
+/* line 2182, ../sass/components/_icons-fontawesome.sass */
+a.social-icon.Linkedin:before {
+  content: "\f0e1";
+}
+
+/* line 2451, ../sass/components/_icons-fontawesome.sass */
 ul[data-orbit] ~ .orbit-prev:before {
   content: "\f104";
 }
 
-/* line 2438, ../sass/components/_icons-fontawesome.sass */
+/* line 2459, ../sass/components/_icons-fontawesome.sass */
 ul[data-orbit] ~ .orbit-next:before {
   content: "\f105";
+}
+
+/* line 3205, ../sass/components/_icons-fontawesome.sass */
+a.social-icon.Youtube:before {
+  content: "\f167";
+}
+
+/* line 3261, ../sass/components/_icons-fontawesome.sass */
+a.social-icon.Flickr:before {
+  content: "\f16e";
+}
+
+/* line 3373, ../sass/components/_icons-fontawesome.sass */
+a.social-icon.Dribbble:before {
+  content: "\f17d";
 }
 
 @-webkit-keyframes rotation {
@@ -654,11 +704,11 @@ html, body {
 [role=complementary] .block-domain-menu-block .menu-block-wrapper [data-menu-back] a {
   border: none;
 }
-/* line 63, ../sass/components/_icons-fontawesome.sass */
+/* line 84, ../sass/components/_icons-fontawesome.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper [data-menu-back] a:before {
   font-size: inherit;
 }
-/* line 71, ../sass/components/_icons-fontawesome.sass */
+/* line 92, ../sass/components/_icons-fontawesome.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper [data-menu-back] a:before {
   margin-right: 0.5em;
   text-align: center;
@@ -900,6 +950,102 @@ fieldset legend {
     max-width: 60%;
   }
 }
+/* line 11, ../sass/modules/_social-media-buttons.sass */
+.view-mode-social .group-right ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* line 29, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
+.view-mode-social .group-right ul li {
+  display: inline-block;
+}
+
+/* line 14, ../sass/modules/_social-media-buttons.sass */
+a.social-icon {
+  overflow: hidden;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  display: inline-block;
+  height: 33px;
+  width: 33px;
+  text-indent: -330px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+  opacity: 0.9;
+  margin-right: 0.71429rem;
+}
+/* line 171, ../sass/components/_icons-fontawesome.sass */
+a.social-icon:before {
+  position: absolute;
+  left: 0;
+  text-align: center;
+  top: 0;
+  text-indent: 0;
+  font-size: 1.35714rem;
+  line-height: 33px;
+  width: 33px;
+}
+/* line 20, ../sass/modules/_social-media-buttons.sass */
+li:last-child > a.social-icon {
+  margin-right: 0;
+}
+/* line 23, ../sass/modules/_social-media-buttons.sass */
+a.social-icon:hover, a.social-icon:active {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+}
+/* line 26, ../sass/modules/_social-media-buttons.sass */
+a.social-icon:before {
+  color: white;
+  text-indent: 0;
+}
+/* line 31, ../sass/modules/_social-media-buttons.sass */
+a.social-icon.Facebook {
+  background: #3460a1;
+}
+/* line 35, ../sass/modules/_social-media-buttons.sass */
+a.social-icon.Twitter {
+  background: #28aae1;
+}
+/* line 39, ../sass/modules/_social-media-buttons.sass */
+a.social-icon.Googleplus {
+  background: #28aae1;
+}
+/* line 43, ../sass/modules/_social-media-buttons.sass */
+a.social-icon.Linkedin {
+  background: #136d9d;
+}
+/* line 47, ../sass/modules/_social-media-buttons.sass */
+a.social-icon.Flickr {
+  background: #ed2a90;
+}
+/* line 51, ../sass/modules/_social-media-buttons.sass */
+a.social-icon.Youtube {
+  background: #ee3138;
+}
+/* line 55, ../sass/modules/_social-media-buttons.sass */
+a.social-icon.Pinterest {
+  background: #cc2127;
+}
+/* line 59, ../sass/modules/_social-media-buttons.sass */
+a.social-icon.Rss {
+  background: #28aae1;
+}
+/* line 63, ../sass/modules/_social-media-buttons.sass */
+a.social-icon.Dribbble {
+  background: #ef548f;
+}
+/* line 67, ../sass/modules/_social-media-buttons.sass */
+a.social-icon.Vimeo {
+  background: #28aae1;
+}
+
 /* line 2, ../sass/modules/_topbar.sass */
 .top-bar {
   overflow: hidden;
@@ -987,7 +1133,7 @@ fieldset legend {
   width: 26px;
   text-indent: -260px;
 }
-/* line 150, ../sass/components/_icons-fontawesome.sass */
+/* line 171, ../sass/components/_icons-fontawesome.sass */
 .breadcrumbs li:first-child a:before {
   content: "\f015";
   position: absolute;
@@ -1040,14 +1186,14 @@ ul[data-orbit] ~ .orbit-prev {
   display: inline-block;
   text-align: center;
 }
-/* line 91, ../sass/components/_icons-fontawesome.sass */
+/* line 112, ../sass/components/_icons-fontawesome.sass */
 ul[data-orbit] ~ .orbit-prev, ul[data-orbit] ~ .orbit-prev:before {
   height: 2.85714rem;
   line-height: 2.85714rem;
   overflow: hidden;
   width: 2.85714rem;
 }
-/* line 98, ../sass/components/_icons-fontawesome.sass */
+/* line 119, ../sass/components/_icons-fontawesome.sass */
 ul[data-orbit] ~ .orbit-prev:before {
   font-size: 3.92857rem;
 }
@@ -1056,14 +1202,14 @@ ul[data-orbit] ~ .orbit-next {
   display: inline-block;
   text-align: center;
 }
-/* line 91, ../sass/components/_icons-fontawesome.sass */
+/* line 112, ../sass/components/_icons-fontawesome.sass */
 ul[data-orbit] ~ .orbit-next, ul[data-orbit] ~ .orbit-next:before {
   height: 2.85714rem;
   line-height: 2.85714rem;
   overflow: hidden;
   width: 2.85714rem;
 }
-/* line 98, ../sass/components/_icons-fontawesome.sass */
+/* line 119, ../sass/components/_icons-fontawesome.sass */
 ul[data-orbit] ~ .orbit-next:before {
   font-size: 3.92857rem;
 }
@@ -1172,7 +1318,7 @@ ul[data-orbit] ~ .orbit-next:before {
   padding: 0;
   margin: 0;
 }
-/* line 540, ../sass/components/_icons-fontawesome.sass */
+/* line 561, ../sass/components/_icons-fontawesome.sass */
 .right-off-canvas-menu .menu-name-main-menu a:after {
   content: "\f105";
   color: #66b9cd;

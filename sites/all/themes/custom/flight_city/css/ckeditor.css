@@ -6503,7 +6503,7 @@ i[class^="fa"] {
 
 /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
  * readers do not read off random characters that represent icons */
-/* line 115, ../sass/components/_icons-fontawesome.sass */
+/* line 136, ../sass/components/_icons-fontawesome.sass */
 i[class^="fa"] {
   margin-right: 0.75em;
 }

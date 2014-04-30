@@ -104,6 +104,39 @@
       <?php endif; ?>
 
       <?php print render($page['content']); ?>
+
+
+      <?php if (!empty($page['content_half_1_l']) || !empty($page['content_half_1_r']) || !empty($page['content_full_1'])): ?>
+        <!--.content-bottom-1-->
+        <section class="l-content-bottom-1 row">
+          <div class="content-bottom-left medium-6 columns">
+            <?php print render($page['content_half_1_l']); ?>
+          </div>
+          <div class="content-bottom-right medium-6 columns">
+            <?php print render($page['content_half_1_r']); ?>
+          </div>
+          <div class="content-bottom-full medium-12 columns">
+            <?php print render($page['content_full_1']); ?>
+          </div>
+        </section>
+        <!--/.content-bottom-1 -->
+      <?php endif; ?>
+
+      <?php if (!empty($page['content_half_2_l']) || !empty($page['content_half_2_r']) || !empty($page['content_full_2'])): ?>
+        <!--.content-bottom-2-->
+        <section class="l-content-bottom-2 row">
+          <div class="content-bottom-left medium-6 columns">
+            <?php print render($page['content_half_2_l']); ?>
+          </div>
+          <div class="content-bottom-right medium-6 columns">
+            <?php print render($page['content_half_2_r']); ?>
+          </div>
+          <div class="content-bottom-full medium-12 columns">
+            <?php print render($page['content_full_2']); ?>
+          </div>
+        </section>
+        <!--/.content-bottom-2 -->
+      <?php endif; ?>
     </div>
     <!--/.main region -->
 
