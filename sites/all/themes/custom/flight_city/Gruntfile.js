@@ -34,7 +34,7 @@ module.exports = function(grunt) {
 
       sass: {
         files: '<%= global_vars.theme_scss %>/**/*.<%= global_vars.theme_scss %>',
-        tasks: ['compass:dist'],
+        tasks: ['newer:compass:dist'],
         options: {
           livereload: true
         }
@@ -47,6 +47,10 @@ module.exports = function(grunt) {
         tasks: [
           'jshint',
         ]
+      },
+      images: {
+        files: 'images/src/{,**/}*.png',
+        tasks: ['imagemin']
       }
     },
     jshint: {
@@ -92,6 +96,19 @@ module.exports = function(grunt) {
         }
       ]
     },
+    imagemin: {
+      options: {                       // Target options
+        optimizationLevel: 3
+      },
+      dynamic: {                         // Another target
+        files: [{
+          expand: true,                  // Enable dynamic expansion
+          cwd: 'images/src/',                   // Src matches are relative to this path
+          src: ['**/*.png'],             // Actual patterns to match
+          dest: 'images/'                  // Destination path prefix
+        }]
+      }
+    },
     copyIcons: {
       files: [
         {
@@ -107,8 +124,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-stripmq');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-newer');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-  grunt.registerTask('build', ['compass','stripmq']);
+  grunt.registerTask('build', ['compass', 'imagemin','stripmq']);
   grunt.registerTask('icons', ['compass', 'buildIcons', 'copyIcons']);
   grunt.registerTask('default', ['watch','compass','jshint']);
 }
