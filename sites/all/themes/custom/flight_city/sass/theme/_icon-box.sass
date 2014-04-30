@@ -74,14 +74,21 @@ $icon-area-font-size: rem-calc(45)
 // --------------------------
 
 .vocabulary-event-category.view-mode-teaser
-  +nice-row-border($column-gutter/2, rem-calc(20), 1px solid $gray, bottom, hidden)
+  +nice-row-border($column-gutter/2, rem-calc(22), 1px solid $gray, bottom, hidden)
   
   .group-left, .group-right
 
   // right side
   .group-right
     text-align: left
-    padding-top: rem-calc(20)
+
+    & > div
+      display: table
+      min-height: rem-calc(80)
+
+    & > div > *
+      display: table-cell
+      vertical-align: middle
 
   i
     margin-left: rem-calc(1)
@@ -101,4 +108,4 @@ $icon-area-font-size: rem-calc(45)
   .vocabulary-event-category.view-mode-teaser
     
     .group-left, .group-right
-      min-height: rem-calc(120)
+      //min-height: rem-calc(120)

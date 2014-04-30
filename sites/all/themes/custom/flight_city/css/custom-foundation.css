@@ -5942,7 +5942,7 @@ h4 {
 
 /* line 250, ../sass/vendor/foundation/components/_type.scss */
 h5 {
-  font-size: 1rem;
+  font-size: 1.14286rem;
 }
 
 /* line 251, ../sass/vendor/foundation/components/_type.scss */
@@ -6341,7 +6341,7 @@ blockquote p {
 }
 /* line 163, ../sass/vendor/foundation/components/_offcanvas.scss */
 .tab-bar h1, .tab-bar h2, .tab-bar h3, .tab-bar h4 {
-  font-size: 1rem;
+  font-size: 1.14286rem;
 }
 
 /* line 326, ../sass/vendor/foundation/components/_offcanvas.scss */

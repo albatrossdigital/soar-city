@@ -5942,7 +5942,7 @@ h4 {
 
 /* line 250, ../sass/vendor/foundation/components/_type.scss */
 h5 {
-  font-size: 1rem;
+  font-size: 1.14286rem;
 }
 
 /* line 251, ../sass/vendor/foundation/components/_type.scss */
@@ -6235,7 +6235,7 @@ blockquote p {
 }
 /* line 163, ../sass/vendor/foundation/components/_offcanvas.scss */
 .tab-bar h1, .tab-bar h2, .tab-bar h3, .tab-bar h4 {
-  font-size: 1rem;
+  font-size: 1.14286rem;
 }
 
 /* line 326, ../sass/vendor/foundation/components/_offcanvas.scss */
@@ -6628,7 +6628,7 @@ h3, h4 {
 
 /* line 42, ../sass/base/_drupal.sass */
 .label-inline {
-  font-size: 1rem;
+  font-size: 1.14286rem;
   margin-right: 0.25em;
 }
 /* line 47, ../sass/base/_drupal.sass */
@@ -6699,7 +6699,7 @@ h4 {
 /* line 27, ../sass/base/_elements.sass */
 h5 {
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.14286rem;
 }
 
 /* line 31, ../sass/base/_elements.sass */

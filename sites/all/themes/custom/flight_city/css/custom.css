@@ -326,7 +326,7 @@ h3, h4 {
 
 /* line 42, ../sass/base/_drupal.sass */
 .label-inline {
-  font-size: 1rem;
+  font-size: 1.14286rem;
   margin-right: 0.25em;
 }
 /* line 47, ../sass/base/_drupal.sass */
@@ -397,7 +397,7 @@ h4 {
 /* line 27, ../sass/base/_elements.sass */
 h5 {
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.14286rem;
 }
 
 /* line 31, ../sass/base/_elements.sass */
@@ -520,11 +520,19 @@ html, body {
     padding-top: 1.5625rem;
   }
 }
-/* line 13, ../sass/layout/_main.sass */
+/* line 8, ../sass/layout/_main.sass */
+.main .block-title {
+  margin-bottom: 2.5rem;
+}
+/* line 11, ../sass/layout/_main.sass */
+.main .block {
+  margin-bottom: 3.4375rem;
+}
+/* line 17, ../sass/layout/_main.sass */
 .main > ul.button-group {
   margin-bottom: 0.625rem;
 }
-/* line 17, ../sass/layout/_main.sass */
+/* line 21, ../sass/layout/_main.sass */
 .main > ul.button-group li.active a {
   background-color: #0a83a1;
   border-color: #0eb7e1;
@@ -538,12 +546,12 @@ html, body {
 .main > ul.button-group li.active a:hover, .main > ul.button-group li.active a:focus {
   color: white;
 }
-/* line 20, ../sass/layout/_main.sass */
+/* line 24, ../sass/layout/_main.sass */
 .main > ul.button-group a {
   margin-bottom: 0.35714rem;
   border-color: #cccccc;
 }
-/* line 25, ../sass/layout/_main.sass */
+/* line 29, ../sass/layout/_main.sass */
 .main > ul.action-links {
   list-style: none;
   padding: 0;
@@ -553,7 +561,7 @@ html, body {
 .main > ul.action-links li {
   display: inline-block;
 }
-/* line 28, ../sass/layout/_main.sass */
+/* line 32, ../sass/layout/_main.sass */
 .main > ul.action-links a {
   border-style: solid;
   border-width: 0px;
@@ -592,19 +600,23 @@ html, body {
   color: white;
 }
 
-/* line 32, ../sass/layout/_main.sass */
+/* line 36, ../sass/layout/_main.sass */
 .block-workbench {
   margin-bottom: 0.625rem;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 56, ../sass/layout/_main.sass */
+  /* line 60, ../sass/layout/_main.sass */
   .main .block-title {
     font-size: 2.85714rem;
-    margin-bottom: 2.14286rem;
+    margin-bottom: 2.5rem;
+  }
+  /* line 64, ../sass/layout/_main.sass */
+  .main .block {
+    margin-bottom: 3.4375rem;
   }
 
-  /* line 61, ../sass/layout/_main.sass */
+  /* line 68, ../sass/layout/_main.sass */
   .medium-push-3.main {
     margin-left: 4.16667%;
   }
@@ -1575,25 +1587,28 @@ ul[data-orbit] ~ .orbit-next:before {
   border-bottom: 1px solid #cccccc;
   margin-left: 0.71429rem;
   margin-right: 0.71429rem;
-  padding-top: 1.42857rem;
-  margin-bottom: 1.42857rem;
+  padding-top: 1.57143rem;
+  margin-bottom: 1.57143rem;
 }
 /* line 82, ../sass/theme/_icon-box.sass */
 .vocabulary-event-category.view-mode-teaser .group-right {
   text-align: left;
-  padding-top: 1.42857rem;
 }
-/* line 86, ../sass/theme/_icon-box.sass */
+/* line 85, ../sass/theme/_icon-box.sass */
+.vocabulary-event-category.view-mode-teaser .group-right > div {
+  display: table;
+  min-height: 5.71429rem;
+}
+/* line 89, ../sass/theme/_icon-box.sass */
+.vocabulary-event-category.view-mode-teaser .group-right > div > * {
+  display: table-cell;
+  vertical-align: middle;
+}
+/* line 93, ../sass/theme/_icon-box.sass */
 .vocabulary-event-category.view-mode-teaser i {
   margin-left: 0.07143rem;
 }
 
-@media only screen and (min-width: 45.78571em) {
-  /* line 103, ../sass/theme/_icon-box.sass */
-  .vocabulary-event-category.view-mode-teaser .group-left, .vocabulary-event-category.view-mode-teaser .group-right {
-    min-height: 8.57143rem;
-  }
-}
 /* line 568, ../sass/base/_mixins.sass */
 .vocabulary-event-category.view-mode-teaser .group-left {
   width: 8.57143rem;
@@ -1675,7 +1690,12 @@ ul[data-orbit] ~ .orbit-next:before {
   margin-top: 0;
 }
 
-/* line 56, ../sass/theme/_events.sass */
+/* line 53, ../sass/theme/_events.sass */
+.node-event .field-name-title + h5 {
+  margin-bottom: 0.71429rem;
+}
+
+/* line 59, ../sass/theme/_events.sass */
 .node-teaser.node-event {
   /* IE6 */
   /* IE7 */
@@ -1710,7 +1730,7 @@ ul[data-orbit] ~ .orbit-next:before {
   padding-top: 2.5rem;
   margin-bottom: 2.5rem;
 }
-/* line 66, ../sass/theme/_events.sass */
+/* line 69, ../sass/theme/_events.sass */
 .node-teaser.node-event .date-calendar {
   border: solid #dddddd 1px;
   text-align: center;
