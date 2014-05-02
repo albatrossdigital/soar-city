@@ -194,12 +194,12 @@
     </section>
     <section class="row l-footer-sections-bottom">
       <?php if (!empty($page['footer_thirdcolumn'])): ?>
-        <div class="footer-third medium-7 columns">
+        <div class="footer-third medium-6 columns">
           <?php print render($page['footer_thirdcolumn']); ?>
         </div>
       <?php endif; ?>
       <?php if (!empty($page['footer_fourthcolumn'])): ?>
-        <div class="footer-fourth medium-5 columns">
+        <div class="footer-fourth medium-6 columns">
           <?php print render($page['footer_fourthcolumn']); ?>
         </div>
       <?php endif; ?>
@@ -208,11 +208,11 @@
   <?php endif; ?>
 
   <?php if (!empty($page['footer'])): ?>
-    <section class="row l-footer-wrap">
+    <section class="l-footer-wrap"><div class="row">
       <div class="footer medium-12 columns">
         <?php print render($page['footer']); ?>
       </div>
-    </section>
+    </div></section>
   <?php endif; ?>
 </footer>
 <!--/.footer-->

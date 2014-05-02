@@ -34,7 +34,7 @@ module.exports = function(grunt) {
 
       sass: {
         files: '<%= global_vars.theme_scss %>/**/*.<%= global_vars.theme_scss %>',
-        tasks: ['newer:compass:dist'],
+        tasks: ['compass:dist'],
         options: {
           livereload: true
         }

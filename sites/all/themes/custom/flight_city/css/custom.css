@@ -51,7 +51,7 @@ i[class^="fa"], [role=complementary] .block-domain-menu-block .menu-block-wrappe
 }
 
 /* line 52, ../sass/components/_icons-fontawesome.sass */
-a.social-icon.Facebook:before, a.social-icon.Twitter:before, a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, .breadcrumbs li:first-child a:before {
+.draggable a.tabledrag-handle:before, a.social-icon.Facebook:before, a.social-icon.Twitter:before, a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, .breadcrumbs li:first-child a:before {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -180,7 +180,8 @@ a.social-icon.Dribbble:before {
 
 /********************************** */
 /* line 313, ../sass/base/_mixins.sass */
-.block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item label,
+.l-footer-sections-bottom form label, .l-footer-sections-bottom form .grippie, .no-labels label,
+.no-label label, .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item label,
 .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item .description {
   display: none;
 }
@@ -203,11 +204,11 @@ a.social-icon.Dribbble:before {
 }
 
 /* line 370, ../sass/base/_mixins.sass */
-ul[data-orbit] h2 a, ul[data-orbit] h3 a, ul[data-orbit] h4 a, ul[data-orbit] ~ .orbit-prev, ul[data-orbit] ~ .orbit-next, .carousel-caption a {
+.l-footer-sections-bottom a, .l-footer-wrap a, ul[data-orbit] h2 a, ul[data-orbit] h3 a, ul[data-orbit] h4 a, ul[data-orbit] ~ .orbit-prev, ul[data-orbit] ~ .orbit-next, .carousel-caption a {
   color: white;
 }
 /* line 373, ../sass/base/_mixins.sass */
-ul[data-orbit] h2 a:hover, ul[data-orbit] h3 a:hover, ul[data-orbit] h4 a:hover, ul[data-orbit] ~ .orbit-prev:hover, ul[data-orbit] ~ .orbit-next:hover, .carousel-caption a:hover {
+.l-footer-sections-bottom a:hover, .l-footer-wrap a:hover, ul[data-orbit] h2 a:hover, ul[data-orbit] h3 a:hover, ul[data-orbit] h4 a:hover, ul[data-orbit] ~ .orbit-prev:hover, ul[data-orbit] ~ .orbit-next:hover, .carousel-caption a:hover {
   color: #e6e6e6;
 }
 
@@ -259,7 +260,7 @@ h3, h4 {
 
 /* line 420, ../sass/base/_mixins.sass */
 [role=complementary] .block h2.block-title, fieldset legend, .more-link,
-.field-name-node-link, .node-teaser.node-event .date-calendar {
+.field-name-node-link, .l-footer .block-title, .node-teaser.node-event .date-calendar {
   font-family: "open-sans";
   font-style: normal;
   font-weight: 400;
@@ -737,51 +738,282 @@ html, body {
     margin-bottom: 3.92857rem;
   }
 }
+/* line 4, ../sass/layout/_footer.sass */
+.l-footer {
+  background: #24282c;
+  position: relative;
+  overflow: hidden;
+}
+/* line 9, ../sass/layout/_footer.sass */
+.l-footer strong {
+  color: #fcac31;
+}
+/* line 12, ../sass/layout/_footer.sass */
+.l-footer .block-title {
+  font-size: 1.71429rem;
+  color: #8cebff;
+}
+
+/* line 19, ../sass/layout/_footer.sass */
+.l-footer-sections-bottom {
+  padding-bottom: 1.5625rem;
+  padding-top: 1.5625rem;
+}
+/* line 23, ../sass/layout/_footer.sass */
+.l-footer-sections-bottom, .l-footer-sections-bottom p, .l-footer-sections-bottom ul {
+  font-size: 1.14286rem;
+}
+/* line 26, ../sass/layout/_footer.sass */
+.l-footer-sections-bottom, .l-footer-sections-bottom p {
+  color: white;
+}
+/* line 32, ../sass/layout/_footer.sass */
+.l-footer-sections-bottom ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* line 744, ../sass/base/_mixins.sass */
+.l-footer-sections-bottom form button {
+  float: right;
+}
+/* line 48, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
+.l-footer-sections-bottom form textarea,
+.l-footer-sections-bottom form input[type="text"],
+.l-footer-sections-bottom form input[type="password"],
+.l-footer-sections-bottom form input[type="datetime"],
+.l-footer-sections-bottom form input[type="datetime-local"],
+.l-footer-sections-bottom form input[type="date"],
+.l-footer-sections-bottom form input[type="month"],
+.l-footer-sections-bottom form input[type="time"],
+.l-footer-sections-bottom form input[type="week"],
+.l-footer-sections-bottom form input[type="number"],
+.l-footer-sections-bottom form input[type="email"],
+.l-footer-sections-bottom form input[type="url"],
+.l-footer-sections-bottom form input[type="search"],
+.l-footer-sections-bottom form input[type="tel"],
+.l-footer-sections-bottom form input[type="color"] {
+  background: rgba(255, 255, 255, 0.05);
+  border: 0;
+  color: rgba(255, 255, 255, 0.5);
+}
+/* line 736, ../sass/base/_mixins.sass */
+.l-footer-sections-bottom form button {
+  background-color: #5eb5cb;
+  border-color: #7ec4d5;
+  color: white;
+}
+/* line 134, ../sass/vendor/foundation/components/_buttons.scss */
+.l-footer-sections-bottom form button:hover, .l-footer-sections-bottom form button:focus {
+  background-color: #7ec4d5;
+}
+/* line 145, ../sass/vendor/foundation/components/_buttons.scss */
+.l-footer-sections-bottom form button:hover, .l-footer-sections-bottom form button:focus {
+  color: white;
+}
+/* line 48, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
+.l-footer-sections-bottom form textarea,
+.l-footer-sections-bottom form input[type="text"],
+.l-footer-sections-bottom form input[type="password"],
+.l-footer-sections-bottom form input[type="datetime"],
+.l-footer-sections-bottom form input[type="datetime-local"],
+.l-footer-sections-bottom form input[type="date"],
+.l-footer-sections-bottom form input[type="month"],
+.l-footer-sections-bottom form input[type="time"],
+.l-footer-sections-bottom form input[type="week"],
+.l-footer-sections-bottom form input[type="number"],
+.l-footer-sections-bottom form input[type="email"],
+.l-footer-sections-bottom form input[type="url"],
+.l-footer-sections-bottom form input[type="search"],
+.l-footer-sections-bottom form input[type="tel"],
+.l-footer-sections-bottom form input[type="color"] {
+  font-size: 1.14286rem;
+  margin-bottom: 0.71429rem;
+  padding: 1.71429rem 1.14286rem;
+}
+/* line 724, ../sass/base/_mixins.sass */
+.l-footer-sections-bottom form .form-textarea-wrapper, .l-footer-sections-bottom form .fieldset-description {
+  margin-bottom: 0.71429rem;
+}
+/* line 727, ../sass/base/_mixins.sass */
+.l-footer-sections-bottom form button {
+  padding-top: 1.28571rem;
+  padding-right: 2.57143rem;
+  padding-bottom: 1.35714rem;
+  padding-left: 2.57143rem;
+  font-size: 1.28571rem;
+}
+
+/* line 39, ../sass/layout/_footer.sass */
+.block-bean-footer-logos img {
+  margin-bottom: 1.42857rem;
+}
+
+/* line 42, ../sass/layout/_footer.sass */
+.l-footer-wrap {
+  background: #1a1c20;
+  padding-top: 1.5625rem;
+}
+/* line 46, ../sass/layout/_footer.sass */
+.l-footer-wrap, .l-footer-wrap p, .l-footer-wrap ul {
+  font-size: 0.85714rem;
+}
+/* line 49, ../sass/layout/_footer.sass */
+.l-footer-wrap, .l-footer-wrap p {
+  color: white;
+}
+/* line 52, ../sass/layout/_footer.sass */
+.l-footer-wrap p {
+  margin-bottom: 0.71429rem;
+}
+/* line 55, ../sass/layout/_footer.sass */
+.l-footer-wrap p, .l-footer-wrap ul.inline-list {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=33);
+  opacity: 0.33;
+}
+/* line 58, ../sass/layout/_footer.sass */
+.l-footer-wrap a {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 45.71429em) {
+  /* line 70, ../sass/layout/_footer.sass */
+  .block-bean-footer-logos p {
+    text-align: center;
+  }
+  /* line 73, ../sass/layout/_footer.sass */
+  .block-bean-footer-logos img {
+    margin-left: 0.71429rem;
+    margin-right: 0.71429rem;
+  }
+  /* line 77, ../sass/layout/_footer.sass */
+  .block-bean-footer-logos br {
+    display: none;
+  }
+}
+@media only screen and (min-width: 45.78571em) {
+  /* line 85, ../sass/layout/_footer.sass */
+  .l-footer:after {
+    content: "";
+    display: block;
+    bottom: 0;
+    position: absolute;
+    background: url('../images/full-common-s67ea62543b.png') 0 0 no-repeat;
+    height: 641px;
+    width: 951px;
+    left: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=3);
+    opacity: 0.03;
+    z-index: 0;
+  }
+  /* line 92, ../sass/layout/_footer.sass */
+  .l-footer .columns {
+    z-index: 1;
+  }
+
+  /* line 95, ../sass/layout/_footer.sass */
+  .l-footer-sections-bottom {
+    padding-top: 3.125rem;
+  }
+  /* line 99, ../sass/layout/_footer.sass */
+  .l-footer-sections-bottom .block-webform .block-title {
+    float: left;
+    width: 8.57143rem;
+  }
+  /* line 103, ../sass/layout/_footer.sass */
+  .l-footer-sections-bottom form {
+    padding-left: 8.92857rem;
+  }
+
+  /* line 106, ../sass/layout/_footer.sass */
+  .block-bean-footer-logos {
+    float: left;
+    width: 16.66667%;
+  }
+  /* line 110, ../sass/layout/_footer.sass */
+  .block-bean-footer-logos ~ .block {
+    float: none;
+    padding-left: 20.83333%;
+  }
+}
 /* line 6, ../sass/components/_forms.sass */
 .page-user.not-logged-in .main > form {
   padding: 1.5625rem;
 }
 
-/* line 29, ../sass/components/_forms.sass */
+/* line 24, ../sass/components/_forms.sass */
+.tabledrag-toggle-weight-wrapper {
+  display: none;
+}
+
+/* line 27, ../sass/components/_forms.sass */
+.draggable a.tabledrag-handle {
+  padding: 0;
+  margin-left: 0;
+  margin-right: 0.71429rem;
+  margin-top: 0.28571rem;
+  overflow: hidden;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  text-indent: -150px;
+}
+/* line 171, ../sass/components/_icons-fontawesome.sass */
+.draggable a.tabledrag-handle:before {
+  content: "\f047";
+  position: absolute;
+  left: 0;
+  text-align: center;
+  top: 0;
+  text-indent: 0;
+  font-size: 1rem;
+  line-height: 15px;
+  width: 15px;
+}
+
+/* line 46, ../sass/components/_forms.sass */
 .container-inline-date .form-item, .container-inline-date .form-item input {
   width: 100%;
 }
 
-/* line 36, ../sass/components/_forms.sass */
+/* line 53, ../sass/components/_forms.sass */
 .confirm-parent, .password-parent, .password-suggestions {
   max-width: 100%;
 }
 
-/* line 39, ../sass/components/_forms.sass */
+/* line 56, ../sass/components/_forms.sass */
 .password-strength {
   display: none;
 }
 
-/* line 43, ../sass/components/_forms.sass */
+/* line 60, ../sass/components/_forms.sass */
 div.form-type-password-confirm {
   padding-top: 0;
 }
-/* line 46, ../sass/components/_forms.sass */
+/* line 63, ../sass/components/_forms.sass */
 div.form-type-password-confirm > label {
   display: none;
 }
-/* line 49, ../sass/components/_forms.sass */
+/* line 66, ../sass/components/_forms.sass */
 div.form-type-password-confirm .form-item {
   padding-top: 0.71429rem;
   width: 100%;
 }
-/* line 53, ../sass/components/_forms.sass */
+/* line 70, ../sass/components/_forms.sass */
 div.form-type-password-confirm .description {
   margin-top: -0.57143rem;
   margin-bottom: 1.71429rem;
 }
 
-/* line 58, ../sass/components/_forms.sass */
+/* line 75, ../sass/components/_forms.sass */
 div.form-item div.password-suggestions {
   display: none !important;
 }
 
-/* line 61, ../sass/components/_forms.sass */
+/* line 78, ../sass/components/_forms.sass */
 div.password-confirm {
   font-size: 0.9em;
   margin-top: 0;
@@ -789,7 +1021,7 @@ div.password-confirm {
   color: white;
   position: relative;
 }
-/* line 68, ../sass/components/_forms.sass */
+/* line 85, ../sass/components/_forms.sass */
 div.password-confirm:before {
   content: "Matches:";
   color: #111111;
@@ -797,7 +1029,7 @@ div.password-confirm:before {
   bottom: 0;
   right: 1.92857rem;
 }
-/* line 75, ../sass/components/_forms.sass */
+/* line 92, ../sass/components/_forms.sass */
 div.password-confirm span.error, div.password-confirm span.ok {
   display: inline-block;
   font-size: 0.75em;
@@ -808,21 +1040,27 @@ div.password-confirm span.error, div.password-confirm span.ok {
   text-align: center;
   width: 1.71429rem;
 }
-/* line 85, ../sass/components/_forms.sass */
+/* line 102, ../sass/components/_forms.sass */
 div.password-confirm span.ok {
   background: #6aa880;
 }
 
-/* line 93, ../sass/components/_forms.sass */
+/* line 110, ../sass/components/_forms.sass */
 .form-item {
   margin-bottom: 0;
   margin-top: 0;
 }
-/* line 99, ../sass/components/_forms.sass */
+/* line 116, ../sass/components/_forms.sass */
 .form-item input ~ .description,
 .form-item select ~ .description {
   margin-top: -0.57143rem;
   margin-bottom: 1.71429rem;
+}
+
+/* line 120, ../sass/components/_forms.sass */
+.form-textarea-wrapper,
+.fieldset-description {
+  margin-bottom: 1.14286rem;
 }
 
 /* line 48, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
@@ -841,36 +1079,54 @@ input[type="url"],
 input[type="search"],
 input[type="tel"],
 input[type="color"] {
-  margin-bottom: 1.57143rem;
+  margin-bottom: 1.14286rem;
 }
 
-/* line 106, ../sass/components/_forms.sass */
+/* line 127, ../sass/components/_forms.sass */
 input[type="checkbox"], input[type="radio"] {
+  float: left;
   margin-bottom: 0;
+  margin-top: 0.28571rem;
+}
+/* line 132, ../sass/components/_forms.sass */
+input[type="checkbox"] ~ label, input[type="radio"] ~ label {
+  display: block;
+  margin-left: 0;
+  padding-left: 1.78571rem;
 }
 
-/* line 109, ../sass/components/_forms.sass */
+/* line 137, ../sass/components/_forms.sass */
 .form-type-checkbox, .form-type-radio {
   margin-bottom: 1rem;
 }
+/* line 140, ../sass/components/_forms.sass */
+.form-type-checkbox input, .form-type-radio input {
+  float: left;
+}
+/* line 143, ../sass/components/_forms.sass */
+.form-type-checkbox input ~ .description, .form-type-radio input ~ .description {
+  margin-top: 0.57143rem;
+  margin-bottom: 1.14286rem;
+  margin-left: 1.78571rem;
+}
 
-/* line 117, ../sass/components/_forms.sass */
+/* line 153, ../sass/components/_forms.sass */
 html.js .form-item-autocomplete {
   position: relative;
 }
-/* line 121, ../sass/components/_forms.sass */
+/* line 157, ../sass/components/_forms.sass */
 html.js .form-autocomplete ~ .field-suffix {
   position: relative;
   display: block;
   width: 100%;
 }
-/* line 126, ../sass/components/_forms.sass */
+/* line 162, ../sass/components/_forms.sass */
 html.js .form-autocomplete-wrap {
   margin-top: -1.92857rem;
   position: absolute;
   right: 0.57143rem;
 }
-/* line 131, ../sass/components/_forms.sass */
+/* line 167, ../sass/components/_forms.sass */
 html.js .spinner {
   display: inline-block;
   height: 1.07143rem;
@@ -895,11 +1151,11 @@ html.js .spinner:before {
   border-right: 0.125rem solid transparent;
   border-radius: 100%;
 }
-/* line 135, ../sass/components/_forms.sass */
+/* line 171, ../sass/components/_forms.sass */
 html.js input.form-autocomplete {
   background-image: none;
 }
-/* line 138, ../sass/components/_forms.sass */
+/* line 174, ../sass/components/_forms.sass */
 html.js input.form-autocomplete.throbbing ~ .field-suffix .spinner {
   -webkit-animation: rotation 0.75s infinite linear;
   -moz-animation: rotation 0.75s infinite linear;
@@ -911,14 +1167,62 @@ html.js input.form-autocomplete.throbbing ~ .field-suffix .spinner:before {
   border-top-color: #626262;
 }
 
-/* line 146, ../sass/components/_forms.sass */
+/* line 181, ../sass/components/_forms.sass */
+input.form-file {
+  background-color: white;
+  font-family: "open-sans";
+  border: 1px solid #bbbbbb;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  color: #111111;
+  display: block;
+  font-size: 1rem;
+  margin: 0 0 1.14286rem 0;
+  padding: 0.57143rem;
+  height: 2.64286rem;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  display: inline-block;
+  height: auto;
+  width: auto;
+}
+/* line 124, ../sass/vendor/foundation/components/_forms.scss */
+input.form-file:focus {
+  background: #fafafa;
+  border-color: #999999;
+  outline: none;
+}
+/* line 131, ../sass/vendor/foundation/components/_forms.scss */
+input.form-file[disabled], fieldset[disabled] input.form-file {
+  background-color: #dddddd;
+}
+/* line 187, ../sass/components/_forms.sass */
+.form-managed-file input.form-file {
+  margin-right: 1.14286rem;
+  margin-bottom: 1.14286rem;
+}
+
+/* line 193, ../sass/components/_forms.sass */
+.form-managed-file .form-submit {
+  padding-top: 0.85714rem;
+  padding-right: 1.71429rem;
+  padding-bottom: 0.92857rem;
+  padding-left: 1.71429rem;
+  font-size: 0.85714rem;
+}
+
+/* line 202, ../sass/components/_forms.sass */
 fieldset legend {
   margin-left: 0;
   margin-bottom: 1em;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 160, ../sass/components/_forms.sass */
+  /* line 216, ../sass/components/_forms.sass */
   .page-user.not-logged-in div.main > ul.button-group, .page-user.not-logged-in div.main > form {
     max-width: 75%;
     margin-right: auto;
@@ -926,11 +1230,11 @@ fieldset legend {
     float: none;
     display: block;
   }
-  /* line 164, ../sass/components/_forms.sass */
+  /* line 220, ../sass/components/_forms.sass */
   .page-user.not-logged-in div.main > form {
     padding: 5.35714rem;
   }
-  /* line 167, ../sass/components/_forms.sass */
+  /* line 223, ../sass/components/_forms.sass */
   .page-user.not-logged-in div.main > form > div {
     max-width: 25rem;
     margin-right: auto;
@@ -940,24 +1244,24 @@ fieldset legend {
   }
 }
 @media only screen and (min-width: 59em) {
-  /* line 184, ../sass/components/_forms.sass */
+  /* line 240, ../sass/components/_forms.sass */
   .locality-block .form-item:first-child {
     margin-right: 2%;
     width: 44%;
   }
-  /* line 188, ../sass/components/_forms.sass */
+  /* line 244, ../sass/components/_forms.sass */
   .locality-block .form-item:nth-child(2) {
     margin-right: 2%;
     width: 34%;
   }
-  /* line 192, ../sass/components/_forms.sass */
+  /* line 248, ../sass/components/_forms.sass */
   .locality-block .form-item:last-child {
     margin-right: 0;
     width: 18%;
   }
 }
 @media only screen and (min-width: 68.64286em) {
-  /* line 199, ../sass/components/_forms.sass */
+  /* line 255, ../sass/components/_forms.sass */
   .page-user.not-logged-in div.main > ul.button-group, .page-user.not-logged-in div.main > form {
     max-width: 60%;
   }
@@ -1116,13 +1420,13 @@ a.social-icon.Vimeo {
 /* line 8, ../sass/modules/_breadcrumbs.sass */
 .breadcrumbs li {
   position: relative;
-  padding-left: 1.71429rem;
+  padding-left: 2.14286rem;
 }
 /* line 13, ../sass/modules/_breadcrumbs.sass */
 .breadcrumbs li:before {
   font-size: 38px;
   position: absolute;
-  left: 0;
+  left: 0.28571rem;
   top: -0.42857rem;
 }
 /* line 22, ../sass/modules/_breadcrumbs.sass */
@@ -1738,7 +2042,7 @@ ul[data-orbit] ~ .orbit-next:before {
   position: relative;
   text-transform: uppercase;
 }
-/* line 727, ../sass/base/_mixins.sass */
+/* line 772, ../sass/base/_mixins.sass */
 .node-teaser.node-event .date-calendar:before {
   content: "";
   display: block;
@@ -1748,11 +2052,11 @@ ul[data-orbit] ~ .orbit-next:before {
   height: 0.21429rem;
   width: 100%;
 }
-/* line 733, ../sass/base/_mixins.sass */
+/* line 778, ../sass/base/_mixins.sass */
 .node-teaser.node-event .date-calendar .date-display-single > *:first-child {
   font-size: 1.14286rem;
 }
-/* line 736, ../sass/base/_mixins.sass */
+/* line 781, ../sass/base/_mixins.sass */
 .node-teaser.node-event .date-calendar .date-display-single > *:last-child {
   font-size: 2.57143rem;
   padding: 0.85714rem 0 0.42857rem 0;

@@ -272,9 +272,9 @@ $animation-rotation-border-width: rem-calc(2)!default
 // and reference them by their file name
 //***********************************
 
-//@import "compass/utilities/sprites/base"
+@import "compass/utilities/sprites/base"
 
-//$disable-magic-sprite-selectors: true
+$disable-magic-sprite-selectors: true
 
 // Use these lines for traditional compass sprites
 // see http://compass-style.org/help/tutorials/spriting/
@@ -284,14 +284,14 @@ $animation-rotation-border-width: rem-calc(2)!default
 
 // Use this style for sprites inside media queries
 // for use with +get-sprite() mixin
-//$sprites: sprite-map("sprites/*.png")
+$full-common: sprite-map("full-common/*.png")
 
 // shortcut for sprites
-@mixin s-image($sprite, $offset-x: 0, $offset-y: 0, $repeat: no-repeat, $height: true, $width: true, $hover: false)
-  +get-sprite($sprites, $sprite, $offset-x, $offset-y, $repeat, $height, $width, $hover)
+@mixin full-image($sprite, $offset-x: 0, $offset-y: 0, $repeat: no-repeat, $height: true, $width: true, $hover: false)
+  +get-sprite($full-common, $sprite, $offset-x, $offset-y, $repeat, $height, $width, $hover)
 
 // shortcut for hover images
-@mixin s-image-hover($sprite, $hover: "#{$sprite}-hover")
+@mixin full-image-hover($sprite, $hover: "#{$sprite}-hover")
   +s-image($sprite, 0, 0, no-repeat, true, true, $hover)
 
 
@@ -708,6 +708,51 @@ $main-menu-border-size: rem-calc(3)
 
     a
       padding: 0 $topbar-link-padding
+
+
+//***********************************
+// Forms
+//
+//***********************************
+
+@mixin big-form()
+  +all-form-inputs(true)
+    font-size: rem-calc(16)
+    margin-bottom: rem-calc(10)
+    padding: ($form-spacing * 1.5)  $form-spacing
+
+  .form-textarea-wrapper, .fieldset-description
+    margin-bottom: rem-calc(10)
+
+  button
+    +button-size($button-lrg)
+
+@mixin dark-form()
+  +all-form-inputs(true)
+    background: rgba($white, 0.05)
+    border: 0
+    color: rgba($white, 0.5)
+
+  button
+    +button-style($blue)
+
+
+@mixin sleek-form($dark: false, $big: false)
+  label
+    +e(hide)
+
+  button
+    float: right
+
+  .grippie
+    +e(hide)
+
+  @if $dark
+    +dark-form()
+
+  @if $big
+    +big-form()
+
 
 
 

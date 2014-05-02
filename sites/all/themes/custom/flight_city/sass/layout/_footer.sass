@@ -1,1 +1,112 @@
 // Non-modular or client styles for .l-footer region.
+
+
+.l-footer
+  background: $blue-darker
+  position: relative
+  overflow: hidden
+
+  strong
+    color: $yellow-footer
+
+  .block-title
+    font-size: rem-calc(24)
+    +f(alt-alt)
+    color: $teal
+
+.l-footer-sections-top
+
+.l-footer-sections-bottom
+  padding-bottom: $small-region-pad-large
+  padding-top: $small-region-pad-large
+
+  &, p, ul
+    font-size: rem-calc(16)
+
+  &, p
+    color: $white
+
+  a
+    +c(link-white)
+    
+  ul 
+    +list-clear
+
+  form
+    +sleek-form(true, true)
+
+.block-bean-footer-logos
+  img
+    margin-bottom: $paragraph-margin-bottom
+
+.l-footer-wrap
+  background: $blue-black
+  padding-top: $small-region-pad-large
+
+  &, p, ul
+    font-size: rem-calc(12)
+
+  &, p
+    color: $white
+
+  p
+    margin-bottom: $paragraph-margin-bottom/2
+
+  p, ul.inline-list
+    +opacity(0.33)
+
+  a
+    +c(link-white)
+    text-decoration: underline
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($small-only)
+  .block-bean-footer-logos
+    p 
+      text-align: center
+    
+    img
+      margin-left: $column-gutter/2
+      margin-right: $column-gutter/2
+
+    br
+      display: none
+
+
++respond($medium-up)
+  
+  .l-footer
+
+    &:after
+      +before-as-image(block, bottom, 0)
+      +full-image(footer-back)
+      left: 0
+      +opacity(0.03)
+      z-index: 0
+
+    .columns
+      z-index: 1
+
+  .l-footer-sections-bottom
+    padding-top: $medium-region-pad-large*2
+
+    .block-webform
+      .block-title
+        float: left
+        width: rem-calc(120)
+
+    form
+      padding-left: rem-calc(125)
+
+  .block-bean-footer-logos
+    float: left
+    width: grid-calc(2, 12)
+
+    & ~ .block
+      float: none
+      padding-left: grid-calc(2.5, 12)
