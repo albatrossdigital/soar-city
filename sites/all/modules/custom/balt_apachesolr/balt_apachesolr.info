@@ -1,0 +1,7 @@
+name = Baltimore ApacheSolr
+description = Custom Search for Baltimore City Site
+core = 7.x
+package = Baltimore
+dependencies[] = apachesolr
+dependencies[] = apachesolr_term
+dependencies[] = apachesolr_multisitesearch
