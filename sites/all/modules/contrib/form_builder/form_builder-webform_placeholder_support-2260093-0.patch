@@ -1,0 +1,18 @@
+diff --git a/modules/webform/form_builder_webform.module b/modules/webform/form_builder_webform.module
+index 7e69096..dca82dc 100644
+--- a/modules/webform/form_builder_webform.module
++++ b/modules/webform/form_builder_webform.module
+@@ -487,6 +487,13 @@ function _form_builder_webform_property_map($component_type) {
+         'storage_parents' => array('extra', 'private'),
+       );
+     }
++    
++    if (webform_component_feature($component_type, 'placeholder')) {
++      $map['properties']['webform_placeholder'] = array(
++        'form_parents' => array('display', 'placeholder'),
++        'storage_parents' => array('extra', 'placeholder'),
++      );
++    }
+   
+     if (webform_component_feature($component_type, 'required')) {
+       $map['properties']['required'] = array();
