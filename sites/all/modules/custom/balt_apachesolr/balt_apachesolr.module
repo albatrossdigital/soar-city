@@ -8,7 +8,7 @@
 /**
  * Implements apachesolr_search_result().
  */
-function apachesolr_search_result(&doc, extra, $query) {
+function apachesolr_search_result(&$doc, $extra, $query) {
   // We aren't getting entity_type from nutch.
   if (!isset($doc->entity_type)) {
     $doc->entity_type = '';
