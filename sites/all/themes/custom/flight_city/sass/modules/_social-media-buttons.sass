@@ -68,7 +68,22 @@ a.social-icon.Vimeo
 // Share 42
 //-----------------------------------------------------------------------------
 
+.share42init
+  text-align: right
+
+  &:before
+    display: inline
+    content: "Share "
+    font-size: $font-size-small
+    height: $social-size
+    line-height: $social-size
+    +f(alt-alt)
+    margin: 0
+    padding-right: rem-calc(23)
+
 #share42
+  float: right
+
   &, &:hover
     background: none
     border: 0
@@ -76,17 +91,6 @@ a.social-icon.Vimeo
     padding: 0
     +box-shadow(none)
     height: $social-size
-    text-align: right
-
-  &:before
-    display: block
-    float: left
-    content: "Share "
-    font-size: $font-size-small
-    height: $social-size
-    line-height: $social-size
-    +f(alt-alt)
-    margin: 0
 
 .share42-item
   margin: 0!important

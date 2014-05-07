@@ -191,7 +191,7 @@ a.social-icon.Dribbble:before {
 
 /********************************** */
 /* line 313, ../sass/base/_mixins.sass */
-.l-footer-sections-bottom form label, .l-footer-sections-bottom form .grippie, .no-labels label,
+.no-page-title #page-title, .l-footer-sections-bottom form label, .l-footer-sections-bottom form .grippie, .no-labels label,
 .no-label label, .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item label,
 .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item .description {
   display: none;
@@ -273,7 +273,7 @@ h3, h4 {
 
 /* line 420, ../sass/base/_mixins.sass */
 [role=complementary] .block h2.block-title, fieldset legend, .more-link,
-.field-name-node-link, .l-footer .block-title, #share42:before, .node-event.node-teaser .date-calendar,
+.field-name-node-link, .l-footer .block-title, .share42init:before, .node-event.node-teaser .date-calendar,
 .node-event.view-mode-compact_teaser .date-calendar {
   font-family: "open-sans";
   font-style: normal;
@@ -536,19 +536,11 @@ html, body {
     padding-top: 1.5625rem;
   }
 }
-/* line 8, ../sass/layout/_main.sass */
-.main .block-title {
-  margin-bottom: 2.5rem;
-}
-/* line 11, ../sass/layout/_main.sass */
-.main .block {
-  margin-bottom: 3.4375rem;
-}
-/* line 17, ../sass/layout/_main.sass */
+/* line 16, ../sass/layout/_main.sass */
 .main > ul.button-group {
   margin-bottom: 0.625rem;
 }
-/* line 21, ../sass/layout/_main.sass */
+/* line 20, ../sass/layout/_main.sass */
 .main > ul.button-group li.active a {
   background-color: #0a83a1;
   border-color: #0eb7e1;
@@ -562,12 +554,13 @@ html, body {
 .main > ul.button-group li.active a:hover, .main > ul.button-group li.active a:focus {
   color: white;
 }
-/* line 24, ../sass/layout/_main.sass */
+/* line 23, ../sass/layout/_main.sass */
 .main > ul.button-group a {
   margin-bottom: 0.35714rem;
   border-color: #cccccc;
 }
-/* line 29, ../sass/layout/_main.sass */
+
+/* line 31, ../sass/layout/_main.sass */
 .main > ul.action-links {
   list-style: none;
   padding: 0;
@@ -577,7 +570,7 @@ html, body {
 .main > ul.action-links li {
   display: inline-block;
 }
-/* line 32, ../sass/layout/_main.sass */
+/* line 34, ../sass/layout/_main.sass */
 .main > ul.action-links a {
   border-style: solid;
   border-width: 0px;
@@ -616,29 +609,41 @@ html, body {
   color: white;
 }
 
-/* line 36, ../sass/layout/_main.sass */
-.block-workbench {
+/* line 42, ../sass/layout/_main.sass */
+.main .block-title {
+  margin-bottom: 2.5rem;
+}
+/* line 45, ../sass/layout/_main.sass */
+.main .block {
+  margin-bottom: 3.4375rem;
+}
+/* line 48, ../sass/layout/_main.sass */
+.main .block-workbench {
   margin-bottom: 0.625rem;
 }
 
-/* line 53, ../sass/layout/_main.sass */
+/* line 65, ../sass/layout/_main.sass */
 .node img, .node iframe, .entity-bean img, .entity-bean iframe {
   margin-bottom: 1.07143rem;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 68, ../sass/layout/_main.sass */
+  /* line 80, ../sass/layout/_main.sass */
   .main .block-title {
     font-size: 2.85714rem;
     margin-bottom: 2.5rem;
   }
-  /* line 72, ../sass/layout/_main.sass */
+  /* line 84, ../sass/layout/_main.sass */
   .main .block {
     margin-bottom: 3.4375rem;
   }
+  /* line 87, ../sass/layout/_main.sass */
+  .main .block-workbench {
+    margin-bottom: 0.625rem;
+  }
 
-  /* line 76, ../sass/layout/_main.sass */
-  .medium-push-3.main {
+  /* line 91, ../sass/layout/_main.sass */
+  .medium-8.main {
     margin-left: 4.16667%;
   }
 }
@@ -1337,7 +1342,26 @@ li:last-child a.social-icon,
   margin-right: 0 !important;
 }
 
-/* line 72, ../sass/modules/_social-media-buttons.sass */
+/* line 71, ../sass/modules/_social-media-buttons.sass */
+.share42init {
+  text-align: right;
+}
+/* line 74, ../sass/modules/_social-media-buttons.sass */
+.share42init:before {
+  display: inline;
+  content: "Share ";
+  font-size: 0.75rem;
+  height: 33px;
+  line-height: 33px;
+  margin: 0;
+  padding-right: 1.64286rem;
+}
+
+/* line 84, ../sass/modules/_social-media-buttons.sass */
+#share42 {
+  float: right;
+}
+/* line 87, ../sass/modules/_social-media-buttons.sass */
 #share42, #share42:hover {
   background: none;
   border: 0;
@@ -1347,29 +1371,18 @@ li:last-child a.social-icon,
   -moz-box-shadow: none;
   box-shadow: none;
   height: 33px;
-  text-align: right;
-}
-/* line 81, ../sass/modules/_social-media-buttons.sass */
-#share42:before {
-  display: block;
-  float: left;
-  content: "Share ";
-  font-size: 0.75rem;
-  height: 33px;
-  line-height: 33px;
-  margin: 0;
 }
 
-/* line 91, ../sass/modules/_social-media-buttons.sass */
+/* line 95, ../sass/modules/_social-media-buttons.sass */
 .share42-item {
   margin: 0 !important;
 }
-/* line 94, ../sass/modules/_social-media-buttons.sass */
+/* line 98, ../sass/modules/_social-media-buttons.sass */
 .share42-item a {
   background: #b6b6b8 !important;
 }
 
-/* line 104, ../sass/modules/_social-media-buttons.sass */
+/* line 108, ../sass/modules/_social-media-buttons.sass */
 .view-mode-social .group-right ul {
   list-style: none;
   padding: 0;
@@ -1380,43 +1393,43 @@ li:last-child a.social-icon,
   display: inline-block;
 }
 
-/* line 109, ../sass/modules/_social-media-buttons.sass */
+/* line 113, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Facebook {
   background: #3460a1;
 }
-/* line 112, ../sass/modules/_social-media-buttons.sass */
+/* line 116, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Twitter {
   background: #28aae1;
 }
-/* line 115, ../sass/modules/_social-media-buttons.sass */
+/* line 119, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Googleplus {
   background: #28aae1;
 }
-/* line 118, ../sass/modules/_social-media-buttons.sass */
+/* line 122, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Linkedin {
   background: #136d9d;
 }
-/* line 121, ../sass/modules/_social-media-buttons.sass */
+/* line 125, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Flickr {
   background: #ed2a90;
 }
-/* line 124, ../sass/modules/_social-media-buttons.sass */
+/* line 128, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Youtube {
   background: #ee3138;
 }
-/* line 127, ../sass/modules/_social-media-buttons.sass */
+/* line 131, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Pinterest {
   background: #cc2127;
 }
-/* line 130, ../sass/modules/_social-media-buttons.sass */
+/* line 134, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Rss {
   background: #28aae1;
 }
-/* line 133, ../sass/modules/_social-media-buttons.sass */
+/* line 137, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Dribbble {
   background: #ef548f;
 }
-/* line 136, ../sass/modules/_social-media-buttons.sass */
+/* line 140, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Vimeo {
   background: #28aae1;
 }
@@ -1976,6 +1989,13 @@ ul[data-orbit] ~ .orbit-next:before {
   margin-left: 0.07143rem;
 }
 
+@media only screen and (min-width: 45.78571em) {
+  /* line 25, ../sass/theme/_front-pages.sass */
+  .front .medium-8.main {
+    margin-left: 0;
+    width: 75%;
+  }
+}
 /* line 568, ../sass/base/_mixins.sass */
 .vocabulary-event-category.view-mode-teaser .group-left {
   width: 8.57143rem;
