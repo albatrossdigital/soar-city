@@ -52,11 +52,15 @@
   .field-name-title
     & + h5
       margin-bottom: rem-calc(10)
+
+  .field-name-field-picture
+    margin-top: rem-calc(25)
   
 
 // teaser
 
-.node-teaser.node-event
+.node-event.node-teaser,
+.node-event.view-mode-compact_teaser
   +nice-teaser-border
 
   .field-name-title
