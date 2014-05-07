@@ -1,0 +1,219 @@
+<?php
+/**
+ * @file
+ * Drupal needs this blank file.
+ */
+
+
+/**
+ * Implements hook_menu().
+ */
+function baltimore_govdelivery_menu() {
+  $items['subscribe'] = array(
+    'title' => 'Subscribe',
+    'page callback' => 'baltimore_govdelivery_subscribe',
+    'page arguments' => array(1, 2),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+
+/**
+ * Page callback for the govdelivery wrapper.
+ */
+function baltimore_govdelivery_subscribe($topic = NULL, $title = '') {
+  $govdelivery_signup_server = variable_get('govdelivery_signup_server', '');
+  $govdelivery_signup_clientcode = variable_get('govdelivery_signup_clientcode', '');
+  $form_state['redirect'] = array();
+
+  $url = $govdelivery_signup_server . '/accounts/' . $govdelivery_signup_clientcode . '/';
+  
+  if (!empty($_REQUEST['email'])) {
+    $url .= 'subscribers/qualify?email=' . $_REQUEST['email'] . '&';
+  }
+  else {
+    $url .= 'subscriber/new?';
+  }
+
+  $url .= !empty($topic) ? 'topic_id=' . $topic : '';
+
+  $return = '<iframe src="'. $url .'" frameborder="0" style="width: 100%;height: 2000px;"></iframe>';
+  if (!empty($title)) {
+    //$return = '<h3>To ' . $title . ' updates</h3>' . $return;
+    //drupal_set_title(t('Subscribe to !title updates', array('!title' => $title)));
+    drupal_set_title(t('Subscribe to updates', array('!title' => $title)));
+  }
+  return $return;
+}
+
+
+
+/******************************* BLOCKS *********************************** */
+
+/**
+ * Implements hook_block_info().
+ */
+function baltimore_govdelivery_block_info() {
+  return array(
+    'subscribe' => array(
+      'info' => 'General subscribe box',
+      'cache' => DRUPAL_CACHE_PER_PAGE,
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_block_view().
+ */
+function baltimore_govdelivery_block_view($delta = '') {
+  $block = array();
+  switch($delta) {
+    case 'subscribe':
+      $form = drupal_get_form('baltimore_govdelivery_subscribe_form');
+      $block['title'] = t('Sign up for updates');
+      $block['content'] = drupal_render($form);
+      break;
+
+  }
+
+  return $block;
+}
+
+
+
+
+/**
+ * The subscribe form.
+ */
+function baltimore_govdelivery_subscribe_form($form, &$form_state, $topics = array()) {
+  $form['#attributes'] = array('class' => array('row', 'collapse'));
+  $form['#action'] = url('subscribe');
+  $form['#method'] = 'GET';
+
+  $form['email'] = array(
+    '#type' => 'textfield',
+    '#size' => 20,
+    '#required' => TRUE,
+    '#attributes' => array('placeholder' => t('Your email address')),
+  );
+  // @todo: make this work
+  if (!empty($topics)) {
+    $form['topics'] = array(
+      '#type' => 'hidden',
+      //'#value' => implode('+', $topics),
+    );
+  }
+  $form['submit_button'] = array(
+    '#type' => 'submit',
+    '#value' => t('Sign Up'),
+    '#attributes' => array('class' => array('icon-go')),
+  );
+  return $form;
+}
+
+/**
+ * Subscibe form submit.
+ */
+/*function baltimore_govdelivery_subscribe_form_submit($form, &$form_state, $topics = NULL) {
+  dpm($form_state['values']['email']);
+  return govdelivery_signup_submit($form, $form_state);
+}*/
+
+
+
+/******************************* FIELD FORMATTERS ***************************** */
+
+/**
+* Implements hook_field_formatter_info().
+*/
+function baltimore_govdelivery_field_formatter_info() {
+  $info = array(
+    'baltimore_govdelivery_modal' => array(
+      'label' => t('GovDelivery subscribe link'),
+      'field types' => array('entityreference'),
+      'settings' => array(),
+    ),
+    'baltimore_govdelivery_rfp_link' => array(
+      'label' => t('GovDelivery RFP subscribe link'),
+      'field types' => array('text'),
+      'settings' => array(),
+    ),
+  );
+  return $info;
+}
+
+/**
+* Implements hook_field_formatter_view().
+*/
+function baltimore_govdelivery_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  switch ($display['type']) {
+    case 'baltimore_govdelivery_modal':
+      if (!empty($items)) {
+        $wrapper = entity_metadata_wrapper($entity_type, $entity);
+        //$topics = array();
+        $topic = $wrapper->{$field['field_name']}->value();
+        $topic_title = !empty($entity->title) ? $entity->title : !empty($entity->name) ? $entity->name : t('this topic');
+        /*$form = drupal_get_form('baltimore_govdelivery_subscribe_form', $topics);
+        $form = drupal_render($form);
+        /*$element[0] = array(
+          '#markup' => theme('baltimore_govdelivery_modal', array(
+            //'id' => drupal_clean_css_identifier(implode('-', $topics)),
+            'form' => $form,
+            'label' => t('Email updates'),
+            'text' => !empty($topics) ? t('Sign up for email updates related to !topic:', array('!topic' => $topic_title)) : t('Sign up for email updates'),
+          )),
+        );*/
+        $wrapper2 = entity_metadata_wrapper('taxonomy_term', $topic);
+        $url = 'subscribe/' . $wrapper2->field_govdelivery->value() .'/'. $topic_title;
+        $element[0] = array(
+          '#markup' => l('<i class="fa-envelope"></i> '.t('Email updates'), $url, array(
+            'attributes' => array('class' => array('govdelivery-signup-modal-link')),
+            'html' => TRUE,
+          )),
+        );
+      }
+      break;
+
+      case 'baltimore_govdelivery_rfp_link':
+      if (!empty($items)) {
+
+        $url = 'subscribe/' . $items[0]['value'] . '/' . $entity->title;
+        $element[0] = array(
+          '#markup' => l('<i class="fa-envelope"></i> '.t('Holders list'), $url, array(
+            'attributes' => array('class' => array('govdelivery-signup-modal-link')),
+            'html' => TRUE,
+          )),
+        );
+      }
+      break;
+  }
+  return $element;
+
+}
+
+
+
+
+/**
+ * Implements hook_theme().
+ * Mostly mustache.js (ICanHaz.js) templates. 
+ */
+function baltimore_govdelivery_theme($existing, $type, $theme, $path) {
+  $path = 'templates/';
+  return array(
+    'baltimore_govdelivery_modal' => array(
+      'template' => $path . 'pot-govdelivery-modal',
+      'variables' => array(
+        'id' => '',
+        'form' => '',
+        'label' => '',
+        'text' => '',
+      ),
+    ),
+  );
+}
