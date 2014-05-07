@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>jQuery Plugin - Social Stream Network Wall</title>
+<link rel="stylesheet" type="text/css" href="inc/layout.css" media="all" />
+<link rel="stylesheet" type="text/css" href="css/dcsns_wall.css" media="all" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+<script type="text/javascript" src="inc/js/jquery.plugins.js"></script>
+<script type="text/javascript" src="inc/js/jquery.site.js"></script>
+<script type="text/javascript" src="js/jquery.social.stream.wall.1.2.js"></script>
+<script type="text/javascript" src="js/jquery.social.stream.1.4.3.min.js"></script>
+
+<script type="text/javascript">
+jQuery(document).ready(function($){
+	$('#social-stream').dcSocialStream({
+		feeds: {
+			twitter: {
+				id: '/9927875,#designchemical,designchemical',
+				thumb: true
+			},
+			facebook: {
+				id: '278426605597859,99976780641,87592220838,167566180035199,564117000311654,109407769112614,349871071773788,34954845480,245983625422786,17467842382,394738487252877,151528264907579,542517592471608,116262985091976,58771761955'
+			},
+			youtube: {
+				id: 'MayorSRB,BaltimoreYouthWorks,TV25BCOCC,DeptOfFinance,VacantstoValuehttps://www.youtube.com/channel/UC_7rb00ZWcvp-Y-M9oV1DiA,BaltimoreDGS,BEC21217,BaltimoreHealth,BmoreforBabies,BPDMEDIAUNIT,BaltimoreDPW,BaltimoreRecNParks,baltimorecitydot,BaltimoreRedLine,CharmCityCirc,user/BmoreSustainability,enochprattlibrary,BOPAInc,BaltimoreCityLiving,visitmybaltimore,mdsciencecenter,nataquarium,starspangled200'
+			},
+		},
+		rotate: {
+			delay: 0
+		},
+		twitterId: 'designchemical',
+		control: false,
+		filter: true,
+		wall: true,
+		cache: false,
+		max: 'limit',
+		limit: 10,
+		iconPath: 'images/dcsns-dark/',
+		imagePath: 'images/dcsns-dark/'
+	});
+				 
+});
+</script>
+<style>
+#wall {padding: 10px 0 0; min-height: 2000px;}
+</style>
+</head>
+
+<body>
+
+<!-- Begin Second Wrapper -->
+
+<div id="wrapper">
+ 
+  <div id="container"> 
+  <!-- Begin Question Block -->
+
+  <div class="opacity pad-btm">
+	<div id="banner">
+		<a href="http://www.designchemical.com/blog/index.php/premium-jquery-plugins/jquery-social-media-tabs-plugin/"><img src="inc/images/banner.png" alt="" /></a>
+		<h1>Social Network Wall Demo</h1>
+	</div>
+	<div id="nav-container">
+		<ul id="dctsp-nav">
+			<li><a href="index.html">Documentation</a></li>
+			<li><a href="example_1.html">Demo 1</a></li>
+			<li><a href="example_2.html">Demo 2</a></li>
+			<li><a href="example_3.html">Demo 3</a></li>
+			<li><a href="wall.html">Creating A Network Wall</a></li>
+			<li><a href="example_4.html">Demo 4</a></li><li><a href="example_5.html">Demo 5</a></li>
+			
+		</ul>
+		</div>
+	</div>
+	
+<h3>Social Network Wall Demo</h3>
+<div id="wall">
+	
+	<div id="social-stream"></div>
+
+<div class="clear"></div>
+
+</div>
+
+  
+  <div id="copyright">
+	jQuery Social Stream plugin was created by <a href="http://www.designchemical.com">Design Chemical</a>.
+  </div>
+</div>
+<!-- End Wrapper -->
+</body>
+</html>

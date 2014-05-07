@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery Social Timeline plugin - Demo</title>
+
+<link type="text/css" rel="stylesheet" href="../css/styles.css" />
+
+<link type="text/css" rel="stylesheet" href="../css/magnific-popup.css" />
+
+<link type="text/css" rel="stylesheet" href="../css/dpSocialTimeline.css" />
+
+
+<script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>
+
+<script type="text/javascript" src="../js/jquery.magnific-popup.min.js"></script>
+
+<script type="text/javascript" src="../js/jquery.isotope.min.js"></script>
+
+<script type="text/javascript" src="../js/jquery.dpSocialTimeline.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		$('#socialTimeline').dpSocialTimeline({
+			feeds: 
+			{
+				'facebook_page': {data: '5550296508', limit: 2},
+				'youtube': {data: 'youtube'},
+				'flickr': {data: '52617155@N08'},
+				'tumblr': {data: 'drinkyourjuice'}
+			},
+			layoutMode: 'timeline',
+			addLightbox: true,
+			itemWidth: 200,
+			total: 10
+		});
+	});
+</script>
+</head>
+<body>
+    <div id="content">
+        <h1>jQuery Social Timeline - Lightbox Support</h1>
+        
+        <div id="socialTimeline" style="width:650px;"></div>
+    </div>
+</body>
+</html>

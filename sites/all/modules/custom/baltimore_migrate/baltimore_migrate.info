@@ -1,0 +1,15 @@
+name = "City of Baltimore Migration"
+description = "Sucks in data from a variety of sources."
+package = "Baltimore"
+core = 7.x
+dependencies[] = taxonomy
+dependencies[] = image
+dependencies[] = migrate
+dependencies[] = list
+dependencies[] = number
+
+;node_reference is useful but not required
+;dependencies[] = node_reference
+
+files[] = htmlfiles_migration.inc.php
+files[] = source_parser.inc.php
