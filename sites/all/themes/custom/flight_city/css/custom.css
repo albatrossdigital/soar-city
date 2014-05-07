@@ -54,7 +54,7 @@ i[class^="fa"], [role=complementary] .block-domain-menu-block .menu-block-wrappe
 .draggable a.tabledrag-handle:before, .share42-item:nth-child(4) a:before, .share42-item:first-child a:before,
 a.social-icon.Facebook:before, .share42-item:nth-child(3) a:before,
 a.social-icon.Twitter:before, .share42-item:nth-child(2) a:before,
-a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, .breadcrumbs li:first-child a:before {
+a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, .breadcrumbs li:first-child a:before, #search-block-form .form-submit:before {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -488,7 +488,7 @@ html, body {
   margin-bottom: 0.35714rem;
 }
 
-/* line 11, ../sass/layout/_header.sass */
+/* line 13, ../sass/layout/_header.sass */
 #entity-title {
   font-size: 2.85714rem;
   margin: 0;
@@ -496,7 +496,7 @@ html, body {
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 25, ../sass/layout/_header.sass */
+  /* line 36, ../sass/layout/_header.sass */
   .l-header-region {
     padding-top: 1.5625rem;
   }
@@ -1197,7 +1197,7 @@ input.form-file {
   background-color: white;
   font-family: "open-sans";
   border: 1px solid #bbbbbb;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
   color: #111111;
   display: block;
   font-size: 1rem;
@@ -1989,6 +1989,83 @@ ul[data-orbit] ~ .orbit-next:before {
   margin-left: 0.07143rem;
 }
 
+/* line 6, ../sass/theme/_search.sass */
+#search-block-form {
+  position: relative;
+}
+/* line 9, ../sass/theme/_search.sass */
+#search-block-form .form-item {
+  display: block;
+}
+/* line 12, ../sass/theme/_search.sass */
+#search-block-form input.form-text {
+  padding-right: 3.14286rem;
+}
+/* line 15, ../sass/theme/_search.sass */
+#search-block-form .form-submit {
+  margin: 0;
+  color: #cccccc;
+  font-size: 1rem;
+  font-weight: normal;
+  overflow: hidden;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  display: inline-block;
+  height: 36px;
+  width: 36px;
+  text-indent: -360px;
+  position: absolute;
+  right: 1px;
+  top: 1px;
+}
+/* line 71, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
+#search-block-form .form-submit, #search-block-form .form-submit:focus, #search-block-form .form-submit:hover, #search-block-form .form-submit:active {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 1rem;
+}
+/* line 77, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
+#search-block-form .form-submit:focus, #search-block-form .form-submit:hover, #search-block-form .form-submit:active {
+  color: #b3b3b3;
+  outline: 0;
+}
+/* line 171, ../sass/components/_icons-fontawesome.sass */
+#search-block-form .form-submit:before {
+  content: "\f002";
+  position: absolute;
+  left: 0;
+  text-align: center;
+  top: 0;
+  text-indent: 0;
+  font-size: 18px;
+  line-height: 36px;
+  width: 36px;
+}
+
+/* line 28, ../sass/theme/_search.sass */
+#search-block-form input, #search-block-form button {
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 45.71429em) {
+  /* line 44, ../sass/theme/_search.sass */
+  .header-region-right #search-block-form {
+    display: none;
+  }
+}
+@media only screen and (min-width: 45.78571em) {
+  /* line 53, ../sass/theme/_search.sass */
+  #search-block-form {
+    float: right;
+    width: 21.42857rem;
+  }
+  /* line 58, ../sass/theme/_search.sass */
+  .top-bar #search-block-form {
+    display: none;
+  }
+}
 @media only screen and (min-width: 45.78571em) {
   /* line 25, ../sass/theme/_front-pages.sass */
   .front .medium-8.main {
@@ -2138,7 +2215,7 @@ ul[data-orbit] ~ .orbit-next:before {
   position: relative;
   text-transform: uppercase;
 }
-/* line 777, ../sass/base/_mixins.sass */
+/* line 782, ../sass/base/_mixins.sass */
 .node-event.node-teaser .date-calendar:before,
 .node-event.view-mode-compact_teaser .date-calendar:before {
   content: "";
@@ -2149,12 +2226,12 @@ ul[data-orbit] ~ .orbit-next:before {
   height: 0.21429rem;
   width: 100%;
 }
-/* line 783, ../sass/base/_mixins.sass */
+/* line 788, ../sass/base/_mixins.sass */
 .node-event.node-teaser .date-calendar .date-display-single > *:first-child,
 .node-event.view-mode-compact_teaser .date-calendar .date-display-single > *:first-child {
   font-size: 1.14286rem;
 }
-/* line 786, ../sass/base/_mixins.sass */
+/* line 791, ../sass/base/_mixins.sass */
 .node-event.node-teaser .date-calendar .date-display-single > *:last-child,
 .node-event.view-mode-compact_teaser .date-calendar .date-display-single > *:last-child {
   font-size: 2.57143rem;

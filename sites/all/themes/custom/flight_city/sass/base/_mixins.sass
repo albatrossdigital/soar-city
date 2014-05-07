@@ -759,6 +759,11 @@ $main-menu-border-size: rem-calc(3)
     +big-form()
 
 
+// search button replace
+@mixin search-button($color: $gray, $size: 36px, $font: ($size*.5))
+  +undo-button($color, darken($color, 10%))
+  +icon-button-replace($fa-var-search, $size, $font)
+
 
 
 //***********************************

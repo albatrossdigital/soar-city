@@ -32,12 +32,12 @@
 
     <!--.l-header-region -->
     <section class="l-header-region row">
-      <div class="medium-6 columns">
+      <div class="medium-6 columns header-branding">
         <?php if($entity_title): ?>
           <h2 id="entity-title" class="title"><?php print $entity_title; ?></h2>
         <?php endif; ?>
       </div>
-      <div class="medium-6 columns">
+      <div class="medium-6 columns header-region-right">
         <?php print render($page['header']); ?>
       </div>
     </section>

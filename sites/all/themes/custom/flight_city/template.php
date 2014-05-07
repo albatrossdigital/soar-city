@@ -220,6 +220,7 @@ function flight_city_preprocess_form_element(&$vars) {
       case 'textfield':
       case 'textarea':
       case 'webform_email':
+
         if (!empty($vars['element']['#title'])) {
           $placeholder = array('placeholder' => t($vars['element']['#title']));
           if (is_array($vars['element']['#attributes'])) {
