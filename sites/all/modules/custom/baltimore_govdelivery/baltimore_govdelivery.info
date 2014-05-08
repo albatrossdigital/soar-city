@@ -1,5 +1,5 @@
 name = Baltimore GovDelivery
 description = Custom logic to support the GovDelivery module
 core = 7.x
-package = Port of Tacoma
+package = Baltimore
 features[features_api][] = api:2
