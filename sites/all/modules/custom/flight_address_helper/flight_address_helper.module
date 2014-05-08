@@ -148,7 +148,7 @@ function flight_address_helper_field_widget_form(&$form, &$form_state, $field, $
         )
       )
     );
-    if(is_array($form['element']['#attributes'])) {
+    if(is_array($form['#attached'])) {
       $form['#attached'] = array_merge($form['#attached'], $attached);
     }
     else {
