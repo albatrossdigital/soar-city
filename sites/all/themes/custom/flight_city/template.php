@@ -74,6 +74,8 @@ function flight_city_preprocess_page(&$vars) {
 //function flight_city_preprocess_node(&$variables) {
 //}
 
+
+//
 function _flight_city_child_menu_back_button($menu_item) {
   $menu_item['#below'] = array();
   $menu_item['#attributes'] = array(
@@ -136,7 +138,7 @@ function _flight_city_child_menu_recurse($current_menu, &$menus, &$active, $pare
 
 
 /**
- * Implements hook_preprocess_block()
+ * Implements hook_preprocess_menu_block_wrapper()
  */
 function flight_city_preprocess_menu_block_wrapper(&$vars) {
   if($vars['delta'] == 'main-menu') {
@@ -154,6 +156,35 @@ function flight_city_preprocess_menu_block_wrapper(&$vars) {
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_block_()
+ */
+function flight_city_preprocess_block(&$vars) {
+  
+  if($vars['block']->delta == 'gtranslate') {
+    // Pulling out all flag links, scripts
+    $matches = preg_split('~(<a.*</a>)~is', $vars['content'], NULL, PREG_SPLIT_DELIM_CAPTURE);
+    // we have matches
+    if(count($matches) === 3) {
+      // This is all script info
+      $vars['content'] = $matches[0]; 
+      // Link attributes
+      $attributes =  array(
+        'html' => TRUE,
+        'attributes' => array(
+          'data-options' => 'align:left',
+          'data-dropdown' => 'transDrop',
+        )
+      );
+      $vars['content'] .= l(t('Translate') . ' <i class="fa-caret-down"></i>', 'user', $attributes) . '<br/>';
+      $vars['content'] .= '<div id="transDrop" data-dropdown-content class="f-dropdown content">';
+      // All links
+      $vars['content'] .= $matches[1] . '</div>';
+    }
+  }
+}
+
 
 
 //function flight_city_preprocess_views_view(&$variables) {

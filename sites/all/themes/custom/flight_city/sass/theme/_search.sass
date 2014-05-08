@@ -33,7 +33,7 @@ $search-button-size: 36px
 // *
 // ******************************************************
 
-+respond($small-only)
++respond($mobile-to-menu)
 
   // Search block
   // ------------------------------------------------------
@@ -45,12 +45,13 @@ $search-button-size: 36px
       display: none
 
 
-+respond($medium)
++respond($past-menu)
 
   // Search block
   // ------------------------------------------------------
 
   #search-block-form
+    clear: both
     float: right
     width: rem-calc(300)
 

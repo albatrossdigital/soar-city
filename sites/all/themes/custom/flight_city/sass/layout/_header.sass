@@ -4,6 +4,9 @@
   padding-top: $small-region-pad-large
   +nice-row-border($column-gutter/2, rem-calc(5), $common-border, bottom, hidden)
 
+  div.columns
+    padding-bottom: $small-region-pad-small*2
+
 
 // Entity Branding
 // ------------------------------------------------------
@@ -13,13 +16,22 @@
 #entity-title
   font-size: $h1-font-size
   margin: 0
-  padding: rem-calc(8 0)
+  padding: rem-calc(8 0 0)
 
 
 // Header region right
 // ------------------------------------------------------
 
 .header-region-right
+  .block 
+    margin-bottom: rem-calc(15px)
+    float: left
+
+  .f-dropdown
+    min-width: $f-dropdown-max-width
+
+  a 
+    +c(link-header)
 
 
 
@@ -39,3 +51,12 @@
 
 
 +respond($past-menu)
+
+  // Header region right
+  // ------------------------------------------------------
+
+  .header-region-right
+    margin-top: rem-calc(-5)
+
+    .block 
+      float: right

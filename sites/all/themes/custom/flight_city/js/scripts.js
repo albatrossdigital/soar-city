@@ -1,7 +1,7 @@
 (function ($, Drupal) {
 
   // Register custom media query
-  Foundation.utils.register_media('before-menu', 'before-menu');
+  Foundation.utils.register_media('mobile-to-menu', 'mobile-to-menu');
   Foundation.utils.register_media('past-menu', 'past-menu');
 
   // Triggers callback after image is loaded
@@ -52,7 +52,7 @@
       // checks widths
       function searchCheck() {
         // Toggle search for mobile
-        if (matchMedia(Foundation.media_queries['before-menu']).matches){
+        if (matchMedia(Foundation.media_queries['mobile-to-menu']).matches){
           toggleSearch(true);
         };
 

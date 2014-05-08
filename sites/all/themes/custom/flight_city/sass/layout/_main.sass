@@ -1,11 +1,19 @@
 // Non-modular or client styles for the .l-content region.
 
 
+// main wrapper
+// ----------------------------------------------------------------------------
+.l-main
+  padding-bottom: $small-main-block-spacing*2
+
+
+
 // Page title
 // ----------------------------------------------------------------------------
 
 #page-title
 
+  // page title hidden
   .no-page-title &
     +e(hide)
 
@@ -35,10 +43,16 @@
     +button($button-tny, $success-color, true)
     +border-radius(3px)
 
+
 // Main Content
 // ----------------------------------------------------------------------------
 
 .main 
+
+  // page title hidden
+  .no-page-title &
+    padding-top: $header-bottom-margin
+
   .block-title
     margin-bottom: $small-main-spacing
 
@@ -72,6 +86,12 @@
 // ******************************************************
 
 +respond($medium-up)
+
+  // main wrapper
+  // ----------------------------------------------------------------------------
+  .l-main
+    padding-bottom: $medium-main-block-spacing*2
+
 
   // Main Content
   // ----------------------------------------------------------------------------
