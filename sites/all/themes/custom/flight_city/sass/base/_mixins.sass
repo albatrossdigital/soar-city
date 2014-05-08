@@ -596,8 +596,13 @@ $common-border: common-border-val()
 //
 //***********************************
 
+@mixin side-bar-section($levels)
+  float: left
+  margin-left: 0
+  width: (100%)/$levels
 
-@mixin side-bar-menu-dynamic($levels: 3, $wrapper: '.menu-block-wrapper', $active-parent: 'li.active-trail:not(.active)')
+
+@mixin side-bar-menu-dynamic($levels: 3, $wrapper: '.menu-block-wrapper', $active-parent: 'li.active-trail:not(.active)', $title: 'h4')
   max-width: 100%
   overflow: hidden
 
@@ -611,11 +616,9 @@ $common-border: common-border-val()
 
       &.level_#{$i}
         margin-left: ($i) * (-100%)
-
-    ul
-      float: left
-      margin-left: 0
-      width: (100%)/$levels
+    
+    & > div
+      +side-bar-section($levels)
     
     [data-menu-back]
       a
@@ -625,10 +628,12 @@ $common-border: common-border-val()
 
 
 // Side bar menu styles
-@mixin side-bar-menu($menu: 'ul.menu', $title: 'h2.block-title', $active: 'a.active')
-  
+@mixin side-bar-menu($menu: 'ul.menu', $title: 'h2.block-title, h4', $active: 'a.active')
+ 
   #{$title}
     margin-top: rem-calc(20)
+
+  h2.block-title
     +h(4)
 
   #{$menu}
@@ -753,6 +758,11 @@ $main-menu-border-size: rem-calc(3)
   @if $big
     +big-form()
 
+
+// search button replace
+@mixin search-button($color: $gray, $size: 36px, $font: ($size*.5))
+  +undo-button($color, darken($color, 10%))
+  +icon-button-replace($fa-var-search, $size, $font)
 
 
 

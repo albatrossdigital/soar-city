@@ -1,40 +1,66 @@
 // Non-modular or client styles for the .l-content region.
 
 
+// main wrapper
+// ----------------------------------------------------------------------------
+.l-main
+  padding-bottom: $small-main-block-spacing*2
+
+
+
+// Page title
+// ----------------------------------------------------------------------------
+
+#page-title
+
+  // page title hidden
+  .no-page-title &
+    +e(hide)
+
+
+// Tabs
+// ----------------------------------------------------------------------------
+
+.main > ul.button-group
+  margin-bottom: $small-region-pad-small
+
+  li.active
+    a
+      +button-style($primary-color)
+
+  a
+    margin-bottom: rem-calc(5)
+    border-color: $gray
+
+
+// Action links
+// ----------------------------------------------------------------------------
+
+.main > ul.action-links
+  +list-float
+
+  a
+    +button($button-tny, $success-color, true)
+    +border-radius(3px)
+
+
 // Main Content
 // ----------------------------------------------------------------------------
 
 .main 
+
+  // page title hidden
+  .no-page-title &
+    padding-top: $header-bottom-margin
+
   .block-title
     margin-bottom: $small-main-spacing
 
   .block
     margin-bottom: $small-main-block-spacing
 
-  & > 
-
-    // tabs
-    ul.button-group
-      margin-bottom: $small-region-pad-small
-    
-      li.active
-        a
-          +button-style($primary-color)
-
-      a
-        margin-bottom: rem-calc(5)
-        border-color: $gray
-
-    // action links
-    ul.action-links
-      +list-float
-
-      a
-        +button($button-tny, $success-color, true)
-        +border-radius(3px)
-
-.block-workbench
-  margin-bottom: $small-region-pad-small
+  .block-workbench
+    margin-bottom: $small-region-pad-small
 
 
 // Common fields
@@ -46,12 +72,26 @@
   +c(link-alt)
 
 
+// Media
+// ----------------------------------------------------------------------------
+
+.node, .entity-bean
+  img, iframe
+    margin-bottom: $paragraph-margin-bottom
+
+
 // *
 // * Media Queries
 // *
 // ******************************************************
 
 +respond($medium-up)
+
+  // main wrapper
+  // ----------------------------------------------------------------------------
+  .l-main
+    padding-bottom: $medium-main-block-spacing*2
+
 
   // Main Content
   // ----------------------------------------------------------------------------
@@ -64,6 +104,9 @@
     .block
       margin-bottom: $medium-main-block-spacing
 
+    .block-workbench
+      margin-bottom: $small-region-pad-small
+
   // center main in columns
-  .medium-push-3.main
+  .medium-8.main
     margin-left: (grid-calc(1, 12)/2)

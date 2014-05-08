@@ -3,6 +3,103 @@ $social-size: 33px
 $social-font-size: rem-calc(19)
 
 
+// Social
+//-----------------------------------------------------------------------------
+
+.share42-item a,
+a.social-icon
+  +icon-button-replace(false, $social-size, $social-font-size)
+  +border-radius(100%)
+  opacity: 0.9!important
+  margin-right: rem-calc(10)!important
+
+  &:hover, &:active
+    opacity: 1!important
+    
+  &:before
+    color: $white
+    text-indent: 0
+    line-height: $social-size!important
+
+
+li:last-child a.social-icon,
+.share42-item:last-child a
+  margin-right: 0!important
+
+.share42-item:nth-child(4) a
+  +icon-only(envelope)
+
+.share42-item:first-child a,
+a.social-icon.Facebook
+  +icon-only(facebook)
+
+.share42-item:nth-child(3) a,
+a.social-icon.Twitter
+  +icon-only(twitter)
+
+.share42-item:nth-child(2) a,
+a.social-icon.Googleplus
+  +icon-only(google-plus)
+
+a.social-icon.Linkedin
+  +icon-only(linkedin)
+
+a.social-icon.Flickr
+  +icon-only(flickr)
+
+a.social-icon.Youtube
+  +icon-only(youtube)
+
+a.social-icon.Pinterest
+  +icon-only(pinterest)
+
+a.social-icon.Rss
+  +icon-only(Rss)
+
+a.social-icon.Dribbble
+  +icon-only(dribbble)
+
+a.social-icon.Vimeo
+  +icon-only(vimeo)
+
+
+
+
+// Share 42
+//-----------------------------------------------------------------------------
+
+.share42init
+  text-align: right
+
+  &:before
+    display: inline
+    content: "Share "
+    font-size: $font-size-small
+    height: $social-size
+    line-height: $social-size
+    +f(alt-alt)
+    margin: 0
+    padding-right: rem-calc(23)
+
+#share42
+  float: right
+
+  &, &:hover
+    background: none
+    border: 0
+    display: block
+    padding: 0
+    +box-shadow(none)
+    height: $social-size
+
+.share42-item
+  margin: 0!important
+  
+  a
+    background: $gray-social!important
+    
+
+
 // Social media links
 //-----------------------------------------------------------------------------
 
@@ -12,58 +109,33 @@ $social-font-size: rem-calc(19)
       +list-float
 
 a.social-icon
-  +icon-button-replace(false, $social-size, $social-font-size)
-  +border-radius(100%)
-  +opacity(0.9)
-  margin-right: rem-calc(10)
-
-  li:last-child > &
-    margin-right: 0
-
-  &:hover, &:active
-    +opacity(1)
-    
-  &:before
-    //line-height: $social-size!important
-    color: $white
-    text-indent: 0
 
   &.Facebook
-    +icon-only(facebook)
     background: $blue-facebook
 
   &.Twitter
-    +icon-only(twitter)
     background: $blue-twitter
 
   &.Googleplus
-    +icon-only(google-plus)
     background: $blue-twitter
 
   &.Linkedin
-    +icon-only(linkedin)
     background: $blue-linkedin
 
   &.Flickr
-    +icon-only(flickr)
     background: $pink-flickr
 
   &.Youtube
-    +icon-only(youtube)
     background: $red-youtube
 
   &.Pinterest
-    +icon-only(pinterest)
     background: $red-pinterest
 
   &.Rss
-    +icon-only(Rss)
     background: $blue-twitter
 
   &.Dribbble
-    +icon-only(dribbble)
     background: $pink-dribbble
 
   &.Vimeo
-    +icon-only(vimeo)
     background: $blue-twitter

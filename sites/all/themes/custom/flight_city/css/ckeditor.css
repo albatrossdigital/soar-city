@@ -3975,7 +3975,7 @@ textarea {
   background-color: white;
   font-family: "open-sans";
   border: 1px solid #bbbbbb;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
   color: #111111;
   display: block;
   font-size: 1rem;
@@ -5886,7 +5886,7 @@ p {
   font-weight: normal;
   font-size: 1rem;
   line-height: 1.6;
-  margin-bottom: 1.42857rem;
+  margin-bottom: 1.07143rem;
   text-rendering: optimizeLegibility;
 }
 /* line 219, ../sass/vendor/foundation/components/_type.scss */
@@ -6003,7 +6003,7 @@ ol,
 dl {
   font-size: 1rem;
   line-height: 1.6;
-  margin-bottom: 1.42857rem;
+  margin-bottom: 1.07143rem;
   list-style-position: outside;
   font-family: inherit;
 }
@@ -6097,7 +6097,7 @@ abbr {
 /* Blockquotes */
 /* line 369, ../sass/vendor/foundation/components/_type.scss */
 blockquote {
-  margin: 0 0 1.42857rem;
+  margin: 0 0 1.07143rem;
   padding: 0.64286rem 1.42857rem 0 1.35714rem;
   border-left: 1px solid #dddddd;
 }
@@ -6637,8 +6637,9 @@ h3, h4 {
 }
 
 /* line 54, ../sass/base/_drupal.sass */
-.ajax-progress-throbber .throbber {
+.ajax-progress-throbber div.throbber {
   background-image: none;
+  padding: 0;
   height: 15px;
   width: 15px;
   display: inline-block;
@@ -6651,7 +6652,7 @@ h3, h4 {
   animation: rotation 0.75s infinite linear;
 }
 /* line 393, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
-.ajax-progress-throbber .throbber:before {
+.ajax-progress-throbber div.throbber:before {
   content: "";
   display: block;
   position: absolute;
@@ -6666,10 +6667,10 @@ h3, h4 {
   border-radius: 100%;
 }
 /* line 379, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
-.ajax-progress-throbber .throbber:before {
+.ajax-progress-throbber div.throbber:before {
   border-top-color: #626262;
 }
-/* line 59, ../sass/base/_drupal.sass */
+/* line 60, ../sass/base/_drupal.sass */
 .pager .ajax-progress-throbber {
   position: absolute;
   margin-left: -0.64286rem;

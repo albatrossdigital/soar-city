@@ -1,7 +1,7 @@
 (function ($, Drupal) {
 
   // Register custom media query
-  Foundation.utils.register_media('before-menu', 'before-menu');
+  Foundation.utils.register_media('mobile-to-menu', 'mobile-to-menu');
   Foundation.utils.register_media('past-menu', 'past-menu');
 
   // Triggers callback after image is loaded
@@ -19,6 +19,55 @@
   Drupal.behaviors.flight_city = {
     attach: function(context, settings) {
 
+      // searchform switches from header area
+      // to topbar on "past-menu" media query
+      // searchInTopbar == false if in header, true if in topbar 
+      var $searchForm = $('#search-block-form'),
+        $searchFormWrapper = $('.top-bar-section > .block-search-form'),
+        $headerRegion = $('.l-header-region > .header-region-right'),
+        searchInTopbar = true,
+        $body = $('body');
+
+      // toggle search from header to topbar
+      function toggleSearch(topbar) {
+
+        // going from topbar to header 
+        if(!topbar) {
+          // only react if in topbar
+          if(searchInTopbar) {
+            $headerRegion.append($searchForm);
+            searchInTopbar = false;
+          }
+        }
+        // going from header to topbar
+        else {
+          // only react if NOT in topbar
+          if(!searchInTopbar) {
+            $searchFormWrapper.prepend($searchForm);
+            searchInTopbar = true;
+          }
+        }
+      }
+
+      // checks widths
+      function searchCheck() {
+        // Toggle search for mobile
+        if (matchMedia(Foundation.media_queries['mobile-to-menu']).matches){
+          toggleSearch(true);
+        };
+
+        // Toggle search to topbar
+        if (matchMedia(Foundation.media_queries['past-menu']).matches){
+          toggleSearch(false);
+        };
+      }
+
+      // Watch width, throttled
+      $(window).resize(Foundation.utils.throttle(function(e){
+        searchCheck();
+      }, 100));
+
+
       // orbits helper
       $('ul[data-orbit]', context).once('orbit-helper', function() {
 
@@ -33,9 +82,9 @@
         });
 
         // init
-        triggerImageSize($orbitImage, function() {
+        /*triggerImageSize($orbitImage, function() {
           $(window).trigger('resize');
-        });
+        });*/
 
         // on interchage changes, watch images again
         $(document).on('replace', 'img', function (e, new_path, original_path) {
@@ -53,6 +102,9 @@
         $self.parents('div').addClass('level_' + level).removeClass('level_' + (level + 1));
         e.preventDefault();
       });
+
+      // Call resize to init theme js
+      $(window).trigger('resize');
     }
   };
 

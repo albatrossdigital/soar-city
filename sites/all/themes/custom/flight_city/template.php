@@ -74,6 +74,8 @@ function flight_city_preprocess_page(&$vars) {
 //function flight_city_preprocess_node(&$variables) {
 //}
 
+
+//
 function _flight_city_child_menu_back_button($menu_item) {
   $menu_item['#below'] = array();
   $menu_item['#attributes'] = array(
@@ -92,16 +94,30 @@ function _flight_city_child_menu_back_button($menu_item) {
 function _flight_city_child_menu_recurse($current_menu, &$menus, &$active, $parent = FALSE) {
   $count = count($menus) + 1;
   $menu_level = 'level_' . $count;
-  $menus[$menu_level] = array();
-  // We have a parent, so add back button
-  //dpm($parent);
+
+  // Add menu wrapper
+  $menus[$menu_level] = array(
+    '#type' => 'container',
+    '#attributes' => array(
+      'class' => 'level-' . $count
+    )
+  );
+  
+  // We have a parent, so add back button, set title
   if($parent) {
-    $menus[$menu_level]['back'] = _flight_city_child_menu_back_button($parent);
-    //dpm($menus);
+    $menus[$menu_level]['title']['#markup'] = '<h4>' . $parent['#title'] . '</h4>';
+    $menus[$menu_level]['menu'] = array(
+      'back' => _flight_city_child_menu_back_button($parent)
+    );
+  }
+  // No parent so title is main menu, init array
+  else {
+    $menus[$menu_level]['title']['#markup'] = '<h4>' . t('Main Menu') . '</h4>';
+    $menus[$menu_level]['menu'] = array();
   }
   // run through menu items
   foreach($current_menu as $key => $value) {
-    $menus[$menu_level][$key] = $value;
+    $menus[$menu_level]['menu'][$key] = $value;
     if(is_array($value)) {
 
       // children
@@ -114,7 +130,7 @@ function _flight_city_child_menu_recurse($current_menu, &$menus, &$active, $pare
       // we have children, so recurse
       if($children) {
         _flight_city_child_menu_recurse($value['#below'], $menus, $active, $value);
-        $menus[$menu_level][$key]['#below'] = array();
+        $menus[$menu_level]['menu'][$key]['#below'] = array();
       }
     }
   }
@@ -122,7 +138,7 @@ function _flight_city_child_menu_recurse($current_menu, &$menus, &$active, $pare
 
 
 /**
- * Implements hook_preprocess_block()
+ * Implements hook_preprocess_menu_block_wrapper()
  */
 function flight_city_preprocess_menu_block_wrapper(&$vars) {
   if($vars['delta'] == 'main-menu') {
@@ -140,6 +156,35 @@ function flight_city_preprocess_menu_block_wrapper(&$vars) {
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_block_()
+ */
+function flight_city_preprocess_block(&$vars) {
+  
+  if($vars['block']->delta == 'gtranslate') {
+    // Pulling out all flag links, scripts
+    $matches = preg_split('~(<a.*</a>)~is', $vars['content'], NULL, PREG_SPLIT_DELIM_CAPTURE);
+    // we have matches
+    if(count($matches) === 3) {
+      // This is all script info
+      $vars['content'] = $matches[0]; 
+      // Link attributes
+      $attributes =  array(
+        'html' => TRUE,
+        'attributes' => array(
+          'data-options' => 'align:left',
+          'data-dropdown' => 'transDrop',
+        )
+      );
+      $vars['content'] .= l(t('Translate') . ' <i class="fa-caret-down"></i>', 'user', $attributes) . '<br/>';
+      $vars['content'] .= '<div id="transDrop" data-dropdown-content class="f-dropdown content">';
+      // All links
+      $vars['content'] .= $matches[1] . '</div>';
+    }
+  }
+}
+
 
 
 //function flight_city_preprocess_views_view(&$variables) {
@@ -192,6 +237,39 @@ function flight_city_form_alter(&$form, &$form_state, $form_id) {
   if (!empty($form['actions']) && !empty($form['actions']['submit'])) {
     $classes = array('primary', 'button');
     $form['actions']['submit']['#attributes']['class'] = $classes;
+  }
+}
+
+/**
+ * Implements hook_preprocess_textfield().
+ */
+function flight_city_preprocess_form_element(&$vars) {
+
+  // add placeholder text if applicable
+  if(!empty($vars['element']['#type'])) {
+    switch ($vars['element']['#type']) {
+      case 'textfield':
+      case 'textarea':
+      case 'webform_email':
+
+        if (!empty($vars['element']['#title'])) {
+          $placeholder = array('placeholder' => t($vars['element']['#title']));
+          if (is_array($vars['element']['#attributes'])) {
+            $vars['element']['#attributes'] = array_merge($vars['element']['#attributes'], $placeholder);
+          }
+          else {
+            $vars['element']['#attributes'] = $placeholder;
+          }
+        }
+        break;
+    }
+  }
+  // if autocopmplete add spinner
+  if(!empty($vars['element']['#autocomplete_path'])) {
+    //$prefix = '<span class='form-autocomplete-wrap"></span>';
+    $suffix = '<span class="form-autocomplete-wrap"><span class="spinner"></span></span>';
+    //$vars['element']['#field_prefix'] = isset($vars['element']['#field_prefix']) ? $prefix . $vars['element']['#field_prefix'] : $prefix;
+    $vars['element']['#field_suffix'] = isset($vars['element']['#field_suffix']) ? $suffix . $vars['element']['#field_suffix'] : $suffix;
   }
 }
 

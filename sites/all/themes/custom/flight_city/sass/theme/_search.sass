@@ -1,0 +1,60 @@
+$search-button-size: 36px
+
+// Search forms
+// ------------------------------------------------------
+
+#search-block-form
+  position: relative
+
+  .form-item
+    display: block
+
+  input.form-text
+    padding-right: $form-spacing/2 + rem-calc($search-button-size)
+
+  .form-submit
+    +search-button($gray, $search-button-size)
+    position: absolute
+    right: $input-border-width
+    top: $input-border-width
+
+
+// Search block
+// ------------------------------------------------------
+
+#search-block-form
+
+
+  input, button 
+    margin-bottom: 0
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($mobile-to-menu)
+
+  // Search block
+  // ------------------------------------------------------
+
+  #search-block-form
+
+    // hide in header region
+    .header-region-right &
+      display: none
+
+
++respond($past-menu)
+
+  // Search block
+  // ------------------------------------------------------
+
+  #search-block-form
+    clear: both
+    float: right
+    width: rem-calc(300)
+
+    // hide in topbar
+    .top-bar &
+      display: none
