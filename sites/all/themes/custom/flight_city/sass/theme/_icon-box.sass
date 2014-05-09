@@ -13,22 +13,29 @@ $icon-area-font-size: rem-calc(45)
   margin-bottom: $small-region-pad-large
 
 
-// Wrapper
+// Just Wrapper 
 .field-collection-item-field-link-collection,
-.vocabulary-event-category.view-mode-teaser
-  cursor: pointer
+.vocabulary-event-category.view-mode-teaser,
+.vocabulary-faq-category.view-mode-teaser
   position: relative
   text-align: center
-  +c(link-header-full)
-  
-  .field-name-field-link
-    padding-top: $paragraph-margin-bottom
 
   &:hover,
   &.active
 
     i 
       opacity: 1
+
+
+// Wrapper as full link
+.field-collection-item-field-link-collection,
+.vocabulary-event-category.view-mode-teaser
+  cursor: pointer
+  +c(link-header-full)
+  
+  .field-name-field-link
+    padding-top: $paragraph-margin-bottom
+
 
 // Icon section
 .circle-icon
@@ -56,7 +63,8 @@ $icon-area-font-size: rem-calc(45)
 
 // Animated hover actions
 .field-collection-item-field-link-collection,
-.vocabulary-event-category.view-mode-teaser
+.vocabulary-event-category.view-mode-teaser,
+.vocabulary-faq-category.view-mode-teaser
   &:hover,
   &.active
 
@@ -73,7 +81,8 @@ $icon-area-font-size: rem-calc(45)
 // Side by side views
 // --------------------------
 
-.vocabulary-event-category.view-mode-teaser
+.vocabulary-event-category.view-mode-teaser,
+.vocabulary-faq-category.view-mode-teaser
   +nice-row-border($column-gutter/2, rem-calc(22), 1px solid $gray, bottom, hidden)
   
   .group-left, .group-right
@@ -82,6 +91,13 @@ $icon-area-font-size: rem-calc(45)
   .group-right
     text-align: left
 
+  i
+    margin-left: rem-calc(1)
+
+
+// Align text vertically
+.vocabulary-event-category.view-mode-teaser
+  .group-right
     & > div
       display: table
       min-height: rem-calc(80)
@@ -90,8 +106,7 @@ $icon-area-font-size: rem-calc(45)
       display: table-cell
       vertical-align: middle
 
-  i
-    margin-left: rem-calc(1)
+  
 
 
 
