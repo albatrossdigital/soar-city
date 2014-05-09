@@ -82,7 +82,10 @@ function _flight_address_helper_autocomplete($field, $string) {
  * Page callback for full address values
  */  
 function _flight_address_helper_response($field, $nid) {
-  $matches = _flight_address_helper_autocomplete_values($field, $nid, 'content');
+  //$matches = _flight_address_helper_autocomplete_values($field, $nid, 'content');
+  $matches = array(
+    'name_line' => 'yup'
+  );
   return drupal_json_output($matches);
 }
 
