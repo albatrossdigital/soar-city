@@ -62,9 +62,20 @@ function _flight_address_helper_autocomplete_values($field, $string, $type = 'li
     }
   }
   else if($type == 'content') {
-    $content = flight_config_view_data('locations', 'attachment_1', array($string));
-    if(isset($content[0]) && !empty($content[0]->{'field_' . $field})) {
-      $results = $content[0]->{'field_' . $field}[0]['raw'];
+    // Grab address field
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->propertyCondition('nid', $string);
+    $result = $query->execute();
+     
+    if (isset($result['node'])) {
+      $node = $result['node'];
+      // Grab field ID
+      $fields = field_info_instances('node', $node[$string]->type);
+      $field_id = $fields[$field]['field_id'];
+      field_attach_load('node', $node, FIELD_LOAD_CURRENT, array('field_id' => $field_id));
+      $output = field_get_items('node', $node[$string], $field);
+      $results = array_shift($output);
     }
   }
   return $results;
@@ -82,10 +93,7 @@ function _flight_address_helper_autocomplete($field, $string) {
  * Page callback for full address values
  */  
 function _flight_address_helper_response($field, $nid) {
-  //$matches = _flight_address_helper_autocomplete_values($field, $nid, 'content');
-  $matches = array(
-    'name_line' => 'yup'
-  );
+  $matches = _flight_address_helper_autocomplete_values($field, $nid, 'content');
   return drupal_json_output($matches);
 }
 
