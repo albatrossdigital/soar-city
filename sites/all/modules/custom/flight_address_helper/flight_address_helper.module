@@ -45,7 +45,7 @@ function _flight_address_helper_autocomplete_values($field, $string, $type = 'li
   $display = 'entityreference_1';
   if($type == 'list') {
     // Build view
-    $view = views_get_view('locations');
+    $view = views_get_view(FLIGHT_HELPER_VIEW);
     $view->set_display($display);
     // Grab filter
     $filter = $view->get_item($display, 'filter', $field . '_name_line_1');
@@ -137,7 +137,11 @@ function flight_address_helper_field_widget_form(&$form, &$form_state, $field, $
     // Attach js
     $attached = array(
       'js' => array(
-        drupal_get_path('module', 'flight_address_helper') . '/js/flight-address-helper-autocomplete.js',
+        array(
+          'data' => drupal_get_path('module', 'flight_address_helper') . '/js/flight-address-helper-autocomplete.js',
+          'type' => 'file',
+          'weight' => 100
+        ),
         array(
           'data' => array(
             'flightAddressHelper' => array(
@@ -155,6 +159,8 @@ function flight_address_helper_field_widget_form(&$form, &$form_state, $field, $
       $form['#attached'] = $attached;
     }
   }
+
+  dpm($form);
 
   return $element;
 }
