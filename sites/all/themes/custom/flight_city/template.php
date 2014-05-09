@@ -23,6 +23,24 @@ function flight_city_preprocess_html(&$vars) {
   ));
 }
 
+
+/**
+ * Implements template_preprocess_page
+ *
+ */
+function _flight_city_active_menu_parent() {
+  // using active menu
+  $trail = menu_get_active_trail();
+  //we're on a child
+  if(isset($trail[1])) {
+    if($trail[1]['menu_name'] == 'main-menu') {
+      return $trail[1]['link_title'];
+    }
+  }
+  return FALSE;
+}
+
+
 /**
  * Implements template_preprocess_page
  *
@@ -35,7 +53,18 @@ function flight_city_preprocess_page(&$vars) {
 
   // Set section title explicitly
   if(!isset($vars['entity_title'])) {
-    $vars['entity_title'] = $vars['site_name'];
+    $current_domain = domain_get_domain();
+    // Main top level domain
+    if($current_domain['is_default']) {
+      // If there is an override use it, else use menu item if available
+      $vars['entity_title'] = $vars['section_title']
+        ? $vars['section_title'] : (($menu_title = _flight_city_active_menu_parent())
+        ? $menu_title : FALSE);
+    }
+    // Nothing set, so set to site name
+    if(empty($vars['entity_title'])) {
+      $vars['entity_title'] = $vars['site_name'];
+    }
   }
 
   // Convenience variables

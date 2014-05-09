@@ -1,0 +1,9 @@
+name = Flight Address Helper
+description = Adds an auto complete to address field forms
+core = 7.x
+package = Flight
+dependencies[] = entityreference
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = flight_helper_addresses
+features_exclude[dependencies][views] = views

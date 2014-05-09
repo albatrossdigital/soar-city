@@ -1,0 +1,223 @@
+<?php
+/**
+ * @file
+ * Code for the Flight Address Helper feature.
+ */
+
+include_once 'flight_address_helper.features.inc';
+
+define('FLIGHT_HELPER_VIEW', 'flight_helper_addresses');
+define('FLIGHT_HELPER_URL_AUTO', 'admin/flight-address-auto/');
+define('FLIGHT_HELPER_URL_RESPONSE', 'admin/flight-address-response/');
+
+/**
+ * Implements hook_menu()
+ */
+function flight_address_helper_menu(){
+  $items[FLIGHT_HELPER_URL_AUTO . '%'] = array(
+    'title' => 'Autocomplete for addresses',
+    'page callback' => '_flight_address_helper_autocomplete',
+    'access arguments' => array('use autocomplete'),
+    'page arguments' => array(2),
+    'type' => MENU_CALLBACK
+  );
+  $items[FLIGHT_HELPER_URL_RESPONSE . '%/%'] = array(
+    'title' => 'Autocomplete response',
+    'page callback' => '_flight_address_helper_response',
+    'access arguments' => array('use autocomplete'),
+    'page arguments' => array(2, 3),
+    'type' => MENU_CALLBACK
+  );
+  return $items;
+}
+
+/**
+ * Helper function returns address content
+ * $type = list returns autocomplete values
+ * $type = content returns whole address content
+ */
+function _flight_address_helper_autocomplete_values($field, $string, $type = 'list') {
+  
+  $field = check_plain($field);
+  $string = check_plain($string);
+
+  $results = array();
+  $display = 'entityreference_1';
+  if($type == 'list') {
+    // Build view
+    $view = views_get_view(FLIGHT_HELPER_VIEW);
+    $view->set_display($display);
+    // Grab filter
+    $filter = $view->get_item($display, 'filter', $field . '_name_line_1');
+    $filter['value'] = $string;
+    // Set filter
+    $view->set_item($display, 'filter', $field . '_name_line_1', $filter);
+    $view->execute();
+    // Build results
+    if(!empty($view->result)) {
+      foreach ($view->result as $value) {
+        $name = $value->{'field_data_' . $field .'_' . $field .'_name_line'};
+        $results[$name . ' (' . $value->nid .')'] = $name;
+      }
+    }
+  }
+  else if($type == 'content') {
+    // Grab address field
+    $query = new EntityFieldQuery();
+    $query->entityCondition('entity_type', 'node')
+      ->propertyCondition('nid', $string);
+    $result = $query->execute();
+     
+    if (isset($result['node'])) {
+      $node = $result['node'];
+      // Grab field ID
+      $fields = field_info_instances('node', $node[$string]->type);
+      $field_id = $fields[$field]['field_id'];
+      field_attach_load('node', $node, FIELD_LOAD_CURRENT, array('field_id' => $field_id));
+      $output = field_get_items('node', $node[$string], $field);
+      $results = array_shift($output);
+    }
+  }
+  return $results;
+}
+
+/**
+ * Page callback for autocomplete values
+ */  
+function _flight_address_helper_autocomplete($field, $string) {
+  $matches = _flight_address_helper_autocomplete_values($field, $string);
+  return drupal_json_output($matches);
+}
+
+/**
+ * Page callback for full address values
+ */  
+function _flight_address_helper_response($field, $nid) {
+  $matches = _flight_address_helper_autocomplete_values($field, $nid, 'content');
+  return drupal_json_output($matches);
+}
+
+/**
+ * Implements hook_field_widget_info()
+ */
+function flight_address_helper_field_widget_info() {
+  $widgets = array();
+
+  $widgets['flight_address_helper_addressfield'] = array(
+    'label' => t('Flight Address Helper'),
+    'field types' => array('addressfield'),
+    'settings' => array(
+      'available_countries' => array(),
+      'format_handlers' => array('address'),
+    ),
+  );
+
+  return $widgets;
+}
+
+/**
+ * Implements hook_field_widget_settings_form()
+ */
+function flight_address_helper_field_widget_settings_form($field, $instance) {
+  $form = array();
+  if($instance['widget']['type'] == 'flight_address_helper_addressfield') {
+    // Fudge type for content
+    $instance['widget']['type'] = 'addressfield_standard';
+    $form = addressfield_field_widget_settings_form($field, $instance);
+  }
+  return $form;
+}
+
+/**
+ * Implements hook_field_widget_form()
+ */
+function flight_address_helper_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+
+  if($instance['widget']['type'] == 'flight_address_helper_addressfield') {
+
+    // Fudge type for content
+    $instance['widget']['type'] = 'addressfield_standard';
+    $instance['default_value'][] = array();
+    $element = addressfield_field_widget_form($form, $form_state, $field, $instance, $langcode, $items, $delta, $element);
+
+    // Set autcomplete path
+    $element['name_block']['name_line']['#autocomplete_path'] = FLIGHT_HELPER_URL_AUTO . $element['#field_name'];
+    // @todo validate result?
+    //$element['name_block']['name_line']['#element_validate'] = array('_flight_address_helper_field_widget_form_validate');
+    $element['name_block']['name_line']['#attributes']['address-autocomplete-field'] = $element['#field_name'];
+    // Attach js
+    $attached = array(
+      'js' => array(
+        array(
+          'data' => drupal_get_path('module', 'flight_address_helper') . '/js/flight-address-helper-autocomplete.js',
+          'type' => 'file',
+          'weight' => 100
+        ),
+        array(
+          'data' => array(
+            'flightAddressHelper' => array(
+              'url' => '/' . FLIGHT_HELPER_URL_RESPONSE,
+            ),
+          ),
+          'type' => 'setting',
+        )
+      )
+    );
+    if(!empty($form['#attached'])) {
+      $form['#attached'] = array_merge($form['#attached'], $attached);
+    }
+    else {
+      $form['#attached'] = $attached;
+    }
+  }
+
+  return $element;
+}
+
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function flight_address_helper_field_formatter_info() {
+  return array(
+    'flight_address_helper_addressfield' => array(
+      'label' => t('Default'),
+      'field types' => array('addressfield'),
+      'settings' => array(
+        'use_widget_handlers' => 1,
+        'format_handlers' => array('address'),
+      ),
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function flight_address_helper_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+
+  return addressfield_field_formatter_settings_form($field, $instance, $view_mode, $form, $form_state);
+}
+
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function flight_address_helper_field_formatter_settings_summary($field, $instance, $view_mode) {
+  return addressfield_field_formatter_settings_summary($field, $instance, $view_mode);
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function flight_address_helper_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+
+  if($display['type'] == 'flight_address_helper_addressfield') {
+    // Fudge type for content
+    $display['type'] = 'addressfield_default';
+    $element = addressfield_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display);
+  }
+
+  return $element;
+}
