@@ -15,11 +15,40 @@
  * break in certain environments (see http://drupal.org/node/1778952).
  */
 function baltimore_migrate_migrate_api() {
+
+  $migrations = array(
+    'UberOrganization' => array('class_name' => 'UberOrganizationMigration'),
+    'BaltimoreStories' => array('class_name' => 'BaltimoreStoriesMigration'),
+    
+    // Placeholder / Demo
+    // This is needed for legacy support
+    // @todo: remove
+    'BaltimoreContent' => array(
+      'class_name' => 'BaltimoreContentMigration',
+      'domain' => 3,
+      'menu_name' => '8a5cf1368d89144ef92c695bf3eb0e21',
+      'url' => DRUPAL_ROOT . '/WORKING/data/health-content.csv',
+      'base_url' => 'http://www.baltimorehealth.org/',
+      'default_section' => 36,
+    ),
+
+    // Health
+    'BaltimoreHealthContent' => array(
+      'class_name' => 'BaltimoreHealthContentMigration',
+      'domain' => 3,
+      'menu_name' => '8a5cf1368d89144ef92c695bf3eb0e21',
+      'url' => DRUPAL_ROOT . '/WORKING/data/health-content.csv',
+      'base_url' => 'http://www.baltimorehealth.org/',
+      'default_section' => 36,
+      'xpath' => '//div[@class="contentDiv"]',
+    ),
+  );
+
   $api = array(
     'api' => 2,
-    'migrations' => array(
-      'MyMigration' => array('class_name' => 'MyMigration'),
-    ),
+    'migrations' => $migrations,
   );
   return $api;
 }
+
+

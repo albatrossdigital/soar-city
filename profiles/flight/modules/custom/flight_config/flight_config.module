@@ -36,6 +36,19 @@ function flight_config_init() {
   drupal_add_library('underscore', 'underscore');
 }
 
+function hook_permission() {
+  return array(
+    'administer flight' => array(
+      'title' => t('Administer Flight configuration'),
+      'description' => t('Administer flight settings.'),
+    ),
+    'flight view navbar menu link' => array(
+      'title' => t('View menu navbar link'),
+      'description' => t('View the Administration menu link in the navbar.'),
+    ),
+  );
+}
+
 /**
  * Implements hook_menu()
  **/
@@ -47,14 +60,41 @@ function flight_config_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  // Legacy
   $items['me'] = array(
     'title' => 'Welcome',
     'page callback' => 'flight_config_me',
     'access callback' => 'user_is_logged_in',
     'type' => MENU_CALLBACK,
   );
+
+  $items['user/me'] = array(
+    'title' => 'Welcome',
+    'page callback' => 'flight_config_me',
+    'access callback' => 'user_is_logged_in',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['user/me/edit'] = array(
+    'title' => 'Welcome',
+    'page callback' => 'flight_config_me_edit',
+    'access callback' => 'user_is_logged_in',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['admin/config/flight/workbench'] = array(
+    'title' => 'Flight Configuration',
+    'file' => 'flight_config.admin.inc',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('flight_config_admin_settings'),
+    'access arguments' => array('administer flight'),
+    'type' => MENU_NORMAL_ITEM,
+  );
   return $items;
 }
+
+
+
 
 /**
  * Implements hook_menu_alter()
@@ -85,6 +125,15 @@ function flight_config_me() {
 }
 
 /**
+ * Callback for the me page for logged in users.
+ **/
+function flight_config_me_edit() {
+  global $user;
+  drupal_goto('user/' . $user->uid . '/edit');
+}
+
+
+/**
  * Implements hook_user_presave()
  * Sets the user's admin_select value to navbar if it isn't already set.
  **/
@@ -101,6 +150,7 @@ function flight_config_user_presave(&$edit, $account, $category) {
 function flight_config_admin_paths_alter(&$paths) {
   $paths['import'] = TRUE;
   $paths['import/*'] = TRUE;
+  $paths['media/*/format-form'] = TRUE;
   return $paths;
 }
 
@@ -111,22 +161,87 @@ function flight_config_admin_paths_alter(&$paths) {
  **/
 function flight_config_page_alter(&$page) {
   if (module_exists('edit') && user_access('access in-place editing')) {
-    $page['page_bottom']['edit_trigger_link'] = edit_trigger_link();
+    /*$page['page_bottom']['edit_trigger_link'] = edit_trigger_link();
     $page['page_bottom']['edit_trigger_link']['#attributes']['class'][] = 'flight-config-edit-trigger-link';
     $page['page_bottom']['edit_trigger_link']['#attached']['css'][] = drupal_get_path('module', 'flight_config') . '/css/flight-config-edit-launcher.css';
     $page['page_bottom']['edit_trigger_link']['#href'] = '';
     $page['page_bottom']['edit_trigger_link']['#attributes']['onclick'] = 'return false;';
-
+	*/
+	
     // Fix errors with missing depends for CKEditor/media
     // From: https://drupal.org/node/2125199
+    /*
     module_load_include('inc', 'ckeditor', 'includes/ckeditor.lib');
     $input_formats = ckeditor_profiles_compile();
     drupal_add_js(array('ckeditor' => array('input_formats' => $input_formats, 'plugins' => array())), 'setting');
+    */
   }
 //
 //  if (module_exists('admin_menu')) {
 //    $page['page_bottom']['#attached']['css'][] = drupal_get_path('module', 'flight_config') . '/css/flight-config-admin-menu-skin.css';
 //  }
+}
+
+
+/**
+ * Implements hook_file_view().
+ * Provide a direct download to certain types of files (images, documents).
+ * This is really necessary because ckeditor_link_file only links to the file.
+ * @todo: move this to flight_media (need to have a config page first).
+ */
+function flight_config_file_view($file, $view_mode, $langcode) {
+  if (arg(0) === 'file') {
+    switch ($file->type) {
+      case 'document':
+      case 'image':
+        $url = file_create_url($file->uri);
+        drupal_goto($url);
+        break;
+    }
+  }
+}
+
+
+function flight_config_navbar() {
+  $items = array();
+
+  // The 'Home' tab is a simple link, which is wrapped in markup associated
+  // with a visual tab styling.
+  $items['workbench'] = array(
+    '#type' => 'navbar_item',
+    'tab' => array(
+      '#type' => 'link',
+      '#title' => t('My Workbench'),
+      '#href' => 'admin/workbench',
+      '#options' => array(
+        'attributes' => array(
+          'title' => t('My Workbench'),
+          'class' => array('navbar-icon', 'navbar-icon-content'),
+        ),
+      ),
+    ),
+    '#weight' => -19,
+  );
+
+  // The 'Home' tab is a simple link, which is wrapped in markup associated
+  // with a visual tab styling.
+  $items['people'] = array(
+    '#type' => 'navbar_item',
+    'tab' => array(
+      '#type' => 'link',
+      '#title' => t('People'),
+      '#href' => 'admin/people',
+      '#options' => array(
+        'attributes' => array(
+          'title' => t('Manage Users'),
+          'class' => array('navbar-icon', 'navbar-icon-people'),
+        ),
+      ),
+    ),
+    '#weight' => -18,
+  );
+
+  return $items;
 }
 
 
@@ -225,8 +340,6 @@ function flight_config_ds_field_settings_form($field) {
   $form = array();
   // Saved formatter settings are on $field['formatter_settings'];
   $settings = isset($field['formatter_settings']) ? $field['formatter_settings'] : $field['properties']['default'];
-
-  dpm($settings);
 
   switch($field['name']) {
 

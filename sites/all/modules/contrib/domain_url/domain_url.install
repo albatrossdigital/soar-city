@@ -1,0 +1,47 @@
+<?php
+// $Id: domain_path.install,v 1.1 2011/01/14 22:16:29 agentken Exp $
+
+/**
+ * @file
+ * Install file for Domain URL.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function domain_url_schema() {
+  $schema['domain_url'] = array(
+    'description' => 'Stores per-domain canonical URL data.',
+    'fields' => array(
+      'duid' => array(
+        'description' => 'Primary key.',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ),
+      'domain_id' => array(
+        'description' => 'Domain id for this URL',
+        'type' => 'int',
+        'not null' => TRUE,
+      ),
+      'path' => array(
+        'description' => 'System path for the URL',
+        'type' => 'varchar',
+        'length' => '255',
+        'not null' => TRUE,
+      ),
+      'entity_type' => array(
+        'description' => 'Entity type',
+        'type' => 'varchar',
+        'length' => '80',
+        'not null' => FALSE,
+      ),
+      'entity_id' => array(
+        'description' => 'Entity id',
+        'type' => 'int',
+        'not null' => FALSE,
+      ),
+    ),
+    'primary key' => array('duid'),
+  );
+  return $schema;
+}

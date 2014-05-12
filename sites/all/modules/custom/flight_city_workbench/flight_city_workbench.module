@@ -1,5 +1,78 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the Flight City Workbench feature.
  */
+
+include_once 'flight_city_workbench.features.inc';
+
+
+/**
+ * Implements hook_menu().
+ */
+function flight_city_workbench_menu() {
+  $items['members/application'] = array(
+    'page callback' => 'charities_application_callback',
+    'access arguments' => array('edit own charity_application content'),
+  );
+  $items['members/logos'] = array(
+    'page callback' => 'charities_application_logos_callback',
+    'access arguments' => array('edit own charity_application content'),
+  );
+  $items['admin/config/flight/workbench'] = array(
+    'title' => 'Flight City Workbench settings',
+    'file' => 'flight_city_workbench.admin.inc',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('flight_city_workbench_admin_settings'),
+    'access arguments' => array('administer content types'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+
+
+function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
+  if (strpos($form_id, '_node_form')) {
+    $domain_paths = variable_get('flight_city_workbench_domain_paths', array());
+    if (!empty($form['#node']) && $form['#node']->nid && !empty($domain_paths[$form['#node']->type]) && $domain_paths[$form['#node']->type]) {
+      $form['path']['alias']['#default_value'] = check_plain($form['domain_path']['current']['#markup']);
+      //$form['domain_path']['#access'] = FALSE;
+      foreach($form['domain_path'] as $key => $field) { 
+        if ($field['#type'] === 'textfield' && !empty($field['#default_value'])) {
+          $form['domain_path'][$key]['#default_value'] = '';
+        }
+      }
+      dpm($form);
+    }
+    $form['#validate'][] = 'flight_city_workbench_form_node_validate';
+  }
+}
+
+function flight_city_workbench_form_node_validate($form, &$form_state) {
+  if (!$form_state['values']['path']['pathauto'] && !empty($form_state['values']['path']['alias'])) {
+    $domains = !empty($form_state['values']['domains']) ? $form_state['values']['domains'] : $form_state['values']['domains_raw'];
+    foreach ($domains as $key => $value) {
+      if (is_numeric($key) && $value > 0) {
+        $form_state['values']['domain_path'][$key] = $form_state['values']['path']['alias'];
+      }
+    }
+    unset($form_state['values']['path']['alias']);
+  }
+}
+
+
+function flight_city_workbench_pathauto_alias_alter(&$alias, $context) {
+  $node = $context['data']['node'];
+  $domain_paths = variable_get('flight_city_workbench_domain_paths', array());
+  if (!empty($domain_paths[$node->type]) && $domain_paths[$node->type]) {
+    foreach ($node->domains as $key => $value) {
+      if (!empty($value)) {
+        $node->domain_path[$value] = $alias;
+      }
+    }
+    domain_path_node_insert($node);
+    $alias = NULL;
+  }
+}
+
