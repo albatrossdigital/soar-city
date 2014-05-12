@@ -7,11 +7,78 @@
 // ----------------------------------------------------------------------------
 
 .front
+
   ul.breadcrumbs
     +e(hide)
 
   .main
     padding-top: $header-bottom-margin
+
+
+
+// Uber front
+// ----------------------------------------------------------------------------
+
+.front.domain-main
+
+  // Hide 
+  .l-featured:after
+    display: none
+
+  .block-views-news-block-4
+    +views-see-more-header
+
+  .l-main
+    padding-bottom: 0
+
+  // unset main wrapper width
+  #dnn_ContentPane
+    background: $gray-lighter
+    max-width: 100%
+
+  .l-content-bottom-triple
+    //max-width: $row-width
+    +grid-row()
+
+    .block
+      margin-bottom: rem-calc(20)
+
+  .l-content-bottom-1
+    background: $white
+
+  .content-bottom-full
+    //max-width: $row-width
+    //padding: $medium-main-spacing 0
+    +grid-row()
+    float: none
+    padding-left: 0
+    padding-right: 0
+
+  .l-triptych
+    +side-bar-menu('.item-list ul', '.block-title', 'li.active a', true)
+
+    .block-title
+      text-align: center
+
+  .triptych-first .block
+    +fake-icon-circle-box($red)
+
+  .triptych-middle .block
+    +fake-icon-circle-box($blue)
+
+  .triptych-last .block
+    +fake-icon-circle-box($orange)
+
+
+.block-bean-front-mayor-links
+  .block-title
+    text-align: center
+
+  ul 
+    +spreadout-menu()
+
+
+
 
 
 // *
@@ -20,6 +87,34 @@
 // ******************************************************
 
 +respond($medium-up)
+
+  // Uber front
+  // ----------------------------------------------------------------------------
+  
+  .front.domain-main
+
+    .content-bottom-triple-left
+      padding-right: rem-calc(35)
+      width: grid-calc(5, 12)
+
+    .content-bottom-triple-center
+      z-index: 1
+      padding-left: rem-calc(35)
+      padding-right: rem-calc(35)
+      margin-right: rem-calc(-210)
+      width: rem-calc(210)
+
+    .content-bottom-triple-right
+      padding-left: rem-calc(210) + rem-calc(35)
+      width: grid-calc(7, 12)
+
+    .content-bottom-full
+      & > .block
+        &:not(.title-block)
+          +grid-column(3)
+
+    
+
 
   // Main Content
   // ----------------------------------------------------------------------------

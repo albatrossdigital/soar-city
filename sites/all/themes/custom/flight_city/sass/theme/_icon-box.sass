@@ -1,12 +1,4 @@
 
-
-// Entity link blocks
-// --------------------------
-
-$icon-area-dimension: rem-calc(90) 
-$icon-area-font-size: rem-calc(45)
-
-
 // Block level
 .bean-linkbox,
 .block-views-event-categories-block
@@ -39,26 +31,11 @@ $icon-area-font-size: rem-calc(45)
 
 // Icon section
 .circle-icon
-  i 
-    color: $white
-    font-size: $icon-area-font-size
-    line-height: $icon-area-dimension
-    margin-right: 0
-    opacity: 0.5
-    position: relative
-    z-index: 2
-
-  i, .color-link
-    height: $icon-area-dimension
-    width: $icon-area-dimension
+  +icon-circle-icon()
+  
 
 .color-link
-  left: 50%
-  top: 0
-  margin-left: -($icon-area-dimension/2)
-  position: absolute
-  +border-radius(100%)
-  z-index: 1
+  +icon-color-circle()
 
 
 // Animated hover actions

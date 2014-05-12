@@ -576,7 +576,24 @@ $common-border: common-border-val()
       float: none!important
       width: 100%
 
+%views-see-more-header
+  position: relative
 
+  .more-link
+    right: $column-gutter/2
+    top: rem-calc(25)
+    position: absolute
+    z-index: 1
+
+    a 
+      +f(alt-alt)
+
+@mixin views-see-more-header($padding: false)
+  @extend %views-see-more-header
+
+  @if $padding
+    h2.block-title, .views-header h2
+      padding-right: $padding
 
 
 
@@ -591,10 +608,98 @@ $common-border: common-border-val()
 
 
 
+@mixin main-verical-spacing($display: 'mobile')
+
+  @if $display == 'mobile'
+    .block
+      margin-bottom: $small-main-block-spacing
+
+    .block-title
+      font-size: $h1-font-size
+      margin-bottom: $medium-main-spacing
+
+  @else 
+    .block
+      margin-bottom: $medium-main-block-spacing
+
+
+//***********************************
+// Icons boxes
+//
+//***********************************
+
+
+%icon-circle-icon
+  color: $white
+  font-size: $icon-area-font-size
+  line-height: $icon-area-dimension
+  margin-right: 0
+  opacity: 0.5
+  position: relative
+  z-index: 2
+
+%icon-circle-icon-dimensions
+  height: $icon-area-dimension
+  width: $icon-area-dimension
+
+@mixin icon-circle-icon($main: 'i', $add-dimensions: 'i, .color-link')
+  #{$main} 
+    @extend %icon-circle-icon
+
+  #{$add-dimensions} 
+    @extend %icon-circle-icon-dimensions
+
+%icon-color-circle
+  left: 50%
+  top: 0
+  margin-left: -($icon-area-dimension/2)
+  position: absolute
+  +border-radius(100%)
+  z-index: 1
+
+@mixin icon-color-circle()
+  @extend %icon-color-circle
+
+
+@mixin fake-icon-circle-box($color, $icon: 'map-marker', $child: '.block-title')
+  position: relative
+  padding-top: rem-calc(100)
+
+  &:before 
+    content: " " 
+    background: $color
+
+
+  // construct child selector
+  $child-select: '#{$child}:before'
+  $child-select-other: '&:before, #{$child}:before'
+
+  #{$child-select-other}
+    +icon-color-circle()
+    text-align: center
+
+  // call icon styles
+  +icon-circle-icon($child-select, $child-select-other)
+  
+  // icon
+  #{$child}
+    +icon-only($icon)
+
+
+
+
+
 //***********************************
 // Menu Styles
 //
 //***********************************
+
+// Menu as non-menu, spread out a little
+@mixin spreadout-menu()
+  +list-clear
+
+  li
+    margin-bottom: rem-calc(10)
 
 @mixin side-bar-section($levels)
   float: left
@@ -628,7 +733,7 @@ $common-border: common-border-val()
 
 
 // Side bar menu styles
-@mixin side-bar-menu($menu: 'ul.menu', $title: 'h2.block-title, h4', $active: 'a.active')
+@mixin side-bar-menu($menu: 'ul.menu', $title: 'h2.block-title, h4', $active: 'a.active', $more-link: false)
  
   #{$title}
     margin-top: rem-calc(20)
@@ -645,12 +750,24 @@ $common-border: common-border-val()
       &:first-child
         border-top: $side-nav-divider-size $side-nav-divider-style $side-nav-divider-color
 
-    a
-      border-left: 3px solid transparent
-      padding: rem-calc(10 20 10 17)
-
     #{$active}
       border-left-color: $gold
+
+  #{$menu} a
+    border-left: 3px solid transparent
+    padding: rem-calc(10 20 10 17)
+
+  @if $more-link
+    .more-link 
+      text-align: left
+
+      a
+        border-left: 3px solid transparent
+        line-height: $paragraph-line-height
+        display: block
+        padding: rem-calc(10 20 10 17)
+        +f(alt-alt)
+      
 
     
 

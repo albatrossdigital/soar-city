@@ -67,6 +67,13 @@
         searchCheck();
       }, 100));
 
+      // Main section menu (entity submenu)
+      $('#toggle-main-section-menu', context).once('main-off-canvas', function() {
+        $(this).click(function() {
+          $('.l-main[data-offcanvas]').toggleClass('move-right');
+        });
+      });
+
 
       // orbits helper
       $('ul[data-orbit]', context).once('orbit-helper', function() {

@@ -1,9 +1,7 @@
 
 .top-bar 
-  overflow: hidden
   height: $topbar-height
   line-height: $topbar-height
-  position: relative
   background: $topbar-bg
   margin-bottom: $topbar-margin-bottom
 
@@ -18,17 +16,26 @@
   padding-left: $column-gutter/2
   list-style: none
 
-.name 
-  height: $topbar-height
-  margin: 0
-  font-size: $rem-base
-  padding-top: rem-calc(4)
-  text-align: center
-  width: rem-calc(70)
+  .toggle-off-canvas
+    float: right
+    line-height: $topbar-height
 
-  a 
-    display: inline-block
-    max-width: rem-calc(44)
+    a
+      +c(link-white)
+
+  .name 
+    height: $topbar-height
+    margin: 0
+    font-size: $rem-base
+    padding-top: rem-calc(4)
+    text-align: center
+    width: rem-calc(70)
+
+    a 
+      display: inline-block
+      max-width: rem-calc(44)
+
+
 
 
 // *
@@ -39,6 +46,9 @@
 +respond($past-menu)
 
   .top-bar
+    overflow: hidden
+    position: relative
+
     .contain-to-grid &
       max-width: $row-width
       margin: 0 auto
@@ -47,5 +57,6 @@
     .title-area
       float: left
 
-    .name
-      a 
+    .name,
+    .toggle-off-canvas
+      display: list-item

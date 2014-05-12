@@ -6435,7 +6435,7 @@ blockquote p {
   bottom: 0;
   position: absolute;
   overflow-y: auto;
-  background: #333333;
+  background: #42484f;
   z-index: 1001;
   box-sizing: content-box;
   -webkit-overflow-scrolling: touch;
@@ -6460,7 +6460,7 @@ blockquote p {
   bottom: 0;
   position: absolute;
   overflow-y: auto;
-  background: #333333;
+  background: #42484f;
   z-index: 1001;
   box-sizing: content-box;
   -webkit-overflow-scrolling: touch;
@@ -6499,7 +6499,7 @@ ul.off-canvas-list li a {
   display: block;
   padding: 0.66667rem;
   color: rgba(255, 255, 255, 0.7);
-  border-bottom: 1px solid #262626;
+  border-bottom: 1px solid #31363b;
   transition: background 300ms ease;
 }
 /* line 231, ../sass/vendor/foundation/components/_offcanvas.scss */
