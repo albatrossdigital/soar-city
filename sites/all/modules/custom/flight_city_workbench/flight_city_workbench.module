@@ -1,8 +1,10 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the Flight City Workbench feature.
  */
+
+include_once 'flight_city_workbench.features.inc';
 
 
 /**
