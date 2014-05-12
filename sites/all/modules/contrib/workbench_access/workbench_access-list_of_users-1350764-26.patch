@@ -1,0 +1,251 @@
+diff --git a/workbench_access.admin.inc b/workbench_access.admin.inc
+index bd65baf..f6b2d27 100644
+--- a/workbench_access.admin.inc
++++ b/workbench_access.admin.inc
+@@ -609,30 +609,18 @@ function workbench_access_editor_form($form, &$form_state, $access_type, $access
+     drupal_exit();
+   }
+ 
+-  // Get the list of user roles that can be assigned workbench access.
+-  $roles = workbench_access_get_roles('access workbench access by role');
++  // Get the list of users assigned to this section.
++  $users = workbench_access_get_section_users_by_account($access_type, $access_type_id);
+ 
+-  $query = db_select('users', 'u')
+-    ->fields('u', array('uid', 'name'));
+-  $query->join('workbench_access_user', 'wau', 'u.uid = wau.uid');
+-  $query->condition('wau.access_scheme', $access_type)
+-    ->condition('wau.access_id', $access_type_id)
+-    ->extend('PagerDefault')->limit(25);
+-  // If all authorized users are not allowed, JOIN to user_roles.
+-  if (!isset($roles[DRUPAL_AUTHENTICATED_RID])) {
+-    $query->join('users_roles', 'ur', 'u.uid = ur.uid');
+-    $query->condition('ur.rid', array_keys($roles), 'IN');
+-  }
+-  $result = $query->execute();
+-  $rows = array();
+   $form['users']['#tree'] = TRUE;
+-  foreach ($result as $account) {
+-    $form['users'][$account->uid]['name'] = array('#markup' => l($account->name, 'user/' . $account->uid));
+-    $form['users'][$account->uid]['remove'] = array(
++  foreach ($users as $uid => $name) {
++    $form['users'][$uid]['name'] = array('#markup' => l($name, 'user/' . $uid));
++    $form['users'][$uid]['remove'] = array(
+       '#type' => 'checkbox',
+       '#title' => t('Remove'),
+     );
+   }
++
+   $form['add_user'] = array(
+     '#type' => 'textfield',
+     '#title' => t('Add editor'),
+@@ -763,49 +751,13 @@ function workbench_access_role_form($form, &$form_state, $access_type, $access_t
+     drupal_exit();
+   }
+ 
+-  // Build the list of user roles that can be assigned workbench access.
+-  $roles = workbench_access_get_roles('access workbench access by role');
+-
+   // Form markup elements.
+   $access_info = workbench_access_load($access_type, $access_type_id);
+   $output = '<h2>' . t('%name editors by role', array('%name' => $access_info['name'])) . '</h2>';
+   $output .= '<p>' . t('Active editors for the %section section, as determined by role. <a href="!url">View editors by account</a>.', array('%section' => $access_info['name'], '!url' => url('admin/config/workbench/access/editors/' . $active['access_scheme']['access_type'] . '/' . $access_type_id)));
+   $header = array(t('Editors'), t('Roles'));
+-  $rows = array();
+-  $access_rids = array();
+-  if (!empty($roles)) {
+-    $access_rids = db_query("SELECT war.rid FROM {workbench_access_role} war WHERE war.rid IN (:rids) AND war.access_scheme = :access_scheme AND war.access_id = :access_type_id", array(':rids' => array_keys($roles), ':access_scheme' => $access_type, ':access_type_id' => $access_type_id))->fetchAllAssoc('rid');
+-  }
+-  $users = array();
+-  if (!empty($access_rids)) {
+-    if (!isset($access_rids[DRUPAL_AUTHENTICATED_RID])) {
+-      $users = db_query("SELECT u.name, u.uid, r.name AS roles FROM {users} u INNER JOIN {users_roles} ur ON ur.uid = u.uid LEFT JOIN {role} r ON r.rid = ur.rid WHERE ur.rid IN (:rids) AND u.status > 0", array(':rids' => array_keys($access_rids)));
+-    }
+-    else {
+-      $uids = db_query("SELECT u.uid FROM {users} u WHERE u.status > 0 AND u.uid > 0")->fetchCol();
+-      $users = user_load_multiple($uids);
+-    }
+-  }
+-  $users_by_role = array();
+-  foreach ($users as $data) {
+-    $users_by_role[$data->uid]['name'] = $data->name;
+-    if (is_array($data->roles)) {
+-      array_walk($data->roles, 'check_plain');
+-      $users_by_role[$data->uid]['roles'] = array_values($data->roles);
+-    }
+-    else {
+-      $users_by_role[$data->uid]['roles'][] = check_plain($data->roles);
+-    }
+-  }
+-  // Add anonymous users, if selected.
+-  if (isset($access_rids[DRUPAL_ANONYMOUS_RID])) {
+-    $users_by_role[0] = array(
+-      'name' => variable_get('anonymous', t('Anonymous')),
+-      'roles' => array(
+-        'anonymous user',
+-      ),
+-    );
+-  }
++
++  $users_by_role = workbench_access_get_section_users_by_role($access_type, $access_type_id);
+   foreach ($users_by_role as $uid => $item) {
+     $rows[] = array(
+       l($item['name'], 'user/' . $uid),
+@@ -822,6 +774,7 @@ function workbench_access_role_form($form, &$form_state, $access_type, $access_t
+     '#markup' => $table,
+   );
+   // User role form.
++  $roles = workbench_access_get_roles('access workbench access by role');
+   $default = array_keys(db_query("SELECT rid FROM {workbench_access_role} WHERE access_scheme = :access_scheme AND access_id = :access_type_id", array(':access_scheme' => $access_type, ':access_type_id' => $access_type_id))->fetchAllAssoc('rid'));
+   $form['roles'] = array(
+     '#type' => 'checkboxes',
+diff --git a/workbench_access.module b/workbench_access.module
+index 8796cd3..269ee99 100644
+--- a/workbench_access.module
++++ b/workbench_access.module
+@@ -2151,3 +2151,145 @@ function workbench_access_update_records($find, $replace, $scheme = NULL) {
+   variable_set('workbench_access_' . $scheme, $new);
+   drupal_set_message(t('Editorial sections have been updated.'));
+ }
++
++/**
++ * Return an array of users who are editors, assigned by account, for a section.
++ *
++ * @param $access_type
++ *   The type of access requested (e.g. taxonomy).
++ * @param $access_type_id
++ *   The id for this specific access (e.g. a taxonomy term tid).
++ * @param $roles
++ *   An array of role IDs. If this parameter is supplied, restrict the results
++ *   to users with the specified roles.
++ * @param $pager
++ *   If greater than zero, use a pager so results are limited.
++ *
++ * @return
++ *   An array of user names, keyed by user id.
++ */
++function workbench_access_get_section_users_by_account($access_type, $access_type_id, $roles = array(), $pager = 0) {
++  if (!$roles) {
++    $roles = array_keys(workbench_access_get_roles('access workbench access by role'));
++  }
++  $query = db_select('users', 'u')
++    ->fields('u', array('uid', 'name'));
++  $query->join('workbench_access_user', 'wau', 'u.uid = wau.uid');
++  $query->join('users_roles', 'ur', 'u.uid = ur.uid');
++  $query->condition('wau.access_scheme', $access_type)
++    ->condition('wau.access_id', $access_type_id)
++    ->condition('ur.rid', $roles, 'IN');
++  if ($pager) {
++    $query->extend('PagerDefault')->limit($pager);
++  }
++  $result = $query->execute();
++  $users = array();
++  foreach ($result as $account) {
++    $users[$account->uid] = $account->name;
++  }
++  return $users;
++}
++
++/**
++ * Return an array of users who are editors, assigned by role, for a section.
++ *
++ * @param $access_type
++ *   The type of access requested (e.g. taxonomy).
++ * @param $access_type_id
++ *   The id for this specific access (e.g. a taxonomy term tid).
++ * @param $roles
++ *   An array of role IDs. If this parameter is supplied, restrict the results
++ *   to users with the specified roles.
++ * @param $depth
++ *   A boolean : If this parameter is supplied and set to TRUE extend the
++ *   result to users who have workbench access roles to parent sections
++ *
++ * @return
++ *   An array users, keyed by user id, with the user name and an array of
++ *   applicable roles as elements of the array.
++ */
++function workbench_access_get_section_users_by_role($access_type, $access_type_id, $roles = array(), $depth=FALSE) {
++  // Build the list of user roles that can be assigned workbench access.
++  $access_rids = workbench_access_get_section_roles($access_type, $access_type_id, $roles, $depth);
++  $users = array();
++  if (!empty($access_rids)) {
++    $query = db_select('users', 'u');
++    $query->join('users_roles', 'ur', 'ur.uid = u.uid');
++    $query->leftjoin('role', 'r', 'r.rid = ur.rid');
++    $users = $query->fields('u', array('name', 'uid'))
++      ->fields('r', array('name'))
++      ->condition('ur.rid', array_keys($access_rids), 'IN')
++      ->condition('u.status', '0', '>')
++      ->execute()
++      ->fetchAll();
++  }
++  $users_by_role = array();
++  foreach ($users as $data) {
++    $users_by_role[$data->uid]['name'] = $data->name;
++    $users_by_role[$data->uid]['roles'][] = $data->r_name;
++  }
++  return $users_by_role;
++}
++
++/**
++ * Return an array of roles who are editors for a section.
++ *
++ * @param $access_type
++ *   The type of access requested (e.g. taxonomy).
++ * @param $access_type_id
++ *   The id for this specific access (e.g. a taxonomy term tid).
++ * @param $roles
++ *   An array of role IDs. If this parameter is supplied, restrict the results
++ *   to users with the specified roles.
++ * @param $depth
++ *   A boolean : If this parameter is supplied and set to TRUE extend the
++ *   result to users who have workbench access roles to parent sections
++ *
++ * @return
++ *   An array roles, keyed by rid.
++ */
++function workbench_access_get_section_roles($access_type, $access_type_id, $roles = array(), $depth=FALSE) {
++  if (!$roles || empty($roles)) {
++    $roles = array_keys(workbench_access_get_roles('access workbench access by role'));
++  }
++  $section_parents = array();
++  if ($depth) {
++    // we have to retrieve all the parent id of $access_type_id:
++    $workbench_access_tree = workbench_access_get_active_tree();
++    $section_parents = _workbench_access_get_section_parents($workbench_access_tree, $access_type_id);
++  } else {
++    $section_parents[] = $access_type_id;
++  }
++  if (!empty($roles)) {
++    return db_select('workbench_access_role', 'war')
++      ->fields('war', array('rid'))
++      ->condition('rid',$roles, 'IN')
++      ->condition('access_scheme', $access_type, '=')
++      ->condition('access_id', $section_parents, 'IN')
++      ->execute()
++      ->fetchAllAssoc('rid');
++  }
++  else {
++    return array();
++  }
++}
++
++/*
++ * recursive look-up for a parents of the current section id.
++ *
++ * @param $workbench_access_tree
++ *   the access tree (provide by taxonomy or menu). (pass by reference for memory optimization)
++ * @param $section_id
++ *   the section id for which we want the parents.
++ */
++function _workbench_access_get_section_parents(&$workbench_access_tree, $section_id) {
++  $section_parents = array();
++  if ($workbench_access_tree['tree'][$section_id]['parent']!=$workbench_access_tree['tree'][$section_id]['access_id']) {
++    // this element has got a parent: recursive call:
++    $section_parents = _workbench_access_get_section_parents($workbench_access_tree, $workbench_access_tree['tree'][$section_id]['parent']);
++  }
++  if (isset($workbench_access_tree['active'][$section_id])) {
++    $section_parents[] = $section_id;
++  }
++  return $section_parents;
++}
