@@ -1,0 +1,225 @@
+<?php
+
+/**
+ * @file
+ *  Canonical URLs for Drupal paths.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function domain_url_menu() {
+  $items['domain-url/%'] = array(
+    'title' => 'Canonical URL',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('domain_url_form', 1),
+    'access arguments' => array('edit domain urls'),
+  );
+  $items['domain-url/%/edit'] = array(
+    'title' => 'Canonical URL',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'context' => MENU_CONTEXT_INLINE,
+  );  
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function domain_url_permission() {
+  $permissions['edit domain urls'] = array(
+    'title' => t('Set domain-specific canonical urls'),
+  );
+  return $permissions;
+}
+
+/**
+ * Implements hook_admin_paths().
+ */
+function domain_url_admin_paths() {
+  $paths = array(
+    'domain-url/%' => TRUE,
+    'domain-url/%/edit' => TRUE,
+  );
+  return $paths;
+}
+
+/**
+ * Form callback for assigning a canonical URL.
+ */
+function domain_url_form($form, &$form_state, $url) {
+  $path = urldecode($url);
+  // Ensure this is a registered menu callback.
+  $item = menu_get_item($path);
+  if (empty($item['path'])) {
+    return drupal_access_denied();
+  }
+  // Build the form.
+  $form = array();
+  $form['intro'] = array(
+    '#markup' => t('Set the canonical domain for the path %path. All links to this page will go to the selected domain.', array('%title' => $item['title'], '%path' => $path)),
+  );
+  $form['path'] = array(
+    '#type' => 'value',
+    '#value' => $path,
+  );
+  // Get the domain options.
+  $options = array(-5 => t('Do not set'));
+  $domains = domain_domains();
+  foreach ($domains as $domain) {
+    $options[$domain['domain_id']] = $domain['sitename'];
+  }
+  // Semi-hack for Domain Source integration.
+  if ($item['path'] == 'node/%') {
+    $node = node_load(arg(1, $path));
+    if (module_exists('domain_source')) {
+      $form['domain_source'] = array(
+        '#type' => 'value',
+        '#value' => $node,
+      );
+    }
+    // Nodes assigned to all affiliates may have any canonical url.
+    if (!empty($node->domain_site)) {
+      $form['intro']['#markup'] .= '<p>' . t('%title is assigned to all affilates and may be assigned to any canonical url.', array('%title' => $node->title)) . '</p>';
+    }
+    else {
+      foreach ($options as $key => $value) {
+        if ($key == -5) {
+          continue;
+        }
+        $id = ($key == 0) ? -1 : $key;
+        if (!isset($node->domains[$id])) {
+          unset($options[$key]);
+        }
+      }
+    }
+  }
+  $default_value = domain_url_get($path);
+  $form['domain_id'] = array(
+    '#type' => 'select',
+    '#options' => $options,
+    '#default_value' => $default_value,
+  );
+  // TODO: Entity handling.
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save canonical URL'),
+  );
+  return $form;
+}
+
+function domain_url_get($path) {
+  $item = menu_get_item($path);
+  if (module_exists('domain_source') && $item['path'] == 'node/%') {
+    $nid = arg(1, $path);
+    return db_query("SELECT domain_id FROM {domain_source} WHERE nid = :nid", array(':nid' => $nid))->fetchField();
+  }
+  return db_query("SELECT domain_id FROM {domain_url} WHERE path = :path", array(':path' => $path))->fetchField();
+}
+
+function domain_url_form_submit($form, &$form_state) {
+  $values = $form_state['values'];
+  if (!empty($values['domain_source'])) {
+    $node = $values['domain_source'];
+    $node->domain_source = $values['domain_id'];
+    domain_source_node_update($node);
+  }
+  else {
+    domain_url_delete($values['path']);
+    if ($values['domain_id'] > -5) {
+      domain_url_save($values['path'], $values['domain_id']);
+    }
+  }
+  drupal_set_message(t('Canonical URL set.'));
+  $form_state['redirect'] = $values['path'];
+}
+
+function domain_url_save($path, $domain_id) {
+  $record = array(
+    'domain_id' => $domain_id,
+    'path' => $path,
+  );
+  drupal_write_record('domain_url', $record);
+}
+
+function domain_url_delete($path) {
+  db_delete('domain_url')
+    ->condition('path', $path)
+    ->execute();
+}
+
+function domain_url_domain_source_path_alter(&$source, $path) {
+  $domain = domain_url_get($path);
+  // On failure, the query will return FALSE.
+  if ($domain !== FALSE) {
+    $lookup = domain_load($domain);
+    if (!empty($lookup)) {
+      $source = $lookup;
+    }
+  }
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function domain_url_block_info() {
+  $blocks['contextual'] = array(
+    'info' => t('Domain URL'),
+    'weight' => -99,
+    'status' => 1,
+    'region' => 'content',
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function domain_url_block_view($delta = '') {
+  if (!user_access('edit domain urls')) {
+    return;
+  }
+  $item = menu_get_item();
+  if (empty($item['path']) || $item['path'] == 'domain-url/%') {
+    return;
+  }
+  $set = TRUE;
+  if ($item['path'] == 'node/%') {
+    $lookup = domain_get_node_match(arg(1));
+    $path = domain_get_uri($lookup);
+    $source = $lookup['domain_id'];
+    if (!module_exists('domain_source')) {
+      #$set = FALSE;
+    }
+  }
+  elseif (drupal_is_front_page()) {
+    $set = FALSE;
+    $_domain = domain_get_domain();
+    $path = $_domain['path'];
+    $source = $_domain['domain_id'];
+  }
+  else {
+    $source = domain_url_get($item['path']);
+  }
+  // The above returns a blank string on fail.
+  if ($source == '') {
+    $message = t('No canonical URL');
+  }
+  else {
+    $lookup = domain_load($source);
+    $path = domain_get_uri($lookup);
+    $message = t('<em>Canonical URL:</em> @path', array('@path' => $path));
+  }
+  $info = $message . (($set) ? '<br />' . l(t('Set URL'), 'domain-url/' . urlencode($_GET['q'])) : '');
+  $block = array(
+    'subject' => '',
+    'content' => array(
+      '#markup' => theme('container', array('element' => array('#children' => $info, '#attributes' => array('class' => 'domain-url-info')))),
+      '#attached' => array(
+        'css' => array(drupal_get_path('module', 'domain_url') . '/domain_url.block.css'),
+      ),
+    ),
+  );
+  return $block;
+}

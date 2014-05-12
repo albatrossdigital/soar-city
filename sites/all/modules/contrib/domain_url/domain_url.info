@@ -1,0 +1,13 @@
+name = Domain URL
+description = Provides domain-specific canonical URLs.
+package = Domain Access
+dependencies[] = domain
+core = 7.x
+files[] = domain_url.module
+
+; Information added by drupal.org packaging script on 2013-09-30
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "domain_url"
+datestamp = "1380569961"
+
