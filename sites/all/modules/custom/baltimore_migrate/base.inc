@@ -152,23 +152,29 @@ class BaltimoreContentMigration extends Migration {
       // Deal with legacy links and images
       foreach($xpath->query('//a[@href]') as $node) {
         $url = $node->getAttribute('href');
-        if (strpos($url, $this->arguments['base_url']) !== FALSE) {
-          if (strpos($url, '.htm') === FALSE) {
-            _baltimore_migrate_save_file($url);
-            $node->setAttribute('href', 'file/'.$file->fid);
+        $url = strpos($url, 'http://') === FALSE ? $this->arguments['base_url'].$url : $url;
+        if (!empty($url) && strpos($url, $this->arguments['base_url']) !== FALSE) {
+          $extension = end(explode('.', $url));
+          if (strlen($extension) > 2 && strlen($extension) < 5 && !in_array($extension, array('html', 'htm', 'asp', 'aspx'))) {
+            //dpm($url);
+
+            if ($file = _baltimore_migrate_save_file($url)) {
+              //dpm($file);
+              $node->setAttribute('href', 'file/'.$file->fid);
+            }
           }
           else {
-            // @todo: Record this somewhere that we'll need to update this link?
+            //@ todo: log this somewhere?
           }
         }
       }
-      foreach($xpath->query('//img[@src]') as $node) {
+      /*foreach($xpath->query('//img[@src]') as $node) {
         $url = $node->getAttribute('src');
         if (strpos($url, $this->arguments['base_url']) !== FALSE) {
-          _baltimore_migrate_save_file($url);
+          $file = _baltimore_migrate_save_file($url);
           $node->setAttribute('src', 'file/'.$file->fid);
         }
-      }
+      }*/
 
       $row->body = '';
       foreach ($xpath->query($this->arguments['xpath']) as $i => $node) {
@@ -181,8 +187,6 @@ class BaltimoreContentMigration extends Migration {
     else {
       $row->body = '';
     }
-    dpm($row);
-
   }
 
   public function prepare($entity, stdClass $row){
@@ -207,7 +211,7 @@ class BaltimoreContentMigration extends Migration {
       'plid' => 0,
       'enabled' => 1,
     );
-    dpm($entity);
+    //dpm($entity);
   }
 
   function complete($entity, $row) {
@@ -238,14 +242,25 @@ function _baltimore_migrate_create_redirect($entity, $url, $base_domain) {
   }
 }
 
-
 // From http://stackoverflow.com/questions/9082121/programmatically-save-image-from-external-url-drupal
 function _baltimore_migrate_save_file($url) {
-  $directory = file_build_uri('legacy');
-  if (!file_prepare_directory($directory, FILE_CREATE_DIRECTORY)) {
-    $directory = NULL;
-  }
-  $file = system_retrieve_file($url, $directory, TRUE);
-  dpm($file);
-  return $file;
+  $filename = basename($url);
+  $url = str_replace(' ', '%20', $url);
+  // @todo: break apart the url and use urlencode()?
+  //$url = urlencode($url);
+  // @tood: check mimetype?
+  //$type = get_headers($url, 1)["Content-Type"];
+  //if (in_array($type, array('application/pdf'))) {
+    /*$directory = file_build_uri('public://legacy');
+    if (!file_prepare_directory($directory, FILE_CREATE_DIRECTORY)) {
+      $directory = NULL;
+    }*/
+
+    $file = system_retrieve_file($url, 'public://legacy', TRUE);
+    $file->filename = $filename;
+    file_save($file);
+    return $file;
+  //}
+  // @todo: Record this somewhere that we'll need to update this link?
+  return FALSE;
 }
