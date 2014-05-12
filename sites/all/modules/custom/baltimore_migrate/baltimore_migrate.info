@@ -7,9 +7,14 @@ dependencies[] = image
 dependencies[] = migrate
 dependencies[] = list
 dependencies[] = number
+dependencies[] = migrate_extras
 
 ;node_reference is useful but not required
 ;dependencies[] = node_reference
 
-files[] = htmlfiles_migration.inc.php
-files[] = source_parser.inc.php
+files[] = base.inc
+files[] = uber.inc
+files[] = health.inc
+
+;files[] = htmlfiles_migration.inc.php
+;files[] = source_parser.inc.php
