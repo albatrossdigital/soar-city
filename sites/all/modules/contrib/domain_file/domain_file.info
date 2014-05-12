@@ -1,0 +1,7 @@
+name = Domain Files
+description = Provides integration between Domain Access and File Entity
+core = 7.x
+package = Domain Access
+
+dependencies[] = domain
+dependencies[] = file_entity
