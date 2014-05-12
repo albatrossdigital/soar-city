@@ -1,7 +1,0 @@
-name = Workbench Notify
-description = Provides rules actions to notify section's editor based on taxonomy
-core = 7.x
-dependencies[] = workbench_access
-dependencies[] = workbench_moderation
-configure = admin/config/workbench/notify
-package = Workbench
