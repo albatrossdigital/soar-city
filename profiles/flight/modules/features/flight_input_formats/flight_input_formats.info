@@ -7,6 +7,7 @@ project = flight_input_formats
 dependencies[] = ckeditor
 dependencies[] = ckeditor_link
 dependencies[] = ckeditor_link_file
+dependencies[] = advanced_link
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = filter
@@ -32,10 +33,3 @@ features[wysiwyg_template][] = faq_list
 features[wysiwyg_template][] = foundation_two_columns_equal
 features[wysiwyg_template][] = foundation_two_columns_left_side
 features[wysiwyg_template][] = image_with_caption
-
-; Information added by Drupal.org packaging script on 2014-03-14
-version = "7.x-2.0-beta1+3-dev"
-core = "7.x"
-project = "flight"
-datestamp = "1394784207"
-
