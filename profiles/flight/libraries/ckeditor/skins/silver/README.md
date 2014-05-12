@@ -1,26 +1,19 @@
-﻿CKEditor "Kama" Skin
-====================
+Silver
+======
 
-The Kama skin is currently the default skin of CKEditor. It is the one included on the standard CKEditor distributions. It is actively maintained by the CKEditor core developers.
+A CKEditor 4 Silver Skin.
 
-For in-depth information about skins, please check the "CKEditor Skin SDK" documentation:
-http://docs.cksource.com/CKEditor_4.x/Skin_SDK
+## Why Silver?
 
-Directory Structure
--------------------
+The idea behind this skin is as follows:
+- Keep the interface as neutral as possible.
+- Let users focus on the content, not on the interface.
 
-- **editor.css**: the main CSS file. It is split in several different files, for easier maintenance.
-- **dialog.css**: the CSS files for dialogs.
-- **editor_XYZ.css** and **dialog_XYZ.css**: browser specific CSS hacks.
-- **skin.js**: registers the skin, its browser specific files and its icons and defines the Chameleon feature.
-- **icons/**: contains all skin defined icons.
-- **images/**: contains a fill general used images.
+## Preview
 
-License
--------
+![Silver Skin](https://raw.github.com/oleq/silver/master/preview/preview.png)
 
-Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
 
-Licensed under the terms of any of the following licenses at your choice: [GPL](http://www.gnu.org/licenses/gpl.html), [LGPL](http://www.gnu.org/licenses/lgpl.html) and [MPL](http://www.mozilla.org/MPL/MPL-1.1.html).
+## UI Color Support
 
-See LICENSE.md for more information.
+![UI Color](https://raw.github.com/oleq/silver/master/preview/uicolor.png)
