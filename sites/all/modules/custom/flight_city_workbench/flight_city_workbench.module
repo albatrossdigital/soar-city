@@ -32,9 +32,13 @@ function flight_city_workbench_menu() {
 
 /**
  * Implements hook_menu_alter().
+ * Change the order on node/add.
  */
 function flight_city_workbench_menu_alter(&$items) {
-  dpm($items);
+  $items['node/add/page']['weight'] = -10;
+  $items['node/add/event']['weight'] = -7;
+  $items['node/add/story']['weight'] = -5;
+  $items['node/add/faq']['weight'] = -1;
   return $items;
 }
 
