@@ -41,6 +41,7 @@ function baltimore_migrate_migrate_api() {
       'base_url' => 'http://www.baltimorehealth.org/',
       'default_section' => 36,
       'xpath' => '//div[@class="contentDiv"]',
+      'file_destination' => 'public://health/legacy',
     ),
   );
 
