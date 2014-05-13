@@ -7,6 +7,16 @@
 include_once 'flight_city_workbench.features.inc';
 
 
+
+function flight_city_workbench_permission() {
+  return array(
+    'promote content to main' => array(
+      'title' => t('Promote content to citywide site'),
+      'description' => t('Promote content that has been requested to be promoted to citywide site.'),
+    ),
+  );
+}
+
 /**
  * Implements hook_menu().
  */
@@ -46,7 +56,7 @@ function flight_city_workbench_menu_alter(&$items) {
 
 function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
   if (strpos($form_id, '_node_form')) {
-    $domain_paths = variable_get('flight_city_workbench_domain_paths', array());
+    $domain_paths = variable_get('flight_city_workbench_path_bundles', array());
     if (!empty($form['#node']) && $form['#node']->nid && !empty($domain_paths[$form['#node']->type]) && $domain_paths[$form['#node']->type]) {
       $form['path']['alias']['#default_value'] = check_plain($form['domain_path']['current']['#markup']);
       //$form['domain_path']['#access'] = FALSE;
@@ -59,6 +69,7 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
     }
     $form['#validate'][] = 'flight_city_workbench_form_node_validate';
   }
+
 }
 
 function flight_city_workbench_form_node_validate($form, &$form_state) {
@@ -76,7 +87,7 @@ function flight_city_workbench_form_node_validate($form, &$form_state) {
 
 function flight_city_workbench_pathauto_alias_alter(&$alias, $context) {
   $node = $context['data']['node'];
-  $domain_paths = variable_get('flight_city_workbench_domain_paths', array());
+  $domain_paths = variable_get('flight_city_workbench_path_bundles', array());
   if (!empty($domain_paths[$node->type]) && $domain_paths[$node->type]) {
     foreach ($node->domains as $key => $value) {
       if (!empty($value)) {
@@ -88,3 +99,125 @@ function flight_city_workbench_pathauto_alias_alter(&$alias, $context) {
   }
 }
 
+
+
+/******************************* BLOCKS *********************************** */
+
+/**
+ * Implements hook_block_info().
+ */
+function flight_city_workbench_block_info() {
+  return array(
+    'node_promote' => array(
+      'info' => 'Node promotion box',
+      'cache' => DRUPAL_NO_CACHE,
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_block_view().
+ */
+function flight_city_workbench_block_view($delta = '') {
+  $block = array();
+  switch($delta) {
+    case 'node_promote':
+      $types = variable_get('flight_city_workbench_promote_bundles', array());
+      $node = node_load(arg(1));
+      //$block['title'] = t('Sign up for updates');
+      if (!$types[$node->type] && user_access('promote content to main')) {
+        $form = drupal_get_form('flight_city_workbench_node_promote_form', $node);
+        $block['content'] = drupal_render($form);
+      }
+      else {
+        $block['content'] = flight_city_workbench_node_promote_lookup($node);
+      }
+      break;
+  }
+  return $block;
+}
+
+
+/**
+ * The subscribe form.
+ */
+function flight_city_workbench_node_promote_lookup($node) {
+  $default_domain = domain_default(FALSE, FALSE);
+  if ($node->domains[$default_domain['domain_id']] === $default_domain['domain_id']) {
+    return t('The post is currently promoted to the citywide site');
+  }
+  elseif ($fids = flag_get_entity_flags('node', $node->nid)) {
+    return t('The post has been requested to be promoted on the citywide site');
+  }
+}
+
+/**
+ * The subscribe form.
+ */
+function flight_city_workbench_node_promote_form($form, &$form_state, $node) {  
+  
+  dpm($types);
+  
+  $form['node'] = array(
+    '#type' => 'value',
+    '#value' => $node,
+  );
+  $form['promote'] = array(
+    '#type' => 'submit',
+    '#value' => t('Promote to citywide site'),
+    '#attributes' => array('class' => array('')),
+  );
+  $default_domain = domain_default(FALSE, FALSE);
+  $promoted = ($node->domains[$default_domain['domain_id']] === $default_domain['domain_id']);
+  if($fids = flag_get_entity_flags('node', $node->nid) || $promoted) {
+    $form['flag'] = array(
+      '#type' => 'value',
+      '#value' => $fids[0]['promote_main'],
+    );
+    $form['reject'] = array(
+      '#type' => 'submit',
+      '#value' => $promoted ? t('Unpromote') : t('Reject request'),
+      '#attributes' => array('class' => array('alert')),
+    );
+    $default_domain = domain_default(FALSE, FALSE);
+    if ($promoted) {
+      unset($form['promote']);
+      $text = t('Post is currently promoted to the citywide site');
+    }
+    else {
+      $text = t('Promotion requested');
+    }
+    //$form['promote_description']['#markup'] = t('Promotion requested by !name !ago ago', array('!name' => , '!ago' => format_interval()));
+  }
+  else {
+    $text = t('(no promotion has been requested)');
+  }
+  $form['promote_description']['#markup'] = $text;
+
+  return $form;
+}
+
+function flight_city_workbench_node_promote_form_submit($form, &$form_state) {
+  $default_domain = domain_default(FALSE, FALSE);
+  // Promote.
+  if ($form_state['values']['op'] === $form_state['values']['promote']) {
+    // Add the default domain to the node.
+    $node = $form_state['values']['node'];
+    $node->domains[$default_domain['domain_id']] = $default_domain['domain_id'];
+    node_save($node);
+  }
+  // Reject. Unflag the node.
+  else {
+    global $user;
+    if (flag('unflag', 'promote_main', $form_state['values']['node']->nid, $user)) {
+      $node = $form_state['values']['node'];
+      unset($node->domains[$default_domain['domain_id']]);
+      node_save($node);
+      drupal_set_message('This post has been rejected for promotion');
+    }
+    else {
+      drupal_set_message('Something went wrong and we could not reject this post for promotion. Please try again.', 'error');
+    }
+  }
+}
