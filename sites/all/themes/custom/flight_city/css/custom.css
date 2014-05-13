@@ -288,7 +288,8 @@ h3, h4 {
 
 /* line 420, ../sass/base/_mixins.sass */
 [role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .more-link,
-.field-name-node-link, .title-block .more-link a, .front.domain-main .block-views-news-block-4 .more-link a, .l-footer .block-title, .share42init:before, .front.domain-main .view-display-id-block_front_mayor .more-link a, .front.domain-main .l-triptych .more-link a, .node-event.node-teaser .date-calendar,
+.field-name-node-link, .title-block .more-link a, .front .block-views-news-block .more-link a,
+.front .block-views-news-block-4 .more-link a, .l-footer .block-title, .share42init:before, .front.domain-main .view-display-id-block_front_mayor .more-link a, .front.domain-main .l-triptych .more-link a, .node-event.node-teaser .date-calendar,
 .node-event.view-mode-compact_teaser .date-calendar {
   font-family: "open-sans";
   font-style: normal;
@@ -316,11 +317,13 @@ h3, h4 {
 }
 
 /* line 579, ../sass/base/_mixins.sass */
-.title-block, .front.domain-main .block-views-news-block-4 {
+.title-block, .front .block-views-news-block,
+.front .block-views-news-block-4 {
   position: relative;
 }
 /* line 582, ../sass/base/_mixins.sass */
-.title-block .more-link, .front.domain-main .block-views-news-block-4 .more-link {
+.title-block .more-link, .front .block-views-news-block .more-link,
+.front .block-views-news-block-4 .more-link {
   right: 0.71429rem;
   top: 1.78571rem;
   position: absolute;
@@ -2234,20 +2237,20 @@ ul[data-orbit] ~ .orbit-next:before {
   padding-top: 1.14286rem;
 }
 
-/* line 25, ../sass/theme/_front-pages.sass */
+/* line 30, ../sass/theme/_front-pages.sass */
 .front.domain-main .l-featured:after {
   display: none;
 }
-/* line 31, ../sass/theme/_front-pages.sass */
+/* line 33, ../sass/theme/_front-pages.sass */
 .front.domain-main .l-main {
   padding-bottom: 0;
 }
-/* line 35, ../sass/theme/_front-pages.sass */
+/* line 37, ../sass/theme/_front-pages.sass */
 .front.domain-main #dnn_ContentPane {
   background: #f3f3f3;
   max-width: 100%;
 }
-/* line 39, ../sass/theme/_front-pages.sass */
+/* line 41, ../sass/theme/_front-pages.sass */
 .front.domain-main .l-content-bottom-triple {
   width: 100%;
   margin-left: auto;
@@ -2274,19 +2277,19 @@ ul[data-orbit] ~ .orbit-next:before {
 .clearfix *:first-child + html .front.domain-main .l-content-bottom-triple {
   min-height: 1%;
 }
-/* line 43, ../sass/theme/_front-pages.sass */
+/* line 45, ../sass/theme/_front-pages.sass */
 .front.domain-main .l-content-bottom-triple .block {
   margin-bottom: 1.42857rem;
 }
-/* line 47, ../sass/theme/_front-pages.sass */
+/* line 49, ../sass/theme/_front-pages.sass */
 .front.domain-main .view-display-id-block_front_mayor .more-link {
   text-align: left;
 }
-/* line 53, ../sass/theme/_front-pages.sass */
+/* line 55, ../sass/theme/_front-pages.sass */
 .front.domain-main .l-content-bottom-1 {
   background: white;
 }
-/* line 56, ../sass/theme/_front-pages.sass */
+/* line 58, ../sass/theme/_front-pages.sass */
 .front.domain-main .content-bottom-full {
   width: 100%;
   margin-left: auto;
@@ -2385,11 +2388,11 @@ ul[data-orbit] ~ .orbit-next:before {
   display: block;
   padding: 0.71429rem 1.42857rem 0.71429rem 1.21429rem;
 }
-/* line 67, ../sass/theme/_front-pages.sass */
+/* line 69, ../sass/theme/_front-pages.sass */
 .front.domain-main .l-triptych .block-title {
   text-align: center;
 }
-/* line 70, ../sass/theme/_front-pages.sass */
+/* line 72, ../sass/theme/_front-pages.sass */
 .front.domain-main .triptych-first .block {
   position: relative;
   padding-top: 7.14286rem;
@@ -2403,7 +2406,7 @@ ul[data-orbit] ~ .orbit-next:before {
 .front.domain-main .triptych-first .block:before, .front.domain-main .triptych-first .block .block-title:before {
   text-align: center;
 }
-/* line 73, ../sass/theme/_front-pages.sass */
+/* line 75, ../sass/theme/_front-pages.sass */
 .front.domain-main .triptych-middle .block {
   position: relative;
   padding-top: 7.14286rem;
@@ -2417,7 +2420,7 @@ ul[data-orbit] ~ .orbit-next:before {
 .front.domain-main .triptych-middle .block:before, .front.domain-main .triptych-middle .block .block-title:before {
   text-align: center;
 }
-/* line 76, ../sass/theme/_front-pages.sass */
+/* line 78, ../sass/theme/_front-pages.sass */
 .front.domain-main .triptych-last .block {
   position: relative;
   padding-top: 7.14286rem;
@@ -2432,11 +2435,11 @@ ul[data-orbit] ~ .orbit-next:before {
   text-align: center;
 }
 
-/* line 81, ../sass/theme/_front-pages.sass */
+/* line 83, ../sass/theme/_front-pages.sass */
 .block-bean-front-mayor-links .block-title {
   text-align: center;
 }
-/* line 84, ../sass/theme/_front-pages.sass */
+/* line 86, ../sass/theme/_front-pages.sass */
 .block-bean-front-mayor-links ul {
   list-style: none;
   padding: 0;
@@ -2448,12 +2451,12 @@ ul[data-orbit] ~ .orbit-next:before {
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 103, ../sass/theme/_front-pages.sass */
+  /* line 105, ../sass/theme/_front-pages.sass */
   .front.domain-main .content-bottom-triple-left {
     padding-right: 2.5rem;
     width: 41.66667%;
   }
-  /* line 107, ../sass/theme/_front-pages.sass */
+  /* line 109, ../sass/theme/_front-pages.sass */
   .front.domain-main .content-bottom-triple-center {
     z-index: 1;
     padding-left: 2.5rem;
@@ -2461,12 +2464,12 @@ ul[data-orbit] ~ .orbit-next:before {
     margin-right: -15rem;
     width: 15rem;
   }
-  /* line 114, ../sass/theme/_front-pages.sass */
+  /* line 116, ../sass/theme/_front-pages.sass */
   .front.domain-main .content-bottom-triple-right {
     padding-left: 17.5rem;
     width: 58.33333%;
   }
-  /* line 120, ../sass/theme/_front-pages.sass */
+  /* line 122, ../sass/theme/_front-pages.sass */
   .front.domain-main .content-bottom-full > .block:not(.title-block) {
     padding-left: 0.71429rem;
     padding-right: 0.71429rem;
@@ -2474,7 +2477,7 @@ ul[data-orbit] ~ .orbit-next:before {
     float: left;
   }
 
-  /* line 132, ../sass/theme/_front-pages.sass */
+  /* line 134, ../sass/theme/_front-pages.sass */
   .front .medium-8.main {
     margin-left: 0;
     width: 75%;
