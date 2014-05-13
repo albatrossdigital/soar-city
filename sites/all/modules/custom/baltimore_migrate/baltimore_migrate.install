@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Install file for the Domain Source module
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function baltimore_migrate_schema() {
+  $schema['baltimore_migrate_redirects'] = array(
+    'description' => 'Redirects that should be looked into.',
+    'fields' => array(
+      'id' => array('type' => 'serial'),
+      'classname' => array('type' => 'varchar', 'length' => 255, 'not null' => FALSE, 'default' => ''),
+      'source_old_url' => array('type' => 'varchar', 'length' => 255, 'not null' => FALSE, 'default' => ''),
+      'link_url' => array('type' => 'varchar', 'length' => 255, 'not null' => FALSE, 'default' => '')),
+    'primary key' => array('id'),
+  );
+  return $schema;
+}
