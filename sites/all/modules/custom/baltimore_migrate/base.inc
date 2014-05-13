@@ -87,10 +87,12 @@ class BaltimoreStoriesMigration extends XMLMigration {
 class BaltimoreContentMigration extends Migration {
   public function __construct($arguments) {
     $this->arguments = $arguments;
+
     //$this->arguments['doctypes'] = !empty($this->arguments['doctypes']) ? $this->arguments['doctypes'] : array('pdf', 'doc', 'docx', 'xls', 'xlsx')
     if (empty($arguments['url'])) {
       return FALSE;
     }
+    $arguments['file_destination'] = !empty($arguments['file_destination']) ? $arguments['file_destination'] : 'public://';
 
     parent::__construct();
 
@@ -158,13 +160,14 @@ class BaltimoreContentMigration extends Migration {
           if (strlen($extension) > 2 && strlen($extension) < 5 && !in_array($extension, array('html', 'htm', 'asp', 'aspx'))) {
             //dpm($url);
 
-            if ($file = _baltimore_migrate_save_file($url)) {
+            if ($file = _baltimore_migrate_save_file($url, $arguments['file_destination'])) {
               //dpm($file);
-              $node->setAttribute('href', 'file/'.$file->fid);
+              $node->setAttribute('href', url('file/'.$file->fid));
             }
           }
           else {
             //@ todo: log this somewhere?
+            //db_query('insert into {baltimore_migrate_redirects} (class_name, source_old_url, link_url) values("'.$this->arguments['class_name'].'", "'.$row->old_url.'", "'.$url.'");');
           }
         }
       }
@@ -243,7 +246,7 @@ function _baltimore_migrate_create_redirect($entity, $url, $base_domain) {
 }
 
 // From http://stackoverflow.com/questions/9082121/programmatically-save-image-from-external-url-drupal
-function _baltimore_migrate_save_file($url) {
+function _baltimore_migrate_save_file($url, $destination) {
   $filename = basename($url);
   $url = str_replace(' ', '%20', $url);
   // @todo: break apart the url and use urlencode()?
@@ -256,9 +259,11 @@ function _baltimore_migrate_save_file($url) {
       $directory = NULL;
     }*/
 
-    $file = system_retrieve_file($url, 'public://legacy', TRUE);
-    $file->filename = $filename;
-    file_save($file);
+    $file = system_retrieve_file($url, $destination, TRUE);
+    if (!empty($file->fid)) {
+      $file->filename = $filename;
+      file_save($file);
+    }
     return $file;
   //}
   // @todo: Record this somewhere that we'll need to update this link?

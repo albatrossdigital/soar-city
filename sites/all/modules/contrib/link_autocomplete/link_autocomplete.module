@@ -1,0 +1,190 @@
+<?php
+
+/**
+ * Implements hook_menu()
+ */
+function link_autocomplete_menu() {
+  $items['link/autocomplete/%/%/%'] = array(
+    'title' => 'Link autocomplete',
+    'page callback' => 'link_autocomplete_callback',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  
+  return $items;
+}
+
+/**
+ * Implements hook_form_alter()
+ * @param array $form
+ * @param array $form_state
+ * @param string $form_id
+ */
+function link_autocomplete_form_alter(&$form, &$form_state, $form_id) {
+  switch($form_id) {
+    case 'field_ui_field_edit_form':
+      if ($form['#field']['type'] == 'link_field') {
+        $allowed_content_types_default = array();
+        if (isset($form['#instance']['allowed_content_types'])) {
+          foreach($form['#instance']['allowed_content_types'] as $key => $value) {
+            if ($value !== 0) {
+              $allowed_content_types_default[$key] = $value;
+            }
+          }
+        }
+     
+        $allowed_vocabularies_default = array();
+        if (isset($form['#instance']['allowed_vocabularies'])) {
+          foreach($form['#instance']['allowed_vocabularies'] as $key => $value) {
+            if ($value != 0) {
+              $allowed_vocabularies_default[$key] = $value;
+            }
+          }
+        }
+              
+        $content_types_options = array(-1 => '-- '.t('None of them').' --');
+        $content_types = _node_types_build()->types;
+        foreach (array_keys($content_types) as $key) {
+          $content_types_options[$key] = $content_types[$key]->name;
+        }
+       
+        $form['instance']['allowed_content_types'] = array(
+          '#type' => 'checkboxes',
+          '#description' => t('If you don\'t select any content type, they will all be enabled.'),
+          '#title' => t('Allowed content type'),
+          '#default_value' => $allowed_content_types_default,
+          '#options' => $content_types_options,
+          '#multiple' => TRUE,
+        );
+        
+        $vocab_options = array(-1 => '-- '.t('None of them').' --');
+        if (module_exists('taxonomy')) {
+          foreach (taxonomy_get_vocabularies() as $vocabulary) {
+            $vocab_options[$vocabulary->vid] = $vocabulary->name;
+          }
+        }
+        
+        $form['instance']['allowed_vocabularies'] = array(
+          '#type' => 'checkboxes',
+          '#description' => t('If you don\'t select any vocabulary, they will all be enabled.'),
+          '#title' => t('Allowed vocabulary'),
+          '#default_value' => $allowed_vocabularies_default,
+          '#options' => $vocab_options,
+          '#multiple' => TRUE,
+        );
+      }
+
+      break;
+  }
+}
+
+/**
+ * provides a json object for autocompleting internal links
+ * search based on node title
+ */
+function link_autocomplete_callback($string = '') {
+  $field_name = arg(2);
+  $entity_type = arg(3);
+  $bundle_name = arg(4);
+  
+  $field_info = field_info_instance($entity_type, $field_name, $bundle_name);
+  $where_node_type = array();
+  $where_vocabulary = array();
+  
+  if (is_array($field_info['allowed_content_types']) && is_array($field_info['allowed_vocabularies'])) {
+    if (isset($field_info['allowed_content_types'])) {
+      foreach($field_info['allowed_content_types'] as $key => $value) {
+        if ($key == -1 && $value !== 0) {
+          $where_node_type = FALSE;
+          break;
+        }
+          
+        if ($value !== 0) {
+          $where_node_type[$key] = 1;
+        }
+      }
+    }
+
+    if (isset($field_info['allowed_vocabularies'])) {
+      foreach($field_info['allowed_vocabularies'] as $key => $value) {
+        if ($key == -1 && $value !== 0) {
+          $where_vocabulary = FALSE;
+          break;
+        }
+          
+        if ($value !== 0) {
+          $where_vocabulary[$key] = 1;
+        }
+      }
+    }
+  }
+
+  $matches = array();
+  if ($string) {
+    if ($where_node_type !== FALSE) {
+      $result = db_select('node')->fields('node', array('nid', 'title'))->condition('title', db_like($string) . '%', 'LIKE');
+      if (!empty($where_node_type)) {
+        $result->condition('type', array_keys($where_node_type), 'IN');
+      }
+      $result = $result->range(0, 10)->execute();
+      
+      foreach ($result as $node) {
+        $matches['node/'.$node->nid] = array('title'=>check_plain($node->title), 'display'=>check_plain($node->title) . ' (node/' . $node->nid . ')');
+      }
+    }
+    
+    if ($where_vocabulary !== FALSE) {
+      $result = db_select('taxonomy_term_data')->fields('taxonomy_term_data', array('tid', 'name'))->condition('name', db_like($string) . '%', 'LIKE');
+      if (!empty($where_vocabulary)) {
+        $result->condition('vid', array_keys($where_vocabulary), 'IN');
+      }
+      $result = $result->range(0, 10)->execute();
+      
+      foreach ($result as $term) {
+        $matches['taxonomy/term/'.$term->tid] = array('title'=>check_plain($term->name), 'display'=>check_plain($term->name) . ' (taxonomy/term/' . $term->tid . ')');
+      }
+    }
+  }
+
+  drupal_json_output($matches);
+}
+
+/**
+ * Implements hook_field_widget_info().
+ *
+ * TODO: implement autocomplete link as its own widget (?)
+ */
+/*
+function link_autocomplete_field_widget_info() {
+  return array(
+    'link_field_internal' => array(
+      'label' => 'Link (Internal)',
+      'field types' => array('link_field'),
+      'multiple values' => FIELD_BEHAVIOR_DEFAULT,
+    ),
+  );
+}
+// */
+
+/**
+ * Implements hook_element_info_alter()
+ */
+function link_autocomplete_element_info_alter(&$type) {
+  if (isset($type['link_field']['#process'])) {
+    $type['link_field']['#process'][] = 'link_autocomplete_widget_process';
+  }
+}
+
+function link_autocomplete_widget_process($element, $form_state, $complete_form) {
+  $element['url']['#autocomplete_path'] = 'link/autocomplete/'.$element['#field_name'].'/'.$element['#entity_type'].'/'.$element['#bundle'];
+  $element['url']['#attached']['js'] = array(
+    drupal_get_path('module', 'link_autocomplete') . '/js/link-autocomplete.js' => array(
+    'type' => 'file',
+    'weight' => '99',
+    ),
+  );
+  
+  $element['url']['#attributes'] = array('class' => array('link-autocomplete'));
+  
+  return $element;
+}
