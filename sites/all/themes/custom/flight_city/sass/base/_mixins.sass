@@ -599,7 +599,16 @@ $common-border: common-border-val()
     h2.block-title, .views-header h2
       padding-right: $padding
 
+%views-see-more-footer-button
 
+  .more-link
+    text-align: left
+
+    a 
+      +button()
+
+@mixin views-see-more-footer-button()
+  @extend %views-see-more-footer-button
 
 //***********************************
 // Layout elements

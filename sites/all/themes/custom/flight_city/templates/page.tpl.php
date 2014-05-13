@@ -48,6 +48,17 @@
   </header>
   <!--/.l-header -->
 
+  <?php if (!empty($page['help']) || $breadcrumb): ?>
+    <!--/.l-help -->
+    <section class="l-help row">
+      <div class="medium-12 columns">
+        <?php if ($breadcrumb): print $breadcrumb; endif; ?>
+        <?php if (!empty($page['help'])): print render($page['help']); endif; ?>
+      </div>
+    </section>
+    <!--/.l-help -->
+  <?php endif; ?>
+
   <?php if ($messages && !$zurb_foundation_messages_modal): ?>
     <!--/.l-messages -->
     <section class="l-messages row">
@@ -66,17 +77,6 @@
       </div>
     </section>
     <!--/.l-featured -->
-  <?php endif; ?>
-
-  <?php if (!empty($page['help']) || $breadcrumb): ?>
-    <!--/.l-help -->
-    <section class="l-help row">
-      <div class="medium-12 columns">
-        <?php if ($breadcrumb): print $breadcrumb; endif; ?>
-        <?php if (!empty($page['help'])): print render($page['help']); endif; ?>
-      </div>
-    </section>
-    <!--/.l-help -->
   <?php endif; ?>
 
   <main role="main" class="l-main off-canvas-wrap" data-offcanvas><div class="inner-wrap"><div id="dnn_ContentPane" class="row">
