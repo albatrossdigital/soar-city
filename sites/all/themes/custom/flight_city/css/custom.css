@@ -823,7 +823,7 @@ html, body {
   border-top: 1px solid #dddddd;
 }
 /* line 753, ../sass/base/_mixins.sass */
-[role=complementary] .block > ul a.active, [role=complementary] .block .menu-block-wrapper ul a.active, [role=complementary] .block .item-list > ul a.active {
+[role=complementary] .block > ul a.active, [role=complementary] .block > ul li.active-trail a, [role=complementary] .block .menu-block-wrapper ul a.active, [role=complementary] .block .menu-block-wrapper ul li.active-trail a, [role=complementary] .block .item-list > ul a.active, [role=complementary] .block .item-list > ul li.active-trail a {
   border-left-color: #deb64b;
 }
 /* line 756, ../sass/base/_mixins.sass */

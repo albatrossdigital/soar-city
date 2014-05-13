@@ -170,6 +170,14 @@ function _flight_city_child_menu_recurse($current_menu, &$menus, &$active, $pare
         _flight_city_child_menu_recurse($value['#below'], $menus, $active, $value);
         $menus[$menu_level]['menu'][$key]['#below'] = array();
       }
+      // End of the line
+      else {
+        // Check for active trails on last level
+        $active_trail = !empty($value['#attributes']) && in_array('active-trail', $value['#attributes']['class']);
+        if(empty($active) && $active_trail) {
+          $active = ($children) ? $value['#original_link']['depth'] : $value['#original_link']['depth'] - 1;
+        }
+      }
     }
   }
 }
