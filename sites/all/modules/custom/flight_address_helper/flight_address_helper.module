@@ -18,7 +18,7 @@ function flight_address_helper_permission() {
 
   $permissions = array(
     'addressfield helper autocomplete' => array(
-      'title' => t('Access inactive domains'),
+      'title' => t('Use the addressfield autocomplete'),
     )
   );
 
