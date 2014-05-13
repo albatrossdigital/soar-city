@@ -10,6 +10,21 @@ define('FLIGHT_HELPER_VIEW', 'flight_helper_addresses');
 define('FLIGHT_HELPER_URL_AUTO', 'admin/flight-address-auto/');
 define('FLIGHT_HELPER_URL_RESPONSE', 'admin/flight-address-response/');
 
+
+/**
+ * Implements hook_permission().
+ */
+function flight_address_helper_permission() {
+
+  $permissions = array(
+    'addressfield helper autocomplete' => array(
+      'title' => t('Access inactive domains'),
+    )
+  );
+
+  return $permissions;
+}
+
 /**
  * Implements hook_menu()
  */
@@ -17,14 +32,14 @@ function flight_address_helper_menu(){
   $items[FLIGHT_HELPER_URL_AUTO . '%'] = array(
     'title' => 'Autocomplete for addresses',
     'page callback' => '_flight_address_helper_autocomplete',
-    'access arguments' => array('edit domain content'),
+    'access arguments' => array('addressfield helper autocomplete'),
     'page arguments' => array(2),
     'type' => MENU_CALLBACK
   );
   $items[FLIGHT_HELPER_URL_RESPONSE . '%/%'] = array(
     'title' => 'Autocomplete response',
     'page callback' => '_flight_address_helper_response',
-    'access arguments' => array('edit domain content'),
+    'access arguments' => array('addressfield helper autocomplete'),
     'page arguments' => array(2, 3),
     'type' => MENU_CALLBACK
   );
