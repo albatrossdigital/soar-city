@@ -1,27 +1,27 @@
-title	type	old url	migrate	section
-Animal Services	program	http://www.baltimorehealth.org/animalcontrol.html 	1	45
-Emergency Preparedness & Response	program	http://www.baltimorehealth.org/emergency.html	1	46
-Food	program		0	48
-Health Clinics & Services	program	http://www.baltimorehealth.org/healthservices.html	1	49
-Health Code & Licensing Information	program	http://www.baltimorehealth.org/healthcode.html	1	50
-Health Resources by Topic	program		0	51
-Maternal and Child Health	program		0	52
-Neighborhoods	program		0	53
-School Health	program	http://www.baltimorehealth.org/schoolhealth.html 	1	
-Seniors	program	http://www.baltimorehealth.org/seniors.html	1	45
-Substance Abuse	program	http://www.baltimorehealth.org/substanceabuse.html	1	55
-Tobacco	program	http://www.baltimorehealth.org/cessation.html 	1	
-Violence Prevention	program			56
-Get A Pet License	page	http://www.baltimorehealth.org/animalcontrol.html#petlicense 	1	
-Bioterrorism, Diseases & Natural Disasters	page			
-Code Blue	page			
-Code Red	page			
-Hurricanes	page			
-Pandemic Influenza	page			
-Health Clinics & Services	page	http://www.baltimorehealth.org/healthservices.html 	1	
-Dental Clinic / Oral Health Services	page	http://www.baltimorehealth.org/dental.html 	1	
-Family Planning & Reproductive Health	page			
-Healthy Teens & Young Adults	page	http://www.baltimorehealth.org/schoolhealth.html 	1	
-Men's Health Center	page	http://www.baltimorehealth.org/mhc.html 	1	
-STD Clinic	page	http://www.baltimorehealth.org/std.html		
-TB Clinic	page	http://www.baltimorehealth.org/tb.html 	1	
+"title","type","old url","migrate","section"
+"Animal Services","program","http://www.baltimorehealth.org/animalcontrol.html ",1,45
+"Emergency Preparedness & Response","program","http://www.baltimorehealth.org/emergency.html",1,46
+"Food","program",,0,48
+"Health Clinics & Services","program","http://www.baltimorehealth.org/healthservices.html",1,49
+"Health Code & Licensing Information","program","http://www.baltimorehealth.org/healthcode.html",1,50
+"Health Resources by Topic","program",,0,51
+"Maternal and Child Health","program",,0,52
+"Neighborhoods","program",,0,53
+"School Health","program","http://www.baltimorehealth.org/schoolhealth.html ",1,
+"Seniors","program","http://www.baltimorehealth.org/seniors.html",1,45
+"Substance Abuse","program","http://www.baltimorehealth.org/substanceabuse.html",1,55
+"Tobacco","program","http://www.baltimorehealth.org/cessation.html ",1,
+"Violence Prevention","program",,,56
+"Get A Pet License","page","http://www.baltimorehealth.org/animalcontrol.html#petlicense ",1,
+"Bioterrorism"," Diseases & Natural Disasters","page",,
+"Code Blue","page",,,
+"Code Red","page",,,
+"Hurricanes","page",,,
+"Pandemic Influenza","page",,,
+"Health Clinics & Services","page","http://www.baltimorehealth.org/healthservices.html ",1,
+"Dental Clinic / Oral Health Services","page","http://www.baltimorehealth.org/dental.html ",1,
+"Family Planning & Reproductive Health","page",,,
+"Healthy Teens & Young Adults","page","http://www.baltimorehealth.org/schoolhealth.html ",1,
+"Men's Health Center","page","http://www.baltimorehealth.org/mhc.html ",1,
+"STD Clinic","page","http://www.baltimorehealth.org/std.html",,
+"TB Clinic","page","http://www.baltimorehealth.org/tb.html ",1,
