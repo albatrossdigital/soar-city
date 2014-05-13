@@ -11,8 +11,11 @@
   ul.breadcrumbs
     +e(hide)
 
+  .l-main
+    padding-top: rem-calc(7)
+
   .main
-    padding-top: $header-bottom-margin
+    padding-top: rem-calc(10)
 
   // News blocks
   .block-views-news-block,
@@ -26,9 +29,12 @@
 
 .front.domain-main
 
-  // Hide 
-  .l-featured:after
-    display: none
+  
+  .l-featured
+
+    // Hide border
+    &:after
+      +e(hide)
 
   .l-main
     padding-bottom: 0
