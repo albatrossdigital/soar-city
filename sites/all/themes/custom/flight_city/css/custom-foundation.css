@@ -5886,7 +5886,7 @@ p {
   font-weight: normal;
   font-size: 1rem;
   line-height: 1.6;
-  margin-bottom: 1.07143rem;
+  margin-bottom: 1.42857rem;
   text-rendering: optimizeLegibility;
 }
 /* line 219, ../sass/vendor/foundation/components/_type.scss */
@@ -6003,7 +6003,7 @@ ol,
 dl {
   font-size: 1rem;
   line-height: 1.6;
-  margin-bottom: 1.07143rem;
+  margin-bottom: 1.42857rem;
   list-style-position: outside;
   font-family: inherit;
 }
@@ -6097,7 +6097,7 @@ abbr {
 /* Blockquotes */
 /* line 369, ../sass/vendor/foundation/components/_type.scss */
 blockquote {
-  margin: 0 0 1.07143rem;
+  margin: 0 0 1.42857rem;
   padding: 0.64286rem 1.42857rem 0 1.35714rem;
   border-left: 1px solid #dddddd;
 }

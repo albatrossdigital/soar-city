@@ -7,7 +7,7 @@
 function flight_city_preprocess_html(&$vars) {
 
   // Need legacy support for IE downgrade to Foundation 2 or use JS file below
-  drupal_add_js('//use.typekit.net/tyn0pry.js', array(
+  /*drupal_add_js('//use.typekit.net/tyn0pry.js', array(
     'type' => 'external',
     'scope' => 'header',
     'weight' => 0,
@@ -16,7 +16,7 @@ function flight_city_preprocess_html(&$vars) {
     'type' => 'inline',
     'scope' => 'header',
     'weight' => 1,
-  ));
+  ));*/
   drupal_add_js(drupal_get_path('theme', 'flight_city') . '/js/vendor/rem.js', array(
     'type' => 'file',
     'scope' => 'footer'
@@ -75,7 +75,7 @@ function flight_city_preprocess_page(&$vars) {
       'external' => TRUE
     )
   );
-  
+
   // Convenience variables
   if (!empty($vars['page']['sidebar_first'])){
     $left = $vars['page']['sidebar_first'];
