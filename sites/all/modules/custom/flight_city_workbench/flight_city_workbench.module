@@ -130,7 +130,7 @@ function flight_city_workbench_block_view($delta = '') {
         $form = drupal_get_form('flight_city_workbench_node_promote_form', $node);
         $block['content'] = drupal_render($form);
       }
-      else {
+      elseif (user_access('promote content to main')) { // @todo: fix
         $block['content'] = flight_city_workbench_node_promote_lookup($node);
       }
       break;
