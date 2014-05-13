@@ -109,39 +109,6 @@
       <?php print render($page['content']); ?>
 
 
-      <?php if (!empty($page['content_triple_1_l']) || !empty($page['content_triple_1_c']) || !empty($page['content_triple_1_r'])): ?>
-        <!--.content-bottom-1-->
-        <section class="l-content-bottom-triple row">
-          <div class="content-bottom-triple-left medium-4 columns">
-            <?php print render($page['content_triple_1_l']); ?>
-          </div>
-          <div class="content-bottom-triple-center medium-4 columns">
-            <?php print render($page['content_triple_1_c']); ?>
-          </div>
-          <div class="content-bottom-triple-right medium-4 columns">
-            <?php print render($page['content_triple_1_r']); ?>
-          </div>
-        </section>
-      <?php endif; ?>
-      <?php if (!empty($page['content_half_1_l']) || !empty($page['content_half_1_r'])): ?>
-        <section class="l-content-bottom-1 row">
-          <div class="content-bottom-left medium-6 columns">
-            <?php print render($page['content_half_1_l']); ?>
-          </div>
-          <div class="content-bottom-right medium-6 columns">
-            <?php print render($page['content_half_1_r']); ?>
-          </div>
-        </section>
-      <?php endif; ?>
-      <? if(!empty($page['content_full_1'])): ?>
-        <section class="l-content-bottom-1 row">
-          <div class="content-bottom-full medium-12 columns">
-            <?php print render($page['content_full_1']); ?>
-          </div>
-        </section>
-        <!--/.content-bottom-1 -->
-      <?php endif; ?>
-
       <?php if (!empty($page['content_half_2_l']) || !empty($page['content_half_2_r']) || !empty($page['content_full_2'])): ?>
         <!--.content-bottom-2-->
         <section class="l-content-bottom-2 row">
