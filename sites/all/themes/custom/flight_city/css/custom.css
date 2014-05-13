@@ -1639,23 +1639,24 @@ a.social-icon.Vimeo {
 }
 /* line 8, ../sass/modules/_breadcrumbs.sass */
 .breadcrumbs li {
+  color: #111111;
   height: 1.85714rem;
   line-height: 1.85714rem;
   position: relative;
   padding-left: 2.14286rem;
 }
-/* line 15, ../sass/modules/_breadcrumbs.sass */
+/* line 16, ../sass/modules/_breadcrumbs.sass */
 .breadcrumbs li:before {
   font-size: 38px;
   position: absolute;
   left: 0.28571rem;
   top: -0.42857rem;
 }
-/* line 26, ../sass/modules/_breadcrumbs.sass */
+/* line 27, ../sass/modules/_breadcrumbs.sass */
 .breadcrumbs li:first-child {
   padding-left: 0;
 }
-/* line 29, ../sass/modules/_breadcrumbs.sass */
+/* line 30, ../sass/modules/_breadcrumbs.sass */
 .breadcrumbs li:first-child a {
   color: #7f7f7f;
   overflow: hidden;
