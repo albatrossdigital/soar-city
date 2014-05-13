@@ -814,7 +814,7 @@ html, body {
   border-left-color: #deb64b;
 }
 /* line 756, ../sass/base/_mixins.sass */
-[role=complementary] .block > ul, [role=complementary] .block .menu-block-wrapper ul, [role=complementary] .block .item-list > ul a {
+[role=complementary] .block > ul a, [role=complementary] .block .menu-block-wrapper ul a, [role=complementary] .block .item-list > ul a {
   border-left: 3px solid transparent;
   padding: 0.71429rem 1.42857rem 0.71429rem 1.21429rem;
 }
