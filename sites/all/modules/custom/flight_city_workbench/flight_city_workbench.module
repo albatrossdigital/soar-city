@@ -30,6 +30,14 @@ function flight_city_workbench_menu() {
   return $items;
 }
 
+/**
+ * Implements hook_menu_alter().
+ */
+function flight_city_workbench_menu_alter(&$items) {
+  dpm($items);
+  return $items;
+}
+
 
 
 function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {

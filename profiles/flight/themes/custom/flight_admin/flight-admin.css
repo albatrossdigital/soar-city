@@ -64,7 +64,7 @@ form.page-node-form {
 }
 
 .text-format-wrapper {
-  max-width: 820px;
+  max-width: 1000px;
 }
 
 .vertical-tabs-pane,
@@ -94,15 +94,61 @@ div.vertical-tabs .vertical-tabs-panes>fieldset>legend {
  * Media ===========================================================
  */
 
-.ui-dialog.media-wrapper,
+/*.ui-dialog.media-wrapper,
 .ui-dialog.media-wrapper .media-modal-frame {
   width: 800px !important;
+}*/
+
+.ui-widget-overlay {
+  min-height: 1200px;
 }
 
 .media-browser-tab.ui-tabs-panel {
   border: none;
 }
 
+.ui-dialog .ui-button-icon-only .ui-icon {
+  margin: -8px;
+}
 
+.media-item .label-wrapper label {
+  max-height: 3.5em;
+}
+
+.ui-dialog.media-wrapper {
+  max-width: 800px;
+}
+
+#media-tab-upload form img,
+.page-media-format-form #preview img {
+  max-width: 150px;
+  height: auto;
+  float: left;
+}
+
+#media-tab-upload form .focal-point-preview-link {
+  position: absolute;
+  margin: 2px 0 0 5px;
+}
+
+#media-tab-upload form .form-wrapper:not(.focal-point-indicator),
+#media-wysiwyg-format-form fieldset#edit-options,
+#media-wysiwyg-format-form .fake-ok {
+  margin-left: 170px;
+}
+
+#media-wysiwyg-format-form fieldset#edit-options legend {
+  display: none;
+}
+
+#media-tab-upload .redirect-list,
+#media-wysiwyg-format-form .redirect-list {
+  display: none;
+}
+
+#media-browser-tabset #branding h1 {
+  font-size: 1em;
+  color: #fff;
+}
 
 

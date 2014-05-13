@@ -1,0 +1,376 @@
+<?php
+
+// TODO: Restrict viewing for administrators somehow
+// TODO: See if anything else from domain_form_alter() is relevant for
+//       domain_file_form_file_entity_edit_alter()
+// TODO: What if a user doesn't have permission to set domain access?
+// TODO: Create/Delete/Update for hook_file_entity_access()
+// TODO: hook_query_file_entity_access_alter
+// TODO: Provide listing page for files per domain
+// TODO: Different defaults per file type.
+
+/**
+ * Implements hook_menu().
+ */
+function domain_file_menu() {
+  $items = array();
+  $items['admin/structure/domain/files'] = array(
+    'title' => 'File defaults',
+    'access arguments' => array('administer domains'),
+    'type' => MENU_LOCAL_TASK,
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('domain_file_defaults_form'),
+    'file' => 'domain_file.admin.inc',
+    'description' => 'Default domain settings for files.',
+    'weight' => -10,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function domain_file_form_file_entity_add_upload_alter(&$form, &$form_state, $form_id) {
+  if ($form['#step'] == 1) {
+    domain_file_form_file_entity_edit_alter($form, $form_state);
+    $form['#submit'][] = 'domain_file_entity_add_upload_submit';
+  }
+}
+
+function domain_file_entity_add_upload_submit(&$form, &$form_state) {
+  $trigger = $form_state['triggering_element']['#id'];
+  if ($form['#step'] == 1 && $trigger == 'edit-next') {
+    if ($file = file_load($form_state['storage']['upload'])) {
+      $file->domains = $form_state['storage']['domains'];
+      $file->domain_site = $form_state['storage']['domain_site'];
+      file_save($file);
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function domain_file_form_file_entity_edit_alter(&$form, &$form_state) {
+
+  // Grab the globals we need.
+  global $user;
+  $_domain = domain_get_domain();
+
+  $defaults = domain_file_get_defaults();
+  $default_domain_site = (int) $defaults['domain_site'];
+
+  $options = array();
+  // Get the display format of the form element.
+  $format = domain_select_format();
+  foreach (domain_domains() as $data) {
+    // The domain must be valid.
+    if ($data['valid'] || user_access('access inactive domains')) {
+      // Checkboxes must be filtered, select lists should not.
+      $options[$data['domain_id']] = empty($format) ? check_plain($data['sitename']) : $data['sitename'];
+    }
+  }
+  // If the user is a site admin, show the form, otherwise pass it silently.
+  if (user_access('set domain access')) {
+    $form['domain'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Domain access options'),
+      '#collapsible' => TRUE,
+      '#collapsed' => FALSE,
+      '#group' => variable_get('domain_vertical_tab', 0) ? 'additional_settings' : '',
+    );
+    $form['domain']['domain_site'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('Send to all affiliates'),
+      '#required' => FALSE,
+      '#description' => t('Select if this file can be shown to all affiliates. This setting will override the options below, but you must still select a domain that "owns" this file.'),
+      '#default_value' => (isset($form_state['file']->domain_site)) ? $form_state['file']->domain_site : $default_domain_site,
+    );
+    $form['domain']['domains'] = array(
+      '#type' => empty($format) ? 'checkboxes' : 'select',
+      '#title' => t('Publish to'),
+      '#options' => $options,
+      '#required' => TRUE,
+      '#description' => t('Select which affiliates can access this file.'),
+      '#default_value' => (isset($form_state['file']->domains)) ? $form_state['file']->domains : $defaults['domain_id'],
+    );
+    if ($format) {
+      $form['domain']['domains']['#multiple'] = TRUE;
+      $form['domain']['domains']['#size'] = count($options) > 10 ? 10 : count($options);
+    }
+  }
+  // If the user has limited permissions, show that form or obey the settings.
+  else {
+  }
+
+}
+
+/**
+ * Implements hook_entity_load().
+ */
+function domain_file_entity_load($files, $type) {
+  if ($type == 'file') {
+    // Get the domain data.
+    $domains = domain_file_get_file_domains($files);
+    foreach ($files as $file) {
+      // Cannot load if the file has not been created yet.
+      if (!isset($file->fid)) {
+        continue;
+      }
+      $defaults = domain_file_get_defaults();
+      // Append the domain grants to the file for editing.
+      $files[$file->fid]->domains = isset($domains[$file->fid]['domain_id']) ? $domains[$file->fid]['domain_id'] : array();
+      // If the file is not assigned, grant to all domains to prevent errors.
+      $files[$file->fid]->domain_site = isset($domains[$file->fid]['domain_site']) ? $domains[$file->fid]['domain_site'] : $defaults['domain_site'];
+      $files[$file->fid]->subdomains = array();
+      if (!empty($files[$file->fid]->domain_site)) {
+        $files[$file->fid]->subdomains[] = t('All affiliates');
+      }
+      if (!empty($files[$file->fid]->domains)) {
+        foreach ($files[$file->fid]->domains as $gid) {
+          $domain = domain_lookup($gid);
+          $files[$file->fid]->subdomains[] = $domain['sitename'];
+        }
+      }
+      else {
+        $files[$file->fid]->subdomains[] = t('This file is not assigned to a domain.');
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function domain_file_entity_presave($entity, $type) {
+  if ($type == 'file') {
+    $new = empty($entity->fid);
+    if ($new) {
+      // Hmm ... don't seem to have access to domain options.
+    }
+    else {
+      // Delete all grants first. Could be dangerous? What about db_merge().
+      db_delete('domain_file')
+        ->condition('fid', $entity->fid)
+        ->execute();
+
+      // Send to all affiliates.
+      $domain_site = !empty($entity->domain_site);
+      if ($domain_site) {
+        db_insert('domain_file')
+          ->fields(array(
+            'fid' => $entity->fid,
+            'gid' => 0,
+            'realm' => 'domain_site',
+          ))
+          ->execute();
+      }
+      // Specific domains.
+      if (isset($entity->domains)) {
+        foreach (array_keys(array_filter($entity->domains)) as $domain_id) {
+          db_insert('domain_file')
+            ->fields(array(
+              'fid' => $entity->fid,
+              'gid' => $domain_id,
+              'realm' => 'domain_id',
+            ))
+            ->execute();
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function domain_file_entity_delete($entity, $type) {
+  if ($type == 'file') {
+    db_delete('domain_file')
+      ->condition('fid', $entity->fid)
+      ->execute();
+  }
+}
+
+/**
+ * Implements hook_file_entity_access().
+ */
+function domain_file_file_entity_access($op, $file, $account) {
+  $_domain = domain_get_domain();
+  switch ($op) {
+    case 'view':
+      // TODO: Combine these queries using domain_site OR (domain_id and gid = )
+      // Check for "all affiliates".
+      if (db_select('domain_file', 'df')
+        ->fields('df', array('fid'))
+        ->condition('fid', $file->fid)
+        ->condition('realm', 'domain_site')
+        ->range(0, 1)
+        ->execute()
+        ->rowCount()) {
+        return FILE_ENTITY_ACCESS_IGNORE;
+      }
+      if ($row_count = db_select('domain_file', 'df')
+        ->fields('df', array('fid'))
+        ->condition('fid', $file->fid)
+        ->condition('gid', $_domain['domain_id'])
+        ->condition('realm', 'domain_id')
+        ->range(0, 1)
+        ->execute()
+        ->rowCount()) {
+        return FILE_ENTITY_ACCESS_IGNORE;
+      }
+      return FILE_ENTITY_ACCESS_DENY;
+      break;
+    default:
+     return FILE_ENTITY_ACCESS_IGNORE;
+  }
+}
+
+/**
+ * Returns default file access settings, ready for a node object.
+ *
+ * Use domain_file_default_access_settings() when you need those settings in
+ * forms, or when you look for default access settings in general.
+ *
+ * First level keys are
+ *  - 'domain_site' (publish to all affiliates) with value TRUE or FALSE.
+ *  - 'domain_id' contains the assigned affiliates, where both keys and values
+ *    are the domain id.
+ *
+ * Array of assigned domains can be empty, but only if an admin explicitly
+ * defined this. Use $fallback_domains to prevent zero assignments.
+ * See domain_default() as an example for a possible fallback domain.
+ *
+ * @see domain_default_node_access_settings()
+ * @see domain_default()
+ *
+ * @param $fallback_domains (optional)
+ *  An array of domains which are used if no default domain is assigned.
+ *
+ * @return
+ *  An array of default settings, formatted as explained above.
+ */
+function domain_file_get_defaults($fallback_domains = array()) {
+  $_domain = domain_get_domain();
+  $defaults = array('domain_id' => array());
+  // We use array_flip for compatibility with node_type_form_submit().
+  $settings = array_flip(domain_file_default_access_settings());
+  $domains = domain_domains();
+
+  $defaults['domain_site'] = isset($settings['DOMAIN_ALL']) ? TRUE : FALSE;
+  // Assign the currently active domain, if not disabled by user.
+  if (isset($settings['DOMAIN_ACTIVE'])) {
+    $defaults['domain_id'][$_domain['domain_id']] = $_domain['domain_id'];
+  }
+  // Assign the default affiliates.
+  foreach ($domains as $domain) {
+    if (isset($settings[$domain['machine_name']])) {
+      $defaults['domain_id'][$domain['domain_id']] = $domain['domain_id'];
+    }
+  }
+  // Use fallback domains when no default affiliate exists.
+  if (empty($defaults['domain_id']) && !empty($fallback_domains)) {
+    foreach ($fallback_domains as $domain) {
+      $defaults['domain_id'][$domain['domain_id']] = $domain['domain_id'];
+    }
+  }
+  return $defaults;
+}
+
+
+/**
+ * Returns default file access settings for new files.
+ *
+ * Usually, you may use this function in forms, and when you look for default
+ * access settings in general.
+ *
+ * @return
+ *  An array of default settings.
+ */
+function domain_file_default_access_settings() {
+  // We need to know if there are user-defined settings.
+  // If so, we get an array, though it could be empty.
+  $settings = variable_get('domain_file_defaults', array());
+  // Append default behavior, if there are no user-defined settings.
+  if (empty($settings)) {
+    // Assign the currently active domain.
+    $settings = array(0 => 'DOMAIN_ACTIVE');
+    // And publish to all domains when rule allows it.
+    if (DOMAIN_INSTALL_RULE) {
+      $settings[] = 'DOMAIN_ALL';
+    }
+  }
+  // When configured on domain nodes form,
+  // keep the structure equal to the node type pattern.
+  elseif (isset($settings['DOMAIN_ALL'])) {
+    $old_settings = $settings;
+    // Reset settings array and fill it with correct pattern.
+    $settings = array();
+    foreach ($old_settings as $key => $value) {
+      // Machine_name could be of value 0. The second condition covers this special case.
+      if ($value !== 0 || ($key === 0 && $value === 0)) {
+        $settings[] = $value;
+      }
+    }
+  }
+  return $settings;
+}
+
+/**
+ * Get the domains for multiple matches, mimicking node_load().
+ *
+ * @param $files
+ *   An array of files, keyed by file id, or a single file id.
+ *
+ * @return
+ *   An array of data, keyed by file id, or a single array for a single file.
+ *   The data array, consists of two parts. 'domain_id' is an array of active domain ids.
+ *   'domain_site' is a TRUE/FALSE boolean indicating affiliate status.
+ */
+function domain_file_get_file_domains($files) {
+  $lookup = &drupal_static(__FUNCTION__, array());
+  // Ensure we form our data properly.
+  if (!is_array($files)) {
+    $file_ids[$files] = $files;
+    $array = FALSE;
+  }
+  else {
+    $file_ids = $files;
+    $array = TRUE;
+  }
+  // If not an array, just return the requested data.
+  if (!$array && isset($lookup[$files])) {
+    return $lookup[$files];
+  }
+  // Set the proper value for the file, but include a default.
+  $domains = array('domain_id' => array(), 'domain_site' => FALSE);
+  $records = array();
+  $result = db_query("SELECT fid, gid, realm FROM {domain_file} WHERE fid IN (:fid)", array(':fid' => array_keys($file_ids)));
+  // While this should return records for every file, we cannot guarantee success.
+  foreach ($result as $data) {
+    if ($data->realm == 'domain_id') {
+      $records[$data->fid]['domain_id'][$data->gid] = $data->gid;
+    }
+    elseif ($data->realm == 'domain_site') {
+      $records[$data->fid]['domain_site'] = TRUE;
+    }
+  }
+  // Run through the files and ensure they have proper data.
+  foreach ($file_ids as $fid => $value) {
+    $lookup[$fid] = $domains;
+    foreach (array('domain_id', 'domain_site') as $key) {
+      if (isset($records[$fid][$key])) {
+        $lookup[$fid][$key] = $records[$fid][$key];
+      }
+    }
+  }
+  // Return all data or just a single file?
+  if ($array) {
+    return $lookup;
+  }
+  if (isset($lookup[$files])) {
+    return $lookup[$files];
+  }
+  return $domains;
+}
