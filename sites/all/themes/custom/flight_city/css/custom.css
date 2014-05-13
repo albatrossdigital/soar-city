@@ -207,7 +207,7 @@ a.social-icon.Vimeo:before {
 /********************************** */
 /* line 313, ../sass/base/_mixins.sass */
 .no-page-title #page-title, .l-footer-sections-bottom form label, .l-footer-sections-bottom form .grippie, .no-labels label,
-.no-label label, .front ul.breadcrumbs, .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item label,
+.no-label label, .breadcrumbs li:nth-last-child(2), .front ul.breadcrumbs, .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item label,
 .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item .description {
   display: none;
 }
@@ -532,6 +532,12 @@ html body.admin-menu > .page {
 /* line 20, ../sass/layout/_page.sass */
 html, body {
   max-width: 100%;
+}
+
+/* line 23, ../sass/layout/_page.sass */
+.row > .row {
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /* line 3, ../sass/layout/_header.sass */
@@ -1645,18 +1651,18 @@ a.social-icon.Vimeo {
   position: relative;
   padding-left: 2.14286rem;
 }
-/* line 16, ../sass/modules/_breadcrumbs.sass */
+/* line 20, ../sass/modules/_breadcrumbs.sass */
 .breadcrumbs li:before {
   font-size: 38px;
   position: absolute;
   left: 0.28571rem;
   top: -0.42857rem;
 }
-/* line 27, ../sass/modules/_breadcrumbs.sass */
+/* line 31, ../sass/modules/_breadcrumbs.sass */
 .breadcrumbs li:first-child {
   padding-left: 0;
 }
-/* line 30, ../sass/modules/_breadcrumbs.sass */
+/* line 34, ../sass/modules/_breadcrumbs.sass */
 .breadcrumbs li:first-child a {
   color: #7f7f7f;
   overflow: hidden;

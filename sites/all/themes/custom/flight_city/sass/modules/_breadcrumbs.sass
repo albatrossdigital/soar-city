@@ -12,6 +12,10 @@ $breadcrumbs-height: rem-calc(26px)
     position: relative
     padding-left: rem-calc(30)
 
+    // Hack to hide useless 2nd to last breadcrumb
+    &:nth-last-child(2)
+      +e(hide)
+
     // separator
     &:before
       @extend %icons-core
