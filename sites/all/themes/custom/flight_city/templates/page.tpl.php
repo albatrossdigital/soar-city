@@ -108,6 +108,15 @@
 
       <?php print render($page['content']); ?>
 
+      <? if(!empty($page['content_full_1'])): ?>
+        <section class="l-content-bottom-1 row">
+          <div class="content-bottom-full medium-12 columns">
+            <?php print render($page['content_full_1']); ?>
+          </div>
+        </section>
+        <!--/.content-bottom-1 -->
+      <?php endif; ?>
+     
 
       <?php if (!empty($page['content_half_2_l']) || !empty($page['content_half_2_r']) || !empty($page['content_full_2'])): ?>
         <!--.content-bottom-2-->
