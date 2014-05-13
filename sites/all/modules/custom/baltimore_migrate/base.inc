@@ -87,6 +87,7 @@ class BaltimoreStoriesMigration extends XMLMigration {
 class BaltimoreContentMigration extends Migration {
   public function __construct($arguments) {
     $this->arguments = $arguments;
+
     //$this->arguments['doctypes'] = !empty($this->arguments['doctypes']) ? $this->arguments['doctypes'] : array('pdf', 'doc', 'docx', 'xls', 'xlsx')
     if (empty($arguments['url'])) {
       return FALSE;
@@ -161,11 +162,12 @@ class BaltimoreContentMigration extends Migration {
 
             if ($file = _baltimore_migrate_save_file($url, $arguments['file_destination'])) {
               //dpm($file);
-              $node->setAttribute('href', 'file/'.$file->fid);
+              $node->setAttribute('href', url('file/'.$file->fid));
             }
           }
           else {
             //@ todo: log this somewhere?
+            db_query('insert into {baltimore_migrate_redirects} (class_name, source_old_url, link_url) values("'.$this->arguments['class_name'].'", "'.$row->old_url.'", "'.$url.'");');
           }
         }
       }
