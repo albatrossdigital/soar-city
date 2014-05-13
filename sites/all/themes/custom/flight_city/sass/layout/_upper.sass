@@ -1,11 +1,25 @@
 
 
+// Messages
+// ----------------------------------------------------------------------------
+
+.l-messages
+  .alert-box:first-child
+    margin-top: $alert-bottom-margin
+
+    .l-help ~ &
+      margin-top: 0    
+
+
+
 // Featured
 // --------------------------
 
 .l-featured
   padding-top: $small-region-pad-small
   +nice-row-border($column-gutter/2, rem-calc(5), $common-border, bottom, hidden)
+
+  +main-verical-spacing()
 
 
 // Help / Breadcrumbs
@@ -16,16 +30,6 @@
 
 .breadcrumbs
 
-
-// Messages
-// ----------------------------------------------------------------------------
-
-.l-messages
-  .alert-box:first-child
-    margin-top: $alert-bottom-margin
-
-    .l-help ~ &
-      margin-top: 0    
 
 
 // *
@@ -41,14 +45,15 @@
   .l-messages
 
     & > .columns
-      margin-left: (grid-calc(1, 12)/2)
-      margin-right: (grid-calc(1, 12)/2)
-      width: grid-calc(11, 12)
+      //margin-left: (grid-calc(1, 12)/2)
+      //margin-right: (grid-calc(1, 12)/2)
+      //width: grid-calc(11, 12)
 
   // Featured
   // --------------------------
 
   .l-featured
+    +main-verical-spacing('medium')
 
     &:after
       padding-top: $medium-region-pad-large

@@ -67,6 +67,15 @@ function flight_city_preprocess_page(&$vars) {
     }
   }
 
+  // Set logo to link default
+  $default_domain = domain_default(FALSE, FALSE);
+  $vars['linked_logo'] = l($vars['logo_img'], 'http://' . $default_domain['subdomain'],
+    array(
+      'html' => TRUE,
+      'external' => TRUE
+    )
+  );
+  
   // Convenience variables
   if (!empty($vars['page']['sidebar_first'])){
     $left = $vars['page']['sidebar_first'];

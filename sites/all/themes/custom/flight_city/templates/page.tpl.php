@@ -2,7 +2,7 @@
 <div data-offcanvas role="document" class="page off-canvas-wrap"><div class="inner-wrap">
 
   <!--.l-header -->
-  <header role="banner" class="l-header .contain">
+  <header role="banner" class="l-header">
     <?php if ($top_bar_classes): ?>
       <div class="<?php print $top_bar_classes; ?>">
     <?php endif; ?>
@@ -32,18 +32,31 @@
 
     <!--.l-header-region -->
     <section class="l-header-region row">
-      <div class="medium-6 columns header-branding">
+      <div class="medium-8 columns header-branding">
         <?php if($entity_title): ?>
           <h2 id="entity-title" class="title"><?php print $entity_title; ?></h2>
         <?php endif; ?>
       </div>
-      <div class="medium-6 columns header-region-right">
+      <div class="medium-4 columns header-region-right">
+        <?php if (!empty($page['sidebar_first'])): ?>
+          <a id="toggle-main-section-menu" href="#"><span><?php print $top_bar_menu_text; ?></span> <i class="fa-bars"></i></a>
+        <?php endif; ?>
         <?php print render($page['header']); ?>
       </div>
     </section>
       <!--/.l-header-region -->
   </header>
   <!--/.l-header -->
+
+  <?php if ($messages && !$zurb_foundation_messages_modal): ?>
+    <!--/.l-messages -->
+    <section class="l-messages row">
+      <div class="medium-12 columns">
+        <?php if ($messages): print $messages; endif; ?>
+      </div>
+    </section>
+    <!--/.l-messages -->
+  <?php endif; ?>
 
   <?php if (!empty($page['featured'])): ?>
     <!--/.featured -->
@@ -66,17 +79,7 @@
     <!--/.l-help -->
   <?php endif; ?>
 
-  <?php if ($messages && !$zurb_foundation_messages_modal): ?>
-    <!--/.l-messages -->
-    <section class="l-messages row">
-      <div class="medium-12 columns">
-        <?php if ($messages): print $messages; endif; ?>
-      </div>
-    </section>
-    <!--/.l-messages -->
-  <?php endif; ?>
-
-  <main role="main" class="row l-main"><div id="dnn_ContentPane">
+  <main role="main" class="l-main off-canvas-wrap" data-offcanvas><div class="inner-wrap"><div id="dnn_ContentPane" class="row">
     <div class="<?php print $main_grid; ?> main columns">
       <?php if (!empty($page['highlighted'])): ?>
         <div class="highlight panel callout">
@@ -105,9 +108,21 @@
 
       <?php print render($page['content']); ?>
 
-
-      <?php if (!empty($page['content_half_1_l']) || !empty($page['content_half_1_r']) || !empty($page['content_full_1'])): ?>
+      <?php if (!empty($page['content_triple_1_l']) || !empty($page['content_triple_1_c']) || !empty($page['content_triple_1_r'])): ?>
         <!--.content-bottom-1-->
+        <section class="l-content-bottom-triple row">
+          <div class="content-bottom-triple-left medium-4 columns">
+            <?php print render($page['content_triple_1_l']); ?>
+          </div>
+          <div class="content-bottom-triple-center medium-4 columns">
+            <?php print render($page['content_triple_1_c']); ?>
+          </div>
+          <div class="content-bottom-triple-right medium-4 columns">
+            <?php print render($page['content_triple_1_r']); ?>
+          </div>
+        </section>
+      <?php endif; ?>
+      <?php if (!empty($page['content_half_1_l']) || !empty($page['content_half_1_r'])): ?>
         <section class="l-content-bottom-1 row">
           <div class="content-bottom-left medium-6 columns">
             <?php print render($page['content_half_1_l']); ?>
@@ -115,12 +130,17 @@
           <div class="content-bottom-right medium-6 columns">
             <?php print render($page['content_half_1_r']); ?>
           </div>
+        </section>
+      <?php endif; ?>
+      <?php if(!empty($page['content_full_1'])): ?>
+        <section class="l-content-bottom-1 row">
           <div class="content-bottom-full medium-12 columns">
             <?php print render($page['content_full_1']); ?>
           </div>
         </section>
         <!--/.content-bottom-1 -->
       <?php endif; ?>
+     
 
       <?php if (!empty($page['content_half_2_l']) || !empty($page['content_half_2_r']) || !empty($page['content_full_2'])): ?>
         <!--.content-bottom-2-->
@@ -141,7 +161,7 @@
     <!--/.main region -->
 
     <?php if (!empty($page['sidebar_first'])): ?>
-      <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first columns sidebar">
+      <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first left-off-canvas-menu columns sidebar">
         <?php print render($page['sidebar_first']); ?>
       </aside>
     <?php endif; ?>
@@ -151,7 +171,7 @@
         <?php print render($page['sidebar_second']); ?>
       </aside>
     <?php endif; ?>
-  </div></main>
+  </div></div></main>
   <!--/.main-->
 
   <?php if (!empty($page['triptych_first']) || !empty($page['triptych_middle']) || !empty($page['triptych_last'])): ?>

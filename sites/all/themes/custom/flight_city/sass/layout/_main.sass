@@ -53,14 +53,25 @@
   .no-page-title &
     padding-top: $header-bottom-margin
 
-  .block-title
-    margin-bottom: $small-main-spacing
-
-  .block
-    margin-bottom: $small-main-block-spacing
-
   .block-workbench
     margin-bottom: $small-region-pad-small
+
+  // block spacing
+  +main-verical-spacing()
+
+
+// Fake title blocks
+.title-block
+  margin-bottom: 0!important
+  +views-see-more-header()
+
+
+// Lower content
+// ----------------------------------------------------------------------------
+
+.main > .row 
+  padding-top: $small-main-spacing
+  padding-bottom: $small-main-spacing
 
 
 // Common fields
@@ -75,7 +86,7 @@
 // Media
 // ----------------------------------------------------------------------------
 
-.node, .entity-bean
+.node, .entity-bean, .block
   img, iframe
     margin-bottom: $paragraph-margin-bottom
 
@@ -97,12 +108,7 @@
   // ----------------------------------------------------------------------------
 
   .main 
-    .block-title
-      font-size: $h1-font-size
-      margin-bottom: $medium-main-spacing
-
-    .block
-      margin-bottom: $medium-main-block-spacing
+    +main-verical-spacing('medium')
 
     .block-workbench
       margin-bottom: $small-region-pad-small

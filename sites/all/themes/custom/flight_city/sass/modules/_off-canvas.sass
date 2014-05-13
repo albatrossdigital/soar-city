@@ -8,7 +8,7 @@
 // Main Menu
 // ------------------------------------------------------
 
-$off-menu-border: lighten($blue, 2%)
+//$off-menu-border: lighten($blue, 2%)
 
 .right-off-canvas-menu
 
@@ -19,7 +19,15 @@ $off-menu-border: lighten($blue, 2%)
       +list-clear()
 
     a
-      +icon-after($fa-var-angle-right, $off-menu-border)
+      //+icon-after($fa-var-angle-right, $off-menu-border)
+
+
+// Main section sub-menu (sidebar)
+// ------------------------------------------------------
+
+.left-off-canvas-menu
+  background: none!important
+
 
 
 // *
@@ -27,8 +35,19 @@ $off-menu-border: lighten($blue, 2%)
 // *
 // ******************************************************
 
-+respond($mobile-to-menu)
 
++respond($small-only)
+
+  .left-off-canvas-menu
+    padding: 0!important
+
+    & > *
+      max-width: $off-canvas-width
+      +column-padding()
+      overflow: hidden
+
+
++respond($mobile-to-menu)
 
   // Main Menu
   // ------------------------------------------------------
@@ -43,25 +62,25 @@ $off-menu-border: lighten($blue, 2%)
       +column-padding()
       overflow: hidden
 
-    #cart-wrapper, .menu-name-main-menu
-      +expand-row()
-      border-top: 2px solid $off-menu-border
-
-    #cart-wrapper
-      padding: 0 $column-gutter/2
-      height: $topbar-height
+    .block-search-form
+      margin-top: -$topbar-height
+      margin-bottom: rem-calc(10)
+      padding-top: rem-calc(10)
 
     .menu-name-main-menu
-      +main-menu-style()
+      +expand-row()
 
-      a
+    .menu-name-main-menu
+      //+main-menu-style()
+
+      li a
         display: block
-        padding: 0 $column-gutter/2
+        padding: 0 $column-gutter
 
         &:after
-          float: right
-          line-height: $topbar-height
-          padding-right: 0
+          //float: right
+          //line-height: $topbar-height
+          //padding-right: 0
 
         &:hover, &:active
           //background: $topbar-link-bg-hover
@@ -72,9 +91,29 @@ $off-menu-border: lighten($blue, 2%)
 
       .active-trail, .active
         a
-          color: $blue-dark 
-          background: darken($blue, 3%)
+          //color: $blue-dark 
+          //background: darken($blue, 3%)
 
+
++respond($medium)
+
+  #toggle-main-section-menu
+    display: none
+
+  .move-right > .inner-wrap
+    +translate3d(0, 0, 0)
+
+  .left-off-canvas-menu
+    position: relative!important
+    left: auto!important
+    overflow: visible
+    padding-top: 0
+    height: auto!important
+    float: left
+    +translate3d(0, 0, 0)
+    +box-sizing(border-box)
+    width: gridCalc(3, 12)
+    z-index: 1
 
 
 +respond($past-menu)
