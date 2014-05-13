@@ -17,14 +17,14 @@ function flight_address_helper_menu(){
   $items[FLIGHT_HELPER_URL_AUTO . '%'] = array(
     'title' => 'Autocomplete for addresses',
     'page callback' => '_flight_address_helper_autocomplete',
-    'access arguments' => array('use autocomplete'),
+    'access arguments' => array('edit domain content'),
     'page arguments' => array(2),
     'type' => MENU_CALLBACK
   );
   $items[FLIGHT_HELPER_URL_RESPONSE . '%/%'] = array(
     'title' => 'Autocomplete response',
     'page callback' => '_flight_address_helper_response',
-    'access arguments' => array('use autocomplete'),
+    'access arguments' => array('edit domain content'),
     'page arguments' => array(2, 3),
     'type' => MENU_CALLBACK
   );
