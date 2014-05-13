@@ -167,7 +167,7 @@ class BaltimoreContentMigration extends Migration {
           }
           else {
             //@ todo: log this somewhere?
-            db_query('insert into {baltimore_migrate_redirects} (class_name, source_old_url, link_url) values("'.$this->arguments['class_name'].'", "'.$row->old_url.'", "'.$url.'");');
+            //db_query('insert into {baltimore_migrate_redirects} (class_name, source_old_url, link_url) values("'.$this->arguments['class_name'].'", "'.$row->old_url.'", "'.$url.'");');
           }
         }
       }
