@@ -477,6 +477,10 @@ $full-common: sprite-map("full-common/*.png")
   @extend %header-core
   font-size: $h6-font-size
 
+%header-page-title
+  font-size: $h2-font-size
+  margin-bottom: $small-main-spacing
+
 // general extend
 // use: +e(hide)
 @mixin e($extend)
@@ -581,7 +585,7 @@ $common-border: common-border-val()
 
   .more-link
     right: $column-gutter/2
-    top: rem-calc(25)
+    top: rem-calc(20)
     position: absolute
     z-index: 1
 
@@ -615,8 +619,7 @@ $common-border: common-border-val()
       margin-bottom: $small-main-block-spacing
 
     .block-title
-      font-size: $h1-font-size
-      margin-bottom: $medium-main-spacing
+      +h(page-title)
 
   @else 
     .block

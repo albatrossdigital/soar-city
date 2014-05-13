@@ -3,7 +3,7 @@ $breadcrumbs-height-px: 26px
 $breadcrumbs-height: rem-calc(26px)
 
 .breadcrumbs
-  margin-bottom: rem-calc(12)
+  margin-bottom: rem-calc(20)
 
   li
     color: $black
@@ -11,6 +11,9 @@ $breadcrumbs-height: rem-calc(26px)
     line-height: $breadcrumbs-height
     position: relative
     padding-left: rem-calc(30)
+
+    &:first-child
+      display: list-item!important
 
     // Hack to hide useless 2nd to last breadcrumb
     &:nth-last-child(2)
