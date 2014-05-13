@@ -3773,6 +3773,35 @@ button.disabled.alert:hover, button.disabled.alert:focus, button[disabled].alert
   border-color: #333333 transparent transparent transparent;
 }
 
+/* line 49, ../sass/vendor/foundation/components/_flex-video.scss */
+.flex-video {
+  position: relative;
+  padding-top: 1.78571rem;
+  padding-bottom: 67.5%;
+  height: 0;
+  margin-bottom: 1.14286rem;
+  overflow: hidden;
+}
+/* line 32, ../sass/vendor/foundation/components/_flex-video.scss */
+.flex-video.widescreen {
+  padding-bottom: 56.34%;
+}
+/* line 33, ../sass/vendor/foundation/components/_flex-video.scss */
+.flex-video.vimeo {
+  padding-top: 0;
+}
+/* line 38, ../sass/vendor/foundation/components/_flex-video.scss */
+.flex-video iframe,
+.flex-video object,
+.flex-video embed,
+.flex-video video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /* Standard Forms */
 /* line 326, ../sass/vendor/foundation/components/_forms.scss */
 form {
@@ -4854,6 +4883,56 @@ ul.pagination li {
   border-radius: 3px;
 }
 
+/* Progress Bar */
+/* line 57, ../sass/vendor/foundation/components/_progress-bars.scss */
+.progress {
+  background-color: #f6f6f6;
+  height: 1.78571rem;
+  border: 1px solid white;
+  padding: 0.14286rem;
+  margin-bottom: 0.71429rem;
+}
+/* line 61, ../sass/vendor/foundation/components/_progress-bars.scss */
+.progress .meter {
+  background: #0a83a1;
+  height: 100%;
+  display: block;
+}
+/* line 64, ../sass/vendor/foundation/components/_progress-bars.scss */
+.progress.secondary .meter {
+  background: #e5e5e5;
+  height: 100%;
+  display: block;
+}
+/* line 65, ../sass/vendor/foundation/components/_progress-bars.scss */
+.progress.success .meter {
+  background: #6aa880;
+  height: 100%;
+  display: block;
+}
+/* line 66, ../sass/vendor/foundation/components/_progress-bars.scss */
+.progress.alert .meter {
+  background: #e55454;
+  height: 100%;
+  display: block;
+}
+/* line 68, ../sass/vendor/foundation/components/_progress-bars.scss */
+.progress.radius {
+  border-radius: 3px;
+}
+/* line 69, ../sass/vendor/foundation/components/_progress-bars.scss */
+.progress.radius .meter {
+  border-radius: 2px;
+}
+/* line 72, ../sass/vendor/foundation/components/_progress-bars.scss */
+.progress.round {
+  border-radius: 1000px;
+}
+/* line 73, ../sass/vendor/foundation/components/_progress-bars.scss */
+.progress.round .meter {
+  border-radius: 999px;
+}
+
 /* line 162, ../sass/vendor/foundation/components/_reveal.scss */
 .reveal-modal-bg {
   position: fixed;
@@ -5608,6 +5687,25 @@ table tfoot tr td {
   float: none;
 }
 
+/* Image Thumbnails */
+/* line 61, ../sass/vendor/foundation/components/_thumbs.scss */
+.th {
+  line-height: 0;
+  display: inline-block;
+  border: solid 4px white;
+  max-width: 100%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  transition: all 200ms ease-out;
+}
+/* line 51, ../sass/vendor/foundation/components/_thumbs.scss */
+.th:hover, .th:focus {
+  box-shadow: 0 0 6px 1px rgba(10, 131, 161, 0.5);
+}
+/* line 65, ../sass/vendor/foundation/components/_thumbs.scss */
+.th.radius {
+  border-radius: 3px;
+}
+
 /* line 137, ../sass/vendor/foundation/components/_type.scss */
 .text-left {
   text-align: left !important;
@@ -6010,7 +6108,7 @@ dl {
 
 /* line 298, ../sass/vendor/foundation/components/_type.scss */
 ul {
-  margin-left: 1.1rem;
+  margin-left: 1.75rem;
 }
 /* line 300, ../sass/vendor/foundation/components/_type.scss */
 ul.no-bullet {
@@ -6038,17 +6136,17 @@ ul.square li ul, ul.circle li ul, ul.disc li ul {
 /* line 328, ../sass/vendor/foundation/components/_type.scss */
 ul.square {
   list-style-type: square;
-  margin-left: 1.1rem;
+  margin-left: 1.75rem;
 }
 /* line 329, ../sass/vendor/foundation/components/_type.scss */
 ul.circle {
   list-style-type: circle;
-  margin-left: 1.1rem;
+  margin-left: 1.75rem;
 }
 /* line 330, ../sass/vendor/foundation/components/_type.scss */
 ul.disc {
   list-style-type: disc;
-  margin-left: 1.1rem;
+  margin-left: 1.75rem;
 }
 /* line 331, ../sass/vendor/foundation/components/_type.scss */
 ul.no-bullet {
