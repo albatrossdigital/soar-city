@@ -3090,7 +3090,6 @@ function webform_client_form_submit($form, &$form_state) {
   $message = NULL;
   $redirect = NULL;
   $external_url = FALSE;
-  $redirect_url = trim($node->webform['redirect_url']);
   if (isset($form['actions']['draft']['#value']) && $form_state['values']['op'] == $form['actions']['draft']['#value']) {
     $message = t('Submission saved. You may return to this form later and it will restore the current values.');
   }
@@ -3100,10 +3099,10 @@ function webform_client_form_submit($form, &$form_state) {
   elseif (!empty($form_state['values']['details']['finished'])) {
     $message = t('Submission updated.');
   }
-  elseif ($redirect_url == '<none>') {
+  elseif ($node->webform['redirect_url'] == '<none>') {
     $redirect = NULL;
   }
-  elseif ($redirect_url == '<confirmation>') {
+  elseif ($node->webform['redirect_url'] == '<confirmation>') {
     $query = array('sid' => $sid);
     if ((int) $user->uid === 0) {
       $query['token'] = md5($submission->submitted . $submission->sid . drupal_get_private_key());
@@ -3112,6 +3111,7 @@ function webform_client_form_submit($form, &$form_state) {
   }
   else {
     // Clean up the redirect URL, filter it for tokens and remove the domain name.
+    $redirect_url = trim($node->webform['redirect_url']);
     $redirect_url = webform_replace_url_tokens($redirect_url, $node, $submission);
     $redirect_url = preg_replace('/^' . preg_quote($GLOBALS['base_url'], '/') . '\//', '', $redirect_url);
 
@@ -4588,4 +4588,3 @@ function _webform_submission_serial_next_value($nid, $do_increment = TRUE) {
 
   return $next_serial;
 }
-

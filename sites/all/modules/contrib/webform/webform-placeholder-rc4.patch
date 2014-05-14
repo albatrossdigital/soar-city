@@ -1,17 +1,17 @@
 diff --git a/includes/webform.components.inc b/includes/webform.components.inc
-index eb4f17a..8e569f4 100644
+index eb4f17a..f025a70 100644
 --- a/includes/webform.components.inc
 +++ b/includes/webform.components.inc
-@@ -938,6 +938,7 @@ function webform_component_feature($type, $feature) {
+@@ -936,6 +936,7 @@ function webform_component_feature($type, $feature) {
+     'conditional' => TRUE,
+     'spam_analysis' => FALSE,
      'group' => FALSE,
++    'placeholder' => FALSE,
      'attachment' => FALSE,
      'private' => TRUE,
-+    'placeholder' => FALSE,
      'wrapper_classes' => TRUE,
-     'css_classes' => TRUE,
-     'views_range' => FALSE,
 diff --git a/webform.module b/webform.module
-index 09e4cbd..554fe13 100644
+index 09e4cbd..9cedfb6 100644
 --- a/webform.module
 +++ b/webform.module
 @@ -935,6 +935,7 @@ function webform_webform_component_info() {
@@ -51,8 +51,3 @@ index 09e4cbd..554fe13 100644
        // Add custom CSS classes to the field and wrapper.
        _webform_component_classes($element, $component);
  
-@@ -4579,3 +4588,4 @@ function _webform_submission_serial_next_value($nid, $do_increment = TRUE) {
- 
-   return $next_serial;
- }
-+
