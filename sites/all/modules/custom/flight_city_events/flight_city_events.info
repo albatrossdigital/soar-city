@@ -1,8 +1,0 @@
-name = Flight City Events
-description = Event content type
-core = 7.x
-package = Flight City
-features[ctools][] = context:context:3
-features[ctools][] = views:views_default:3.0
-features[features_api][] = api:2
-features_exclude[dependencies][ctools] = ctools
