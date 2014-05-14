@@ -24,8 +24,10 @@ html,body
   +expand-row(0)
 
 //hide lack of left side if none
-[class*="column"] + [class*="column"]:last-child
-  float: left
+.main,
+.l-featured
+  [class*="column"] + [class*="column"]:last-child
+    float: left
 
 // *
 // * Media Queries
