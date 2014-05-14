@@ -13,14 +13,20 @@ function flight_city_program_user_default_permissions() {
   // Exported permission: 'create program content'.
   $permissions['create program content'] = array(
     'name' => 'create program content',
-    'roles' => array(),
+    'roles' => array(
+      'editor' => 'editor',
+      'super editor' => 'super editor',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'delete any program content'.
   $permissions['delete any program content'] = array(
     'name' => 'delete any program content',
-    'roles' => array(),
+    'roles' => array(
+      'editor' => 'editor',
+      'super editor' => 'super editor',
+    ),
     'module' => 'node',
   );
 
@@ -34,7 +40,10 @@ function flight_city_program_user_default_permissions() {
   // Exported permission: 'edit any program content'.
   $permissions['edit any program content'] = array(
     'name' => 'edit any program content',
-    'roles' => array(),
+    'roles' => array(
+      'editor' => 'editor',
+      'super editor' => 'super editor',
+    ),
     'module' => 'node',
   );
 
