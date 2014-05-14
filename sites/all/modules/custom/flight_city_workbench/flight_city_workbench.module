@@ -99,20 +99,28 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
     }
 
     // Hide the parent story type taxonomy term option
-    if (!empty($form['field_story_type'])) {
-      foreach ($form['field_story_type'][LANGUAGE_NONE]['#options'] as $key => $value) {
-        if (strpos($value, '-') !== 0) {
-          unset($form['field_story_type'][LANGUAGE_NONE]['#options'][$key]);
-        }
-        else {
-          $form['field_story_type'][LANGUAGE_NONE]['#options'][$key] = substr($value, 1);
-        }
-      }
-    }
-    
-
+    _flight_city_workbench_pare_taxonomy_options($form, 'field_story_type');
+    _flight_city_workbench_pare_taxonomy_options($form, 'field_faq_category');
+    _flight_city_workbench_pare_taxonomy_options($form, 'field_event_category');
   }
 
+}
+
+
+/**
+ * Helper function removes the parent taxonomy menu item and strips out the leading "-".
+ */
+function _flight_city_workbench_pare_taxonomy_options(&$form, $fieldname) {
+  if (!empty($form[$fieldname])) {
+    foreach ($form[$fieldname][LANGUAGE_NONE]['#options'] as $key => $value) {
+      if (strpos($value, '-') !== 0) {
+        unset($form[$fieldname][LANGUAGE_NONE]['#options'][$key]);
+      }
+      else {
+        $form[$fieldname][LANGUAGE_NONE]['#options'][$key] = substr($value, 1);
+      }
+    }
+  }
 }
 
 
