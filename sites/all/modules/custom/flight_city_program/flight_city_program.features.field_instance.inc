@@ -17,21 +17,24 @@ function flight_city_program_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'compact_teaser' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 3,
       ),
       'teaser' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(
-          'trim_length' => 600,
-        ),
-        'type' => 'text_summary_or_trimmed',
-        'weight' => 0,
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
       ),
     ),
     'entity_type' => 'node',
@@ -54,24 +57,98 @@ function flight_city_program_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-program-field_address'
+  $field_instances['node-program-field_address'] = array(
+    'bundle' => 'program',
+    'default_value' => array(
+      0 => array(
+        'element_key' => 'node|program|field_address|und|0',
+        'thoroughfare' => '',
+        'premise' => '',
+        'locality' => '',
+        'administrative_area' => '',
+        'postal_code' => '',
+        'country' => 'US',
+        'name_block' => array(
+          'name_line' => '',
+        ),
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'compact_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_address',
+    'label' => 'Address',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'flight_address_helper',
+      'settings' => array(
+        'available_countries' => array(
+          'US' => 'US',
+        ),
+        'format_handlers' => array(
+          'address' => 'address',
+          'name-oneline' => 'name-oneline',
+          'address-hide-country' => 0,
+          'organisation' => 0,
+          'name-full' => 0,
+        ),
+      ),
+      'type' => 'flight_address_helper_addressfield',
+      'weight' => 11,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'node-program-field_attachment'
   $field_instances['node-program-field_attachment'] = array(
     'bundle' => 'program',
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'compact_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
       'default' => array(
         'label' => 'above',
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 24,
       ),
     ),
     'ds_extras_field_template' => '',
@@ -108,9 +185,210 @@ function flight_city_program_field_default_field_instances() {
           'media_internet' => 0,
           'upload' => 0,
         ),
+        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-program-field_contact_name'
+  $field_instances['node-program-field_contact_name'] = array(
+    'bundle' => 'program',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Program point of contact.',
+    'display' => array(
+      'compact_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 26,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 2,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_contact_name',
+    'label' => 'Contact Name',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance: 'node-program-field_email'
+  $field_instances['node-program-field_email'] = array(
+    'bundle' => 'program',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'compact_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'email',
+        'settings' => array(),
+        'type' => 'email_default',
+        'weight' => 3,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_email',
+    'label' => 'Email',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'email',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'email_textfield',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'node-program-field_fax'
+  $field_instances['node-program-field_fax'] = array(
+    'bundle' => 'program',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'compact_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 24,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_fax',
+    'label' => 'Fax',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 15,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-program-field_link'
+  $field_instances['node-program-field_link'] = array(
+    'bundle' => 'program',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'If a link is supplied, this piece of content will link out to the provided url instead of the internal content. ',
+    'display' => array(
+      'compact_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 25,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 27,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_link',
+    'label' => 'Link',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 2,
     ),
   );
 
@@ -120,6 +398,12 @@ function flight_city_program_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'compact_teaser' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'foundation_formatters',
@@ -128,7 +412,7 @@ function flight_city_program_field_default_field_instances() {
           'class' => '',
           'format' => 'inline',
           'image_field' => 'field_picture',
-          'image_style' => 'medium',
+          'image_style' => 'large',
           'play_class' => 'button icon-play',
         ),
         'type' => 'file_click_to_play',
@@ -138,17 +422,17 @@ function flight_city_program_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 25,
       ),
     ),
     'ds_extras_field_template' => '',
     'entity_type' => 'node',
     'field_name' => 'field_media',
-    'label' => 'Media',
+    'label' => 'Video',
     'required' => 0,
     'settings' => array(
       'description_field' => 0,
-      'file_directory' => '',
+      'file_directory' => '[current-domain:machine-name]/pictures',
       'file_extensions' => 'txt',
       'max_filesize' => '',
       'user_register_form' => FALSE,
@@ -158,9 +442,9 @@ function flight_city_program_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
-          'oembed' => 0,
+          'oembed' => 'oembed',
           'private' => 0,
-          'public' => 'public',
+          'public' => 0,
         ),
         'allowed_types' => array(
           'audio' => 0,
@@ -175,10 +459,60 @@ function flight_city_program_field_default_field_instances() {
           'media_internet' => 0,
           'upload' => 0,
         ),
+        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => 8,
     ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-program-field_phone'
+  $field_instances['node-program-field_phone'] = array(
+    'bundle' => 'program',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'compact_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 20,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 22,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_plain',
+        'weight' => 4,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_phone',
+    'label' => 'Phone number',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 14,
+    ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-program-field_picture'
@@ -187,12 +521,28 @@ function flight_city_program_field_default_field_instances() {
     'deleted' => 0,
     'description' => '',
     'display' => array(
+      'compact_teaser' => array(
+        'label' => 'hidden',
+        'module' => 'foundation_formatters',
+        'settings' => array(
+          'hide_if_field' => 'field_media',
+          'image_style' => 'medium_square__230_x_230_',
+          'image_style_large' => '',
+          'image_style_medium' => '',
+          'image_style_retina' => '',
+          'link_field' => '',
+          'placeholder_dimensions' => '',
+          'placeholder_text' => '',
+        ),
+        'type' => 'image_super',
+        'weight' => 0,
+      ),
       'default' => array(
         'label' => 'hidden',
         'module' => 'foundation_formatters',
         'settings' => array(
           'hide_if_field' => 'field_media',
-          'image_style' => 'medium',
+          'image_style' => 'large',
           'image_style_large' => '',
           'image_style_medium' => '',
           'image_style_retina' => '',
@@ -204,9 +554,13 @@ function flight_city_program_field_default_field_instances() {
         'weight' => 1,
       ),
       'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => 'content',
+          'image_style' => 'compact_square__140_x_140_',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
     ),
@@ -218,7 +572,7 @@ function flight_city_program_field_default_field_instances() {
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
-      'file_directory' => '',
+      'file_directory' => 'pictures',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
@@ -248,18 +602,76 @@ function flight_city_program_field_default_field_instances() {
           'media_internet' => 0,
           'upload' => 0,
         ),
+        'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
       'weight' => 7,
     ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-program-field_social_networks'
+  $field_instances['node-program-field_social_networks'] = array(
+    'bundle' => 'program',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'compact_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 21,
+      ),
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'field_collection',
+        'settings' => array(
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_fields',
+        'weight' => 5,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_social_networks',
+    'label' => 'Social Networks',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'field_collection',
+      'settings' => array(),
+      'type' => 'field_collection_embed',
+      'weight' => 13,
+    ),
+    'workbench_access_field' => 0,
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Address');
   t('Attachments');
   t('Body');
-  t('Media');
+  t('Contact Name');
+  t('Email');
+  t('Fax');
+  t('If a link is supplied, this piece of content will link out to the provided url instead of the internal content. ');
+  t('Link');
+  t('Phone number');
   t('Picture');
+  t('Program point of contact.');
+  t('Social Networks');
+  t('Video');
 
   return $field_instances;
 }

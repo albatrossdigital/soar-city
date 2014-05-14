@@ -54,18 +54,16 @@ function flight_city_workbench_flag_default_flags() {
     'locked' => array(
       0 => 'name',
     ),
+    'status' => FALSE,
   );
-  // Exported flag: "Promote to main site".
+  // Exported flag: "Promote to citywide site".
   $flags['promote_main'] = array(
     'entity_type' => 'node',
-    'title' => 'Promote to main site',
+    'title' => 'Promote to citywide site',
     'global' => 1,
-    'types' => array(
-      0 => 'event',
-      1 => 'story',
-    ),
+    'types' => array(),
     'flag_short' => 'Promote to baltimorecity.gov',
-    'flag_long' => 'Request that this item is included on the main website',
+    'flag_long' => 'Request that this item is included on the citywide website',
     'flag_message' => 'Your request has been submitted is pending approval',
     'unflag_short' => 'Remove request to promote to baltimorecity.gov',
     'unflag_long' => '',
@@ -90,11 +88,11 @@ function flight_city_workbench_flag_default_flags() {
     'access_author' => '',
     'show_contextual_link' => 1,
     'i18n' => 0,
-    'api_version' => 3,
     'module' => 'flight_city_workbench',
     'locked' => array(
       0 => 'name',
     ),
+    'api_version' => 3,
   );
   return $flags;
 

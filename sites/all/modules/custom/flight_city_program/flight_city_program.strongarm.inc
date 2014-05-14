@@ -31,30 +31,62 @@ function flight_city_program_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'compact_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'social' => array(
+        'custom_settings' => FALSE,
+      ),
+      'social_big' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'domain' => array(
-          'weight' => '5',
+          'weight' => '8',
         ),
         'metatags' => array(
-          'weight' => '6',
+          'weight' => '9',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '4',
+          'weight' => '7',
         ),
         'redirect' => array(
-          'weight' => '7',
+          'weight' => '10',
+        ),
+        'domain_path' => array(
+          'weight' => '12',
+        ),
+        'workbench_access' => array(
+          'weight' => '0',
+        ),
+        'flag' => array(
+          'weight' => '11',
         ),
       ),
       'display' => array(
         'domain' => array(
           'default' => array(
-            'weight' => '4',
-            'visible' => TRUE,
+            'weight' => '20',
+            'visible' => FALSE,
+          ),
+          'teaser' => array(
+            'weight' => '20',
+            'visible' => FALSE,
+          ),
+          'compact_teaser' => array(
+            'weight' => '18',
+            'visible' => FALSE,
           ),
         ),
       ),
@@ -66,14 +98,16 @@ function flight_city_program_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_program';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => '8a5cf1368d89144ef92c695bf3eb0e21',
+  );
   $export['menu_options_program'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_parent_program';
-  $strongarm->value = 'main-menu:0';
+  $strongarm->value = '8a5cf1368d89144ef92c695bf3eb0e21:0';
   $export['menu_parent_program'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -81,7 +115,7 @@ function flight_city_program_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_program';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'revision',
   );
   $export['node_options_program'] = $strongarm;
 

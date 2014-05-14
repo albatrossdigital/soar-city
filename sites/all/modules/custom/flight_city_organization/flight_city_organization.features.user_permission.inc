@@ -13,14 +13,18 @@ function flight_city_organization_user_default_permissions() {
   // Exported permission: 'create organization content'.
   $permissions['create organization content'] = array(
     'name' => 'create organization content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'delete any organization content'.
   $permissions['delete any organization content'] = array(
     'name' => 'delete any organization content',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
     'module' => 'node',
   );
 
@@ -34,14 +38,18 @@ function flight_city_organization_user_default_permissions() {
   // Exported permission: 'edit any organization content'.
   $permissions['edit any organization content'] = array(
     'name' => 'edit any organization content',
-    'roles' => array(),
+    'roles' => array(
+      'super editor' => 'super editor',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'edit own organization content'.
   $permissions['edit own organization content'] = array(
     'name' => 'edit own organization content',
-    'roles' => array(),
+    'roles' => array(
+      'editor' => 'editor',
+    ),
     'module' => 'node',
   );
 

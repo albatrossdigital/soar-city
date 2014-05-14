@@ -10,17 +10,17 @@
 function flight_city_faq_taxonomy_default_vocabularies() {
   return array(
     'faq_category' => array(
-      'name' => 'FAQ Category',
+      'name' => 'How Do I Category',
       'machine_name' => 'faq_category',
-      'description' => 'Used to organize FAQs',
-      'hierarchy' => 0,
+      'description' => 'Used to organize How Do Is',
+      'hierarchy' => 1,
       'module' => 'taxonomy',
       'weight' => 0,
     ),
     'faq_tags' => array(
-      'name' => 'FAQ Tags',
+      'name' => 'How Do I Tags',
       'machine_name' => 'faq_tags',
-      'description' => 'Used to organize FAQs',
+      'description' => 'Used to organize How Do Is',
       'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => 0,

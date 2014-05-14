@@ -103,8 +103,9 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
     _flight_city_workbench_pare_taxonomy_options($form, 'field_faq_category');
     _flight_city_workbench_pare_taxonomy_options($form, 'field_event_category');
   }
-
 }
+
+
 
 
 /**
@@ -145,10 +146,8 @@ function flight_city_workbench_form_node_validate($form, &$form_state) {
  * Limit the editorial sections that editors can assign users to.
  */
 function flight_city_workbench_form_workbench_access_user_form_alter(&$form, $form_state) {
-  dpm($form);
   dpm(variable_get('menu_main_links_source', 'main-menu'));
   global $user;
-  dpm($user);
   $mid = variable_get('menu_main_links_source', 'main-menu');
   foreach ($form['sections'] as $key => $section) {
     //if (strpos($key, '#') === FALSE && ($key != $mid || empty($user->workbench_access[$key]))) {
@@ -158,6 +157,19 @@ function flight_city_workbench_form_workbench_access_user_form_alter(&$form, $fo
   }
   $form['sections'][$mid]['#collapsed'] = FALSE;
 }
+
+/**
+ * Implements hook_form_alter.
+ * Hide the domain selection option when uploading files.
+ */
+function flight_city_workbench_form_file_entity_add_upload_alter(&$form, $form_state) {
+  dpm($form);
+  if (!empty($form['domain_file']) && !user_access('administer files')) {
+    $form['domain_file']['#access'] = FALSE;
+  }
+}
+
+
 
 
 
@@ -204,14 +216,17 @@ function flight_city_workbench_block_view($delta = '') {
   switch($delta) {
     case 'node_promote':
       $types = variable_get('flight_city_workbench_promote_bundles', array());
-      $node = node_load(arg(1));
+      if (arg(0) != 'node') {
+        return;
+      }
+      $node = node_load(intval(arg(1)));
       //$block['title'] = t('Sign up for updates');
-      if (!$types[$node->type] && user_access('promote content to main')) {
+      if (!empty($types[$node->type]) && user_access('promote content to main')) {
         $form = drupal_get_form('flight_city_workbench_node_promote_form', $node);
-        $block['content'] = drupal_render($form);
+        $block['content'] = '<div class="alert-box secondary">' . drupal_render($form) . '</div>';
       }
       elseif (user_access('promote content to main')) { // @todo: fix
-        $block['content'] = flight_city_workbench_node_promote_lookup($node);
+        $block['content'] = '<div class="alert-box secondary">' . flight_city_workbench_node_promote_lookup($node) . '</div>';
       }
       break;
   }
@@ -228,7 +243,7 @@ function flight_city_workbench_node_promote_lookup($node) {
     return t('The post is currently promoted to the citywide site');
   }
   elseif ($fids = flag_get_entity_flags('node', $node->nid)) {
-    return t('The post has been requested to be promoted on the citywide site');
+    return t('The post has been requested to be promoted on the citywide site. You should try to add it to the slideshow, quicklinks, or as a Highlights block.');
   }
 }
 
@@ -246,7 +261,7 @@ function flight_city_workbench_node_promote_form($form, &$form_state, $node) {
   $form['promote'] = array(
     '#type' => 'submit',
     '#value' => t('Promote to citywide site'),
-    '#attributes' => array('class' => array('')),
+    '#attributes' => array('class' => array('button', 'tiny')),
   );
   $default_domain = domain_default(FALSE, FALSE);
   $promoted = ($node->domains[$default_domain['domain_id']] === $default_domain['domain_id']);
@@ -258,7 +273,7 @@ function flight_city_workbench_node_promote_form($form, &$form_state, $node) {
     $form['reject'] = array(
       '#type' => 'submit',
       '#value' => $promoted ? t('Unpromote') : t('Reject request'),
-      '#attributes' => array('class' => array('alert')),
+      '#attributes' => array('class' => array('alert', 'button', 'tiny')),
     );
     $default_domain = domain_default(FALSE, FALSE);
     if ($promoted) {

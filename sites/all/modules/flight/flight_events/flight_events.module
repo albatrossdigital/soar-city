@@ -1,16 +1,15 @@
 <?php
 /**
  * @file
- * Code for the Flight City Events feature.
+ * Code for the Albatross Events feature.
  */
 
-include_once 'flight_city_events.features.inc';
-
+include_once('flight_events.features.inc');
 
 /**
  * Implements hook_menu()
  **/
-function flight_city_events_menu() {
+function flight_events_menu() {
   $items['events'] = array(
     'title' => 'Events',
     'page callback' => 'flight_city_events_front',
@@ -23,6 +22,6 @@ function flight_city_events_menu() {
 /**
  * Blank callback wrapper for the homepage.
  **/
-function flight_city_events_front() {
+function flight_events_front() {
   return ' ';
 }

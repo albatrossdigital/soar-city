@@ -16,7 +16,7 @@ class BaltimoreStoriesMigration extends XMLMigration {
     // This can also be an URL instead of a local file path.
     //$xml_folder = DRUPAL_ROOT . '/' .
     //              drupal_get_path('module', 'migrate_example') . '/xml/';
-    $items_url = !empty($this->arguments['url']) ? $this->arguments['url'] : 'http://www.baltimorecity.gov/DesktopModules/DnnForge%20-%20NewsArticles/Rss.aspx?TabID=66&ModuleID=373&MaxCount=200';
+    $items_url = $this->arguments['url'];
     // This is the xpath identifying the items to be migrated, relative to the
     // document.
     $item_xpath = '/rss/channel/item';
@@ -72,6 +72,12 @@ class BaltimoreStoriesMigration extends XMLMigration {
 
   public function prepare(stdClass $entity, stdClass $row) {
     $entity->status = 1;
+
+    // Set the domain
+    $entity->domains[$this->arguments['domain']] = $this->arguments['domain'];
+
+    // Set moderation section
+    $entity->workbench_access = array($this->arguments['default_section'] => $this->arguments['default_section']);
   }
 
   function complete($entity, $row) {
@@ -195,7 +201,7 @@ class BaltimoreContentMigration extends Migration {
   public function prepare($entity, stdClass $row){
 
     // Set the domain
-    $node->domains[$this->arguments['domain']] = $this->arguments['domain'];
+    $entity->domains[$this->arguments['domain']] = $this->arguments['domain'];
 
     // Override the default node type, if specified
     if (!empty($row->type)) {
