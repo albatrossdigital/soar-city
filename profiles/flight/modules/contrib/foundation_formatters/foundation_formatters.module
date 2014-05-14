@@ -780,7 +780,7 @@ function _foundation_formatters_ds_datetime_field(array $field) {
   $output = field_view_value('node', $entity, $settings['date_field'], $date[$delta], array(
     'type' => 'date_default',
     'settings' => array(
-      'format_type' => 'time_only',
+      'format_type' => $settings['format_type'],
       'show_repeat_rule' => 'hide'
     ),
   ));
