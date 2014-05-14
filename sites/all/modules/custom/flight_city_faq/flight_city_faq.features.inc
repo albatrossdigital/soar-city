@@ -8,6 +8,9 @@
  * Implements hook_ctools_plugin_api().
  */
 function flight_city_faq_ctools_plugin_api($module = NULL, $api = NULL) {
+  if ($module == "context" && $api == "context") {
+    return array("version" => "3");
+  }
   if ($module == "ds" && $api == "ds") {
     return array("version" => "1");
   }
@@ -17,6 +20,16 @@ function flight_city_faq_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
+  if ($module == "taxonomy_display" && $api == "taxonomy_display") {
+    return array("version" => "1");
+  }
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function flight_city_faq_views_api($module = NULL, $api = NULL) {
+  return array("api" => "3.0");
 }
 
 /**
@@ -25,7 +38,7 @@ function flight_city_faq_ctools_plugin_api($module = NULL, $api = NULL) {
 function flight_city_faq_node_info() {
   $items = array(
     'faq' => array(
-      'name' => t('FAQ'),
+      'name' => t('How do I'),
       'base' => 'node_content',
       'description' => t('Faqs are question / answer combos housed in the "Quick Answer" sections of the site.'),
       'has_title' => '1',

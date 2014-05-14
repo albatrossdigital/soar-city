@@ -13,14 +13,22 @@ function flight_city_faq_user_default_permissions() {
   // Exported permission: 'create faq content'.
   $permissions['create faq content'] = array(
     'name' => 'create faq content',
-    'roles' => array(),
+    'roles' => array(
+      'editor' => 'editor',
+      'pagemaster' => 'pagemaster',
+      'section editor' => 'section editor',
+      'super editor' => 'super editor',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'delete any faq content'.
   $permissions['delete any faq content'] = array(
     'name' => 'delete any faq content',
-    'roles' => array(),
+    'roles' => array(
+      'editor' => 'editor',
+      'super editor' => 'super editor',
+    ),
     'module' => 'node',
   );
 
@@ -34,7 +42,9 @@ function flight_city_faq_user_default_permissions() {
   // Exported permission: 'delete terms in faq_category'.
   $permissions['delete terms in faq_category'] = array(
     'name' => 'delete terms in faq_category',
-    'roles' => array(),
+    'roles' => array(
+      'editor' => 'editor',
+    ),
     'module' => 'taxonomy',
   );
 
@@ -48,7 +58,12 @@ function flight_city_faq_user_default_permissions() {
   // Exported permission: 'edit any faq content'.
   $permissions['edit any faq content'] = array(
     'name' => 'edit any faq content',
-    'roles' => array(),
+    'roles' => array(
+      'editor' => 'editor',
+      'pagemaster' => 'pagemaster',
+      'section editor' => 'section editor',
+      'super editor' => 'super editor',
+    ),
     'module' => 'node',
   );
 
@@ -62,7 +77,9 @@ function flight_city_faq_user_default_permissions() {
   // Exported permission: 'edit terms in faq_category'.
   $permissions['edit terms in faq_category'] = array(
     'name' => 'edit terms in faq_category',
-    'roles' => array(),
+    'roles' => array(
+      'editor' => 'editor',
+    ),
     'module' => 'taxonomy',
   );
 

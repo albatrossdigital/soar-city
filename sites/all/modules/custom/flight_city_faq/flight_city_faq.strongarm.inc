@@ -49,6 +49,15 @@ function flight_city_faq_strongarm() {
         'redirect' => array(
           'weight' => '5',
         ),
+        'domain_path' => array(
+          'weight' => '30',
+        ),
+        'flag' => array(
+          'weight' => '10',
+        ),
+        'workbench_access' => array(
+          'weight' => '0',
+        ),
       ),
       'display' => array(
         'domain' => array(
@@ -85,7 +94,8 @@ function flight_city_faq_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_faq';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_faq'] = $strongarm;
 
@@ -93,7 +103,7 @@ function flight_city_faq_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_faq';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_faq'] = $strongarm;
 
   $strongarm = new stdClass();
