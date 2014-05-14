@@ -591,6 +591,11 @@ html, body {
   margin-right: 0;
 }
 
+/* line 27, ../sass/layout/_page.sass */
+[class*="column"] + [class*="column"]:last-child {
+  float: left;
+}
+
 /* line 3, ../sass/layout/_header.sass */
 .l-header-region {
   padding-top: 1.5625rem;
@@ -2583,12 +2588,6 @@ ul[data-orbit] ~ .orbit-next:before {
   padding-top: 2.5rem;
   margin-bottom: 2.5rem;
 }
-/* line 15, ../sass/theme/_teasers.sass */
-.node-event.node-teaser [class*="column"] + [class*="column"]:last-child,
-.node-event.view-mode-compact_teaser [class*="column"] + [class*="column"]:last-child,
-.node-teaser.node-program [class*="column"] + [class*="column"]:last-child {
-  float: left;
-}
 
 /* line 572, ../sass/base/_mixins.sass */
 .vocabulary-event-category.view-mode-teaser .group-left {
@@ -2602,14 +2601,14 @@ ul[data-orbit] ~ .orbit-next:before {
   width: 100%;
 }
 
-/* line 28, ../sass/theme/_teasers.sass */
+/* line 24, ../sass/theme/_teasers.sass */
 .node-event .date-calendar,
 .vocabulary-event-category.view-mode-teaser .circle-icon {
   max-width: 6.42857rem;
 }
 
 @media only screen and (max-width: 45.71429em) {
-  /* line 44, ../sass/theme/_teasers.sass */
+  /* line 40, ../sass/theme/_teasers.sass */
   .node-event .date-calendar {
     margin: 0 auto 1.42857rem;
   }
