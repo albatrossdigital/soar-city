@@ -1486,7 +1486,7 @@ fieldset legend {
 }
 /* line 9, ../sass/modules/_block.sass */
 .bean-image-collection .more-link {
-  margin-top: -4.07143rem;
+  top: -4.07143rem;
 }
 
 /* line 5, ../sass/modules/_views.sass */
