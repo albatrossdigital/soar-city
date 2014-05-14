@@ -221,13 +221,15 @@ a.social-icon.Vimeo:before {
 /* line 358, ../sass/base/_mixins.sass */
 .more-link,
 .field-name-node-link, .node-event.node-teaser .field-name-title a,
-.node-event.view-mode-compact_teaser .field-name-title a {
+.node-event.view-mode-compact_teaser .field-name-title a,
+.node-teaser.node-program .field-name-title a {
   color: #0076a3;
 }
 /* line 361, ../sass/base/_mixins.sass */
 .more-link:hover,
 .field-name-node-link:hover, .node-event.node-teaser .field-name-title a:hover,
-.node-event.view-mode-compact_teaser .field-name-title a:hover {
+.node-event.view-mode-compact_teaser .field-name-title a:hover,
+.node-teaser.node-program .field-name-title a:hover {
   color: #005170;
 }
 
@@ -793,13 +795,18 @@ html, body {
   padding-bottom: 2.5rem;
 }
 
-/* line 91, ../sass/layout/_main.sass */
+/* line 81, ../sass/layout/_main.sass */
+.node .field {
+  line-height: 1.6;
+}
+
+/* line 94, ../sass/layout/_main.sass */
 .node img, .node iframe, .entity-bean img, .entity-bean iframe, .block img, .block iframe {
   margin-bottom: 1.42857rem;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 104, ../sass/layout/_main.sass */
+  /* line 107, ../sass/layout/_main.sass */
   .l-main {
     padding-bottom: 6.875rem;
   }
@@ -808,12 +815,12 @@ html, body {
   .main .block {
     margin-bottom: 3.4375rem;
   }
-  /* line 114, ../sass/layout/_main.sass */
+  /* line 117, ../sass/layout/_main.sass */
   .main .block-workbench {
     margin-bottom: 0.625rem;
   }
 
-  /* line 118, ../sass/layout/_main.sass */
+  /* line 121, ../sass/layout/_main.sass */
   .medium-8.main {
     margin-left: 4.16667%;
   }
@@ -2529,6 +2536,60 @@ ul[data-orbit] ~ .orbit-next:before {
     width: 75%;
   }
 }
+/* line 9, ../sass/theme/_teasers.sass */
+.node-event.node-teaser,
+.node-event.view-mode-compact_teaser,
+.node-teaser.node-program {
+  /* IE6 */
+  /* IE7 */
+}
+/* line 252, ../sass/base/_mixins.sass */
+.node-event.node-teaser:after,
+.node-event.view-mode-compact_teaser:after,
+.node-teaser.node-program:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* line 260, ../sass/base/_mixins.sass */
+.node-event.node-teaser * html,
+.node-event.view-mode-compact_teaser * html,
+.node-teaser.node-program * html {
+  height: 1%;
+}
+/* line 264, ../sass/base/_mixins.sass */
+.clearfix *:first-child + html .node-event.node-teaser, .clearfix *:first-child + html
+.node-event.view-mode-compact_teaser, .clearfix *:first-child + html
+.node-teaser.node-program {
+  min-height: 1%;
+}
+/* line 563, ../sass/base/_mixins.sass */
+.node-event.node-teaser:after,
+.node-event.view-mode-compact_teaser:after,
+.node-teaser.node-program:after {
+  visibility: visible;
+}
+/* line 202, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
+.node-event.node-teaser:after,
+.node-event.view-mode-compact_teaser:after,
+.node-teaser.node-program:after {
+  content: "";
+  display: block;
+  border-bottom: 1px solid #cccccc;
+  margin-left: 0.71429rem;
+  margin-right: 0.71429rem;
+  padding-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+/* line 15, ../sass/theme/_teasers.sass */
+.node-event.node-teaser [class*="column"] + [class*="column"]:last-child,
+.node-event.view-mode-compact_teaser [class*="column"] + [class*="column"]:last-child,
+.node-teaser.node-program [class*="column"] + [class*="column"]:last-child {
+  float: left;
+}
+
 /* line 572, ../sass/base/_mixins.sass */
 .vocabulary-event-category.view-mode-teaser .group-left {
   width: 8.57143rem;
@@ -2541,14 +2602,14 @@ ul[data-orbit] ~ .orbit-next:before {
   width: 100%;
 }
 
-/* line 12, ../sass/theme/_teasers.sass */
+/* line 28, ../sass/theme/_teasers.sass */
 .node-event .date-calendar,
 .vocabulary-event-category.view-mode-teaser .circle-icon {
   max-width: 6.42857rem;
 }
 
 @media only screen and (max-width: 45.71429em) {
-  /* line 28, ../sass/theme/_teasers.sass */
+  /* line 44, ../sass/theme/_teasers.sass */
   .node-event .date-calendar {
     margin: 0 auto 1.42857rem;
   }
@@ -2622,48 +2683,7 @@ ul[data-orbit] ~ .orbit-next:before {
   margin-top: 1.78571rem;
 }
 
-/* line 73, ../sass/theme/_events.sass */
-.node-event.node-teaser,
-.node-event.view-mode-compact_teaser {
-  /* IE6 */
-  /* IE7 */
-}
-/* line 252, ../sass/base/_mixins.sass */
-.node-event.node-teaser:after,
-.node-event.view-mode-compact_teaser:after {
-  content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
-/* line 260, ../sass/base/_mixins.sass */
-.node-event.node-teaser * html,
-.node-event.view-mode-compact_teaser * html {
-  height: 1%;
-}
-/* line 264, ../sass/base/_mixins.sass */
-.clearfix *:first-child + html .node-event.node-teaser, .clearfix *:first-child + html
-.node-event.view-mode-compact_teaser {
-  min-height: 1%;
-}
-/* line 563, ../sass/base/_mixins.sass */
-.node-event.node-teaser:after,
-.node-event.view-mode-compact_teaser:after {
-  visibility: visible;
-}
-/* line 202, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
-.node-event.node-teaser:after,
-.node-event.view-mode-compact_teaser:after {
-  content: "";
-  display: block;
-  border-bottom: 1px solid #cccccc;
-  margin-left: 0.71429rem;
-  margin-right: 0.71429rem;
-  padding-top: 2.5rem;
-  margin-bottom: 2.5rem;
-}
-/* line 84, ../sass/theme/_events.sass */
+/* line 79, ../sass/theme/_events.sass */
 .node-event.node-teaser .date-calendar,
 .node-event.view-mode-compact_teaser .date-calendar {
   border: solid #dddddd 1px;
@@ -2695,6 +2715,30 @@ ul[data-orbit] ~ .orbit-next:before {
   padding: 0.85714rem 0 0.42857rem 0;
 }
 
+@media only screen and (max-width: 45.71429em) {
+  /* line 22, ../sass/theme/_programs.sass */
+  .node-teaser.node-program .field-name-field-social-networks {
+    margin-top: 0.71429rem;
+  }
+}
+@media only screen and (min-width: 45.78571em) {
+  /* line 33, ../sass/theme/_programs.sass */
+  .node-teaser.node-program .field {
+    float: left;
+    width: 50%;
+    clear: left;
+  }
+  /* line 38, ../sass/theme/_programs.sass */
+  .node-teaser.node-program .field-name-field-social-networks {
+    float: right;
+    clear: none;
+    text-align: right;
+  }
+  /* line 43, ../sass/theme/_programs.sass */
+  .node-teaser.node-program .field ~ .field-name-field-social-networks {
+    margin-top: -0.71429rem;
+  }
+}
 /* line 4, ../sass/theme/_faq.sass */
 .field-name-faq-subcategories ul {
   list-style: none;

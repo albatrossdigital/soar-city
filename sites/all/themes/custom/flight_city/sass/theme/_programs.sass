@@ -1,0 +1,44 @@
+
+
+// Program nodes
+// ---------------------------------------------------------------------------- 
+
+
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($small-only)
+
+  // Program nodes
+  // ---------------------------------------------------------------------------- 
+
+  // Teasers
+  .node-teaser.node-program
+
+    .field-name-field-social-networks
+      margin-top: rem-calc(10)
+
+
++respond($medium-up)
+
+  // Program nodes
+  // ---------------------------------------------------------------------------- 
+
+  // Teasers
+  .node-teaser.node-program
+    .field
+      float: left
+      width: 50%
+      clear: left
+    
+    .field-name-field-social-networks
+      float: right
+      clear: none
+      text-align: right
+
+    .field ~ .field-name-field-social-networks
+      margin-top: rem-calc(-10)

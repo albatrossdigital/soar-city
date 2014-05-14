@@ -3,6 +3,22 @@
 // ----------------------------------------------------------------------------
 
 
+// Nice spaced out node teasers
+// ----------------------------------------------------------------------------
+
+.node-event.node-teaser,
+.node-event.view-mode-compact_teaser,
+.node-teaser.node-program
+  +nice-teaser-border
+
+  //hide lack of left side if none
+  [class*="column"] + [class*="column"]:last-child
+    float: left
+
+  .field-name-title
+    a
+      +c(link-alt)
+
 // 2 column teasers with fixed width left side
 // ----------------------------------------------------------------------------
 
