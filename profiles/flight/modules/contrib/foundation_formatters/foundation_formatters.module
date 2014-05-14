@@ -670,11 +670,17 @@ function foundation_formatters_ds_field_settings_form($field) {
         '#default_value' => $settings['date_field'],
         '#description' => t('Select the date field to use.')
       );
+
+      $date_formats = system_get_date_types();
+      $date_options = array();
+      foreach ($date_formats as $key => $value) {
+        $date_options[$key] = $value['title'];
+      }
       // Date format
       $form['format_type'] = array(
         '#type' => 'select',
         '#title' => t('Date format'),
-        '#options' => system_get_date_types(),
+        '#options' => $date_options,
         '#default_value' => $settings['format_type'],
         '#description' => t('Select the date format to use.')
       );
@@ -766,15 +772,16 @@ function _foundation_formatters_text_linebreaks(array $field) {
  */
 function _foundation_formatters_ds_datetime_field(array $field) {
   $settings = isset($field['formatter_settings']) ? $field['formatter_settings'] : $field['properties']['default'];
-  //dpm($field);
-  // @todo: implement
   $entity = $field['entity'];
-  $date = field_get_items('node', $entity, 'field_date');
-  $output = field_view_value('node', $entity, 'field_date', $date[0], array(
+  $date = field_get_items('node', $entity, $settings['date_field']);
+  $delta = !empty($entity->ds_delta) && isset($entity->ds_delta[$settings['date_field']]) 
+    ? $entity->ds_delta[$settings['date_field']]
+    : 0;
+  $output = field_view_value('node', $entity, $settings['date_field'], $date[$delta], array(
     'type' => 'date_default',
     'settings' => array(
-      // @todo: this isn't working correctly
       'format_type' => $settings['format_type'],
+      'show_repeat_rule' => 'hide'
     ),
   ));
   return drupal_render($output);
