@@ -14,6 +14,10 @@ function flight_city_workbench_permission() {
       'title' => t('Promote content to citywide site'),
       'description' => t('Promote content that has been requested to be promoted to citywide site.'),
     ),
+    'workbench view full menu tree' => array(
+      'title' => t('View the full menu tree'),
+      'description' => t('Do not rewrite the menu tree on a node add page based on Editorial Sections.'),
+    ),
   );
 }
 
@@ -53,9 +57,14 @@ function flight_city_workbench_menu_alter(&$items) {
 }
 
 
-
+/**
+ * Implements hook_form_alter().
+ * Customize node/add form with pathauto/domain integration and workflow tweaks.
+ */
 function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
   if (strpos($form_id, '_node_form')) {
+    
+    // Make pathauto work with domain module
     $domain_paths = variable_get('flight_city_workbench_path_bundles', array());
     if (!empty($form['#node']) && $form['#node']->nid && !empty($domain_paths[$form['#node']->type]) && $domain_paths[$form['#node']->type]) {
       $form['path']['alias']['#default_value'] = check_plain($form['domain_path']['current']['#markup']);
@@ -65,13 +74,51 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
           $form['domain_path'][$key]['#default_value'] = '';
         }
       }
-      dpm($form);
     }
     $form['#validate'][] = 'flight_city_workbench_form_node_validate';
+
+    // Limit the menu options to Workbench Editorial sections
+    if (!empty($form['menu']) && !user_access('workbench view full menu tree')) {
+      $options = $form['workbench_access']['workbench_access']['#options'];
+      unset($options['']);
+      dpm($form['menu']['link']['parent']);
+      $keys = array_keys($form['menu']['link']['parent']['#options']);
+      $arr = explode(':', $keys[0]);
+      $mid = $arr[0];
+      $keyed_options = array();
+      foreach ($options as $key => $option)  {
+        $keyed_options[$mid .':'. $key] = $option;
+      }
+      $form['menu']['link']['parent']['#options'] = $keyed_options;
+    }
+
+    // Set the default Workbench section if there is only one option
+    if (empty($form['workbench_access']['workbench_access']['#default_value']) && count($form['workbench_access']['workbench_access']['#options']) <= 2) {
+      $keys = array_keys($form['workbench_access']['workbench_access']['#options']);
+      $form['workbench_access']['workbench_access']['#default_value'] = array($keys[1]);
+    }
+
+    // Hide the parent story type taxonomy term option
+    if (!empty($form['field_story_type'])) {
+      foreach ($form['field_story_type'][LANGUAGE_NONE]['#options'] as $key => $value) {
+        if (strpos($value, '-') !== 0) {
+          unset($form['field_story_type'][LANGUAGE_NONE]['#options'][$key]);
+        }
+        else {
+          $form['field_story_type'][LANGUAGE_NONE]['#options'][$key] = substr($value, 1);
+        }
+      }
+    }
+    
+
   }
 
 }
 
+
+/**
+ * Custom node edit form validation for domain/pathauto integration.
+ */
 function flight_city_workbench_form_node_validate($form, &$form_state) {
   if (!$form_state['values']['path']['pathauto'] && !empty($form_state['values']['path']['alias'])) {
     $domains = !empty($form_state['values']['domains']) ? $form_state['values']['domains'] : $form_state['values']['domains_raw'];
@@ -85,6 +132,31 @@ function flight_city_workbench_form_node_validate($form, &$form_state) {
 }
 
 
+/**
+ * Implements hook_form_alter.
+ * Limit the editorial sections that editors can assign users to.
+ */
+function flight_city_workbench_form_workbench_access_user_form_alter(&$form, $form_state) {
+  dpm($form);
+  dpm(variable_get('menu_main_links_source', 'main-menu'));
+  global $user;
+  dpm($user);
+  $mid = variable_get('menu_main_links_source', 'main-menu');
+  foreach ($form['sections'] as $key => $section) {
+    //if (strpos($key, '#') === FALSE && ($key != $mid || empty($user->workbench_access[$key]))) {
+    if (strpos($key, '#') === FALSE && empty($user->workbench_access[$key])) {
+      unset($form['sections'][$key]);
+    }
+  }
+  $form['sections'][$mid]['#collapsed'] = FALSE;
+}
+
+
+
+/**
+ * Implements hook_pathauto_alias_alter.
+ * For domain/pathauto integration.
+ */
 function flight_city_workbench_pathauto_alias_alter(&$alias, $context) {
   $node = $context['data']['node'];
   $domain_paths = variable_get('flight_city_workbench_path_bundles', array());
