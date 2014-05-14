@@ -216,14 +216,17 @@ function flight_city_workbench_block_view($delta = '') {
   switch($delta) {
     case 'node_promote':
       $types = variable_get('flight_city_workbench_promote_bundles', array());
-      $node = node_load(arg(1));
+      if (arg(0) != 'node') {
+        return;
+      }
+      $node = node_load(intval(arg(1)));
       //$block['title'] = t('Sign up for updates');
-      if (!$types[$node->type] && user_access('promote content to main')) {
+      if (!empty($types[$node->type]) && user_access('promote content to main')) {
         $form = drupal_get_form('flight_city_workbench_node_promote_form', $node);
-        $block['content'] = drupal_render($form);
+        $block['content'] = '<div class="alert-box secondary">' . drupal_render($form) . '</div>';
       }
       elseif (user_access('promote content to main')) { // @todo: fix
-        $block['content'] = flight_city_workbench_node_promote_lookup($node);
+        $block['content'] = '<div class="alert-box secondary">' . flight_city_workbench_node_promote_lookup($node) . '</div>';
       }
       break;
   }
@@ -240,7 +243,7 @@ function flight_city_workbench_node_promote_lookup($node) {
     return t('The post is currently promoted to the citywide site');
   }
   elseif ($fids = flag_get_entity_flags('node', $node->nid)) {
-    return t('The post has been requested to be promoted on the citywide site');
+    return t('The post has been requested to be promoted on the citywide site. You should try to add it to the slideshow, quicklinks, or as a Highlights block.');
   }
 }
 
@@ -258,7 +261,7 @@ function flight_city_workbench_node_promote_form($form, &$form_state, $node) {
   $form['promote'] = array(
     '#type' => 'submit',
     '#value' => t('Promote to citywide site'),
-    '#attributes' => array('class' => array('')),
+    '#attributes' => array('class' => array('button', 'tiny')),
   );
   $default_domain = domain_default(FALSE, FALSE);
   $promoted = ($node->domains[$default_domain['domain_id']] === $default_domain['domain_id']);
@@ -270,7 +273,7 @@ function flight_city_workbench_node_promote_form($form, &$form_state, $node) {
     $form['reject'] = array(
       '#type' => 'submit',
       '#value' => $promoted ? t('Unpromote') : t('Reject request'),
-      '#attributes' => array('class' => array('alert')),
+      '#attributes' => array('class' => array('alert', 'button', 'tiny')),
     );
     $default_domain = domain_default(FALSE, FALSE);
     if ($promoted) {
