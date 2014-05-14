@@ -4,14 +4,25 @@ $flex-play-height: rem-calc(41)
 // Flex Video
 //-------------------------------------
 
-.flex-video
-
 .click-to-play
-  display: block
+  display: inline-block
   position: relative
+  margin-bottom: $paragraph-margin-bottom
+  
 
   img
-    min-width: 100% 
+    min-width: 100%
+    margin-bottom: 0
+
+.flex-video
+  display: block
+  margin-bottom: $paragraph-margin-bottom
+
+  img
+    left: 0
+    top: 0
+    position: absolute
+
       
 // click to play video
 .click-to-play-placeholder

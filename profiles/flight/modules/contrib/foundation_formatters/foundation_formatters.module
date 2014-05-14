@@ -47,6 +47,8 @@ function foundation_formatters_field_formatter_info() {
         'image_style' => '',
         'autoplay' => TRUE,
         'class' => '',
+        'widescreen' => 1,
+        'vimeo' => 'vimeo',
         'play_class' => 'button icon-play',
       ),
     ),
@@ -138,6 +140,28 @@ function foundation_formatters_field_formatter_settings_form($field, $instance, 
         '#type' => 'checkbox',
         '#default_value' => $settings['autoplay'],
         '#description' => t('Attempt to autoplay the video when clicked. Currently only works with Youtube.'),
+      );
+      $element['widescreen'] = array(
+        '#title' => t('Add widescreen class to wrapper'),
+        '#type' => 'radios',
+        '#default_value' => $settings['widescreen'],
+        '#options' => array(
+          0 => t('Never'),
+          1 => t('Always'),
+          'vimeo' => t('When vimeo video')
+        ),
+        '#description' => t('Add ".widescreen" to flex wrapper, changing dimensions.'),
+      );
+      $element['vimeo'] = array(
+        '#title' => t('Add vimeo class to wrapper'),
+        '#type' => 'radios',
+        '#default_value' => $settings['vimeo'],
+        '#options' => array(
+          0 => t('Never'),
+          1 => t('Always'),
+          'vimeo' => t('When vimeo video')
+        ),
+        '#description' => t('Add ".vimeo" class to flex wrapper changing display slightly.'),
       );
       $element['class'] = array(
         '#title' => t('Class'),
@@ -395,15 +419,37 @@ function foundation_formatters_field_formatter_view($entity_type, $entity, $fiel
           }
           // Now build out the tags
           if (!empty($markup)) {
+
+            // Do we need to check uri?
+            $vimeo = $settings['widescreen'] == 'vimeo' || $settings['vimeo'] == 'vimeo';
+            $vimeo = ($vimeo && strpos($item['uri'], 'vimeo.com') !== FALSE) ? TRUE : FALSE;
+            $classes = '';
+            // Add widescreen class?
+            $classes .= $settings['widescreen'] ?
+              (($settings['widescreen'] == 'vimeo') ? (($vimeo) ? ' widescreen' : '') : ' widescreen')
+              : '';
+            // Add vimeo class? 
+            $classes .= $settings['vimeo'] ?
+              (($settings['vimeo'] == 'vimeo') ? (($vimeo) ? ' vimeo' : '') : ' vimeo')
+              : '';
+
             $content = $item['metadata']['oembed']['html'];
             $content = $settings['autoplay'] ? str_replace('oembed"', 'oembed&autoplay=1"', $content) : $content;
+            $content = $settings['autoplay'] ? str_replace('oembed"', 'oembed&autoplay=1"', $content) : $content;
+            if ($settings['format'] === 'modal') {
+              //$content = '<div style="min-height:270px>' . $content . '</div>';
+            }
+            else {
+              $content = htmlentities($content);
+            }
             $element[$delta] = array(
               '#theme' => 'foundation_formatters_clicktoplay_' . $settings['format'],
               '#placeholder' => $markup,
               '#play_class' => $settings['play_class'],
-              '#content' => htmlentities($content),
+              '#content' => $content,
               '#class' => $settings['class'],
               '#id' => 'file-' . $item['fid'],
+              '#additional_classes' => $classes
               //@todo: render this field (in the future--give them the option?)
               //$item['attributes']['data-clicktoplay-content'] = drupal_render(field_view_value($entity_type, $entity, $field['field_name'], $item, array(
               //  'type' => 'file_rendered',
@@ -671,6 +717,7 @@ function foundation_formatters_ds_field_settings_form($field) {
         '#description' => t('Select the date field to use.')
       );
 
+      // Build dates options
       $date_formats = system_get_date_types();
       $date_options = array();
       foreach ($date_formats as $key => $value) {
@@ -680,7 +727,7 @@ function foundation_formatters_ds_field_settings_form($field) {
       $form['format_type'] = array(
         '#type' => 'select',
         '#title' => t('Date format'),
-        '#options' => $date_options,
+        '#options' => system_get_date_types(),
         '#default_value' => $settings['format_type'],
         '#description' => t('Select the date format to use.')
       );
@@ -774,9 +821,11 @@ function _foundation_formatters_ds_datetime_field(array $field) {
   $settings = isset($field['formatter_settings']) ? $field['formatter_settings'] : $field['properties']['default'];
   $entity = $field['entity'];
   $date = field_get_items('node', $entity, $settings['date_field']);
+  // Get delta if provided
   $delta = !empty($entity->ds_delta) && isset($entity->ds_delta[$settings['date_field']]) 
     ? $entity->ds_delta[$settings['date_field']]
     : 0;
+  // Build output
   $output = field_view_value('node', $entity, $settings['date_field'], $date[$delta], array(
     'type' => 'date_default',
     'settings' => array(
@@ -884,6 +933,7 @@ function foundation_formatters_theme($existing, $type, $theme, $path) {
         'play_class' => 'button-play',
         'content' => '',
         'id' => 'clicktoplay',
+        'additional_classes' => ''
       ),
     ),
     'foundation_formatters_clicktoplay_modal' => array(
@@ -894,6 +944,7 @@ function foundation_formatters_theme($existing, $type, $theme, $path) {
         'content' => '',
         'class' => '',
         'id' => 'clicktoplay',
+        'additional_classes' => ''
       ),
     ),
   );

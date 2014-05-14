@@ -2108,17 +2108,31 @@ ul[data-orbit] ~ .orbit-next:before {
     display: none;
   }
 }
-/* line 9, ../sass/modules/_flex-video.sass */
+/* line 7, ../sass/modules/_flex-video.sass */
 .click-to-play {
-  display: block;
+  display: inline-block;
   position: relative;
+  margin-bottom: 1.42857rem;
 }
 /* line 13, ../sass/modules/_flex-video.sass */
 .click-to-play img {
   min-width: 100%;
+  margin-bottom: 0;
 }
 
-/* line 19, ../sass/modules/_flex-video.sass */
+/* line 17, ../sass/modules/_flex-video.sass */
+.flex-video {
+  display: block;
+  margin-bottom: 1.42857rem;
+}
+/* line 21, ../sass/modules/_flex-video.sass */
+.flex-video img {
+  left: 0;
+  top: 0;
+  position: absolute;
+}
+
+/* line 30, ../sass/modules/_flex-video.sass */
 .button.icon-play {
   overflow: hidden;
   padding-left: 0;
