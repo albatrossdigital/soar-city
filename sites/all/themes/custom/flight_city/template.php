@@ -223,7 +223,7 @@ function flight_city_preprocess_block(&$vars) {
           'data-dropdown' => 'transDrop',
         )
       );
-      $vars['content'] .= l(t('Translate') . ' <i class="fa-caret-down"></i>', 'user', $attributes) . '<br/>';
+      $vars['content'] .= l(t('Translate') . ' <i class="fa-caret-down"></i>', '/', $attributes) . '<br/>';
       $vars['content'] .= '<div id="transDrop" data-dropdown-content class="f-dropdown content">';
       // All links
       $vars['content'] .= $matches[1] . '</div>';

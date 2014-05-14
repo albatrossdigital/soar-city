@@ -583,14 +583,17 @@ $common-border: common-border-val()
 %views-see-more-header
   position: relative
 
-  .more-link
-    right: $column-gutter/2
-    top: rem-calc(20)
-    position: absolute
-    z-index: 1
+  a 
+    +f(alt-alt)
 
-    a 
-      +f(alt-alt)
+  @media #{$medium}
+
+    .more-link
+      right: $column-gutter/2
+      top: rem-calc(20)
+      position: absolute
+      z-index: 1
+
 
 @mixin views-see-more-header($padding: false)
   @extend %views-see-more-header

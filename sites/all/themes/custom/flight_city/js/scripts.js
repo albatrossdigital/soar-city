@@ -16,8 +16,16 @@
     }
   }
 
+  // grab pertinent domain from subdomain
+  var domain = window.location.hostname;
+  domain = domain.substring(domain.indexOf('.') + 1);
+  //var reg = RegExp('/[^#]|^mailto|' + window.location.host + '/');
+
   Drupal.behaviors.flight_city = {
     attach: function(context, settings) {
+
+      // Open links in new window
+      $("a[href^='http']").not("[href*='" + domain + "']").attr('target','_blank');
 
       // searchform switches from header area
       // to topbar on "past-menu" media query
