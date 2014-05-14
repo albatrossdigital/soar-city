@@ -98,6 +98,19 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
       $form['workbench_access']['workbench_access']['#default_value'] = array($keys[1]);
     }
 
+    // Hide the parent story type taxonomy term option
+    if (!empty($form['field_story_type'])) {
+      foreach ($form['field_story_type'][LANGUAGE_NONE]['#options'] as $key => $value) {
+        if (strpos($value, '-') !== 0) {
+          unset($form['field_story_type'][LANGUAGE_NONE]['#options'][$key]);
+        }
+        else {
+          $form['field_story_type'][LANGUAGE_NONE]['#options'][$key] = substr($value, 1);
+        }
+      }
+    }
+    
+
   }
 
 }
