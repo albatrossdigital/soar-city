@@ -618,6 +618,11 @@ $common-border: common-border-val()
 //
 //***********************************
 
+@mixin no-page-title()
+  #page-title
+    +e(hide)
+
+
 @mixin background-box($padding: $small-region-pad-large)
   +b(gray)
   padding: $padding
