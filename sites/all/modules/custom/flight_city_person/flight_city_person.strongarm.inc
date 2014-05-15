@@ -52,33 +52,61 @@ function flight_city_person_strongarm() {
       'revision' => array(
         'custom_settings' => FALSE,
       ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'compact_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'social' => array(
+        'custom_settings' => FALSE,
+      ),
+      'social_big' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'domain' => array(
-          'weight' => '6',
+          'weight' => '8',
         ),
         'metatags' => array(
-          'weight' => '9',
+          'weight' => '11',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '10',
         ),
         'redirect' => array(
-          'weight' => '7',
+          'weight' => '9',
+        ),
+        'domain_path' => array(
+          'weight' => '13',
+        ),
+        'flag' => array(
+          'weight' => '12',
+        ),
+        'workbench_access' => array(
+          'weight' => '1',
         ),
       ),
       'display' => array(
         'domain' => array(
           'default' => array(
-            'weight' => '6',
-            'visible' => TRUE,
+            'weight' => '19',
+            'visible' => FALSE,
           ),
           'teaser' => array(
-            'weight' => '2',
+            'weight' => '18',
+            'visible' => FALSE,
+          ),
+          'compact_teaser' => array(
+            'weight' => '19',
             'visible' => FALSE,
           ),
         ),

@@ -21,7 +21,7 @@ function flight_city_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact info',
-    'weight' => '4',
+    'weight' => '6',
     'children' => array(
       0 => 'field_email',
       1 => 'field_phone',
@@ -49,7 +49,7 @@ function flight_city_person_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Job info',
-    'weight' => '5',
+    'weight' => '7',
     'children' => array(
       0 => 'field_job_title',
       1 => 'field_program',

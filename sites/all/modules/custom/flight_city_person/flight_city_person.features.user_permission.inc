@@ -13,14 +13,20 @@ function flight_city_person_user_default_permissions() {
   // Exported permission: 'create person content'.
   $permissions['create person content'] = array(
     'name' => 'create person content',
-    'roles' => array(),
+    'roles' => array(
+      'editor' => 'editor',
+      'super editor' => 'super editor',
+    ),
     'module' => 'node',
   );
 
   // Exported permission: 'delete any person content'.
   $permissions['delete any person content'] = array(
     'name' => 'delete any person content',
-    'roles' => array(),
+    'roles' => array(
+      'editor' => 'editor',
+      'super editor' => 'super editor',
+    ),
     'module' => 'node',
   );
 
@@ -34,7 +40,10 @@ function flight_city_person_user_default_permissions() {
   // Exported permission: 'edit any person content'.
   $permissions['edit any person content'] = array(
     'name' => 'edit any person content',
-    'roles' => array(),
+    'roles' => array(
+      'editor' => 'editor',
+      'super editor' => 'super editor',
+    ),
     'module' => 'node',
   );
 
