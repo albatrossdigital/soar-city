@@ -212,7 +212,7 @@ a.social-icon.Vimeo:before {
 /********************************** */
 /* line 313, ../sass/base/_mixins.sass */
 .no-page-title #page-title, .l-footer-sections-bottom form label, .l-footer-sections-bottom form .grippie, .no-labels label,
-.no-label label, .breadcrumbs li:nth-last-child(2), .front ul.breadcrumbs, .front.domain-main .l-featured:after, .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item label,
+.no-label label, .front ul.breadcrumbs, .front.domain-main .l-featured:after, .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item label,
 .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item .description {
   display: none;
 }
