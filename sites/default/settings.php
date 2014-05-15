@@ -609,9 +609,9 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] 
 
 
 // Ifsight-specific api settings
-$conf['smtp_host'] = 'smtp.sendgrid.com';
-$conf['smtp_username'] = 'ifsight';
-$conf['smtp_password'] = 'jaayo23gao';
+//$conf['smtp_host'] = 'smtp.sendgrid.com';
+//$conf['smtp_username'] = 'ifsight';
+//$conf['smtp_password'] = 'jaayo23gao';
 
 $conf['media_inkfilepicker_key'] = 'ATxjuAKOSdK6lcZxoK2Awz';
 
