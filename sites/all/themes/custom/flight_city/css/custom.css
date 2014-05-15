@@ -227,14 +227,16 @@ a.social-icon.Vimeo:before {
 .more-link,
 .field-name-node-link, .node-event.node-teaser .field-name-title a,
 .node-event.view-mode-compact_teaser .field-name-title a,
-.node-teaser.node-program .field-name-title a {
+.node-teaser.node-program .field-name-title a,
+.node-teaser.node-person .field-name-title a {
   color: #0076a3;
 }
 /* line 361, ../sass/base/_mixins.sass */
 .more-link:hover,
 .field-name-node-link:hover, .node-event.node-teaser .field-name-title a:hover,
 .node-event.view-mode-compact_teaser .field-name-title a:hover,
-.node-teaser.node-program .field-name-title a:hover {
+.node-teaser.node-program .field-name-title a:hover,
+.node-teaser.node-person .field-name-title a:hover {
   color: #005170;
 }
 
@@ -638,27 +640,36 @@ html, body {
 /* line 30, ../sass/layout/_header.sass */
 .header-region-right .f-dropdown {
   min-width: 200px;
+  padding-bottom: 1.07143rem;
+}
+/* line 34, ../sass/layout/_header.sass */
+.header-region-right .f-dropdown a {
+  display: inline-block;
+}
+/* line 37, ../sass/layout/_header.sass */
+.header-region-right .f-dropdown img {
+  margin-bottom: 0.35714rem;
 }
 
 @media only screen and (max-width: 45.71429em) {
-  /* line 50, ../sass/layout/_header.sass */
+  /* line 58, ../sass/layout/_header.sass */
   .header-region-right > * {
     float: left;
     width: 33%;
   }
 }
 @media only screen and (min-width: 45.78571em) {
-  /* line 57, ../sass/layout/_header.sass */
+  /* line 65, ../sass/layout/_header.sass */
   .l-header-region {
     padding-top: 1.5625rem;
   }
 }
 @media only screen and (min-width: 59em) {
-  /* line 67, ../sass/layout/_header.sass */
+  /* line 75, ../sass/layout/_header.sass */
   .header-region-right {
     margin-top: -0.35714rem;
   }
-  /* line 70, ../sass/layout/_header.sass */
+  /* line 78, ../sass/layout/_header.sass */
   .header-region-right .block {
     float: right;
   }
@@ -788,13 +799,13 @@ html, body {
 .no-page-title .main {
   padding-top: 1.14286rem;
 }
-/* line 57, ../sass/layout/_main.sass */
-.main .block-workbench {
-  margin-bottom: 0.625rem;
-}
 /* line 630, ../sass/base/_mixins.sass */
 .main .block {
   margin-bottom: 3.4375rem;
+}
+/* line 60, ../sass/layout/_main.sass */
+.main .block-workbench {
+  margin-bottom: 0.625rem;
 }
 
 /* line 65, ../sass/layout/_main.sass */
@@ -802,30 +813,30 @@ html, body {
   margin-bottom: 0 !important;
 }
 
-/* line 73, ../sass/layout/_main.sass */
-.main > .row {
+/* line 74, ../sass/layout/_main.sass */
+.main > .row:not(.node) {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
 }
 
-/* line 81, ../sass/layout/_main.sass */
+/* line 83, ../sass/layout/_main.sass */
 .node .field {
   line-height: 1.6;
 }
 
-/* line 84, ../sass/layout/_main.sass */
+/* line 86, ../sass/layout/_main.sass */
 .more-link,
 .field-name-node-link {
   text-align: left;
 }
 
-/* line 95, ../sass/layout/_main.sass */
+/* line 97, ../sass/layout/_main.sass */
 .node img, .node iframe, .entity-bean img, .entity-bean iframe, .block img, .block iframe {
   margin-bottom: 1.42857rem;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 108, ../sass/layout/_main.sass */
+  /* line 110, ../sass/layout/_main.sass */
   .l-main {
     padding-bottom: 6.875rem;
   }
@@ -834,12 +845,12 @@ html, body {
   .main .block {
     margin-bottom: 3.4375rem;
   }
-  /* line 118, ../sass/layout/_main.sass */
+  /* line 120, ../sass/layout/_main.sass */
   .main .block-workbench {
     margin-bottom: 0.625rem;
   }
 
-  /* line 122, ../sass/layout/_main.sass */
+  /* line 124, ../sass/layout/_main.sass */
   .medium-8.main {
     margin-left: 4.16667%;
   }
@@ -2584,14 +2595,16 @@ ul[data-orbit] ~ .orbit-next:before {
 /* line 9, ../sass/theme/_teasers.sass */
 .node-event.node-teaser,
 .node-event.view-mode-compact_teaser,
-.node-teaser.node-program {
+.node-teaser.node-program,
+.node-teaser.node-person {
   /* IE6 */
   /* IE7 */
 }
 /* line 252, ../sass/base/_mixins.sass */
 .node-event.node-teaser:after,
 .node-event.view-mode-compact_teaser:after,
-.node-teaser.node-program:after {
+.node-teaser.node-program:after,
+.node-teaser.node-person:after {
   content: ".";
   display: block;
   height: 0;
@@ -2601,25 +2614,29 @@ ul[data-orbit] ~ .orbit-next:before {
 /* line 260, ../sass/base/_mixins.sass */
 .node-event.node-teaser * html,
 .node-event.view-mode-compact_teaser * html,
-.node-teaser.node-program * html {
+.node-teaser.node-program * html,
+.node-teaser.node-person * html {
   height: 1%;
 }
 /* line 264, ../sass/base/_mixins.sass */
 .clearfix *:first-child + html .node-event.node-teaser, .clearfix *:first-child + html
 .node-event.view-mode-compact_teaser, .clearfix *:first-child + html
-.node-teaser.node-program {
+.node-teaser.node-program, .clearfix *:first-child + html
+.node-teaser.node-person {
   min-height: 1%;
 }
 /* line 563, ../sass/base/_mixins.sass */
 .node-event.node-teaser:after,
 .node-event.view-mode-compact_teaser:after,
-.node-teaser.node-program:after {
+.node-teaser.node-program:after,
+.node-teaser.node-person:after {
   visibility: visible;
 }
 /* line 202, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
 .node-event.node-teaser:after,
 .node-event.view-mode-compact_teaser:after,
-.node-teaser.node-program:after {
+.node-teaser.node-program:after,
+.node-teaser.node-person:after {
   content: "";
   display: block;
   border-bottom: 1px solid #cccccc;
@@ -2641,14 +2658,14 @@ ul[data-orbit] ~ .orbit-next:before {
   width: 100%;
 }
 
-/* line 24, ../sass/theme/_teasers.sass */
+/* line 25, ../sass/theme/_teasers.sass */
 .node-event .date-calendar,
 .vocabulary-event-category.view-mode-teaser .circle-icon {
   max-width: 6.42857rem;
 }
 
 @media only screen and (max-width: 45.71429em) {
-  /* line 40, ../sass/theme/_teasers.sass */
+  /* line 41, ../sass/theme/_teasers.sass */
   .node-event .date-calendar {
     margin: 0 auto 1.42857rem;
   }
@@ -2783,4 +2800,32 @@ ul[data-orbit] ~ .orbit-next:before {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+/* line 8, ../sass/theme/_people.sass */
+.node-person h4 + h5 {
+  margin-top: -0.7619rem;
+}
+/* line 202, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
+.node-person .group-footer:before {
+  content: "";
+  display: block;
+  border-top: 1px solid #cccccc;
+  margin-left: 0;
+  margin-right: 0;
+  padding-bottom: 2.14286rem;
+  margin-top: 2.14286rem;
+}
+/* line 213, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
+.node-person .group-footer:hide {
+  margin-top: 0;
+  padding-bottom: 0;
+  border: 0;
+}
+
+@media only screen and (min-width: 45.78571em) {
+  /* line 27, ../sass/theme/_people.sass */
+  .node-person.view-mode-full .field-name-field-picture img {
+    margin-bottom: 0;
+  }
 }

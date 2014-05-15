@@ -1,0 +1,28 @@
+
+
+// People nodes
+// ---------------------------------------------------------------------------- 
+
+.node-person
+  // if both title and department
+  h4 + h5
+    margin-top: -($header-bottom-margin/1.5)
+
+  .group-footer
+    +nice-row-border(0, rem-calc(30), 1px solid $gray, top, 'hide')
+
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($medium-up)
+
+  // People nodes
+  // ---------------------------------------------------------------------------- 
+
+  .node-person.view-mode-full
+    .field-name-field-picture img
+      margin-bottom: 0

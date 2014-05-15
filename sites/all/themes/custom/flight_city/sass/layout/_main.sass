@@ -54,11 +54,11 @@
   .no-page-title &
     padding-top: $header-bottom-margin
 
-  .block-workbench
-    margin-bottom: $small-region-pad-small
-
   // block spacing
   +main-verical-spacing()
+
+  .block-workbench
+    margin-bottom: $small-region-pad-small
 
 
 // Fake title blocks
@@ -70,9 +70,11 @@
 // Lower content
 // ----------------------------------------------------------------------------
 
-.main > .row 
-  padding-top: $small-main-spacing
-  padding-bottom: $small-main-spacing
+.main 
+  & > .row:not(.node)
+    padding-top: $small-main-spacing
+    padding-bottom: $small-main-spacing
+
 
 
 // Common fields
