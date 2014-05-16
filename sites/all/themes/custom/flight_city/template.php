@@ -56,10 +56,17 @@ function flight_city_preprocess_page(&$vars) {
     $current_domain = domain_get_domain();
     // Main top level domain
     if($current_domain['is_default']) {
-      // If there is an override use it, else use menu item if available
-      $vars['entity_title'] = $vars['section_title']
-        ? $vars['section_title'] : (($menu_title = _flight_city_active_menu_parent())
-        ? $menu_title : FALSE);
+
+      // If there is an override use it
+      if($vars['section_title']) {
+        $vars['entity_title'] = $vars['section_title'];
+        $vars['section_title'] = FALSE;
+      }
+      // else use menu item if available
+      else {
+        $vars['entity_title'] = ($menu_title = _flight_city_active_menu_parent())
+         ? $menu_title : FALSE;
+      }
     }
     // Nothing set, so set to site name
     if(empty($vars['entity_title'])) {

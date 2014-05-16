@@ -211,7 +211,7 @@ a.social-icon.Vimeo:before {
 
 /********************************** */
 /* line 313, ../sass/base/_mixins.sass */
-.no-page-title #page-title, .l-footer-sections-bottom form label, .l-footer-sections-bottom form .grippie, .no-labels label,
+.no-page-title #page-title, .no-page-title #section-title, .l-footer-sections-bottom form label, .l-footer-sections-bottom form .grippie, .no-labels label,
 .no-label label, .front ul.breadcrumbs, .front.domain-main .l-featured:after, .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item label,
 .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item .description, .node-type-person #page-title {
   display: none;
@@ -326,7 +326,7 @@ h3, h4 {
 }
 
 /* line 480, ../sass/base/_mixins.sass */
-.l-featured .block-title, #page-title, .main .block-title {
+.l-featured .block-title, #page-title, #section-title, .main .block-title {
   font-size: 2.14286rem;
   margin-bottom: 2.5rem;
 }

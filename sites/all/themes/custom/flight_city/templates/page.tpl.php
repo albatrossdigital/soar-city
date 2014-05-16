@@ -90,8 +90,16 @@
       <a id="main-content"></a>
 
       <?php print render($title_prefix); ?>
-      <?php if ($title && !$is_front): ?>
-        <h1 id="page-title" class="title"><?php print $title; ?></h1>
+      <?php if (($section_title || $title) && !$is_front): ?>
+        <?php if($section_title): ?>
+          <?php if(is_array($section_title)): ?>
+            <?php print render($section_title); ?>
+          <?php else: ?>
+            <h1 id="section-title" class="title"><?php print $section_title; ?></h1>
+          <?php endif; ?>
+        <?php else: ?>
+          <h1 id="page-title" class="title"><?php print $title; ?></h1>
+        <?php endif; ?>
       <?php endif; ?>
       <?php print render($title_suffix); ?>
 
