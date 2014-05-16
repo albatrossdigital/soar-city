@@ -30,6 +30,11 @@ function flight_events_ds_field_settings_info() {
         ),
       ),
     ),
+    'field_media' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
+    ),
     'field_date' => array(
       'formatter_settings' => array(
         'ft' => array(
