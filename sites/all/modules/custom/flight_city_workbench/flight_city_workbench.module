@@ -226,7 +226,8 @@ function flight_city_workbench_block_view($delta = '') {
         $block['content'] = '<div class="alert-box secondary">' . drupal_render($form) . '</div>';
       }
       elseif (user_access('promote content to main')) { // @todo: fix
-        $block['content'] = '<div class="alert-box secondary">' . flight_city_workbench_node_promote_lookup($node) . '</div>';
+        $block['content'] = flight_city_workbench_node_promote_lookup($node);
+        $block['content'] = !empty($block['content']) ? '<div class="alert-box secondary">' . $block['content'] . '</div>' : NULL;
       }
       break;
   }
