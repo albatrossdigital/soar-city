@@ -35,28 +35,28 @@ function flight_city_faq_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'domain' => array(
-          'weight' => '3',
+          'weight' => '5',
         ),
         'metatags' => array(
-          'weight' => '6',
+          'weight' => '8',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '4',
+          'weight' => '6',
         ),
         'redirect' => array(
-          'weight' => '5',
+          'weight' => '7',
         ),
         'domain_path' => array(
-          'weight' => '30',
-        ),
-        'flag' => array(
           'weight' => '10',
         ),
+        'flag' => array(
+          'weight' => '9',
+        ),
         'workbench_access' => array(
-          'weight' => '0',
+          'weight' => '1',
         ),
       ),
       'display' => array(
