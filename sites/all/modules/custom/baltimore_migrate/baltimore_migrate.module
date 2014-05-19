@@ -43,8 +43,7 @@ function baltimore_migrate_feeds_after_save(FeedsSource $source, $entity, $item,
 
     // Send the welcome email
     if (empty($item['send']) || $item['send'] != 0) {
-      $params = array('account' => $entity);
-      $mail = drupal_mail('user_registrationpassword', 'register', $entity->mail, user_preferred_language($entity), $params);
+      $mail = _user_mail_notify('register_no_approval_required', $entity);
       if (!empty($mail)) {
         watchdog('user', 'Account activation instructions mailed to %name at %email.', array('%name' => $account->name, '%email' => $account->mail));
         drupal_set_message(t('Account activation instructions mailed to %name at %email.', array('%name' => $account->name, '%email' => $account->mail)));
