@@ -73,6 +73,11 @@ class BaltimoreStoriesMigration extends XMLMigration {
   public function prepare(stdClass $entity, stdClass $row) {
     $entity->status = 1;
 
+    // Set the story type
+    if (!empty($this->arguments['story_type'])) {
+      $entity->field_story_type[LANGUAGE_NONE][0]['tid'] = $this->arguments['story_type'];
+    }
+
     // Set the domain
     $entity->domains[$this->arguments['domain']] = $this->arguments['domain'];
 
@@ -82,7 +87,9 @@ class BaltimoreStoriesMigration extends XMLMigration {
 
   function complete($entity, $row) {
     // Create a redirect from the old path to the new one
-    _baltimore_migrate_create_redirect($entity, $row->link, 'http://www.baltimorecity.gov/');
+    if ($this->arguments['create_redirect']) {
+      _baltimore_migrate_create_redirect($entity, $row->link, 'http://www.baltimorecity.gov/');
+    }
   }
 }
 
@@ -160,7 +167,7 @@ class BaltimoreContentMigration extends Migration {
       // Deal with legacy links and images
       foreach($xpath->query('//a[@href]') as $node) {
         $url = $node->getAttribute('href');
-        $url = strpos($url, 'http://') === FALSE ? $this->arguments['base_url'].$url : $url;
+        $url = strpos($url, 'http://') === FALSE ? $this->arguments['base_url '].$url : $url;
         if (!empty($url) && strpos($url, $this->arguments['base_url']) !== FALSE) {
           $extension = end(explode('.', $url));
           if (strlen($extension) > 2 && strlen($extension) < 5 && !in_array($extension, array('html', 'htm', 'asp', 'aspx'))) {
@@ -225,7 +232,7 @@ class BaltimoreContentMigration extends Migration {
 
   function complete($entity, $row) {
     // Create a redirect from the old path to the new one
-    if (!empty($row->old_url)) {
+    if (!empty($row->old_url) && $this->arguments['create_redirect']) {
       _baltimore_migrate_create_redirect($entity, $row->old_url, $this->arguments['base_url']);
     }
   }

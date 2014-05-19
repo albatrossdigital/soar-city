@@ -1,20 +1,18 @@
-name = "City of Baltimore Migration"
-description = "Sucks in data from a variety of sources."
-package = "Baltimore"
+name = Baltimore Migrate
 core = 7.x
-dependencies[] = taxonomy
+package = Baltimore
+dependencies[] = ctools
+dependencies[] = feeds
 dependencies[] = image
-dependencies[] = migrate
 dependencies[] = list
-dependencies[] = number
+dependencies[] = migrate
 dependencies[] = migrate_extras
-
-;node_reference is useful but not required
-;dependencies[] = node_reference
-
+dependencies[] = number
+dependencies[] = taxonomy
+features[ctools][] = feeds:feeds_importer_default:1
+features[features_api][] = api:2
+features[feeds_importer][] = migrate_users
 files[] = base.inc
 files[] = uber.inc
+files[] = mayor.inc
 files[] = health.inc
-
-;files[] = htmlfiles_migration.inc.php
-;files[] = source_parser.inc.php

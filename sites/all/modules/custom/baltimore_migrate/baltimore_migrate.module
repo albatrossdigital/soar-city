@@ -12,3 +12,100 @@
  * by defining your implementation of that hook in mymodule.migrate.inc, it is
  * automatically invoked only when needed.
  */
+
+include_once 'baltimore_migrate.features.inc';
+
+
+/**
+ * Invoked before a feed item is saved. Set the domain, username
+ */
+function baltimore_migrate_feeds_presave(FeedsSource $source, $entity, $item) {
+  if ($source->id === 'migrate_users') {
+    // Set the username from the email address
+    $entity->name = _baltimore_migrate_email_to_username($entity);
+
+    // Set the domain from the spreadsheet
+    if (!empty($item['domain'])) {
+      $entity->domain_user = array($item['domain'] => $item['domain']);
+    }    
+  }
+}
+
+
+/**
+ * Invoked after a feed item has been saved.
+ */
+function baltimore_migrate_feeds_after_save(FeedsSource $source, $entity, $item, $entity_id) {
+  if ($source->id === 'migrate_users' && !empty($item['section'])) {
+    // Set the editorial section from the spreadsheet
+    $sections = _baltimore_migrate_workbench_access_get_item($item['section']);
+    workbench_access_rebuild_user($entity->uid, $sections);
+
+    // Send the welcome email
+    if (empty($item['send']) || $item['send'] != 0) {
+      $params = array('account' => $entity);
+      $mail = drupal_mail('user_registrationpassword', 'register', $entity->mail, user_preferred_language($entity), $params);
+      if (!empty($mail)) {
+        watchdog('user', 'Account activation instructions mailed to %name at %email.', array('%name' => $account->name, '%email' => $account->mail));
+        drupal_set_message(t('Account activation instructions mailed to %name at %email.', array('%name' => $account->name, '%email' => $account->mail)));
+      }
+    }
+  }  
+}
+
+
+/**
+ * Helper function converts an email address to a username.
+ * Code stolen from email_registration.module.
+ */
+function _baltimore_migrate_email_to_username($account) {
+  $edit = (array) $account;
+  // Other modules may implement hook_email_registration_name($edit, $account)
+  // to generate a username (return a string to be used as the username, NULL
+  // to have email_registration generate it).
+  $names = module_invoke_all('email_registration_name', $edit, $account);
+  // Remove any empty entries.
+  $names = array_filter($names);
+
+  if (empty($names)) {
+  // Strip off everything after the @ sign.
+    $new_name = preg_replace('/@.*$/', '', $edit['mail']);
+  }
+  else {
+  // One would expect a single implementation of the hook, but if there
+  // are multiples out there use the last one.
+    $new_name = array_pop($names);
+  }
+
+  // Ensure whatever name we have is unique.
+  $new_name = email_registration_unique_username($new_name, $account->uid);
+  return $new_name;
+}
+
+/**
+ * Helper function returns an array of workbench access section ids 
+ * when given a comma-separated string of section names.
+ */
+function _baltimore_migrate_workbench_access_get_item($section_name) {
+  $active = workbench_access_get_active_tree();
+  $return = array();
+  if (!empty($section_name)) {
+    foreach (explode(',', $section_name) as $section) {
+      foreach ($active['tree'] as $key=>$item) {
+        if (strtolower($item['name']) == trim(strtolower($section))) {
+          $return[] = $key;
+          /*$entity->workbench_access[$key] = array(
+            'view' => array('all'),
+            'create' => array('all'),
+            'update' => array('all'),
+            'delete' => array('all'),
+            'preview' => array('all'),
+            'revise' => array('all'),
+            'publish' => array('all'),
+          );*/
+        }
+      }
+    }
+  }
+  return $return;
+}

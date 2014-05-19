@@ -34,12 +34,16 @@ function baltimore_migrate_migrate_api() {
 
     // Mayor
     'BaltimoreMayorStories' => array(
-      'class_name' => 'BaltimoreStoriesMigration',
-      'domain' => 3,
-      'menu_name' => '8a5cf1368d89144ef92c695bf3eb0e21',
-      'url' => DRUPAL_ROOT . '/WORKING/data/health-content.csv',
-      'base_url' => 'http://www.baltimorehealth.org/',
-      'default_section' => 36,
+      'class_name' => 'BaltimoreMayorStoriesMigration',
+      'domain' => 2,
+      'base_url' => 'http://www.baltimorecity.gov/',
+      'default_section' => 'f6a2f72ba753a685bd81acf755ff8635',
+      'create_redirect' => TRUE,
+      'story_type' => 58,
+      'url' => 'http://www.baltimorecity.gov/DesktopModules/DnnForge%20-%20NewsArticles/Rss.aspx?TabID=66&ModuleID=373&MaxCount=25&FeaturedOnly=True&sortBy=StartDate&sortDirection=DESC',
+      // These are hard-coded into the base migration
+      //'xpath' => '//div[@class="contentDiv"]',
+      //'xpath_exclude' => '//div[@class="contentDiv"]',
     ),
 
     // Health
@@ -49,9 +53,10 @@ function baltimore_migrate_migrate_api() {
       'menu_name' => '8a5cf1368d89144ef92c695bf3eb0e21',
       'url' => DRUPAL_ROOT . '/WORKING/data/health-content.csv',
       'base_url' => 'http://www.baltimorehealth.org/',
-      'default_section' => 36,
+      'default_section' => '8a5cf1368d89144ef92c695bf3eb0e21',
       'xpath' => '//div[@class="contentDiv"]',
       'file_destination' => 'public://health/legacy',
+      'create_redirect' => TRUE,
     ),
   );
 
