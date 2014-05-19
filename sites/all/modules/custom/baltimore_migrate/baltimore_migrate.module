@@ -39,14 +39,18 @@ function baltimore_migrate_feeds_after_save(FeedsSource $source, $entity, $item,
   if ($source->id === 'migrate_users' && !empty($item['section'])) {
     // Set the editorial section from the spreadsheet
     $sections = _baltimore_migrate_workbench_access_get_item($item['section']);
+    if (empty($sections)) {
+      watchdog('user', 'No sections added for %email.', array('%email' => $entity->mail));
+      drupal_set_message(t('No sections added for %email.', array('%email' => $entity->mail)), 'warning');
+    }
     workbench_access_rebuild_user($entity->uid, $sections);
 
     // Send the welcome email
     if (empty($item['send']) || $item['send'] != 0) {
-      $mail = _user_mail_notify('register_no_approval_required', $entity);
+      $mail = _user_mail_notify('register_admin_created', $entity);
       if (!empty($mail)) {
-        watchdog('user', 'Account activation instructions mailed to %name at %email.', array('%name' => $account->name, '%email' => $account->mail));
-        drupal_set_message(t('Account activation instructions mailed to %name at %email.', array('%name' => $account->name, '%email' => $account->mail)));
+        watchdog('user', 'Account activation instructions mailed to %name at %email.', array('%name' => $entity->name, '%email' => $entity->mail));
+        drupal_set_message(t('Account activation instructions mailed to %name at %email.', array('%name' => $entity->name, '%email' => $entity->mail)));
       }
     }
   }  
