@@ -16,14 +16,18 @@
     a
       +c(link-alt)
 
+
+
 // 2 column teasers with fixed width left side
 // ----------------------------------------------------------------------------
 
-.vocabulary-event-category.view-mode-teaser
+.vocabulary-event-category.view-mode-teaser,
+.vocabulary-faq-category.view-mode-teaser
   +fixed-size-columns(rem-calc(120))
 
 .node-event .date-calendar,
-.vocabulary-event-category.view-mode-teaser .circle-icon
+.vocabulary-event-category.view-mode-teaser .circle-icon,
+.vocabulary-faq-category.view-mode-teaser .circle-icon
   max-width: rem-calc(90)
 
 
@@ -49,5 +53,6 @@
   // ----------------------------------------------------------------------------
 
   .node-teaser.node-event,
-  .view-mode-compact_teaser
+  .view-mode-compact_teaser,
+  .vocabulary-faq-category.view-mode-teaser
     +fixed-size-columns(rem-calc(120))

@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * Views Foundation Equalizer module file.
+ */
+
+
+/**
+ * Implements hook_views_api().
+ */
+function views_foundation_equalizer_views_api() {
+  return array(
+    'api' => 3,
+  );
+}

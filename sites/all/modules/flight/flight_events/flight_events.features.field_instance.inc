@@ -390,6 +390,8 @@ function flight_events_field_default_field_instances() {
           'image_field' => 'field_picture',
           'image_style' => 'large',
           'play_class' => 'button icon-play',
+          'vimeo' => 'vimeo',
+          'widescreen' => 1,
         ),
         'type' => 'file_click_to_play',
         'weight' => 3,

@@ -1,0 +1,6 @@
+name = Views Foundation Equalizer
+description = Equal heights for views
+core = 7.x
+dependencies[] = views
+
+files[] = views/views_foundation_equalizer_plugin_style_equalizer.inc

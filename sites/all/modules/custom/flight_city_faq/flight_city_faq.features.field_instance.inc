@@ -49,7 +49,7 @@ function flight_city_faq_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -130,19 +130,19 @@ function flight_city_faq_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-faq-field_link'
-  $field_instances['node-faq-field_link'] = array(
+  // Exported field_instance: 'node-faq-field_links'
+  $field_instances['node-faq-field_links'] = array(
     'bundle' => 'faq',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Enter one or more links to additional resources',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -151,20 +151,24 @@ function flight_city_faq_field_default_field_instances() {
         'weight' => 0,
       ),
     ),
+    'ds_extras_field_template' => '',
     'entity_type' => 'node',
-    'field_name' => 'field_link',
-    'label' => 'Link',
-    'required' => FALSE,
+    'field_name' => 'field_links',
+    'label' => 'Links',
+    'required' => 0,
     'settings' => array(
       'attributes' => array(
         'class' => '',
+        'configurable_title' => 0,
         'rel' => '',
         'target' => 'default',
+        'title' => '',
       ),
       'display' => array(
         'url_cutoff' => 80,
       ),
       'enable_tokens' => 1,
+      'rel_remove' => 'default',
       'title' => 'optional',
       'title_maxlength' => 128,
       'title_value' => '',
@@ -173,10 +177,11 @@ function flight_city_faq_field_default_field_instances() {
       'validate_url' => 1,
     ),
     'widget' => array(
+      'active' => 0,
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 32,
+      'weight' => 11,
     ),
   );
 
@@ -276,10 +281,11 @@ function flight_city_faq_field_default_field_instances() {
   t('Answer');
   t('Category');
   t('Color');
+  t('Enter one or more links to additional resources');
   t('Enter the icon name from <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank">the FontAwesome cheatsheet</a>.  For example: "fa-comments".');
   t('Icon');
   t('Keywords');
-  t('Link');
+  t('Links');
 
   return $field_instances;
 }

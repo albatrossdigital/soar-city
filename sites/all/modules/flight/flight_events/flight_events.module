@@ -12,7 +12,7 @@ include_once('flight_events.features.inc');
 function flight_events_menu() {
   $items['events'] = array(
     'title' => 'Events',
-    'page callback' => 'flight_city_events_front',
+    'page callback' => 'flight_events_front',
     'access arguments' => array('access content'),
     'type' => MENU_CALLBACK,
   );

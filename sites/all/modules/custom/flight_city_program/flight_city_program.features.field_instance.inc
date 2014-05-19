@@ -10,6 +10,73 @@
 function flight_city_program_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'field_collection_item-field_social_networks-field_social_network_account'
+  $field_instances['field_collection_item-field_social_networks-field_social_network_account'] = array(
+    'bundle' => 'field_social_networks',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 2,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_social_network_account',
+    'label' => 'Account URL',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'field_collection_item-field_social_networks-field_social_network_type'
+  $field_instances['field_collection_item-field_social_networks-field_social_network_type'] = array(
+    'bundle' => 'field_social_networks',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_social_network_type',
+    'label' => 'Network',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 1,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'node-program-body'
   $field_instances['node-program-body'] = array(
     'bundle' => 'program',
@@ -414,6 +481,8 @@ function flight_city_program_field_default_field_instances() {
           'image_field' => 'field_picture',
           'image_style' => 'large',
           'play_class' => 'button icon-play',
+          'vimeo' => 'vimeo',
+          'widescreen' => 1,
         ),
         'type' => 'file_click_to_play',
         'weight' => 2,
@@ -659,6 +728,7 @@ function flight_city_program_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Account URL');
   t('Address');
   t('Attachments');
   t('Body');
@@ -667,6 +737,7 @@ function flight_city_program_field_default_field_instances() {
   t('Fax');
   t('If a link is supplied, this piece of content will link out to the provided url instead of the internal content. ');
   t('Link');
+  t('Network');
   t('Phone number');
   t('Picture');
   t('Program point of contact.');

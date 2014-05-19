@@ -115,7 +115,8 @@ function flight_city_program_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_program';
   $strongarm->value = array(
-    0 => 'revision',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_program'] = $strongarm;
 

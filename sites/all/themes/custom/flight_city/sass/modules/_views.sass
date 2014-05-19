@@ -5,3 +5,14 @@
   .view-footer,
   & > .more-link
     +column-padding()
+
+
+// Nice spaced out teasers for equalizer rows
+// ----------------------------------------------------------------------------
+
+[data-equalizer]
+  .views-row.columns
+    +nice-row-border(0, rem-calc(22), 1px solid $gray, bottom, hidden)
+
+    [data-equalizer-watch]
+      margin-bottom: 0

@@ -273,7 +273,7 @@ function flight_city_faq_ds_layout_settings_info() {
       'right' => 'div',
     ),
     'layout_wrapper' => 'div',
-    'layout_attributes' => '',
+    'layout_attributes' => 'data-equalizer-watch',
     'layout_attributes_merge' => 1,
     'layout_link_attribute' => '',
     'layout_link_custom' => '',

@@ -211,7 +211,7 @@ a.social-icon.Vimeo:before {
 
 /********************************** */
 /* line 313, ../sass/base/_mixins.sass */
-.no-page-title #page-title, .l-footer-sections-bottom form label, .l-footer-sections-bottom form .grippie, .no-labels label,
+.no-page-title #page-title, .no-page-title #section-title, .l-footer-sections-bottom form label, .l-footer-sections-bottom form .grippie, .no-labels label,
 .no-label label, .front ul.breadcrumbs, .front.domain-main .l-featured:after, .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item label,
 .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item .description, .node-type-person #page-title {
   display: none;
@@ -326,7 +326,7 @@ h3, h4 {
 }
 
 /* line 480, ../sass/base/_mixins.sass */
-.l-featured .block-title, #page-title, .main .block-title {
+.l-featured .block-title, #page-title, #section-title, .main .block-title {
   font-size: 2.14286rem;
   margin-bottom: 2.5rem;
 }
@@ -1515,6 +1515,21 @@ fieldset legend {
   padding-right: 0.71429rem;
 }
 
+/* line 202, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
+[data-equalizer] .views-row.columns:after {
+  content: "";
+  display: block;
+  border-bottom: 1px solid #cccccc;
+  margin-left: 0;
+  margin-right: 0;
+  padding-top: 1.57143rem;
+  margin-bottom: 1.57143rem;
+}
+/* line 17, ../sass/modules/_views.sass */
+[data-equalizer] .views-row.columns [data-equalizer-watch] {
+  margin-bottom: 0;
+}
+
 /* line 9, ../sass/modules/_social-media-buttons.sass */
 .share42-item a,
 a.social-icon {
@@ -2231,34 +2246,23 @@ ul[data-orbit] ~ .orbit-next:before {
   position: relative;
 }
 
-/* line 202, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
-.vocabulary-event-category.view-mode-teaser:after,
-.vocabulary-faq-category.view-mode-teaser:after {
-  content: "";
-  display: block;
-  border-bottom: 1px solid #cccccc;
-  margin-left: 0.71429rem;
-  margin-right: 0.71429rem;
-  padding-top: 1.57143rem;
-  margin-bottom: 1.57143rem;
-}
-/* line 66, ../sass/theme/_icon-box.sass */
+/* line 65, ../sass/theme/_icon-box.sass */
 .vocabulary-event-category.view-mode-teaser .group-right,
 .vocabulary-faq-category.view-mode-teaser .group-right {
   text-align: left;
 }
-/* line 69, ../sass/theme/_icon-box.sass */
+/* line 68, ../sass/theme/_icon-box.sass */
 .vocabulary-event-category.view-mode-teaser i,
 .vocabulary-faq-category.view-mode-teaser i {
   margin-left: 0.07143rem;
 }
 
-/* line 76, ../sass/theme/_icon-box.sass */
+/* line 75, ../sass/theme/_icon-box.sass */
 .vocabulary-event-category.view-mode-teaser .group-right > div {
   display: table;
   min-height: 5.71429rem;
 }
-/* line 80, ../sass/theme/_icon-box.sass */
+/* line 79, ../sass/theme/_icon-box.sass */
 .vocabulary-event-category.view-mode-teaser .group-right > div > * {
   display: table-cell;
   vertical-align: middle;
@@ -2647,25 +2651,28 @@ ul[data-orbit] ~ .orbit-next:before {
 }
 
 /* line 572, ../sass/base/_mixins.sass */
-.vocabulary-event-category.view-mode-teaser .group-left {
+.vocabulary-event-category.view-mode-teaser .group-left,
+.vocabulary-faq-category.view-mode-teaser .group-left {
   width: 8.57143rem;
   z-index: 1;
 }
 /* line 577, ../sass/base/_mixins.sass */
-.vocabulary-event-category.view-mode-teaser .group-right {
+.vocabulary-event-category.view-mode-teaser .group-right,
+.vocabulary-faq-category.view-mode-teaser .group-right {
   padding-left: 9.28571rem;
   float: none !important;
   width: 100%;
 }
 
-/* line 25, ../sass/theme/_teasers.sass */
+/* line 28, ../sass/theme/_teasers.sass */
 .node-event .date-calendar,
-.vocabulary-event-category.view-mode-teaser .circle-icon {
+.vocabulary-event-category.view-mode-teaser .circle-icon,
+.vocabulary-faq-category.view-mode-teaser .circle-icon {
   max-width: 6.42857rem;
 }
 
 @media only screen and (max-width: 45.71429em) {
-  /* line 41, ../sass/theme/_teasers.sass */
+  /* line 45, ../sass/theme/_teasers.sass */
   .node-event .date-calendar {
     margin: 0 auto 1.42857rem;
   }
@@ -2673,13 +2680,15 @@ ul[data-orbit] ~ .orbit-next:before {
 @media only screen and (min-width: 45.78571em) {
   /* line 572, ../sass/base/_mixins.sass */
   .node-teaser.node-event .group-left,
-  .view-mode-compact_teaser .group-left {
+  .view-mode-compact_teaser .group-left,
+  .vocabulary-faq-category.view-mode-teaser .group-left {
     width: 8.57143rem;
     z-index: 1;
   }
   /* line 577, ../sass/base/_mixins.sass */
   .node-teaser.node-event .group-right,
-  .view-mode-compact_teaser .group-right {
+  .view-mode-compact_teaser .group-right,
+  .vocabulary-faq-category.view-mode-teaser .group-right {
     padding-left: 9.28571rem;
     float: none !important;
     width: 100%;
