@@ -40,7 +40,7 @@ function baltimore_migrate_migrate_api() {
       'default_section' => 'f6a2f72ba753a685bd81acf755ff8635',
       'create_redirect' => TRUE,
       'story_type' => 58,
-      'url' => 'http://www.baltimorecity.gov/DesktopModules/DnnForge%20-%20NewsArticles/Rss.aspx?TabID=66&ModuleID=373&MaxCount=100&FeaturedOnly=True&sortBy=StartDate&sortDirection=DESC',
+      'url' => 'http://www.baltimorecity.gov/DesktopModules/DnnForge%20-%20NewsArticles/Rss.aspx?TabID=66&ModuleID=373&MaxCount=20&FeaturedOnly=True&sortBy=StartDate&sortDirection=DESC',
       // These are hard-coded into the base migration
       //'xpath' => '//div[@class="contentDiv"]',
       //'xpath_exclude' => '//div[@class="contentDiv"]',
