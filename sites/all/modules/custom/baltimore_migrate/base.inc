@@ -50,6 +50,12 @@ class BaltimoreStoriesMigration extends XMLMigration {
     $this->addFieldMapping('body', 'body');
     $this->addFieldMapping('body:format')->defaultValue('filtered_html');
 
+    // Published date
+    $this->addFieldMapping('created', 'pubDate')
+      ->xpath('pubDate');
+    $this->addFieldMapping('updated', 'pubDate')
+      ->xpath('pubDate');
+
     // Add redirect
     $this->addFieldMapping('migrate_redirects', 'link');
 
