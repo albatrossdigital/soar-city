@@ -213,7 +213,7 @@ a.social-icon.Vimeo:before {
 /* line 313, ../sass/base/_mixins.sass */
 .no-page-title #page-title, .no-page-title #section-title, .l-footer-sections-bottom form label, .l-footer-sections-bottom form .grippie, .no-labels label,
 .no-label label, .front ul.breadcrumbs, .front.domain-main .l-featured:after, .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item label,
-.block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item .description, .node-type-person #page-title {
+.block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item .description, .page-people #page-title, .node-type-person #page-title {
   display: none;
 }
 
@@ -2811,7 +2811,7 @@ ul[data-orbit] ~ .orbit-next:before {
   margin: 0;
 }
 
-/* line 11, ../sass/theme/_people.sass */
+/* line 18, ../sass/theme/_people.sass */
 .node-person h4 + h5 {
   margin-top: -0.7619rem;
 }
@@ -2833,7 +2833,7 @@ ul[data-orbit] ~ .orbit-next:before {
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 30, ../sass/theme/_people.sass */
+  /* line 37, ../sass/theme/_people.sass */
   .node-person.view-mode-full .field-name-field-picture img {
     margin-bottom: 0;
   }
