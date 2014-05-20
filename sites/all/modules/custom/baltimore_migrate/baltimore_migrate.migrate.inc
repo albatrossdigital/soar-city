@@ -58,6 +58,17 @@ function baltimore_migrate_migrate_api() {
       'file_destination' => 'public://health/legacy',
       'create_redirect' => TRUE,
     ),
+    'BaltimoreHealthContent2' => array(
+      'class_name' => 'BaltimoreHealthContentMigration2',
+      'domain' => 3,
+      'menu_name' => '8a5cf1368d89144ef92c695bf3eb0e21',
+      'url' => DRUPAL_ROOT . '/WORKING/data/health-content.csv',
+      'base_url' => 'http://www.baltimorehealth.org/',
+      'default_section' => '8a5cf1368d89144ef92c695bf3eb0e21',
+      'xpath' => '//div[@class="contentDiv"]',
+      'file_destination' => 'public://health/legacy',
+      'create_redirect' => TRUE,
+    ),
   );
 
   $api = array(
