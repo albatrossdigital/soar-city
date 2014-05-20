@@ -67,7 +67,7 @@ class BaltimoreStoriesMigration extends XMLMigration {
     foreach ($xpath->query('//div[@class="articleViewWrapper"]') as $i => $node) {
       $row->body .= $node->ownerDocument->saveHTML($node);
     }
-    $row->body = baltimore_migrate_strip_tags($row->body);
+    $row->body = _baltimore_migrate_strip_tags($row->body);
   }
 
   public function prepare(stdClass $entity, stdClass $row) {
