@@ -151,7 +151,7 @@ class BaltimoreContentMigration extends Migration {
     $row->old_url = trim($row->old_url);
 
     // Get the legacy content (if applicable)
-    if ($row->migrate == 1 || strtoupper($row->migrate) === 'Y') {
+    if ((empty($row->migrate) || $row->migrate == 1 || strtoupper($row->migrate) === 'Y') && !empty($row->old_url)) {
       // Fixes fatal errors is there are more than one of the same id
       // See http://stackoverflow.com/questions/18943954/removing-docdocument-warning-while-parsing-page-content
       libxml_use_internal_errors(TRUE);
@@ -198,7 +198,7 @@ class BaltimoreContentMigration extends Migration {
       }
       unset($xpath);
       unset($dom);
-      $row->body = str_replace('<br><br>', '</p><p>', $row->body);
+      $row->body = _baltimore_migrate_strip_tags($row->body);
     }
     else {
       $row->body = '';
@@ -216,8 +216,10 @@ class BaltimoreContentMigration extends Migration {
     }
 
     // Set moderation section
-    $tid = !empty($row->section) ? $row->section : $this->arguments['default_section'];
-    $entity->workbench_access = array($tid => $tid);
+    $section = !empty($row->section) ? $row->section : $this->arguments['default_section'];
+    //$entity->workbench_access = is_numeric($section) ?  array($section => $section) : _baltimore_migrate_workbench_access_get_item($section);
+    $entity->workbench_access = array($section => $section);
+
 
     // Create menu link
     $entity->menu = array(
@@ -282,3 +284,11 @@ function _baltimore_migrate_save_file($url, $destination) {
   // @todo: Record this somewhere that we'll need to update this link?
   return FALSE;
 }
+
+
+function _baltimore_migrate_strip_tags($text) {
+  $text = str_replace('<br><br>', '</p><p>', $text);
+  $text = strip_tags($text, '<p><a><h2><h3><h4><h5><strong><b><i><em><cite><blockquote><table><tr><td><scode><thead><tbody><img><ul><ol><li><dt><dd><sub><cite>');
+  return $text;
+}
+
