@@ -39,6 +39,7 @@ function baltimore_migrate_feeds_after_save(FeedsSource $source, $entity, $item,
   if ($source->id === 'migrate_users' && !empty($item['section'])) {
     // Set the editorial section from the spreadsheet
     $sections = _baltimore_migrate_workbench_access_get_item($item['section']);
+    dpm($sections);
     if (empty($sections)) {
       watchdog('user', 'No sections added for %email.', array('%email' => $entity->mail));
       drupal_set_message(t('No sections added for %email.', array('%email' => $entity->mail)), 'warning');
