@@ -305,6 +305,7 @@ function _baltimore_migrate_save_file($url, $destination) {
 function _baltimore_migrate_strip_tags($text) {
   $text = str_replace('<br><br>', '</p><p>', $text);
   $text = strip_tags($text, '<p><a><h2><h3><h4><h5><strong><b><i><em><cite><blockquote><table><tr><td><scode><thead><tbody><img><ul><ol><li><dt><dd><sub><cite>');
+  $text = trim($text);
   return $text;
 }
 
