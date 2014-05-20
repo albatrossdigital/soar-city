@@ -71,25 +71,25 @@ function flight_city_person_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'domain' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'metatags' => array(
-          'weight' => '11',
+          'weight' => '12',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '10',
+          'weight' => '11',
         ),
         'redirect' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
         'domain_path' => array(
-          'weight' => '13',
+          'weight' => '14',
         ),
         'flag' => array(
-          'weight' => '12',
+          'weight' => '13',
         ),
         'workbench_access' => array(
           'weight' => '1',

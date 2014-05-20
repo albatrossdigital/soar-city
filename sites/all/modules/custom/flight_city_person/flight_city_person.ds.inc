@@ -153,11 +153,6 @@ function flight_city_person_ds_field_settings_info() {
         ),
       ),
     ),
-    'field_picture' => array(
-      'formatter_settings' => array(
-        'ft' => array(),
-      ),
-    ),
   );
   $export['node|person|teaser'] = $ds_fieldsetting;
 
@@ -305,7 +300,15 @@ function flight_city_person_ds_layout_settings_info() {
     ),
     'classes' => array(
       'layout_class' => array(
-        '' => '',
+        'row' => 'row',
+      ),
+      'left' => array(
+        'columns' => 'columns',
+        'medium-3' => 'medium-3',
+      ),
+      'right' => array(
+        'columns' => 'columns',
+        'medium-9' => 'medium-9',
       ),
     ),
     'wrappers' => array(

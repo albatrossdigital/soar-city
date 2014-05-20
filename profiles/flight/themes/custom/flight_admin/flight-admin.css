@@ -151,5 +151,9 @@ div.vertical-tabs .vertical-tabs-panes>fieldset>legend {
   color: #fff;
 }
 
+#media-browser-tabset .field-type-domain-entity {
+  display: none;
+}
+
 
 
