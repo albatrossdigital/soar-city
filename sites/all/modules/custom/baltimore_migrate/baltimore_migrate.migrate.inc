@@ -45,6 +45,17 @@ function baltimore_migrate_migrate_api() {
       //'xpath' => '//div[@class="contentDiv"]',
       //'xpath_exclude' => '//div[@class="contentDiv"]',
     ),
+    'BaltimoreMayorContent' => array(
+      'class_name' => 'BaltimoreMayorContentMigration',
+      'domain' => 2,
+      'menu_name' => '8a5cf1368d89144ef92c695bf3eb0e21',
+      'url' => DRUPAL_ROOT . '/WORKING/data/mayor-content.csv',
+      'base_url' => 'http://www.baltimorecity.gov/',
+      'default_section' => 'f6a2f72ba753a685bd81acf755ff8635',
+      'xpath' => '//div[@id="dnn_ContentPane"]',
+      'file_destination' => 'public://mayor/legacy',
+      'create_redirect' => TRUE,
+    ),
 
     // Health
     'BaltimoreHealthContent' => array(

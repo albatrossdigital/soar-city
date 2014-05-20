@@ -157,7 +157,7 @@ class BaltimoreContentMigration extends Migration {
     $row->old_url = trim($row->old_url);
 
     // Get the legacy content (if applicable)
-    if ((empty($row->migrate) || $row->migrate == 1 || strtoupper($row->migrate) === 'Y') && !empty($row->old_url)) {
+    if ((empty($row->migrate) || $row->migrate == '' || $row->migrate == 1 || strtoupper($row->migrate) === 'Y') && !empty($row->old_url)) {
       // Fixes fatal errors is there are more than one of the same id
       // See http://stackoverflow.com/questions/18943954/removing-docdocument-warning-while-parsing-page-content
       libxml_use_internal_errors(TRUE);
@@ -173,13 +173,23 @@ class BaltimoreContentMigration extends Migration {
       // Deal with legacy links and images
       foreach($xpath->query('//a[@href]') as $node) {
         $url = $node->getAttribute('href');
-        $url = strpos($url, 'http://') === FALSE ? $this->arguments['base_url '].$url : $url;
+        $url = strpos($url, 'http://') === FALSE ? $this->arguments['base_url'].$url : $url;
         if (!empty($url) && strpos($url, $this->arguments['base_url']) !== FALSE) {
           $extension = end(explode('.', $url));
-          if (strlen($extension) > 2 && strlen($extension) < 5 && !in_array($extension, array('html', 'htm', 'asp', 'aspx'))) {
+          //dpm($url);
+          //dpm($extension);
+          if (
+            (strlen($extension) > 2 && strlen($extension) < 5 && !in_array($extension, array('html', 'htm', 'asp', 'aspx'))) 
+            || strpos($url, 'LinkClick.aspx?fileticket=') !== FALSE
+          ) {
             //dpm($url);
 
             if ($file = _baltimore_migrate_save_file($url, $arguments['file_destination'])) {
+              if (empty($file->type) || $file->type == 'undefined') {
+                $file->type = 'document';
+                $file->filemime = 'application/pdf';
+                file_save($file);
+              }
               //dpm($file);
               $node->setAttribute('href', url('file/'.$file->fid));
             }
