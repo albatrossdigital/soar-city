@@ -58,8 +58,8 @@ function baltimore_migrate_migrate_api() {
       'file_destination' => 'public://health/legacy',
       'create_redirect' => TRUE,
     ),
-    'BaltimoreHealthContent2' => array(
-      'class_name' => 'BaltimoreHealthContentMigration2',
+    'BaltimoreHealthContentMore' => array(
+      'class_name' => 'BaltimoreHealthContentMoreMigration',
       'domain' => 3,
       'menu_name' => '8a5cf1368d89144ef92c695bf3eb0e21',
       'url' => DRUPAL_ROOT . '/WORKING/data/health-content.csv',
