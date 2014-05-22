@@ -5,3 +5,6 @@ package = Baltimore
 dependencies[] = apachesolr
 dependencies[] = apachesolr_term
 dependencies[] = apachesolr_multisitesearch
+
+
+files[] = plugins/facetapi/widget_suggestion.inc

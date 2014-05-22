@@ -1,9 +1,51 @@
 <?php
 
+
+define('BALT_APACHESOLR_ID', 'solr');
+
 /**
  * @file
  * Custom search elements for Baltimore.
  */
+
+/**
+ * Implements hook_theme().
+ */
+function balt_apachesolr_theme() {
+  return array(
+    'balt_facetapi_link_inactive' => array(
+      'arguments' => array('text' => NULL, 'path' => NULL, 'options' => array(), 'count' => 0),
+      'file' => 'balt_apachesolr.theme.inc',
+    ),
+    'balt_facetapi_link_active' => array(
+      'arguments' => array('text' => NULL, 'path' => NULL, 'options' => array()),
+      'file' => 'balt_apachesolr.theme.inc',
+    ),
+    'balt_apachesolr_suggestion_box' => array(
+      'variables' => array('items' => array(), 'active-item' => NULL, 'attributes' => array()),
+      'file' => 'balt_apachesolr.theme.inc',
+    ),
+  );
+}
+
+
+/**
+ * Helper function returns solr index key().
+ */
+function _balt_apachesolr_index_key() {
+  $key = array(
+    'name'       => 'domain_id',
+    'multiple'   => TRUE,
+    'index_type' => 'integer',
+  );
+  return apachesolr_index_key($key);
+}
+
+
+/*************************************
+ * apachesolr
+ *************************************/
+
 
 /**
  * Implements hook_apachesolr_search_result().
@@ -13,4 +55,140 @@ function balt_apachesolr_apachesolr_search_result_alter(&$doc, $extra, $query) {
   if (!isset($doc->entity_type)) {
     $doc->entity_type = '';
   }
+}
+
+
+/**
+ * implements hook_apachesolr_search_page_alter().
+ */
+function balt_apachesolr_apachesolr_search_page_alter(&$build, $search_page) {
+  // Look for a hard-coded env_id
+  //dpm($build);
+  //dpm($search_page);
+}
+
+/**
+ * Implements hook_apachesolr_process_results().
+ */
+function balt_apachesolr_apachesolr_process_results(&$results) {
+  $key = _balt_apachesolr_index_key();
+  $domains = array();
+  foreach ($results as $idx => $r) {
+    $entity_type = $r['entity_type'];
+    if (!is_array($r[$entity_type]->$key)) {
+      $results[$idx][$entity_type]->$key = $r[$entity_type]->$key ? array($r[$entity_type]->$key) : array();
+    }
+    foreach ($results[$idx][$entity_type]->$key as $domain_id) {
+      $domains[$domain_id] = $domain_id;
+    }
+  }
+
+  if ($domains) {
+    $accessible_domains = array();
+    $result = db_query('SELECT * FROM {domain} d WHERE domain_id IN (:domains)', array(':domains' => $domains));
+    foreach ($result as $row) {
+      $accessible_domains[] = $row->domain_id;
+    }
+    foreach ($results as $idx => $r) {
+      $accessible = array_intersect($results[$idx][$entity_type]->$key, $accessible_groups);
+      if ($accessible) {
+        $results[$idx]['extra'][] = format_plural(count($accessible), '1 domain', '@count domains');
+      }
+    }
+  }
+}
+
+/**
+* Implements hook_apachesolr_index_document_build().
+*/
+function balt_apachesolr_apachesolr_index_document_build(ApacheSolrDocument $document, $entity, $entity_type, $env_id) {
+  if (isset($entity->domains)) {
+    foreach($entity->domains as $domain) {
+      // The gid in the {domain} table is unsigned, but the domain module makes
+      // it -1 for the deault domain. Also apache doesn't like it if we query
+      // for domain id -1.
+      if ($domain == -1) {
+        $domain = 0;
+      }
+
+      // Build an apachesolr-compatible domain search index key.
+      $key = array(
+        'name' => 'domain_id',
+        'multiple' => TRUE,
+        'index_type' => 'integer',
+      );
+      $key = apachesolr_index_key($key);
+
+      // Add domain key to document.
+      $document->setMultiValue($key, $domain);
+    }
+  }
+}
+
+
+/*************************************
+ * facetapi
+ *************************************/
+
+
+
+/**
+ * Define all facets provided by the module.
+ *
+ *
+ * @param array $searcher_info
+ *   The definition of the searcher that facets are being collected for.
+ *
+ * @return array
+ *   An associative array keyed by unique name of the facet. 
+ */
+function balt_apachesolr_facetapi_facet_info(array $searcher_info) {
+  $facets = array();
+  $key = _balt_apachesolr_index_key();
+
+  $facets[$key] = array(
+    'name' => $key,
+    'label' => t('Sub Site'),
+    'description' => t('Restrict search by domain.'),
+    'field' => $key,
+    'map callback' => 'balt_apachesolr_facetapi_facet_map_callback',
+  );
+
+  $facets[$key . '_simple'] = array(
+    'name' => $key . '_simple',
+    'label' => t('Sub site simple recommendation'),
+    'description' => t('Alert users.'),
+    'field' => $key,
+    'map callback' => 'balt_apachesolr_facetapi_facet_map_callback',
+    'facet missing allowed' => TRUE,
+    'facet mincount allowed' => TRUE
+  );
+
+  return $facets;
+}
+
+function balt_apachesolr_facetapi_facet_map_callback($variables) {
+  foreach ($variables as $domain_id) {
+    $domain = domain_load($domain_id);
+    $map[$domain_id] = $domain['sitename'];
+  }
+  return $map;
+}
+
+/**
+ * Implements hook_facetapi_widgets()
+ */
+function balt_apachesolr_facetapi_widgets() {
+  return array(
+    'facetapi_suggestion' => array(
+      'handler' => array(
+        'label' => t('Suggestion box'),
+        'class' => 'FacetapiWidgetSuggestion',
+        'query types' => array('term'),
+        'requirements' => array(
+          'facetapi_requirement_realm_property' => array('element type' => 'links')
+        ),
+      ),
+    ),
+  );
 }
