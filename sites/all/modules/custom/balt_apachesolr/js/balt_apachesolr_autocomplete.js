@@ -4,7 +4,6 @@
  */
 Drupal.behaviors.balt_apachesolr_autocomplete = {
   attach: function(context) {
-    console.log(Drupal.settings.balt_apachesolr_autocomplete.path);
     var urlPattern = new RegExp('^(https?:\/\/)');
     jQuery(".balt-apachesolr-autocomplete.unprocessed", context).add(".balt-apachesolr-autocomplete.unprocessed input", context).autocomplete(Drupal.settings.balt_apachesolr_autocomplete.path,
     {
