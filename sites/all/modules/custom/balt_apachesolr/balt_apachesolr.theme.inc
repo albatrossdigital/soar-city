@@ -8,10 +8,33 @@
 /**
  * Returns HTML for an inactive facet item.
  */
-function theme_balt_apachesolr_suggestion_box($variables) {
-  $items = $variables['items'];
+function template_preprocess_balt_apachesolr_suggestion_box(&$variables) {
   $active = $variables['active-item'];
-  $attributes = $variables['attributes'];
+  $variables['additional_text'] = '';
+  if(isset($active)) {
+    foreach ($variables['items'] as $item) {
+      if($item['data']['active']) {
+        $text = $item['data']['text'];
+        $item['data']['text'] = t('entire site');
+        $variables['title_text'] = t('You\'re searching within the !site', array(
+          '!site' => '<strong>' . $text . '</strong>',
+        ));
+        $variables['additional_text'] = t('Expand your search to the !expand.', array(
+          '!expand' => theme_link($item['data']),
+        ));
+        break;
+      }
+    }
+  }
+  else {
+    $variables['title_text'] = t('You\'re searching the !site.  Filter by subsite:', array(
+      '!site' => '<strong>full site</strong>',
+    ));
+    foreach($variables['items'] as &$item) {
+      $item['data'] = theme_link($item['data']);
+    }
+    $variables['additional_text'] = theme('item_list', $variables);
+  }
 }
 
 
@@ -40,7 +63,7 @@ function theme_balt_facetapi_link_inactive($variables) {
 
   // Adds count to link if one was passed.
   if (isset($variables['count'])) {
-    $variables['text'] .= ' ' . theme('facetapi_count', $variables);
+    $variables['count'] = theme('facetapi_count', $variables);
   }
 
   // Resets link text, sets to options to HTML since we already sanitized the
@@ -63,7 +86,6 @@ function theme_balt_facetapi_link_inactive($variables) {
  * @ingroup themeable
  */
 function theme_balt_facetapi_link_active($variables) {
-  dpm('yuppers');
   // Sanitizes the link text if necessary.
   $sanitize = empty($variables['options']['html']);
   $link_text = ($sanitize) ? check_plain($variables['text']) : $variables['text'];
@@ -78,11 +100,23 @@ function theme_balt_facetapi_link_active($variables) {
   // Builds link, passes through t() which gives us the ability to change the
   // position of the widget on a per-language basis.
   $replacements = array(
-    '!facetapi_deactivate_widget' => theme('facetapi_deactivate_widget', $variables),
     '!facetapi_accessible_markup' => theme('facetapi_accessible_markup', $accessible_vars),
   );
-  $variables['text'] = t('!facetapi_deactivate_widget !facetapi_accessible_markup', $replacements);
+  $variables['remove_text'] = t('!facetapi_accessible_markup', $replacements);
   $variables['options']['html'] = TRUE;
   $variables['active'] = TRUE;
-  return ;
+  return $variables;
+}
+
+
+/**
+ * Themes each returned suggestion.
+ */
+function theme_balt_apachesolr_answers_autocomplete($vars) {
+  $html = '';
+  $html .= '<div class="balt_apachesolr_autocomplete suggestion">';
+  $html .= '<span class="suggest-title label secondary">' . t('Answer') . '</span>';
+  $html .= $vars['title'];
+  $html .= '</div>';
+  return $html;
 }

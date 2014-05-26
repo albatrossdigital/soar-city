@@ -37,7 +37,7 @@ class FacetapiWidgetSuggestion extends FacetapiWidgetLinks {
       if(is_array($item)) {
         if($item['#active']) {
           $item['#theme'] = 'balt_facetapi_link_active';
-          $build['#active-item'] = TRUE;
+          $build['#active-item'] = $value;
         }
         else {
           $item['#theme'] = 'balt_facetapi_link_inactive';
@@ -61,8 +61,9 @@ class FacetapiWidgetSuggestion extends FacetapiWidgetLinks {
    */
   public function execute() {
     $element = &$this->build[$this->facet['field alias']];
-    $element['#active-item'] = FALSE;
-    dpm($element);
+    // Allow other modules to alter
+    drupal_alter('balt_apachesolr_suggestion_items', $element, $this->facet['field alias']);
+    $element['#active-item'] = NULL;
     // Sets each item's theme hook, builds item list.
     $this->setThemeHooks($element);
     $active = array_pop($element);
