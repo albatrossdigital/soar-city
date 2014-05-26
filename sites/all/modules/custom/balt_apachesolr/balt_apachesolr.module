@@ -1,6 +1,14 @@
 <?php
 
 
+/**
+ * @file
+ * Code for the balt_apachesolr feature.
+ */
+
+include_once 'balt_apachesolr.features.inc';
+
+
 define('BALT_APACHESOLR_FORM', 'core_search');
 define('BALT_APACHESOLR_DOMAIN_FIELD', 'im_domain_id');
 define('BALT_APACHESOLR_ENTITY_FIELD', 'bundle_name');

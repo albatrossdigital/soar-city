@@ -1,10 +1,44 @@
 name = Baltimore ApacheSolr
+
 description = Custom Search for Baltimore City Site
 core = 7.x
 package = Baltimore
 dependencies[] = apachesolr
+dependencies[] = apachesolr_search
 dependencies[] = apachesolr_term
 dependencies[] = apachesolr_multisitesearch
+dependencies[] = context
+dependencies[] = ctools
+dependencies[] = current_search
+dependencies[] = facetapi
+dependencies[] = strongarm
+features[apachesolr_environment][] = solr
+features[apachesolr_search_page][] = core_search
+features[context][] = site_search
+features[ctools][] = apachesolr:apachesolr_environments:1
+features[ctools][] = apachesolr_search:apachesolr_search_defaults:3
+features[ctools][] = context:context:3
+features[ctools][] = facetapi:facetapi_defaults:1
+features[ctools][] = strongarm:strongarm:1
+features[facetapi][] = apachesolr@solr::bundle_name
+features[facetapi][] = apachesolr@solr::im_domain_id
+features[facetapi][] = apachesolr@solr:block:bundle_name
+features[facetapi][] = apachesolr@solr:block:im_domain_id
+features[features_api][] = api:2
+features[variable][] = apachesolr_autocomplete_counts
+features[variable][] = apachesolr_autocomplete_suggest_keywords
+features[variable][] = apachesolr_autocomplete_suggest_spellcheck
+features[variable][] = apachesolr_autocomplete_widget
+features[variable][] = apachesolr_cron_limit
+features[variable][] = apachesolr_default_environment
+features[variable][] = apachesolr_failure
+features[variable][] = apachesolr_multisitesearch_metadata
+features[variable][] = apachesolr_search_default_search_page
+features[variable][] = apachesolr_search_mlt_blocks
+features[variable][] = apachesolr_set_nodeapi_messages
+features[variable][] = apachesolr_site_hash
+features[variable][] = apachesolr_watchdog_successes
+features[variable][] = facetapi:block_cache:apachesolr@solr
 
 
 files[] = plugins/facetapi/widget_suggestion.inc
