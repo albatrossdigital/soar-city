@@ -4,7 +4,7 @@
 define('BALT_APACHESOLR_FORM', 'core_search');
 define('BALT_APACHESOLR_DOMAIN_FIELD', 'im_domain_id');
 define('BALT_APACHESOLR_ENTITY_FIELD', 'bundle_name');
-define('BALT_APACHESOLR_URL_REPLACE', 'http://dev.');
+define('BALT_APACHESOLR_URL_REPLACE', 'http://www.');
 define('BALT_APACHESOLR_URL_MATCH', '@(?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:.*?\.)(.*)@i');
 define('BALT_APACHESOLR_URL_MATCH_DOMAIN', '@(?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(.*?)(?:/)@i');
 
