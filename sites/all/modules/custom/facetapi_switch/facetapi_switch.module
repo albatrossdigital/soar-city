@@ -1,0 +1,157 @@
+<?php
+
+/**
+ * @file
+ * Displays search facets as a switch widget.
+ */
+
+/**
+ * Implements hook_facetapi_widgets().
+ */
+function facetapi_switch_facetapi_widgets() {
+  return array(
+    'facetapi_switch' => array(
+      'handler' => array(
+        'label' => t('Switch'),
+        'class' => 'FacetapiSwitchWidget',
+        'query types' => array('term', 'date'),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_forms().
+ */
+function facetapi_switch_forms($form_id) {
+  // Build all switch facet forms on the page using the same form
+  // callback.
+  $forms = array();
+  if (strpos($form_id, 'facetapi_switch_form_') === 0) {
+    $forms[$form_id]['callback'] = 'facetapi_switch_form';
+  }
+  return $forms;
+}
+
+/**
+ * Form which displays facets as a switch element.
+ *
+ * @param $widget
+ *   The widget object (e.g. of class FacetapiMultiSelectWidget) used to build
+ *   the facet.
+ * @param $element
+ *   The facet element, containing information about each available facet in
+ *   the group.
+ */
+function facetapi_switch_form($form, &$form_state, $widget, $element) {
+  // Record the widget and facet name in an easy-to-access part of the
+  // $form_state array. Also record a class that can be used to access the
+  // widget in front-end code.
+  $build = $widget->getBuild();
+  $settings = $build['#settings']->settings;
+
+  $facet_name = $widget->getKey();
+  $form_state['facetapi_switch'] = array(
+    'widget' => $widget,
+    'facet_name' => $facet_name,
+    'facet_class' => drupal_html_class("facetapi-switch-{$facet_name}"),
+  );
+
+  $options = $widget->buildOptions($element);
+
+  // add reset key
+  $form_state['facetapi_switch']['reset_key'] = $widget->reset_key(); 
+  if($settings['all_reset']) {
+    $options = array_merge(array(
+      $form_state['facetapi_switch']['reset_key'] => array_pop($options)
+    ), $options);
+  }
+  
+  // Allow other modules to alter
+  drupal_alter('facetapi_switch_form_options', $options, $facet_name);
+
+  // Build the form.
+  $form['facets'] = array(
+    '#type' => 'radios',
+    '#options' => $options,
+    '#default_value' => $widget->buildDefaultValue($element),
+    '#attributes' => array('class' => array('facetapi-switch', $form_state['facetapi_switch']['facet_class'])),
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => $settings['submit_text'],
+  );
+
+  // add value setting if available
+  if($settings['value_as_all']) {
+    $form_state['facetapi_switch']['all_key'] = $widget->value_as_all_key();
+  }
+  // switch out label if set
+  if ($settings['switch_label']) {
+    $form['facets']['#title'] = $settings['switch_label'];
+  }
+  // add submit functionality
+  if ($settings['auto_submit']) {
+    $form['#attached']['js'][] = drupal_get_path('module', 'facetapi_switch') . '/js/facetapi_switch_autosubmit.js';
+  }
+  // Record this in the form too, in case someone needs to access it there.
+  $form['#facetapi_switch'] = $form_state['facetapi_switch'];
+  return $form;
+}
+
+/**
+ * Submit handler for facetapi_switch_form().
+ */
+function facetapi_switch_form_submit($form, &$form_state) {
+  // Remove all the select element's #options from the current list of facets,
+  // and add back only the ones that were submitted with the form.
+  $query = drupal_get_query_parameters();
+  $original_f = isset($query['f']) ? $query['f'] : array();
+  // all option values
+  $all_options = facetapi_switch_get_options($form['facets']['#options']);
+  // strip out facet related values
+  $query['f'] = array_diff($original_f, $all_options);
+  $value = $form_state['values']['facets'];
+  // we have submitted value
+  if($value && $value != $form_state['facetapi_switch']['reset_key']) {
+    // not using all value, or all value not active
+    if(empty($form_state['facetapi_switch']['all_key']) || $value != $form_state['facetapi_switch']['all_key']) {
+      $query['f'][] = $form_state['values']['facets'];
+    } 
+    // using all value and IS submitted
+    else if($value == $form_state['facetapi_switch']['all_key']) {
+      $query['f'] = array_merge($query['f'], $all_options);
+    }
+  }
+  $query['f'] = array_values($query['f']);
+
+  // Redirect to the new URL, with the new set of active facets.
+  $form_state['redirect'] = array(current_path(), array('query' => $query));
+}
+
+/**
+ * Returns an array of all available options from an #options element.
+ *
+ * This function takes into account optgroups, if they are present (the options
+ * contained within those will be merged into the returned array).
+ *
+ * @param $options
+ *   An #options array from a form element.
+ *
+ * @return
+ *   An array containing all options stored within the array. For a flat
+ *   #options array (without optgroups), calling this function is equivalent to
+ *   calling array_keys().
+ */
+function facetapi_switch_get_options($options) {
+  $all_options = array();
+  foreach ($options as $key => $option) {
+    if (is_array($option)) {
+      $all_options = array_merge($all_options, facetapi_switch_get_options($option));
+    }
+    else {
+      $all_options[] = $key;
+    }
+  }
+  return $all_options;
+}
