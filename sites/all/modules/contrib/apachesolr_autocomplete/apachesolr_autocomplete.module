@@ -386,30 +386,22 @@ function apachesolr_autocomplete_suggest($keys, $params, $theme_callback, $orig_
 /**
  * Gets the current stopwords list configured in Solr.
  */
-function apachesolr_autocomplete_get_stopwords($environment = NULL) {
-  static $words = array(), $cached_flag = false;
-  if ($cached_flag) {
+function apachesolr_autocomplete_get_stopwords() {
+  static $words = array(), $flag = false;
+  if ($flag) {
     return $words;
   }
-
-  if (!$environment) {
-    $env_id = apachesolr_default_environment();
+  $stopwords_url = "/admin/file/?file=stopwords.txt";
+  $host = variable_get('apachesolr_host', 'localhost');
+  $port = variable_get('apachesolr_port', 8983);
+  $path = variable_get('apachesolr_path', '/solr');
+  $url = "http://{$host}:{$port}{$path}{$stopwords_url}";
+  $result = drupal_http_request($url);
+  if ($result->code != 200) {
+    return array();
   }
-  else {
-    $env_id = $environment['env_id'];
-  }
-
-  try {
-    $solr = apachesolr_get_solr($env_id);
-    $response = $solr->makeServletRequest('admin/file', array('file' => 'stopwords.txt'));
-    $raw_file = $response->data;
-  }
-  catch (Exception $e) {
-    $cached_flag = true;
-    return $words;
-  }
-
-  foreach (explode("\n", $response->data) as $line) {
+  $words = array();
+  foreach (explode("\n", $result->data) as $line) {
     if (drupal_substr($line, 0, 1) == "#") {
       continue;
     }
@@ -417,7 +409,7 @@ function apachesolr_autocomplete_get_stopwords($environment = NULL) {
       $words[] = $word;
     }
   }
-  $cached_flag = true;
+  $flag = true;
   return $words;
 }
 

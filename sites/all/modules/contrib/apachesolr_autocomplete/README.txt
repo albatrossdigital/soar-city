@@ -22,30 +22,27 @@ See http://drupal.org/project/apachesolr
 
 -- INSTALLATION --
 
-* Install as usual.
-  Read http://drupal.org/documentation/install/modules-themes/modules-7
-  to learn how to install contributed Drupal modules.
+* Install as usual, see http://drupal.org/node/70151 for further information.
 
 
 -- CONFIGURATION  --
 
-In your Drupal website, browse to the settings page of the Apache Solr module
-at /admin/config/search/apachesolr/settings:
+For configuration, go to:
 
-  Configuration >> Search and metadata >> Apache Solr search
-  Tab: Settings 
+  Administration >> Settings >> Apache Solr
 
-In the section "Advanced configuration" choose which autocomplete widget to use.
+and look for the "Advanced Options" fieldset. The setting is:
 
-You can choose between a custom JavaScript widget (included with the
+  "Autocomplete widget to use:"
+
+where you can choose between a custom Javascript widget (included with the
 module) or fall back to the core Drupal autocomplete widget. The default is to
 use the custom widget.
 
 -- TROUBLESHOOTING --
 
-If you are having trouble with the autocomplete suggestions not working 
-correctly, try changing the configuration to use the core Drupal autocomplete
-widget.
+If you are having trouble with the autocomplete suggestions not working correctly,
+try changing the configuration to use the core Drupal autocomplete widget.
 
 If you encounter other problems, please post to the project issue queue:
   http://drupal.org/project/issues/apachesolr_autocomplete
