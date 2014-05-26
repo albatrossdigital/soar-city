@@ -895,6 +895,23 @@ $main-menu-border-size: rem-calc(3)
   @if $big
     +big-form()
 
+@mixin spaced-out-form($border: false)
+  @if $border
+    border-top: common-border-val($gray-border)
+
+  .form-type-radio, .form-type-checkbox
+    margin-top: rem-calc(14)
+    margin-bottom: rem-calc(14)
+
+    label
+      +f(alt-alt)
+      //font-size: $h5-font-size
+
+    input
+      //margin-top: rem-calc(6)
+
+    button
+      margin-top: rem-calc(10) 
 
 // search button replace
 @mixin search-button($color: $gray, $size: 36px, $font: ($size*.5))

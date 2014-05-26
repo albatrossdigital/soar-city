@@ -54,7 +54,7 @@ i[class^="fa"], [role=complementary] .block-domain-menu-block .menu-block-wrappe
 .draggable a.tabledrag-handle:before, .share42-item:nth-child(4) a:before, .share42-item:first-child a:before,
 a.social-icon.Facebook:before, .share42-item:nth-child(3) a:before,
 a.social-icon.Twitter:before, .share42-item:nth-child(2) a:before,
-a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, a.social-icon.Govdelivery:before, a.social-icon.Social.Wall:before, .breadcrumbs li:first-child a:before, .button.icon-play:before, #search-block-form .form-submit:before, .front.domain-main .triptych-first .block .block-title:before, .front.domain-main .triptych-middle .block .block-title:before, .front.domain-main .triptych-last .block .block-title:before {
+a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, a.social-icon.Govdelivery:before, a.social-icon.Social.Wall:before, .breadcrumbs li:first-child a:before, .button.icon-play:before, #search-form .form-submit:before, .front.domain-main .triptych-first .block .block-title:before, .front.domain-main .triptych-middle .block .block-title:before, .front.domain-main .triptych-last .block .block-title:before {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -212,7 +212,7 @@ a.social-icon.Vimeo:before {
 /********************************** */
 /* line 313, ../sass/base/_mixins.sass */
 .no-page-title #page-title, .no-page-title #section-title, .l-footer-sections-bottom form label, .l-footer-sections-bottom form .grippie, .no-labels label,
-.no-label label, .front ul.breadcrumbs, .front.domain-main .l-featured:after, .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item label,
+.no-label label, #search-form .form-type-textfield label, .front ul.breadcrumbs, .front.domain-main .l-featured:after, .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item label,
 .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item .description, .page-people #page-title, .node-type-person #page-title {
   display: none;
 }
@@ -225,7 +225,7 @@ a.social-icon.Vimeo:before {
 
 /* line 358, ../sass/base/_mixins.sass */
 .more-link,
-.field-name-node-link, .node-event.node-teaser .field-name-title a,
+.field-name-node-link, ol.search-results h3.title a, .node-event.node-teaser .field-name-title a,
 .node-event.view-mode-compact_teaser .field-name-title a,
 .node-teaser.node-program .field-name-title a,
 .node-teaser.node-person .field-name-title a {
@@ -233,7 +233,7 @@ a.social-icon.Vimeo:before {
 }
 /* line 361, ../sass/base/_mixins.sass */
 .more-link:hover,
-.field-name-node-link:hover, .node-event.node-teaser .field-name-title a:hover,
+.field-name-node-link:hover, ol.search-results h3.title a:hover, .node-event.node-teaser .field-name-title a:hover,
 .node-event.view-mode-compact_teaser .field-name-title a:hover,
 .node-teaser.node-program .field-name-title a:hover,
 .node-teaser.node-person .field-name-title a:hover {
@@ -279,7 +279,7 @@ h1 a:active, h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active, .h
 }
 
 /* line 401, ../sass/base/_mixins.sass */
-h1 strong, strong h1, h2 strong, strong h2, h5 strong, strong h5, .views-exposed-form label {
+h1 strong, strong h1, h2 strong, strong h2, .views-exposed-form label {
   font-weight: 400;
 }
 
@@ -298,7 +298,7 @@ h3, h4 {
 /* line 420, ../sass/base/_mixins.sass */
 [role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .more-link,
 .field-name-node-link, .title-block a, .bean-image-collection a, .block-views-news-block a,
-.block-views-news-block-4 a, .l-footer .block-title, .share42init:before, .front.domain-main .view-display-id-block_front_mayor .more-link a, .front.domain-main .l-triptych .more-link a, .node-event.node-teaser .date-calendar,
+.block-views-news-block-4 a, [role=complementary] form .form-type-radio label, [role=complementary] form .form-type-checkbox label, .l-footer .block-title, .share42init:before, .front.domain-main .view-display-id-block_front_mayor .more-link a, .front.domain-main .l-triptych .more-link a, .node-event.node-teaser .date-calendar,
 .node-event.view-mode-compact_teaser .date-calendar {
   font-family: "open-sans";
   font-style: normal;
@@ -963,6 +963,19 @@ html, body {
 /* line 16, ../sass/layout/_aside.sass */
 [role=complementary] .block {
   margin-bottom: 1.42857rem;
+}
+/* line 19, ../sass/layout/_aside.sass */
+[role=complementary] form {
+  border-top: solid #dddddd 1px;
+}
+/* line 902, ../sass/base/_mixins.sass */
+[role=complementary] form .form-type-radio, [role=complementary] form .form-type-checkbox {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+/* line 913, ../sass/base/_mixins.sass */
+[role=complementary] form .form-type-radio button, [role=complementary] form .form-type-checkbox button {
+  margin-top: 0.71429rem;
 }
 
 /* line 3, ../sass/layout/_triptych.sass */
@@ -2269,20 +2282,20 @@ ul[data-orbit] ~ .orbit-next:before {
 }
 
 /* line 6, ../sass/theme/_search.sass */
-#search-block-form {
+#search-form {
   position: relative;
   width: 100%;
 }
 /* line 10, ../sass/theme/_search.sass */
-#search-block-form .form-item {
+#search-form .form-item {
   display: block;
 }
-/* line 13, ../sass/theme/_search.sass */
-#search-block-form input.form-text {
+/* line 17, ../sass/theme/_search.sass */
+#search-form input.form-text {
   padding-right: 3.14286rem;
 }
-/* line 16, ../sass/theme/_search.sass */
-#search-block-form .form-submit {
+/* line 20, ../sass/theme/_search.sass */
+#search-form .form-submit {
   margin: 0;
   color: #cccccc;
   font-size: 1rem;
@@ -2300,19 +2313,19 @@ ul[data-orbit] ~ .orbit-next:before {
   top: 1px;
 }
 /* line 71, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
-#search-block-form .form-submit, #search-block-form .form-submit:focus, #search-block-form .form-submit:hover, #search-block-form .form-submit:active {
+#search-form .form-submit, #search-form .form-submit:focus, #search-form .form-submit:hover, #search-form .form-submit:active {
   background: none;
   border: 0;
   padding: 0;
   font-size: 1rem;
 }
 /* line 77, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
-#search-block-form .form-submit:focus, #search-block-form .form-submit:hover, #search-block-form .form-submit:active {
+#search-form .form-submit:focus, #search-form .form-submit:hover, #search-form .form-submit:active {
   color: #b3b3b3;
   outline: 0;
 }
 /* line 171, ../sass/components/_icons-fontawesome.sass */
-#search-block-form .form-submit:before {
+#search-form .form-submit:before {
   content: "\f002";
   position: absolute;
   left: 0;
@@ -2324,26 +2337,134 @@ ul[data-orbit] ~ .orbit-next:before {
   width: 36px;
 }
 
-/* line 29, ../sass/theme/_search.sass */
-#search-block-form input, #search-block-form button {
+/* line 33, ../sass/theme/_search.sass */
+#search-form input, #search-form button {
   margin-bottom: 0;
 }
 
+/* line 42, ../sass/theme/_search.sass */
+.admin-menu .ac_results {
+  margin-top: -2.14286rem;
+}
+/* line 45, ../sass/theme/_search.sass */
+.ac_results > ul {
+  background: white;
+  border: solid 1px #cccccc;
+  font-size: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* line 51, ../sass/theme/_search.sass */
+.ac_results li {
+  font-size: 1rem;
+  cursor: pointer;
+  line-height: 1.28571rem;
+  margin: 0;
+  border-top: solid #e5e5e5 1px;
+}
+/* line 206, ../sass/vendor/foundation/components/_dropdown.scss */
+.ac_results li:hover, .ac_results li:focus {
+  background: #eeeeee;
+}
+/* line 208, ../sass/vendor/foundation/components/_dropdown.scss */
+.ac_results li a {
+  display: block;
+  padding: 0.5rem;
+  color: #555555;
+}
+/* line 55, ../sass/theme/_search.sass */
+.ac_results li:first-child {
+  border-top: 0;
+}
+/* line 58, ../sass/theme/_search.sass */
+.ac_results li > * {
+  display: block;
+  padding: 0.5rem;
+  color: #555555;
+}
+
+/* line 63, ../sass/theme/_search.sass */
+.balt_apachesolr_autocomplete.suggestion {
+  padding-left: 4.78571rem;
+}
+
+/* line 66, ../sass/theme/_search.sass */
+.suggest-title.label {
+  float: left;
+  display: block;
+  margin-left: -4.28571rem;
+}
+
+/* line 76, ../sass/theme/_search.sass */
+.block-current-search {
+  border-bottom: solid #cccccc 1px;
+}
+/* line 79, ../sass/theme/_search.sass */
+.main .block-current-search {
+  margin-bottom: 1.78571rem;
+}
+
+/* line 84, ../sass/theme/_search.sass */
+ul.facetapi-facetapi-suggestion {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 91, ../sass/theme/_search.sass */
+.spelling-suggestions {
+  /* IE6 */
+  /* IE7 */
+  margin-bottom: 0.71429rem;
+}
+/* line 252, ../sass/base/_mixins.sass */
+.spelling-suggestions:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+/* line 260, ../sass/base/_mixins.sass */
+.spelling-suggestions * html {
+  height: 1%;
+}
+/* line 264, ../sass/base/_mixins.sass */
+.clearfix *:first-child + html .spelling-suggestions {
+  min-height: 1%;
+}
+/* line 95, ../sass/theme/_search.sass */
+.spelling-suggestions dl > * {
+  float: left;
+  margin-right: 0.35714rem;
+}
+
+/* line 99, ../sass/theme/_search.sass */
+ol.search-results {
+  margin-left: 0;
+  clear: both;
+}
+/* line 107, ../sass/theme/_search.sass */
+ol.search-results .search-snippet-info {
+  padding-left: 0;
+}
+
 @media only screen and (max-width: 58.92857em) {
-  /* line 45, ../sass/theme/_search.sass */
-  .header-region-right #search-block-form {
+  /* line 125, ../sass/theme/_search.sass */
+  .header-region-right #search-form {
     display: none;
   }
 }
 @media only screen and (min-width: 59em) {
-  /* line 54, ../sass/theme/_search.sass */
-  #search-block-form {
+  /* line 134, ../sass/theme/_search.sass */
+  #search-form {
     clear: both;
     float: right;
     max-width: 21.42857rem;
   }
-  /* line 60, ../sass/theme/_search.sass */
-  .top-bar #search-block-form {
+  /* line 140, ../sass/theme/_search.sass */
+  .top-bar #search-form {
     display: none;
   }
 }
@@ -2757,7 +2878,7 @@ ul[data-orbit] ~ .orbit-next:before {
   position: relative;
   text-transform: uppercase;
 }
-/* line 919, ../sass/base/_mixins.sass */
+/* line 936, ../sass/base/_mixins.sass */
 .node-event.node-teaser .date-calendar:before,
 .node-event.view-mode-compact_teaser .date-calendar:before {
   content: "";
@@ -2768,12 +2889,12 @@ ul[data-orbit] ~ .orbit-next:before {
   height: 0.21429rem;
   width: 100%;
 }
-/* line 925, ../sass/base/_mixins.sass */
+/* line 942, ../sass/base/_mixins.sass */
 .node-event.node-teaser .date-calendar .date-display-single > *:first-child,
 .node-event.view-mode-compact_teaser .date-calendar .date-display-single > *:first-child {
   font-size: 1.14286rem;
 }
-/* line 928, ../sass/base/_mixins.sass */
+/* line 945, ../sass/base/_mixins.sass */
 .node-event.node-teaser .date-calendar .date-display-single > *:last-child,
 .node-event.view-mode-compact_teaser .date-calendar .date-display-single > *:last-child {
   font-size: 2.57143rem;

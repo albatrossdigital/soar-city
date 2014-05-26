@@ -30,8 +30,8 @@
       // searchform switches from header area
       // to topbar on "past-menu" media query
       // searchInTopbar == false if in header, true if in topbar 
-      var $searchForm = $('#search-block-form'),
-        $searchFormWrapper = $('.top-bar-section > .block-search-form'),
+      var $searchForm = $('#search-form'),
+        $searchFormWrapper = $('.top-bar-section > .block-balt-apachesolr'),
         $headerRegion = $('.l-header-region > .header-region-right'),
         searchInTopbar = true,
         $body = $('body');

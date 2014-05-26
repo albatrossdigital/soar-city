@@ -6669,7 +6669,7 @@ h1 a:active, h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active {
 }
 
 /* line 401, ../sass/base/_mixins.sass */
-h1 strong, strong h1, h2 strong, strong h2, h5 strong, strong h5 {
+h1 strong, strong h1, h2 strong, strong h2 {
   font-weight: 400;
 }
 

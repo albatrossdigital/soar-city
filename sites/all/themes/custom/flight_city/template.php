@@ -240,6 +240,20 @@ function flight_city_preprocess_block(&$vars) {
 }
 
 
+/**
+ * Implements hook_preprocess_block_()
+ */
+function flight_city_preprocess_search_result(&$vars) {
+
+  if(isset($result['entity_type'])) {
+    $vars['classes_array'][] = 'entity-' . $result['entity_type'];
+  }
+  if(isset($result['bundle'])) {
+    $vars['classes_array'][] = 'bundle-' . $result['bundle'];
+  }
+}
+
+
 
 //function flight_city_preprocess_views_view(&$variables) {
 //}
@@ -378,27 +392,31 @@ function THEMENAME_preprocess_views_view_fields(&$variables) {
 /**
  * Implements hook_css_alter().
  */
-//function flight_city_css_alter(&$css) {
-//  // Always remove base theme CSS.
-//  $theme_path = drupal_get_path('theme', 'zurb_foundation');
-//
-//  foreach($css as $path => $values) {
-//    if(strpos($path, $theme_path) === 0) {
-//      unset($css[$path]);
-//    }
-//  }
-//}
+function flight_city_css_alter(&$css) {
+
+  $auto_complete = drupal_get_path('module', 'apachesolr_autocomplete');
+  $unset = array(
+    $auto_complete . '/jquery-autocomplete/jquery.autocomplete.css',
+    $auto_complete . '/apachesolr_autocomplete.css'
+  );
+  foreach($unset as $path) {
+    if(isset($css[$path])) {
+      unset($css[$path]);
+    }
+  }
+}
 
 /**
  * Implements hook_js_alter().
  */
-//function flight_city_js_alter(&$js) {
-//  // Always remove base theme JS.
-//  $theme_path = drupal_get_path('theme', 'zurb_foundation');
-//
-//  foreach($js as $path => $values) {
-//    if(strpos($path, $theme_path) === 0) {
-//      unset($js[$path]);
-//    }
-//  }
-//}
+function flight_city_js_alter(&$js) {
+  $auto_complete = drupal_get_path('module', 'apachesolr_autocomplete');
+  $unset = array(
+    $auto_complete . '/apachesolr_autocomplete.js'
+  );
+  foreach($unset as $path) {
+    if(isset($js[$path])) {
+      unset($js[$path]);
+    }
+  }
+}
