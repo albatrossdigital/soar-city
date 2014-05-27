@@ -30,11 +30,12 @@
       // searchform switches from header area
       // to topbar on "past-menu" media query
       // searchInTopbar == false if in header, true if in topbar 
-      var $searchForm = $('#search-block-form'),
-        $searchFormWrapper = $('.top-bar-section > .block-search-form'),
+      var $searchForm = $('#search-form'),
+        $searchFormWrapper = $('.top-bar-section > .block-balt-apachesolr'),
         $headerRegion = $('.l-header-region > .header-region-right'),
         searchInTopbar = true,
-        $body = $('body');
+        $body = $('body'),
+        $page = $body.children('.page');
 
       // toggle search from header to topbar
       function toggleSearch(topbar) {
@@ -75,10 +76,20 @@
         searchCheck();
       }, 100));
 
-      // Main section menu (entity submenu)
-      $('#toggle-main-section-menu', context).once('main-off-canvas', function() {
+      // Search button, add focus
+      $('#search-toggle', context).once('main-off-canvas', function() {
         $(this).click(function() {
+          if(!$page.hasClass('move-left')) {
+            $('input[type="text"]', $searchForm).select();
+          }
+        });
+      });
+
+      // Main section menu (entity submenu)
+      $('#toggle-main-section-menu, #toggle-main-section-menu-close', context).once('main-off-canvas', function() {
+        $(this).click(function(e) {
           $('.l-main[data-offcanvas]').toggleClass('move-right');
+          e.preventDefault();
         });
       });
 

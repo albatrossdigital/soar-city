@@ -5,12 +5,49 @@
   max-width: 100%
 
 
+.toggle-off-canvas
+  line-height: $topbar-height
+  position: absolute
+  top: 0
+  font-size: rem-calc(20)
+  z-index: 1
+
+  span
+    +e(hide)
+
+  a
+    +c(link-yellow)
+
+
+.menu-toggle
+  text-align: left
+  left: $column-gutter/2
+
+.search-toggle
+  text-align: right
+  right: $column-gutter/2
+  // account for menu extra width
+  margin-right: 1%
+
+.right-off-canvas-toggle
+  i
+    margin-right: 0
+
+
 // Main Menu
 // ------------------------------------------------------
 
 //$off-menu-border: lighten($blue, 2%)
 
 .right-off-canvas-menu
+  .right-off-canvas-toggle
+    +c(link-yellow)
+    padding-left: $column-gutter
+    position: absolute
+    font-size: 1rem
+    top: $topbar-height - rem-calc(5)
+    z-index: 1
+
 
   .menu-name-main-menu
     +main-menu-style()
@@ -25,9 +62,16 @@
 // Main section sub-menu (sidebar)
 // ------------------------------------------------------
 
-.left-off-canvas-menu
-  background: none!important
+#toggle-main-section-menu-close
+  +c(link-white)
+  background: $topbar-bg-color
+  margin-bottom: rem-calc(12)
+  line-height: rem-calc(40)
+  display: block
+  text-align: right
 
+.left-off-canvas-menu
+  background: $gray-lighter
 
 
 // *
@@ -39,7 +83,8 @@
 +respond($small-only)
 
   .left-off-canvas-menu
-    padding: 0!important
+    padding: rem-calc(0)!important
+    border: common-border-val()
 
     & > *
       max-width: $off-canvas-width
@@ -62,16 +107,14 @@
       +column-padding()
       overflow: hidden
 
-    .block-search-form
+    .block-balt-apachesolr
       margin-top: -$topbar-height
-      margin-bottom: rem-calc(10)
+      //margin-bottom: rem-calc(10)
       padding-top: rem-calc(10)
 
     .menu-name-main-menu
       +expand-row()
-
-    .menu-name-main-menu
-      //+main-menu-style()
+      padding-top: rem-calc(44)
 
       li a
         display: block
@@ -103,6 +146,9 @@
   .move-right > .inner-wrap
     +translate3d(0, 0, 0)
 
+  #toggle-main-section-menu-close
+    display: none
+
   .left-off-canvas-menu
     position: relative!important
     left: auto!important
@@ -114,6 +160,7 @@
     +box-sizing(border-box)
     width: gridCalc(3, 12)
     z-index: 1
+    background: none!important
 
 
 +respond($past-menu)

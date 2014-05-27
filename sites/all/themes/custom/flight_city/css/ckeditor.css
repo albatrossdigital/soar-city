@@ -6427,7 +6427,7 @@ blockquote p {
   bottom: 0;
   position: absolute;
   overflow-y: auto;
-  background: #42484f;
+  background: #2b2f33;
   z-index: 1001;
   box-sizing: content-box;
   -webkit-overflow-scrolling: touch;
@@ -6452,7 +6452,7 @@ blockquote p {
   bottom: 0;
   position: absolute;
   overflow-y: auto;
-  background: #42484f;
+  background: #2b2f33;
   z-index: 1001;
   box-sizing: content-box;
   -webkit-overflow-scrolling: touch;
@@ -6491,7 +6491,7 @@ ul.off-canvas-list li a {
   display: block;
   padding: 0.66667rem;
   color: rgba(255, 255, 255, 0.7);
-  border-bottom: 1px solid #31363b;
+  border-bottom: 1px solid #202326;
   transition: background 300ms ease;
 }
 /* line 231, ../sass/vendor/foundation/components/_offcanvas.scss */
@@ -6655,30 +6655,30 @@ i[class^="fa"] {
 }
 
 /********************************** */
-/* line 376, ../sass/base/_mixins.sass */
+/* line 382, ../sass/base/_mixins.sass */
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   color: #111111;
 }
-/* line 379, ../sass/base/_mixins.sass */
+/* line 385, ../sass/base/_mixins.sass */
 h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
   color: #0a83a1;
 }
-/* line 382, ../sass/base/_mixins.sass */
+/* line 388, ../sass/base/_mixins.sass */
 h1 a:active, h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active {
   color: #07b1db;
 }
 
-/* line 401, ../sass/base/_mixins.sass */
-h1 strong, strong h1, h2 strong, strong h2, h5 strong, strong h5 {
+/* line 407, ../sass/base/_mixins.sass */
+h1 strong, strong h1, h2 strong, strong h2 {
   font-weight: 400;
 }
 
-/* line 404, ../sass/base/_mixins.sass */
+/* line 410, ../sass/base/_mixins.sass */
 h3, h4 {
   font-weight: 700;
 }
 
-/* line 412, ../sass/base/_mixins.sass */
+/* line 418, ../sass/base/_mixins.sass */
 .label-inline, h1, h2 {
   font-family: "ff-tisa-web-pro";
   font-style: normal;

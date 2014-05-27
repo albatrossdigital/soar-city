@@ -3,12 +3,16 @@ $search-button-size: 36px
 // Search forms
 // ------------------------------------------------------
 
-#search-block-form
+#search-form
   position: relative
   width: 100%
 
   .form-item
     display: block
+
+  .form-type-textfield
+    label
+      +e(hide)
 
   input.form-text
     padding-right: $form-spacing/2 + rem-calc($search-button-size)
@@ -23,11 +27,87 @@ $search-button-size: 36px
 // Search block
 // ------------------------------------------------------
 
-#search-block-form
+#search-form
 
 
   input, button 
     margin-bottom: 0
+
+
+// Autocomplete results
+// ------------------------------------------------------
+
+.ac_results 
+
+  .admin-menu &
+    margin-top: rem-calc(-30)
+
+  & > ul
+    background: $f-dropdown-bg
+    border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color
+    font-size: $f-dropdown-font-size
+    +list-clear
+
+  li 
+    +dropdown-style()
+    border-top: common-border-val($gray-light)
+
+    &:first-child
+      border-top: 0
+
+    & > *
+      display: block
+      padding: $f-dropdown-list-padding
+      color: $f-dropdown-font-color
+
+.balt_apachesolr_autocomplete.suggestion
+  padding-left: rem-calc(67)
+
+.suggest-title.label
+  float: left
+  display: block
+  margin-left: rem-calc(-60)
+  
+
+// facets
+// ------------------------------------------------------
+
+// search result info
+.block-current-search
+  +common-border
+
+  .main &
+    margin-bottom: rem-calc(25)
+
+
+// Domain notification
+ul.facetapi-facetapi-suggestion
+  +list-clear()
+
+
+// search results
+// ------------------------------------------------------
+
+.spelling-suggestions
+  +clearfix
+  margin-bottom: rem-calc(10)
+
+  dl > * 
+    float: left
+    margin-right: rem-calc(5)
+
+ol.search-results
+  margin-left: 0
+  clear: both
+
+  h3.title
+    a
+      +c(link-alt)
+
+  .search-snippet-info
+    padding-left: 0
+    
+
 
 // *
 // * Media Queries
@@ -39,7 +119,7 @@ $search-button-size: 36px
   // Search block
   // ------------------------------------------------------
 
-  #search-block-form
+  #search-form
 
     // hide in header region
     .header-region-right &
@@ -51,7 +131,7 @@ $search-button-size: 36px
   // Search block
   // ------------------------------------------------------
 
-  #search-block-form
+  #search-form
     clear: both
     float: right
     max-width: rem-calc(300)

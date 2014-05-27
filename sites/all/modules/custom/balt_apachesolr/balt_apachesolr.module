@@ -1,9 +1,254 @@
 <?php
 
+
+/**
+ * @file
+ * Code for the balt_apachesolr feature.
+ */
+
+include_once 'balt_apachesolr.features.inc';
+
+
+define('BALT_APACHESOLR_FORM', 'core_search');
+define('BALT_APACHESOLR_DOMAIN_FIELD', 'im_domain_id');
+define('BALT_APACHESOLR_ENTITY_FIELD', 'bundle_name');
+define('BALT_APACHESOLR_URL_REPLACE', 'http://www.');
+define('BALT_APACHESOLR_URL_MATCH', '@(?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:.*?\.)(.*)@i');
+define('BALT_APACHESOLR_URL_MATCH_DOMAIN', '@(?:https?://|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(.*?)(?:/)@i');
+
 /**
  * @file
  * Custom search elements for Baltimore.
  */
+
+/**
+ * Implementation of hook_menu().
+ */
+function balt_apachesolr_menu() {
+  $items = array();
+
+  $items['balt_apachesolr_autocomplete'] = array(
+    'page callback' => 'balt_apachesolr_autocomplete_callback',
+    'access callback' => 'user_access',
+    'access arguments' => array('search content'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+
+/**
+ * Implements hook_theme().
+ */
+function balt_apachesolr_theme() {
+  return array(
+    'balt_facetapi_link_inactive' => array(
+      'arguments' => array(
+        'text' => NULL, 
+        'path' => NULL, 
+        'options' => array(), 
+        'count' => 0
+      ),
+      'file' => 'balt_apachesolr.theme.inc',
+    ),
+    'balt_facetapi_link_active' => array(
+      'arguments' => array(
+        'text' => NULL, 
+        'path' => NULL, 
+        'options' => array()
+      ),
+      'file' => 'balt_apachesolr.theme.inc',
+    ),
+    'balt_apachesolr_suggestion_box' => array(
+      'variables' => array(
+        'items' => array(), 
+        'active-item' => NULL, 
+        'attributes' => array(),
+      ),
+      'template' => 'templates/balt-apachesolr-suggestion-box',
+      'file' => 'balt_apachesolr.theme.inc',
+    ),
+    'balt_apachesolr_answers_autocomplete' => array(
+      'file' => 'balt_apachesolr.theme.inc',
+      'arguments' => array(
+        'keys' => NULL,
+        'suggestion' => NULL,
+        'count' => NULL,
+      ),
+    ),
+  );
+}
+
+
+/**
+ * Helper function returns solr index key().
+ */
+function _balt_apachesolr_index_key() {
+  $key = array(
+    'name'       => 'domain_id',
+    'multiple'   => TRUE,
+    'index_type' => 'integer',
+  );
+  return apachesolr_index_key($key);
+}
+
+function _balt_apachesolr_key_tester($key, $string) {
+  return strpos($key, $string) !== FALSE;
+}
+
+
+/*************************************
+ *
+ * blocks
+ *
+ *************************************/
+
+
+/**
+ * Implements hook_block_info().
+ *
+ */
+function balt_apachesolr_block_info() {
+  $blocks = array();
+  $blocks['balt_search_form'] = array(
+    'info' => 'Full apachesolr search form in block',
+    'cache' => DRUPAL_CACHE_PER_PAGE,
+  );
+  return $blocks;
+}
+
+
+/**
+ * Implements hook_block_view().
+ */
+function balt_apachesolr_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    case 'balt_search_form':
+
+      $block['content'] = array(
+        '#markup' => drupal_render(balt_apachesolr_build_apachesolr_form())
+      );
+      break;
+  }
+  return $block;
+}
+
+/*************************************
+ *
+ * form
+ *
+ *************************************/
+
+function _balt_apachesolr_get_solr_query_value($query) {
+  return empty($query) ? '[]' : json_encode(array('f' => $query));
+}
+
+function _balt_apachesolr_bundle_filters(&$query, $current_url) {
+  if(_balt_apachesolr_key_tester($current_url, 'answers')) {
+    $query[] = BALT_APACHESOLR_ENTITY_FIELD . ':How do I';
+  }
+  else if(_balt_apachesolr_key_tester($current_url, '311')) {
+    $query[] = BALT_APACHESOLR_ENTITY_FIELD . ':311 Category';
+  }
+  else if(_balt_apachesolr_key_tester($current_url, 'events')) {
+    $query[] = BALT_APACHESOLR_ENTITY_FIELD . ':Event';
+  }
+  else if(_balt_apachesolr_key_tester($current_url, 'news')) {
+    $query[] = BALT_APACHESOLR_ENTITY_FIELD . ':Story';
+  }
+}
+
+
+function balt_apachesolr_build_apachesolr_form() {
+  // Get apache solr search 
+  module_load_include('inc', 'apachesolr_search', 'apachesolr_search.pages');
+  $search_page = apachesolr_search_page_load(BALT_APACHESOLR_FORM);
+
+  $current_url = $_GET['q'];
+  $search_url = $search_page['search_path'];
+  $on_search_page = FALSE;
+  // Domain settings
+  $current_domain = domain_get_domain();
+  $is_default_domain = $current_domain['is_default'];
+
+  // Grab keys 
+  $keys = '';
+  if(strpos($current_url, $search_url) === 0) {
+    $on_search_page = TRUE;
+    $keys = str_replace(array($search_url, '/'), array('',''), $current_url);
+    $keys = rawurldecode($keys);
+  }
+
+  // Build form
+  $form = drupal_get_form('apachesolr_search_custom_page_search_form', $search_page, $keys);
+  // Set filters
+  $form['basic']['retain-filters'] = array(
+    '#type' => 'hidden',
+    '#value' => 1,
+    '#input' => TRUE,
+    '#name' => 'retain-filters'
+  );
+  // Modify appearance
+  $form['basic']['keys']['#attributes'] = array(
+    'placeholder' => t('Search'),
+    'class' => array('no-labels')
+  );
+  // Explicitly add autocomplete
+  if (module_exists('apachesolr_autocomplete')) {
+    $element = &$form['basic']['keys'];
+    balt_apachesolr_autocomplete_do_alter($element);
+    $form['#attached'] = array('js' => array(
+      drupal_get_path('module', 'balt_apachesolr') .'/js/balt_apachesolr_autocomplete.js',
+      array(
+        'type' => 'setting',
+        'data' => array(
+          'balt_apachesolr_autocomplete' => array(
+            'path' => '/balt_apachesolr_autocomplete'
+          )
+        )
+      )
+    ));
+  }
+
+  $query = array();
+
+  // Build forced URL for sub-domains
+  if(!$is_default_domain) {
+    preg_match(BALT_APACHESOLR_URL_MATCH, $form['#action'], $matches);
+    if(count($matches) == 2) {
+      $url = array_pop($matches);
+      $form['#action'] = BALT_APACHESOLR_URL_REPLACE . $url;
+    }
+    // add domain to facets
+    $query[] = BALT_APACHESOLR_DOMAIN_FIELD  . ':' . $current_domain['domain_id'];
+  }
+  // Add facet for site sections
+  if(!$on_search_page) {
+    _balt_apachesolr_bundle_filters($query, $current_url);
+  }
+  // No current query so build
+  if($form['basic']['get']['#value'] == '[]') {
+    $form['basic']['get']['#value'] = _balt_apachesolr_get_solr_query_value($query);
+  }
+  return $form;
+}
+
+
+/*************************************
+ *
+ * apachesolr
+ *
+ *************************************/
+
+/**
+* Implements hook_apachesolr_query_alter().
+*/
+function balt_apachesolr_apachesolr_query_alter($query) {
+  // Add domain key to filter all queries.
+  $query->addParam('fl', 'im_domain_id');
+}
+
 
 /**
  * Implements hook_apachesolr_search_result().
@@ -14,3 +259,299 @@ function balt_apachesolr_apachesolr_search_result_alter(&$doc, $extra, $query) {
     $doc->entity_type = '';
   }
 }
+
+/**
+ * Implements hook_apachesolr_process_results().
+ */
+function balt_apachesolr_apachesolr_process_results(&$results) {
+  $key = _balt_apachesolr_index_key();
+  //$domains = array();
+  //$default = domain_default(FALSE, FALSE);
+  //$all_domains = domain_domains();
+  foreach ($results as $idx => $r) {
+    $entity_type = $r['entity_type'];
+    // unset "hash"
+    $domain_display = $r['link'];
+    // Try to build a pretty link
+    if(!empty($r[$entity_type]->site)) {
+      preg_match(BALT_APACHESOLR_URL_MATCH_DOMAIN, $r[$entity_type]->site, $matches);
+      if(count($matches) == 2) {
+        $domain_display = str_replace('/', '', $matches[1]);
+      }
+    }
+    $results[$idx]['extra'] = array('small_link' => l($domain_display, $r['link']));   
+
+    // No drupal domain info
+    /*if(empty($r[$entity_type]->$key)) {
+      break;
+    }
+    // Rewrite content url?
+    $domain_id = FALSE;
+    $domains = is_array($r[$entity_type]->$key) ? $results[$idx][$entity_type]->$key : array($r[$entity_type]->$key);
+
+    // multiple domains, and default is in array
+    if(count($domains) > 1 && in_array($default['domain_id'], $domains)) {
+      $domain_id = $default['domain_id'];
+    }
+    // just use first
+    else {
+      $domain_id = array_shift($domains);
+    }
+    dpm($r);
+    dpm($all_domains[$domain_id]);
+    dpm($all_domains[$domain_id]['path']);
+    dpm(domain_url_encode($all_domains[$domain_id]['path']));
+    dpm(domain_url_encode($all_domains[$domain_id]['subdomain']));*/
+  }
+}
+
+/**
+* Implements hook_apachesolr_index_document_build().
+*/
+function balt_apachesolr_apachesolr_index_document_build(ApacheSolrDocument $document, $entity, $entity_type, $env_id) {
+  if (!empty($entity->domains)) {
+    // Load domains
+    $all_domains = domain_domains();
+    $domains = array();
+    $key = _balt_apachesolr_index_key();
+    // First check if we have a domain source
+    if(isset($entity->domain_source) && $entity->domain_source > 0) {
+      $domains = $entity->domain_source;
+    }
+    // check if all affiliates
+    else if(!empty($entity->subdomains)
+      && _balt_apachesolr_key_tester($entity->subdomains[0], 'All affiliates')) {
+      // Just add all domains
+      foreach ($all_domains as $domain) {
+        $domains[] = $domain['domain_id'];
+      }
+    }
+    // Else, standard
+    else {
+      $domains = $entity->domains;
+    }
+    foreach($domains as $domain) {
+      // The gid in the {domain} table is unsigned, but the domain module makes
+      // it -1 for the deault domain. Also apache doesn't like it if we query
+      // for domain id -1.
+      if ($domain == -1) {
+        $domain = 0;
+      }
+
+      // Add domain key to document.
+      $document->setMultiValue($key, $domain);
+    }
+  }
+}
+
+
+/*************************************
+ *
+ * autocomplete
+ *
+ *************************************/
+
+/**
+ * Helper function to do the actual altering of search forms.
+ *
+ * @param $element
+ *   The element to alter. Should be passed by reference so that original form
+ *   element will be altered.
+ *   E.g.: apachesolr_autocomplete_do_alter(&$form['xyz'])
+ */
+function balt_apachesolr_autocomplete_do_alter(&$element) {
+  // Create elements if they do not exist.
+  if (!isset($element['#attributes'])) {
+    $element['#attributes'] = array();
+  }
+  if (!isset($element['#attributes']['class'])) {
+    $element['#attributes']['class'] = array();
+  }
+  array_push($element['#attributes']['class'], 'balt-apachesolr-autocomplete', 'unprocessed');
+}
+
+/**
+ * Callback for url apachesolr_autocomplete/autocomplete.
+ * @param $keys
+ *   The user-entered query.
+ */
+function balt_apachesolr_autocomplete_callback($keys = '') {
+
+  $keys = $_GET['query'];
+
+  $how_do_suggestions = balt_apachesolr_autocomplete_answers($keys, 5);
+  $suggestions = apachesolr_autocomplete_suggest_word_completion($keys, 5);
+
+  $result = array();
+
+  foreach ($how_do_suggestions as $key => $display) {
+    $result[] = array(
+      "key" => substr($key,1),
+      "display" => $display['display'],
+      "gotoUrl" => $display['url']
+    );
+  }
+  // Place suggestions into new array for returning as JSON.
+  foreach ($suggestions as $key => $display) {
+    $result[] = array(
+      "key" => substr($key,1),
+      "display" => $display
+    );
+  }
+  drupal_json_output($result);
+  exit();
+}
+
+function balt_apachesolr_autocomplete_answers($keys = '') {
+  $matches = array();
+  $suggestions = array();
+  $keys = trim($keys);
+
+  // We need the keys array to make sure we don't suggest words that are already
+  // in the search terms.
+  $keys_array = explode(' ', $keys);
+  $keys_array = array_filter($keys_array);
+
+  // Query Solr for $keys so that suggestions will always return results.
+  $query = apachesolr_drupal_query($keys);
+
+  if (!$query) {
+    return array();
+  }
+  // Grab last part
+  preg_match('/^(:?(.* |))([^ ]+)$/', $keys, $matches);
+  $first_part = @$matches[2];
+  // Make sure $last_part contains meaningful characters
+  $last_part = preg_replace('/[' . PREG_CLASS_UNICODE_WORD_BOUNDARY . ']+/u', '', @$matches[3]);
+  if ($last_part == '') {
+    return array();
+  }
+
+  // Add params
+  $query->addParam('fl', 'url');
+  $query->addParam('fl', 'label');
+  $query->addParam('fq', 'label:' . $last_part);
+  $query->addParam('fq', 'bundle_name:How do I');
+  
+  //dpm($query->getParams());
+  $response = $query->search();
+  // Add current search as suggestion if results > 0
+  if ($response->response->numFound > 0 && $keys != '') {
+    foreach ($response->response->docs as $doc) {
+      // Add * to array element key to force into a string, else PHP will
+      // renumber keys that look like numbers on the returned array.
+      $suggestions['*' . $doc->label] = array(
+        'display' => theme('balt_apachesolr_answers_autocomplete', array(
+          'url' => $doc->url,
+          'title' => $doc->label
+        )),
+        'url' => $doc->url
+      );
+    }
+  }
+  return empty($suggestions) ? array() : $suggestions;
+}
+
+
+
+/*************************************
+ *
+ * facetapi
+ *
+ *************************************/
+
+
+
+/**
+ * Define all facets provided by the module.
+ *
+ *
+ * @param array $searcher_info
+ *   The definition of the searcher that facets are being collected for.
+ *
+ * @return array
+ *   An associative array keyed by unique name of the facet. 
+ */
+function balt_apachesolr_facetapi_facet_info(array $searcher_info) {
+  $facets = array();
+  $key = _balt_apachesolr_index_key();
+
+  $facets[$key] = array(
+    'name' => $key,
+    'label' => t('Sub Site'),
+    'description' => t('Restrict search by domain.'),
+    'field' => $key,
+    'map callback' => 'balt_apachesolr_facetapi_facet_map_callback',
+    'facet missing allowed' => TRUE
+  );
+
+  return $facets;
+}
+
+/**
+ * Allows for alterations to the facet definitions.
+ * @see hook_facetapi_facet_info()
+ */
+function balt_apachesolr_facetapi_facet_info_alter(array &$facet_info, array $searcher_info) {
+  foreach ($facet_info as $key => $value) {
+    $facet_info[$key]['facet mincount allowed'] = TRUE;
+  }
+}
+
+function balt_apachesolr_facetapi_facet_map_callback($variables) {
+  foreach ($variables as $domain_id) {
+    $domain = domain_load($domain_id);
+    $map[$domain_id] = $domain['sitename'];
+  }
+  return $map;
+}
+
+/**
+ * Implements hook_facetapi_widgets()
+ */
+function balt_apachesolr_facetapi_widgets() {
+  return array(
+    'facetapi_suggestion' => array(
+      'handler' => array(
+        'label' => t('Suggestion box'),
+        'class' => 'FacetapiWidgetSuggestion',
+        'query types' => array('term'),
+        'requirements' => array(
+          'facetapi_requirement_realm_property' => array('element type' => 'links')
+        ),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_facetapi_switch_form_options_alter()
+ */
+function balt_apachesolr_balt_apachesolr_suggestion_items_alter(&$element, $facet_name) {
+  
+  switch($facet_name) {
+    case BALT_APACHESOLR_DOMAIN_FIELD:
+      $default = domain_default(FALSE, FALSE);
+      if(isset($element[$default['domain_id']])) {
+        unset($element[$default['domain_id']]);
+      }
+      break;
+  }
+} 
+
+/**
+ * Implements hook_facetapi_switch_form_options_alter()
+ */
+function balt_apachesolr_facetapi_switch_form_options_alter(&$options, $facet_name) {
+  switch($facet_name) {
+    case 'bundle_name':
+      // Override options completely
+      $options = array(
+        'facetswitchreset' => t('All'),
+        'bundle_name:311 Category' => t('311 Services'),
+        'bundle_name:How do I' => t('How do I\'s'),
+        'bundle_name:Event' => t('Events'),
+        'bundle_name:Story' => t('News'),
+      );
+  }
+} 

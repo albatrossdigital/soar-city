@@ -373,6 +373,12 @@ $full-common: sprite-map("full-common/*.png")
   &:hover
     color: darken($white, 10%)
 
+%color-link-yellow
+  color: $yellow
+
+  &:hover
+    color: darken($yellow, 10%)
+
 %color-link-header
   color: $black
 
@@ -802,7 +808,7 @@ $main-menu-border-size: rem-calc(3)
   font-weight: $topbar-link-weight
   padding:  0
   border-top: $main-menu-border-size solid transparent
-  background: $topbar-link-bg
+  background: $topbar-link-bg-hover
   height: $topbar-height
   text-transform: $topbar-link-text-transform
   line-height: $topbar-height - $main-menu-border-size
@@ -895,6 +901,23 @@ $main-menu-border-size: rem-calc(3)
   @if $big
     +big-form()
 
+@mixin spaced-out-form($border: false)
+  @if $border
+    border-top: common-border-val($gray-border)
+
+  .form-type-radio, .form-type-checkbox
+    margin-top: rem-calc(14)
+    margin-bottom: rem-calc(14)
+
+    label
+      +f(alt-alt)
+      //font-size: $h5-font-size
+
+    input
+      //margin-top: rem-calc(6)
+
+    button
+      margin-top: rem-calc(10) 
 
 // search button replace
 @mixin search-button($color: $gray, $size: 36px, $font: ($size*.5))
