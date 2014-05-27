@@ -87,8 +87,9 @@
 
       // Main section menu (entity submenu)
       $('#toggle-main-section-menu, #toggle-main-section-menu-close', context).once('main-off-canvas', function() {
-        $(this).click(function() {
+        $(this).click(function(e) {
           $('.l-main[data-offcanvas]').toggleClass('move-right');
+          e.preventDefault();
         });
       });
 
