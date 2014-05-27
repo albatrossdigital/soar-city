@@ -13,15 +13,29 @@
 .title-area 
   position: relative
   margin: 0
-  padding-left: $column-gutter/2
   list-style: none
 
   .toggle-off-canvas
     float: right
     line-height: $topbar-height
+    position: absolute
+    top: 0
+    font-size: rem-calc(20)
+    z-index: 1
+
+    span
+      +e(hide)
 
     a
-      +c(link-white)
+      +c(link-yellow)
+
+  .menu-toggle
+    text-align: left
+    left: $column-gutter/2
+  
+  .search-toggle
+    text-align: right
+    right: $column-gutter/2
 
   .name 
     height: $topbar-height
@@ -29,7 +43,8 @@
     font-size: $rem-base
     padding-top: rem-calc(4)
     text-align: center
-    width: rem-calc(70)
+    width: 100%
+    
 
     a 
       display: inline-block
@@ -43,6 +58,16 @@
 // *
 // ******************************************************
 
++respond($mobile-to-menu)
+  .top-bar
+    width: 101%
+
+    .title-area
+      padding-right: 1%
+
+
+  .title-area .name
+
 +respond($past-menu)
 
   .top-bar
@@ -54,9 +79,13 @@
       margin: 0 auto
       margin-bottom: $topbar-margin-bottom
 
-    .title-area
-      float: left
-
     .name,
     .toggle-off-canvas
       display: list-item
+
+  .title-area 
+    padding-left: $column-gutter/2
+    float: left
+
+    .name
+      width: rem-calc(70)

@@ -18,10 +18,12 @@
           </div>
           <?php endif; ?>
         </li>
-        <li class="toggle-off-canvas"><a class="right-off-canvas-toggle" href="#"><span><?php print $top_bar_menu_text; ?></span> <i class="fa-bars"></i></a></li>
+        <li class="toggle-off-canvas menu-toggle"><a class="right-off-canvas-toggle" href="#"><span><?php print $top_bar_menu_text; ?></span> <i class="fa-bars"></i></a></li>
+        <li class="toggle-off-canvas search-toggle"><a id="search-toggle" class="right-off-canvas-toggle" href="#"><span><?php print t('Search'); ?></span> <i class="fa-search"></i></a></li>
       </ul>
       <aside class="right-off-canvas-menu top-bar-section">
         <?php if (!empty($page['topbar'])): ?>
+          <a class="right-off-canvas-toggle" href="#"><span><?php print t('Close'); ?></span> <i class="fa-times"></i></a>
           <?php print render($page['topbar']); ?>
         <?php endif; ?>
       </aside>
@@ -39,7 +41,7 @@
       </div>
       <div class="medium-4 columns header-region-right">
         <?php if (!empty($page['sidebar_first'])): ?>
-          <a id="toggle-main-section-menu" href="#"><span><?php print $top_bar_menu_text; ?></span> <i class="fa-bars"></i></a>
+          <a id="toggle-main-section-menu" href="#"><i class="fa-angle-left"></i><span><?php print t('Sub Menu'); ?></span></a>
         <?php endif; ?>
         <?php print render($page['header']); ?>
       </div>
@@ -170,6 +172,7 @@
 
     <?php if (!empty($page['sidebar_first'])): ?>
       <aside role="complementary" class="<?php print $sidebar_first_grid; ?> sidebar-first left-off-canvas-menu columns sidebar">
+        <a id="toggle-main-section-menu-close" href="#"><span><?php print t('Close'); ?></span> <i class="fa-times"></i></a>
         <?php print render($page['sidebar_first']); ?>
       </aside>
     <?php endif; ?>

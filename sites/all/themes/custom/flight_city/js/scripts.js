@@ -34,7 +34,8 @@
         $searchFormWrapper = $('.top-bar-section > .block-balt-apachesolr'),
         $headerRegion = $('.l-header-region > .header-region-right'),
         searchInTopbar = true,
-        $body = $('body');
+        $body = $('body'),
+        $page = $body.children('.page');
 
       // toggle search from header to topbar
       function toggleSearch(topbar) {
@@ -75,8 +76,17 @@
         searchCheck();
       }, 100));
 
+      // Search button, add focus
+      $('#search-toggle', context).once('main-off-canvas', function() {
+        $(this).click(function() {
+          if(!$page.hasClass('move-left')) {
+            $('input[type="text"]', $searchForm).select();
+          }
+        });
+      });
+
       // Main section menu (entity submenu)
-      $('#toggle-main-section-menu', context).once('main-off-canvas', function() {
+      $('#toggle-main-section-menu, #toggle-main-section-menu-close', context).once('main-off-canvas', function() {
         $(this).click(function() {
           $('.l-main[data-offcanvas]').toggleClass('move-right');
         });

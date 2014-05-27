@@ -1,17 +1,15 @@
 // Non-modular or client styles for .l-header region.
 
 .l-header-region
-  padding-top: $small-region-pad-large
+  padding-top: $small-region-pad-small
   +nice-row-border($column-gutter/2, rem-calc(5), $common-border, bottom, hidden)
-
-  div.columns
-    padding-bottom: $small-region-pad-small*2
 
 
 // Entity Branding
 // ------------------------------------------------------
 
 .header-branding
+  padding-bottom: $small-region-pad-small*2
 
 #entity-title
   font-size: $h1-font-size
@@ -69,11 +67,14 @@
 
 +respond($past-menu)
 
+  .l-header-region
+
   // Header region right
   // ------------------------------------------------------
 
   .header-region-right
     margin-top: rem-calc(-5)
+    padding-bottom: $small-region-pad-small*2
 
     .block 
       float: right
