@@ -47,7 +47,7 @@ function baltimore_migrate_feeds_importer_default() {
           3 => 0,
         ),
         'status' => '1',
-        'defuse_mail' => 1,
+        'defuse_mail' => 0,
         'mappings' => array(
           0 => array(
             'source' => 'Email address',
@@ -59,10 +59,25 @@ function baltimore_migrate_feeds_importer_default() {
             'target' => 'name',
             'unique' => FALSE,
           ),
+          2 => array(
+            'source' => 'First Name',
+            'target' => 'field_user_firstname',
+            'unique' => FALSE,
+          ),
+          3 => array(
+            'source' => 'Last Name',
+            'target' => 'field_user_lastname',
+            'unique' => FALSE,
+          ),
+          4 => array(
+            'source' => 'Title',
+            'target' => 'field_user_title',
+            'unique' => FALSE,
+          ),
         ),
-        'update_existing' => '1',
+        'update_existing' => '2',
         'input_format' => 'plain_text',
-        'skip_hash_check' => 0,
+        'skip_hash_check' => 1,
         'bundle' => 'user',
       ),
     ),
