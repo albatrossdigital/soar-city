@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * Implements hook_form_alter.
+ * File customizations.
+ */
+function flight_city_config_form_alter(&$form, $form_state, $form_id) {
+  if (strpos($form_id, 'media_edit_') !== FALSE || $form_id === 'file_entity_add_upload') {
+    // Hide the domain selection option when uploading files.
+    if (!empty($form['domain_file']) && !user_access('administer files')) {
+      $form['domain_file']['#access'] = FALSE;
+    }
+
+    // Make the alt field required
+    $form['field_file_image_alt_text'][$form['field_file_image_alt_text']['#language']][0]['value']['#required'] = TRUE;
+
+    // Set the submit function to Redirect to the workbench file list if this is a multiedit field.
+    if (arg(3) === 'edit-multiple') {
+      $form['actions']['submit']['#submit'][] = 'flight_city_config_media_edit_form_submit';
+    }
+  }
+
+}
+
+/**
+ * Implements hook_form_submit.
+ * Redirect to the workbench file list.
+ */
+function flight_city_config_media_edit_form_submit($form, &$form_state) {
+  $form_state['redirect'] = 'admin/workbench/files';
+}
+
+/**
+ * Implements hook_form_alter.
+ * Hide the domain selection option when uploading files.
+ */
+function flight_city_config_form_file_entity_add_upload_alter(&$form, $form_state) {
+  if (!empty($form['domain_file']) && !user_access('administer files')) {
+    $form['domain_file']['#access'] = FALSE;
+  }
+}
