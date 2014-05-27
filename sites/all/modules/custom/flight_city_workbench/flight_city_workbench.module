@@ -158,19 +158,6 @@ function flight_city_workbench_form_workbench_access_user_form_alter(&$form, $fo
   $form['sections'][$mid]['#collapsed'] = FALSE;
 }
 
-/**
- * Implements hook_form_alter.
- * Hide the domain selection option when uploading files.
- */
-function flight_city_workbench_form_file_entity_add_upload_alter(&$form, $form_state) {
-  dpm($form);
-  if (!empty($form['domain_file']) && !user_access('administer files')) {
-    $form['domain_file']['#access'] = FALSE;
-  }
-}
-
-
-
 
 
 /**
