@@ -48,6 +48,8 @@ class UberOrganizationMigration extends Migration {
 
     //Field mapping
     $this->addFieldMapping('title', 'title_csv');
+    $this->addFieldMapping('field_short_title', 'title_csv');
+
     $this->addFieldMapping('field_organization_category', 'category_csv');
     $this->addFieldMapping('field_organization_category:create_term')
       ->defaultValue(TRUE);
@@ -81,6 +83,7 @@ class UberOrganizationMigration extends Migration {
         $field_collection_item->save(TRUE);
       }
     }
+
     node_save($entity);
   }
 }
