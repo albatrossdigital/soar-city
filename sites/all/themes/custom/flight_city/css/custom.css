@@ -2102,16 +2102,11 @@ ul[data-orbit] ~ .orbit-next:before {
 }
 @media only screen and (min-width: 45.78571em) {
   /* line 143, ../sass/modules/_off-canvas.sass */
-  .toggle-off-canvas {
-    display: none;
-  }
-
-  /* line 146, ../sass/modules/_off-canvas.sass */
   #toggle-main-section-menu {
     display: none;
   }
 
-  /* line 149, ../sass/modules/_off-canvas.sass */
+  /* line 146, ../sass/modules/_off-canvas.sass */
   .move-right > .inner-wrap {
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
@@ -2120,12 +2115,12 @@ ul[data-orbit] ~ .orbit-next:before {
     transform: translate3d(0, 0, 0);
   }
 
-  /* line 152, ../sass/modules/_off-canvas.sass */
+  /* line 149, ../sass/modules/_off-canvas.sass */
   #toggle-main-section-menu-close {
     display: none;
   }
 
-  /* line 155, ../sass/modules/_off-canvas.sass */
+  /* line 152, ../sass/modules/_off-canvas.sass */
   .left-off-canvas-menu {
     position: relative !important;
     left: auto !important;
@@ -2147,7 +2142,7 @@ ul[data-orbit] ~ .orbit-next:before {
   }
 }
 @media only screen and (min-width: 59em) {
-  /* line 171, ../sass/modules/_off-canvas.sass */
+  /* line 168, ../sass/modules/_off-canvas.sass */
   .move-left > .inner-wrap {
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
@@ -2156,12 +2151,12 @@ ul[data-orbit] ~ .orbit-next:before {
     transform: translate3d(0, 0, 0);
   }
 
-  /* line 174, ../sass/modules/_off-canvas.sass */
+  /* line 171, ../sass/modules/_off-canvas.sass */
   .toggle-off-canvas {
     display: none;
   }
 
-  /* line 180, ../sass/modules/_off-canvas.sass */
+  /* line 177, ../sass/modules/_off-canvas.sass */
   .right-off-canvas-menu {
     background: none;
     position: relative !important;
@@ -2180,7 +2175,7 @@ ul[data-orbit] ~ .orbit-next:before {
     width: auto !important;
     z-index: 1;
   }
-  /* line 192, ../sass/modules/_off-canvas.sass */
+  /* line 189, ../sass/modules/_off-canvas.sass */
   .right-off-canvas-menu .menu-name-main-menu {
     border-top: 0;
   }
@@ -2192,7 +2187,7 @@ ul[data-orbit] ~ .orbit-next:before {
   .right-off-canvas-menu .menu-name-main-menu li a {
     padding: 0 1.35714rem;
   }
-  /* line 196, ../sass/modules/_off-canvas.sass */
+  /* line 193, ../sass/modules/_off-canvas.sass */
   .right-off-canvas-menu .menu-name-main-menu ul {
     /* IE6 */
     /* IE7 */
@@ -2214,11 +2209,11 @@ ul[data-orbit] ~ .orbit-next:before {
   .clearfix *:first-child + html .right-off-canvas-menu .menu-name-main-menu ul {
     min-height: 1%;
   }
-  /* line 200, ../sass/modules/_off-canvas.sass */
+  /* line 197, ../sass/modules/_off-canvas.sass */
   .right-off-canvas-menu .menu-name-main-menu ul li {
     margin-bottom: 0;
   }
-  /* line 204, ../sass/modules/_off-canvas.sass */
+  /* line 201, ../sass/modules/_off-canvas.sass */
   .right-off-canvas-menu .menu-name-main-menu a:after {
     display: none;
   }
