@@ -1,0 +1,30 @@
+<?php
+
+
+spl_autoload_register('_menu_node_crumbs_autoload');
+
+
+/**
+ * Crumbs autoloader.
+ *
+ *
+ * @param $class
+ *   The name of the class to load.
+ */
+function _menu_node_crumbs_autoload($class) {
+  if (preg_match('#^menu_node_crumbs_(.*)$#', $class, $m)) {
+    $path = strtr($m[1], '_', '/');
+    module_load_include('php', 'menu_node_crumbs', "lib/$path");
+  }
+}
+
+
+/**
+ * Implements hook_crumbs_plugins()
+ *
+ * @param crumbs_InjectedAPI_hookCrumbsPlugins $api
+ */
+function menu_node_crumbs_crumbs_plugins($api) {
+
+  $api->multiPlugin('MenuNode');
+}

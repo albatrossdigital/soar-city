@@ -52,6 +52,9 @@ class menu_CrumbsMultiPlugin_hierarchy implements crumbs_MultiPlugin_FindParentI
         if ('<nolink>' === $row->parent_path) {
           $candidates[$row->menu_name] = 'crumbs/special-menu-item/' . $row->plid;
         }
+        else if('<firstchild>' === $row->parent_path) {
+          $candidates[$row->menu_name] = 'crumbs/firstchild-menu-item/' . $row->plid;
+        }
         else {
           $candidates[$row->menu_name] = $row->parent_path;
         }
@@ -192,6 +195,10 @@ class menu_CrumbsMonoPlugin_specialItems implements crumbs_MonoPlugin_FindParent
     $parent_path = $parent_link['link_path'];
     if ('<nolink>' === $parent_path) {
       return 'crumbs/special-menu-item/' . $menu_link['plid'];
+    }
+    
+    if('<firstchild>' === $parent_path) {
+      return 'crumbs/firstchild-menu-item/' . $menu_link['plid'];
     }
 
     if ('<separator>' === $parent_path) {

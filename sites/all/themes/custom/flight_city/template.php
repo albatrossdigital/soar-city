@@ -114,6 +114,54 @@ function flight_city_preprocess_page(&$vars) {
 }
 
 /**
+ * Replacement theme callback for theme('breadcrumb').
+ *
+ * @param $variables
+ * @return string
+ *   Rendered breadcrumb HTML
+ */
+function flight_city_breadcrumb($variables) {
+  $breadcrumb = $variables['breadcrumb'];
+
+  if (empty($breadcrumb)) {
+    return;
+  }
+
+  // These settings may be missing, if theme('breadcrumb') is called from
+  // somewhere outside of Crumbs, or if another module is messing with the theme
+  // registry.
+  $variables += array(
+    'crumbs_trailing_separator' => FALSE,
+    'crumbs_separator' => ' &raquo; ',
+    'crumbs_separator_span' => FALSE,
+  );
+
+  $separator = $variables['crumbs_separator'];
+  if ($variables['crumbs_separator_span']) {
+    $separator = '<span class="crumbs-separator">' . $separator . '</span>';
+  }
+
+  $token = urlencode('<firstchild>');
+  $active_trail = menu_get_active_trail();
+  foreach($breadcrumb as $k => $v) {
+    if (FALSE !== strpos($v, $token)) {
+      $breadcrumb[$k] = str_replace($token, drupal_get_path_alias($active_trail[$k]['href']), $v);
+    }
+  }
+
+  $output = implode('</li><li>' . $separator, $breadcrumb);
+  if ($variables['crumbs_trailing_separator']) {
+    $output .= $separator;
+  }
+
+  $output = '<ul class="breadcrumbs"><li>' . $output . '</li></ul>';
+
+  // Provide a navigational heading to give context for breadcrumb links to
+  // screen-reader users. Make the heading invisible with .element-invisible.
+  return '<h2 class="element-invisible">' . t('You are here') . '</h2>' . $output;
+}
+
+/**
  * Implements template_preprocess_node
  *
  */

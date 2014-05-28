@@ -50,6 +50,9 @@ class crumbs_Router {
     if ('crumbs_special_menu_link_page' === $item['page_callback']) {
       $item['href'] = '<nolink>';
     }
+    else if('crumbs_firstchild_menu_link_page' === $item['page_callback']) {
+      $item['href'] = isset($item['fragments'][2]) ? _menu_firstchild_get_firstchild_href($item['fragments'][2]) : '<nolink>';
+    }
 
     if ($normalpath !== $item['href']) {
       $pos = strlen($item['href']);

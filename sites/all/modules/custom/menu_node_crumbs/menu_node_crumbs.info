@@ -1,0 +1,8 @@
+name = Menu Node Crumbs Plugin
+description = Provide support for menu node + crumbs.
+core = 7.x
+
+; This allows to put our plugin classes into dedicated folders.
+dependencies[] = crumbs
+dependencies[] = menu_node
+
