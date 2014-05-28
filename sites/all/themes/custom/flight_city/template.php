@@ -141,14 +141,6 @@ function flight_city_breadcrumb($variables) {
     $separator = '<span class="crumbs-separator">' . $separator . '</span>';
   }
 
-  $token = urlencode('<firstchild>');
-  $active_trail = menu_get_active_trail();
-  foreach($breadcrumb as $k => $v) {
-    if (FALSE !== strpos($v, $token)) {
-      $breadcrumb[$k] = str_replace($token, drupal_get_path_alias($active_trail[$k]['href']), $v);
-    }
-  }
-
   $output = implode('</li><li>' . $separator, $breadcrumb);
   if ($variables['crumbs_trailing_separator']) {
     $output .= $separator;
