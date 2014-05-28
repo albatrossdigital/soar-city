@@ -125,9 +125,9 @@ function balt_apachesolr_block_view($delta = '') {
   $block = array();
   switch ($delta) {
     case 'balt_search_form':
-
+      $form = balt_apachesolr_build_apachesolr_form();
       $block['content'] = array(
-        '#markup' => drupal_render(balt_apachesolr_build_apachesolr_form())
+        '#markup' => drupal_render($form)
       );
       break;
   }
