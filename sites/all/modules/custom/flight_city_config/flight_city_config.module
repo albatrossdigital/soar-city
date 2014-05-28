@@ -1,5 +1,40 @@
 <?php
 
+/*function flight_city_custom_theme($initialize = FALSE) {
+  $custom_theme = &drupal_static(__FUNCTION__);
+  dpm(arg(0));
+  dpm($ar)
+  return $custom_theme;
+}*/
+
+
+
+function flight_city_config_navbar() {
+  $items = array();
+
+  // The 'Home' tab is a simple link, which is wrapped in markup associated
+  // with a visual tab styling.
+  $items['help'] = array(
+    '#type' => 'navbar_item',
+    'tab' => array(
+      '#type' => 'link',
+      '#title' => t('Help'),
+      '#href' => 'help',
+      '#options' => array(
+        'attributes' => array(
+          'title' => t('My Workbench'),
+          'class' => array('navbar-icon', 'navbar-icon-help'),
+        ),
+      ),
+    ),
+    '#weight' => 100,
+  );
+
+  
+
+  return $items;
+}
+
 /**
  * Implements hook_form_alter.
  * File customizations.
