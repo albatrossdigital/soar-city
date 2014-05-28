@@ -650,6 +650,35 @@ $common-border: common-border-val()
 
 
 //***********************************
+// Content Styling
+//
+//***********************************
+
+@mixin social-links-floated($display: mobile, $left-field: '.field-name-post-date')
+  @if $display == 'mobile'
+    #{$left-field},
+    .block-share42
+      margin-bottom: $paragraph-margin-bottom
+
+    #{$left-field}
+      line-height: 2
+
+    .block-share42
+      float: left
+
+      & + *
+        clear: both
+
+  @else 
+    #{$left-field}
+      float: left
+
+    .block-share42
+      float: none
+
+
+
+//***********************************
 // Icons boxes
 //
 //***********************************
