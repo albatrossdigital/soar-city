@@ -20,6 +20,7 @@ include_once 'baltimore_migrate.features.inc';
  * Invoked before a feed item is saved. Set the domain, username
  */
 function baltimore_migrate_feeds_presave(FeedsSource $source, $entity, $item) {
+  // User migration
   if ($source->id === 'migrate_users') {
     // Set the username from the email address
     $entity->name = _baltimore_migrate_email_to_username($entity);
@@ -29,6 +30,15 @@ function baltimore_migrate_feeds_presave(FeedsSource $source, $entity, $item) {
       $entity->domain_user = array($item['domain'] => $item['domain']);
     }    
   }
+
+  // FAQ migration
+  if ($source->id === 'migrate_faq') {
+    $entity->workbench_access = 'main-menu';
+    if (count($entity->field_faq_category[LANGUAGE_NONE]) > 1) {
+      unset($entity->field_faq_category[LANGUAGE_NONE][1]);
+    }
+  }
+
 }
 
 

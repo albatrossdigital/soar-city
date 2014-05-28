@@ -126,7 +126,7 @@ function flight_city_faq_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -182,6 +182,50 @@ function flight_city_faq_field_default_field_instances() {
       'settings' => array(),
       'type' => 'link_field',
       'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'node-faq-field_organization'
+  $field_instances['node-faq-field_organization'] = array(
+    'bundle' => 'faq',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select an entity to pull contact information from if it exists.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_organization',
+    'label' => 'Entity',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 8,
     ),
   );
 
@@ -283,9 +327,11 @@ function flight_city_faq_field_default_field_instances() {
   t('Color');
   t('Enter one or more links to additional resources');
   t('Enter the icon name from <a href="http://fortawesome.github.io/Font-Awesome/cheatsheet/" target="_blank">the FontAwesome cheatsheet</a>.  For example: "fa-comments".');
+  t('Entity');
   t('Icon');
   t('Keywords');
   t('Links');
+  t('Select an entity to pull contact information from if it exists.');
 
   return $field_instances;
 }

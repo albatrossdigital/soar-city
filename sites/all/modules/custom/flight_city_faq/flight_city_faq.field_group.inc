@@ -52,6 +52,7 @@ function flight_city_faq_field_group_info() {
     'children' => array(
       0 => 'field_faq_category',
       1 => 'field_faq_tags',
+      2 => 'field_organization',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
