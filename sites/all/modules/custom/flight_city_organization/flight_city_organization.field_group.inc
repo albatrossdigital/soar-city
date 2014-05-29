@@ -21,7 +21,7 @@ function flight_city_organization_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Category',
-    'weight' => '7',
+    'weight' => '6',
     'children' => array(
       0 => 'field_organization_category',
     ),
@@ -48,7 +48,7 @@ function flight_city_organization_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Contact info',
-    'weight' => '5',
+    'weight' => '3',
     'children' => array(
       0 => 'field_address',
       1 => 'field_location',
@@ -56,6 +56,7 @@ function flight_city_organization_field_group_info() {
       3 => 'field_email',
       4 => 'field_fax',
       5 => 'field_phone',
+      6 => 'field_url',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -107,7 +108,7 @@ function flight_city_organization_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Social Networks',
-    'weight' => '6',
+    'weight' => '5',
     'children' => array(
       0 => 'field_social_networks',
       1 => 'field_social_picture',

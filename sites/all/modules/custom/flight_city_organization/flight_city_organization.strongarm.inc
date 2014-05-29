@@ -50,13 +50,13 @@ function flight_city_organization_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'domain' => array(
-          'weight' => '8',
+          'weight' => '7',
         ),
         'metatags' => array(
-          'weight' => '9',
+          'weight' => '8',
         ),
         'title' => array(
-          'weight' => '1',
+          'weight' => '0',
         ),
         'path' => array(
           'weight' => '12',
@@ -65,10 +65,13 @@ function flight_city_organization_strongarm() {
           'weight' => '11',
         ),
         'domain_path' => array(
-          'weight' => '10',
+          'weight' => '9',
         ),
         'workbench_access' => array(
           'weight' => '0',
+        ),
+        'flag' => array(
+          'weight' => '10',
         ),
       ),
       'display' => array(

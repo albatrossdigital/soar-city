@@ -5,3 +5,12 @@
  */
 
 include_once 'flight_city_organization.features.inc';
+
+/**
+ * Implements hook_preprocess_views_view()
+ */
+function flight_city_organization_form_views_exposed_form_alter(&$form, $form_state) {
+  if ($form['#id'] === 'views-exposed-form-organizations-page') {
+    $form['#attached']['js'][] = drupal_get_path('module', 'flight_city_organization') . '/js/flight-city-organization-view.js';
+  }
+}

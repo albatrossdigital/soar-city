@@ -61,7 +61,7 @@ function flight_city_organization_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
@@ -132,7 +132,7 @@ function flight_city_organization_field_default_field_instances() {
         ),
       ),
       'type' => 'flight_address_helper_addressfield',
-      'weight' => 2,
+      'weight' => 15,
     ),
     'workbench_access_field' => 0,
   );
@@ -184,7 +184,7 @@ function flight_city_organization_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'email_textfield',
-      'weight' => 5,
+      'weight' => 18,
     ),
   );
 
@@ -237,7 +237,7 @@ function flight_city_organization_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 20,
     ),
     'workbench_access_field' => 0,
   );
@@ -287,7 +287,7 @@ function flight_city_organization_field_default_field_instances() {
       'module' => 'office_hours',
       'settings' => array(),
       'type' => 'office_hours',
-      'weight' => 4,
+      'weight' => 17,
     ),
   );
 
@@ -351,7 +351,7 @@ function flight_city_organization_field_default_field_instances() {
         ),
       ),
       'type' => 'geocoder',
-      'weight' => 3,
+      'weight' => 16,
     ),
   );
 
@@ -454,7 +454,7 @@ function flight_city_organization_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 19,
     ),
     'workbench_access_field' => 0,
   );
@@ -583,7 +583,7 @@ function flight_city_organization_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 1,
     ),
     'workbench_access_field' => 0,
   );
@@ -789,6 +789,73 @@ function flight_city_organization_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
+  // Exported field_instance: 'node-organization-field_url'
+  $field_instances['node-organization-field_url'] = array(
+    'bundle' => 'organization',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 13,
+      ),
+      'social' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'social_big' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_url',
+    'label' => 'URL',
+    'required' => 0,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 14,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Address');
@@ -813,6 +880,7 @@ function flight_city_organization_field_default_field_instances() {
   t('This appears above your social networks');
   t('This will appear next to your social media icons');
   t('This will be used in alphabetical listings. Example: Health Department or Mayor\'s Office.');
+  t('URL');
 
   return $field_instances;
 }

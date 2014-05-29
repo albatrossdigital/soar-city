@@ -130,6 +130,7 @@ function flight_city_organization_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['autosubmit'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['grouping'] = array(
@@ -140,12 +141,22 @@ function flight_city_organization_views_default_views() {
     ),
   );
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Content: URL */
+  $handler->display->display_options['fields']['field_url']['id'] = 'field_url';
+  $handler->display->display_options['fields']['field_url']['table'] = 'field_data_field_url';
+  $handler->display->display_options['fields']['field_url']['field'] = 'field_url';
+  $handler->display->display_options['fields']['field_url']['label'] = '';
+  $handler->display->display_options['fields']['field_url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_url']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_url']['type'] = 'link_plain';
   /* Field: Content: Short Title */
   $handler->display->display_options['fields']['field_short_title']['id'] = 'field_short_title';
   $handler->display->display_options['fields']['field_short_title']['table'] = 'field_data_field_short_title';
   $handler->display->display_options['fields']['field_short_title']['field'] = 'field_short_title';
   $handler->display->display_options['fields']['field_short_title']['label'] = '';
   $handler->display->display_options['fields']['field_short_title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_short_title']['alter']['path'] = '[field_url]';
   $handler->display->display_options['fields']['field_short_title']['alter']['max_length'] = '1';
   $handler->display->display_options['fields']['field_short_title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['field_short_title']['alter']['ellipsis'] = FALSE;
@@ -157,20 +168,23 @@ function flight_city_organization_views_default_views() {
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = '[field_url]';
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   /* Sort criterion: Content: Title */
   $handler->display->display_options['sorts']['title']['id'] = 'title';
   $handler->display->display_options['sorts']['title']['table'] = 'node';
   $handler->display->display_options['sorts']['title']['field'] = 'title';
-  $handler->display->display_options['sorts']['title']['exposed'] = TRUE;
   $handler->display->display_options['sorts']['title']['expose']['label'] = 'A-Z';
-  /* Sort criterion: Content: Category (field_event_category) */
-  $handler->display->display_options['sorts']['field_event_category_tid']['id'] = 'field_event_category_tid';
-  $handler->display->display_options['sorts']['field_event_category_tid']['table'] = 'field_data_field_event_category';
-  $handler->display->display_options['sorts']['field_event_category_tid']['field'] = 'field_event_category_tid';
-  $handler->display->display_options['sorts']['field_event_category_tid']['exposed'] = TRUE;
-  $handler->display->display_options['sorts']['field_event_category_tid']['expose']['label'] = 'Categories';
+  /* Sort criterion: Content: Category (field_organization_category) */
+  $handler->display->display_options['sorts']['field_organization_category_tid']['id'] = 'field_organization_category_tid';
+  $handler->display->display_options['sorts']['field_organization_category_tid']['table'] = 'field_data_field_organization_category';
+  $handler->display->display_options['sorts']['field_organization_category_tid']['field'] = 'field_organization_category_tid';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -185,10 +199,36 @@ function flight_city_organization_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'organization' => 'organization',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Global: Combine fields filter */
+  $handler->display->display_options['filters']['combine']['id'] = 'combine';
+  $handler->display->display_options['filters']['combine']['table'] = 'views';
+  $handler->display->display_options['filters']['combine']['field'] = 'combine';
+  $handler->display->display_options['filters']['combine']['operator'] = 'contains';
+  $handler->display->display_options['filters']['combine']['group'] = 1;
+  $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Quick Filter';
+  $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'combine';
+  $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    8 => 0,
+    5 => 0,
+    7 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['combine']['fields'] = array(
+    'field_short_title' => 'field_short_title',
+    'title' => 'title',
+  );
   /* Filter criterion: Content: Category (field_organization_category) */
   $handler->display->display_options['filters']['field_organization_category_tid']['id'] = 'field_organization_category_tid';
   $handler->display->display_options['filters']['field_organization_category_tid']['table'] = 'field_data_field_organization_category';
   $handler->display->display_options['filters']['field_organization_category_tid']['field'] = 'field_organization_category_tid';
+  $handler->display->display_options['filters']['field_organization_category_tid']['group'] = 1;
   $handler->display->display_options['filters']['field_organization_category_tid']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_organization_category_tid']['expose']['operator_id'] = 'field_organization_category_tid_op';
   $handler->display->display_options['filters']['field_organization_category_tid']['expose']['label'] = 'Category';
@@ -208,6 +248,7 @@ function flight_city_organization_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['exposed_block'] = TRUE;
   $handler->display->display_options['path'] = 'government';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Government';
