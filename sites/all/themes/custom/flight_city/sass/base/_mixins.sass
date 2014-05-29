@@ -572,25 +572,13 @@ $common-border: common-border-val()
   @if $size == normal
     +nice-row-border($column-gutter/2, rem-calc(35), 1px solid $gray, bottom, hidden)
 
-// Make columns fixed size
-@mixin fixed-size-columns($width: rem-calc(120), $core: true, $fixed: '.group-left', $other: '.group-right', $direction: 'left')
-  
-  #{$fixed}
-    width: $width
-    @if $core
-      z-index: 1
-
-  #{$other}
-    padding-#{$direction}: $width + $column-gutter/2
-    @if $core
-      float: none!important
-      width: 100%
 
 %views-see-more-header
   position: relative
 
-  a 
-    +f(alt-alt)
+  .more-link
+    a 
+      +f(alt-alt)
 
   @media #{$medium}
 
@@ -619,10 +607,25 @@ $common-border: common-border-val()
 @mixin views-see-more-footer-button()
   @extend %views-see-more-footer-button
 
+
 //***********************************
-// Layout elements
+// Layout 
 //
 //***********************************
+
+// Make columns fixed size
+@mixin fixed-size-columns($width: rem-calc(120), $core: true, $fixed: '.group-left', $other: '.group-right', $direction: 'left')
+  
+  #{$fixed}
+    width: $width
+    @if $core
+      z-index: 1
+
+  #{$other}
+    padding-#{$direction}: $width + $column-gutter/2
+    @if $core
+      float: none!important
+      width: 100%
 
 @mixin no-page-title()
   #page-title
@@ -647,6 +650,52 @@ $common-border: common-border-val()
   @else 
     .block
       margin-bottom: $medium-main-block-spacing
+
+
+
+
+//***********************************
+// Content Styling
+//
+//***********************************
+
+@mixin social-links-floated($display: mobile, $left-field: '.field-name-post-date')
+  @if $display == 'mobile'
+    #{$left-field},
+    .block-share42
+      margin-bottom: $paragraph-margin-bottom
+
+    #{$left-field}
+      line-height: 2
+
+    .block-share42
+      float: left
+
+      & + *
+        clear: both
+
+  @else 
+    #{$left-field}
+      float: left
+
+    .block-share42
+      float: none
+
+
+@mixin block-with-top-border($display: 'mobile', $more: true)
+
+  @if $display == 'mobile'
+    margin-top: $small-main-block-spacing
+    padding-top: $small-main-block-spacing/2
+    border-top: common-border-val()
+
+  @else 
+    margin-top: $medium-main-block-spacing
+    padding-top: $medium-main-block-spacing/2
+
+    @if $more
+      .more-link
+        padding-top: $medium-main-block-spacing/2
 
 
 //***********************************
@@ -733,7 +782,7 @@ $common-border: common-border-val()
   width: (100%)/$levels
 
 
-@mixin side-bar-menu-dynamic($levels: 3, $wrapper: '.menu-block-wrapper', $active-parent: 'li.active-trail:not(.active)', $title: 'h4')
+@mixin side-bar-menu-dynamic($levels: 6, $wrapper: '.menu-block-wrapper', $active-parent: 'li.active-trail:not(.active)', $title: 'h4')
   max-width: 100%
   overflow: hidden
 

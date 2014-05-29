@@ -74,12 +74,12 @@ a.social-icon.Social.Wall
 //-----------------------------------------------------------------------------
 
 .share42init
-  text-align: right
+  min-width: rem-calc(235)
 
   &:before
     display: inline
     content: "Share "
-    font-size: $font-size-small
+    font-size: $h5-font-size
     height: $social-size
     line-height: $social-size
     +f(alt-alt)
@@ -150,3 +150,18 @@ a.social-icon
 
   &.Social.Wall
     background: $black
+
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($medium-up)
+
+  // Share 42
+  //-----------------------------------------------------------------------------
+
+  .share42init
+    text-align: right

@@ -240,8 +240,6 @@ function flight_city_workbench_node_promote_lookup($node) {
  */
 function flight_city_workbench_node_promote_form($form, &$form_state, $node) {  
   
-  dpm($types);
-  
   $form['node'] = array(
     '#type' => 'value',
     '#value' => $node,
@@ -252,7 +250,9 @@ function flight_city_workbench_node_promote_form($form, &$form_state, $node) {
     '#attributes' => array('class' => array('button', 'tiny')),
   );
   $default_domain = domain_default(FALSE, FALSE);
-  $promoted = ($node->domains[$default_domain['domain_id']] === $default_domain['domain_id']);
+  $promoted = isset($node->domains[$default_domain['domain_id']]) 
+    && ($node->domains[$default_domain['domain_id']] === $default_domain['domain_id']);
+
   if($fids = flag_get_entity_flags('node', $node->nid) || $promoted) {
     $form['flag'] = array(
       '#type' => 'value',

@@ -38,7 +38,7 @@ function flight_news_strongarm() {
         'custom_settings' => FALSE,
       ),
       'compact_teaser' => array(
-        'custom_settings' => FALSE,
+        'custom_settings' => TRUE,
       ),
       'social' => array(
         'custom_settings' => FALSE,
@@ -68,12 +68,16 @@ function flight_news_strongarm() {
       'display' => array(
         'domain' => array(
           'teaser' => array(
-            'weight' => '21',
+            'weight' => '20',
             'visible' => FALSE,
           ),
           'default' => array(
-            'weight' => '1',
-            'visible' => TRUE,
+            'weight' => '19',
+            'visible' => FALSE,
+          ),
+          'compact_teaser' => array(
+            'weight' => '21',
+            'visible' => FALSE,
           ),
         ),
       ),
@@ -123,7 +127,7 @@ function flight_news_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_story_pattern';
-  $strongarm->value = 'news/[node:created:custom:Y-m-d]/[node:title]';
+  $strongarm->value = 'news/[node:field-story-type]/[node:created:custom:Y-m-d]-[node:title]';
   $export['pathauto_node_story_pattern'] = $strongarm;
 
   return $export;
