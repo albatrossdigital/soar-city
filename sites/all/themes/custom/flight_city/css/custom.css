@@ -2580,17 +2580,40 @@ ol.search-results .search-snippet-info {
 .front .main {
   padding-top: 0.71429rem;
 }
+/* line 22, ../sass/theme/_front-pages.sass */
+.front:not(.domain-main) .block-views-news-block,
+.front:not(.domain-main) .block[class$="featured-programs"] {
+  margin-top: 3.4375rem;
+  padding-top: 1.71875rem;
+  border-top: solid #cccccc 1px;
+}
+/* line 202, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
+.front:not(.domain-main) .l-content-bottom-1:before {
+  content: "";
+  display: block;
+  border-top: 1px solid #cccccc;
+  margin-left: 0.71429rem;
+  margin-right: 0.71429rem;
+  padding-bottom: 1.71875rem;
+  margin-top: 1.71875rem;
+}
 
-/* line 34, ../sass/theme/_front-pages.sass */
+/* line 43, ../sass/theme/_front-pages.sass */
 .front.domain-main .l-main {
   padding-bottom: 0;
 }
-/* line 38, ../sass/theme/_front-pages.sass */
+/* line 47, ../sass/theme/_front-pages.sass */
 .front.domain-main #dnn_ContentPane {
   background: #f3f3f3;
   max-width: 100%;
 }
-/* line 42, ../sass/theme/_front-pages.sass */
+/* line 51, ../sass/theme/_front-pages.sass */
+.front.domain-main .block-views-news-block-4 {
+  margin-top: 3.4375rem;
+  padding-top: 1.71875rem;
+  border-top: solid #cccccc 1px;
+}
+/* line 54, ../sass/theme/_front-pages.sass */
 .front.domain-main .l-content-bottom-triple {
   width: 100%;
   margin-left: auto;
@@ -2617,19 +2640,23 @@ ol.search-results .search-snippet-info {
 .clearfix *:first-child + html .front.domain-main .l-content-bottom-triple {
   min-height: 1%;
 }
-/* line 46, ../sass/theme/_front-pages.sass */
+/* line 58, ../sass/theme/_front-pages.sass */
 .front.domain-main .l-content-bottom-triple .block {
   margin-bottom: 1.42857rem;
 }
-/* line 50, ../sass/theme/_front-pages.sass */
+/* line 62, ../sass/theme/_front-pages.sass */
 .front.domain-main .view-display-id-block_front_mayor .more-link {
   text-align: left;
 }
-/* line 56, ../sass/theme/_front-pages.sass */
+/* line 68, ../sass/theme/_front-pages.sass */
 .front.domain-main .l-content-bottom-1 {
   background: white;
 }
-/* line 59, ../sass/theme/_front-pages.sass */
+/* line 71, ../sass/theme/_front-pages.sass */
+.front.domain-main .l-content-bottom-1:before {
+  display: none;
+}
+/* line 74, ../sass/theme/_front-pages.sass */
 .front.domain-main .content-bottom-full {
   width: 100%;
   margin-left: auto;
@@ -2659,7 +2686,7 @@ ol.search-results .search-snippet-info {
 .clearfix *:first-child + html .front.domain-main .content-bottom-full {
   min-height: 1%;
 }
-/* line 67, ../sass/theme/_front-pages.sass */
+/* line 82, ../sass/theme/_front-pages.sass */
 .front.domain-main .content-bottom-full > * {
   padding-left: 0.71429rem;
   padding-right: 0.71429rem;
@@ -2733,11 +2760,11 @@ ol.search-results .search-snippet-info {
   display: block;
   padding: 0.71429rem 1.42857rem 0.71429rem 1.21429rem;
 }
-/* line 73, ../sass/theme/_front-pages.sass */
+/* line 88, ../sass/theme/_front-pages.sass */
 .front.domain-main .l-triptych .block-title {
   text-align: center;
 }
-/* line 76, ../sass/theme/_front-pages.sass */
+/* line 91, ../sass/theme/_front-pages.sass */
 .front.domain-main .triptych-first .block {
   position: relative;
   padding-top: 7.14286rem;
@@ -2751,7 +2778,7 @@ ol.search-results .search-snippet-info {
 .front.domain-main .triptych-first .block:before, .front.domain-main .triptych-first .block .block-title:before {
   text-align: center;
 }
-/* line 79, ../sass/theme/_front-pages.sass */
+/* line 94, ../sass/theme/_front-pages.sass */
 .front.domain-main .triptych-middle .block {
   position: relative;
   padding-top: 7.14286rem;
@@ -2765,7 +2792,7 @@ ol.search-results .search-snippet-info {
 .front.domain-main .triptych-middle .block:before, .front.domain-main .triptych-middle .block .block-title:before {
   text-align: center;
 }
-/* line 82, ../sass/theme/_front-pages.sass */
+/* line 97, ../sass/theme/_front-pages.sass */
 .front.domain-main .triptych-last .block {
   position: relative;
   padding-top: 7.14286rem;
@@ -2780,11 +2807,11 @@ ol.search-results .search-snippet-info {
   text-align: center;
 }
 
-/* line 87, ../sass/theme/_front-pages.sass */
+/* line 102, ../sass/theme/_front-pages.sass */
 .block-bean-front-mayor-links .block-title {
   text-align: center;
 }
-/* line 90, ../sass/theme/_front-pages.sass */
+/* line 105, ../sass/theme/_front-pages.sass */
 .block-bean-front-mayor-links ul {
   list-style: none;
   padding: 0;
@@ -2796,12 +2823,43 @@ ol.search-results .search-snippet-info {
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 109, ../sass/theme/_front-pages.sass */
+  /* line 123, ../sass/theme/_front-pages.sass */
+  .front .medium-8.main {
+    margin-left: 0;
+    width: 75%;
+  }
+
+  /* line 131, ../sass/theme/_front-pages.sass */
+  .front:not(.domain-main) .block-views-news-block {
+    margin-top: 3.4375rem;
+    padding-top: 1.71875rem;
+  }
+  /* line 697, ../sass/base/_mixins.sass */
+  .front:not(.domain-main) .block-views-news-block .more-link {
+    padding-top: 1.71875rem;
+  }
+  /* line 134, ../sass/theme/_front-pages.sass */
+  .front:not(.domain-main) .block[class$="featured-programs"] {
+    margin-top: 3.4375rem;
+    padding-top: 1.71875rem;
+  }
+  /* line 138, ../sass/theme/_front-pages.sass */
+  .front:not(.domain-main) .l-content-bottom-1:before {
+    margin-top: 1.71875rem;
+  }
+
+  /* line 146, ../sass/theme/_front-pages.sass */
+  .front.domain-main .block-views-news-block-4 {
+    margin-top: 3.4375rem;
+    padding-top: 1.71875rem;
+    border-top: solid #cccccc 1px;
+  }
+  /* line 149, ../sass/theme/_front-pages.sass */
   .front.domain-main .content-bottom-triple-left {
     padding-right: 2.5rem;
     width: 41.66667%;
   }
-  /* line 113, ../sass/theme/_front-pages.sass */
+  /* line 153, ../sass/theme/_front-pages.sass */
   .front.domain-main .content-bottom-triple-center {
     z-index: 1;
     padding-left: 2.5rem;
@@ -2809,16 +2867,10 @@ ol.search-results .search-snippet-info {
     margin-right: -15rem;
     width: 15rem;
   }
-  /* line 120, ../sass/theme/_front-pages.sass */
+  /* line 160, ../sass/theme/_front-pages.sass */
   .front.domain-main .content-bottom-triple-right {
     padding-left: 17.5rem;
     width: 58.33333%;
-  }
-
-  /* line 132, ../sass/theme/_front-pages.sass */
-  .front .medium-8.main {
-    margin-left: 0;
-    width: 75%;
   }
 }
 /* line 9, ../sass/theme/_teasers.sass */

@@ -17,6 +17,15 @@
   .main
     padding-top: rem-calc(10)
 
+  
+  &:not(.domain-main)
+    .block-views-news-block,
+    .block[class$="featured-programs"]
+      +block-with-top-border()
+
+    .l-content-bottom-1
+      +nice-row-border($column-gutter/2, $small-main-block-spacing/2, 1px solid $gray, top, hidden)
+
 
 
 // Uber front
@@ -39,6 +48,9 @@
     background: $gray-lighter
     max-width: 100%
 
+  .block-views-news-block-4
+    +block-with-top-border()
+
   .l-content-bottom-triple
     //max-width: $row-width
     +grid-row()
@@ -55,6 +67,9 @@
 
   .l-content-bottom-1
     background: $white
+
+    &:before
+      display: none
 
   .content-bottom-full
     //max-width: $row-width
@@ -100,11 +115,36 @@
 // ******************************************************
 
 +respond($medium-up)
+  
+  // Main Content
+  // ----------------------------------------------------------------------------
+
+  // center main in columns
+  .front .medium-8.main
+    margin-left: 0
+    width: grid-calc(9, 12)
+
+  .front
+
+    &:not(.domain-main)
+
+      .block-views-news-block
+        +block-with-top-border(medium)
+
+      .block[class$="featured-programs"]
+        +block-with-top-border(medium, false)
+
+      .l-content-bottom-1
+        &:before
+          margin-top: $medium-main-block-spacing/2
 
   // Uber front
   // ----------------------------------------------------------------------------
   
   .front.domain-main
+
+    .block-views-news-block-4
+      +block-with-top-border()
 
     .content-bottom-triple-left
       padding-right: rem-calc(35)
@@ -122,13 +162,3 @@
       width: grid-calc(7, 12)
     
 
-
-  // Main Content
-  // ----------------------------------------------------------------------------
-
-  .front
-
-  // center main in columns
-  .front .medium-8.main
-    margin-left: 0
-    width: grid-calc(9, 12)
