@@ -225,7 +225,7 @@ a.social-icon.Vimeo:before {
 
 /* line 358, ../sass/base/_mixins.sass */
 .more-link,
-.field-name-node-link, .view-organizations h4 a, ol.search-results h3.title a, .node-event.node-teaser .field-name-title a,
+.field-name-node-link, .view-organizations h5 a, ol.search-results h3.title a, .node-event.node-teaser .field-name-title a,
 .node-event.view-mode-compact_teaser .field-name-title a,
 .node-teaser.node-program .field-name-title a,
 .node-teaser.node-person .field-name-title a {
@@ -233,7 +233,7 @@ a.social-icon.Vimeo:before {
 }
 /* line 361, ../sass/base/_mixins.sass */
 .more-link:hover,
-.field-name-node-link:hover, .view-organizations h4 a:hover, ol.search-results h3.title a:hover, .node-event.node-teaser .field-name-title a:hover,
+.field-name-node-link:hover, .view-organizations h5 a:hover, ol.search-results h3.title a:hover, .node-event.node-teaser .field-name-title a:hover,
 .node-event.view-mode-compact_teaser .field-name-title a:hover,
 .node-teaser.node-program .field-name-title a:hover,
 .node-teaser.node-person .field-name-title a:hover {
@@ -1613,50 +1613,67 @@ fieldset legend {
 .view-organizations .view-content > h3 {
   float: left;
   margin-left: -2.14286rem;
-  margin-top: 2.5rem;
+  margin-top: 2.14286rem;
   text-align: center;
   width: 1.42857rem;
 }
 /* line 38, ../sass/modules/_views.sass */
 .view-organizations .view-content > h3:first-child, .view-organizations .view-content > h3:first-child + .views-row {
   margin-top: 0;
+  padding-top: 0;
 }
-/* line 42, ../sass/modules/_views.sass */
+/* line 43, ../sass/modules/_views.sass */
 .view-organizations h3 + .views-row {
   margin-top: 2.5rem;
-  padding-top: 0.42857rem;
+  padding-top: 0.71429rem;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
 }
-/* line 46, ../sass/modules/_views.sass */
+/* line 48, ../sass/modules/_views.sass */
 .view-organizations .views-row {
   clear: right;
   min-height: 2.14286rem;
 }
+/* line 52, ../sass/modules/_views.sass */
+.view-organizations h5 {
+  min-height: 2.14286rem;
+}
 
-/* line 59, ../sass/modules/_views.sass */
+/* line 63, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page .views-exposed-widgets {
   position: relative;
 }
-/* line 62, ../sass/modules/_views.sass */
+/* line 66, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page label {
   font-size: 1.14286rem;
   padding-top: 0.71429rem;
 }
-/* line 72, ../sass/modules/_views.sass */
+/* line 76, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page .ajax-progress {
   position: absolute;
   bottom: -1.42857rem;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 89, ../sass/modules/_views.sass */
+  /* line 93, ../sass/modules/_views.sass */
   .view-organizations .view-content {
     padding-left: 2.85714rem;
   }
-  /* line 92, ../sass/modules/_views.sass */
+  /* line 96, ../sass/modules/_views.sass */
   .view-organizations .view-content > h3 {
     font-size: 2.14286rem;
     margin-left: -3.92857rem;
+    margin-top: 1.35714rem;
     width: 2.14286rem;
+  }
+  /* line 102, ../sass/modules/_views.sass */
+  .view-organizations .view-content > h3:first-child + .views-row {
+    padding-top: 0.71429rem;
+  }
+  /* line 105, ../sass/modules/_views.sass */
+  .view-organizations .views-row {
+    min-height: 3.14286rem;
   }
 }
 /* line 9, ../sass/modules/_social-media-buttons.sass */

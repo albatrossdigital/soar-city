@@ -29,7 +29,7 @@
     & > h3
       float: left
       margin-left: rem-calc(-30)
-      margin-top: $small-main-spacing
+      margin-top: rem-calc(30)
       +f(alt-alt)
       text-align: center
       width: rem-calc(20)
@@ -37,17 +37,21 @@
       &:first-child
         &, & + .views-row
           margin-top: 0
+          padding-top: 0
        
         
   h3 + .views-row 
     margin-top: $small-main-spacing
-    padding-top: rem-calc(6)
+    padding-top: rem-calc(10)
+    +box-sizing(content-box)
 
   .views-row
     clear: right
     min-height: rem-calc(30)
 
-  h4
+  h5
+    min-height: rem-calc(30)
+
     a 
       +c(link-alt)
 
@@ -92,4 +96,11 @@
       & > h3
         font-size: $h2-font-size
         margin-left: rem-calc(-55)
+        margin-top: rem-calc(19)
         width: rem-calc(30)
+
+        &:first-child + .views-row
+          padding-top: rem-calc(10)
+
+    .views-row
+      min-height: rem-calc(44)
