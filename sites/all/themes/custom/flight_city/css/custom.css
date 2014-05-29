@@ -225,7 +225,7 @@ a.social-icon.Vimeo:before {
 
 /* line 358, ../sass/base/_mixins.sass */
 .more-link,
-.field-name-node-link, ol.search-results h3.title a, .node-event.node-teaser .field-name-title a,
+.field-name-node-link, .view-organizations h4 a, ol.search-results h3.title a, .node-event.node-teaser .field-name-title a,
 .node-event.view-mode-compact_teaser .field-name-title a,
 .node-teaser.node-program .field-name-title a,
 .node-teaser.node-person .field-name-title a {
@@ -233,7 +233,7 @@ a.social-icon.Vimeo:before {
 }
 /* line 361, ../sass/base/_mixins.sass */
 .more-link:hover,
-.field-name-node-link:hover, ol.search-results h3.title a:hover, .node-event.node-teaser .field-name-title a:hover,
+.field-name-node-link:hover, .view-organizations h4 a:hover, ol.search-results h3.title a:hover, .node-event.node-teaser .field-name-title a:hover,
 .node-event.view-mode-compact_teaser .field-name-title a:hover,
 .node-teaser.node-program .field-name-title a:hover,
 .node-teaser.node-person .field-name-title a:hover {
@@ -1632,27 +1632,27 @@ fieldset legend {
   min-height: 2.14286rem;
 }
 
-/* line 55, ../sass/modules/_views.sass */
+/* line 59, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page .views-exposed-widgets {
   position: relative;
 }
-/* line 58, ../sass/modules/_views.sass */
+/* line 62, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page label {
   font-size: 1.14286rem;
   padding-top: 0.71429rem;
 }
-/* line 68, ../sass/modules/_views.sass */
+/* line 72, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page .ajax-progress {
   position: absolute;
   bottom: -1.42857rem;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 85, ../sass/modules/_views.sass */
+  /* line 89, ../sass/modules/_views.sass */
   .view-organizations .view-content {
     padding-left: 2.85714rem;
   }
-  /* line 88, ../sass/modules/_views.sass */
+  /* line 92, ../sass/modules/_views.sass */
   .view-organizations .view-content > h3 {
     font-size: 2.14286rem;
     margin-left: -3.92857rem;
