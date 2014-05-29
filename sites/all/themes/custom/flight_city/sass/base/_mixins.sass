@@ -808,7 +808,7 @@ $common-border: common-border-val()
 
 
 // Side bar menu styles
-@mixin side-bar-menu($menu: 'ul.menu', $title: 'h2.block-title, h4', $active: 'a.active, li.active-trail a', $more-link: false)
+@mixin side-bar-menu($menu: 'ul.menu', $title: 'h2.block-title, h4', $active: 'a.active, li.active-trail a', $more-link: false, $highlight: '.highlighted a')
  
   #{$title}
     margin-top: rem-calc(10)
@@ -827,7 +827,23 @@ $common-border: common-border-val()
 
     #{$active}
       border-left-color: $gold
-      
+
+    #{$highlight}
+      border-left-color: $yellow
+      background: $yellow
+      position: relative
+
+      &:after 
+        content: $fa-var-times
+        @extend %icons-core-simple
+        color: $gray-dark
+        position: absolute
+        right: rem-calc(10)
+
+      &:hover
+        color: $side-nav-link-color!important
+        border-left-color: darken($yellow, 5%)
+        background: darken($yellow, 5%)
     a
       border-left: 3px solid transparent
       padding: rem-calc(10 20 10 17)
@@ -843,8 +859,6 @@ $common-border: common-border-val()
         padding: rem-calc(10 20 10 17)
         +f(alt-alt)
       
-
-    
 
 
 $main-menu-border-size: rem-calc(3)
@@ -877,7 +891,6 @@ $main-menu-border-size: rem-calc(3)
     background: $topbar-link-bg-active-hover
     border-top-color: darken($color, 10%)
     color: darken($color, 10%)
-
 
 // Main menu stlyes
 @mixin main-menu-style($container: 'li', $active: '.active, .active-trail')

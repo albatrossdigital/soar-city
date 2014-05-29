@@ -51,10 +51,10 @@ i[class^="fa"], [role=complementary] .block-domain-menu-block .menu-block-wrappe
 }
 
 /* line 52, ../sass/components/_icons-fontawesome.sass */
-.draggable a.tabledrag-handle:before, .share42-item:nth-child(4) a:before, .share42-item:first-child a:before,
+[role=complementary] .block > ul .highlighted a:after, [role=complementary] .block .menu-block-wrapper ul .highlighted a:after, [role=complementary] .block .item-list > ul .highlighted a:after, .draggable a.tabledrag-handle:before, .share42-item:nth-child(4) a:before, .share42-item:first-child a:before,
 a.social-icon.Facebook:before, .share42-item:nth-child(3) a:before,
 a.social-icon.Twitter:before, .share42-item:nth-child(2) a:before,
-a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, a.social-icon.Govdelivery:before, a.social-icon.Social.Wall:before, .breadcrumbs li:first-child a:before, .button.icon-play:before, #search-form .form-submit:before, .front.domain-main .triptych-first .block .block-title:before, .front.domain-main .triptych-middle .block .block-title:before, .front.domain-main .triptych-last .block .block-title:before {
+a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, a.social-icon.Govdelivery:before, a.social-icon.Social.Wall:before, .breadcrumbs li:first-child a:before, .button.icon-play:before, #search-form .form-submit:before, .front.domain-main .l-triptych .item-list ul .highlighted a:after, .front.domain-main .triptych-first .block .block-title:before, .front.domain-main .triptych-middle .block .block-title:before, .front.domain-main .triptych-last .block .block-title:before {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -212,7 +212,7 @@ a.social-icon.Vimeo:before {
 /********************************** */
 /* line 313, ../sass/base/_mixins.sass */
 .no-page-title #page-title, .no-page-title #section-title, .l-footer-sections-bottom form label, .l-footer-sections-bottom form .grippie, .no-labels label,
-.no-label label, .toggle-off-canvas span, #search-form .form-type-textfield label, .front ul.breadcrumbs, .front.domain-main .l-featured:after, .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item label,
+.no-label label, .js .block-views-exp-organizations-page .views-widget-filter-field_organization_category_tid select, .toggle-off-canvas span, #search-form .form-type-textfield label, .front ul.breadcrumbs, .front.domain-main .l-featured:after, .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item label,
 .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item .description, .page-people #page-title, .node-type-person #page-title {
   display: none;
 }
@@ -306,9 +306,9 @@ h3, h4 {
 
 /* line 426, ../sass/base/_mixins.sass */
 [role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .more-link,
-.field-name-node-link, .title-block .more-link a, .bean-image-collection .more-link a, .block-views-news-block-1 .more-link a,
+.field-name-node-link, .block-views-exp-organizations-page label, .title-block .more-link a, .bean-image-collection .more-link a, .block-views-news-block-1 .more-link a,
 .block-views-news-block .more-link a,
-.block-views-news-block-4 .more-link a, .field-name-post-date, [role=complementary] form .form-type-radio label, [role=complementary] form .form-type-checkbox label, .l-footer .block-title, .share42init:before, .front.domain-main .view-display-id-block_front_mayor .more-link a, .front.domain-main .l-triptych .more-link a, .node-event.node-teaser .date-calendar,
+.block-views-news-block-4 .more-link a, .field-name-post-date, [role=complementary] .block-facetapi form .form-type-radio label, [role=complementary] .block-facetapi form .form-type-checkbox label, .l-footer .block-title, .view-organizations .view-content > h3, .share42init:before, .front.domain-main .view-display-id-block_front_mayor .more-link a, .front.domain-main .l-triptych .more-link a, .node-event.node-teaser .date-calendar,
 .node-event.view-mode-compact_teaser .date-calendar {
   font-family: "open-sans";
   font-style: normal;
@@ -317,7 +317,7 @@ h3, h4 {
 
 /* line 431, ../sass/base/_mixins.sass */
 [role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .more-link,
-.field-name-node-link {
+.field-name-node-link, .block-views-exp-organizations-page label {
   font-weight: 700;
 }
 
@@ -935,6 +935,25 @@ p img:only-child {
   border-left-color: #deb64b;
 }
 /* line 831, ../sass/base/_mixins.sass */
+[role=complementary] .block > ul .highlighted a, [role=complementary] .block .menu-block-wrapper ul .highlighted a, [role=complementary] .block .item-list > ul .highlighted a {
+  border-left-color: #f2c54b;
+  background: #f2c54b;
+  position: relative;
+}
+/* line 836, ../sass/base/_mixins.sass */
+[role=complementary] .block > ul .highlighted a:after, [role=complementary] .block .menu-block-wrapper ul .highlighted a:after, [role=complementary] .block .item-list > ul .highlighted a:after {
+  content: "\f00d";
+  color: #626262;
+  position: absolute;
+  right: 0.71429rem;
+}
+/* line 843, ../sass/base/_mixins.sass */
+[role=complementary] .block > ul .highlighted a:hover, [role=complementary] .block .menu-block-wrapper ul .highlighted a:hover, [role=complementary] .block .item-list > ul .highlighted a:hover {
+  color: #111111 !important;
+  border-left-color: #f0bd33;
+  background: #f0bd33;
+}
+/* line 847, ../sass/base/_mixins.sass */
 [role=complementary] .block > ul a, [role=complementary] .block .menu-block-wrapper ul a, [role=complementary] .block .item-list > ul a {
   border-left: 3px solid transparent;
   padding: 0.71429rem 1.42857rem 0.71429rem 1.21429rem;
@@ -1002,18 +1021,23 @@ p img:only-child {
 [role=complementary] .block {
   margin-bottom: 1.42857rem;
 }
-/* line 19, ../sass/layout/_aside.sass */
-[role=complementary] form {
+/* line 20, ../sass/layout/_aside.sass */
+[role=complementary] .block-facetapi form {
   border-top: solid #dddddd 1px;
 }
-/* line 957, ../sass/base/_mixins.sass */
-[role=complementary] form .form-type-radio, [role=complementary] form .form-type-checkbox {
+/* line 970, ../sass/base/_mixins.sass */
+[role=complementary] .block-facetapi form .form-type-radio, [role=complementary] .block-facetapi form .form-type-checkbox {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-/* line 968, ../sass/base/_mixins.sass */
-[role=complementary] form .form-type-radio button, [role=complementary] form .form-type-checkbox button {
+/* line 981, ../sass/base/_mixins.sass */
+[role=complementary] .block-facetapi form .form-type-radio button, [role=complementary] .block-facetapi form .form-type-checkbox button {
   margin-top: 0.71429rem;
+}
+/* line 24, ../sass/layout/_aside.sass */
+[role=complementary] form .views-exposed-widget {
+  padding: 0;
+  float: none;
 }
 
 /* line 3, ../sass/layout/_triptych.sass */
@@ -1061,7 +1085,7 @@ p img:only-child {
   padding: 0;
   margin: 0;
 }
-/* line 941, ../sass/base/_mixins.sass */
+/* line 954, ../sass/base/_mixins.sass */
 .l-footer-sections-bottom form button {
   float: right;
 }
@@ -1085,7 +1109,7 @@ p img:only-child {
   border: 0;
   color: rgba(255, 255, 255, 0.5);
 }
-/* line 933, ../sass/base/_mixins.sass */
+/* line 946, ../sass/base/_mixins.sass */
 .l-footer-sections-bottom form button {
   background-color: #5eb5cb;
   border-color: #7ec4d5;
@@ -1119,11 +1143,11 @@ p img:only-child {
   margin-bottom: 0.71429rem;
   padding: 1.71429rem 1.14286rem;
 }
-/* line 921, ../sass/base/_mixins.sass */
+/* line 934, ../sass/base/_mixins.sass */
 .l-footer-sections-bottom form .form-textarea-wrapper, .l-footer-sections-bottom form .fieldset-description {
   margin-bottom: 0.71429rem;
 }
-/* line 924, ../sass/base/_mixins.sass */
+/* line 937, ../sass/base/_mixins.sass */
 .l-footer-sections-bottom form button {
   padding-top: 1.28571rem;
   padding-right: 2.57143rem;
@@ -1581,6 +1605,60 @@ fieldset legend {
   margin-bottom: 0;
 }
 
+/* line 26, ../sass/modules/_views.sass */
+.view-organizations .view-content {
+  padding-left: 2.14286rem;
+}
+/* line 29, ../sass/modules/_views.sass */
+.view-organizations .view-content > h3 {
+  float: left;
+  margin-left: -2.14286rem;
+  margin-top: 2.5rem;
+  text-align: center;
+  width: 1.42857rem;
+}
+/* line 38, ../sass/modules/_views.sass */
+.view-organizations .view-content > h3:first-child, .view-organizations .view-content > h3:first-child + .views-row {
+  margin-top: 0;
+}
+/* line 42, ../sass/modules/_views.sass */
+.view-organizations h3 + .views-row {
+  margin-top: 2.5rem;
+  padding-top: 0.42857rem;
+}
+/* line 46, ../sass/modules/_views.sass */
+.view-organizations .views-row {
+  clear: right;
+  min-height: 2.14286rem;
+}
+
+/* line 55, ../sass/modules/_views.sass */
+.block-views-exp-organizations-page .views-exposed-widgets {
+  position: relative;
+}
+/* line 58, ../sass/modules/_views.sass */
+.block-views-exp-organizations-page label {
+  font-size: 1.14286rem;
+  padding-top: 0.71429rem;
+}
+/* line 68, ../sass/modules/_views.sass */
+.block-views-exp-organizations-page .ajax-progress {
+  position: absolute;
+  bottom: -1.42857rem;
+}
+
+@media only screen and (min-width: 45.78571em) {
+  /* line 85, ../sass/modules/_views.sass */
+  .view-organizations .view-content {
+    padding-left: 2.85714rem;
+  }
+  /* line 88, ../sass/modules/_views.sass */
+  .view-organizations .view-content > h3 {
+    font-size: 2.14286rem;
+    margin-left: -3.92857rem;
+    width: 2.14286rem;
+  }
+}
 /* line 9, ../sass/modules/_social-media-buttons.sass */
 .share42-item a,
 a.social-icon {
@@ -2030,13 +2108,13 @@ ul[data-orbit] ~ .orbit-next:before {
   padding: 0;
   margin: 0;
 }
-/* line 886, ../sass/base/_mixins.sass */
+/* line 899, ../sass/base/_mixins.sass */
 .right-off-canvas-menu .menu-name-main-menu li {
   padding: 0;
   display: block;
   margin-bottom: 0.35714rem;
 }
-/* line 891, ../sass/base/_mixins.sass */
+/* line 904, ../sass/base/_mixins.sass */
 .right-off-canvas-menu .menu-name-main-menu li a {
   color: white;
   font-family: "open-sans";
@@ -2050,18 +2128,18 @@ ul[data-orbit] ~ .orbit-next:before {
   line-height: 3.85714rem;
   display: inline-block;
 }
-/* line 866, ../sass/base/_mixins.sass */
+/* line 880, ../sass/base/_mixins.sass */
 .right-off-canvas-menu .menu-name-main-menu li a:hover {
   background: transparent;
   color: #e6e6e6;
 }
-/* line 895, ../sass/base/_mixins.sass */
+/* line 908, ../sass/base/_mixins.sass */
 .right-off-canvas-menu .menu-name-main-menu li.active a, .right-off-canvas-menu .menu-name-main-menu li .active-trail a {
   color: #deb64b;
   border-top-color: #deb64b;
   background: transparent;
 }
-/* line 876, ../sass/base/_mixins.sass */
+/* line 890, ../sass/base/_mixins.sass */
 .right-off-canvas-menu .menu-name-main-menu li.active a:hover, .right-off-canvas-menu .menu-name-main-menu li .active-trail a:hover {
   background: transparent;
   border-top-color: #d0a226;
@@ -2212,11 +2290,11 @@ ul[data-orbit] ~ .orbit-next:before {
   .right-off-canvas-menu .menu-name-main-menu {
     border-top: 0;
   }
-  /* line 903, ../sass/base/_mixins.sass */
+  /* line 916, ../sass/base/_mixins.sass */
   .right-off-canvas-menu .menu-name-main-menu li {
     display: inline-block;
   }
-  /* line 906, ../sass/base/_mixins.sass */
+  /* line 919, ../sass/base/_mixins.sass */
   .right-off-canvas-menu .menu-name-main-menu li a {
     padding: 0 1.35714rem;
   }
@@ -2745,15 +2823,34 @@ ol.search-results .search-snippet-info {
   border-left-color: #deb64b;
 }
 /* line 831, ../sass/base/_mixins.sass */
+.front.domain-main .l-triptych .item-list ul .highlighted a {
+  border-left-color: #f2c54b;
+  background: #f2c54b;
+  position: relative;
+}
+/* line 836, ../sass/base/_mixins.sass */
+.front.domain-main .l-triptych .item-list ul .highlighted a:after {
+  content: "\f00d";
+  color: #626262;
+  position: absolute;
+  right: 0.71429rem;
+}
+/* line 843, ../sass/base/_mixins.sass */
+.front.domain-main .l-triptych .item-list ul .highlighted a:hover {
+  color: #111111 !important;
+  border-left-color: #f0bd33;
+  background: #f0bd33;
+}
+/* line 847, ../sass/base/_mixins.sass */
 .front.domain-main .l-triptych .item-list ul a {
   border-left: 3px solid transparent;
   padding: 0.71429rem 1.42857rem 0.71429rem 1.21429rem;
 }
-/* line 836, ../sass/base/_mixins.sass */
+/* line 852, ../sass/base/_mixins.sass */
 .front.domain-main .l-triptych .more-link {
   text-align: left;
 }
-/* line 839, ../sass/base/_mixins.sass */
+/* line 855, ../sass/base/_mixins.sass */
 .front.domain-main .l-triptych .more-link a {
   border-left: 3px solid transparent;
   line-height: 1.6;
@@ -3034,7 +3131,7 @@ ol.search-results .search-snippet-info {
   position: relative;
   text-transform: uppercase;
 }
-/* line 991, ../sass/base/_mixins.sass */
+/* line 1004, ../sass/base/_mixins.sass */
 .node-event.node-teaser .date-calendar:before,
 .node-event.view-mode-compact_teaser .date-calendar:before {
   content: "";
@@ -3045,12 +3142,12 @@ ol.search-results .search-snippet-info {
   height: 0.21429rem;
   width: 100%;
 }
-/* line 997, ../sass/base/_mixins.sass */
+/* line 1010, ../sass/base/_mixins.sass */
 .node-event.node-teaser .date-calendar .date-display-single > *:first-child,
 .node-event.view-mode-compact_teaser .date-calendar .date-display-single > *:first-child {
   font-size: 1.14286rem;
 }
-/* line 1000, ../sass/base/_mixins.sass */
+/* line 1013, ../sass/base/_mixins.sass */
 .node-event.node-teaser .date-calendar .date-display-single > *:last-child,
 .node-event.view-mode-compact_teaser .date-calendar .date-display-single > *:last-child {
   font-size: 2.57143rem;
