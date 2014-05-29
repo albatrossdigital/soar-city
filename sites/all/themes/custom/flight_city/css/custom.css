@@ -1635,43 +1635,39 @@ fieldset legend {
   clear: right;
   min-height: 2.14286rem;
 }
-/* line 52, ../sass/modules/_views.sass */
-.view-organizations h5 {
-  min-height: 2.14286rem;
-}
 
-/* line 63, ../sass/modules/_views.sass */
+/* line 62, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page .views-exposed-widgets {
   position: relative;
 }
-/* line 66, ../sass/modules/_views.sass */
+/* line 65, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page label {
   font-size: 1.14286rem;
   padding-top: 0.71429rem;
 }
-/* line 76, ../sass/modules/_views.sass */
+/* line 75, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page .ajax-progress {
   position: absolute;
   bottom: -1.42857rem;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 93, ../sass/modules/_views.sass */
+  /* line 92, ../sass/modules/_views.sass */
   .view-organizations .view-content {
     padding-left: 2.85714rem;
   }
-  /* line 96, ../sass/modules/_views.sass */
+  /* line 95, ../sass/modules/_views.sass */
   .view-organizations .view-content > h3 {
     font-size: 2.14286rem;
     margin-left: -3.92857rem;
     margin-top: 1.35714rem;
     width: 2.14286rem;
   }
-  /* line 102, ../sass/modules/_views.sass */
+  /* line 101, ../sass/modules/_views.sass */
   .view-organizations .view-content > h3:first-child + .views-row {
     padding-top: 0.71429rem;
   }
-  /* line 105, ../sass/modules/_views.sass */
+  /* line 104, ../sass/modules/_views.sass */
   .view-organizations .views-row {
     min-height: 3.14286rem;
   }
