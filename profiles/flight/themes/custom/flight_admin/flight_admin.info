@@ -6,4 +6,4 @@ core = 7.x
 engine = phptemplate
 
 stylesheets[screen][] = flight-admin.css
-
+scripts[] = flight-admin.js

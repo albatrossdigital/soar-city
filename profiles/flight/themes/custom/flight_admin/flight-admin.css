@@ -157,3 +157,24 @@ div.vertical-tabs .vertical-tabs-panes>fieldset>legend {
 
 
 
+/* Contextual-help */
+a.contextual-help {
+  background: url(/misc/message-16-help.png) left center no-repeat;
+  padding-left: 20px;
+  font-weight: bold;
+}
+
+.field-type-text-with-summary {
+  position: relative;
+}
+
+.field-type-text-with-summary a.contextual-help,
+.vertical-tabs .fieldset-wrapper a.contextual-help {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+
+
+
