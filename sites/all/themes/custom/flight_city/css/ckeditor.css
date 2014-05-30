@@ -6742,7 +6742,7 @@ h3, h4 {
   width: 15px;
   display: inline-block;
   position: relative;
-  border: 0.125rem solid #cccccc;
+  border: 1px solid #cccccc;
   border-radius: 100%;
   -webkit-animation: rotation 0.75s infinite linear;
   -moz-animation: rotation 0.75s infinite linear;
@@ -6754,14 +6754,14 @@ h3, h4 {
   content: "";
   display: block;
   position: absolute;
-  left: -0.125rem;
-  top: -0.125rem;
+  left: -1px;
+  top: -1px;
   height: 15px;
   width: 15px;
-  border-top: 0.125rem solid #cccccc;
-  border-left: 0.125rem solid transparent;
-  border-bottom: 0.125rem solid transparent;
-  border-right: 0.125rem solid transparent;
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  border-right: 1px solid transparent;
   border-radius: 100%;
 }
 /* line 379, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
