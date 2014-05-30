@@ -1,0 +1,77 @@
+{
+  "items" : [
+    {
+      "item" : {
+        "network" : "facebook",
+        "account" : "stephanie.rawlingsblake",
+        "id" : "",
+        "label" : "Office Of Mayor Stephanie Rawlings-Blake"
+      }
+    },
+    {
+      "item" : {
+        "network" : "twitter",
+        "account" : "MayorSRB",
+        "label" : "Office Of Mayor Stephanie Rawlings-Blake"
+      }
+    },
+    {
+      "item" : {
+        "network" : "flickr",
+        "account" : "mdgovpics",
+        "label" : "Office Of Mayor Stephanie Rawlings-Blake"
+      }
+    },
+    {
+      "item" : {
+        "network" : "youtube",
+        "account" : "MayorSRB",
+        "label" : "Office Of Mayor Stephanie Rawlings-Blake"
+      }
+    },
+    {
+      "item" : {
+        "network" : "facebook",
+        "account" : "BaltimoreFire",
+        "id" : "87592220838",
+        "label" : "Fire Department"
+      }
+    },
+    {
+      "item" : {
+        "network" : "twitter",
+        "account" : "baltimorefire",
+        "label" : "Fire Department"
+      }
+    },
+    {
+      "item" : {
+        "network" : "flickr",
+        "account" : "https://www.flickr.com/photos/mdgovpics/",
+        "label" : "Office Of Mayor Stephanie Rawlings-Blake"
+      }
+    },
+    {
+      "item" : {
+        "network" : "youtube",
+        "account" : "http://www.youtube.com/MayorSRB",
+        "label" : "Office Of Mayor Stephanie Rawlings-Blake"
+      }
+    },
+    {
+      "item" : {
+        "network" : "facebook",
+        "account" : "Baltimore-Police-Department",
+        "id" : "58771761955",
+        "label" : "Police Department"
+      }
+    },
+    {
+      "item" : {
+        "network" : "youtube",
+        "account" : "BPDMEDIAUNIT",
+        "label" : "Police Department"
+      }
+    },
+  ]
+}       

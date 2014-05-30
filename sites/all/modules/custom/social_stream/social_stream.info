@@ -1,0 +1,11 @@
+name = Social Stream
+description = Implements jQuery Social Stream code for Drupal
+core = 7.x
+package = Social
+
+;stylesheets[all][] = css/layout.css
+;stylesheets[all][] = css/dcsns_wall.css
+;scripts[] = js/jquery.plugins.js
+;scripts[] = js/jquery.site.js
+;scripts[] = js/jquery.social.stream.wall.1.2.js
+;scripts[] = js/jquery.social.stream.1.4.3.min.js

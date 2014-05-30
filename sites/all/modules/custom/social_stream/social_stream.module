@@ -1,0 +1,179 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function social_stream_menu() {
+  $items = array(
+    'social_stream' => array(
+      'title' => 'Social Wall',
+      'page callback' => 'social_stream_render_wall',
+      'access callback' => TRUE,
+    )
+  );
+  
+  return $items;
+  
+}
+
+/**
+ * feeds JSON to the actual social stream code.
+ * 
+ */
+function social_stream_process_json() {
+  
+  
+}
+
+/**
+ * renders the actual wall
+ */
+function social_stream_render_wall($settings = array()) {
+
+  $output = array();
+  $output['#markup'] = social_stream_process_json();
+  $output['#markup'] .= '
+      <div id="wrapper">
+        <div id="container"> 
+          <!-- Begin Question Block -->
+          <div id="wall">
+            <div id="social-stream"></div>
+        </div>
+    </div>';
+
+  $path = libraries_get_path('jquery-social-stream');
+
+  $output['#attached']['css'][] = $path . '/inc/layout.css';
+  $output['#attached']['css'][] = $path . '/css/dcsns_wall.css';
+
+  $output['#attached']['js'][] = $path . '/inc/js/jquery.plugins.js';
+  $output['#attached']['js'][] = $path . '/inc/js/jquery.site.js';
+  $output['#attached']['js'][] = $path . '/js/jquery.social.stream.wall.1.3.js';
+  $output['#attached']['js'][] = $path . '/js/jquery.social.stream.1.5.4.min.js';
+
+  $output['#attached']['js'][] = drupal_get_path('module', 'social_stream') . '/js/social-stream.js';
+  $settings = array_merge(array(
+    'image_path' => url($path . '/images/dcsns-dark/'),
+    'url' => url('js/json/social-stream/all/all'),
+    'type' => 'wall',
+  ), $settings);
+  $output['#attached']['js'][] = array(
+    'data' => array('social_stream' => $settings),
+    'type' => 'setting',
+  );
+
+  return $output;
+}
+
+
+
+
+
+
+/******************************* DISPLAY SUITE ***************************** */
+
+/**
+ * Implements hook_ds_fields_info().
+ */
+function social_stream_ds_fields_info($entity_type) {
+  $fields = array();
+
+  $default_view = '';
+  
+  $fields[$entity_type] = array(
+
+    // Views field simple renders a view
+    'social_stream' => array(
+      'title' => t('Social stream'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'function' => '_social_stream_ds_social_stream_field',
+      'properties' => array(
+        'settings' => array(
+          'url' => array('type' => 'textfield'),
+          'type' => array('type' => 'select'),
+        ),
+        'default' => array(
+          'url' => '',
+          'type' => 'wall',
+        ),
+      ),
+    ),
+
+  );
+
+  return $fields;
+}
+
+
+/**
+ * Implements hook_ds_field_format_summary().
+ */
+function social_stream_ds_field_format_summary($field) {
+  // Saved formatter settings are on $field['formatter_settings'];
+  $settings = isset($field['formatter_settings']) ? $field['formatter_settings'] : $field['properties']['default'];
+
+  // @todo
+  switch ($field['name']) {
+
+    default:
+      $summary = array();
+      foreach ($settings as $key => $value) {
+        $summary[] = $key . ': ' . $value;
+      }
+      $summary = implode('<br />', $summary) . '<br/>';
+  }
+
+  return $summary;  
+}
+
+/**
+ * Implements hook_ds_field_settings_form().
+ */
+function social_stream_ds_field_settings_form($field) {
+  $form = array();
+  // Saved formatter settings are on $field['formatter_settings'];
+  $settings = isset($field['formatter_settings']) ? $field['formatter_settings'] : $field['properties']['default'];
+
+  switch($field['name']) {
+
+    case 'social_stream':
+      $form['url'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Feed URL'),
+        '#default_value' => $settings['url'],
+        '#description' => t('Enter the url to the feed. Use % to take the place of the current entity.')
+      );
+      $form['type'] = array(
+        '#type' => 'select',
+        '#title' => t('Type'),
+        '#options' => array(
+          'wall' => t('Wall'),
+          'stream' => t('Stream'),
+        ),
+        '#default_value' => $settings['type'],
+      );
+      break;
+  }
+
+  if(!empty($form)) {
+    return $form;
+  }
+}
+
+
+
+
+
+
+/**
+ * Field returns date in "custom time" format.
+ */
+function _social_stream_ds_social_stream_field(array $field) {
+  // Saved formatter settings are on $field['formatter_settings'];
+  $settings = isset($field['formatter_settings']) ? $field['formatter_settings'] : $field['properties']['default'];
+  $ids = entity_extract_ids($field['entity_type'], $field['entity']);
+  $settings['url'] = url(str_replace('%', $ids[0], $settings['url']));
+  return drupal_render(social_stream_render_wall($settings));
+
+}
+
