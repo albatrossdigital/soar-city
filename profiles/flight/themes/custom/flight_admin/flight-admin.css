@@ -164,16 +164,23 @@ a.contextual-help {
   font-weight: bold;
 }
 
-.field-type-text-with-summary {
+.text-format-wrapper {
   position: relative;
 }
 
-.field-type-text-with-summary a.contextual-help,
-.vertical-tabs .fieldset-wrapper a.contextual-help {
+.field-type-text-with-summary a.contextual-help {
   position: absolute;
-  top: 0;
+  top: 20px;
   right: 0;
 }
+
+.vertical-tabs .fieldset-wrapper a.contextual-help {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+
 
 
 
