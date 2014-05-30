@@ -16,3 +16,90 @@
 
     [data-equalizer-watch]
       margin-bottom: 0
+
+
+// offset grouped views
+// ----------------------------------------------------------------------------
+
+.view-organizations
+  // grouping titles
+  .view-content
+    padding-left: rem-calc(30)
+
+    & > h3
+      float: left
+      margin-left: rem-calc(-30)
+      margin-top: rem-calc(30)
+      +f(alt-alt)
+      text-align: center
+      width: rem-calc(20)
+
+      &:first-child
+        &, & + .views-row
+          margin-top: 0
+          padding-top: 0
+       
+        
+  h3 + .views-row 
+    margin-top: $small-main-spacing
+    padding-top: rem-calc(10)
+    +box-sizing(content-box)
+
+  .views-row
+    clear: right
+    min-height: rem-calc(30)
+
+  h5
+
+    a 
+      +c(link-alt)
+
+
+// offset grouped views blocks
+// ----------------------------------------------------------------------------
+
+.block-views-exp-organizations-page
+  .views-exposed-widgets
+    position: relative
+
+  label 
+    +f(alt-alt-bold)
+    font-size: $h4-font-size
+    padding-top: rem-calc(10)
+
+  // hide widget
+  .views-widget-filter-field_organization_category_tid select
+    .js &
+      +e(hide)
+
+  .ajax-progress
+    position: absolute
+    bottom: rem-calc(-20)
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($medium)
+
+  // offset grouped views
+  // ----------------------------------------------------------------------------
+
+  .view-organizations
+    // grouping titles
+    .view-content
+      padding-left: rem-calc(40)
+
+      & > h3
+        font-size: $h2-font-size
+        margin-left: rem-calc(-55)
+        margin-top: rem-calc(23)
+        width: rem-calc(30)
+
+        &:first-child + .views-row
+          padding-top: rem-calc(10)
+
+    .views-row
+      min-height: rem-calc(44)

@@ -20,10 +20,11 @@
   
   &:not(.domain-main)
     .block-views-news-block,
-    .block[class$="featured-programs"]
+    .block[class*="featured-programs"]
       +block-with-top-border()
 
     .l-content-bottom-1
+      padding-top: 0
       +nice-row-border($column-gutter/2, $small-main-block-spacing/2, 1px solid $gray, top, hidden)
 
 
@@ -70,6 +71,9 @@
 
     &:before
       display: none
+
+    .block
+      margin-bottom: 0
 
   .content-bottom-full
     //max-width: $row-width
@@ -144,7 +148,7 @@
   .front.domain-main
 
     .block-views-news-block-4
-      +block-with-top-border()
+      +block-with-top-border(medium)
 
     .content-bottom-triple-left
       padding-right: rem-calc(35)
