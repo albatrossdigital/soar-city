@@ -704,41 +704,75 @@ $common-border: common-border-val()
 //***********************************
 
 
-%icon-circle-icon
+%icon-circle-icon-core
   color: $white
-  font-size: $icon-area-font-size
-  line-height: $icon-area-dimension
   margin-right: 0
   opacity: 0.5
   position: relative
   z-index: 2
 
+%icon-circle-icon
+  font-size: $icon-area-font-size
+  line-height: $icon-area-dimension
+
+%small-icon-circle-icon
+  font-size: $small-icon-area-font-size
+  line-height: $small-icon-area-dimension
+
 %icon-circle-icon-dimensions
   height: $icon-area-dimension
   width: $icon-area-dimension
 
-@mixin icon-circle-icon($main: 'i', $add-dimensions: 'i, .color-link')
+%small-icon-circle-icon-dimensions
+  height: $small-icon-area-dimension
+  width: $small-icon-area-dimension
+
+@mixin icon-circle-icon($main: 'i', $add-dimensions: 'i, .color-link', $core: true, $size: large)
   #{$main} 
-    @extend %icon-circle-icon
+    @if $core
+      @extend %icon-circle-icon-core
 
-  #{$add-dimensions} 
-    @extend %icon-circle-icon-dimensions
+    @if $size == small
+      @extend %small-icon-circle-icon
 
-%icon-color-circle
+    @else 
+      @extend %icon-circle-icon
+
+  #{$add-dimensions}
+    @if $size == small 
+      @extend %small-icon-circle-icon-dimensions
+    @else
+      @extend %icon-circle-icon-dimensions
+
+%icon-color-circle-core
   left: 50%
   top: 0
-  margin-left: -($icon-area-dimension/2)
   position: absolute
   +border-radius(100%)
   z-index: 1
 
-@mixin icon-color-circle()
-  @extend %icon-color-circle
+%icon-color-circle
+  margin-left: -($icon-area-dimension/2)
 
+%small-icon-color-circle
+  margin-left: -($small-icon-area-dimension/2)
 
-@mixin fake-icon-circle-box($color, $icon: 'map-marker', $child: '.block-title')
+@mixin icon-color-circle($core: true, $size: large)
+  @if $core
+    @extend %icon-color-circle-core
+
+  @if $size == small 
+    @extend %small-icon-color-circle
+
+  @else 
+    @extend %icon-color-circle
+
+@mixin fake-icon-circle-box($color, $icon: 'map-marker', $child: '.block-title', $size: large)
   position: relative
-  padding-top: rem-calc(100)
+  @if $size == small
+    padding-top: rem-calc(100)
+  @else 
+    padding-top: rem-calc(70)
 
   &:before 
     content: " " 
@@ -750,11 +784,11 @@ $common-border: common-border-val()
   $child-select-other: '&:before, #{$child}:before'
 
   #{$child-select-other}
-    +icon-color-circle()
+    +icon-color-circle(true, $size)
     text-align: center
 
   // call icon styles
-  +icon-circle-icon($child-select, $child-select-other)
+  +icon-circle-icon($child-select, $child-select-other, true, $size)
   
   // icon
   #{$child}

@@ -5,6 +5,12 @@
 // ******************************************************
 
 
+// This is the default html and body font-size for the base rem value.
+$base-font-size: 14px
+$rem-base: $base-font-size
+
+
+
 // Colors
 // ------------------------------------------------------
 
@@ -75,14 +81,18 @@ $font-size-small: rem-calc(12)
 // Entity link blocks
 // --------------------------
 
-$icon-area-dimension: rem-calc(90) 
+$icon-area-dimension: 80px
 $icon-area-font-size: rem-calc(45)
+
+$small-icon-area-dimension: 60px
+$small-icon-area-font-size: rem-calc(40)
 
 
 
 
 // Layout
 // ------------------------------------------------------
+
 
 
 // Padding bewteen regions
@@ -108,9 +118,6 @@ $medium-main-block-spacing: rem-calc(55)
 // FOUNDATION SETTINGS
 //
 
-// This is the default html and body font-size for the base rem value.
-$base-font-size: 14px
-$rem-base: $base-font-size
 
 // It strips the unit of measure and returns it
 @function strip-unit($num)
