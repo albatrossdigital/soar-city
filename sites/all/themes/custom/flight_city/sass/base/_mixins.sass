@@ -584,7 +584,7 @@ $common-border: common-border-val()
 
     .more-link
       right: $column-gutter/2
-      top: rem-calc(20)
+      top: rem-calc(18)
       position: absolute
       z-index: 1
 
@@ -770,9 +770,10 @@ $common-border: common-border-val()
 @mixin fake-icon-circle-box($color, $icon: 'map-marker', $child: '.block-title', $size: large)
   position: relative
   @if $size == small
-    padding-top: rem-calc(100)
-  @else 
     padding-top: rem-calc(70)
+    
+  @else 
+    padding-top: rem-calc(100)
 
   &:before 
     content: " " 
