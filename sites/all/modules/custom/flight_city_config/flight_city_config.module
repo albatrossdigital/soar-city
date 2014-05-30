@@ -19,7 +19,7 @@ function flight_city_config_navbar() {
     'tab' => array(
       '#type' => 'link',
       '#title' => t('Help'),
-      '#href' => 'help',
+      '#href' => 'http://www.baltimore.ifsight.com/help#page-title',
       '#options' => array(
         'attributes' => array(
           'title' => t('My Workbench'),
@@ -27,7 +27,7 @@ function flight_city_config_navbar() {
         ),
       ),
     ),
-    '#weight' => 100,
+    '#weight' => 1000,
   );
 
   
