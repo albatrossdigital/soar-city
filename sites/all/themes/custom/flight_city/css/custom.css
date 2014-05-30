@@ -54,7 +54,7 @@ i[class^="fa"], [role=complementary] .block-domain-menu-block .menu-block-wrappe
 [role=complementary] .block > ul .highlighted a:after, [role=complementary] .block .menu-block-wrapper ul .highlighted a:after, [role=complementary] .block .item-list > ul .highlighted a:after, .draggable a.tabledrag-handle:before, .share42-item:nth-child(4) a:before, .share42-item:first-child a:before,
 a.social-icon.Facebook:before, .share42-item:nth-child(3) a:before,
 a.social-icon.Twitter:before, .share42-item:nth-child(2) a:before,
-a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, a.social-icon.Govdelivery:before, a.social-icon.Social.Wall:before, .breadcrumbs li:first-child a:before, .button.icon-play:before, #search-form .form-submit:before, .front.domain-main .l-triptych .item-list ul .highlighted a:after, .front.domain-main .triptych-first .block .block-title:before, .front.domain-main .triptych-middle .block .block-title:before, .front.domain-main .triptych-last .block .block-title:before {
+a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, a.social-icon.Govdelivery:before, a.social-icon.Social.Wall:before, .breadcrumbs li:first-child a:before, .button.icon-play:before, #search-form .form-submit:before, .front.domain-main .l-triptych .item-list ul .highlighted a:after, .front.domain-main .triptych-first .block .block-title:before, .front.domain-main .triptych-middle .block .block-title:before, .front.domain-main .triptych-last .block .block-title:before, .vocabulary-payment-type.view-mode-full .icon-box [class*="fa-"]:before {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -417,10 +417,22 @@ h3, h4 {
   line-height: 80px;
 }
 
+/* line 718, ../sass/base/_mixins.sass */
+.vocabulary-payment-type.view-mode-full .icon-box [class*="fa-"]:before {
+  font-size: 2.14286rem;
+  line-height: 60px;
+}
+
 /* line 722, ../sass/base/_mixins.sass */
 .circle-icon i, .circle-icon .color-link, .front.domain-main .triptych-first .block:before, .front.domain-main .triptych-first .block .block-title:before, .front.domain-main .triptych-middle .block:before, .front.domain-main .triptych-middle .block .block-title:before, .front.domain-main .triptych-last .block:before, .front.domain-main .triptych-last .block .block-title:before {
   height: 80px;
   width: 80px;
+}
+
+/* line 726, ../sass/base/_mixins.sass */
+.vocabulary-payment-type.view-mode-full .icon-box [class*="fa-"]:before {
+  height: 60px;
+  width: 60px;
 }
 
 /* line 747, ../sass/base/_mixins.sass */
@@ -3263,6 +3275,43 @@ ol.search-results .search-snippet-info {
     margin-top: -0.71429rem;
   }
 }
+/* line 9, ../sass/theme/_payments.sass */
+.vocabulary-payment-type.view-mode-full .icon-box {
+  margin-bottom: 2.14286rem;
+  position: relative;
+  padding-left: 6.42857rem;
+  padding-top: 0.85714rem;
+}
+/* line 18, ../sass/theme/_payments.sass */
+.vocabulary-payment-type.view-mode-full .icon-box [class*="fa-"]:before {
+  position: absolute;
+  left: 0.71429rem;
+  top: 0;
+  text-align: center;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
+  color: rgba(255, 255, 255, 0.5);
+}
+/* line 28, ../sass/theme/_payments.sass */
+.vocabulary-payment-type.view-mode-full .icon-box.gold [class*="fa-"]:before {
+  background: #deb64b;
+}
+/* line 32, ../sass/theme/_payments.sass */
+.vocabulary-payment-type.view-mode-full .icon-box.green [class*="fa-"]:before {
+  background: #6aa880;
+}
+/* line 36, ../sass/theme/_payments.sass */
+.vocabulary-payment-type.view-mode-full .icon-box.blue [class*="fa-"]:before {
+  background: #5eb5cb;
+}
+/* line 40, ../sass/theme/_payments.sass */
+.vocabulary-payment-type.view-mode-full .icon-box.red [class*="fa-"]:before {
+  background: #e55454;
+}
+
 /* line 6, ../sass/theme/_faq.sass */
 .field-name-faq-subcategories ul {
   list-style: none;
