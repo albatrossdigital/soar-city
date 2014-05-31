@@ -47,11 +47,7 @@ Drupal.behaviors.social_stream = {
             }
         }
       });
-      feeds.blogger = undefined;
-      feeds.wordpress = undefined;
-      feeds.soundcloud = undefined;
-      console.log(feeds);
-
+      feeds.twitter.url = settings.social_stream.twitter_url;
 
       $('#social-stream').dcSocialStream({
         feeds: feeds,
@@ -65,11 +61,10 @@ Drupal.behaviors.social_stream = {
         days: 30,
         max: 'limit',
         limit: 10,
+        order: 'random',
         iconPath: settings.social_stream.image_path,
-        imagePath: settings.social_stream.image_path
+        imagePath: settings.social_stream.image_path,
       });
-
-
 
       console.log(settings);
     });
