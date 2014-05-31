@@ -18,9 +18,16 @@ Drupal.behaviors.social_stream = {
           var arr = value.url.split('/');
           console.log(value.network);
           switch (value.network) {
+            case 'flickr':
+              feeds[value.network].push(arr[4]);
+              break;
             case 'blogger':
             case 'wordpress':
               //@todo
+              break;
+            case 'wall':
+            case 'govdelivery':
+              feeds[value.network] = undefined;
               break;
             default:
               feeds[value.network].push(arr[arr.length-1]);
@@ -34,7 +41,10 @@ Drupal.behaviors.social_stream = {
             //@todo
             break;
           default:
-            feeds[index] = {id: feeds[index].join()};
+          console.log(feeds);
+            if (value != undefined) {
+              feeds[index] = {id: feeds[index].join()};
+            }
         }
       });
       feeds.blogger = undefined;
