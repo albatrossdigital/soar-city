@@ -41,13 +41,13 @@ Drupal.behaviors.social_stream = {
             //@todo
             break;
           default:
-          console.log(feeds);
             if (value != undefined) {
               feeds[index] = {id: feeds[index].join()};
             }
         }
       });
       feeds.twitter.url = settings.social_stream.twitter_url;
+      console.log(feeds);
 
       $('#social-stream').dcSocialStream({
         feeds: feeds,
@@ -66,7 +66,6 @@ Drupal.behaviors.social_stream = {
         imagePath: settings.social_stream.image_path,
       });
 
-      console.log(settings);
     });
 
     
