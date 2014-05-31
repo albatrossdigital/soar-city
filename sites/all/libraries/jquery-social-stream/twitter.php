@@ -1,4 +1,6 @@
-<?php
+<?php  error_reporting(E_ALL);
+  ini_set('display_errors', TRUE);
+  ini_set('display_startup_errors', TRUE);
 // SET YOUR TWITTER API DETAILS HERE
 $consumer_key = "cUfx93n2NBU3J8VCZ1pQ"; 
 $consumer_secret = "FvKP8uzrVhGAJ2ncuofsSTUsLV50H2KdW9CkNrhAENo";
