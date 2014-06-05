@@ -1,0 +1,15 @@
+default:
+  extensions:
+    Behat\MinkExtension\Extension:
+      goutte: ~
+      selenium2: ~
+      base_url: http://test-baltimorecity.gotpantheon.com 
+    Drupal\DrupalExtension\Extension:
+      blackbox: ~
+      api_driver: drush
+      drush:
+        alias: @pantheon.baltimorecity.test
+      text:
+        username_field: "E-mail"
+        password_field: "Password"
+        log_out: "Baltimore"
