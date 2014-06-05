@@ -589,6 +589,9 @@ if (defined('PANTHEON_ENVIRONMENT')) {
   $conf['page_cache_maximum_age'] = 300;
 }*/
 
+// ApacheSolr Settings.
+$conf['apachesolr_environments']['solr']['url'] = 'http://us.opensolr.com/solr/prod_balt_if';
+
 // Redirect all domains to TLD
 if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
   if ($_SERVER['HTTP_HOST'] != 'portoftacoma.com') {
@@ -605,6 +608,10 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] 
   $conf['page_compression'] = 1;
   $conf['preprocess_css'] = 1;
   $conf['preprocess_js'] = 1;
+  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 0;
+}
+else {
+  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 1;
 }
 
 
