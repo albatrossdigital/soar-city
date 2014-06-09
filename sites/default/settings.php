@@ -594,7 +594,7 @@ $conf['apachesolr_environments']['solr']['url'] = 'http://us.opensolr.com/solr/p
 
 // Redirect all domains to TLD
 if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
-  if ($_SERVER['HTTP_HOST'] != 'portoftacoma.com') {
+  if ($_SERVER['HTTP_HOST'] != 'baltimorecity.com') {
     header('HTTP/1.0 301 Moved Permanently'); 
     header('Location: http://www.baltimorecity.gov'. $_SERVER['REQUEST_URI']); 
     exit();
