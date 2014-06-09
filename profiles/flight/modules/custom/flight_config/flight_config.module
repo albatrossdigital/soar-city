@@ -208,6 +208,16 @@ function flight_config_navbar() {
 
   // The 'Home' tab is a simple link, which is wrapped in markup associated
   // with a visual tab styling.
+  $links = array(
+    'create' => array(
+      'title' => t('Create content'),
+      'href' => 'admin/workbench/create',
+    ),
+    'create' => array(
+      'title' => t('Search content'),
+      'href' => 'admin/workbench/search',
+    ),
+  );
   $items['workbench'] = array(
     '#type' => 'navbar_item',
     'tab' => array(
@@ -221,6 +231,17 @@ function flight_config_navbar() {
         ),
       ),
     ),
+    /*'tray' => array(
+      '#heading' => t('Workbench actions'),
+      'user_links' => array(
+        '#theme' => 'links',
+        '#links' => $links,
+        '#attributes' => array(
+          'class' => array('menu', 'navbar-menu-workbench'),
+        ),
+      ),
+    ),*/
+
     '#weight' => -19,
   );
 
@@ -240,6 +261,7 @@ function flight_config_navbar() {
           ),
         ),
       ),
+
       '#weight' => -18,
     );
   }
