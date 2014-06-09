@@ -2624,18 +2624,22 @@ ul[data-orbit] ~ .orbit-next:before {
   border-bottom: solid #cccccc 1px;
 }
 /* line 79, ../sass/theme/_search.sass */
+.block-current-search .result-0 {
+  display: none;
+}
+/* line 82, ../sass/theme/_search.sass */
 .main .block-current-search {
   margin-bottom: 1.78571rem;
 }
 
-/* line 84, ../sass/theme/_search.sass */
+/* line 87, ../sass/theme/_search.sass */
 ul.facetapi-facetapi-suggestion {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* line 91, ../sass/theme/_search.sass */
+/* line 94, ../sass/theme/_search.sass */
 .spelling-suggestions {
   /* IE6 */
   /* IE7 */
@@ -2657,36 +2661,36 @@ ul.facetapi-facetapi-suggestion {
 .clearfix *:first-child + html .spelling-suggestions {
   min-height: 1%;
 }
-/* line 95, ../sass/theme/_search.sass */
+/* line 98, ../sass/theme/_search.sass */
 .spelling-suggestions dl > * {
   float: left;
   margin-right: 0.35714rem;
 }
 
-/* line 99, ../sass/theme/_search.sass */
+/* line 102, ../sass/theme/_search.sass */
 ol.search-results {
   margin-left: 0;
   clear: both;
 }
-/* line 107, ../sass/theme/_search.sass */
+/* line 110, ../sass/theme/_search.sass */
 ol.search-results .search-snippet-info {
   padding-left: 0;
 }
 
 @media only screen and (max-width: 58.92857em) {
-  /* line 125, ../sass/theme/_search.sass */
+  /* line 128, ../sass/theme/_search.sass */
   .header-region-right #search-form {
     display: none;
   }
 }
 @media only screen and (min-width: 59em) {
-  /* line 134, ../sass/theme/_search.sass */
+  /* line 137, ../sass/theme/_search.sass */
   #search-form {
     clear: both;
     float: right;
     max-width: 21.42857rem;
   }
-  /* line 140, ../sass/theme/_search.sass */
+  /* line 143, ../sass/theme/_search.sass */
   .top-bar #search-form {
     display: none;
   }
