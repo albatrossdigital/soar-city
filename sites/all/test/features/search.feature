@@ -1,4 +1,4 @@
-Feature: Testing Test Enviroment Works
+Feature: Testing sitewide search through select keywords
 
   Scenario: Access homepage
     Given I go to homepage
