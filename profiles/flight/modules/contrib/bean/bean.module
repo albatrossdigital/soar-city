@@ -413,6 +413,19 @@ function bean_bean_cache_clear() {
 }
 
 /**
+ * Clear out cache_block table
+ * @param  object $bean the bean object
+ */
+function bean_cache_clear_block($bean = null) {
+  if (isset($bean->delta)) {
+    cache_clear_all('bean:' . $bean->delta . ':', 'cache_block', TRUE);
+  }
+  else {
+    cache_clear_all('bean:', 'cache_block', TRUE);
+  }
+}
+
+/**
  * Load a widget class
  *
  * @param $plugin_key string

@@ -1,0 +1,39 @@
+diff --git a/bean.module b/bean.module
+index c35ff1c..403fb2a 100644
+--- a/bean.module
++++ b/bean.module
+@@ -413,6 +413,19 @@ function bean_bean_cache_clear() {
+ }
+ 
+ /**
++ * Clear out cache_block table
++ * @param  object $bean the bean object
++ */
++function bean_cache_clear_block($bean = null) {
++  if (isset($bean->delta)) {
++    cache_clear_all('bean:' . $bean->delta . ':', 'cache_block', TRUE);
++  }
++  else {
++    cache_clear_all('bean:', 'cache_block', TRUE);
++  }
++}
++
++/**
+  * Load a widget class
+  *
+  * @param $plugin_key string
+diff --git a/includes/bean.core.inc b/includes/bean.core.inc
+index f13dff1..947cc17 100644
+--- a/includes/bean.core.inc
++++ b/includes/bean.core.inc
+@@ -371,6 +371,10 @@ class Bean extends Entity {
+     $return = parent::save();
+     bean_reset(TRUE, TRUE);
+ 
++    if (module_exists('block')) {
++      bean_cache_clear_block($this);
++    }
++
+     return $return;
+   }
+ 
