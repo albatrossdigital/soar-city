@@ -9,6 +9,10 @@ function social_stream_menu() {
       'title' => 'Social Wall',
       'page callback' => 'social_stream_render_wall',
       'access callback' => TRUE,
+    ),
+    'rest/social-stream/twitter.php' => array(
+      'page callback' => 'social_stream_render_twitter_feed',
+      'access callback' => TRUE,
     )
   );
   
@@ -20,9 +24,12 @@ function social_stream_menu() {
  * feeds JSON to the actual social stream code.
  * 
  */
-function social_stream_process_json() {
-  
-  
+function social_stream_render_twitter_feed() {
+  //$path = libraries_get_path('jquery-social-stream');
+  print 'asdf';
+  include __DIR__ . '../../../libraries/jquery-social-stream/twitter.php';
+
+  return;
 }
 
 /**
@@ -31,7 +38,7 @@ function social_stream_process_json() {
 function social_stream_render_wall($settings = array()) {
 
   $output = array();
-  $output['#markup'] = social_stream_process_json();
+  //$output['#markup'] = social_stream_process_json();
   $output['#markup'] .= '
       <div id="wrapper">
         <div id="container"> 
