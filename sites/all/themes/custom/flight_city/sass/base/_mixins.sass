@@ -916,6 +916,22 @@ $main-menu-border-size: rem-calc(3)
     background: $topbar-link-bg-hover
     color: $color-hover
 
+
+// Since domain access forces static links
+%main-menu-link-active
+  color: $topbar-link-color-active
+  background: $topbar-link-bg-active
+
+  &:hover
+    background: $topbar-link-bg-active-hover
+    color: darken($topbar-link-color-active, 10%)
+
+  @media #{$past-menu}
+    border-top-color: $topbar-link-color-active
+
+    &:hover
+      border-top-color: darken($topbar-link-color-active, 10%)
+
 // Main menu Active link style
 @mixin  main-menu-link-active($color: $topbar-link-color-active, $color-hover: $topbar-link-color-active-hover)
   color: $color
@@ -939,9 +955,9 @@ $main-menu-border-size: rem-calc(3)
     a
       +main-menu-link()
 
-    &#{$active}
-      a
-        +main-menu-link-active()
+    //&#{$active}
+      //a
+        //+main-menu-link-active()
 
 // Main menu in horizontal
 @mixin main-menu-style-horizontal($include: false, $container: 'li', $active: '.active, .active-trail')
