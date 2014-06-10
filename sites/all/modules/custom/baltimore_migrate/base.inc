@@ -78,16 +78,17 @@ class BaltimoreStoriesMigration extends XMLMigration {
       }
       if (
         strpos($url, $this->arguments['base_url']) !== FALSE
-        && !preg_match('/icons|EmailSMSAlerts|rssbutton/i', $url)
+        && !preg_match('/icons|EmailSMSAlerts|rssbutton|Digital_Cities_Winner_2013|Mayor_Stephanie_Rawlings-Blake_Official_Photo_2013_Web/i', $url)
       ) {
         $file = _baltimore_migrate_save_file($url, $arguments['file_destination']);
         dpm($url);
-        $node->setAttribute('src', '/file/'.$file->fid);
-        $node->setAttribute('class', 'legacy-image');
+        $node->parentNode->removeChild($node);
+        /*$node->setAttribute('src', '/file/'.$file->fid);
+        $node->setAttribute('class', 'legacy-image');*/
+        $row->image = $file;
       }
     }
     
-
     $row->body = '';
     foreach ($xpath->query('//div[@class="articleViewWrapper"]') as $i => $node) {
       $row->body .= $node->ownerDocument->saveHTML($node);
@@ -97,6 +98,11 @@ class BaltimoreStoriesMigration extends XMLMigration {
 
   public function prepare(stdClass $entity, stdClass $row) {
     $entity->status = 1;
+
+    // Grab picture from preprocess
+    if (!empty($row->image)) {
+      $entity->field_picture[LANGUAGE_NONE][0] = (array) $row->image;
+    }
 
     // Set the story type
     if (!empty($this->arguments['story_type'])) {
