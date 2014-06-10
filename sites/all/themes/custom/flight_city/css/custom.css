@@ -263,15 +263,27 @@ h3 a:hover, h4 a:hover, .more-link:hover,
 }
 
 /* line 382, ../sass/base/_mixins.sass */
-h1 a, h2 a, h5 a, h6 a, .header-region-right a {
+h1 a, h2 a, h5 a, h6 a, .header-region-right a, .field-collection-item-field-link-collection h3 a, .field-collection-item-field-link-collection h4 a,
+.vocabulary-event-category.view-mode-teaser h3 a,
+.vocabulary-event-category.view-mode-teaser h4 a,
+.vocabulary-faq-category.view-mode-teaser h3 a,
+.vocabulary-faq-category.view-mode-teaser h4 a {
   color: #111111;
 }
 /* line 385, ../sass/base/_mixins.sass */
-h1 a:hover, h2 a:hover, h5 a:hover, h6 a:hover, .header-region-right a:hover {
+h1 a:hover, h2 a:hover, h5 a:hover, h6 a:hover, .header-region-right a:hover, .field-collection-item-field-link-collection h3 a:hover, .field-collection-item-field-link-collection h4 a:hover,
+.vocabulary-event-category.view-mode-teaser h3 a:hover,
+.vocabulary-event-category.view-mode-teaser h4 a:hover,
+.vocabulary-faq-category.view-mode-teaser h3 a:hover,
+.vocabulary-faq-category.view-mode-teaser h4 a:hover {
   color: #0a83a1;
 }
 /* line 388, ../sass/base/_mixins.sass */
-h1 a:active, h2 a:active, h5 a:active, h6 a:active, .header-region-right a:active {
+h1 a:active, h2 a:active, h5 a:active, h6 a:active, .header-region-right a:active, .field-collection-item-field-link-collection h3 a:active, .field-collection-item-field-link-collection h4 a:active,
+.vocabulary-event-category.view-mode-teaser h3 a:active,
+.vocabulary-event-category.view-mode-teaser h4 a:active,
+.vocabulary-faq-category.view-mode-teaser h3 a:active,
+.vocabulary-faq-category.view-mode-teaser h4 a:active {
   color: #07b1db;
 }
 
@@ -2479,7 +2491,7 @@ ul[data-orbit] ~ .orbit-next:before {
   text-align: center;
   margin-bottom: 1.78571rem;
 }
-/* line 15, ../sass/theme/_icon-box.sass */
+/* line 19, ../sass/theme/_icon-box.sass */
 .field-collection-item-field-link-collection:hover i, .field-collection-item-field-link-collection.active i,
 .vocabulary-event-category.view-mode-teaser:hover i,
 .vocabulary-event-category.view-mode-teaser.active i,
@@ -2488,19 +2500,19 @@ ul[data-orbit] ~ .orbit-next:before {
   opacity: 1;
 }
 
-/* line 20, ../sass/theme/_icon-box.sass */
+/* line 24, ../sass/theme/_icon-box.sass */
 .field-collection-item-field-link-collection,
 .vocabulary-event-category.view-mode-teaser {
   cursor: pointer;
 }
-/* line 25, ../sass/theme/_icon-box.sass */
+/* line 29, ../sass/theme/_icon-box.sass */
 .field-collection-item-field-link-collection .field-name-field-link,
 .vocabulary-event-category.view-mode-teaser .field-name-field-link {
   line-height: 1.4;
   padding-top: 1.42857rem;
 }
 
-/* line 46, ../sass/theme/_icon-box.sass */
+/* line 50, ../sass/theme/_icon-box.sass */
 .field-collection-item-field-link-collection:hover .circle-icon, .field-collection-item-field-link-collection.active .circle-icon,
 .vocabulary-event-category.view-mode-teaser:hover .circle-icon,
 .vocabulary-event-category.view-mode-teaser.active .circle-icon,
@@ -2509,7 +2521,7 @@ ul[data-orbit] ~ .orbit-next:before {
   margin-top: -0.57143rem;
   padding-bottom: 0.57143rem;
 }
-/* line 50, ../sass/theme/_icon-box.sass */
+/* line 54, ../sass/theme/_icon-box.sass */
 .field-collection-item-field-link-collection .circle-icon,
 .vocabulary-event-category.view-mode-teaser .circle-icon,
 .vocabulary-faq-category.view-mode-teaser .circle-icon {
@@ -2522,30 +2534,30 @@ ul[data-orbit] ~ .orbit-next:before {
   position: relative;
 }
 
-/* line 65, ../sass/theme/_icon-box.sass */
+/* line 69, ../sass/theme/_icon-box.sass */
 .vocabulary-event-category.view-mode-teaser .group-right,
 .vocabulary-faq-category.view-mode-teaser .group-right {
   text-align: left;
 }
-/* line 68, ../sass/theme/_icon-box.sass */
+/* line 72, ../sass/theme/_icon-box.sass */
 .vocabulary-event-category.view-mode-teaser i,
 .vocabulary-faq-category.view-mode-teaser i {
   margin-left: 0.07143rem;
 }
 
-/* line 75, ../sass/theme/_icon-box.sass */
+/* line 79, ../sass/theme/_icon-box.sass */
 .vocabulary-event-category.view-mode-teaser .group-right > div {
   display: table;
   min-height: 5.71429rem;
 }
-/* line 79, ../sass/theme/_icon-box.sass */
+/* line 83, ../sass/theme/_icon-box.sass */
 .vocabulary-event-category.view-mode-teaser .group-right > div > * {
   display: table-cell;
   vertical-align: middle;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 95, ../sass/theme/_icon-box.sass */
+  /* line 99, ../sass/theme/_icon-box.sass */
   .field-collection-item-field-link-collection,
   .vocabulary-event-category.view-mode-teaser,
   .vocabulary-faq-category.view-mode-teaser {
@@ -3358,7 +3370,7 @@ ol.search-results .search-snippet-info {
   background: #e55454;
 }
 
-/* line 6, ../sass/theme/_faq.sass */
+/* line 11, ../sass/theme/_faq.sass */
 .field-name-faq-subcategories ul {
   list-style: none;
   padding: 0;
