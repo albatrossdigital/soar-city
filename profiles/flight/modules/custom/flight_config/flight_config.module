@@ -196,7 +196,7 @@ function flight_config_file_view($file, $view_mode, $langcode) {
       case 'document':
       case 'image':
         $url = file_create_url($file->uri);
-        //drupal_goto($url);
+        drupal_goto($url);
         break;
     }
   }
