@@ -69,6 +69,25 @@ class BaltimoreStoriesMigration extends XMLMigration {
     foreach($xpath->query('//div[@class="pressReleaseHeader"]|//h2|//div[@class="articlesMoreInfo"]|//div[@style="text-align:center;font-style:italic;"]') as $node) {
       $node->parentNode->removeChild($node);
     }
+    
+    // Deal with legacy images
+    foreach($xpath->query('//img[@src]') as $node) {
+      $url = $node->getAttribute('src');
+      if (strpos($url, $this->arguments['base_url']) === FALSE && strpos($url, 'http') === FALSE) {
+        $url = $this->arguments['base_url'] . $url;
+      }
+      if (
+        strpos($url, $this->arguments['base_url']) !== FALSE
+        && !preg_match('/icons|EmailSMSAlerts|rssbutton/i', $url)
+      ) {
+        $file = _baltimore_migrate_save_file($url, $arguments['file_destination']);
+        dpm($url);
+        $node->setAttribute('src', '/file/'.$file->fid);
+        $node->setAttribute('class', 'legacy-image');
+      }
+    }
+    
+
     $row->body = '';
     foreach ($xpath->query('//div[@class="articleViewWrapper"]') as $i => $node) {
       $row->body .= $node->ownerDocument->saveHTML($node);
