@@ -683,26 +683,37 @@ html, body {
   margin-bottom: 0.35714rem;
 }
 
+/* line 43, ../sass/layout/_header.sass */
+.block-gtranslate .gtflag {
+  display: block;
+  float: left;
+  padding: 0 2px !important;
+}
+/* line 48, ../sass/layout/_header.sass */
+.block-gtranslate .gtflag img {
+  margin-bottom: 0;
+}
+
 @media only screen and (max-width: 45.71429em) {
-  /* line 56, ../sass/layout/_header.sass */
+  /* line 64, ../sass/layout/_header.sass */
   .header-region-right > * {
     float: left;
     width: 33%;
   }
 }
 @media only screen and (min-width: 45.78571em) {
-  /* line 63, ../sass/layout/_header.sass */
+  /* line 71, ../sass/layout/_header.sass */
   .l-header-region {
     padding-top: 1.78571rem;
   }
 }
 @media only screen and (min-width: 59em) {
-  /* line 75, ../sass/layout/_header.sass */
+  /* line 83, ../sass/layout/_header.sass */
   .header-region-right {
     margin-top: -0.35714rem;
     padding-bottom: 1.42857rem;
   }
-  /* line 79, ../sass/layout/_header.sass */
+  /* line 87, ../sass/layout/_header.sass */
   .header-region-right .block {
     float: right;
   }

@@ -254,7 +254,7 @@ function flight_city_preprocess_menu_block_wrapper(&$vars) {
 /**
  * Implements hook_preprocess_block_()
  */
-function flight_city_preprocess_block(&$vars) {
+/*function flight_city_preprocess_block(&$vars) {
   
   if($vars['block']->delta == 'gtranslate') {
     // Pulling out all flag links, scripts
@@ -277,7 +277,7 @@ function flight_city_preprocess_block(&$vars) {
       $vars['content'] .= $matches[1] . '</div>';
     }
   }
-}
+}*/
 
 
 /**
