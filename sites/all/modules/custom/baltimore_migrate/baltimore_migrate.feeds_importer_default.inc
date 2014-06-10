@@ -118,7 +118,8 @@ function baltimore_migrate_feeds_importer_default() {
           14 => array(
             'source' => 'Tags (optional)',
             'target' => 'field_faq_tags',
-            'unique' => FALSE,
+            'term_search' => '0',
+            'autocreate' => 1,
           ),
           15 => array(
             'source' => 'Entity',
