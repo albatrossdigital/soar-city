@@ -13,6 +13,22 @@ function baltimore_migrate_feeds_tamper_default() {
   $feeds_tamper = new stdClass();
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'migrate_faq-entity-explode';
+  $feeds_tamper->importer = 'migrate_faq';
+  $feeds_tamper->source = 'Entity';
+  $feeds_tamper->plugin_id = 'explode';
+  $feeds_tamper->settings = array(
+    'separator' => ', ',
+    'limit' => '',
+    'real_separator' => ', ',
+  );
+  $feeds_tamper->weight = 0;
+  $feeds_tamper->description = 'Explode';
+  $export['migrate_faq-entity-explode'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'migrate_faq-link_5_text-array_filter';
   $feeds_tamper->importer = 'migrate_faq';
   $feeds_tamper->source = 'Link 5 text';
@@ -114,9 +130,9 @@ function baltimore_migrate_feeds_tamper_default() {
   $feeds_tamper->source = 'Sub Category';
   $feeds_tamper->plugin_id = 'explode';
   $feeds_tamper->settings = array(
-    'separator' => ',',
-    'limit' => 1,
-    'real_separator' => ',',
+    'separator' => ', ',
+    'limit' => '',
+    'real_separator' => ', ',
   );
   $feeds_tamper->weight = 1;
   $feeds_tamper->description = 'Explode';
@@ -130,11 +146,55 @@ function baltimore_migrate_feeds_tamper_default() {
   $feeds_tamper->source = 'Sub Category';
   $feeds_tamper->plugin_id = 'rewrite';
   $feeds_tamper->settings = array(
-    'text' => '[sub category],[main category]',
+    'text' => '[main category], [sub category]',
   );
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Rewrite';
   $export['migrate_faq-sub_category-rewrite'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'migrate_stories-date-strtotime';
+  $feeds_tamper->importer = 'migrate_stories';
+  $feeds_tamper->source = 'Date';
+  $feeds_tamper->plugin_id = 'strtotime';
+  $feeds_tamper->settings = '';
+  $feeds_tamper->weight = 0;
+  $feeds_tamper->description = 'String to Unix timestamp';
+  $export['migrate_stories-date-strtotime'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'migrate_stories-program-explode';
+  $feeds_tamper->importer = 'migrate_stories';
+  $feeds_tamper->source = 'Program';
+  $feeds_tamper->plugin_id = 'explode';
+  $feeds_tamper->settings = array(
+    'separator' => ', ',
+    'limit' => '',
+    'real_separator' => ', ',
+  );
+  $feeds_tamper->weight = 0;
+  $feeds_tamper->description = 'Explode';
+  $export['migrate_stories-program-explode'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'migrate_stories-tags-explode';
+  $feeds_tamper->importer = 'migrate_stories';
+  $feeds_tamper->source = 'Tags';
+  $feeds_tamper->plugin_id = 'explode';
+  $feeds_tamper->settings = array(
+    'separator' => ', ',
+    'limit' => '',
+    'real_separator' => ', ',
+  );
+  $feeds_tamper->weight = 0;
+  $feeds_tamper->description = 'Explode';
+  $export['migrate_stories-tags-explode'] = $feeds_tamper;
 
   return $export;
 }

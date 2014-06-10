@@ -127,7 +127,7 @@ function baltimore_migrate_feeds_importer_default() {
           ),
         ),
         'update_existing' => '2',
-        'input_format' => 'plain_text',
+        'input_format' => 'filtered_html',
         'skip_hash_check' => 0,
         'bundle' => 'faq',
       ),
@@ -140,6 +140,87 @@ function baltimore_migrate_feeds_importer_default() {
     'process_in_background' => 0,
   );
   $export['migrate_faq'] = $feeds_importer;
+
+  $feeds_importer = new stdClass();
+  $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
+  $feeds_importer->api_version = 1;
+  $feeds_importer->id = 'migrate_stories';
+  $feeds_importer->config = array(
+    'name' => 'Migrate: Stories',
+    'description' => 'Used for one-time migrations of stories into Drupal',
+    'fetcher' => array(
+      'plugin_key' => 'FeedsFileFetcher',
+      'config' => array(
+        'allowed_extensions' => 'txt csv tsv xml opml',
+        'direct' => FALSE,
+        'directory' => 'private://feeds',
+        'allowed_schemes' => array(
+          0 => 'public',
+          1 => 'private',
+        ),
+      ),
+    ),
+    'parser' => array(
+      'plugin_key' => 'FeedsCSVParser',
+      'config' => array(
+        'delimiter' => ',',
+        'no_headers' => 0,
+      ),
+    ),
+    'processor' => array(
+      'plugin_key' => 'FeedsNodeProcessor',
+      'config' => array(
+        'expire' => '-1',
+        'author' => '1',
+        'authorize' => 1,
+        'mappings' => array(
+          0 => array(
+            'source' => 'Title',
+            'target' => 'title',
+            'unique' => FALSE,
+          ),
+          1 => array(
+            'source' => 'Body',
+            'target' => 'body',
+            'unique' => FALSE,
+          ),
+          2 => array(
+            'source' => 'Date',
+            'target' => 'created',
+            'unique' => FALSE,
+          ),
+          3 => array(
+            'source' => 'Tags',
+            'target' => 'field_tags',
+            'term_search' => '0',
+            'autocreate' => 1,
+          ),
+          4 => array(
+            'source' => 'Program',
+            'target' => 'field_program:label',
+            'unique' => FALSE,
+          ),
+          5 => array(
+            'source' => 'Story Type',
+            'target' => 'field_story_type',
+            'term_search' => '0',
+            'autocreate' => 1,
+          ),
+        ),
+        'update_existing' => '1',
+        'input_format' => 'filtered_html',
+        'skip_hash_check' => 0,
+        'bundle' => 'story',
+      ),
+    ),
+    'content_type' => '',
+    'update' => 0,
+    'import_period' => '-1',
+    'expire_period' => 3600,
+    'import_on_create' => 1,
+    'process_in_background' => 0,
+  );
+  $export['migrate_stories'] = $feeds_importer;
 
   $feeds_importer = new stdClass();
   $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
