@@ -1,8 +1,10 @@
 (function ($, Drupal) {
 
   // Register custom media query
+  Foundation.utils.register_media('small-only', 'small-only');
   Foundation.utils.register_media('mobile-to-menu', 'mobile-to-menu');
   Foundation.utils.register_media('past-menu', 'past-menu');
+
 
   // Triggers callback after image is loaded
   function triggerImageSize($imageWrapper, callback) {
@@ -61,12 +63,12 @@
       // checks widths
       function searchCheck() {
         // Toggle search for mobile
-        if (matchMedia(Foundation.media_queries['mobile-to-menu']).matches){
+        if (matchMedia(Foundation.media_queries['small-only']).matches){
           toggleSearch(true);
         };
 
         // Toggle search to topbar
-        if (matchMedia(Foundation.media_queries['past-menu']).matches){
+        if (matchMedia(Foundation.media_queries['medium']).matches){
           toggleSearch(false);
         };
       }
