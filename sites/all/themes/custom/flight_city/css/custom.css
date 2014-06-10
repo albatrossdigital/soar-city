@@ -51,7 +51,7 @@ i[class^="fa"], [role=complementary] .block-domain-menu-block .menu-block-wrappe
 }
 
 /* line 52, ../sass/components/_icons-fontawesome.sass */
-[role=complementary] .block > ul .highlighted a:after, [role=complementary] .block .menu-block-wrapper ul .highlighted a:after, [role=complementary] .block .item-list > ul .highlighted a:after, .draggable a.tabledrag-handle:before, .share42-item:nth-child(4) a:before, .share42-item:first-child a:before,
+[role=complementary] .block > ul .highlighted a:after, [role=complementary] .block .menu-block-wrapper ul .highlighted a:after, [role=complementary] .block .item-list > ul .highlighted a:after, .draggable a.tabledrag-handle:before, .block-views-exp-organizations-page .form-item-combine:before, .share42-item:nth-child(4) a:before, .share42-item:first-child a:before,
 a.social-icon.Facebook:before, .share42-item:nth-child(3) a:before,
 a.social-icon.Twitter:before, .share42-item:nth-child(2) a:before,
 a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, a.social-icon.Govdelivery:before, a.social-icon.Social.Wall:before, .breadcrumbs li:first-child a:before, .button.icon-play:before, #search-form .form-submit:before, .front.domain-main .l-triptych .item-list ul .highlighted a:after, .front.domain-main .triptych-first .block .block-title:before, .front.domain-main .triptych-middle .block .block-title:before, .front.domain-main .triptych-last .block .block-title:before, .vocabulary-payment-type.view-mode-full .icon-box [class*="fa-"]:before {
@@ -76,6 +76,11 @@ a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Fl
 /* line 136, ../sass/components/_icons-fontawesome.sass */
 i[class^="fa"] {
   margin-right: 0.75em;
+}
+
+/* line 590, ../sass/components/_icons-fontawesome.sass */
+.block-views-exp-organizations-page .form-item-combine:before {
+  content: "\f002";
 }
 
 /* line 1066, ../sass/components/_icons-fontawesome.sass */
@@ -1675,29 +1680,45 @@ fieldset legend {
   font-size: 1.14286rem;
   padding-top: 0.71429rem;
 }
+/* line 71, ../sass/modules/_views.sass */
+.block-views-exp-organizations-page .form-item-combine {
+  position: relative;
+}
 /* line 75, ../sass/modules/_views.sass */
+.block-views-exp-organizations-page .form-item-combine:before {
+  color: #bbbbbb;
+  position: absolute;
+  right: 0.42857rem;
+  top: 0.78571rem;
+  z-index: 1;
+}
+/* line 82, ../sass/modules/_views.sass */
+.block-views-exp-organizations-page .form-item-combine input {
+  padding-right: 1.71429rem;
+}
+/* line 92, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page .ajax-progress {
   position: absolute;
   bottom: -1.42857rem;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 92, ../sass/modules/_views.sass */
+  /* line 109, ../sass/modules/_views.sass */
   .view-organizations .view-content {
     padding-left: 2.85714rem;
   }
-  /* line 95, ../sass/modules/_views.sass */
+  /* line 112, ../sass/modules/_views.sass */
   .view-organizations .view-content > h3 {
     font-size: 2.14286rem;
     margin-left: -3.92857rem;
     margin-top: 1.64286rem;
     width: 2.14286rem;
   }
-  /* line 101, ../sass/modules/_views.sass */
+  /* line 118, ../sass/modules/_views.sass */
   .view-organizations .view-content > h3:first-child + .views-row {
     padding-top: 0.71429rem;
   }
-  /* line 104, ../sass/modules/_views.sass */
+  /* line 121, ../sass/modules/_views.sass */
   .view-organizations .views-row {
     min-height: 3.14286rem;
   }

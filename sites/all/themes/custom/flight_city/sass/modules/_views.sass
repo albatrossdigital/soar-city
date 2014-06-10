@@ -67,6 +67,23 @@
     font-size: $h4-font-size
     padding-top: rem-calc(10)
 
+  // Add search icon
+  .form-item-combine
+    +icon-only('search')
+    position: relative
+
+    &:before
+      color: $input-border-color
+      position: absolute
+      right: rem-calc(6)
+      top: rem-calc(11)
+      z-index: 1
+
+    input
+      padding-right: rem-calc(24)
+
+
+
   // hide widget
   .views-widget-filter-field_organization_category_tid select
     .js &
