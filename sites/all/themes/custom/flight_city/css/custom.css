@@ -228,15 +228,14 @@ a.social-icon.Vimeo:before {
 .field-name-node-link, .view-organizations h5 a, ol.search-results h3.title a, .node-event.node-teaser .field-name-title a,
 .node-event.view-mode-compact_teaser .field-name-title a,
 .node-teaser.node-program .field-name-title a,
-.node-teaser.node-person .field-name-title a {
+.node-teaser.node-person .field-name-title a, .node-program .field-name-title a {
   color: #0076a3;
 }
 /* line 361, ../sass/base/_mixins.sass */
 .more-link:hover,
 .field-name-node-link:hover, .view-organizations h5 a:hover, ol.search-results h3.title a:hover, .node-event.node-teaser .field-name-title a:hover,
 .node-event.view-mode-compact_teaser .field-name-title a:hover,
-.node-teaser.node-program .field-name-title a:hover,
-.node-teaser.node-person .field-name-title a:hover {
+.node-teaser.node-person .field-name-title a:hover, .node-program .field-name-title a:hover {
   color: #005170;
 }
 
@@ -3256,25 +3255,19 @@ ol.search-results .search-snippet-info {
   }
 }
 @media only screen and (max-width: 45.71429em) {
-  /* line 22, ../sass/theme/_programs.sass */
+  /* line 27, ../sass/theme/_programs.sass */
   .node-teaser.node-program .field-name-field-social-networks {
     margin-top: 0.71429rem;
   }
 }
 @media only screen and (min-width: 45.78571em) {
-  /* line 35, ../sass/theme/_programs.sass */
-  .node-teaser.node-program .group-right .field {
-    float: left;
-    width: 50%;
-    clear: left;
-  }
-  /* line 40, ../sass/theme/_programs.sass */
+  /* line 45, ../sass/theme/_programs.sass */
   .node-teaser.node-program .group-right .field-name-field-social-networks {
     float: right;
     clear: none;
     text-align: right;
   }
-  /* line 45, ../sass/theme/_programs.sass */
+  /* line 50, ../sass/theme/_programs.sass */
   .node-teaser.node-program .group-right .field ~ .field-name-field-social-networks {
     margin-top: -0.71429rem;
   }
