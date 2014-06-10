@@ -13,6 +13,68 @@ function baltimore_migrate_feeds_importer_default() {
   $feeds_importer = new stdClass();
   $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
   $feeds_importer->api_version = 1;
+  $feeds_importer->id = 'migrate_311_types';
+  $feeds_importer->config = array(
+    'name' => 'Migrate: 311 Types',
+    'description' => 'One time migration for 311 types from a slideshow',
+    'fetcher' => array(
+      'plugin_key' => 'FeedsFileFetcher',
+      'config' => array(
+        'allowed_extensions' => 'txt csv tsv xml opml',
+        'direct' => FALSE,
+        'directory' => 'private://feeds',
+        'allowed_schemes' => array(
+          0 => 'public',
+          1 => 'private',
+        ),
+      ),
+    ),
+    'parser' => array(
+      'plugin_key' => 'FeedsCSVParser',
+      'config' => array(
+        'delimiter' => ',',
+        'no_headers' => 0,
+      ),
+    ),
+    'processor' => array(
+      'plugin_key' => 'FeedsTermProcessor',
+      'config' => array(
+        'vocabulary' => 0,
+        'mappings' => array(
+          0 => array(
+            'source' => 'Request Type Code',
+            'target' => 'field_311_code',
+            'unique' => FALSE,
+          ),
+          1 => array(
+            'source' => 'Title',
+            'target' => 'name',
+            'unique' => FALSE,
+          ),
+          2 => array(
+            'source' => 'Desc',
+            'target' => 'description',
+            'unique' => FALSE,
+          ),
+        ),
+        'update_existing' => '1',
+        'input_format' => 'filtered_html',
+        'skip_hash_check' => 0,
+        'bundle' => '311_category',
+      ),
+    ),
+    'content_type' => '',
+    'update' => 0,
+    'import_period' => '-1',
+    'expire_period' => 3600,
+    'import_on_create' => 1,
+    'process_in_background' => 0,
+  );
+  $export['migrate_311_types'] = $feeds_importer;
+
+  $feeds_importer = new stdClass();
+  $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
+  $feeds_importer->api_version = 1;
   $feeds_importer->id = 'migrate_faq';
   $feeds_importer->config = array(
     'name' => 'Migrate: FAQ',
