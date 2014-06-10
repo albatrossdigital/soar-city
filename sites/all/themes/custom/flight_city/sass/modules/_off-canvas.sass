@@ -12,22 +12,34 @@
   font-size: rem-calc(20)
   z-index: 1
 
-  span
-    +e(hide)
-
   a
     +c(link-yellow)
 
 
 .menu-toggle
   text-align: left
-  left: $column-gutter/2
+  right: rem-calc(52)
+  margin-right: 1%
+
+  span
+    display: block
+    float: left
+    margin-left: rem-calc(-53)
+    font-size: rem-calc(14)
+
 
 .search-toggle
   text-align: right
   right: $column-gutter/2
   // account for menu extra width
   margin-right: 1%
+
+  span
+    +e(hide)
+
+  i
+    border-left: 1px solid lighten($topbar-bg-color, 10%)
+    padding-left: rem-calc(10)
 
 .right-off-canvas-toggle
   i
@@ -79,28 +91,36 @@
 // *
 // ******************************************************
 
-
-+respond($small-only)
-
-  .left-off-canvas-menu
-    padding: rem-calc(0)!important
-    border: common-border-val()
-
-    & > *
-      max-width: $off-canvas-width
-      +column-padding()
-      overflow: hidden
-
-
 +respond($mobile-to-menu)
 
   // Main Menu
   // ------------------------------------------------------
 
   .right-off-canvas-menu
-    padding-top: $topbar-height
     padding-left: 0
     padding-right: 0
+
+    & > *
+      max-width: $off-canvas-width
+      +column-padding()
+      overflow: hidden
+
+    .menu-name-main-menu
+      +expand-row()
+      padding-top: rem-calc(44)
+
+      li a
+        display: block
+        padding: 0 $column-gutter
+
+
++respond($small-only)
+
+  // Main Menu
+  // ------------------------------------------------------
+
+  .right-off-canvas-menu
+    padding-top: $topbar-height
 
     & > *
       max-width: $off-canvas-width
@@ -112,43 +132,46 @@
       //margin-bottom: rem-calc(10)
       padding-top: rem-calc(10)
 
-    .menu-name-main-menu
-      +expand-row()
-      padding-top: rem-calc(44)
 
-      li a
-        display: block
-        padding: 0 $column-gutter
+  // Main section sub-menu (sidebar)
+  // ------------------------------------------------------
 
-        &:after
-          //float: right
-          //line-height: $topbar-height
-          //padding-right: 0
+  .left-off-canvas-menu
+    padding: rem-calc(0)!important
+    border: common-border-val()
 
-        &:hover, &:active
-          //background: $topbar-link-bg-hover
-          //color: $color-hover
-
-          &:after
-            //color: $white
-
-      .active-trail, .active
-        a
-          //color: $blue-dark 
-          //background: darken($blue, 3%)
+    & > *
+      max-width: $off-canvas-width
+      +column-padding()
+      overflow: hidden
 
 
 +respond($medium)
 
-  .search-toggle
-    display: none
-
-  #toggle-main-section-menu
-    display: none
-
   .move-right > .inner-wrap
     +translate(0, 0, 0)
 
+  // Main Menu
+  // ------------------------------------------------------
+
+  .right-off-canvas-menu
+
+    .right-off-canvas-toggle
+      top: 0
+
+    .menu-name-main-menu
+      padding-top: rem-calc(57)
+
+  .menu-toggle
+    right: $column-gutter/2
+
+  .search-toggle
+    display: none
+
+
+  // Main section sub-menu (sidebar)
+  // ------------------------------------------------------
+  #toggle-main-section-menu,
   #toggle-main-section-menu-close
     display: none
 
@@ -165,13 +188,13 @@
     z-index: 1
     background: none!important
 
-
 +respond($past-menu)
 
   .move-left > .inner-wrap
     +translate(0, 0, 0)
 
-  .menu-toggle
+  .menu-toggle,
+  .right-off-canvas-toggle
     display: none
 
   // Main Menu
@@ -190,6 +213,7 @@
     z-index: 1
 
     .menu-name-main-menu
+      padding-top: 0
       border-top: 0
       +main-menu-style-horizontal()
       

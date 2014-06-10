@@ -1,5 +1,47 @@
 // Non-modular or client styles for .l-header region.
 
+
+// Top level Menu active states
+// ------------------------------------------------------
+
+.menu-block-1 li
+  // payments
+  &.first a
+    .domain-main.section-payments &
+      @extend %main-menu-link-active
+
+  // how do i
+  &:nth-child(2) a
+    .domain-main.section-answers &
+      @extend %main-menu-link-active
+
+  // 311
+  &:nth-child(3) a
+    .domain-main.section-311-services &
+      @extend %main-menu-link-active
+
+  // government
+  &:nth-child(4) a
+    .domain-main.section-government &
+      @extend %main-menu-link-active
+
+  // Events
+  &:nth-child(5) a
+    .domain-main.section-events &
+      @extend %main-menu-link-active
+
+  // mayor
+  &.last a
+    .domain-mayor &
+      @extend %main-menu-link-active
+
+
+
+
+
+// Header
+// ------------------------------------------------------
+
 .l-header-region
   padding-top: $small-region-pad-small
   +nice-row-border($column-gutter/2, rem-calc(5), $common-border, bottom, hidden)

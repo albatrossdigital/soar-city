@@ -6655,16 +6655,25 @@ i[class^="fa"] {
 }
 
 /********************************** */
+/* line 358, ../sass/base/_mixins.sass */
+h3 a, h4 a {
+  color: #0076a3;
+}
+/* line 361, ../sass/base/_mixins.sass */
+h3 a:hover, h4 a:hover {
+  color: #005170;
+}
+
 /* line 382, ../sass/base/_mixins.sass */
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+h1 a, h2 a, h5 a, h6 a {
   color: #111111;
 }
 /* line 385, ../sass/base/_mixins.sass */
-h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+h1 a:hover, h2 a:hover, h5 a:hover, h6 a:hover {
   color: #0a83a1;
 }
 /* line 388, ../sass/base/_mixins.sass */
-h1 a:active, h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active {
+h1 a:active, h2 a:active, h5 a:active, h6 a:active {
   color: #07b1db;
 }
 
@@ -6811,23 +6820,23 @@ h1 em, em h1, h2 em, em h2 {
   font-style: normal;
 }
 
-/* line 66, ../sass/base/_elements.sass */
+/* line 68, ../sass/base/_elements.sass */
 a:active {
   color: #07b1db;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 114, ../sass/base/_elements.sass */
+  /* line 116, ../sass/base/_elements.sass */
   h1 {
     font-size: 2.85714rem;
   }
 
-  /* line 117, ../sass/base/_elements.sass */
+  /* line 119, ../sass/base/_elements.sass */
   h2 {
     font-size: 2.14286rem;
   }
 
-  /* line 120, ../sass/base/_elements.sass */
+  /* line 122, ../sass/base/_elements.sass */
   h3 {
     font-size: 1.57143rem;
   }
