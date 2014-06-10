@@ -12,7 +12,8 @@
   padding-bottom: $small-region-pad-small*2
 
 #entity-title
-  font-size: $h1-font-size
+  font-size: $h2-font-size
+  line-height: 1.1
   margin: 0
   padding: rem-calc(8 0 0)
 
@@ -39,6 +40,14 @@
   a 
     +c(link-header)
 
+.block-gtranslate
+  .gtflag
+    display: block
+    float: left
+    padding: 0 2px!important
+    
+    img
+      margin-bottom: 0
 
 
 
@@ -64,10 +73,11 @@
     //padding-bottom: $medium-region-pad-small
     padding-top: $medium-region-pad-large
 
-
-+respond($past-menu)
-
-  .l-header-region
+  // Entity Branding
+  // ------------------------------------------------------
+  #entity-title
+    font-size: $h1-font-size
+    padding: rem-calc(16 0 0)
 
   // Header region right
   // ------------------------------------------------------
@@ -78,3 +88,6 @@
 
     .block 
       float: right
+
+
++respond($past-menu)
