@@ -955,8 +955,9 @@ p img:only-child {
   .main .block-flight-city-workbench {
     margin-bottom: 0.71429rem;
   }
-
-  /* line 138, ../sass/layout/_main.sass */
+}
+@media only screen and (min-width: 68.64286em) {
+  /* line 142, ../sass/layout/_main.sass */
   .medium-8.main {
     margin-left: 4.16667%;
   }
@@ -1120,6 +1121,12 @@ p img:only-child {
   float: none;
 }
 
+@media only screen and (min-width: 45.78571em) and (max-width: 68.57143em) {
+  /* line 39, ../sass/layout/_aside.sass */
+  .medium-3.sidebar-second {
+    width: 33.33333%;
+  }
+}
 /* line 3, ../sass/layout/_triptych.sass */
 .l-triptych {
   padding-bottom: 6.42857rem;
@@ -2389,7 +2396,7 @@ ul[data-orbit] ~ .orbit-next:before {
   }
 }
 @media only screen and (min-width: 59em) {
-  /* line 194, ../sass/modules/_off-canvas.sass */
+  /* line 193, ../sass/modules/_off-canvas.sass */
   .move-left > .inner-wrap {
     -webkit-transform: perspective(0) translate(0, 0);
     -moz-transform: perspective(0) translate(0, 0);
@@ -2398,13 +2405,13 @@ ul[data-orbit] ~ .orbit-next:before {
     transform: perspective(0) translate(0, 0);
   }
 
-  /* line 197, ../sass/modules/_off-canvas.sass */
+  /* line 196, ../sass/modules/_off-canvas.sass */
   .menu-toggle,
   .right-off-canvas-toggle {
     display: none;
   }
 
-  /* line 204, ../sass/modules/_off-canvas.sass */
+  /* line 203, ../sass/modules/_off-canvas.sass */
   .right-off-canvas-menu {
     background: none;
     position: relative !important;
@@ -2423,8 +2430,9 @@ ul[data-orbit] ~ .orbit-next:before {
     width: auto !important;
     z-index: 1;
   }
-  /* line 216, ../sass/modules/_off-canvas.sass */
+  /* line 215, ../sass/modules/_off-canvas.sass */
   .right-off-canvas-menu .menu-name-main-menu {
+    padding-top: 0;
     border-top: 0;
   }
   /* line 967, ../sass/base/_mixins.sass */
