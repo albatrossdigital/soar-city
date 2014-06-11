@@ -481,6 +481,8 @@ $full-common: sprite-map("full-common/*.png")
 
 %header-6
   @extend %header-core
+  @extend %font-alt-alt
+  color: $gray-date
   font-size: $h6-font-size
 
 %header-page-title
@@ -571,6 +573,9 @@ $common-border: common-border-val()
 
   @if $size == normal
     +nice-row-border($column-gutter/2, rem-calc(35), 1px solid $gray, bottom, hidden)
+
+  @else if $size == notrow
+    +nice-row-border(0, rem-calc(35), 1px solid $gray, bottom, hidden)
 
 
 %views-see-more-header
@@ -666,7 +671,7 @@ $common-border: common-border-val()
       margin-bottom: $paragraph-margin-bottom
 
     #{$left-field}
-      line-height: 2
+      line-height: 2.4
 
     .block-share42
       float: left
@@ -675,6 +680,10 @@ $common-border: common-border-val()
         clear: both
 
   @else 
+    #{$left-field},
+    .block-share42
+      margin-bottom: rem-calc(30)
+
     #{$left-field}
       float: left
 
@@ -1060,6 +1069,7 @@ $main-menu-border-size: rem-calc(3)
   
   #{$first}
     font-size: rem-calc(16)
+    letter-spacing: 0.1em
 
   #{$second}
     font-size: rem-calc(36)

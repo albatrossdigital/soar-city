@@ -8,13 +8,35 @@
 
 .node-event.node-teaser,
 .node-event.view-mode-compact_teaser,
+.node-story.node-teaser,
 .node-teaser.node-program,
 .node-teaser.node-person
   +nice-teaser-border
 
+.node-event.node-teaser,
+.node-event.view-mode-compact_teaser,
+.node-story.node-teaser,
+.node-story.view-mode-compact_teaser,
+.node-teaser.node-program,
+.node-teaser.node-person
+
   .field-name-title
-    a
-      +c(link-alt)
+
+    // location / date information
+    & + h5
+      margin-top: rem-calc(-6)
+
+    & + h6,
+    & + h5 + h6
+      margin-top: rem-calc(-13)
+
+  .field-name-body
+    p:last-child
+      margin-bottom: 0
+
+  .field-name-node-link
+    margin-top: $paragraph-margin-bottom
+
 
 
 
@@ -38,6 +60,10 @@
 
 +respond($small-only)
 
+  // Nice spaced out node teasers
+  // ----------------------------------------------------------------------------
+  .node-story.view-mode-compact_teaser
+    +nice-teaser-border(notrow)
 
   // 2 column teasers with fixed width left side
   // ----------------------------------------------------------------------------
