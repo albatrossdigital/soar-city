@@ -19,7 +19,7 @@
     },
 
     events : function () {
-      this.S(window).off('.equalizer').on('resize.fndtn.equalizer', function(e){
+      $(window).off('.equalizer').on('resize.fndtn.equalizer', function(e){
         this.reflow();
       }.bind(this));
     },
@@ -57,9 +57,9 @@
     reflow : function () {
       var self = this;
 
-      this.S('[' + this.attr_name() + ']', this.scope).each(function(){
+      $('[' + this.attr_name() + ']', this.scope).each(function(){
         var $eq_target = $(this);
-        self.image_loaded(self.S('img', this), function(){
+        self.image_loaded($('img', this), function(){
           self.equalize($eq_target)
         });
       });

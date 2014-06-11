@@ -580,20 +580,20 @@
     },
 
     events : function (instance) {
-      var orbit_instance = new Orbit(this.S(instance), this.S(instance).data('orbit-init'));
-      this.S(instance).data(self.name + '-instance', orbit_instance);
+      var orbit_instance = new Orbit($(instance), $(instance).data('orbit-init'));
+      $(instance).data(self.name + '-instance', orbit_instance);
     },
 
     reflow : function () {
       var self = this;
 
-      if (self.S(self.scope).is('[data-orbit]')) {
-        var $el = self.S(self.scope);
+      if ($(self.scope).is('[data-orbit]')) {
+        var $el = $(self.scope);
         var instance = $el.data(self.name + '-instance');
         instance.compute_dimensions();
       } else {
-        self.S('[data-orbit]', self.scope).each(function(idx, el) {
-          var $el = self.S(el);
+        $('[data-orbit]', self.scope).each(function(idx, el) {
+          var $el = $(el);
           var opts = self.data_options($el);
           var instance = $el.data(self.name + '-instance');
           instance.compute_dimensions();

@@ -96,23 +96,23 @@
 
   var bindings = function (method, options) {
     var self = this,
-        should_bind_events = !S(this).data(this.attr_name(true));
+        should_bind_events = !$(this).data(this.attr_name(true));
 
     if (typeof method === 'string') {
       return this[method].call(this, options);
     }
 
-    if (S(this.scope).is('[' + this.attr_name() +']')) {
-      S(this.scope).data(this.attr_name(true) + '-init', $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
+    if ($(this.scope).is('[' + this.attr_name() +']')) {
+      $(this.scope).data(this.attr_name(true) + '-init', $.extend({}, this.settings, (options || method), this.data_options($(this.scope))));
 
       if (should_bind_events) {
         this.events(this.scope);
       }
 
     } else {
-      S('[' + this.attr_name() +']', this.scope).each(function () {
-        var should_bind_events = !S(this).data(self.attr_name(true) + '-init');
-        S(this).data(self.attr_name(true) + '-init', $.extend({}, self.settings, (options || method), self.data_options(S(this))));
+      $('[' + this.attr_name() +']', this.scope).each(function () {
+        var should_bind_events = !$(this).data(self.attr_name(true) + '-init');
+        $(this).data(self.attr_name(true) + '-init', $.extend({}, self.settings, (options || method), self.data_options($(this))));
 
         if (should_bind_events) {
           self.events(this);
@@ -279,11 +279,11 @@
     version : '5.2.2',
 
     media_queries : {
-      small : S('.foundation-mq-small').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
-      medium : S('.foundation-mq-medium').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
-      large : S('.foundation-mq-large').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
-      xlarge: S('.foundation-mq-xlarge').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
-      xxlarge: S('.foundation-mq-xxlarge').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, '')
+      small : $('.foundation-mq-small').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
+      medium : $('.foundation-mq-medium').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
+      large : $('.foundation-mq-large').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
+      xlarge: $('.foundation-mq-xlarge').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
+      xxlarge: $('.foundation-mq-xxlarge').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, '')
     },
 
     stylesheet : $('<style></style>').appendTo('head')[0].sheet,
@@ -297,7 +297,7 @@
           responses = [];
 
       // check RTL
-      this.rtl = /rtl/i.test(S('html').attr('dir'));
+      this.rtl = /rtl/i.test($('html').attr('dir'));
 
       // set foundation global scope
       this.scope = scope || this.scope;
@@ -570,7 +570,7 @@
         }
 
         images.each(function () {
-          single_image_loaded(self.S(this), function () {
+          single_image_loaded($(this), function () {
             unloaded -= 1;
             if (unloaded === 0) {
               callback(images);

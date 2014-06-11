@@ -43,13 +43,13 @@
       var self = this,
           S = self.S;
 
-      S(this.scope)
+      $(this.scope)
         .off('.reveal')
         .on('click.fndtn.reveal', '[' + this.add_namespace('data-reveal-id') + ']', function (e) {
           e.preventDefault();
 
           if (!self.locked) {
-            var element = S(this),
+            var element = $(this),
                 ajax = element.data(self.data_attr('reveal-ajax'));
 
             self.locked = true;
@@ -64,14 +64,14 @@
           }
         });
 
-      S(document)
+      $(document)
         .on('touchend.fndtn.reveal click.fndtn.reveal', this.close_targets(), function (e) {
 
           e.preventDefault();
 
           if (!self.locked) {
-            var settings = S('[' + self.attr_name() + '].open').data(self.attr_name(true) + '-init'),
-                bg_clicked = S(e.target)[0] === S('.' + settings.bg_class)[0];
+            var settings = $('[' + self.attr_name() + '].open').data(self.attr_name(true) + '-init'),
+                bg_clicked = $(e.target)[0] === $('.' + settings.bg_class)[0];
 
             if (bg_clicked) {
               if (settings.close_on_background_click) {
@@ -82,12 +82,12 @@
             }
 
             self.locked = true;
-            self.close.call(self, bg_clicked ? S('[' + self.attr_name() + '].open') : S(this).closest('[' + self.attr_name() + ']'));
+            self.close.call(self, bg_clicked ? $('[' + self.attr_name() + '].open') : $(this).closest('[' + self.attr_name() + ']'));
           }
         });
 
-      if(S('[' + self.attr_name() + ']', this.scope).length > 0) {
-        S(this.scope)
+      if($('[' + self.attr_name() + ']', this.scope).length > 0) {
+        $(this.scope)
           // .off('.reveal')
           .on('open.fndtn.reveal', this.settings.open)
           .on('opened.fndtn.reveal', this.settings.opened)
@@ -96,7 +96,7 @@
           .on('closed.fndtn.reveal', this.settings.closed)
           .on('closed.fndtn.reveal', this.close_video);
       } else {
-        S(this.scope)
+        $(this.scope)
           // .off('.reveal')
           .on('open.fndtn.reveal', '[' + self.attr_name() + ']', this.settings.open)
           .on('opened.fndtn.reveal', '[' + self.attr_name() + ']', this.settings.opened)
@@ -114,8 +114,8 @@
       var self = this;
 
       // PATCH #1: fixing multiple keyup event trigger from single key press
-      self.S('body').off('keyup.fndtn.reveal').on('keyup.fndtn.reveal', function ( event ) {
-        var open_modal = self.S('[' + self.attr_name() + '].open'),
+      $('body').off('keyup.fndtn.reveal').on('keyup.fndtn.reveal', function ( event ) {
+        var open_modal = $('[' + self.attr_name() + '].open'),
             settings = open_modal.data(self.attr_name(true) + '-init');
         // PATCH #2: making sure that the close event can be called only while unlocked,
         //           so that multiple keyup.fndtn.reveal events don't prevent clean closing of the reveal window.
@@ -129,7 +129,7 @@
 
     // PATCH #3: turning on key up capture only when a reveal window is open
     key_up_off : function (scope) {
-      this.S('body').off('keyup.fndtn.reveal');
+      $('body').off('keyup.fndtn.reveal');
       return true;
     },
 
@@ -137,20 +137,20 @@
       var self = this;
       if (target) {
         if (typeof target.selector !== 'undefined') {
-          var modal = self.S('#' + target.data(self.data_attr('reveal-id')));
+          var modal = $('#' + target.data(self.data_attr('reveal-id')));
         } else {
-          var modal = self.S(this.scope);
+          var modal = $(this.scope);
 
           ajax_settings = target;
         }
       } else {
-        var modal = self.S(this.scope);
+        var modal = $(this.scope);
       }
 
       var settings = modal.data(self.attr_name(true) + '-init');
 
       if (!modal.hasClass('open')) {
-        var open_modal = self.S('[' + self.attr_name() + '].open');
+        var open_modal = $('[' + self.attr_name() + '].open');
 
         if (typeof modal.data('css-top') === 'undefined') {
           modal.data('css-top', parseInt(modal.css('top'), 10))
@@ -186,7 +186,7 @@
               }
 
               modal.html(data);
-              self.S(modal).foundation('section', 'reflow');
+              $(modal).foundation('section', 'reflow');
 
               if (open_modal.length > 0) {
                 self.hide(open_modal, settings.css.close);
@@ -201,8 +201,8 @@
     },
 
     close : function (modal) {
-      var modal = modal && modal.length ? modal : this.S(this.scope),
-          open_modals = this.S('[' + this.attr_name() + '].open'),
+      var modal = modal && modal.length ? modal : $(this.scope),
+          open_modals = $('[' + this.attr_name() + '].open'),
           settings = modal.data(this.attr_name(true) + '-init');
 
       if (open_modals.length > 0) {
@@ -227,7 +227,7 @@
     toggle_bg : function (modal) {
       var settings = modal.data(this.attr_name(true));
 
-      if (this.S('.' + this.settings.bg_class).length === 0) {
+      if ($('.' + this.settings.bg_class).length === 0) {
         this.settings.bg = $('<div />', {'class': this.settings.bg_class})
           .appendTo('body').hide();
       }

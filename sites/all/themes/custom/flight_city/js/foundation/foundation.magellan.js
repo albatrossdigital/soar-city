@@ -26,7 +26,7 @@
       // initialize expedition offset
       self.set_expedition_position();
 
-      S(self.scope)
+      $(self.scope)
         .off('.magellan')
         .on('click.fndtn.magellan', '[' + self.add_namespace('data-magellan-arrival') + '] a[href^="#"]', function (e) {
             e.preventDefault();
@@ -160,8 +160,8 @@
     },
 
     off : function () {
-      this.S(this.scope).off('.magellan');
-      this.S(window).off('.magellan');
+      $(this.scope).off('.magellan');
+      $(window).off('.magellan');
     },
 
     reflow : function () {
