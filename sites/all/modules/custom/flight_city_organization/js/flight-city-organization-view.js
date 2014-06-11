@@ -8,7 +8,7 @@ Drupal.behaviors.flight_city_organization_view = {
       
       $(this).find('option').each(function() {
 
-        var $item = $('<li><a hre="#'+ $(this).attr('value') +'" rel="'+ $(this).attr('value') +'">'+ $(this).text() +'</a></li>');
+        var $item = $('<li><a href="#'+ $(this).attr('value') +'" rel="'+ $(this).attr('value') +'">'+ $(this).text() +'</a></li>');
         var $that = $(this);
 
         $item.find('a').bind('click', function() {
