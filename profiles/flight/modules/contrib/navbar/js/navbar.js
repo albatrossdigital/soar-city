@@ -674,9 +674,12 @@ Drupal.navbar = {
      */
     render: function () {
       var $body = $('body');
+      var $navbar = $('#navbar-bar');
       var orientation = this.model.get('orientation');
       var isOriented = this.model.get('isOriented');
       var isViewportOverflowConstrained = this.model.get('isViewportOverflowConstrained');
+      var bodyPadding = ((isOriented && orientation === 'horizontal') && !!this.model.get('activeTray'))
+        ? $navbar.next().outerHeight() : $navbar.height();
 
       $body
         // We are using JavaScript to control media-query handling for two
@@ -695,7 +698,7 @@ Drupal.navbar = {
         .toggleClass('navbar-tray-open', !!this.model.get('activeTray'))
         // Apply padding to the top of the body to offset the placement of the
         // navbar bar element.
-        .css('padding-top', this.model.get('offsets').top);
+        .css("padding-top", bodyPadding);
     }
   })
 };
