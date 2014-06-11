@@ -230,12 +230,12 @@ a.social-icon.Vimeo:before {
 
 /* line 358, ../sass/base/_mixins.sass */
 h3 a, h4 a, .more-link,
-.field-name-node-link, .view-organizations h5 a, ol.search-results h3.title a, .node-program .field-name-title a {
+.field-name-node-link, ol.search-results h3.title a, .node-program .field-name-title a {
   color: #0076a3;
 }
 /* line 361, ../sass/base/_mixins.sass */
 h3 a:hover, h4 a:hover, .more-link:hover,
-.field-name-node-link:hover, .view-organizations h5 a:hover, ol.search-results h3.title a:hover, .node-program .field-name-title a:hover {
+.field-name-node-link:hover, ol.search-results h3.title a:hover, .node-program .field-name-title a:hover {
   color: #005170;
 }
 
@@ -319,7 +319,7 @@ h3, h4 {
 [role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .more-link,
 .field-name-node-link, .block-views-exp-organizations-page label, .title-block .more-link a, .bean-image-collection .more-link a, .block-views-news-block-1 .more-link a,
 .block-views-news-block .more-link a,
-.block-views-news-block-4 .more-link a, [role=complementary] .block-facetapi form .form-type-radio label, [role=complementary] .block-facetapi form .form-type-checkbox label, .l-footer .block-title, .view-organizations .view-content > h3, .share42init:before, .front.domain-main .view-display-id-block_front_mayor .more-link a, .front.domain-main .l-triptych .more-link a, .node-event.node-teaser .date-calendar,
+.block-views-news-block-4 .more-link a, [role=complementary] .block-facetapi form .form-type-radio label, [role=complementary] .block-facetapi form .form-type-checkbox label, .l-footer .block-title, .share42init:before, .front.domain-main .view-display-id-block_front_mayor .more-link a, .front.domain-main .l-triptych .more-link a, .node-event.node-teaser .date-calendar,
 .node-event.view-mode-compact_teaser .date-calendar {
   font-family: "open-sans";
   font-style: normal;
@@ -1684,51 +1684,92 @@ fieldset legend {
   margin-bottom: 0;
 }
 
-/* line 26, ../sass/modules/_views.sass */
-.view-organizations .view-content {
-  padding-left: 2.14286rem;
-}
-/* line 29, ../sass/modules/_views.sass */
+/* line 32, ../sass/modules/_views.sass */
 .view-organizations .view-content > h3 {
+  color: white;
+  clear: left;
+  background: #42484f;
   float: left;
-  margin-left: -2.14286rem;
-  margin-top: 2.14286rem;
+  margin-left: 4.16667%;
+  margin-top: 4.64286rem;
+  margin-bottom: 0;
   text-align: center;
-  width: 1.42857rem;
+  height: 2.85714rem;
+  line-height: 2.85714rem;
+  width: 2.85714rem;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
 }
-/* line 38, ../sass/modules/_views.sass */
-.view-organizations .view-content > h3:first-child, .view-organizations .view-content > h3:first-child + .views-row {
+/* line 48, ../sass/modules/_views.sass */
+.view-organizations .view-content > h3:first-child {
   margin-top: 0;
-  padding-top: 0;
 }
-/* line 43, ../sass/modules/_views.sass */
+/* line 51, ../sass/modules/_views.sass */
+.view-organizations .view-content > h3:first-child + .views-row {
+  margin-top: 0;
+}
+/* line 54, ../sass/modules/_views.sass */
+.view-organizations .view-content > h3:first-child + .views-row:before {
+  display: none;
+}
+/* line 58, ../sass/modules/_views.sass */
 .view-organizations h3 + .views-row {
-  margin-top: 2.85714rem;
+  margin-top: 3.21429rem;
+}
+/* line 202, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
+.view-organizations h3 + .views-row:before {
+  content: "";
+  display: block;
+  border-top: 1px solid #cccccc;
+  margin-left: 0;
+  margin-right: 0;
+  padding-bottom: 2.5rem;
+  margin-top: 2.5rem;
+}
+/* line 219, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
+.view-organizations h3 + .views-row:first-child:before {
+  margin-top: 0;
+  padding-bottom: 0;
+  border: 0;
+}
+/* line 62, ../sass/modules/_views.sass */
+.view-organizations h3 + .views-row:before {
+  margin-left: -20.0%;
+}
+/* line 65, ../sass/modules/_views.sass */
+.view-organizations h3 + .views-row .views-field:first-child {
   padding-top: 0.71429rem;
+}
+/* line 68, ../sass/modules/_views.sass */
+.view-organizations .views-row {
+  clear: right;
+  padding-left: 16.66667%;
+}
+/* line 72, ../sass/modules/_views.sass */
+.view-organizations .views-row .views-field:first-child {
+  min-height: 2.14286rem;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
-/* line 48, ../sass/modules/_views.sass */
-.view-organizations .views-row {
-  clear: right;
-  min-height: 2.14286rem;
-}
 
-/* line 62, ../sass/modules/_views.sass */
+/* line 81, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page .views-exposed-widgets {
   position: relative;
 }
-/* line 65, ../sass/modules/_views.sass */
+/* line 84, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page label {
   font-size: 1.14286rem;
   padding-top: 0.71429rem;
 }
-/* line 71, ../sass/modules/_views.sass */
+/* line 90, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page .form-item-combine {
   position: relative;
 }
-/* line 75, ../sass/modules/_views.sass */
+/* line 94, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page .form-item-combine:before {
   color: #bbbbbb;
   position: absolute;
@@ -1736,35 +1777,36 @@ fieldset legend {
   top: 0.78571rem;
   z-index: 1;
 }
-/* line 82, ../sass/modules/_views.sass */
+/* line 101, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page .form-item-combine input {
   padding-right: 1.71429rem;
 }
-/* line 92, ../sass/modules/_views.sass */
+/* line 111, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page .ajax-progress {
   position: absolute;
   bottom: -1.42857rem;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 109, ../sass/modules/_views.sass */
-  .view-organizations .view-content {
-    padding-left: 2.85714rem;
-  }
-  /* line 112, ../sass/modules/_views.sass */
+  /* line 134, ../sass/modules/_views.sass */
   .view-organizations .view-content > h3 {
     font-size: 2.14286rem;
-    margin-left: -3.92857rem;
-    margin-top: 1.64286rem;
-    width: 2.14286rem;
+    margin-left: 4.16667%;
+    height: 4.28571rem;
+    line-height: 4.28571rem;
+    width: 4.28571rem;
   }
-  /* line 118, ../sass/modules/_views.sass */
-  .view-organizations .view-content > h3:first-child + .views-row {
-    padding-top: 0.71429rem;
+  /* line 144, ../sass/modules/_views.sass */
+  .view-organizations h3 + .views-row:before {
+    margin-left: -33.33333%;
   }
-  /* line 121, ../sass/modules/_views.sass */
+  /* line 147, ../sass/modules/_views.sass */
+  .view-organizations h3 + .views-row .views-field-title:first-child {
+    padding-top: 1.42857rem;
+  }
+  /* line 150, ../sass/modules/_views.sass */
   .view-organizations .views-row {
-    min-height: 3.14286rem;
+    padding-left: 25%;
   }
 }
 /* line 9, ../sass/modules/_social-media-buttons.sass */

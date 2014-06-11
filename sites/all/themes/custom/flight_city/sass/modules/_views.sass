@@ -21,38 +21,57 @@
 // offset grouped views
 // ----------------------------------------------------------------------------
 
+$padding-left: grid-calc(2, 12)
+$header-dimension: rem-calc(40)
+$border-padding: rem-calc(35)
+
 .view-organizations
   // grouping titles
   .view-content
-    padding-left: rem-calc(30)
 
     & > h3
+      color: $white
+      clear: left
+      background: $blue-dark
       float: left
-      margin-left: rem-calc(-30)
-      margin-top: rem-calc(30)
-      +f(alt-alt)
+      //+f(alt-alt-bold)
+      margin-left: grid-calc(0.5, 12)
+      margin-top: rem-calc(30) + $border-padding
+      margin-bottom: 0
+
       text-align: center
-      width: rem-calc(20)
+      height: $header-dimension
+      line-height: $header-dimension
+      width: $header-dimension
+      +border-radius(100%)
 
       &:first-child
-        &, & + .views-row
+        margin-top: 0
+
+        & + .views-row
           margin-top: 0
-          padding-top: 0
+
+          &:before
+            display: none
        
         
   h3 + .views-row 
-    margin-top: $small-main-spacing
-    padding-top: rem-calc(10)
-    +box-sizing(content-box)
+    margin-top: rem-calc(45)
+    +nice-row-border(0, $border-padding, 1px solid $gray, top, false)
+
+    &:before
+      margin-left: -($padding-left / (10/12))
+
+    .views-field:first-child
+      padding-top: rem-calc(10)
 
   .views-row
     clear: right
-    min-height: rem-calc(30)
+    padding-left: $padding-left
 
-  h5
-
-    a 
-      +c(link-alt)
+    .views-field:first-child
+      min-height: rem-calc(30)
+      +box-sizing(content-box)
 
 
 // offset grouped views blocks
@@ -103,20 +122,31 @@
 
   // offset grouped views
   // ----------------------------------------------------------------------------
+  
+  $header-dimension: rem-calc(60)
+  $padding-left: grid-calc(3, 12)
 
   .view-organizations
     // grouping titles
     .view-content
-      padding-left: rem-calc(40)
+      //padding-left: rem-calc(40)
 
       & > h3
         font-size: $h2-font-size
-        margin-left: rem-calc(-55)
-        margin-top: rem-calc(23)
-        width: rem-calc(30)
+        margin-left: grid-calc(0.5, 12)
+        height: $header-dimension
+        line-height: $header-dimension
+        width: $header-dimension
 
         &:first-child + .views-row
-          padding-top: rem-calc(10)
+
+    h3 + .views-row 
+      &:before
+        margin-left: -($padding-left / (9/12))
+
+      .views-field-title:first-child
+        padding-top: rem-calc(20)
 
     .views-row
-      min-height: rem-calc(44)
+      //min-height: rem-calc(44)
+      padding-left: $padding-left
