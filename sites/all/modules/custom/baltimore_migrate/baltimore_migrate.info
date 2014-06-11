@@ -13,6 +13,7 @@ dependencies[] = taxonomy
 features[ctools][] = feeds:feeds_importer_default:1
 features[ctools][] = feeds_tamper:feeds_tamper_default:2
 features[features_api][] = api:2
+features[feeds_importer][] = migrate_311_types
 features[feeds_importer][] = migrate_faq
 features[feeds_importer][] = migrate_stories
 features[feeds_importer][] = migrate_users
