@@ -63,7 +63,7 @@ function social_stream_render_wall($settings = array()) {
     'image_path' => url($path . '/images/dcsns-dark/'),
     'url' => url('js/json/social-stream/all/all'),
     'type' => 'wall',
-    'twitter_url' => $path . '/twitter.php',
+    'twitter_url' => url($path . '/twitter.php'),
   ), $settings);
   $output['#attached']['js'][] = array(
     'data' => array('social_stream' => $settings),

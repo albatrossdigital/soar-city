@@ -47,6 +47,8 @@ Drupal.behaviors.social_stream = {
         }
       });
       feeds.twitter.url = settings.social_stream.twitter_url;
+      feeds.instagram.clientId = '3b5aa6b2bd0842eb9702f191eb5c384d';
+      feeds.instagram.redirectUrl = 'http://www.baltimore.ifsight.com/social_stream';
       console.log(feeds);
 
       $('#social-stream').dcSocialStream({
