@@ -1,5 +1,7 @@
 <?php 
-
+ error_reporting(E_ALL);
+  ini_set('display_errors', TRUE);
+  ini_set('display_startup_errors', TRUE);
 function social_stream_twitter_rest() {
   // SET YOUR TWITTER API DETAILS HERE
   $consumer_key = "cUfx93n2NBU3J8VCZ1pQ"; 
