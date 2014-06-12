@@ -10,25 +10,15 @@ function social_stream_menu() {
       'page callback' => 'social_stream_render_wall',
       'access callback' => TRUE,
     ),
-    'rest/social-stream/twitter.php' => array(
-      'page callback' => 'social_stream_render_twitter_feed',
+    'rest/social-stream/twitter' => array(
+      'page callback' => 'social_stream_twitter_rest',
       'access callback' => TRUE,
+      'file' => 'includes/social_stream_twitter_rest.inc',
     )
   );
   
   return $items;
   
-}
-
-/**
- * feeds JSON to the actual social stream code.
- * 
- */
-function social_stream_render_twitter_feed() {
-  //$path = libraries_get_path('jquery-social-stream');
-  include __DIR__ . '../../../libraries/jquery-social-stream/twitter.php';
-
-  return;
 }
 
 /**
@@ -62,7 +52,7 @@ function social_stream_render_wall($settings = array()) {
     'image_path' => url($path . '/images/dcsns-dark/'),
     'url' => url('js/json/social-stream/all/all'),
     'type' => 'wall',
-    'twitter_url' => url($path . '/twitter.php'),
+    'twitter_url' => url('rest/social-stream/twitter'),
   ), $settings);
   $output['#attached']['js'][] = array(
     'data' => array('social_stream' => $settings),
