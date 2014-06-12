@@ -25,7 +25,13 @@ function social_stream_menu() {
  * Page callback wrapper
  */
 function social_stream_render_wall() {
-  return social_stream_render();
+  if (strpos($_SERVER['SERVER_NAME'], 'www') !== FALSE) {
+    $settings = array();
+  }
+  else {
+    $settings = array('url' => url('js/json/social-stream/all'));
+  }
+  return social_stream_render($settings);
 }
 
 /**
