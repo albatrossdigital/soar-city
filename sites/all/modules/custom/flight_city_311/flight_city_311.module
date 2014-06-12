@@ -1,0 +1,95 @@
+<?php
+/**
+ * @file
+ * Code for the Flight City 311 feature.
+ */
+
+include_once 'flight_city_311.features.inc';
+
+/**
+ * Implements hook_preprocess_views_view()
+ */
+function flight_city_311_form_views_exposed_form_alter(&$form, $form_state) {
+  if ($form['#id'] === 'views-exposed-form-311-home-page') {
+    $form['#attached']['js'][] = array(
+      'type' => 'setting',
+      'data' => array(
+        'service_request' => array(
+          'placeholder' => t('
+            <p>Have you noticed a pothole, or need tree trimming?  Use our 311 request system to submit a service request to the City of Baltimore.</p>
+            <p><strong>To get started, select a service request category and then a specific request topic</strong>.  You can also search by keyword if you know your request category.</p>
+          '),
+        )
+      )
+    );
+    $form['#attached']['js'][] = drupal_get_path('module', 'flight_city_311') . '/js/flight-city-311-view.js';
+  }
+}
+
+
+
+/******************************* BLOCKS *********************************** */
+
+/**
+ * Implements hook_block_info().
+ */
+function flight_city_311_block_info() {
+  return array(
+    'search' => array(
+      'info' => t('Check 311 Request Status'),
+      'cache' => DRUPAL_CACHE_PER_PAGE,
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_block_view().
+ */
+function flight_city_311_block_view($delta = '') {
+  $block = array();
+  switch($delta) {
+    case 'search':
+      $form = drupal_get_form('flight_city_311_search_form');
+      $block['title'] = t('Check Request Status');
+      $block['content'] = drupal_render($form);
+      break;
+
+  }
+
+  return $block;
+}
+
+
+/**
+ * The request lookup form.
+ */
+function flight_city_311_search_form($form, &$form_state, $topics = array()) {
+  $form['#attributes'] = array('class' => array('row', 'collapse'));
+  $form['#action'] = 'https://baltimore.customerservicerequest.org/web_intake_balt/StatusCheck.mvc/StatusCheck';//'http://csr.baltimorecity.gov/Search.aspx';
+  $form['#method'] = 'POST';
+
+  $form['SRNumber'] = array(
+    '#title' => t('Service request number'),
+    '#type' => 'textfield',
+    '#size' => 20,
+    '#required' => TRUE,
+    '#description' => t('Please enter the Service Request number issued by 311 or 311 Online. You may enter the full 10 digit number (08-00001254) or leave off the year and extra zeros (1254).'),
+    //'#attributes' => array('placeholder' => t('Your email address')),
+  );
+
+  $form['Email'] = array(
+    '#title' => t('Email address'),
+    '#type' => 'textfield',
+    '#size' => 20,
+    '#required' => TRUE,
+    //'#attributes' => array('placeholder' => t('Your email address')),
+  );
+
+  $form['submit_button'] = array(
+    '#type' => 'submit',
+    '#value' => t('Search'),
+    //'#attributes' => array('class' => array('icon-go')),
+  );
+  return $form;
+}
