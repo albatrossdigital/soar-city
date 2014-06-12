@@ -7,12 +7,7 @@ Drupal.behaviors.social_stream = {
     //data.sort( function() { return 0.5 - Math.random() } );
     
     $.getJSON(settings.social_stream.url, function(data) {
-
-
-      var feeds = {
-        twitter: {url: settings.social_stream.twitter_url},
-        instagram: {clientId: '3b5aa6b2bd0842eb9702f191eb5c384d', redirectUrl: 'http://www.baltimore.ifsight.com/social_stream'},
-      };
+      var feeds = {}
       var added = [];
 
       $.each(data, function(index, value) {
@@ -51,7 +46,13 @@ Drupal.behaviors.social_stream = {
             }
         }
       });
-
+      if (feeds.twitter != undefined) {
+        feeds.twitter.url = settings.social_stream.twitter_url;
+      }
+      if (feeds.instagram != undefined) {
+        feeds.instagram.clientId = '3b5aa6b2bd0842eb9702f191eb5c384d';
+        feeds.instagram.redirectUrl = 'http://www.baltimore.ifsight.com/social_stream';
+      }
       console.log(feeds);
 
       $('#social-stream').dcSocialStream({
