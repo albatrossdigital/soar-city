@@ -46,6 +46,8 @@ stylesheets-conditional[lt IE 9][all][] = css/vendor/ie.css
 ; Modernizr acts as a shim for HTML5 elements for older browsers
 ; as well as detection for mobile devices.
 scripts[] = js/vendor/custom.modernizr.js
+scripts[] = js/vendor/qsa-polyfill-ie7.js
+;scripts[] = js/vendor/rem.min.js
 
 ; Foundation framework scripts (minified).
 ; If you prefer to have more control over which components are included you
@@ -54,21 +56,21 @@ scripts[] = js/vendor/custom.modernizr.js
 
 ; Foundation framework scripts (uncompressed).
 scripts[] = js/foundation/foundation.js
-scripts[] = js/foundation/foundation.abide.js
+;scripts[] = js/foundation/foundation.abide.js
 scripts[] = js/foundation/foundation.accordion.js
 scripts[] = js/foundation/foundation.alert.js
-scripts[] = js/foundation/foundation.clearing.js
+;scripts[] = js/foundation/foundation.clearing.js
 scripts[] = js/foundation/foundation.dropdown.js
 scripts[] = js/foundation/foundation.equalizer.js
 scripts[] = js/foundation/foundation.interchange.js
-scripts[] = js/foundation/foundation.joyride.js
-scripts[] = js/foundation/foundation.magellan.js
+;scripts[] = js/foundation/foundation.joyride.js
+;scripts[] = js/foundation/foundation.magellan.js
 scripts[] = js/foundation/foundation.offcanvas.js
 scripts[] = js/foundation/foundation.orbit.js
-scripts[] = js/foundation/foundation.slider.js
+;scripts[] = js/foundation/foundation.slider.js
 scripts[] = js/foundation/foundation.reveal.js
 scripts[] = js/foundation/foundation.tab.js
-scripts[] = js/foundation/foundation.tooltip.js
+;scripts[] = js/foundation/foundation.tooltip.js
 ;scripts[] = js/foundation/foundation.topbar.js
 
 ; Theme scripts.

@@ -31,17 +31,17 @@
       var self = this,
           S = self.S;
 
-      self.create(this.S(instance));
+      self.create($(instance));
 
       $(this.scope)
         .off('.tooltip')
         .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip touchstart.fndtn.tooltip MSPointerDown.fndtn.tooltip',
           '[' + this.attr_name() + ']', function (e) {
-          var $this = S(this),
+          var $this = $(this),
               settings = $.extend({}, self.settings, self.data_options($this)),
               is_touch = false;
 
-          if (Modernizr.touch && /touchstart|MSPointerDown/i.test(e.type) && S(e.target).is('a')) {
+          if (Modernizr.touch && /touchstart|MSPointerDown/i.test(e.type) && $(e.target).is('a')) {
             return false;
           }
 
@@ -55,7 +55,7 @@
               return;
             } else if(!settings.disable_for_touch && Modernizr.touch && /touchstart|MSPointerDown/i.test(e.type)) {
               e.preventDefault();
-              S(settings.tooltip_class + '.open').hide();
+              $(settings.tooltip_class + '.open').hide();
               is_touch = true;
             }
 
@@ -84,7 +84,7 @@
           }
         })
         .on('DOMNodeRemoved DOMAttrModified', '[' + this.attr_name() + ']:not(a)', function (e) {
-          self.hide(S(this));
+          self.hide($(this));
         });
     },
 
@@ -105,7 +105,7 @@
           tip = null;
 
       if (selector) {
-        tip = this.S('span[data-selector="' + selector + '"]' + settings.tooltip_class);
+        tip = $('span[data-selector="' + selector + '"]' + settings.tooltip_class);
       }
 
       return (typeof tip === 'object') ? tip : false;
@@ -261,8 +261,8 @@
 
     off : function () {
       var self = this;
-      this.S(this.scope).off('.fndtn.tooltip');
-      this.S(this.settings.tooltip_class).each(function (i) {
+      $(this.scope).off('.fndtn.tooltip');
+      $(this.settings.tooltip_class).each(function (i) {
         $('[' + self.attr_name() + ']').eq(i).attr('title', $(this).text());
       }).remove();
     },

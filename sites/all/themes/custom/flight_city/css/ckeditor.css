@@ -5982,14 +5982,14 @@ a img {
 p {
   font-family: inherit;
   font-weight: normal;
-  font-size: 1rem;
+  font-size: 1.14286rem;
   line-height: 1.6;
   margin-bottom: 1.42857rem;
   text-rendering: optimizeLegibility;
 }
 /* line 219, ../sass/vendor/foundation/components/_type.scss */
 p.lead {
-  font-size: 1.25rem;
+  font-size: 1.39286rem;
   line-height: 1.6;
 }
 /* line 221, ../sass/vendor/foundation/components/_type.scss */
@@ -6099,7 +6099,7 @@ code {
 ul,
 ol,
 dl {
-  font-size: 1rem;
+  font-size: 1.14286rem;
   line-height: 1.6;
   margin-bottom: 1.42857rem;
   list-style-position: outside;
@@ -6812,31 +6812,33 @@ h5 {
 
 /* line 31, ../sass/base/_elements.sass */
 h6 {
+  color: #707070;
   font-size: 1rem;
+  font-weight: 400;
 }
 
-/* line 41, ../sass/base/_elements.sass */
+/* line 43, ../sass/base/_elements.sass */
 h1 em, em h1, h2 em, em h2 {
   font-style: normal;
 }
 
-/* line 68, ../sass/base/_elements.sass */
+/* line 70, ../sass/base/_elements.sass */
 a:active {
   color: #07b1db;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 116, ../sass/base/_elements.sass */
+  /* line 118, ../sass/base/_elements.sass */
   h1 {
     font-size: 2.85714rem;
   }
 
-  /* line 119, ../sass/base/_elements.sass */
+  /* line 121, ../sass/base/_elements.sass */
   h2 {
     font-size: 2.14286rem;
   }
 
-  /* line 122, ../sass/base/_elements.sass */
+  /* line 124, ../sass/base/_elements.sass */
   h3 {
     font-size: 1.57143rem;
   }

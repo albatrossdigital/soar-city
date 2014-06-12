@@ -27,7 +27,7 @@
       // Store the default active tabs which will be referenced when the
       // location hash is absent, as in the case of navigating the tabs and
       // returning to the first viewing via the browser Back button.
-      S('[' + this.attr_name() + '] > dd.active > a', this.scope).each(function () {
+      $('[' + this.attr_name() + '] > dd.active > a', this.scope).each(function () {
         self.default_tab_hashes.push(this.hash);
       });
     },
@@ -36,25 +36,25 @@
       var self = this,
           S = this.S;
 
-      S(this.scope)
+      $(this.scope)
         .off('.tab')
         // Click event: tab title
         .on('click.fndtn.tab', '[' + this.attr_name() + '] > dd > a', function (e) {
-          var settings = S(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
+          var settings = $(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
           if (!settings.is_hover || Modernizr.touch) {
             e.preventDefault();
             e.stopPropagation();
-            self.toggle_active_tab(S(this).parent());
+            self.toggle_active_tab($(this).parent());
           }
         })
         // Hover event: tab title
         .on('mouseenter.fndtn.tab', '[' + this.attr_name() + '] > dd > a', function (e) {
-          var settings = S(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
-          if (settings.is_hover) self.toggle_active_tab(S(this).parent());
+          var settings = $(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
+          if (settings.is_hover) self.toggle_active_tab($(this).parent());
         });
 
       // Location hash change event
-      S(window).on('hashchange.fndtn.tab', function (e) {
+      $(window).on('hashchange.fndtn.tab', function (e) {
         e.preventDefault();
         self.handle_location_hash_change();
       });
@@ -64,15 +64,15 @@
       var self = this,
           S = this.S;
 
-      S('[' + this.attr_name() + ']', this.scope).each(function () {
-        var settings = S(this).data(self.attr_name(true) + '-init');
+      $('[' + this.attr_name() + ']', this.scope).each(function () {
+        var settings = $(this).data(self.attr_name(true) + '-init');
         if (settings.deep_linking) {
           // Match the location hash to a label
           var hash = self.scope.location.hash;
           if (hash != '') {
             // Check whether the location hash references a tab content div or
             // another element on the page (inside or outside the tab content div)
-            var hash_element = S(hash);
+            var hash_element = $(hash);
             if (hash_element.hasClass('content') && hash_element.parent().hasClass('tab-content')) {
               // Tab content div
               self.toggle_active_tab($('[' + self.attr_name() + '] > dd > a[href=' + hash + ']').parent());
@@ -99,14 +99,14 @@
           tabs = tab.closest('[' + this.attr_name() + ']'),
           anchor = tab.children('a').first(),
           target_hash = '#' + anchor.attr('href').split('#')[1],
-          target = S(target_hash),
+          target = $(target_hash),
           siblings = tab.siblings(),
           settings = tabs.data(this.attr_name(true) + '-init');
 
       // allow usage of data-tab-content attribute instead of href
-      if (S(this).data(this.data_attr('tab-content'))) {
-        target_hash = '#' + S(this).data(this.data_attr('tab-content')).split('#')[1];
-        target = S(target_hash);
+      if ($(this).data(this.data_attr('tab-content'))) {
+        target_hash = '#' + $(this).data(this.data_attr('tab-content')).split('#')[1];
+        target = $(target_hash);
       }
 
       if (settings.deep_linking) {
@@ -130,7 +130,7 @@
           if (location_hash == undefined || location_hash == target_hash) {
             tab.parent()[0].scrollIntoView();
           } else {
-            S(target_hash)[0].scrollIntoView();
+            $(target_hash)[0].scrollIntoView();
           }
         } else {
           // Adjust the scrollbar to the Y position prior to setting the hash

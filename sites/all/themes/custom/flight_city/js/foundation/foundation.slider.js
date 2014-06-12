@@ -48,7 +48,7 @@
           self.settings.on_change();
         });
 
-      self.S(window)
+      $(window)
         .on('resize.fndtn.slider', self.throttle(function(e) {
           self.reflow();
         }, 300));
@@ -182,7 +182,7 @@
 
     reflow : function() {
       var self = this;
-      self.S('[' + this.attr_name() + ']').each(function() {
+      $('[' + this.attr_name() + ']').each(function() {
         var handle = $(this).children('.range-slider-handle')[0],
             val = $(this).attr(self.attr_name());
         self.initialize_settings(handle);

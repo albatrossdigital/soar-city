@@ -18,6 +18,12 @@
   .no-page-title &
     +e(hide)
 
+  // hide page title on main domain top level view pages
+  .domain-main.views-page.menu-depth-1 &
+    +e(hide)
+
+    & ~ .view
+      padding-top: rem-calc(15)
 
 // Tabs
 // ----------------------------------------------------------------------------
@@ -77,17 +83,25 @@
     padding-bottom: $small-main-spacing
 
 
-
 // Common fields
 // ----------------------------------------------------------------------------
+
+.node
+  .field-name-title
+
+    // location / date information
+    & + h5
+      margin-top: rem-calc(-6)
+
+    & + h6,
+    & + h5 + h6
+      margin-top: rem-calc(-13)
+
 
 .node .field
   line-height: $paragraph-line-height
 
 // Date links
-.field-name-post-date
-  +f(alt-alt)
-  font-size: $h5-font-size
 
 // Share links
 .node
@@ -118,6 +132,12 @@ p img:only-child
 
 +respond($medium-up)
 
+  // Page title
+  // ----------------------------------------------------------------------------
+
+  #page-title, #section-title
+    font-size: $h2-font-size
+
   // main wrapper
   // ----------------------------------------------------------------------------
   .l-main
@@ -134,7 +154,7 @@ p img:only-child
     .block-flight-city-workbench
       margin-bottom: $small-region-pad-small
 
-    
+
 
 +respond($large-up)
 

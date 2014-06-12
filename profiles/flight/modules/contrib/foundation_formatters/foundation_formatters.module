@@ -589,10 +589,14 @@ function foundation_formatters_ds_fields_info($entity_type) {
         'settings' => array(
           'date_field' => array('type' => 'select'),
           'format_type' => array('type' => 'select'),
+          'fromto' => array('type' => 'select'),
+          'show_repeat_rule' => array('type' => 'select'),
         ),
         'default' => array(
           'date_field' => 'field_date',
           'format_type' => 'medium',
+          'fromto' => 'both',
+          'show_repeat_rule' => 'show',
         ),
       ),
     ),
@@ -726,11 +730,33 @@ function foundation_formatters_ds_field_settings_form($field) {
       // Date format
       $form['format_type'] = array(
         '#type' => 'select',
-        '#title' => t('Date format'),
-        '#options' => system_get_date_types(),
+        '#title' => t('Choose how users view dates and times'),
+        '#options' => $date_options,
         '#default_value' => $settings['format_type'],
-        '#description' => t('Select the date format to use.')
+        '#description' => t('To add or edit options, visit <a href="@date-settings">Date and time settings</a>.', array('@date-settings' => '/admin/config/regional/date-time'))
       );
+      $form['fromto'] = array(
+        '#type' => 'select',
+        '#title' => t('Display'),
+        '#options' => array(
+          'both' => t('Both Start and End dates'),
+          'value' => t('Start date only'),
+          'value2' => t('End date only')
+        ),
+        '#default_value' => $settings['fromto'],
+        '#description' => t('How to display.')
+      );
+      if(module_exists('date_repeat_field')) {
+        $form['show_repeat_rule'] = array(
+          '#type' => 'select',
+          '#title' => t('Repeat rule'),
+          '#options' => array(
+            'show' => t('Show repeat rule'),
+            'hide' => t('Hide repeat rule')
+          ),
+          '#default_value' => $settings['show_repeat_rule'],
+        );
+      }
       break;
 
     case 'foundation_formatters_views_field':
@@ -825,13 +851,17 @@ function _foundation_formatters_ds_datetime_field(array $field) {
   $delta = !empty($entity->ds_delta) && isset($entity->ds_delta[$settings['date_field']]) 
     ? $entity->ds_delta[$settings['date_field']]
     : 0;
+  $date_settings = array(
+    'format_type' => $settings['format_type'],
+    'fromto' => $settings['fromto']
+  );
+  if(module_exists('date_repeat_field')) {
+    $date_settings['show_repeat_rule'] = $settings['show_repeat_rule'];
+  }
   // Build output
   $output = field_view_value('node', $entity, $settings['date_field'], $date[$delta], array(
     'type' => 'date_default',
-    'settings' => array(
-      'format_type' => $settings['format_type'],
-      'show_repeat_rule' => 'hide'
-    ),
+    'settings' => $date_settings,
   ));
   return drupal_render($output);
 }

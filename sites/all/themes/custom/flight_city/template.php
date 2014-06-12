@@ -17,7 +17,13 @@ function flight_city_preprocess_html(&$vars) {
     'scope' => 'header',
     'weight' => 1,
   ));*/
-  drupal_add_js(drupal_get_path('theme', 'flight_city') . '/js/vendor/rem.js', array(
+
+  // is already cached, so no worries
+  $breadcrumb = drupal_get_breadcrumb();
+  // a a depth class
+  $vars['classes_array'][] = 'menu-depth-' . count($breadcrumb);
+  
+  drupal_add_js(drupal_get_path('theme', 'flight_city') . '/js/vendor/rem.min.js', array(
     'type' => 'file',
     'scope' => 'footer'
   ));
@@ -50,6 +56,8 @@ function flight_city_preprocess_page(&$vars) {
   if(!isset($vars['section_title'])) {
     $vars['section_title'] = FALSE;
   }
+
+  //dpm($vars);
 
   // Set section title explicitly
   if(!isset($vars['entity_title'])) {

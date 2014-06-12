@@ -5982,14 +5982,14 @@ a img {
 p {
   font-family: inherit;
   font-weight: normal;
-  font-size: 1rem;
+  font-size: 1.14286rem;
   line-height: 1.6;
   margin-bottom: 1.42857rem;
   text-rendering: optimizeLegibility;
 }
 /* line 219, ../sass/vendor/foundation/components/_type.scss */
 p.lead {
-  font-size: 1.25rem;
+  font-size: 1.39286rem;
   line-height: 1.6;
 }
 /* line 221, ../sass/vendor/foundation/components/_type.scss */
@@ -6099,7 +6099,7 @@ code {
 ul,
 ol,
 dl {
-  font-size: 1rem;
+  font-size: 1.14286rem;
   line-height: 1.6;
   margin-bottom: 1.42857rem;
   list-style-position: outside;

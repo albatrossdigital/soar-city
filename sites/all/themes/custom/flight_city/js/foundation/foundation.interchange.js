@@ -140,7 +140,7 @@
       var count = scenarios.length;
 
       if (count > 0) {
-        var el = this.S('[' + this.add_namespace('data-uuid') + '="' + uuid + '"]');
+        var el = $('[' + this.add_namespace('data-uuid') + '="' + uuid + '"]');
 
         while (count--) {
           var mq, rule = scenarios[count][2];
@@ -167,7 +167,7 @@
     },
 
     update_images : function () {
-      var images = this.S('img[' + this.data_attr + ']'),
+      var images = $('img[' + this.data_attr + ']'),
           count = images.length,
           i = count,
           loaded_count = 0,
@@ -197,7 +197,7 @@
     },
 
     update_nodes : function () {
-      var nodes = this.S('[' + this.data_attr + ']').not('img'),
+      var nodes = $('[' + this.data_attr + ']').not('img'),
           count = nodes.length,
           i = count,
           loaded_count = 0,
