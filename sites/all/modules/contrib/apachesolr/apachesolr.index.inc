@@ -63,7 +63,9 @@ function apachesolr_index_entities($env_id, $limit) {
       $documents = array_merge($documents, $row_documents);
     }
 
-    $indexed = apachesolr_index_send_to_solr($env_id, $documents);
+    dpm($documents);
+    dpm($row_documents);
+    $indexed = !empty($documents) ? apachesolr_index_send_to_solr($env_id, $documents) : FALSE;
     if ($indexed !== FALSE) {
       $documents_submitted += count($documents);
       // Check who's the last in line
