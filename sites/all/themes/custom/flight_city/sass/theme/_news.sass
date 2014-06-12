@@ -16,8 +16,16 @@
 // News (story) nodes
 // ---------------------------------------------------------------------------- 
 
+.node-type-story 
+  #page-title
+    margin-bottom: rem-calc(5)
+
+    & ~ ul.button-group
+      margin-top: $small-main-spacing
+
 .node-story.view-mode-full
   +social-links-floated()
+
 
 
 // *
