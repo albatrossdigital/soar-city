@@ -26,7 +26,6 @@ function social_stream_menu() {
  */
 function social_stream_render_twitter_feed() {
   //$path = libraries_get_path('jquery-social-stream');
-  print 'asdf';
   include __DIR__ . '../../../libraries/jquery-social-stream/twitter.php';
 
   return;
