@@ -5,8 +5,8 @@
  */
 function social_stream_menu() {
   $items = array(
-    'social_stream' => array(
-      'title' => 'Social Wall',
+    'connect' => array(
+      'title' => 'Connect',
       'page callback' => 'social_stream_render_wall',
       'access callback' => TRUE,
     ),
@@ -22,9 +22,16 @@ function social_stream_menu() {
 }
 
 /**
+ * Page callback wrapper
+ */
+function social_stream_render_wall() {
+  return social_stream_render();
+}
+
+/**
  * renders the actual wall
  */
-function social_stream_render_wall($settings = array()) {
+function social_stream_render($settings = array()) {
 
   $output = array();
   //$output['#markup'] = social_stream_process_json();
@@ -61,9 +68,6 @@ function social_stream_render_wall($settings = array()) {
 
   return $output;
 }
-
-
-
 
 
 

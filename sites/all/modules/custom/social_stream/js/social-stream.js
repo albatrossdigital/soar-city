@@ -4,11 +4,13 @@ Drupal.behaviors.social_stream = {
   attach: function (context, settings) {
 
     // @todo: randomize array
-    //data.sort( function() { return 0.5 - Math.random() } );
+    //
     
     $.getJSON(settings.social_stream.url, function(data) {
       var feeds = {}
       var added = [];
+
+      console.log(data);
 
       $.each(data, function(index, value) {
         if (added.indexOf(value.url) === -1) {
@@ -27,6 +29,7 @@ Drupal.behaviors.social_stream = {
               break;
             case 'wall':
             case 'govdelivery':
+            case 'soundcloud':
               feeds[value.network] = undefined;
               break;
             default:
@@ -53,6 +56,13 @@ Drupal.behaviors.social_stream = {
         feeds.instagram.clientId = '3b5aa6b2bd0842eb9702f191eb5c384d';
         feeds.instagram.redirectUrl = 'http://www.baltimore.ifsight.com/social_stream';
       }
+
+      // @todo: temp?
+      feeds.wordpress = undefined;
+      feeds.blogger = undefined;
+      feeds.soundcloud = undefined;
+
+      feeds.instagram = undefined;
       console.log(feeds);
 
       $('#social-stream').dcSocialStream({
@@ -64,9 +74,9 @@ Drupal.behaviors.social_stream = {
         filter: true,
         wall: settings.social_stream.type === 'wall' ? true : false,
         cache: true,
-        days: 30,
+        days: 10,
         max: 'limit',
-        limit: 10,
+        limit: 5,
         order: 'random',
         iconPath: settings.social_stream.image_path,
         imagePath: settings.social_stream.image_path,
