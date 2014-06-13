@@ -57,16 +57,25 @@ function flight_city_preprocess_page(&$vars) {
     $vars['section_title'] = FALSE;
   }
 
-  //dpm($vars);
-
   // Set section title explicitly
   if(!isset($vars['entity_title'])) {
     $current_domain = domain_get_domain();
     // Main top level domain
     if($current_domain['is_default']) {
 
+      // are we home page?
+      if($vars['is_front']) {
+        $vars['theme_hook_suggestions'][] = 'page__uber_front';
+        $vars['entity_title'] = t('<small>City of</small> Baltimore');
+        $options = array(
+          'path' => drupal_get_path('theme', 'flight_city') . '/images/uber/logo-big.png',
+          'alt' => t('City of Baltimore'),
+          'title' => t('City of Baltimore')
+        );
+        $vars['uber_logo'] = l(theme('image', $options), '<front>', array('html' => true));
+      }
       // If there is an override use it
-      if($vars['section_title']) {
+      else if($vars['section_title']) {
         $vars['entity_title'] = $vars['section_title'];
         $vars['section_title'] = FALSE;
       }
@@ -119,6 +128,8 @@ function flight_city_preprocess_page(&$vars) {
     $vars['sidebar_first_grid'] = '';
     $vars['sidebar_sec_grid'] = '';
   }
+
+  //dpm($vars);
 }
 
 /**

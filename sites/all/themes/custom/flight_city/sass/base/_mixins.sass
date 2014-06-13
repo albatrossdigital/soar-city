@@ -656,6 +656,9 @@ $common-border: common-border-val()
     .block
       margin-bottom: $medium-main-block-spacing
 
+    .block-title
+      font-size: $h2-font-size
+
 
 
 
@@ -984,6 +987,21 @@ $main-menu-border-size: rem-calc(3)
 // Forms
 //
 //***********************************
+
+@mixin search-icon-on-input()
+  +icon-only('search')
+  position: relative
+
+  &:before
+    color: $input-border-color
+    position: absolute
+    right: rem-calc(6)
+    top: rem-calc(11)
+    z-index: 1
+
+  input
+    padding-right: rem-calc(24)
+    
 
 @mixin big-form()
   +all-form-inputs(true)

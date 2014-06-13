@@ -88,19 +88,7 @@ $border-padding: rem-calc(35)
 
   // Add search icon
   .form-item-combine
-    +icon-only('search')
-    position: relative
-
-    &:before
-      color: $input-border-color
-      position: absolute
-      right: rem-calc(6)
-      top: rem-calc(11)
-      z-index: 1
-
-    input
-      padding-right: rem-calc(24)
-
+    +search-icon-on-input()
 
 
   // hide widget

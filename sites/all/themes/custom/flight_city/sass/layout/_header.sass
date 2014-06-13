@@ -53,6 +53,15 @@
 .header-branding
   padding-bottom: $small-region-pad-small*2
 
+.region-logo
+  float: left
+
+h1, h2
+  small
+    display: block
+    color: $gold
+    line-height: 0.7em
+
 #entity-title
   font-size: $h2-font-size
   line-height: 1.1
@@ -117,13 +126,18 @@
 
   // Entity Branding
   // ------------------------------------------------------
+
   // make sure title is same hieght as search
   .header-branding
     padding-bottom: rem-calc(37)
 
+  .region-logo
+    margin-right: rem-calc(15)
+
   #entity-title
     font-size: $h1-font-size
     padding: rem-calc(16 0 0)
+
 
   // Header region right
   // ------------------------------------------------------

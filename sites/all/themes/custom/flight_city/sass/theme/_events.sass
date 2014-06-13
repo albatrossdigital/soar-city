@@ -40,12 +40,18 @@
       margin-left: rem-calc(-60/2)
       width: rem-calc(60)
       text-align: center
+  
+  .views-widget-filter-combine .views-widget
+    +search-icon-on-input()
+
+
 
   // borders
   .form-item 
     &.form-type-textfield,
     &.form-type-select
       +nice-row-border((-$column-gutter), $column-gutter, $common-border, bottom, hidden)
+
 
   .views-exposed-widget .form-submit
     margin-top: 0
