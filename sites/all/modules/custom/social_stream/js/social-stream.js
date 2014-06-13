@@ -74,10 +74,10 @@ Drupal.behaviors.social_stream = {
         filter: true,
         wall: settings.social_stream.type === 'wall' ? true : false,
         cache: true,
-        days: data.length < 15 ? 30 : 10,
+        days: data.length < 15 ? 30 : 50,
         max: 'limit',
-        limit: data.length < 15 ? 10 : 5,
-        order: 'random',
+        limit: data.length < 15 ? 10 : 2,
+        //order: 'random',
         iconPath: settings.social_stream.image_path,
         imagePath: settings.social_stream.image_path,
       });
