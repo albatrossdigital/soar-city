@@ -613,7 +613,7 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] 
   $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 0;
 }
 elseif (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
-  $conf['apachesolr_environments']['solr']['url'] = 'http://ny.opensolr.com/solr/test_if_balt';
+  //$conf['apachesolr_environments']['solr']['url'] = 'http://ny.opensolr.com/solr/test_if_balt';
   $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 0;
 }
 else {
