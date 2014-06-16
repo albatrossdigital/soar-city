@@ -339,7 +339,7 @@ h3, h4 {
 }
 
 /* line 418, ../sass/base/_mixins.sass */
-.label-inline, h1, h2, .page-311-services main .medium-3 h2 {
+.label-inline, h1, h2, .page-311-services main .medium-3 h2.block-title {
   font-family: "ff-tisa-web-pro";
   font-style: normal;
   font-weight: 400;
@@ -3850,7 +3850,7 @@ ol.search-results .search-snippet-info {
 }
 
 /* line 8, ../sass/theme/_311-services.sass */
-.page-311-services main .medium-3 h2 {
+.page-311-services main .medium-3 h2.block-title {
   font-size: 1.57143rem;
 }
 /* line 13, ../sass/theme/_311-services.sass */
@@ -4002,10 +4002,6 @@ ol.search-results .search-snippet-info {
   text-align: center;
 }
 /* line 39, ../sass/theme/_311-services.sass */
-.page-311-services .triptych-middle .block label {
-  font-weight: bold;
-}
-/* line 42, ../sass/theme/_311-services.sass */
 .page-311-services .triptych-last .block {
   position: relative;
   padding-top: 7.14286rem;
@@ -4021,7 +4017,7 @@ ol.search-results .search-snippet-info {
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 57, ../sass/theme/_311-services.sass */
+  /* line 54, ../sass/theme/_311-services.sass */
   .page-311-services main .view-311-home.view-display-id-page {
     margin-top: 2.5em;
   }
