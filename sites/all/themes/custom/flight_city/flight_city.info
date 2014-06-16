@@ -70,7 +70,7 @@ scripts[] = js/foundation/foundation.orbit.js
 ;scripts[] = js/foundation/foundation.slider.js
 scripts[] = js/foundation/foundation.reveal.js
 scripts[] = js/foundation/foundation.tab.js
-;scripts[] = js/foundation/foundation.tooltip.js
+scripts[] = js/foundation/foundation.tooltip.js
 ;scripts[] = js/foundation/foundation.topbar.js
 
 ; Theme scripts.
