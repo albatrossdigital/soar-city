@@ -592,7 +592,7 @@ if (defined('PANTHEON_ENVIRONMENT')) {
 }*/
 
 // ApacheSolr Settings.
-$conf['apachesolr_environments']['solr']['url'] = 'http://us.opensolr.com/solr/prod_balt_if';
+//$conf['apachesolr_environments']['solr']['url'] = 'http://us.opensolr.com/solr/prod_balt_if';
 
 // Redirect all domains to TLD
 if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
