@@ -10,9 +10,15 @@ Drupal.behaviors.social_stream = {
       var feeds = {}
       var added = [];
 
-      console.log(data);
+      var keys = Object.keys(data);
+      keys = shuffle(keys);
 
-      $.each(data, function(index, value) {
+      $.each(keys, function(i, key) {
+        if (i > 10) {
+          return;
+        }
+        value = data[key];
+        console.log(value);
         if (added.indexOf(value.url) === -1) {
           if (feeds[value.network] == undefined) {
             feeds[value.network] = [];
@@ -84,7 +90,12 @@ Drupal.behaviors.social_stream = {
 
     });
 
-    
+    shuffle = function(o){ //v1.0
+      for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+      return o;
+    };
+
+
            
 
   }

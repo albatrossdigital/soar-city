@@ -1,7 +1,7 @@
 name = Social Stream
-description = Implements jQuery Social Stream code for Drupal
+description = Integrates with the jQuery Social Stream paid plugin via JSON views feeds
 core = 7.x
-package = Social
+package = Flight City
 
 ;stylesheets[all][] = css/layout.css
 ;stylesheets[all][] = css/dcsns_wall.css
@@ -9,3 +9,22 @@ package = Social
 ;scripts[] = js/jquery.site.js
 ;scripts[] = js/jquery.social.stream.wall.1.2.js
 ;scripts[] = js/jquery.social.stream.1.4.3.min.js
+
+dependencies[] = bean_admin_ui
+dependencies[] = ds
+dependencies[] = flight_city_program
+dependencies[] = views
+dependencies[] = views_data_export
+dependencies[] = views_data_export_json
+features[bean_type][] = social_stream
+features[ctools][] = bean_admin_ui:bean:5
+features[ctools][] = ds:ds:1
+features[ctools][] = views:views_default:3.0
+features[ds_field_settings][] = bean|social_stream|default
+features[ds_layout_settings][] = bean|social_stream|default
+features[features_api][] = api:2
+features[field_instance][] = bean-social_stream-field_social_networks
+features[views_view][] = social_stream_networks
+features_exclude[dependencies][ctools] = ctools
+features_exclude[dependencies][features] = features
+features_exclude[dependencies][field_collection] = field_collection

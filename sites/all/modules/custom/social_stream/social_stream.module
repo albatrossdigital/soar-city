@@ -1,4 +1,5 @@
 <?php
+include_once 'social_stream.features.inc';
 
 /**
  * Implements hook_menu().
@@ -31,6 +32,7 @@ function social_stream_render_wall() {
   else {
     $settings = array('url' => url('js/json/social-stream/all'));
   }
+  $settings['type'] = 'wall';
   return social_stream_render($settings);
 }
 
@@ -40,20 +42,28 @@ function social_stream_render_wall() {
 function social_stream_render($settings = array()) {
 
   $output = array();
+  $path = libraries_get_path('jquery-social-stream');
+  
   //$output['#markup'] = social_stream_process_json();
+  if ($settings['type'] === 'wall') {
+    $code = '<div id="wall" class="full-wall">
+            <div id="social-stream"></div>
+          </div>';
+    $output['#attached']['css'][] = $path . '/css/dcsns_wall.css';
+  }
+  else {
+    $code = '<div id="social-stream"></div>';
+    $output['#attached']['css'][] = $path . '/css/dcsns_light.css';
+  }
+  
   $output['#markup'] .= '
       <div id="wrapper">
         <div id="container"> 
-          <!-- Begin Question Block -->
-          <div id="wall">
-            <div id="social-stream"></div>
+        '. $code .'
         </div>
     </div>';
 
-  $path = libraries_get_path('jquery-social-stream');
-
-  $output['#attached']['css'][] = $path . '/inc/layout.css';
-  $output['#attached']['css'][] = $path . '/css/dcsns_wall.css';
+  //$output['#attached']['css'][] = $path . '/inc/layout.css';
 
   $output['#attached']['js'][] = $path . '/inc/js/jquery.plugins.js';
   $output['#attached']['js'][] = $path . '/inc/js/jquery.site.js';
@@ -71,6 +81,8 @@ function social_stream_render($settings = array()) {
     'data' => array('social_stream' => $settings),
     'type' => 'setting',
   );
+
+  dpm($output);
 
   return $output;
 }
@@ -180,7 +192,7 @@ function _social_stream_ds_social_stream_field(array $field) {
   $settings = isset($field['formatter_settings']) ? $field['formatter_settings'] : $field['properties']['default'];
   $ids = entity_extract_ids($field['entity_type'], $field['entity']);
   $settings['url'] = url(str_replace('%', $ids[0], $settings['url']));
-  return drupal_render(social_stream_render_wall($settings));
+  return drupal_render(social_stream_render($settings));
 
 }
 
