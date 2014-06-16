@@ -88,8 +88,8 @@ function flight_city_311_search_form($form, &$form_state, $topics = array()) {
 
   $form['submit_button'] = array(
     '#type' => 'submit',
-    '#value' => t('Search'),
-    //'#attributes' => array('class' => array('icon-go')),
+    '#value' => t('Check Status'),
+    '#attributes' => array('class' => array('right')),
   );
   return $form;
 }
