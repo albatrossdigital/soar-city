@@ -11,10 +11,12 @@ Drupal.behaviors.social_stream = {
       var added = [];
 
       var keys = Object.keys(data);
-      keys = shuffle(keys);
+      if (settings.randomize_feed != undefined && settings.randomize_feed) {
+        keys = shuffle(keys);
+      }
 
       $.each(keys, function(i, key) {
-        if (i > 10) {
+        if (settings.max != undefined && i >= settings.max) {
           return;
         }
         value = data[key];
@@ -27,11 +29,13 @@ Drupal.behaviors.social_stream = {
           console.log(value.network);
           switch (value.network) {
             case 'flickr':
-              feeds[value.network].push(arr[4]);
+              feeds[value.network].push(arr[arr.length-1].replace('q=', ''));
               break;
             case 'blogger':
+              feeds['rss'] = value.url . 'feeds/posts/default?alt=rss';
+              break;
             case 'wordpress':
-              //@todo
+              feeds['rss'] = value.url . 'feed';
               break;
             case 'wall':
             case 'govdelivery':
@@ -80,9 +84,9 @@ Drupal.behaviors.social_stream = {
         filter: true,
         wall: settings.social_stream.type === 'wall' ? true : false,
         cache: true,
-        days: data.length < 15 ? 30 : 50,
+        //days: data.length < 15 ? 30 : 50, //igniored because max=limit
         max: 'limit',
-        limit: data.length < 15 ? 10 : 2,
+        limit: settings.limit,
         //order: 'random',
         iconPath: settings.social_stream.image_path,
         imagePath: settings.social_stream.image_path,

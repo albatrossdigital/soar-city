@@ -33,6 +33,8 @@ function social_stream_render_wall() {
     $settings = array('url' => url('js/json/social-stream/all'));
   }
   $settings['type'] = 'wall';
+  $settings['randomize_feed'] = TRUE;
+  $settings['limit'] = 5;
   return social_stream_render($settings);
 }
 
@@ -43,6 +45,10 @@ function social_stream_render($settings = array()) {
 
   $output = array();
   $path = libraries_get_path('jquery-social-stream');
+
+  $output['#attached']['js'][] = $path . '/inc/js/jquery.plugins.js';
+  $output['#attached']['js'][] = $path . '/inc/js/jquery.site.js';
+  $output['#attached']['js'][] = $path . '/js/jquery.social.stream.1.5.4.min.js';
   
   //$output['#markup'] = social_stream_process_json();
   if ($settings['type'] === 'wall') {
@@ -50,6 +56,7 @@ function social_stream_render($settings = array()) {
             <div id="social-stream"></div>
           </div>';
     $output['#attached']['css'][] = $path . '/css/dcsns_wall.css';
+    $output['#attached']['js'][] = $path . '/js/jquery.social.stream.wall.1.3.js';
   }
   else {
     $code = '<div id="social-stream"></div>';
@@ -65,10 +72,6 @@ function social_stream_render($settings = array()) {
 
   //$output['#attached']['css'][] = $path . '/inc/layout.css';
 
-  $output['#attached']['js'][] = $path . '/inc/js/jquery.plugins.js';
-  $output['#attached']['js'][] = $path . '/inc/js/jquery.site.js';
-  $output['#attached']['js'][] = $path . '/js/jquery.social.stream.wall.1.3.js';
-  $output['#attached']['js'][] = $path . '/js/jquery.social.stream.1.5.4.min.js';
 
   $output['#attached']['js'][] = drupal_get_path('module', 'social_stream') . '/js/social-stream.js';
   $settings = array_merge(array(
