@@ -32,10 +32,10 @@ Drupal.behaviors.social_stream = {
               feeds[value.network].push(arr[arr.length-1].replace('q=', ''));
               break;
             case 'blogger':
-              feeds['rss'] = value.url . 'feeds/posts/default?alt=rss';
+              feeds['rss'] = value.url + 'feeds/posts/default?alt=rss';
               break;
             case 'wordpress':
-              feeds['rss'] = value.url . 'feed';
+              feeds['rss'] = value.url + 'feed';
               break;
             case 'wall':
             case 'govdelivery':
