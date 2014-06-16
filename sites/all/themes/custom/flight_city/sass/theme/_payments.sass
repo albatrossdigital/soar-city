@@ -1,3 +1,25 @@
+// Payment landing page
+// ---------------------------------------------------------------------------- 
+.page-payments.domain-main
+  .l-triptych
+    +side-bar-menu('.item-list ul', '.block-title', 'li.active a', true)
+
+    .block-title
+      text-align: center
+
+  .triptych-first .block
+    +fake-icon-circle-box($red)
+
+  .triptych-middle .block
+    +fake-icon-circle-box($blue)
+
+  .triptych-last .block
+    +fake-icon-circle-box($orange)
+
+  .vocabulary-payment-type.view-mode-teaser
+    h3
+      a
+        +c(link-header)
 
 
 
