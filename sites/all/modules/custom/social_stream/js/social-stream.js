@@ -5,37 +5,48 @@ Drupal.behaviors.social_stream = {
 
     // @todo: randomize array
     //
+
+    var display = {
+      'twitter': {
+        out: 'intro,date,text,user',
+      },
+      'facebook': {
+        out: 'intro,date,text,user'
+      },
+      'youtube': {
+        out: 'intro,date,text,user'
+      }
+
+    }
     
     $.getJSON(settings.social_stream.url, function(data) {
-      var feeds = {}
+      var feeds = {rss: []}
       var added = [];
 
       var keys = Object.keys(data);
-      if (settings.randomize_feed != undefined && settings.randomize_feed) {
+      if (settings.social_stream.randomize_feed != undefined && settings.social_stream.randomize_feed) {
         keys = shuffle(keys);
       }
 
       $.each(keys, function(i, key) {
-        if (settings.max != undefined && i >= settings.max) {
+        if (settings.social_stream.max != undefined && i >= settings.social_stream.max) {
           return;
         }
         value = data[key];
-        console.log(value);
         if (added.indexOf(value.url) === -1) {
           if (feeds[value.network] == undefined) {
             feeds[value.network] = [];
           }
           var arr = value.url.split('/');
-          console.log(value.network);
           switch (value.network) {
             case 'flickr':
-              feeds[value.network].push(arr[arr.length-1].replace('q=', ''));
+              feeds[value.network].push(arr[arr.length-1].replace(/\?q\=/, ''));
               break;
             case 'blogger':
-              feeds['rss'] = value.url + 'feeds/posts/default?alt=rss';
+              feeds['rss'].push(value.url + 'feeds/posts/default?alt=rss');
               break;
             case 'wordpress':
-              feeds['rss'] = value.url + 'feed';
+              feeds['rss'].push(value.url + 'feed');
               break;
             case 'wall':
             case 'govdelivery':
@@ -49,13 +60,11 @@ Drupal.behaviors.social_stream = {
       });
       $.each(feeds, function(index, value) {
         switch (index) {
-          case 'blogspot':
-          case 'wordpress':
-            //@todo
-            break;
           default:
-            if (value != undefined) {
-              feeds[index] = {id: feeds[index].join()};
+            if (value != undefined && value != '') {
+              var item = display[value.network] != undefined ? display[value.network] : {};
+              item['id'] = value.join();
+              feeds[index] = item;
             }
         }
       });
@@ -70,10 +79,10 @@ Drupal.behaviors.social_stream = {
       // @todo: temp?
       feeds.wordpress = undefined;
       feeds.blogger = undefined;
+      feeds.blog = undefined;
       feeds.soundcloud = undefined;
 
       feeds.instagram = undefined;
-      console.log(feeds);
 
       $('#social-stream').dcSocialStream({
         feeds: feeds,
@@ -86,10 +95,11 @@ Drupal.behaviors.social_stream = {
         cache: true,
         //days: data.length < 15 ? 30 : 50, //igniored because max=limit
         max: 'limit',
-        limit: settings.limit,
+        limit: settings.social_stream.limit,
         //order: 'random',
         iconPath: settings.social_stream.image_path,
         imagePath: settings.social_stream.image_path,
+        height: settings.social_stream.height,
       });
 
     });

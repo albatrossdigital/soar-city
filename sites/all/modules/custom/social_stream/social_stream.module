@@ -27,14 +27,14 @@ function social_stream_menu() {
  */
 function social_stream_render_wall() {
   if (strpos($_SERVER['SERVER_NAME'], 'www') !== FALSE) {
-    $settings = array();
+    $settings = array('max_feeds' => 15);
   }
   else {
     $settings = array('url' => url('js/json/social-stream/all'));
   }
   $settings['type'] = 'wall';
   $settings['randomize_feed'] = TRUE;
-  $settings['limit'] = 5;
+  $settings['limit'] = 4;
   return social_stream_render($settings);
 }
 
@@ -79,13 +79,12 @@ function social_stream_render($settings = array()) {
     'url' => url('js/json/social-stream/all/all'),
     'type' => 'wall',
     'twitter_url' => url('rest/social-stream/twitter'),
+    'limit' => 15,
   ), $settings);
   $output['#attached']['js'][] = array(
     'data' => array('social_stream' => $settings),
     'type' => 'setting',
   );
-
-  dpm($output);
 
   return $output;
 }
@@ -195,6 +194,7 @@ function _social_stream_ds_social_stream_field(array $field) {
   $settings = isset($field['formatter_settings']) ? $field['formatter_settings'] : $field['properties']['default'];
   $ids = entity_extract_ids($field['entity_type'], $field['entity']);
   $settings['url'] = url(str_replace('%', $ids[0], $settings['url']));
+  $settings['height'] = 480;
   return drupal_render(social_stream_render($settings));
 
 }
