@@ -3817,19 +3817,19 @@ ol.search-results .search-snippet-info {
 .vocabulary-payment-type.view-mode-teaser {
   margin-bottom: 1em;
 }
-/* line 27, ../sass/theme/_payments.sass */
-.vocabulary-payment-type.view-mode-teaser .circle-icon a:before {
+/* line 26, ../sass/theme/_payments.sass */
+.vocabulary-payment-type.view-mode-teaser .circle-icon:before {
   padding: 0 36%;
 }
 
-/* line 42, ../sass/theme/_payments.sass */
+/* line 41, ../sass/theme/_payments.sass */
 .vocabulary-payment-type.view-mode-full .icon-box {
   margin-bottom: 2.14286rem;
   position: relative;
   padding-left: 6.42857rem;
   padding-top: 0.85714rem;
 }
-/* line 51, ../sass/theme/_payments.sass */
+/* line 50, ../sass/theme/_payments.sass */
 .vocabulary-payment-type.view-mode-full .icon-box [class*="fa-"]:before {
   position: absolute;
   left: 0.71429rem;
@@ -3842,25 +3842,25 @@ ol.search-results .search-snippet-info {
   border-radius: 100%;
   color: rgba(255, 255, 255, 0.5);
 }
-/* line 61, ../sass/theme/_payments.sass */
+/* line 60, ../sass/theme/_payments.sass */
 .vocabulary-payment-type.view-mode-full .icon-box.gold [class*="fa-"]:before {
   background: #deb64b;
 }
-/* line 65, ../sass/theme/_payments.sass */
+/* line 64, ../sass/theme/_payments.sass */
 .vocabulary-payment-type.view-mode-full .icon-box.green [class*="fa-"]:before {
   background: #6aa880;
 }
-/* line 69, ../sass/theme/_payments.sass */
+/* line 68, ../sass/theme/_payments.sass */
 .vocabulary-payment-type.view-mode-full .icon-box.blue [class*="fa-"]:before {
   background: #5eb5cb;
 }
-/* line 73, ../sass/theme/_payments.sass */
+/* line 72, ../sass/theme/_payments.sass */
 .vocabulary-payment-type.view-mode-full .icon-box.red [class*="fa-"]:before {
   background: #e55454;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 89, ../sass/theme/_payments.sass */
+  /* line 88, ../sass/theme/_payments.sass */
   .page-payments.domain-main .l-triptych .columns section {
     margin: 0 1em;
   }
