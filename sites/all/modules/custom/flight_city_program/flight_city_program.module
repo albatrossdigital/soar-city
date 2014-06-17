@@ -5,3 +5,62 @@
  */
 
 include_once 'flight_city_program.features.inc';
+
+
+
+/******************************* DISPLAY SUITE ***************************** */
+
+/**
+ * Implements hook_ds_fields_info().
+ */
+function flight_city_program_ds_fields_info($entity_type) {
+  $fields = array();
+
+  $default_view = '';
+  
+  $fields[$entity_type] = array(
+
+    // Views field simple renders a view
+    'social_stream' => array(
+      'title' => t('Program icon or thumbnail'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'function' => '_flight_city_program_ds_icon_thumbnail_field',
+      'properties' => array(
+      ),
+    ),
+
+  );
+
+  return $fields;
+}
+
+/**
+ * Output field
+ */
+function _flight_city_program_ds_icon_thumbnail_field(array $field) {
+  $node = $field['entity'];
+
+  if (!empty($node->field_icon) || !empty($node->field_picture)) {
+    $class = '';
+
+    if (!empty($node->field_icon)) {
+      $html = '<i class="'. $node->field_icon[LANGUAGE_NONE][0]['value'] .'"></i><div class="color-link" style="background-color:'. $node->field_color[LANGUAGE_NONE][0]['rgb'] .'"></div>';
+      $class = 'circle-icon';
+    }
+    else {
+      $image = $node->field_picture[LANGUAGE_NONE]['0'];
+      $hero_image = array(
+        'style_name' => 'thumbnail', // @todo: do not hardcode this?
+        'path' => $image['uri'],
+        'width' => '',
+        'height' => '',
+        'alt' => $image['alt'],
+        'title' => $image['title'],
+      );
+      $html = theme('image_style', $hero_image);
+    }
+
+    return l($html, 'node/'.$node->nid, array('html' => TRUE, 'class' => $class));
+  }
+
+}
