@@ -61,7 +61,7 @@ Drupal.behaviors.social_stream = {
       $.each(feeds, function(index, value) {
         switch (index) {
           default:
-            if (value != undefined && value != '') {
+            if (value != undefined && value != '' && value.length) {
               var item = display[value.network] != undefined ? display[value.network] : {};
               item['id'] = value.join();
               feeds[index] = item;
@@ -83,6 +83,10 @@ Drupal.behaviors.social_stream = {
       feeds.soundcloud = undefined;
 
       feeds.instagram = undefined;
+
+      if (!feeds.rss.length) {
+        feeds.rss = undefined;
+      }
 
       $('#social-stream').dcSocialStream({
         feeds: feeds,

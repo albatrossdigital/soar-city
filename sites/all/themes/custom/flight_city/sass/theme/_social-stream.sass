@@ -1,31 +1,124 @@
+// Social stream generic styles
+// ---------------------------------------------------------------------------- 
+.dcsns-toolbar
+  .filter
+    li
+      a,
+      a.link-all
+        +border-radius(20px)
+        height: 35px
+        width: 35px
+        padding: 5px
+        margin-right: 10px
+        +opacity(.6)
+
+      a.iso-active
+        +opacity(1)
+
+      &.f-facebook a
+        background-color: $blue-facebook
+      &.f-twitter a
+        background-color: $blue-twitter
+      &.f-flickr a
+        background-color: $pink-flickr
+      &.f-youtube a
+        background-color: $red-youtube
+      &.f-rss a
+        background-color: $orange-rss
+
+
+.dcsns-content
+  margin-bottom: 0
+ 
+  .stream
+    li,
+    li.dcsns-facebook
+      background: 1px solid $gray-light
+      +border-radius(0)
+
+    .section-share
+      display: none
+
+    .section-intro,
+    .section-user
+      color: $black !important
+      background: none !important
+
+      a,
+      span
+        margin-left: 50px !important
+        display: block
+
+      a
+        color: $blue !important
+
+    img.icon
+      background: $gray-dark
+      +border-radius(15px)
+      padding: 2px
+      left: 10px
+      bottom: 10px
+
+
 // Social stream wall
 // ---------------------------------------------------------------------------- 
+
 #wall
   .filter
     +border-radius(15px)
-      
+
   .dcsns-content
     .stream
       li
         width: 280px
-        margin: 0 24px 24px 0
-        background: 1px solid $gray-light
+        margin: 0 24px 34px 0
 
-      .section-intro
-        color: $black !important
-        background: none !important
 
-        a,
-        span
-          margin-left: 50px
-          display: block
+// Social stream block
+// ---------------------------------------------------------------------------- 
 
-        a
-          color: $blue !important
+.field-name-social-stream #social-stream
+  background: transparent
+  +border-radius(0)
+  padding: 0
 
-      img.icon
-        background: $gray-dark
-        +border-radius(15px)
-        padding: 2px
-        left: 5px
-        bottom: 5px
+  .stream
+    li
+      padding-bottom: 10px
+      -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.5)
+      -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.5)
+      box-shadow: 0 1px 2px rgba(0,0,0,0.5)
+
+    .clear
+      display: none
+
+    .section-intro,
+    .section-user
+      padding: 0
+
+    .section-intro
+      a,
+      span
+        float: left
+
+      span
+        margin-left: 0 !important
+
+    .section-user
+      margin-top: .5em
+      a
+        margin-left: 40px !important
+
+    .icon
+      position: absolute
+      bottom: 20px
+      left: 10px
+      margin: 0
+
+
+  .dcsns-toolbar
+    background-color: $gray-light
+    +border-radius(0)
+
+    .controls
+      right: 5px
