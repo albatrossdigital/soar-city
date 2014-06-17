@@ -1,14 +1,36 @@
 
-// How do I items
+// How do I landing page
 // ---------------------------------------------------------------------------- 
+.page-answers
+
+  .block-bean-citywide-faq-top-searches,
+  .block-search-form
+    +gridCalc(6)
+
+
 
 .vocabulary-faq-category.view-mode-teaser
   h3
+    margin-bottom: .2em
+
     a
       +c(link-header)
 
-.view-faq-home.view-display-id-block_1
-  +side-bar-menu('.item-list ul, .block-bean ul', '.block-title', 'li.active a', true)
+  ul
+    +list-clear
+
+  .read-more
+    margin-top: .5em
+
+
+    
+
+// How do I category pages
+// ---------------------------------------------------------------------------- 
+
+.view-faq-home
+  .view-display-id-block_1
+    +side-bar-menu('.item-list ul, .block-bean ul', '.block-title', 'li.active a', true)    
 
 .view-faq-list
   .views-exposed-widgets
