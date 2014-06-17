@@ -49,18 +49,7 @@ function flight_city_faq_node_view($node, $view_mode, $langcode) {
  */
 function flight_city_faq_form_views_exposed_form_alter(&$form, $form_state) {
   if ($form['#id'] === 'views-exposed-form-faq-list-accordion') {
-    $form['#attached']['js'][] = array(
-      'type' => 'setting',
-      'data' => array(
-        'service_request' => array(
-          'placeholder' => t('
-            <p>Have you noticed a pothole, or need tree trimming?  Use our 311 request system to submit a service request to the City of Baltimore.</p>
-            <p><strong>To get started, select a service request category and then a specific request topic</strong>.  You can also search by keyword if you know your request category.</p>
-          '),
-        )
-      )
-    );
-    $form['#attached']['js'][] = drupal_get_path('module', 'flight_city_311') . '/js/flight-city-311-view.js';
+    $form['#attached']['js'][] = drupal_get_path('module', 'flight_city_faq') . '/js/flight-city-faq-view.js';
   }
 }
 
