@@ -54,7 +54,7 @@ i[class^="fa"], [role=complementary] .block-domain-menu-block .menu-block-wrappe
 [role=complementary] .block > ul .highlighted a:after, [role=complementary] .block .menu-block-wrapper ul .highlighted a:after, [role=complementary] .block .item-list > ul .highlighted a:after, .draggable a.tabledrag-handle:before, .block-views-exp-organizations-page .form-item-combine:before, .share42-item:nth-child(4) a:before, .share42-item:first-child a:before,
 a.social-icon.Facebook:before, .share42-item:nth-child(3) a:before,
 a.social-icon.Twitter:before, .share42-item:nth-child(2) a:before,
-a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, a.social-icon.Govdelivery:before, a.social-icon.Social.Wall:before, .breadcrumbs li:first-child a:before, .button.icon-play:before, #search-form .form-submit:before, .front.domain-main .l-triptych .item-list ul .highlighted a:after, .front.domain-main .triptych-first .block .block-title:before, .front.domain-main .triptych-middle .block .block-title:before, .front.domain-main .triptych-last .block .block-title:before, .block-views-exp-calendar-list .views-widget-filter-combine .views-widget:before, .page-payments.domain-main .l-triptych .item-list ul .highlighted a:after, .page-payments.domain-main .triptych-first .block .block-title:before, .page-payments.domain-main .triptych-middle .block .block-title:before, .page-payments.domain-main .triptych-last .block .block-title:before, .vocabulary-payment-type.view-mode-full .icon-box [class*="fa-"]:before, .page-311-services main .medium-3 .form-item-search:before, .page-311-services .l-triptych .item-list ul .highlighted a:after, .page-311-services .triptych-first .block .block-title:before, .page-311-services .triptych-middle .block .block-title:before, .page-311-services .triptych-last .block .block-title:before {
+a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, a.social-icon.Govdelivery:before, a.social-icon.Social.Wall:before, .breadcrumbs li:first-child a:before, .button.icon-play:before, #search-form .form-submit:before, .front.domain-main .l-triptych .item-list ul .highlighted a:after, .front.domain-main .triptych-first .block .block-title:before, .front.domain-main .triptych-middle .block .block-title:before, .front.domain-main .triptych-last .block .block-title:before, .block-views-exp-calendar-list .views-widget-filter-combine .views-widget:before, .page-payments.domain-main .l-triptych .item-list ul .highlighted a:after, .page-payments.domain-main .triptych-first .block .block-title:before, .page-payments.domain-main .triptych-middle .block .block-title:before, .page-payments.domain-main .triptych-last .block .block-title:before, .vocabulary-payment-type.view-mode-full .icon-box [class*="fa-"]:before, .view-faq-home.view-display-id-block_1 .item-list ul .highlighted a:after, .view-faq-home.view-display-id-block_1 .block-bean ul .highlighted a:after, .page-311-services main .medium-3 .form-item-search:before, .page-311-services .l-triptych .item-list ul .highlighted a:after, .page-311-services .l-triptych .block-bean ul .highlighted a:after, .page-311-services .triptych-first .block .block-title:before, .page-311-services .triptych-middle .block .block-title:before, .page-311-services .triptych-last .block .block-title:before {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -287,7 +287,7 @@ h1 a, h2 a, h5 a, h6 a, .header-region-right a, .field-collection-item-field-lin
 .vocabulary-event-category.view-mode-teaser h3 a,
 .vocabulary-event-category.view-mode-teaser h4 a,
 .vocabulary-faq-category.view-mode-teaser h3 a,
-.vocabulary-faq-category.view-mode-teaser h4 a, .vocabulary-payment-type.view-mode-teaser h3 a {
+.vocabulary-faq-category.view-mode-teaser h4 a {
   color: #111111;
 }
 /* line 385, ../sass/base/_mixins.sass */
@@ -295,7 +295,7 @@ h1 a:hover, h2 a:hover, h5 a:hover, h6 a:hover, .header-region-right a:hover, .f
 .vocabulary-event-category.view-mode-teaser h3 a:hover,
 .vocabulary-event-category.view-mode-teaser h4 a:hover,
 .vocabulary-faq-category.view-mode-teaser h3 a:hover,
-.vocabulary-faq-category.view-mode-teaser h4 a:hover, .vocabulary-payment-type.view-mode-teaser h3 a:hover {
+.vocabulary-faq-category.view-mode-teaser h4 a:hover {
   color: #0a83a1;
 }
 /* line 388, ../sass/base/_mixins.sass */
@@ -303,7 +303,7 @@ h1 a:active, h2 a:active, h5 a:active, h6 a:active, .header-region-right a:activ
 .vocabulary-event-category.view-mode-teaser h3 a:active,
 .vocabulary-event-category.view-mode-teaser h4 a:active,
 .vocabulary-faq-category.view-mode-teaser h3 a:active,
-.vocabulary-faq-category.view-mode-teaser h4 a:active, .vocabulary-payment-type.view-mode-teaser h3 a:active {
+.vocabulary-faq-category.view-mode-teaser h4 a:active {
   color: #07b1db;
 }
 
@@ -329,7 +329,7 @@ h1 strong, strong h1, h2 strong, strong h2, .views-exposed-form label {
 }
 
 /* line 410, ../sass/base/_mixins.sass */
-h3, h4 {
+h3, h4, .accordion dd > a {
   font-weight: 700;
 }
 
@@ -341,24 +341,24 @@ h3, h4 {
 }
 
 /* line 426, ../sass/base/_mixins.sass */
-[role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .page-payments.domain-main .l-triptych h2.block-title, .page-311-services .l-triptych h2.block-title, .more-link,
+[role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .page-payments.domain-main .l-triptych h2.block-title, .view-faq-home.view-display-id-block_1 h2.block-title, .page-311-services .l-triptych h2.block-title, .more-link,
 .field-name-node-link, .block-views-exp-organizations-page label, .title-block .more-link a, .bean-image-collection .more-link a, .block-views-news-block-1 .more-link a,
 .block-views-news-block .more-link a,
 .block-views-news-block-4 .more-link a, [role=complementary] .block-facetapi form .form-type-radio label, [role=complementary] .block-facetapi form .form-type-checkbox label, .l-footer .block-title, .share42init:before, .front.domain-main .view-display-id-block_front_mayor .more-link a, .front.domain-main .l-triptych .more-link a, .node-event.node-teaser .date-calendar,
-.node-event.view-mode-compact_teaser .date-calendar, .page-payments.domain-main .l-triptych .more-link a, .page-311-services .l-triptych .more-link a {
+.node-event.view-mode-compact_teaser .date-calendar, .page-payments.domain-main .l-triptych .more-link a, .view-faq-home.view-display-id-block_1 .more-link a, .page-311-services .l-triptych .more-link a {
   font-family: "open-sans";
   font-style: normal;
   font-weight: 400;
 }
 
 /* line 431, ../sass/base/_mixins.sass */
-[role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .page-payments.domain-main .l-triptych h2.block-title, .page-311-services .l-triptych h2.block-title, .more-link,
+[role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .page-payments.domain-main .l-triptych h2.block-title, .view-faq-home.view-display-id-block_1 h2.block-title, .page-311-services .l-triptych h2.block-title, .more-link,
 .field-name-node-link, .block-views-exp-organizations-page label {
   font-weight: 700;
 }
 
 /* line 450, ../sass/base/_mixins.sass */
-[role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .page-payments.domain-main .l-triptych h2.block-title, .page-311-services .l-triptych h2.block-title {
+[role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .page-payments.domain-main .l-triptych h2.block-title, .view-faq-home.view-display-id-block_1 h2.block-title, .page-311-services .l-triptych h2.block-title {
   color: #111111;
   text-rendering: optimizeLegibility;
   margin-top: 0;
@@ -367,7 +367,7 @@ h3, h4 {
 }
 
 /* line 472, ../sass/base/_mixins.sass */
-[role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .page-payments.domain-main .l-triptych h2.block-title, .page-311-services .l-triptych h2.block-title {
+[role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .page-payments.domain-main .l-triptych h2.block-title, .view-faq-home.view-display-id-block_1 h2.block-title, .page-311-services .l-triptych h2.block-title {
   font-size: 1.14286rem;
 }
 
@@ -3793,15 +3793,34 @@ ol.search-results .search-snippet-info {
 .page-payments.domain-main .triptych-last .block:before, .page-payments.domain-main .triptych-last .block .block-title:before {
   text-align: center;
 }
+/* line 20, ../sass/theme/_payments.sass */
+.page-payments.domain-main .triptych-last .block ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* line 823, ../sass/base/_mixins.sass */
+.page-payments.domain-main .triptych-last .block ul li {
+  margin-bottom: 0.71429rem;
+}
 
-/* line 32, ../sass/theme/_payments.sass */
+/* line 23, ../sass/theme/_payments.sass */
+.vocabulary-payment-type.view-mode-teaser {
+  margin-bottom: 1em;
+}
+/* line 27, ../sass/theme/_payments.sass */
+.vocabulary-payment-type.view-mode-teaser .circle-icon a:before {
+  padding: 0 36%;
+}
+
+/* line 42, ../sass/theme/_payments.sass */
 .vocabulary-payment-type.view-mode-full .icon-box {
   margin-bottom: 2.14286rem;
   position: relative;
   padding-left: 6.42857rem;
   padding-top: 0.85714rem;
 }
-/* line 41, ../sass/theme/_payments.sass */
+/* line 51, ../sass/theme/_payments.sass */
 .vocabulary-payment-type.view-mode-full .icon-box [class*="fa-"]:before {
   position: absolute;
   left: 0.71429rem;
@@ -3814,34 +3833,138 @@ ol.search-results .search-snippet-info {
   border-radius: 100%;
   color: rgba(255, 255, 255, 0.5);
 }
-/* line 51, ../sass/theme/_payments.sass */
+/* line 61, ../sass/theme/_payments.sass */
 .vocabulary-payment-type.view-mode-full .icon-box.gold [class*="fa-"]:before {
   background: #deb64b;
 }
-/* line 55, ../sass/theme/_payments.sass */
+/* line 65, ../sass/theme/_payments.sass */
 .vocabulary-payment-type.view-mode-full .icon-box.green [class*="fa-"]:before {
   background: #6aa880;
 }
-/* line 59, ../sass/theme/_payments.sass */
+/* line 69, ../sass/theme/_payments.sass */
 .vocabulary-payment-type.view-mode-full .icon-box.blue [class*="fa-"]:before {
   background: #5eb5cb;
 }
-/* line 63, ../sass/theme/_payments.sass */
+/* line 73, ../sass/theme/_payments.sass */
 .vocabulary-payment-type.view-mode-full .icon-box.red [class*="fa-"]:before {
   background: #e55454;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 79, ../sass/theme/_payments.sass */
+  /* line 89, ../sass/theme/_payments.sass */
   .page-payments.domain-main .l-triptych .columns section {
     margin: 0 1em;
   }
 }
-/* line 11, ../sass/theme/_faq.sass */
-.field-name-faq-subcategories ul {
+/* line 860, ../sass/base/_mixins.sass */
+.view-faq-home.view-display-id-block_1 .block-title {
+  margin-top: 0.71429rem;
+}
+/* line 866, ../sass/base/_mixins.sass */
+.view-faq-home.view-display-id-block_1 .item-list ul, .view-faq-home.view-display-id-block_1 .block-bean ul {
+  display: block;
+  margin: 0;
+  padding: 0.71429rem 0 0.71429rem 0;
+  list-style-type: none;
+  list-style-position: inside;
+  font-family: "open-sans";
+}
+/* line 62, ../sass/vendor/foundation/components/_side-nav.scss */
+.view-faq-home.view-display-id-block_1 .item-list ul li, .view-faq-home.view-display-id-block_1 .block-bean ul li {
+  margin: 0 0 0 0;
+  font-size: 1rem;
+}
+/* line 66, ../sass/vendor/foundation/components/_side-nav.scss */
+.view-faq-home.view-display-id-block_1 .item-list ul li a:not(.button), .view-faq-home.view-display-id-block_1 .block-bean ul li a:not(.button) {
+  display: block;
+  color: #111111;
+}
+/* line 70, ../sass/vendor/foundation/components/_side-nav.scss */
+.view-faq-home.view-display-id-block_1 .item-list ul li a:not(.button):hover, .view-faq-home.view-display-id-block_1 .item-list ul li a:not(.button):focus, .view-faq-home.view-display-id-block_1 .block-bean ul li a:not(.button):hover, .view-faq-home.view-display-id-block_1 .block-bean ul li a:not(.button):focus {
+  color: #585858;
+}
+/* line 73, ../sass/vendor/foundation/components/_side-nav.scss */
+.view-faq-home.view-display-id-block_1 .item-list ul li.active > a:first-child:not(.button), .view-faq-home.view-display-id-block_1 .block-bean ul li.active > a:first-child:not(.button) {
+  color: #111111;
+  font-weight: normal;
+  font-family: "open-sans";
+}
+/* line 79, ../sass/vendor/foundation/components/_side-nav.scss */
+.view-faq-home.view-display-id-block_1 .item-list ul li.divider, .view-faq-home.view-display-id-block_1 .block-bean ul li.divider {
+  border-top: 1px solid;
+  height: 0;
+  padding: 0;
+  list-style: none;
+  border-top-color: #dddddd;
+}
+/* line 869, ../sass/base/_mixins.sass */
+.view-faq-home.view-display-id-block_1 .item-list ul li, .view-faq-home.view-display-id-block_1 .block-bean ul li {
+  border-bottom: 1px solid #dddddd;
+}
+/* line 872, ../sass/base/_mixins.sass */
+.view-faq-home.view-display-id-block_1 .item-list ul li:first-child, .view-faq-home.view-display-id-block_1 .block-bean ul li:first-child {
+  border-top: 1px solid #dddddd;
+}
+/* line 875, ../sass/base/_mixins.sass */
+.view-faq-home.view-display-id-block_1 .item-list ul li.active a, .view-faq-home.view-display-id-block_1 .block-bean ul li.active a {
+  border-left-color: #deb64b;
+}
+/* line 878, ../sass/base/_mixins.sass */
+.view-faq-home.view-display-id-block_1 .item-list ul .highlighted a, .view-faq-home.view-display-id-block_1 .block-bean ul .highlighted a {
+  border-left-color: #f2c54b;
+  background: #f2c54b;
+  position: relative;
+}
+/* line 883, ../sass/base/_mixins.sass */
+.view-faq-home.view-display-id-block_1 .item-list ul .highlighted a:after, .view-faq-home.view-display-id-block_1 .block-bean ul .highlighted a:after {
+  content: "\f00d";
+  color: #626262;
+  position: absolute;
+  right: 0.71429rem;
+}
+/* line 890, ../sass/base/_mixins.sass */
+.view-faq-home.view-display-id-block_1 .item-list ul .highlighted a:hover, .view-faq-home.view-display-id-block_1 .block-bean ul .highlighted a:hover {
+  color: #111111 !important;
+  border-left-color: #f0bd33;
+  background: #f0bd33;
+}
+/* line 894, ../sass/base/_mixins.sass */
+.view-faq-home.view-display-id-block_1 .item-list ul a, .view-faq-home.view-display-id-block_1 .block-bean ul a {
+  border-left: 3px solid transparent;
+  padding: 0.71429rem 1.42857rem 0.71429rem 1.21429rem;
+}
+/* line 899, ../sass/base/_mixins.sass */
+.view-faq-home.view-display-id-block_1 .more-link {
+  text-align: left;
+}
+/* line 902, ../sass/base/_mixins.sass */
+.view-faq-home.view-display-id-block_1 .more-link a {
+  border-left: 3px solid transparent;
+  line-height: 1.6;
+  display: block;
+  padding: 0.71429rem 1.42857rem 0.71429rem 1.21429rem;
+}
+
+/* line 14, ../sass/theme/_faq.sass */
+.view-faq-list .views-exposed-widgets {
+  display: none;
+}
+
+/* line 21, ../sass/theme/_faq.sass */
+.accordion dd > a {
+  font-size: 1.14286rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+/* line 26, ../sass/theme/_faq.sass */
+.accordion dd .content {
+  padding: 2% 5% 5% 5%;
+}
+/* line 29, ../sass/theme/_faq.sass */
+.accordion dd .content ul li a {
   list-style: none;
   padding: 0;
   margin: 0;
+  margin: 0.5em 0;
 }
 
 /* line 8, ../sass/theme/_311-services.sass */
@@ -3881,7 +4004,7 @@ ol.search-results .search-snippet-info {
   margin-top: 0.71429rem;
 }
 /* line 866, ../sass/base/_mixins.sass */
-.page-311-services .l-triptych .item-list ul {
+.page-311-services .l-triptych .item-list ul, .page-311-services .l-triptych .block-bean ul {
   display: block;
   margin: 0;
   padding: 0.71429rem 0 0.71429rem 0;
@@ -3890,27 +4013,27 @@ ol.search-results .search-snippet-info {
   font-family: "open-sans";
 }
 /* line 62, ../sass/vendor/foundation/components/_side-nav.scss */
-.page-311-services .l-triptych .item-list ul li {
+.page-311-services .l-triptych .item-list ul li, .page-311-services .l-triptych .block-bean ul li {
   margin: 0 0 0 0;
   font-size: 1rem;
 }
 /* line 66, ../sass/vendor/foundation/components/_side-nav.scss */
-.page-311-services .l-triptych .item-list ul li a:not(.button) {
+.page-311-services .l-triptych .item-list ul li a:not(.button), .page-311-services .l-triptych .block-bean ul li a:not(.button) {
   display: block;
   color: #111111;
 }
 /* line 70, ../sass/vendor/foundation/components/_side-nav.scss */
-.page-311-services .l-triptych .item-list ul li a:not(.button):hover, .page-311-services .l-triptych .item-list ul li a:not(.button):focus {
+.page-311-services .l-triptych .item-list ul li a:not(.button):hover, .page-311-services .l-triptych .item-list ul li a:not(.button):focus, .page-311-services .l-triptych .block-bean ul li a:not(.button):hover, .page-311-services .l-triptych .block-bean ul li a:not(.button):focus {
   color: #585858;
 }
 /* line 73, ../sass/vendor/foundation/components/_side-nav.scss */
-.page-311-services .l-triptych .item-list ul li.active > a:first-child:not(.button) {
+.page-311-services .l-triptych .item-list ul li.active > a:first-child:not(.button), .page-311-services .l-triptych .block-bean ul li.active > a:first-child:not(.button) {
   color: #111111;
   font-weight: normal;
   font-family: "open-sans";
 }
 /* line 79, ../sass/vendor/foundation/components/_side-nav.scss */
-.page-311-services .l-triptych .item-list ul li.divider {
+.page-311-services .l-triptych .item-list ul li.divider, .page-311-services .l-triptych .block-bean ul li.divider {
   border-top: 1px solid;
   height: 0;
   padding: 0;
@@ -3918,38 +4041,38 @@ ol.search-results .search-snippet-info {
   border-top-color: #dddddd;
 }
 /* line 869, ../sass/base/_mixins.sass */
-.page-311-services .l-triptych .item-list ul li {
+.page-311-services .l-triptych .item-list ul li, .page-311-services .l-triptych .block-bean ul li {
   border-bottom: 1px solid #dddddd;
 }
 /* line 872, ../sass/base/_mixins.sass */
-.page-311-services .l-triptych .item-list ul li:first-child {
+.page-311-services .l-triptych .item-list ul li:first-child, .page-311-services .l-triptych .block-bean ul li:first-child {
   border-top: 1px solid #dddddd;
 }
 /* line 875, ../sass/base/_mixins.sass */
-.page-311-services .l-triptych .item-list ul li.active a {
+.page-311-services .l-triptych .item-list ul li.active a, .page-311-services .l-triptych .block-bean ul li.active a {
   border-left-color: #deb64b;
 }
 /* line 878, ../sass/base/_mixins.sass */
-.page-311-services .l-triptych .item-list ul .highlighted a {
+.page-311-services .l-triptych .item-list ul .highlighted a, .page-311-services .l-triptych .block-bean ul .highlighted a {
   border-left-color: #f2c54b;
   background: #f2c54b;
   position: relative;
 }
 /* line 883, ../sass/base/_mixins.sass */
-.page-311-services .l-triptych .item-list ul .highlighted a:after {
+.page-311-services .l-triptych .item-list ul .highlighted a:after, .page-311-services .l-triptych .block-bean ul .highlighted a:after {
   content: "\f00d";
   color: #626262;
   position: absolute;
   right: 0.71429rem;
 }
 /* line 890, ../sass/base/_mixins.sass */
-.page-311-services .l-triptych .item-list ul .highlighted a:hover {
+.page-311-services .l-triptych .item-list ul .highlighted a:hover, .page-311-services .l-triptych .block-bean ul .highlighted a:hover {
   color: #111111 !important;
   border-left-color: #f0bd33;
   background: #f0bd33;
 }
 /* line 894, ../sass/base/_mixins.sass */
-.page-311-services .l-triptych .item-list ul a {
+.page-311-services .l-triptych .item-list ul a, .page-311-services .l-triptych .block-bean ul a {
   border-left: 3px solid transparent;
   padding: 0.71429rem 1.42857rem 0.71429rem 1.21429rem;
 }

@@ -7,6 +7,25 @@
     a
       +c(link-header)
 
-.field-name-faq-subcategories
-  ul 
-    +list-clear
+.view-faq-home.view-display-id-block_1
+  +side-bar-menu('.item-list ul, .block-bean ul', '.block-title', 'li.active a', true)
+
+.view-faq-list
+  .views-exposed-widgets
+    display: none
+
+
+// Generic accordion style tweaks
+// ---------------------------------------------------------------------------- 
+.accordion dd 
+  > a
+    font-size: $h4-font-size
+    +f(weight-bold)
+    border-bottom: 1px solid $gray-light
+
+  .content
+    padding: 2% 5% 5% 5%
+
+    ul li a
+      +list-clear
+      margin: .5em 0
