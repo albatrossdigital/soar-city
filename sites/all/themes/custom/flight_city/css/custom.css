@@ -54,7 +54,7 @@ i[class^="fa"], [role=complementary] .block-domain-menu-block .menu-block-wrappe
 [role=complementary] .block > ul .highlighted a:after, [role=complementary] .block .menu-block-wrapper ul .highlighted a:after, [role=complementary] .block .item-list > ul .highlighted a:after, .draggable a.tabledrag-handle:before, .block-views-exp-organizations-page .form-item-combine:before, .share42-item:nth-child(4) a:before, .share42-item:first-child a:before,
 a.social-icon.Facebook:before, .share42-item:nth-child(3) a:before,
 a.social-icon.Twitter:before, .share42-item:nth-child(2) a:before,
-a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, a.social-icon.Govdelivery:before, a.social-icon.Social.Wall:before, .breadcrumbs li:first-child a:before, .button.icon-play:before, #search-form .form-submit:before, .front.domain-main .l-triptych .item-list ul .highlighted a:after, .front.domain-main .triptych-first .block .block-title:before, .front.domain-main .triptych-middle .block .block-title:before, .front.domain-main .triptych-last .block .block-title:before, .block-views-exp-calendar-list .views-widget-filter-combine .views-widget:before, .page-payments.domain-main .l-triptych .item-list ul .highlighted a:after, .page-payments.domain-main .triptych-first .block .block-title:before, .page-payments.domain-main .triptych-middle .block .block-title:before, .page-payments.domain-main .triptych-last .block .block-title:before, .vocabulary-payment-type.view-mode-full .icon-box [class*="fa-"]:before, .view-faq-home .view-display-id-block_1 .item-list ul .highlighted a:after, .view-faq-home .view-display-id-block_1 .block-bean ul .highlighted a:after, .page-311-services main .medium-3 .form-item-search:before, .page-311-services .l-triptych .item-list ul .highlighted a:after, .page-311-services .l-triptych .block-bean ul .highlighted a:after, .page-311-services .triptych-first .block .block-title:before, .page-311-services .triptych-middle .block .block-title:before, .page-311-services .triptych-last .block .block-title:before {
+a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, a.social-icon.Govdelivery:before, a.social-icon.Social.Wall:before, .breadcrumbs li:first-child a:before, .button.icon-play:before, #search-form .form-submit:before, .front.domain-main .l-triptych .item-list ul .highlighted a:after, .front.domain-main .triptych-first .block .block-title:before, .front.domain-main .triptych-middle .block .block-title:before, .front.domain-main .triptych-last .block .block-title:before, .block-views-exp-calendar-list .views-widget-filter-combine .views-widget:before, .page-payments.domain-main .l-triptych .item-list ul .highlighted a:after, .page-payments.domain-main .triptych-first .block .block-title:before, .page-payments.domain-main .triptych-middle .block .block-title:before, .page-payments.domain-main .triptych-last .block .block-title:before, .vocabulary-payment-type.view-mode-full .icon-box [class*="fa-"]:before, .view-faq-home.view-display-id-block_1 .item-list ul .highlighted a:after, .view-faq-home.view-display-id-block_1 .block-bean ul .highlighted a:after, .page-311-services main .medium-3 .form-item-search:before, .page-311-services .l-triptych .item-list ul .highlighted a:after, .page-311-services .l-triptych .block-bean ul .highlighted a:after, .page-311-services .triptych-first .block .block-title:before, .page-311-services .triptych-middle .block .block-title:before, .page-311-services .triptych-last .block .block-title:before {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -341,24 +341,24 @@ h3, h4, .accordion dd > a {
 }
 
 /* line 426, ../sass/base/_mixins.sass */
-[role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .page-payments.domain-main .l-triptych h2.block-title, .view-faq-home .view-display-id-block_1 h2.block-title, .page-311-services .l-triptych h2.block-title, .more-link,
+[role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .page-payments.domain-main .l-triptych h2.block-title, .view-faq-home.view-display-id-block_1 h2.block-title, .page-311-services .l-triptych h2.block-title, .more-link,
 .field-name-node-link, .block-views-exp-organizations-page label, .title-block .more-link a, .bean-image-collection .more-link a, .block-views-news-block-1 .more-link a,
 .block-views-news-block .more-link a,
 .block-views-news-block-4 .more-link a, [role=complementary] .block-facetapi form .form-type-radio label, [role=complementary] .block-facetapi form .form-type-checkbox label, .l-footer .block-title, .share42init:before, .front.domain-main .view-display-id-block_front_mayor .more-link a, .front.domain-main .l-triptych .more-link a, .node-event.node-teaser .date-calendar,
-.node-event.view-mode-compact_teaser .date-calendar, .page-payments.domain-main .l-triptych .more-link a, .view-faq-home .view-display-id-block_1 .more-link a, .page-311-services .l-triptych .more-link a {
+.node-event.view-mode-compact_teaser .date-calendar, .page-payments.domain-main .l-triptych .more-link a, .view-faq-home.view-display-id-block_1 .more-link a, .page-311-services .l-triptych .more-link a {
   font-family: "open-sans";
   font-style: normal;
   font-weight: 400;
 }
 
 /* line 431, ../sass/base/_mixins.sass */
-[role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .page-payments.domain-main .l-triptych h2.block-title, .view-faq-home .view-display-id-block_1 h2.block-title, .page-311-services .l-triptych h2.block-title, .more-link,
+[role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .page-payments.domain-main .l-triptych h2.block-title, .view-faq-home.view-display-id-block_1 h2.block-title, .page-311-services .l-triptych h2.block-title, .more-link,
 .field-name-node-link, .block-views-exp-organizations-page label {
   font-weight: 700;
 }
 
 /* line 450, ../sass/base/_mixins.sass */
-[role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .page-payments.domain-main .l-triptych h2.block-title, .view-faq-home .view-display-id-block_1 h2.block-title, .page-311-services .l-triptych h2.block-title {
+[role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .page-payments.domain-main .l-triptych h2.block-title, .view-faq-home.view-display-id-block_1 h2.block-title, .page-311-services .l-triptych h2.block-title {
   color: #111111;
   text-rendering: optimizeLegibility;
   margin-top: 0;
@@ -367,7 +367,7 @@ h3, h4, .accordion dd > a {
 }
 
 /* line 472, ../sass/base/_mixins.sass */
-[role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .page-payments.domain-main .l-triptych h2.block-title, .view-faq-home .view-display-id-block_1 h2.block-title, .page-311-services .l-triptych h2.block-title {
+[role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .page-payments.domain-main .l-triptych h2.block-title, .view-faq-home.view-display-id-block_1 h2.block-title, .page-311-services .l-triptych h2.block-title {
   font-size: 1.14286rem;
 }
 
@@ -3929,11 +3929,11 @@ ol.search-results .search-snippet-info {
 }
 
 /* line 860, ../sass/base/_mixins.sass */
-.view-faq-home .view-display-id-block_1 .block-title {
+.view-faq-home.view-display-id-block_1 .block-title {
   margin-top: 0.71429rem;
 }
 /* line 866, ../sass/base/_mixins.sass */
-.view-faq-home .view-display-id-block_1 .item-list ul, .view-faq-home .view-display-id-block_1 .block-bean ul {
+.view-faq-home.view-display-id-block_1 .item-list ul, .view-faq-home.view-display-id-block_1 .block-bean ul {
   display: block;
   margin: 0;
   padding: 0.71429rem 0 0.71429rem 0;
@@ -3942,27 +3942,27 @@ ol.search-results .search-snippet-info {
   font-family: "open-sans";
 }
 /* line 62, ../sass/vendor/foundation/components/_side-nav.scss */
-.view-faq-home .view-display-id-block_1 .item-list ul li, .view-faq-home .view-display-id-block_1 .block-bean ul li {
+.view-faq-home.view-display-id-block_1 .item-list ul li, .view-faq-home.view-display-id-block_1 .block-bean ul li {
   margin: 0 0 0 0;
   font-size: 1rem;
 }
 /* line 66, ../sass/vendor/foundation/components/_side-nav.scss */
-.view-faq-home .view-display-id-block_1 .item-list ul li a:not(.button), .view-faq-home .view-display-id-block_1 .block-bean ul li a:not(.button) {
+.view-faq-home.view-display-id-block_1 .item-list ul li a:not(.button), .view-faq-home.view-display-id-block_1 .block-bean ul li a:not(.button) {
   display: block;
   color: #111111;
 }
 /* line 70, ../sass/vendor/foundation/components/_side-nav.scss */
-.view-faq-home .view-display-id-block_1 .item-list ul li a:not(.button):hover, .view-faq-home .view-display-id-block_1 .item-list ul li a:not(.button):focus, .view-faq-home .view-display-id-block_1 .block-bean ul li a:not(.button):hover, .view-faq-home .view-display-id-block_1 .block-bean ul li a:not(.button):focus {
+.view-faq-home.view-display-id-block_1 .item-list ul li a:not(.button):hover, .view-faq-home.view-display-id-block_1 .item-list ul li a:not(.button):focus, .view-faq-home.view-display-id-block_1 .block-bean ul li a:not(.button):hover, .view-faq-home.view-display-id-block_1 .block-bean ul li a:not(.button):focus {
   color: #585858;
 }
 /* line 73, ../sass/vendor/foundation/components/_side-nav.scss */
-.view-faq-home .view-display-id-block_1 .item-list ul li.active > a:first-child:not(.button), .view-faq-home .view-display-id-block_1 .block-bean ul li.active > a:first-child:not(.button) {
+.view-faq-home.view-display-id-block_1 .item-list ul li.active > a:first-child:not(.button), .view-faq-home.view-display-id-block_1 .block-bean ul li.active > a:first-child:not(.button) {
   color: #111111;
   font-weight: normal;
   font-family: "open-sans";
 }
 /* line 79, ../sass/vendor/foundation/components/_side-nav.scss */
-.view-faq-home .view-display-id-block_1 .item-list ul li.divider, .view-faq-home .view-display-id-block_1 .block-bean ul li.divider {
+.view-faq-home.view-display-id-block_1 .item-list ul li.divider, .view-faq-home.view-display-id-block_1 .block-bean ul li.divider {
   border-top: 1px solid;
   height: 0;
   padding: 0;
@@ -3970,79 +3970,78 @@ ol.search-results .search-snippet-info {
   border-top-color: #dddddd;
 }
 /* line 869, ../sass/base/_mixins.sass */
-.view-faq-home .view-display-id-block_1 .item-list ul li, .view-faq-home .view-display-id-block_1 .block-bean ul li {
+.view-faq-home.view-display-id-block_1 .item-list ul li, .view-faq-home.view-display-id-block_1 .block-bean ul li {
   border-bottom: 1px solid #dddddd;
 }
 /* line 872, ../sass/base/_mixins.sass */
-.view-faq-home .view-display-id-block_1 .item-list ul li:first-child, .view-faq-home .view-display-id-block_1 .block-bean ul li:first-child {
+.view-faq-home.view-display-id-block_1 .item-list ul li:first-child, .view-faq-home.view-display-id-block_1 .block-bean ul li:first-child {
   border-top: 1px solid #dddddd;
 }
 /* line 875, ../sass/base/_mixins.sass */
-.view-faq-home .view-display-id-block_1 .item-list ul li.active a, .view-faq-home .view-display-id-block_1 .block-bean ul li.active a {
+.view-faq-home.view-display-id-block_1 .item-list ul li.active a, .view-faq-home.view-display-id-block_1 .block-bean ul li.active a {
   border-left-color: #deb64b;
 }
 /* line 878, ../sass/base/_mixins.sass */
-.view-faq-home .view-display-id-block_1 .item-list ul .highlighted a, .view-faq-home .view-display-id-block_1 .block-bean ul .highlighted a {
+.view-faq-home.view-display-id-block_1 .item-list ul .highlighted a, .view-faq-home.view-display-id-block_1 .block-bean ul .highlighted a {
   border-left-color: #f2c54b;
   background: #f2c54b;
   position: relative;
 }
 /* line 883, ../sass/base/_mixins.sass */
-.view-faq-home .view-display-id-block_1 .item-list ul .highlighted a:after, .view-faq-home .view-display-id-block_1 .block-bean ul .highlighted a:after {
+.view-faq-home.view-display-id-block_1 .item-list ul .highlighted a:after, .view-faq-home.view-display-id-block_1 .block-bean ul .highlighted a:after {
   content: "\f00d";
   color: #626262;
   position: absolute;
   right: 0.71429rem;
 }
 /* line 890, ../sass/base/_mixins.sass */
-.view-faq-home .view-display-id-block_1 .item-list ul .highlighted a:hover, .view-faq-home .view-display-id-block_1 .block-bean ul .highlighted a:hover {
+.view-faq-home.view-display-id-block_1 .item-list ul .highlighted a:hover, .view-faq-home.view-display-id-block_1 .block-bean ul .highlighted a:hover {
   color: #111111 !important;
   border-left-color: #f0bd33;
   background: #f0bd33;
 }
 /* line 894, ../sass/base/_mixins.sass */
-.view-faq-home .view-display-id-block_1 .item-list ul a, .view-faq-home .view-display-id-block_1 .block-bean ul a {
+.view-faq-home.view-display-id-block_1 .item-list ul a, .view-faq-home.view-display-id-block_1 .block-bean ul a {
   border-left: 3px solid transparent;
   padding: 0.71429rem 1.42857rem 0.71429rem 1.21429rem;
 }
 /* line 899, ../sass/base/_mixins.sass */
-.view-faq-home .view-display-id-block_1 .more-link {
+.view-faq-home.view-display-id-block_1 .more-link {
   text-align: left;
 }
 /* line 902, ../sass/base/_mixins.sass */
-.view-faq-home .view-display-id-block_1 .more-link a {
+.view-faq-home.view-display-id-block_1 .more-link a {
   border-left: 3px solid transparent;
   line-height: 1.6;
   display: block;
   padding: 0.71429rem 1.42857rem 0.71429rem 1.21429rem;
 }
-
-/* line 35, ../sass/theme/_faq.sass */
-.view-faq-list .views-exposed-widgets {
-  display: none;
+/* line 33, ../sass/theme/_faq.sass */
+.view-faq-home.view-display-id-block_1 .item-list ul {
+  padding-top: 0;
 }
 
-/* line 42, ../sass/theme/_faq.sass */
+/* line 44, ../sass/theme/_faq.sass */
 .accordion dd > a {
   font-size: 1.14286rem;
   border-bottom: 1px solid #e5e5e5;
 }
-/* line 47, ../sass/theme/_faq.sass */
+/* line 49, ../sass/theme/_faq.sass */
 .accordion dd .content {
   padding: 2% 5% 5% 5%;
 }
-/* line 50, ../sass/theme/_faq.sass */
+/* line 52, ../sass/theme/_faq.sass */
 .accordion dd .content ul.field-links {
   margin-top: 1em;
 }
-/* line 53, ../sass/theme/_faq.sass */
+/* line 55, ../sass/theme/_faq.sass */
 .accordion dd .content ul.field-links li {
   list-style: none;
   padding: 0;
   margin: 0;
   margin: 0.5em 0;
 }
-/* line 57, ../sass/theme/_faq.sass */
+/* line 59, ../sass/theme/_faq.sass */
 .accordion dd .content ul.field-links li a {
   margin-left: 2em;
 }

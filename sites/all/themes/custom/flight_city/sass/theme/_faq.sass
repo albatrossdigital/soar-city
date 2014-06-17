@@ -27,13 +27,15 @@
 // How do I category pages
 // ---------------------------------------------------------------------------- 
 
-.view-faq-home
-  .view-display-id-block_1
-    +side-bar-menu('.item-list ul, .block-bean ul', '.block-title', 'li.active a', true)    
+.view-faq-home.view-display-id-block_1
+  +side-bar-menu('.item-list ul, .block-bean ul', '.block-title', 'li.active a', true)
+
+  .item-list ul
+    padding-top: 0
 
 .view-faq-list
   .views-exposed-widgets
-    display: none
+    //display: none
 
 
 // Generic accordion style tweaks
