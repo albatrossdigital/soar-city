@@ -60,7 +60,7 @@ function _flight_city_program_ds_icon_thumbnail_field(array $field) {
       $html = theme('image_style', $hero_image);
     }
 
-    return l($html, 'node/'.$node->nid, array('html' => TRUE, 'class' => $class));
+    return l($html, 'node/'.$node->nid, array('html' => TRUE, 'attributes' => array('class' => array($class))));
   }
 
 }
