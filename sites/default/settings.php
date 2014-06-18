@@ -323,7 +323,7 @@ ini_set('session.cookie_lifetime', 2000000);
  * between your various domains. Make sure to always start the $cookie_domain
  * with a leading dot, as per RFC 2109.
  */
-$cookie_domain = '.baltimore.ifsight.com';
+//$cookie_domain = '.baltimore.ifsight.com';
 
 /**
  * Variable overrides:
@@ -604,6 +604,9 @@ if (
   $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 0;
   $conf['apachesolr_environments']['solr']['url'] = 'http://us.opensolr.com/solr/prod_balt_if';
 
+  // @todo: For launch: change.
+  $cookie_domain = '.baltimore.ifsight.com';
+
   //if ($_SERVER['HTTP_HOST'] != 'baltimorecity.com') {
   //  header('HTTP/1.0 301 Moved Permanently'); 
   //  header('Location: http://www.baltimorecity.gov'. $_SERVER['REQUEST_URI']); 
@@ -621,6 +624,15 @@ if (
   $conf['preprocess_js'] = 1;
   */
   if (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod') {
+    $databases['default']['default'] = array(
+      'driver' => 'mysql',
+      'database' => 'baltimore',
+      'username' => 'baltimore',
+      'password' => 'B8DaqM5d`j$O',
+      'host' => '548eldb01.blackmesh.com',
+      'prefix' => '',
+    );
+
     // @todo
     /*
     // Memcache settings  
@@ -635,9 +647,11 @@ if (
 elseif (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
   //$conf['apachesolr_environments']['solr']['url'] = 'http://ny.opensolr.com/solr/test_if_balt';
   $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 0;
+  $cookie_domain = '.baltimore.ifsight.com';
 }
 else {
   $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 1;
+  $cookie_domain = '.baltimore.ifsight.com';
 }
 
 
