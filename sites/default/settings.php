@@ -565,7 +565,9 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
 
 # Make domain access work on Pantheon
 # See http://helpdesk.getpantheon.com/customer/portal/articles/381152-reading-pantheon-environment-configuration for details
-extract(json_decode($_SERVER['PRESSFLOW_SETTINGS'], TRUE));
+if (isset($_SERVER['PANTHEON_ENVIRONMENT']) {
+  extract(json_decode($_SERVER['PRESSFLOW_SETTINGS'], TRUE));
+}
 
 
 
@@ -595,22 +597,40 @@ if (defined('PANTHEON_ENVIRONMENT')) {
 //$conf['apachesolr_environments']['solr']['url'] = 'http://us.opensolr.com/solr/prod_balt_if';
 
 // Redirect all domains to TLD
-if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
-  if ($_SERVER['HTTP_HOST'] != 'baltimorecity.com') {
-    header('HTTP/1.0 301 Moved Permanently'); 
-    header('Location: http://www.baltimorecity.gov'. $_SERVER['REQUEST_URI']); 
-    exit();
-  }
+if (
+  (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') || 
+  (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod')
+) {
+  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 0;
+  $conf['apachesolr_environments']['solr']['url'] = 'http://us.opensolr.com/solr/prod_balt_if';
+
+  //if ($_SERVER['HTTP_HOST'] != 'baltimorecity.com') {
+  //  header('HTTP/1.0 301 Moved Permanently'); 
+  //  header('Location: http://www.baltimorecity.gov'. $_SERVER['REQUEST_URI']); 
+  //  exit();
+  //}
 
   // Force caching on the live site
-  $conf['cache'] = 1;
+  // @todo: For launch: enable.
+  /*$conf['cache'] = 1;
   $conf['block_cache'] = 1;
   $conf['cache_lifetime'] = 1800; // 30 min
   $conf['page_cache_maximum_age'] = 3600; // 1 hr
   $conf['page_compression'] = 1;
   $conf['preprocess_css'] = 1;
   $conf['preprocess_js'] = 1;
-  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 0;
+  */
+  if (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod') {
+    // @todo
+    /*
+    // Memcache settings  
+    $conf['cache_backends'][] = 'sites/all/modules/contrib/memcache/memcache.inc';
+    // The 'cache_form' bin must be assigned no non-volatile storage.
+    $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+    $conf['cache_default_class'] = 'MemCacheDrupal';
+    $conf['memcache_key_prefix'] = 'rockcorps' . $_ENV['AH_SITE_ENVIRONMENT'];*/
+  }
+  
 }
 elseif (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
   //$conf['apachesolr_environments']['solr']['url'] = 'http://ny.opensolr.com/solr/test_if_balt';
