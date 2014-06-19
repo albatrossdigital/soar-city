@@ -601,7 +601,8 @@ if (
   (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') || 
   (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod')
 ) {
-  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 0;
+  // @todo: For launch: change.
+  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 1;
   $conf['apachesolr_environments']['solr']['url'] = 'http://us.opensolr.com/solr/prod_balt_if';
 
   // @todo: For launch: change.
