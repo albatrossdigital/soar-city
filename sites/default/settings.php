@@ -323,7 +323,7 @@ ini_set('session.cookie_lifetime', 2000000);
  * between your various domains. Make sure to always start the $cookie_domain
  * with a leading dot, as per RFC 2109.
  */
-$cookie_domain = '.baltimore.ifsight.com';
+//$cookie_domain = '.baltimore.ifsight.com';
 
 /**
  * Variable overrides:
@@ -565,7 +565,9 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
 
 # Make domain access work on Pantheon
 # See http://helpdesk.getpantheon.com/customer/portal/articles/381152-reading-pantheon-environment-configuration for details
-extract(json_decode($_SERVER['PRESSFLOW_SETTINGS'], TRUE));
+if (isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
+  extract(json_decode($_SERVER['PRESSFLOW_SETTINGS'], TRUE));
+}
 
 
 
@@ -595,29 +597,68 @@ if (defined('PANTHEON_ENVIRONMENT')) {
 //$conf['apachesolr_environments']['solr']['url'] = 'http://us.opensolr.com/solr/prod_balt_if';
 
 // Redirect all domains to TLD
-if (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') {
-  if ($_SERVER['HTTP_HOST'] != 'baltimorecity.com') {
-    header('HTTP/1.0 301 Moved Permanently'); 
-    header('Location: http://www.baltimorecity.gov'. $_SERVER['REQUEST_URI']); 
-    exit();
-  }
+if (
+  (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') || 
+  (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod')
+) {
+  // @todo: For launch: change.
+  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 1;
+  $conf['apachesolr_environments']['solr']['url'] = 'http://us.opensolr.com/solr/prod_balt_if';
+
+  // @todo: For launch: change.
+  $cookie_domain = '.baltimore.ifsight.com';
+
+  //if ($_SERVER['HTTP_HOST'] != 'baltimorecity.com') {
+  //  header('HTTP/1.0 301 Moved Permanently'); 
+  //  header('Location: http://www.baltimorecity.gov'. $_SERVER['REQUEST_URI']); 
+  //  exit();
+  //}
 
   // Force caching on the live site
-  $conf['cache'] = 1;
+  // @todo: For launch: enable.
+  /*$conf['cache'] = 1;
   $conf['block_cache'] = 1;
   $conf['cache_lifetime'] = 1800; // 30 min
   $conf['page_cache_maximum_age'] = 3600; // 1 hr
   $conf['page_compression'] = 1;
   $conf['preprocess_css'] = 1;
   $conf['preprocess_js'] = 1;
-  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 0;
+  */
+  if (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod') {
+    
+
+    // @todo
+    /*
+    // Memcache settings  
+    $conf['cache_backends'][] = 'sites/all/modules/contrib/memcache/memcache.inc';
+    // The 'cache_form' bin must be assigned no non-volatile storage.
+    $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+    $conf['cache_default_class'] = 'MemCacheDrupal';
+    $conf['memcache_key_prefix'] = 'rockcorps' . $_ENV['AH_SITE_ENVIRONMENT'];*/
+  }
+  
 }
 elseif (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
   //$conf['apachesolr_environments']['solr']['url'] = 'http://ny.opensolr.com/solr/test_if_balt';
   $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 0;
+  $cookie_domain = '.baltimore.ifsight.com';
 }
 else {
   $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 1;
+  $cookie_domain = '.baltimore.ifsight.com';
+}
+
+// Set up db settings for Blackmesh.
+// We do this here because they need to be set in drush to avoid fatal errors.
+if (!isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
+  $databases['default']['default'] = array(
+    'driver' => 'mysql',
+    'database' => 'baltimore',
+    'username' => 'baltimore',
+    'password' => 'B8DaqM5d`j$O',
+    'host' => '548eldb01.blackmesh.com',
+    'prefix' => '',
+  );
 }
 
 
