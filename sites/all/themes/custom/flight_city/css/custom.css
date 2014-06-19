@@ -4381,15 +4381,23 @@ ol.search-results .search-snippet-info {
   background-color: #ee3138;
 }
 /* line 26, ../sass/theme/_social-stream.sass */
+.dcsns-toolbar .filter li.f-vimeo a {
+  background-color: #16bbed;
+}
+/* line 28, ../sass/theme/_social-stream.sass */
+.dcsns-toolbar .filter li.f-pinterest a {
+  background-color: #cc2127;
+}
+/* line 30, ../sass/theme/_social-stream.sass */
 .dcsns-toolbar .filter li.f-rss a {
   background-color: #f58020;
 }
 
-/* line 30, ../sass/theme/_social-stream.sass */
+/* line 34, ../sass/theme/_social-stream.sass */
 .dcsns-content {
   margin-bottom: 0;
 }
-/* line 34, ../sass/theme/_social-stream.sass */
+/* line 38, ../sass/theme/_social-stream.sass */
 .dcsns-content .stream li,
 .dcsns-content .stream li.dcsns-facebook {
   background: 1px solid #e5e5e5;
@@ -4399,17 +4407,17 @@ ol.search-results .search-snippet-info {
   -o-border-radius: 0;
   border-radius: 0;
 }
-/* line 39, ../sass/theme/_social-stream.sass */
+/* line 43, ../sass/theme/_social-stream.sass */
 .dcsns-content .stream .section-share {
   display: none;
 }
-/* line 42, ../sass/theme/_social-stream.sass */
+/* line 46, ../sass/theme/_social-stream.sass */
 .dcsns-content .stream .section-intro,
 .dcsns-content .stream .section-user {
   color: #111111 !important;
   background: none !important;
 }
-/* line 47, ../sass/theme/_social-stream.sass */
+/* line 51, ../sass/theme/_social-stream.sass */
 .dcsns-content .stream .section-intro a,
 .dcsns-content .stream .section-intro span,
 .dcsns-content .stream .section-user a,
@@ -4417,12 +4425,21 @@ ol.search-results .search-snippet-info {
   margin-left: 50px !important;
   display: block;
 }
-/* line 52, ../sass/theme/_social-stream.sass */
+/* line 56, ../sass/theme/_social-stream.sass */
 .dcsns-content .stream .section-intro a,
 .dcsns-content .stream .section-user a {
   color: #5eb5cb !important;
 }
-/* line 55, ../sass/theme/_social-stream.sass */
+/* line 59, ../sass/theme/_social-stream.sass */
+.dcsns-content .stream .section-user {
+  margin: 5px 0 10px;
+  padding: 0;
+}
+/* line 63, ../sass/theme/_social-stream.sass */
+.dcsns-content .stream .section-user a {
+  margin-left: 0 !important;
+}
+/* line 66, ../sass/theme/_social-stream.sass */
 .dcsns-content .stream img.icon {
   background: #626262;
   -webkit-border-radius: 15px;
@@ -4434,8 +4451,28 @@ ol.search-results .search-snippet-info {
   left: 10px;
   bottom: 10px;
 }
+/* line 73, ../sass/theme/_social-stream.sass */
+.dcsns-content .stream .dcsns-facebook img.icon {
+  background-color: #3460a1;
+}
+/* line 75, ../sass/theme/_social-stream.sass */
+.dcsns-content .stream .dcsns-twitter img.icon {
+  background-color: #28aae1;
+}
+/* line 77, ../sass/theme/_social-stream.sass */
+.dcsns-content .stream .dcsns-flickr img.icon {
+  background-color: #ed2a90;
+}
+/* line 79, ../sass/theme/_social-stream.sass */
+.dcsns-content .stream .dcsns-youtube img.icon {
+  background-color: #ee3138;
+}
+/* line 81, ../sass/theme/_social-stream.sass */
+.dcsns-content .stream .dcsns-rss img.icon {
+  background-color: #f58020;
+}
 
-/* line 67, ../sass/theme/_social-stream.sass */
+/* line 89, ../sass/theme/_social-stream.sass */
 #wall .filter {
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -4443,13 +4480,13 @@ ol.search-results .search-snippet-info {
   -o-border-radius: 15px;
   border-radius: 15px;
 }
-/* line 72, ../sass/theme/_social-stream.sass */
+/* line 94, ../sass/theme/_social-stream.sass */
 #wall .dcsns-content .stream li {
   width: 280px;
   margin: 0 24px 34px 0;
 }
 
-/* line 80, ../sass/theme/_social-stream.sass */
+/* line 102, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream {
   background: transparent;
   -webkit-border-radius: 0;
@@ -4459,47 +4496,47 @@ ol.search-results .search-snippet-info {
   border-radius: 0;
   padding: 0;
 }
-/* line 86, ../sass/theme/_social-stream.sass */
+/* line 108, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .stream li {
   padding-bottom: 10px;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
-/* line 92, ../sass/theme/_social-stream.sass */
+/* line 114, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .stream .clear {
   display: none;
 }
-/* line 95, ../sass/theme/_social-stream.sass */
+/* line 117, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .stream .section-intro,
 .field-name-social-stream #social-stream .stream .section-user {
   padding: 0;
 }
-/* line 100, ../sass/theme/_social-stream.sass */
+/* line 122, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .stream .section-intro a,
 .field-name-social-stream #social-stream .stream .section-intro span {
   float: left;
 }
-/* line 104, ../sass/theme/_social-stream.sass */
+/* line 126, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .stream .section-intro span {
   margin-left: 0 !important;
 }
-/* line 107, ../sass/theme/_social-stream.sass */
+/* line 129, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .stream .section-user {
   margin-top: 0.5em;
 }
-/* line 109, ../sass/theme/_social-stream.sass */
+/* line 131, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .stream .section-user a {
   margin-left: 40px !important;
 }
-/* line 112, ../sass/theme/_social-stream.sass */
+/* line 134, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .stream .icon {
   position: absolute;
   bottom: 20px;
   left: 10px;
   margin: 0;
 }
-/* line 119, ../sass/theme/_social-stream.sass */
+/* line 141, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .dcsns-toolbar {
   background-color: #e5e5e5;
   -webkit-border-radius: 0;
@@ -4508,7 +4545,7 @@ ol.search-results .search-snippet-info {
   -o-border-radius: 0;
   border-radius: 0;
 }
-/* line 123, ../sass/theme/_social-stream.sass */
+/* line 145, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .dcsns-toolbar .controls {
   right: 5px;
 }
