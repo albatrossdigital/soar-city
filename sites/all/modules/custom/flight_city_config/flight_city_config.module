@@ -11,51 +11,41 @@
  * Implements hook_menu()
  **/
 function flight_city_config_menu() {
-  $items['external-service/%'] = array(
+  $items['external-service'] = array(
     'title' => 'Embed code',
     'page callback' => 'flight_city_config_external_service',
-    'page arguments' => array(1),
     'access arguments' => array('view the administration theme'),
     'type' => MENU_CALLBACK,
   );
   return $items;
 }
 
-/*function flight_city_config_theme($region) {
-  return array(
-    'flight_city_config_external_service_html' => array(
-      'template' => 'templates/external-service-html',
-    ),
-    'flight_city_config_external_service_html_full' => array(
-      'template' => 'templates/external-service-html-full',
-    ),
-  );
-}*/
-
 function flight_city_config_external_service($region) {
-  dpm($region);
-  switch($region) {
-    case 'header':
-      return ' ';
-      break;
-    default: 
-      dpm('yeah');
-      return MENU_NOT_FOUND;
-  }
+  return ' ';
 }
 
 
 function flight_city_config_preprocess_page(&$vars) {
   //dpm($vars);
   if(in_array('page__external_service', $vars['theme_hook_suggestions'])) {
-    dpm($vars);
+    $theme_path = drupal_get_path('theme', 'flight_city') . '/templates/';
+    // do header
+    //$vars['theme_hook_suggestions'][] = 'page__external_service__header_only';
+    $template_file = $theme_path . 'page--external-service--header-only.tpl.php';
+    $vars['external_header'] = htmlentities(theme_render_template($template_file, $vars));
+
+    // do footer
+    $template_file = $theme_path . 'page--external-service--footer-only.tpl.php';
+    $vars['external_footer'] = htmlentities(theme_render_template($template_file, $vars));
   };
 }
 
 function flight_city_config_preprocess_html(&$vars) {
-  
-  
-  //dpm($vars);
+  if(in_array('html__external_service', $vars['theme_hook_suggestions'])) {
+    $vars['external_scripts_header'] = htmlentities(drupal_get_js('header', NULL, TRUE));
+    $vars['external_scripts_footer'] = htmlentities(drupal_get_js('footer', NULL, TRUE));
+    $vars['external_css'] = htmlentities(drupal_get_css(NULL, TRUE));
+  }
 }
 
 
