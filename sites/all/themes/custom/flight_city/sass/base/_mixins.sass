@@ -1001,7 +1001,7 @@ $main-menu-border-size: rem-calc(3)
 
   input
     padding-right: rem-calc(24)
-    
+
 
 @mixin big-form()
   +all-form-inputs(true)
@@ -1058,6 +1058,25 @@ $main-menu-border-size: rem-calc(3)
 
     button
       margin-top: rem-calc(10) 
+
+@mixin inline-input-button($width: rem-calc(110), $selector: '.form-item', $button-height: $input-font-size + ($form-spacing * 1.5) - rem-calc(1))
+  position: relative
+
+  #{$selector}
+    padding-right: $width + $column-gutter/2
+    width: 100%
+
+  #{$selector} input, button
+    margin-bottom: 0
+
+  button
+    height: $button-height
+    line-height: $button-height
+    padding: 0
+    position: absolute
+    right: 0
+    bottom: 0
+    width: $width
 
 // search button replace
 @mixin search-button($color: $gray, $size: 36px, $font: ($size*.5))
