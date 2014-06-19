@@ -624,14 +624,7 @@ if (
   $conf['preprocess_js'] = 1;
   */
   if (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod') {
-    $databases['default']['default'] = array(
-      'driver' => 'mysql',
-      'database' => 'baltimore',
-      'username' => 'baltimore',
-      'password' => 'B8DaqM5d`j$O',
-      'host' => '548eldb01.blackmesh.com',
-      'prefix' => '',
-    );
+    
 
     // @todo
     /*
@@ -652,6 +645,19 @@ elseif (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMEN
 else {
   $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 1;
   $cookie_domain = '.baltimore.ifsight.com';
+}
+
+// Set up db settings for Blackmesh.
+// We do this here because they need to be set in drush to avoid fatal errors.
+if (!isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
+  $databases['default']['default'] = array(
+    'driver' => 'mysql',
+    'database' => 'baltimore',
+    'username' => 'baltimore',
+    'password' => 'B8DaqM5d`j$O',
+    'host' => '548eldb01.blackmesh.com',
+    'prefix' => '',
+  );
 }
 
 
