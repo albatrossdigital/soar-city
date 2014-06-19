@@ -7,6 +7,56 @@
   return $custom_theme;
 }*/
 
+/**
+ * Implements hook_menu()
+ **/
+function flight_city_config_menu() {
+  $items['external-service/%'] = array(
+    'title' => 'Embed code',
+    'page callback' => 'flight_city_config_external_service',
+    'page arguments' => array(1),
+    'access arguments' => array('view the administration theme'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/*function flight_city_config_theme($region) {
+  return array(
+    'flight_city_config_external_service_html' => array(
+      'template' => 'templates/external-service-html',
+    ),
+    'flight_city_config_external_service_html_full' => array(
+      'template' => 'templates/external-service-html-full',
+    ),
+  );
+}*/
+
+function flight_city_config_external_service($region) {
+  dpm($region);
+  switch($region) {
+    case 'header':
+      return ' ';
+      break;
+    default: 
+      dpm('yeah');
+      return MENU_NOT_FOUND;
+  }
+}
+
+
+function flight_city_config_preprocess_page(&$vars) {
+  //dpm($vars);
+  if(in_array('page__external_service', $vars['theme_hook_suggestions'])) {
+    dpm($vars);
+  };
+}
+
+function flight_city_config_preprocess_html(&$vars) {
+  
+  
+  //dpm($vars);
+}
 
 
 function flight_city_config_navbar() {
