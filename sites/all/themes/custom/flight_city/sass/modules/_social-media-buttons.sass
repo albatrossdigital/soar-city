@@ -19,7 +19,7 @@ a.social-icon
   &:before
     color: $white
     text-indent: 0
-    line-height: $social-size!important
+    line-height: $social-size
 
 
 li:last-child a.social-icon,
@@ -103,16 +103,19 @@ a.social-icon.Social.Wall
   
   a
     background: $gray-social!important
+    line-height: $social-size!important
     
 
 
 // Social media links
 //-----------------------------------------------------------------------------
 
-.view-mode-social
-  .group-right
-    ul
-      +list-float
+.view-mode-social .group-right ul,
+ul.social-links
+  +list-float
+
+ul.social-links
+  text-align: center
 
 a.social-icon
 
@@ -151,6 +154,23 @@ a.social-icon
 
   &.Social.Wall
     background: $black
+
+  &.larger-icon
+    +icon-button-resize(45px, rem-calc(25))
+
+  // Blue link
+  &.blue-link
+    &:before
+      color: $blue!important
+
+  // Transparent background
+  &.transparent
+    background: rgba($white, .4)!important
+
+    &:hover
+      background: rgba($white, .75)!important
+
+
 
 
 

@@ -175,6 +175,12 @@ i[class^="#{$fa-css-prefix}"]
     +icon-replace-icon-core()
     +icon-replace-icon-size($size, $font)
 
+@mixin icon-button-resize($size, $font: ($size*.75), $selector: '&:before')
+  +icon-replace-link-size($size)
+
+  #{$selector}
+    +icon-replace-icon-size($size, $font)
+
 // Variables
 // --------------------------
 

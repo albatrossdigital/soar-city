@@ -6,19 +6,54 @@
   position: relative
   overflow: hidden
 
-  strong
-    color: $yellow-footer
-
   .block-title
     font-size: rem-calc(24)
     +f(alt-alt)
     color: $teal
+
+// footer top
+//-----------------------------------------------------------------------------
+
+.l-footer-top
+  background: $blue
+  padding: $small-region-pad-large 0
+
+  p
+    margin-bottom: $paragraph-margin-bottom/2
+    text-align: center
+
+  &
+    color: $white
+
+  a
+    +c(link-white)
+
+  .button
+    +button-style($blue-dark-front)
+
+  
+  .block-baltimore-govdelivery
+    +max-width-center(rem-calc(420))
+    margin-bottom: $paragraph-margin-bottom
+
+    h2.block-title
+      +e(hide)
+
+    form
+      +inline-input-button()
+
+// Upper footer section
+//-----------------------------------------------------------------------------
 
 .l-footer-sections-top
 
 .l-footer-sections-bottom
   padding-bottom: $small-region-pad-large
   padding-top: $small-region-pad-large
+
+
+  strong
+    color: $yellow-footer
 
   &, p, ul
     font-size: rem-calc(16)
@@ -38,6 +73,10 @@
 .block-bean-footer-logos
   img
     margin-bottom: $paragraph-margin-bottom
+
+
+// Bottom footer
+//-----------------------------------------------------------------------------
 
 .l-footer-wrap
   background: $blue-black

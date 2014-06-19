@@ -199,6 +199,13 @@
 
 <!--.l-footer-->
 <footer class="l-footer" role="contentinfo">
+  <?php if (!empty($page['footer_top'])): ?>
+    <section class="l-footer-top">
+      <div class="row"><div class="footer-top medium-12 columns">
+        <?php print render($page['footer_top']); ?>
+      </div></div>
+    </section>
+  <?php endif; ?>
   <?php if (!empty($page['footer_firstcolumn']) || !empty($page['footer_secondcolumn']) || !empty($page['footer_thirdcolumn']) || !empty($page['footer_fourthcolumn'])): ?>
     <!--.footer-columns -->
     <section class="row l-footer-sections-top">

@@ -1,0 +1,55 @@
+// 311 Services page
+// ---------------------------------------------------------------------------- 
+.page-311-services
+
+  main
+
+    .medium-3
+      h2.block-title
+        font-size: $h3-font-size
+        +f(alt)
+
+      // Add search icon
+      .form-item-search
+        +search-icon-on-input()
+
+    .medium-8.medium-push-3
+      border-left: 1px solid $gray
+      margin-left: 2.167%
+      padding-left: 2%
+
+      .view-311-home.view-display-id-page
+        
+        height: 300px
+        overflow-x: hidden
+        overflow-y: auto
+
+  .l-triptych
+    +side-bar-menu('.item-list ul, .block-bean ul', '.block-title', 'li.active a', true)
+
+    .block-title
+      text-align: center
+
+  .triptych-first .block
+    +fake-icon-circle-box($yellow, 'star')
+
+  .triptych-middle .block
+    +fake-icon-circle-box($green, 'search')
+
+  .triptych-last .block
+    +fake-icon-circle-box($blue, 'question')
+
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($medium-up)
+  .page-311-services
+
+    main
+
+      .view-311-home.view-display-id-page
+        margin-top: 2.5em

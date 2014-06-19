@@ -23,6 +23,10 @@
         background-color: $pink-flickr
       &.f-youtube a
         background-color: $red-youtube
+      &.f-vimeo a
+        background-color: $blue-vimeo
+      &.f-pinterest a
+        background-color: $red-pinterest
       &.f-rss a
         background-color: $orange-rss
 
@@ -52,12 +56,30 @@
       a
         color: $blue !important
 
+    .section-user
+      margin: 5px 0 10px
+      padding: 0
+
+      a
+        margin-left: 0 !important
+
     img.icon
       background: $gray-dark
       +border-radius(15px)
       padding: 2px
       left: 10px
       bottom: 10px
+
+    .dcsns-facebook img.icon
+      background-color: $blue-facebook
+    .dcsns-twitter img.icon
+      background-color: $blue-twitter
+    .dcsns-flickr img.icon
+      background-color: $pink-flickr
+    .dcsns-youtube img.icon
+      background-color: $red-youtube
+    .dcsns-rss img.icon
+      background-color: $orange-rss
 
 
 // Social stream wall
