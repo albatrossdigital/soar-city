@@ -28,6 +28,12 @@ function flight_city_config_external_service($region) {
 function flight_city_config_preprocess_page(&$vars) {
   //dpm($vars);
   if(in_array('page__external_service', $vars['theme_hook_suggestions'])) {
+    // Set up users
+    global $user;
+    $temp_user = $user;
+    // Set to anon for render
+    $user = user_load(0);
+    
     $theme_path = drupal_get_path('theme', 'flight_city') . '/templates/';
 
     // do page
@@ -46,14 +52,26 @@ function flight_city_config_preprocess_page(&$vars) {
     // do footer
     $template_file = $theme_path . 'page--external-service--footer-only.tpl.php';
     $vars['external_footer'] = htmlentities(theme_render_template($template_file, $vars));
+
+    // restore user
+    $user = $temp_user;
   };
 }
 
 function flight_city_config_preprocess_html(&$vars) {
   if(in_array('html__external_service', $vars['theme_hook_suggestions'])) {
-    $vars['external_scripts_header'] = htmlentities(drupal_get_js('header', NULL, TRUE));
-    $vars['external_scripts_footer'] = htmlentities(drupal_get_js('footer', NULL, TRUE));
-    $vars['external_css'] = htmlentities(drupal_get_css(NULL, TRUE));
+    // Set up users
+    global $user;
+    $temp_user = $user;
+    // Set to anon for render
+    $user = user_load(0);
+
+    $vars['external_scripts_header'] = htmlentities(drupal_get_js('header', NULL, FALSE));
+    $vars['external_scripts_footer'] = htmlentities(drupal_get_js('footer', NULL, FALSE));
+    $vars['external_css'] = htmlentities(drupal_get_css(NULL, FALSE));
+
+    // restore user
+    $user = $temp_user;
   }
 }
 
@@ -103,8 +121,6 @@ function flight_city_config_form_alter(&$form, $form_state, $form_id) {
       $form['actions']['submit']['#submit'][] = 'flight_city_config_media_edit_form_submit';
     }
   }
-
-  dpm($form_id);
 
 }
 
