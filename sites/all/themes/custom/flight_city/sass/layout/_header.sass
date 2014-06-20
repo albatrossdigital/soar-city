@@ -31,8 +31,13 @@
       @extend %main-menu-link-active
 
   // mayor
-  &.last a
+  &:nth-child(6) a
     .domain-mayor &
+      @extend %main-menu-link-active
+
+  // connect
+  &.last a
+    .section-connect &
       @extend %main-menu-link-active
 
 
