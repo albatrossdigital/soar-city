@@ -14,7 +14,8 @@ function flight_city_config_menu() {
   $items['external-service'] = array(
     'title' => 'Embed code',
     'page callback' => 'flight_city_config_external_service',
-    'access arguments' => array('view the administration theme'),
+    'access callback' => TRUE,
+    //'access arguments' => array('view the administration theme'),
     'type' => MENU_CALLBACK,
   );
   return $items;
