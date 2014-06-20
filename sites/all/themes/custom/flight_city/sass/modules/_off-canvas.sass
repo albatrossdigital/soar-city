@@ -79,6 +79,10 @@
 // Main section sub-menu (sidebar)
 // ------------------------------------------------------
 
+#toggle-main-section-menu
+  display: block
+  margin-bottom: rem-calc(10)
+
 #toggle-main-section-menu-close
   +c(link-white)
   background: $topbar-bg-color
@@ -130,6 +134,12 @@
       max-width: $off-canvas-width
       +column-padding()
       overflow: hidden
+
+    .block-balt-apachesolr,
+    .block-bean-subscribe-link,
+    .block-gtranslate-gtranslate
+      .header-region-right &
+        display: none
 
     .block-balt-apachesolr
       margin-top: -$topbar-height
@@ -184,6 +194,12 @@
 
   .search-toggle
     display: none
+
+  .block-balt-apachesolr,
+  .block-bean-subscribe-link,
+  .block-gtranslate-gtranslate
+    .top-bar &
+      display: none
 
 
   // Main section sub-menu (sidebar)

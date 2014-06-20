@@ -44,6 +44,12 @@
 
   .l-header
     background: $blue-dark-front
+  
+  .l-header-region
+    &:after
+      border: 0
+      padding: 0 
+      margin: 0
 
     &, h1, h2, h3
       color: $white
@@ -51,14 +57,13 @@
       a
         +c(link-white)
 
+  .region-logo
+    max-width: rem-calc(65)
+    margin-right: rem-calc(10)
+    padding-top: 0
+
   #entity-title
     padding-top: rem-calc(11)
-
-  .l-header-region
-    &:after
-      border: 0
-      padding: 0 
-      margin: 0
 
   .block-gtranslate .gtflag
     +opacity(0.8)
@@ -273,6 +278,10 @@
     .header-branding
       padding-bottom: rem-calc(12)
 
+    .region-logo
+      margin-right: rem-calc(15)
+      max-width: rem-calc(88)
+
     #entity-title
       padding-top: rem-calc(13)
 
@@ -336,9 +345,3 @@
 
       &:before
         display: none
-
-    // Header
-    // ----------------------------------------------------------------------------
-
-    .block-bean-search-box-help
-      margin-left: rem-calc(-165)

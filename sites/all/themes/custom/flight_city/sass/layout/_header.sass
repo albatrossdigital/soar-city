@@ -55,13 +55,23 @@
 // Entity Branding
 // ------------------------------------------------------
 
+
+$crest-logo-width: rem-calc(58)
+
+
 .header-branding
   padding-bottom: $small-region-pad-small*2
 
+
 .region-logo
   float: left
-  max-width: rem-calc(65)
-  margin-right: rem-calc(10)
+  margin-right: $column-gutter
+  max-width: $crest-logo-width
+  padding-top: rem-calc(4)
+  
+  img
+    margin-bottom: 0!important
+
 
 h1, h2
   small
@@ -73,7 +83,11 @@ h1, h2
   font-size: $h2-font-size
   line-height: 1.1
   margin: 0
-  padding: rem-calc(8 0 0)
+  padding: rem-calc(8) 0 0 
+
+.region-logo ~ #entity-title
+  padding-top: rem-calc(17)
+  padding-left: ($crest-logo-width + $column-gutter)
 
 
 // Header region right
@@ -150,12 +164,11 @@ h1, h2
     padding-bottom: rem-calc(37)
 
   .region-logo
-    margin-right: rem-calc(15)
-    max-width: rem-calc(88)
+    padding-top: rem-calc(8)
 
   #entity-title
     font-size: $h1-font-size
-    padding: rem-calc(16 0 0)
+    padding-top: rem-calc(16)
 
 
   // Header region right
