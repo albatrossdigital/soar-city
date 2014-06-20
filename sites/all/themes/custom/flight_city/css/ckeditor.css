@@ -6605,6 +6605,11 @@ i[class^="fa"] {
 i[class^="fa"] {
   margin-right: 0.75em;
 }
+/* line 141, ../sass/components/_icons-fontawesome.sass */
+i[class^="fa"].icon-right {
+  margin-right: 0;
+  margin-left: 0.3em;
+}
 
 @-webkit-keyframes rotation {
   /* line 354, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
@@ -6655,39 +6660,39 @@ i[class^="fa"] {
 }
 
 /********************************** */
-/* line 358, ../sass/base/_mixins.sass */
+/* line 379, ../sass/base/_mixins.sass */
 h3 a, h4 a {
   color: #0076a3;
 }
-/* line 361, ../sass/base/_mixins.sass */
+/* line 382, ../sass/base/_mixins.sass */
 h3 a:hover, h4 a:hover {
   color: #005170;
 }
 
-/* line 382, ../sass/base/_mixins.sass */
+/* line 403, ../sass/base/_mixins.sass */
 h1 a, h2 a, h5 a, h6 a {
   color: #111111;
 }
-/* line 385, ../sass/base/_mixins.sass */
+/* line 406, ../sass/base/_mixins.sass */
 h1 a:hover, h2 a:hover, h5 a:hover, h6 a:hover {
   color: #0a83a1;
 }
-/* line 388, ../sass/base/_mixins.sass */
+/* line 409, ../sass/base/_mixins.sass */
 h1 a:active, h2 a:active, h5 a:active, h6 a:active {
   color: #07b1db;
 }
 
-/* line 407, ../sass/base/_mixins.sass */
+/* line 428, ../sass/base/_mixins.sass */
 h1 strong, strong h1, h2 strong, strong h2 {
   font-weight: 400;
 }
 
-/* line 410, ../sass/base/_mixins.sass */
+/* line 431, ../sass/base/_mixins.sass */
 h3, h4 {
   font-weight: 700;
 }
 
-/* line 418, ../sass/base/_mixins.sass */
+/* line 439, ../sass/base/_mixins.sass */
 .label-inline, h1, h2 {
   font-family: "ff-tisa-web-pro";
   font-style: normal;

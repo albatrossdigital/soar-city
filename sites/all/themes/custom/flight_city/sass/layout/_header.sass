@@ -60,6 +60,8 @@
 
 .region-logo
   float: left
+  max-width: rem-calc(65)
+  margin-right: rem-calc(10)
 
 h1, h2
   small
@@ -96,7 +98,12 @@ h1, h2
   a 
     +c(link-header)
 
+.block-bean-subscribe-link
+  margin-right: $column-gutter
+
 .block-gtranslate
+  min-width: rem-calc(135)
+
   .gtflag
     display: block
     float: left
@@ -114,13 +121,19 @@ h1, h2
 
 +respond($small-only)
 
-  // Header region right
+  // Entity Branding
   // ------------------------------------------------------
+  .l-header-region
+    //position: relative
+
+  .header-branding
+    //padding-right: rem-calc(135) + $column-gutter*3/2
 
   .header-region-right
-    & > *
-      float: left
-      width: 33%
+    //position: absolute
+    //right: $column-gutter/2
+    //top:
+
 
 
 
@@ -138,6 +151,7 @@ h1, h2
 
   .region-logo
     margin-right: rem-calc(15)
+    max-width: rem-calc(88)
 
   #entity-title
     font-size: $h1-font-size

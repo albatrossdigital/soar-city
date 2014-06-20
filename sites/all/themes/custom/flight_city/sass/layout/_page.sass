@@ -46,3 +46,21 @@ html,body
 +respond($past-menu)
   
   //+sticky-footer(rem-calc(245), ".page", "#footer-push", ".l-footer")
+
++respond($large)
+  
+  // Add bordered appearance
+  .page 
+    background: $gray-border
+
+    $background-width: $row-width + rem-calc(60)
+
+    &:before
+      background: $white
+      content: " "
+      position: absolute
+      top: 0
+      height: 100%
+      left: 50%
+      margin-left: -($background-width/2)
+      width: $background-width
