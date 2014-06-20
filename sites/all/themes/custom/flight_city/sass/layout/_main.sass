@@ -19,10 +19,12 @@
     +e(hide)
 
   // hide page title on main domain top level view pages
-  .domain-main.views-page.menu-depth-1 &
+  .domain-main.views-page.menu-depth-1 &,
+  .domain-main.page-events &,
+  .domain-main.page-connect &
     +e(hide)
 
-    & ~ .view
+    & + *
       padding-top: rem-calc(15)
 
 // Tabs
@@ -66,12 +68,6 @@
   .block-workbench,
   .block-flight-city-workbench
     margin-bottom: $small-region-pad-small
-
-
-// Fake title blocks
-.title-block
-  margin-bottom: 0!important
-  +views-see-more-header()
 
 
 // Lower content

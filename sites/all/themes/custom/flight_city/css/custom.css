@@ -54,7 +54,7 @@ i[class^="fa"], [role=complementary] .block-domain-menu-block .menu-block-wrappe
 [role=complementary] .block > ul .highlighted a:after, [role=complementary] .block .menu-block-wrapper ul .highlighted a:after, [role=complementary] .block .item-list > ul .highlighted a:after, .draggable a.tabledrag-handle:before, .block-views-exp-organizations-page .form-item-combine:before, .share42-item:nth-child(4) a:before, .share42-item:first-child a:before,
 a.social-icon.Facebook:before, .share42-item:nth-child(3) a:before,
 a.social-icon.Twitter:before, .share42-item:nth-child(2) a:before,
-a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, a.social-icon.Govdelivery:before, a.social-icon.Social.Wall:before, .breadcrumbs li:first-child a:before, .button.icon-play:before, #search-form .form-submit:before, .front.domain-main .l-triptych .item-list ul .highlighted a:after, .front.domain-main .triptych-first .block .block-title:before, .front.domain-main .triptych-middle .block .block-title:before, .front.domain-main .triptych-last .block .block-title:before, .block-views-exp-calendar-list .views-widget-filter-combine .views-widget:before, .page-payments.domain-main .l-triptych .item-list ul .highlighted a:after, .page-payments.domain-main .triptych-first .block .block-title:before, .page-payments.domain-main .triptych-middle .block .block-title:before, .page-payments.domain-main .triptych-last .block .block-title:before, .vocabulary-payment-type.view-mode-full .icon-box [class*="fa-"]:before, .view-faq-home.view-display-id-block_1 .item-list ul .highlighted a:after, .view-faq-home.view-display-id-block_1 .block-bean ul .highlighted a:after, .page-311-services main .medium-3 .form-item-search:before, .page-311-services .l-triptych .item-list ul .highlighted a:after, .page-311-services .l-triptych .block-bean ul .highlighted a:after, .page-311-services .triptych-first .block .block-title:before, .page-311-services .triptych-middle .block .block-title:before, .page-311-services .triptych-last .block .block-title:before {
+a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, a.social-icon.Govdelivery:before, a.social-icon.Social.Wall:before, .breadcrumbs li:first-child a:before, .button.icon-play:before, #search-form .form-submit:before, .front.domain-main .l-triptych .item-list ul .highlighted a:after, .front.domain-main .triptych-first .block .block-title:before, .front.domain-main .triptych-middle .block .block-title:before, .front.domain-main .triptych-last .block .block-title:before, .block-views-exp-calendar-list .views-widget-filter-combine .views-widget:before, .page-payments.domain-main .l-triptych .item-list ul .highlighted a:after, .page-payments.domain-main .triptych-first .block .block-title:before, .page-payments.domain-main .triptych-middle .block .block-title:before, .page-payments.domain-main .triptych-last .block .block-title:before, .vocabulary-payment-type.view-mode-full .icon-box [class*="fa-"]:before, .view-faq-home.view-display-id-block_1 .item-list ul .highlighted a:after, .view-faq-home.view-display-id-block_1 .block-bean ul .highlighted a:after, .page-311-services main .medium-3 .form-item-search:before, .page-311-services .l-triptych .item-list ul .highlighted a:after, .page-311-services .l-triptych .block-bean > ul .highlighted a:after, .page-311-services .triptych-first .block .block-title:before, .page-311-services .triptych-middle .block .block-title:before, .page-311-services .triptych-last .block .block-title:before {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -268,7 +268,7 @@ a.social-icon.Vimeo:before {
 
 /********************************** */
 /* line 334, ../sass/base/_mixins.sass */
-.no-page-title #page-title, .no-page-title #section-title, .domain-main.views-page.menu-depth-1 #page-title, .domain-main.views-page.menu-depth-1 #section-title, .l-footer-top .block-baltimore-govdelivery h2.block-title, .l-footer-sections-bottom form label, .l-footer-sections-bottom form .grippie, .no-labels label,
+.no-page-title #page-title, .no-page-title #section-title, .domain-main.views-page.menu-depth-1 #page-title, .domain-main.page-events #page-title, .domain-main.page-connect #page-title, .domain-main.views-page.menu-depth-1 #section-title, .domain-main.page-events #section-title, .domain-main.page-connect #section-title, .l-footer-top .block-baltimore-govdelivery h2.block-title, .l-footer-sections-bottom form label, .l-footer-sections-bottom form .grippie, .no-labels label,
 .no-label label, .js .block-views-exp-organizations-page .views-widget-filter-field_organization_category_tid select, .search-toggle span, #search-form .form-type-textfield label, .front ul.breadcrumbs, .front.domain-main .l-featured:after, .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item label,
 .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item .description, .page-people #page-title, .node-type-person #page-title {
   display: none;
@@ -375,7 +375,7 @@ h3, h4, .accordion dd > a {
 
 /* line 447, ../sass/base/_mixins.sass */
 [role=complementary] .block h2.block-title, fieldset legend, .front.domain-main .l-triptych h2.block-title, .page-payments.domain-main .l-triptych h2.block-title, .view-faq-home.view-display-id-block_1 h2.block-title, .page-311-services .l-triptych h2.block-title, .more-link,
-.field-name-node-link, .block-views-exp-organizations-page label, .title-block .more-link a, .bean-image-collection .more-link a, .block-views-news-block-1 .more-link a,
+.field-name-node-link, .block-views-exp-organizations-page label, .bean-image-collection .more-link a, .block-views-news-block-1 .more-link a,
 .block-views-news-block .more-link a,
 .block-views-news-block-4 .more-link a, [role=complementary] .block-facetapi form .form-type-radio label, [role=complementary] .block-facetapi form .form-type-checkbox label, .l-footer .block-title, .share42init:before, .front.domain-main .view-display-id-block_front_mayor .more-link a, .front.domain-main .l-triptych .more-link a, .node-event.node-teaser .date-calendar,
 .node-event.view-mode-compact_teaser .date-calendar, .page-payments.domain-main .l-triptych .more-link a, .view-faq-home.view-display-id-block_1 .more-link a, .page-311-services .l-triptych .more-link a {
@@ -411,14 +411,14 @@ h3, h4, .accordion dd > a {
 }
 
 /* line 602, ../sass/base/_mixins.sass */
-.title-block, .bean-image-collection, .block-views-news-block-1,
+.bean-image-collection, .block-views-news-block-1,
 .block-views-news-block,
 .block-views-news-block-4 {
   position: relative;
 }
 @media only screen and (min-width: 45.78571em) {
   /* line 611, ../sass/base/_mixins.sass */
-  .title-block .more-link, .bean-image-collection .more-link, .block-views-news-block-1 .more-link,
+  .bean-image-collection .more-link, .block-views-news-block-1 .more-link,
   .block-views-news-block .more-link,
   .block-views-news-block-4 .more-link {
     right: 0.71429rem;
@@ -847,11 +847,6 @@ h1 small, h2 small {
     padding-top: 1.78571rem;
   }
 
-  /* line 163, ../sass/layout/_header.sass */
-  .header-branding {
-    padding-bottom: 2.64286rem;
-  }
-
   /* line 166, ../sass/layout/_header.sass */
   .region-logo {
     padding-top: 0.57143rem;
@@ -877,14 +872,19 @@ h1 small, h2 small {
   .block-balt-apachesolr {
     width: 100%;
   }
+
+  /* line 188, ../sass/layout/_header.sass */
+  .block-balt-apachesolr, .block-balt-apachesolr form {
+    margin-bottom: 0;
+  }
 }
 @media only screen and (min-width: 45.78571em) and (max-width: 58.92857em) {
-  /* line 188, ../sass/layout/_header.sass */
+  /* line 193, ../sass/layout/_header.sass */
   .header-branding {
     width: 58.33333%;
   }
 
-  /* line 191, ../sass/layout/_header.sass */
+  /* line 196, ../sass/layout/_header.sass */
   .header-region-right {
     width: 41.66667%;
   }
@@ -946,16 +946,16 @@ h1 small, h2 small {
   padding-bottom: 6.42857rem;
 }
 
-/* line 25, ../sass/layout/_main.sass */
-.domain-main.views-page.menu-depth-1 #page-title ~ .view, .domain-main.views-page.menu-depth-1 #section-title ~ .view {
+/* line 27, ../sass/layout/_main.sass */
+.domain-main.views-page.menu-depth-1 #page-title + *, .domain-main.page-events #page-title + *, .domain-main.page-connect #page-title + *, .domain-main.views-page.menu-depth-1 #section-title + *, .domain-main.page-events #section-title + *, .domain-main.page-connect #section-title + * {
   padding-top: 1.07143rem;
 }
 
-/* line 31, ../sass/layout/_main.sass */
+/* line 33, ../sass/layout/_main.sass */
 .main > ul.button-group {
   margin-bottom: 0.71429rem;
 }
-/* line 35, ../sass/layout/_main.sass */
+/* line 37, ../sass/layout/_main.sass */
 .main > ul.button-group li.active a {
   background-color: #0a83a1;
   border-color: #0eb7e1;
@@ -969,13 +969,13 @@ h1 small, h2 small {
 .main > ul.button-group li.active a:hover, .main > ul.button-group li.active a:focus {
   color: white;
 }
-/* line 38, ../sass/layout/_main.sass */
+/* line 40, ../sass/layout/_main.sass */
 .main > ul.button-group a {
   margin-bottom: 0.35714rem;
   border-color: #cccccc;
 }
 
-/* line 46, ../sass/layout/_main.sass */
+/* line 48, ../sass/layout/_main.sass */
 .main > ul.action-links {
   list-style: none;
   padding: 0;
@@ -985,7 +985,7 @@ h1 small, h2 small {
 .main > ul.action-links li {
   display: inline-block;
 }
-/* line 49, ../sass/layout/_main.sass */
+/* line 51, ../sass/layout/_main.sass */
 .main > ul.action-links a {
   border-style: solid;
   border-width: 0px;
@@ -1024,7 +1024,7 @@ h1 small, h2 small {
   color: white;
 }
 
-/* line 60, ../sass/layout/_main.sass */
+/* line 62, ../sass/layout/_main.sass */
 .no-page-title .main {
   padding-top: 1.14286rem;
 }
@@ -1032,66 +1032,61 @@ h1 small, h2 small {
 .main .block {
   margin-bottom: 3.21429rem;
 }
-/* line 66, ../sass/layout/_main.sass */
+/* line 68, ../sass/layout/_main.sass */
 .main .block-workbench,
 .main .block-flight-city-workbench {
   margin-bottom: 0.71429rem;
 }
 
-/* line 72, ../sass/layout/_main.sass */
-.title-block {
-  margin-bottom: 0 !important;
-}
-
-/* line 81, ../sass/layout/_main.sass */
+/* line 77, ../sass/layout/_main.sass */
 .main > .row:not(.node) {
   padding-top: 2.85714rem;
   padding-bottom: 2.85714rem;
 }
 
-/* line 93, ../sass/layout/_main.sass */
+/* line 89, ../sass/layout/_main.sass */
 .node .field-name-title + h5 {
   margin-top: -0.42857rem;
 }
-/* line 96, ../sass/layout/_main.sass */
+/* line 92, ../sass/layout/_main.sass */
 .node .field-name-title + h6, .node .field-name-title + h5 + h6 {
   margin-top: -0.92857rem;
 }
 
-/* line 101, ../sass/layout/_main.sass */
+/* line 97, ../sass/layout/_main.sass */
 .node .field {
   line-height: 1.6;
 }
 
-/* line 107, ../sass/layout/_main.sass */
+/* line 103, ../sass/layout/_main.sass */
 .node .label {
   margin-right: 0.57143rem;
   margin-bottom: 0.57143rem;
 }
 
-/* line 117, ../sass/layout/_main.sass */
+/* line 113, ../sass/layout/_main.sass */
 .more-link,
 .field-name-node-link {
   text-align: left;
 }
 
-/* line 127, ../sass/layout/_main.sass */
+/* line 123, ../sass/layout/_main.sass */
 p img:only-child {
   margin-bottom: 0;
 }
 
-/* line 131, ../sass/layout/_main.sass */
+/* line 127, ../sass/layout/_main.sass */
 .node img, .node iframe, .entity-bean img, .entity-bean iframe, .block img, .block iframe {
   margin-bottom: 1.42857rem;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 145, ../sass/layout/_main.sass */
+  /* line 141, ../sass/layout/_main.sass */
   #page-title, #section-title {
     font-size: 2.14286rem;
   }
 
-  /* line 150, ../sass/layout/_main.sass */
+  /* line 146, ../sass/layout/_main.sass */
   .l-main {
     padding-bottom: 6.42857rem;
   }
@@ -1104,14 +1099,14 @@ p img:only-child {
   .main .block-title {
     font-size: 2.14286rem;
   }
-  /* line 160, ../sass/layout/_main.sass */
+  /* line 156, ../sass/layout/_main.sass */
   .main .block-workbench,
   .main .block-flight-city-workbench {
     margin-bottom: 0.71429rem;
   }
 }
 @media only screen and (min-width: 68.64286em) {
-  /* line 169, ../sass/layout/_main.sass */
+  /* line 165, ../sass/layout/_main.sass */
   .medium-8.main {
     margin-left: 4.16667%;
   }
@@ -4358,7 +4353,7 @@ ol.search-results .search-snippet-info {
   margin-top: 0.71429rem;
 }
 /* line 887, ../sass/base/_mixins.sass */
-.page-311-services .l-triptych .item-list ul, .page-311-services .l-triptych .block-bean ul {
+.page-311-services .l-triptych .item-list ul, .page-311-services .l-triptych .block-bean > ul {
   display: block;
   margin: 0;
   padding: 0.71429rem 0 0.71429rem 0;
@@ -4367,27 +4362,27 @@ ol.search-results .search-snippet-info {
   font-family: "open-sans";
 }
 /* line 62, ../sass/vendor/foundation/components/_side-nav.scss */
-.page-311-services .l-triptych .item-list ul li, .page-311-services .l-triptych .block-bean ul li {
+.page-311-services .l-triptych .item-list ul li, .page-311-services .l-triptych .block-bean > ul li {
   margin: 0 0 0 0;
   font-size: 1rem;
 }
 /* line 66, ../sass/vendor/foundation/components/_side-nav.scss */
-.page-311-services .l-triptych .item-list ul li a:not(.button), .page-311-services .l-triptych .block-bean ul li a:not(.button) {
+.page-311-services .l-triptych .item-list ul li a:not(.button), .page-311-services .l-triptych .block-bean > ul li a:not(.button) {
   display: block;
   color: #111111;
 }
 /* line 70, ../sass/vendor/foundation/components/_side-nav.scss */
-.page-311-services .l-triptych .item-list ul li a:not(.button):hover, .page-311-services .l-triptych .item-list ul li a:not(.button):focus, .page-311-services .l-triptych .block-bean ul li a:not(.button):hover, .page-311-services .l-triptych .block-bean ul li a:not(.button):focus {
+.page-311-services .l-triptych .item-list ul li a:not(.button):hover, .page-311-services .l-triptych .item-list ul li a:not(.button):focus, .page-311-services .l-triptych .block-bean > ul li a:not(.button):hover, .page-311-services .l-triptych .block-bean > ul li a:not(.button):focus {
   color: #585858;
 }
 /* line 73, ../sass/vendor/foundation/components/_side-nav.scss */
-.page-311-services .l-triptych .item-list ul li.active > a:first-child:not(.button), .page-311-services .l-triptych .block-bean ul li.active > a:first-child:not(.button) {
+.page-311-services .l-triptych .item-list ul li.active > a:first-child:not(.button), .page-311-services .l-triptych .block-bean > ul li.active > a:first-child:not(.button) {
   color: #111111;
   font-weight: normal;
   font-family: "open-sans";
 }
 /* line 79, ../sass/vendor/foundation/components/_side-nav.scss */
-.page-311-services .l-triptych .item-list ul li.divider, .page-311-services .l-triptych .block-bean ul li.divider {
+.page-311-services .l-triptych .item-list ul li.divider, .page-311-services .l-triptych .block-bean > ul li.divider {
   border-top: 1px solid;
   height: 0;
   padding: 0;
@@ -4395,38 +4390,38 @@ ol.search-results .search-snippet-info {
   border-top-color: #dddddd;
 }
 /* line 890, ../sass/base/_mixins.sass */
-.page-311-services .l-triptych .item-list ul li, .page-311-services .l-triptych .block-bean ul li {
+.page-311-services .l-triptych .item-list ul li, .page-311-services .l-triptych .block-bean > ul li {
   border-bottom: 1px solid #dddddd;
 }
 /* line 893, ../sass/base/_mixins.sass */
-.page-311-services .l-triptych .item-list ul li:first-child, .page-311-services .l-triptych .block-bean ul li:first-child {
+.page-311-services .l-triptych .item-list ul li:first-child, .page-311-services .l-triptych .block-bean > ul li:first-child {
   border-top: 1px solid #dddddd;
 }
 /* line 896, ../sass/base/_mixins.sass */
-.page-311-services .l-triptych .item-list ul li.active a, .page-311-services .l-triptych .block-bean ul li.active a {
+.page-311-services .l-triptych .item-list ul li.active a, .page-311-services .l-triptych .block-bean > ul li.active a {
   border-left-color: #deb64b;
 }
 /* line 899, ../sass/base/_mixins.sass */
-.page-311-services .l-triptych .item-list ul .highlighted a, .page-311-services .l-triptych .block-bean ul .highlighted a {
+.page-311-services .l-triptych .item-list ul .highlighted a, .page-311-services .l-triptych .block-bean > ul .highlighted a {
   border-left-color: #f2c54b;
   background: #f2c54b;
   position: relative;
 }
 /* line 904, ../sass/base/_mixins.sass */
-.page-311-services .l-triptych .item-list ul .highlighted a:after, .page-311-services .l-triptych .block-bean ul .highlighted a:after {
+.page-311-services .l-triptych .item-list ul .highlighted a:after, .page-311-services .l-triptych .block-bean > ul .highlighted a:after {
   content: "\f00d";
   color: #626262;
   position: absolute;
   right: 0.71429rem;
 }
 /* line 911, ../sass/base/_mixins.sass */
-.page-311-services .l-triptych .item-list ul .highlighted a:hover, .page-311-services .l-triptych .block-bean ul .highlighted a:hover {
+.page-311-services .l-triptych .item-list ul .highlighted a:hover, .page-311-services .l-triptych .block-bean > ul .highlighted a:hover {
   color: #111111 !important;
   border-left-color: #f0bd33;
   background: #f0bd33;
 }
 /* line 915, ../sass/base/_mixins.sass */
-.page-311-services .l-triptych .item-list ul a, .page-311-services .l-triptych .block-bean ul a {
+.page-311-services .l-triptych .item-list ul a, .page-311-services .l-triptych .block-bean > ul a {
   border-left: 3px solid transparent;
   padding: 0.71429rem 1.42857rem 0.71429rem 1.21429rem;
 }
