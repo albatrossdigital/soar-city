@@ -102,7 +102,7 @@ h1, h2
   margin-right: $column-gutter
 
 .block-gtranslate
-  min-width: rem-calc(135)
+  //min-width: rem-calc(135)
 
   .gtflag
     display: block
@@ -167,6 +167,16 @@ h1, h2
 
     .block 
       float: right
+
+  .block-balt-apachesolr
+    width: 100%
+
++respond($menu-only)
+  .header-branding
+    width: grid-calc(7, 12)
+
+  .header-region-right
+    width: grid-calc(5, 12)
 
 
 +respond($past-menu)

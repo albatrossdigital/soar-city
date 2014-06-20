@@ -11,8 +11,8 @@
   top: 0
   font-size: rem-calc(20)
   z-index: 1
-
-  a
+  
+  a 
     +c(link-yellow)
 
 
@@ -52,12 +52,17 @@
 //$off-menu-border: lighten($blue, 2%)
 
 .right-off-canvas-menu
-  .right-off-canvas-toggle
+
+  a
     +c(link-yellow)
+
+  .right-off-canvas-toggle
+    top: rem-calc(140)
+    border-top: 1px solid $gray-border
     padding-left: $column-gutter
     position: absolute
     font-size: 1rem
-    top: $topbar-height - rem-calc(5)
+    width: 100%
     z-index: 1
 
 
@@ -107,7 +112,6 @@
 
     .menu-name-main-menu
       +expand-row()
-      padding-top: rem-calc(44)
 
       li a
         display: block
@@ -131,6 +135,18 @@
       margin-top: -$topbar-height
       //margin-bottom: rem-calc(10)
       padding-top: rem-calc(10)
+
+    .block-bean-subscribe-link
+      margin-top: rem-calc(-15)
+
+    .block-bean-subscribe-link,
+    .block-gtranslate-gtranslate
+      padding-left: $column-gutter
+
+    .menu-name-main-menu
+      border-top: 1px solid $gray-border
+      margin-top: rem-calc(36)
+      padding-top: rem-calc(14)
 
 
   // Main section sub-menu (sidebar)
@@ -157,6 +173,7 @@
   .right-off-canvas-menu
 
     .right-off-canvas-toggle
+      border-top: 0
       top: 0
 
     .menu-name-main-menu

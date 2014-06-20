@@ -45,8 +45,11 @@
   .l-header
     background: $blue-dark-front
 
-    &, h1, h2, h3, a
-      +c(link-white)
+    &, h1, h2, h3
+      color: $white
+
+      a
+        +c(link-white)
 
   #entity-title
     padding-top: rem-calc(11)
@@ -184,15 +187,15 @@
   
   .front.domain-main
     .header-branding
-      +max-width-center(rem-calc(245))
-      +clearfix(false)
+      //+max-width-center(rem-calc(245))
+      //+clearfix(false)
 
     // Header
     // ----------------------------------------------------------------------------
     
     .title-area
       float: right
-      margin-top: rem-calc(-22)
+      margin-top: rem-calc(-77)
 
     // Main
     // ----------------------------------------------------------------------------
@@ -217,22 +220,19 @@
     // ----------------------------------------------------------------------------
     
     .header-region-right
-      padding-bottom: rem-calc(41)
+      width: grid-calc(4, 12)
 
-    #search-form
-      margin-top: rem-calc(7)
-
-    .block-bean-search-box-help
-      p
-        padding-top: rem-calc(9) 
+    .block-bean-subscribe-link
+      position: absolute
+      right: rem-calc(214)
+      min-width: rem-calc(90)
 
     .block-gtranslate-gtranslate
-      position: absolute
-      bottom: rem-calc(2)
+      margin-right: rem-calc(88)
 
     .title-area
       position: absolute
-      bottom: rem-calc(54)
+      top: rem-calc(-17)
       right: 0
 
 
@@ -293,6 +293,9 @@
       strong
         font-size: rem-calc(14)
 
+    .block-balt-apachesolr
+      margin-bottom: 0
+
 
     // Main
     // ----------------------------------------------------------------------------
@@ -319,20 +322,6 @@
     .content-bottom-triple-right
       padding-left: rem-calc(210) + rem-calc(35)
       width: grid-calc(7, 12)
-
-+respond($past-menu)
-
-  // Uber front
-  // ----------------------------------------------------------------------------
-  
-  .front.domain-main
-
-    // Header
-    // ----------------------------------------------------------------------------
-
-    .block-bean-search-box-help
-      p
-        padding-top: rem-calc(32) 
 
 
 +respond($large-up)
