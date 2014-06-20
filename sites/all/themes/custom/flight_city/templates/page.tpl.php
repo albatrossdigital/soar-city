@@ -36,10 +36,14 @@
     <section class="l-header-region row">
       <div class="medium-8 columns header-branding">
         <?php if (!empty($page['logo'])): ?>
-          <div class="region-logo"><?php print render($page['logo']); ?></div>
+          <div class="region-logo">
+            <?php print render($page['logo']); ?>
+          </div>
         <?php endif; ?>
         <?php if($entity_title): ?>
-          <h2 id="entity-title" class="title"><?php print $entity_title; ?></h2>
+          <div class="vertical-center"><div class="vertical-center-inner">
+            <h2 id="entity-title" class="title"><?php print $entity_title; ?></h2>
+          </div></div>
         <?php endif; ?>
       </div>
       <div class="medium-4 columns header-region-right">

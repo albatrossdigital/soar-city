@@ -60,33 +60,37 @@ $crest-logo-width: rem-calc(58)
 
 
 .header-branding
-  padding-bottom: $small-region-pad-small*2
+  margin-bottom: $small-region-pad-small*2
+
+  h1, h2
+    small
+      display: block
+      color: $gold
+      line-height: 0.7em
+
+
+  .vertical-center
+    min-height: $crest-logo-width
 
 
 .region-logo
   float: left
-  margin-right: $column-gutter
+  //height: $crest-logo-width
+  //padding-top: rem-calc(4)
+  position: absolute
+  margin-top: -($crest-logo-width/2)
+  top: 50%
   max-width: $crest-logo-width
-  padding-top: rem-calc(4)
   
   img
     margin-bottom: 0!important
-
-
-h1, h2
-  small
-    display: block
-    color: $gold
-    line-height: 0.7em
 
 #entity-title
   font-size: $h2-font-size
   line-height: 1.1
   margin: 0
-  padding: rem-calc(8) 0 0 
 
-.region-logo ~ #entity-title
-  padding-top: rem-calc(17)
+.region-logo + *
   padding-left: ($crest-logo-width + $column-gutter)
 
 
@@ -159,16 +163,23 @@ h1, h2
   // Entity Branding
   // ------------------------------------------------------
 
-  // make sure title is same hieght as search
+  $crest-logo-width: rem-calc(80)
+
   .header-branding
-    //padding-bottom: rem-calc(37)
+    
+    .vertical-center
+      min-height: $crest-logo-width
 
   .region-logo
-    padding-top: rem-calc(8)
+    //height: $crest-logo-width
+    margin-top: -($crest-logo-width/2)
+    max-width: $crest-logo-width
 
   #entity-title
     font-size: $h1-font-size
-    padding-top: rem-calc(16)
+
+  .region-logo + *
+    padding-left: $crest-logo-width + $column-gutter
 
 
   // Header region right
@@ -186,7 +197,7 @@ h1, h2
 
   .block-balt-apachesolr
     &, form
-      margin-bottom: 0
+      margin-bottom: 0!important
 
 
 +respond($menu-only)
