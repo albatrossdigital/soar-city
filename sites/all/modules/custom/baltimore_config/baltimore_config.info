@@ -1,0 +1,4 @@
+name = Baltimore Config
+description = Customizations for the Baltimore website
+core = 7.x
+

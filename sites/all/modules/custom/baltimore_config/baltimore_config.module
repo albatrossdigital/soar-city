@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * Implements hook_menu()
+ **/
+function baltimore_config_menu() {
+  $items['goverment/%'] = array(
+    'title' => 'Government Redirect',
+    'page callback' => 'baltimore_config_government_redirect',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Page callback to redriect to archive menu
+ **/
+function baltimore_config_government_redirect() {
+  drupal_goto('http://archive.baltimorecity.gov/' . request_uri());
+}
