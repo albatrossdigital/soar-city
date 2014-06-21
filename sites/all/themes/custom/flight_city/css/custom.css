@@ -1093,23 +1093,28 @@ html, body {
   text-align: left;
 }
 
-/* line 123, ../sass/layout/_main.sass */
+/* line 122, ../sass/layout/_main.sass */
+[class*="field-address"] {
+  line-height: 1.6;
+}
+
+/* line 129, ../sass/layout/_main.sass */
 p img:only-child {
   margin-bottom: 0;
 }
 
-/* line 127, ../sass/layout/_main.sass */
+/* line 133, ../sass/layout/_main.sass */
 .node img, .node iframe, .entity-bean img, .entity-bean iframe, .block img, .block iframe {
   margin-bottom: 1.42857rem;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 141, ../sass/layout/_main.sass */
+  /* line 147, ../sass/layout/_main.sass */
   #page-title, #section-title {
     font-size: 2.14286rem;
   }
 
-  /* line 146, ../sass/layout/_main.sass */
+  /* line 152, ../sass/layout/_main.sass */
   .l-main {
     padding-bottom: 6.42857rem;
   }
@@ -1122,14 +1127,14 @@ p img:only-child {
   .main .block-title {
     font-size: 2.14286rem;
   }
-  /* line 156, ../sass/layout/_main.sass */
+  /* line 162, ../sass/layout/_main.sass */
   .main .block-workbench,
   .main .block-flight-city-workbench {
     margin-bottom: 0.71429rem;
   }
 }
 @media only screen and (min-width: 68.64286em) {
-  /* line 165, ../sass/layout/_main.sass */
+  /* line 171, ../sass/layout/_main.sass */
   .medium-8.main {
     margin-left: 4.16667%;
   }
@@ -1959,12 +1964,8 @@ fieldset legend {
 [data-equalizer] .views-row.columns [data-equalizer-watch] {
   margin-bottom: 0;
 }
-/* line 21, ../sass/modules/_views.sass */
-[data-equalizer]:last-child .views-row.columns:after {
-  display: none;
-}
 
-/* line 38, ../sass/modules/_views.sass */
+/* line 33, ../sass/modules/_views.sass */
 .view-organizations .view-content > h3 {
   color: white;
   clear: left;
@@ -1983,19 +1984,19 @@ fieldset legend {
   -o-border-radius: 100%;
   border-radius: 100%;
 }
-/* line 54, ../sass/modules/_views.sass */
+/* line 49, ../sass/modules/_views.sass */
 .view-organizations .view-content > h3:first-child {
   margin-top: 0;
 }
-/* line 57, ../sass/modules/_views.sass */
+/* line 52, ../sass/modules/_views.sass */
 .view-organizations .view-content > h3:first-child + .views-row {
   margin-top: 0;
 }
-/* line 60, ../sass/modules/_views.sass */
+/* line 55, ../sass/modules/_views.sass */
 .view-organizations .view-content > h3:first-child + .views-row:before {
   display: none;
 }
-/* line 64, ../sass/modules/_views.sass */
+/* line 59, ../sass/modules/_views.sass */
 .view-organizations h3 + .views-row {
   margin-top: 3.21429rem;
 }
@@ -2015,20 +2016,20 @@ fieldset legend {
   padding-bottom: 0;
   border: 0;
 }
-/* line 68, ../sass/modules/_views.sass */
+/* line 63, ../sass/modules/_views.sass */
 .view-organizations h3 + .views-row:before {
   margin-left: -20.0%;
 }
-/* line 71, ../sass/modules/_views.sass */
+/* line 66, ../sass/modules/_views.sass */
 .view-organizations h3 + .views-row .views-field:first-child {
   padding-top: 0.71429rem;
 }
-/* line 74, ../sass/modules/_views.sass */
+/* line 69, ../sass/modules/_views.sass */
 .view-organizations .views-row {
   clear: right;
   padding-left: 16.66667%;
 }
-/* line 78, ../sass/modules/_views.sass */
+/* line 73, ../sass/modules/_views.sass */
 .view-organizations .views-row .views-field:first-child {
   min-height: 2.14286rem;
   -webkit-box-sizing: content-box;
@@ -2036,16 +2037,16 @@ fieldset legend {
   box-sizing: content-box;
 }
 
-/* line 87, ../sass/modules/_views.sass */
+/* line 82, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page .views-exposed-widgets {
   position: relative;
 }
-/* line 90, ../sass/modules/_views.sass */
+/* line 85, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page label {
   font-size: 1.14286rem;
   padding-top: 0.71429rem;
 }
-/* line 96, ../sass/modules/_views.sass */
+/* line 91, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page .form-item-combine {
   position: relative;
 }
@@ -2061,14 +2062,19 @@ fieldset legend {
 .block-views-exp-organizations-page .form-item-combine input {
   padding-right: 1.71429rem;
 }
-/* line 105, ../sass/modules/_views.sass */
+/* line 100, ../sass/modules/_views.sass */
 .block-views-exp-organizations-page .ajax-progress {
   position: absolute;
   bottom: -1.42857rem;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 128, ../sass/modules/_views.sass */
+  /* line 116, ../sass/modules/_views.sass */
+  [data-equalizer]:last-child .views-row.columns:after {
+    border-bottom: 0;
+  }
+
+  /* line 132, ../sass/modules/_views.sass */
   .view-organizations .view-content > h3 {
     font-size: 2.14286rem;
     margin-left: 4.16667%;
@@ -2076,15 +2082,15 @@ fieldset legend {
     line-height: 4.28571rem;
     width: 4.28571rem;
   }
-  /* line 138, ../sass/modules/_views.sass */
+  /* line 142, ../sass/modules/_views.sass */
   .view-organizations h3 + .views-row:before {
     margin-left: -33.33333%;
   }
-  /* line 141, ../sass/modules/_views.sass */
+  /* line 145, ../sass/modules/_views.sass */
   .view-organizations h3 + .views-row .views-field-title:first-child {
     padding-top: 1.42857rem;
   }
-  /* line 144, ../sass/modules/_views.sass */
+  /* line 148, ../sass/modules/_views.sass */
   .view-organizations .views-row {
     padding-left: 25%;
   }

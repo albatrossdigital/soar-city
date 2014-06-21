@@ -17,11 +17,6 @@
     [data-equalizer-watch]
       margin-bottom: 0
 
-  &:last-child
-    .views-row.columns:after
-      display: none
-
-
 
 
 // offset grouped views
@@ -113,6 +108,15 @@ $border-padding: rem-calc(35)
 // ******************************************************
 
 +respond($medium)
+  // Nice spaced out teasers for equalizer rows
+  // ----------------------------------------------------------------------------
+
+  [data-equalizer]
+    &:last-child
+      .views-row.columns:after
+        border-bottom: 0
+
+
 
   // offset grouped views
   // ----------------------------------------------------------------------------
