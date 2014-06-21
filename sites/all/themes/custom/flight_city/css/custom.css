@@ -782,20 +782,24 @@ html, body {
 
 /* line 62, ../sass/layout/_header.sass */
 .header-branding {
-  margin-bottom: 1.42857rem;
+  margin-bottom: 1.28571rem;
 }
-/* line 66, ../sass/layout/_header.sass */
+/* line 65, ../sass/layout/_header.sass */
+.header-branding.no-logo {
+  margin-bottom: 0.71429rem;
+}
+/* line 69, ../sass/layout/_header.sass */
 .header-branding h1 small, .header-branding h2 small {
   display: block;
   color: #deb64b;
   line-height: 0.7em;
 }
-/* line 72, ../sass/layout/_header.sass */
+/* line 75, ../sass/layout/_header.sass */
 .header-branding .vertical-center {
   min-height: 4.14286rem;
 }
 
-/* line 76, ../sass/layout/_header.sass */
+/* line 79, ../sass/layout/_header.sass */
 .region-logo {
   float: left;
   position: absolute;
@@ -803,111 +807,107 @@ html, body {
   top: 50%;
   max-width: 4.14286rem;
 }
-/* line 85, ../sass/layout/_header.sass */
+/* line 88, ../sass/layout/_header.sass */
 .region-logo img {
   margin-bottom: 0 !important;
 }
 
-/* line 88, ../sass/layout/_header.sass */
+/* line 91, ../sass/layout/_header.sass */
 #entity-title {
   font-size: 2.14286rem;
   line-height: 1.1;
   margin: 0;
 }
 
-/* line 93, ../sass/layout/_header.sass */
+/* line 96, ../sass/layout/_header.sass */
 .region-logo + * {
   padding-left: 5.57143rem;
 }
 
-/* line 101, ../sass/layout/_header.sass */
+/* line 104, ../sass/layout/_header.sass */
 .header-region-right .block {
   margin-bottom: 1.07143rem;
   float: left;
 }
-/* line 105, ../sass/layout/_header.sass */
+/* line 108, ../sass/layout/_header.sass */
 .header-region-right .f-dropdown {
   min-width: 200px;
   padding-bottom: 1.07143rem;
 }
-/* line 109, ../sass/layout/_header.sass */
+/* line 112, ../sass/layout/_header.sass */
 .header-region-right .f-dropdown a {
   display: inline-block;
 }
-/* line 112, ../sass/layout/_header.sass */
+/* line 115, ../sass/layout/_header.sass */
 .header-region-right .f-dropdown img {
   margin-bottom: 0.35714rem;
 }
 
-/* line 119, ../sass/layout/_header.sass */
+/* line 122, ../sass/layout/_header.sass */
 .block-bean-subscribe-link {
   margin-right: 1.42857rem;
 }
 
-/* line 125, ../sass/layout/_header.sass */
+/* line 128, ../sass/layout/_header.sass */
 .block-gtranslate .gtflag {
   display: block;
   float: left;
   padding: 0 2px !important;
 }
-/* line 130, ../sass/layout/_header.sass */
+/* line 133, ../sass/layout/_header.sass */
 .block-gtranslate .gtflag img {
   margin-bottom: 0;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 159, ../sass/layout/_header.sass */
+  /* line 162, ../sass/layout/_header.sass */
   .l-header-region {
     padding-top: 1.78571rem;
   }
 
-  /* line 170, ../sass/layout/_header.sass */
+  /* line 176, ../sass/layout/_header.sass */
   .header-branding .vertical-center {
     min-height: 5.71429rem;
   }
 
-  /* line 173, ../sass/layout/_header.sass */
+  /* line 179, ../sass/layout/_header.sass */
   .region-logo {
     margin-top: -2.85714rem;
     max-width: 5.71429rem;
   }
 
-  /* line 178, ../sass/layout/_header.sass */
+  /* line 184, ../sass/layout/_header.sass */
   #entity-title {
     font-size: 2.85714rem;
   }
 
-  /* line 181, ../sass/layout/_header.sass */
+  /* line 187, ../sass/layout/_header.sass */
   .region-logo + * {
     padding-left: 7.14286rem;
   }
 
-  /* line 188, ../sass/layout/_header.sass */
-  .header-region-right {
-    margin-top: -0.35714rem;
-  }
-  /* line 192, ../sass/layout/_header.sass */
+  /* line 198, ../sass/layout/_header.sass */
   .header-region-right .block {
     float: right;
   }
 
-  /* line 195, ../sass/layout/_header.sass */
+  /* line 201, ../sass/layout/_header.sass */
   .block-balt-apachesolr {
     width: 100%;
   }
 
-  /* line 199, ../sass/layout/_header.sass */
+  /* line 205, ../sass/layout/_header.sass */
   .block-balt-apachesolr, .block-balt-apachesolr form {
     margin-bottom: 0 !important;
   }
 }
 @media only screen and (min-width: 45.78571em) and (max-width: 58.92857em) {
-  /* line 204, ../sass/layout/_header.sass */
+  /* line 210, ../sass/layout/_header.sass */
   .header-branding {
     width: 58.33333%;
   }
 
-  /* line 207, ../sass/layout/_header.sass */
+  /* line 213, ../sass/layout/_header.sass */
   .header-region-right {
     width: 41.66667%;
   }

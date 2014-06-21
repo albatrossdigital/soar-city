@@ -34,7 +34,7 @@
 
     <!--.l-header-region -->
     <section class="l-header-region row">
-      <div class="medium-8 columns header-branding">
+      <div class="medium-8 columns header-branding<?php if (empty($page['logo'])) { print ' no-logo'; } ?>">
         <?php if (!empty($page['logo'])): ?>
           <div class="region-logo">
             <?php print render($page['logo']); ?>
