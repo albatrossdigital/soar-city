@@ -14,18 +14,6 @@
 #page-title, #section-title
   +h(page-title)
 
-  // page title hidden
-  .no-page-title &
-    +e(hide)
-
-  // hide page title on main domain top level view pages
-  .domain-main.views-page.menu-depth-1 &,
-  .domain-main.page-events &,
-  .domain-main.page-connect &
-    +e(hide)
-
-    & + *
-      padding-top: rem-calc(15)
 
 // Tabs
 // ----------------------------------------------------------------------------
@@ -56,11 +44,18 @@
 // Main Content
 // ----------------------------------------------------------------------------
 
-.main 
-
-  // page title hidden
-  .no-page-title &
+// page title hidden
+.no-page-title,
+.domain-main.views-page.menu-depth-1,
+.domain-main.page-events,
+.domain-main.page-connect
+  .main 
     padding-top: $header-bottom-margin
+
+  #page-title, #section-title
+    +e(hide)
+
+.main 
 
   // block spacing
   +main-verical-spacing()
