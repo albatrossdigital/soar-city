@@ -42,7 +42,7 @@
         <?php endif; ?>
         <?php if($entity_title): ?>
           <div class="vertical-center"><div class="vertical-center-inner">
-            <h2 id="entity-title" class="title"><?php print $entity_title; ?></h2>
+            <h2 id="entity-title" class="title"><a href="/" title="Go to homepage"><?php print $entity_title; ?></a></h2>
           </div></div>
         <?php endif; ?>
       </div>
