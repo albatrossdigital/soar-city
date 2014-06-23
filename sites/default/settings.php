@@ -661,6 +661,8 @@ if (!isset($_SERVER['PANTHEON_ENVIRONMENT']) && empty($databases['default']['def
   );
 }
 
+print print_r($_SERVER,1);
+
 
 // Ifsight-specific api settings
 //$conf['smtp_host'] = 'smtp.sendgrid.com';
