@@ -218,6 +218,8 @@ function balt_apachesolr_build_apachesolr_form() {
     preg_match(BALT_APACHESOLR_URL_MATCH, $form['#action'], $matches);
     if(count($matches) == 2) {
       $url = array_pop($matches);
+      $pos = strpos($url, '/');
+      $url = ($pos > 0) ? substr($url, 0, $pos + 1) : $url;
       $form['#action'] = BALT_APACHESOLR_URL_REPLACE . $url;
     }
     // add domain to facets
