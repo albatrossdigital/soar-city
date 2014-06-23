@@ -1,8 +1,10 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the Baltimore GovDelivery feature.
  */
+
+include_once 'baltimore_govdelivery.features.inc';
 
 
 /**
