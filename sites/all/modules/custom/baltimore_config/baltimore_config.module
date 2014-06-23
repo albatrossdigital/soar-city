@@ -1,10 +1,12 @@
 <?php
 
+define('BALTIMORE_ARCHIVE', 'http://archive.baltimorecity.gov');
+
 /**
  * Implements hook_menu()
  **/
 function baltimore_config_menu() {
-  $items['goverment/%'] = array(
+  $items['government/%'] = array(
     'title' => 'Government Redirect',
     'page callback' => 'baltimore_config_government_redirect',
     'access callback' => TRUE,
@@ -17,5 +19,5 @@ function baltimore_config_menu() {
  * Page callback to redriect to archive menu
  **/
 function baltimore_config_government_redirect() {
-  drupal_goto('http://archive.baltimorecity.gov/' . request_uri());
+  drupal_goto(BALTIMORE_ARCHIVE . request_uri());
 }
