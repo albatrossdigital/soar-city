@@ -650,7 +650,7 @@ else {
 
 // Set up db settings for Blackmesh.
 // We do this here because they need to be set in drush to avoid fatal errors.
-if (!isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
+if (!isset($_SERVER['PANTHEON_ENVIRONMENT']) && empty($databases['default']['default'])) {
   $databases['default']['default'] = array(
     'driver' => 'mysql',
     'database' => 'baltimore',
