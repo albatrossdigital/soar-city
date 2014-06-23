@@ -567,7 +567,7 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
 
 // Set up db settings for Blackmesh.
 // We do this here because they need to be set in drush to avoid fatal errors.
-if (!isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
+if (!isset($_SERVER['PANTHEON_SITE_NAME'])) {
   $databases['default']['default'] = array(
     'driver' => 'mysql',
     'database' => 'baltimore',
