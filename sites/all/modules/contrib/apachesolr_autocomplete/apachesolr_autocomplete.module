@@ -304,8 +304,11 @@ function apachesolr_autocomplete_suggest($keys, $params, $theme_callback, $orig_
   }
   apachesolr_search_add_boost_params($query);
 
+  //dpm($query->getParams());
+
   // Query Solr
   $response = $query->search($keys);
+  //dpm($response);
   // Loop through requested fields and get suggestions.
   foreach ($params['facet.field'] as $field) {
     foreach ($response->facet_counts->facet_fields->{$field} as $terms => $count) {
