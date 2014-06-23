@@ -432,9 +432,11 @@ function balt_apachesolr_autocomplete_answers($keys = '') {
   $query->addParam('fl', 'label');
   $query->addParam('fq', 'label:' . $last_part);
   $query->addParam('fq', 'bundle_name:How do I');
+  $query->addParam('q', '*:*');
   
   //dpm($query->getParams());
   $response = $query->search();
+
   // Add current search as suggestion if results > 0
   if ($response->response->numFound > 0 && $keys != '') {
     foreach ($response->response->docs as $doc) {
