@@ -563,6 +563,22 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  */
 # $conf['pressflow_smart_start'] = TRUE;
 
+
+
+// Set up db settings for Blackmesh.
+// We do this here because they need to be set in drush to avoid fatal errors.
+if (!isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
+  $databases['default']['default'] = array(
+    'driver' => 'mysql',
+    'database' => 'baltimore',
+    'username' => 'baltimore',
+    'password' => 'B8DaqM5d`j$O',
+    'host' => '548eldb01.blackmesh.com',
+    'prefix' => '',
+  );
+}
+
+
 # Make domain access work on Pantheon
 # See http://helpdesk.getpantheon.com/customer/portal/articles/381152-reading-pantheon-environment-configuration for details
 if (isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
@@ -647,20 +663,6 @@ else {
   $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 1;
   $cookie_domain = '.baltimore.ifsight.com';
 }
-
-// Set up db settings for Blackmesh.
-// We do this here because they need to be set in drush to avoid fatal errors.
-if (!isset($_SERVER['PANTHEON_SITE_NAME'])) {
-  $databases['default']['default'] = array(
-    'driver' => 'mysql',
-    'database' => 'baltimore',
-    'username' => 'baltimore',
-    'password' => 'B8DaqM5d`j$O',
-    'host' => '548eldb01.blackmesh.com',
-    'prefix' => '',
-  );
-}
-
 
 // Ifsight-specific api settings
 //$conf['smtp_host'] = 'smtp.sendgrid.com';
