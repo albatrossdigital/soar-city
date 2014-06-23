@@ -21,3 +21,7 @@ function baltimore_config_menu() {
 function baltimore_config_government_redirect() {
   drupal_goto(BALTIMORE_ARCHIVE . request_uri());
 }
+
+function baltimore_config_form_user_register_form_alter(&$form, $form_state) {
+  $form['account']['notify']['#default_value'] = TRUE;
+}
