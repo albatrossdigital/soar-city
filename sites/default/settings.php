@@ -650,7 +650,7 @@ else {
 
 // Set up db settings for Blackmesh.
 // We do this here because they need to be set in drush to avoid fatal errors.
-if (!isset($_SERVER['PANTHEON_ENVIRONMENT']) && empty($databases['default']['default'])) {
+if (!isset($_SERVER['PANTHEON_SITE_NAME'])) {
   $databases['default']['default'] = array(
     'driver' => 'mysql',
     'database' => 'baltimore',
@@ -660,8 +660,6 @@ if (!isset($_SERVER['PANTHEON_ENVIRONMENT']) && empty($databases['default']['def
     'prefix' => '',
   );
 }
-
-print print_r($_SERVER,1);
 
 
 // Ifsight-specific api settings
