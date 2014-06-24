@@ -79,13 +79,14 @@
 
     // Hide border
     &:after
-      +e(hide)
+      border: 0
 
   // Main
   // ----------------------------------------------------------------------------
 
   .l-main
     padding-bottom: 0
+    padding-top: $small-main-spacing
 
   // unset main wrapper width
   #dnn_ContentPane
@@ -100,6 +101,9 @@
   .l-content-bottom-triple
     //max-width: $row-width
     +grid-row()
+
+    &:before
+      border: 0
 
     .block
       margin-bottom: rem-calc(20)
@@ -122,15 +126,15 @@
   .l-content-bottom-1
     background: $white
 
+
     &:before
-      display: none
+      display: none!important
 
     .block
       margin-bottom: 0
 
   .content-bottom-full
     //max-width: $row-width
-    //padding: $medium-main-spacing 0
     +grid-row()
     float: none
     padding-left: 0
@@ -305,6 +309,9 @@
     // Main
     // ----------------------------------------------------------------------------
 
+    .l-main
+      padding-top: $medium-main-spacing
+
     .block-views-news-block-4
       +block-with-top-border(medium)
 
@@ -327,6 +334,9 @@
     .content-bottom-triple-right
       padding-left: rem-calc(210) + rem-calc(35)
       width: grid-calc(7, 12)
+
+    .content-bottom-full
+      padding-top: $medium-main-spacing
 
 
 +respond($large-up)
