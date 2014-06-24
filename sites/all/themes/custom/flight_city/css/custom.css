@@ -850,7 +850,7 @@ html, body {
 }
 
 /* line 122, ../sass/layout/_header.sass */
-.block-bean-subscribe-link {
+.block-gov-subscribe-link {
   margin-right: 1.42857rem;
 }
 
@@ -2744,7 +2744,7 @@ ul[data-orbit] ~ .orbit-next:before {
   }
   /* line 141, ../sass/modules/_off-canvas.sass */
   .header-region-right .right-off-canvas-menu .block-balt-apachesolr, .header-region-right
-  .right-off-canvas-menu .block-bean-subscribe-link, .header-region-right
+  .right-off-canvas-menu .block-gov-subscribe-link, .header-region-right
   .right-off-canvas-menu .block-gtranslate-gtranslate {
     display: none;
   }
@@ -2754,11 +2754,11 @@ ul[data-orbit] ~ .orbit-next:before {
     padding-top: 0.71429rem;
   }
   /* line 149, ../sass/modules/_off-canvas.sass */
-  .right-off-canvas-menu .block-bean-subscribe-link {
+  .right-off-canvas-menu .block-gov-subscribe-link {
     margin-top: -1.07143rem;
   }
   /* line 152, ../sass/modules/_off-canvas.sass */
-  .right-off-canvas-menu .block-bean-subscribe-link,
+  .right-off-canvas-menu .block-gov-subscribe-link,
   .right-off-canvas-menu .block-gtranslate-gtranslate {
     padding-left: 1.42857rem;
   }
@@ -2814,7 +2814,7 @@ ul[data-orbit] ~ .orbit-next:before {
 
   /* line 201, ../sass/modules/_off-canvas.sass */
   .top-bar .block-balt-apachesolr, .top-bar
-  .block-bean-subscribe-link, .top-bar
+  .block-gov-subscribe-link, .top-bar
   .block-gtranslate-gtranslate {
     display: none;
   }
@@ -3583,7 +3583,7 @@ ol.search-results .search-snippet-info {
     width: 33.33333%;
   }
   /* line 234, ../sass/theme/_front-pages.sass */
-  .front.domain-main .block-bean-subscribe-link {
+  .front.domain-main .block-gov-subscribe-link {
     position: absolute;
     right: 15.28571rem;
     min-width: 6.42857rem;
