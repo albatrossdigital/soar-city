@@ -63,8 +63,6 @@ function apachesolr_index_entities($env_id, $limit) {
       $documents = array_merge($documents, $row_documents);
     }
 
-    dpm($documents);
-    dpm($row_documents);
     $indexed = !empty($documents) ? apachesolr_index_send_to_solr($env_id, $documents) : FALSE;
     if ($indexed !== FALSE) {
       $documents_submitted += count($documents);
