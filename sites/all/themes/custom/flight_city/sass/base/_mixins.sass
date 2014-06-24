@@ -664,11 +664,14 @@ $common-border: common-border-val()
 
 
 
-@mixin main-verical-spacing($display: 'mobile')
+@mixin main-vertical-spacing($display: 'mobile')
 
   @if $display == 'mobile'
     .block
       margin-bottom: $small-main-block-spacing
+
+      &:last-child
+        margin-bottom: 0
 
     .block-title
       +h(page-title)
@@ -676,6 +679,9 @@ $common-border: common-border-val()
   @else 
     .block
       margin-bottom: $medium-main-block-spacing
+
+      &:last-child
+        margin-bottom: 0
 
     .block-title
       font-size: $h2-font-size
@@ -718,9 +724,14 @@ $common-border: common-border-val()
 @mixin block-with-top-border($display: 'mobile', $more: true)
 
   @if $display == 'mobile'
+    border-top: common-border-val()
     margin-top: $small-main-block-spacing
     padding-top: $small-main-block-spacing/2
-    border-top: common-border-val()
+
+  @else if $display == "hide"
+    border-top: 0
+    margin-top: 0
+    padding-top: 0
 
   @else 
     margin-top: $medium-main-block-spacing
@@ -876,7 +887,7 @@ $common-border: common-border-val()
 
 
 // Side bar menu styles
-@mixin side-bar-menu($menu: 'ul.menu', $title: 'h2.block-title, h4', $active: 'a.active, li.active-trail a', $more-link: false, $highlight: '.highlighted a')
+@mixin side-bar-menu($menu: 'ul.menu', $title: 'h2.block-title, h4', $active: 'a.active, li.active-trail a', $more-link: '.view-footer > a, .more-link a', $highlight: '.highlighted a')
  
   #{$title}
     margin-top: rem-calc(10)
@@ -917,15 +928,13 @@ $common-border: common-border-val()
       padding: rem-calc(10 20 10 17)
 
   @if $more-link
-    .more-link 
+    #{$more-link} 
+      border-left: 3px solid transparent
+      line-height: $paragraph-line-height
+      display: block
+      padding: rem-calc(10 20 10 17)
       text-align: left
-
-      a
-        border-left: 3px solid transparent
-        line-height: $paragraph-line-height
-        display: block
-        padding: rem-calc(10 20 10 17)
-        +f(alt-alt)
+      +f(alt-alt)
       
 
 

@@ -6,14 +6,10 @@
 .field-collection-item-field-link-collection,
 .vocabulary-event-category.view-mode-teaser,
 .vocabulary-faq-category.view-mode-teaser,
-.vocabulary-payment-type.view-mode-teaser
+.vocabulary-payment-type.view-mode-teaser,
+.node-program.node-teaser
   position: relative
   text-align: center
-  margin-bottom: $small-region-pad-large
-
-  h3, h4
-    a 
-      +c(link-header)
 
   &:hover,
   &.active
@@ -22,11 +18,22 @@
       opacity: 1
 
 
+// Color Header links black
+.field-collection-item-field-link-collection,
+.vocabulary-event-category.view-mode-teaser,
+.vocabulary-faq-category.view-mode-teaser,
+.vocabulary-payment-type.view-mode-teaser
+  h3, h4
+    a 
+      +c(link-header)
+
+
 // Wrapper as full link
 .field-collection-item-field-link-collection,
 .vocabulary-event-category.view-mode-teaser
   cursor: pointer
   +c(link-header-full)
+  margin-bottom: $small-region-pad-large
   
   .field-name-field-link
     line-height: 1.4
@@ -46,7 +53,8 @@
 .field-collection-item-field-link-collection,
 .vocabulary-event-category.view-mode-teaser,
 .vocabulary-faq-category.view-mode-teaser,
-.vocabulary-payment-type.view-mode-teaser
+.vocabulary-payment-type.view-mode-teaser,
+.node-program.node-teaser
   &:hover,
   &.active
 
@@ -55,7 +63,7 @@
       padding-bottom: rem-calc(8)
 
   .circle-icon
-    display: block
+    display: inline-block
     +transition(all ease-in 0.05s)
     position: relative
 
@@ -65,7 +73,11 @@
 
 .vocabulary-event-category.view-mode-teaser,
 .vocabulary-faq-category.view-mode-teaser,
-.vocabulary-payment-type.view-mode-teaser
+.vocabulary-payment-type.view-mode-teaser,
+.node-program.node-teaser
+
+  .group-left
+    margin-bottom: $small-region-pad-large
   
   .group-left, .group-right
 
@@ -99,17 +111,18 @@
 
 +respond($medium-up)
 
-  // Just Wrapper 
+  // Wrapper as full link
   .field-collection-item-field-link-collection,
-  .vocabulary-event-category.view-mode-teaser,
-  .vocabulary-faq-category.view-mode-teaser,
-  .vocabulary-payment-type.view-mode-teaser
+  .vocabulary-event-category.view-mode-teaser
     margin-bottom: 0
 
   // Side by side views
   // --------------------------
 
-  .vocabulary-event-category.view-mode-teaser
-    
-    .group-left, .group-right
-      //min-height: rem-calc(120)
+  .vocabulary-event-category.view-mode-teaser,
+  .vocabulary-faq-category.view-mode-teaser,
+  .vocabulary-payment-type.view-mode-teaser,
+  .node-program.node-teaser
+
+    .group-left
+      margin-bottom: 0

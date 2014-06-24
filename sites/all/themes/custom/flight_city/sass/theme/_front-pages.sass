@@ -19,16 +19,15 @@
 
   
   &:not(.domain-main)
-    .block-views-news-block,
-    .block[class*="featured-programs"]
+    // all main blocks except for first 2
+    .main > .block + .block ~ .block
       +block-with-top-border()
 
     .l-content-bottom-1
-      padding-top: 0
-      +nice-row-border($column-gutter/2, $small-main-block-spacing/2, 1px solid $gray, top, hidden)
+      
 
       .block
-        margin-bottom: 1em
+        //margin-bottom: 1em
 
 
 
@@ -141,7 +140,7 @@
       +column-padding()
 
   .l-triptych
-    +side-bar-menu('.item-list ul', '.block-title', 'li.active a', true)
+    +side-bar-menu('.item-list ul', '.block-title', 'li.active a')
 
     .block-title
       text-align: center
@@ -207,7 +206,7 @@
     // ----------------------------------------------------------------------------
 
     .content-bottom-triple-center
-      +block-with-top-border()
+      +nice-row-border(0, $small-main-block-spacing/2, 1px solid $gray, top, hidden)
       text-align: center
 
       .block
@@ -261,10 +260,6 @@
 
       .block[class$="featured-programs"]
         +block-with-top-border(medium, false)
-
-      .l-content-bottom-1
-        &:before
-          margin-top: $medium-main-block-spacing/2
 
   // Uber front
   // ----------------------------------------------------------------------------

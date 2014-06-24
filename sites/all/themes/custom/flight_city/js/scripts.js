@@ -25,21 +25,25 @@
   domain = domain.substring(domain.indexOf('.') + 1);
   //var reg = RegExp('/[^#]|^mailto|' + window.location.host + '/');
 
+  // toggle items switch from header area
+  // to topbar on "past-menu" media query
+  // searchInTopbar == false if in header, true if in topbar 
+  var searchInTopbar = true;
+
   Drupal.behaviors.flight_city = {
     attach: function(context, settings) {
 
       // Open links in new window
       $("a[href^='http']").not("[href*='" + domain + "']").attr('target','_blank');
 
-      // toggle items switch from header area
-      // to topbar on "past-menu" media query
-      // searchInTopbar == false if in header, true if in topbar 
-      var $toggleItems = $('section.block-balt-apachesolr, section.block-gtranslate-gtranslate, section.block-bean-subscribe-link'),
-        $headerRegion = $('.l-header-region > .header-region-right'),
-        $offCanvas = $('aside.right-off-canvas-menu'),
-        searchInTopbar = true,
-        $body = $('body'),
-        $page = $body.children('.page');
+        // toggle items switch from header area
+        // to topbar on "past-menu" media query
+        // searchInTopbar == false if in header, true if in topbar 
+        var $toggleItems = $('section.block-balt-apachesolr, section.block-gtranslate-gtranslate, section.block-bean-subscribe-link'),
+          $headerRegion = $('.l-header-region > .header-region-right'),
+          $offCanvas = $('aside.right-off-canvas-menu'),
+          $body = $('body'),
+          $page = $body.children('.page');
 
       // toggle search from header to topbar
       function toggleSearch(topbar) {

@@ -58,7 +58,7 @@
 .main 
 
   // block spacing
-  +main-verical-spacing()
+  +main-vertical-spacing()
 
   .block-workbench,
   .block-flight-city-workbench
@@ -72,6 +72,15 @@
   & > .row:not(.node)
     padding-top: $small-main-spacing
     padding-bottom: $small-main-spacing
+
+
+// Lower sections 
+.l-content-bottom-1
+  & > .medium-6
+    +block-with-top-border('mobile', false)
+
+    &:first-child
+      margin-top: 0
 
 
 // Common fields
@@ -152,11 +161,23 @@ p img:only-child
   // ----------------------------------------------------------------------------
 
   .main 
-    +main-verical-spacing('medium')
+    +main-vertical-spacing('medium')
 
     .block-workbench,
     .block-flight-city-workbench
       margin-bottom: $small-region-pad-small
+
+  // Lower content
+  // ----------------------------------------------------------------------------
+
+  .main 
+    & > .row:not(.node)
+      padding-top: 0
+      +nice-row-border($column-gutter/2, $small-main-block-spacing/2, 1px solid $gray, top, hidden)
+
+  .l-content-bottom-1
+    & > .medium-6
+      +block-with-top-border('hide')
 
 
 
