@@ -65,7 +65,7 @@ function flight_city_311_block_view($delta = '') {
  * The request lookup form.
  */
 function flight_city_311_search_form($form, &$form_state, $topics = array()) {
-  $form['#attributes'] = array('class' => array('row', 'collapse'));
+  $form['#attributes'] = array('class' => array('clearfix'));
   $form['#action'] = 'https://baltimore.customerservicerequest.org/web_intake_balt/StatusCheck.mvc/StatusCheck';//'http://csr.baltimorecity.gov/Search.aspx';
   $form['#method'] = 'POST';
 
