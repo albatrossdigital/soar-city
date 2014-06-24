@@ -20,7 +20,7 @@ function views_foundation_equalizer_views_plugins() {
         'uses row plugin' => TRUE,
         'uses options' => TRUE,
         'uses row class' => TRUE,
-        'uses grouping' => FALSE,
+        'uses grouping' => TRUE,
         'type' => 'normal',
         'theme' => 'views_foundation_equalizer',
         'theme path' => $path . '/theme',
