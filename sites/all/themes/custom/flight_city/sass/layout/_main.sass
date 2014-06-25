@@ -160,8 +160,20 @@ p img:only-child
   // Main Content
   // ----------------------------------------------------------------------------
 
+  // page title hidden
+  .no-page-title,
+  .domain-main.views-page.menu-depth-1,
+  .domain-main.page-events,
+  .domain-main.page-connect
+    .main.medium-12
+      padding-top: rem-calc(15)
+
   .main 
     +main-vertical-spacing('medium')
+
+    // center main in columns
+    &.medium-8
+      margin-left: (grid-calc(1, 12)/2)
 
     .block-workbench,
     .block-flight-city-workbench
@@ -183,6 +195,4 @@ p img:only-child
 
 +respond($large-up)
 
-  // center main in columns
-  .medium-8.main
-    margin-left: (grid-calc(1, 12)/2)
+  

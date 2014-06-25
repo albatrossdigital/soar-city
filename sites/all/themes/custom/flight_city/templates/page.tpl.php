@@ -91,7 +91,7 @@
   <main role="main" class="l-main off-canvas-wrap" data-offcanvas><div class="inner-wrap"><div id="dnn_ContentPane" class="row">
     <div class="<?php print $main_grid; ?> main columns">
       <?php if (!empty($page['highlighted'])): ?>
-        <div class="highlight panel callout">
+        <div class="highlight panel">
           <?php print render($page['highlighted']); ?>
         </div>
       <?php endif; ?>

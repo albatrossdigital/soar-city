@@ -39,7 +39,7 @@
         // toggle items switch from header area
         // to topbar on "past-menu" media query
         // searchInTopbar == false if in header, true if in topbar 
-        var $toggleItems = $('section.block-balt-apachesolr, section.block-gtranslate-gtranslate, section.block-gov-subscribe-link'),
+        var $toggleItems = $('section.block-balt-apachesolr-balt-search-form, section.block-gtranslate-gtranslate, section.block-gov-subscribe-link'),
           $headerRegion = $('.l-header-region > .header-region-right'),
           $offCanvas = $('aside.right-off-canvas-menu'),
           $body = $('body'),

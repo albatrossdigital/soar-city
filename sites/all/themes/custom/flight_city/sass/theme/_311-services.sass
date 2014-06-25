@@ -2,30 +2,35 @@
 // ---------------------------------------------------------------------------- 
 .page-311-services
 
-  main
+  .l-main
 
-    .medium-3
-      h2.block-title
-        font-size: $h3-font-size
-        +f(alt)
+  .sidebar-first.sidebar
+    h2.block-title
+      font-size: $h3-font-size
+      +f(alt)
 
-      // Add search icon
-      .form-item-search
-        +search-icon-on-input()
+    #secondary-wrapper
+      overflow: visible!important
 
-    .medium-8.medium-push-3
-      border-left: 1px solid $gray
-      margin-left: 2.167%
-      padding-left: 2%
+    // Add search icon
+    .form-item-search
+      +search-icon-on-input()
 
-      .view-311-home.view-display-id-page
-        
-        height: 300px
-        overflow-x: hidden
-        overflow-y: auto
+  .main
+    //border-left: 1px solid $gray
+    //margin-left: 2.167%
+    //padding-left: 2%
+
+    .view-311-home.view-display-id-page
+      
+      height: 300px
+      overflow-x: hidden
+      overflow-y: auto
 
   .l-triptych
+    +nice-row-border($column-gutter/2, $small-main-block-spacing/2, 1px solid $gray, top, hidden)
     +side-bar-menu('.item-list ul, .block-bean > ul', '.block-title', 'li.active a')
+    padding-top: 0
 
     .block-title
       text-align: center
@@ -53,3 +58,17 @@
 
       .view-311-home.view-display-id-page
         margin-top: 2.5em
+
+
++respond($past-menu)
+
+  // 311 Services page
+  // ---------------------------------------------------------------------------- 
+  .page-311-services
+
+    .l-main
+
+    .sidebar-first.sidebar
+
+      form
+        +panel()

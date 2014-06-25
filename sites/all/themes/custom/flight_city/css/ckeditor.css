@@ -4817,11 +4817,11 @@ ul.pagination li {
 /* line 74, ../sass/vendor/foundation/components/_panels.scss */
 .panel {
   border-style: solid;
-  border-width: 1px;
-  border-color: #d8d8d8;
+  border-width: 0;
+  border-color: #f8e2a7;
   margin-bottom: 1.42857rem;
   padding: 1.42857rem;
-  background: #f2f2f2;
+  background: #fcf2d7;
 }
 /* line 52, ../sass/vendor/foundation/components/_panels.scss */
 .panel > :first-child {
@@ -4833,7 +4833,7 @@ ul.pagination li {
 }
 /* line 58, ../sass/vendor/foundation/components/_panels.scss */
 .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p {
-  color: #333333;
+  color: #111111;
 }
 /* line 62, ../sass/vendor/foundation/components/_panels.scss */
 .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6 {
@@ -4847,7 +4847,7 @@ ul.pagination li {
 /* line 76, ../sass/vendor/foundation/components/_panels.scss */
 .panel.callout {
   border-style: solid;
-  border-width: 1px;
+  border-width: 0;
   border-color: #b9eefb;
   margin-bottom: 1.42857rem;
   padding: 1.42857rem;
@@ -4863,7 +4863,7 @@ ul.pagination li {
 }
 /* line 58, ../sass/vendor/foundation/components/_panels.scss */
 .panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6, .panel.callout p {
-  color: #333333;
+  color: #111111;
 }
 /* line 62, ../sass/vendor/foundation/components/_panels.scss */
 .panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6 {
