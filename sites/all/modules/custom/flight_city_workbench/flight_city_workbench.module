@@ -106,6 +106,21 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
 }
 
 
+/**
+ * Implements hook_taxonomy_term_presave().
+ * Force domain_taxonomy values to be stored on terms created with Tagging widget.
+ */
+function flight_city_workbench_taxonomy_term_insert($term) {
+  if (empty($term->domains)) {
+    $domain = domain_get_domain();
+    $domain = $domain['domain_id'];
+    $term->domains = array($domain => $domain);
+    $term->domain_source = $domain;
+    domain_taxonomy_save_term($term);
+  }
+}
+
+
 
 
 /**
