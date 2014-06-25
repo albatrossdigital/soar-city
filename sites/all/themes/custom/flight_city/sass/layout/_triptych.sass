@@ -7,8 +7,38 @@
   .block
     margin-bottom: $small-main-block-spacing
 
+  form
+    +panel(lighten($gray, 18%))
+    margin-left: 5%
+    margin-right: 5%
+
+
+
 .triptych-first
 
 .triptych-middle
 
 .triptych-last
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($medium-up)
+  .l-triptych
+
+    form
+      margin-top: rem-calc(25)
+
++respond($menu-only)
+
+  .l-triptych
+
+    form
+      margin-right: 0
+      margin-left: 0
+  
+
++respond($past-menu)

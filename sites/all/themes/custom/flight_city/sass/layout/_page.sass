@@ -32,6 +32,37 @@ html,body
   [class*="column"] + [class*="column"]:last-child
     float: left
 
+
+// Hide other page elements on help pages, popups
+
+.node-type-help
+  .page
+    margin-top: 0!important
+
+  // hide bars
+  #admin-menu, 
+  #navbar-administration
+    +e(hide)
+
+  // hide header elements
+  .l-header
+    +e(hide)
+
+  // Hide home breadcrumb
+  ul.breadcrumbs
+    li:first-child
+      display: none!important
+
+      & + li
+        padding-left: 0
+
+        &:before
+          display: none  
+
+  // hide footer elements
+  .l-footer-top, .l-footer-sections-top, .l-footer-sections-bottom
+    +e(hide)
+
 // *
 // * Media Queries
 // *

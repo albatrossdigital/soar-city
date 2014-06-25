@@ -3,9 +3,16 @@
 // ---------------------------------------------------------------------------- 
 .page-answers
 
-  .block-bean-citywide-faq-top-searches,
-  .block-search-form
-    //@todo
+  .highlight
+    .block
+
+    form
+      input[type="text"]
+        +big-input()
+
+  .block-bean-citywide-faq-top-searches
+    .content
+      ul
 
 
 .vocabulary-faq-category.view-mode-teaser
@@ -66,3 +73,23 @@
           &:before
             //@todo
             //content: '\f178'
+
+
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($medium-up)
+
+  // How do I landing page
+  // ---------------------------------------------------------------------------- 
+  .page-answers
+
+    .highlight
+      +clearfix(false)
+
+      .block
+        +grid-column(6)

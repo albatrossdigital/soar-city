@@ -1032,12 +1032,15 @@ $main-menu-border-size: rem-calc(3)
   input
     padding-right: rem-calc(24)
 
+@mixin big-input()
+  font-size: rem-calc(16)
+  margin-bottom: rem-calc(10)
+  padding: ($form-spacing * 1.5)  $form-spacing
+
 
 @mixin big-form()
   +all-form-inputs(true)
-    font-size: rem-calc(16)
-    margin-bottom: rem-calc(10)
-    padding: ($form-spacing * 1.5)  $form-spacing
+    +big-input()
 
   .form-textarea-wrapper, .fieldset-description
     margin-bottom: rem-calc(10)
