@@ -121,8 +121,6 @@ function flight_city_workbench_taxonomy_term_insert($term) {
 }
 
 
-
-
 /**
  * Helper function removes the parent taxonomy menu item and strips out the leading "-".
  */
