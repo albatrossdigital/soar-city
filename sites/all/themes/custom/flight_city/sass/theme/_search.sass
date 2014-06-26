@@ -112,6 +112,18 @@ ol.search-results
 
   .search-snippet-info
     padding-left: 0
+
+.search-result
+  &.bundle-payment_type,
+  &.bundle-faq
+    h3
+      padding-top: rem-calc(5)
+
+  &.bundle-payment_type
+    +fake-icon-circle-box-side($red, 'money')
+
+  &.bundle-faq
+    +fake-icon-circle-box-side($blue, 'question')
     
 
 

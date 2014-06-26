@@ -26,6 +26,7 @@ $gray-lighter: #f3f3f3
 $gray-light: #e5e5e5
 $gray-border: #ddd
 $gray: #ccc
+$gray-dark-off: #686D72
 $gray-dark: #626262
 $gray-date: #707070
 $gray-bread-crumb: #7f7f7f
@@ -92,7 +93,8 @@ $icon-area-font-size: rem-calc(40)
 $small-icon-area-dimension: 60px
 $small-icon-area-font-size: rem-calc(30)
 
-
+$tiny-icon-area-dimension: 35px
+$tiny-icon-area-font-size: rem-calc(18)
 
 
 // Layout
@@ -200,6 +202,7 @@ $body-font-weight: $font-weight-normal
 // We use these as default colors throughout
 $primary-color: $blue-link
 $secondary-color: $gray-light
+$secondary-alt-color: $gray-dark-off
 $alert-color: $red
 $success-color: $green
 $warning-color: $yellow
@@ -288,6 +291,7 @@ $header-bottom-margin: rem-calc(16)
 // We use these to control header font sizes
 $h1-font-size: rem-calc(40)
 $h2-font-size: rem-calc(30)
+$mobile-h1-size: $h2-font-size*.9
 $h3-font-size: rem-calc(22)
 $h4-font-size: rem-calc(16)
 $h5-font-size: rem-calc(16)
@@ -512,7 +516,7 @@ $bg: $primary-color
 // $button-border-color: scale-color($bg, $lightness: $button-function-factor);
 
 // We use this to set the default radius used throughout the core.
-$button-radius: 0
+$button-radius: 3px
 $button-round: $global-rounded
 
 // We use this to set default opacity for disabled buttons.

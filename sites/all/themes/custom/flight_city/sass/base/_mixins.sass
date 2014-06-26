@@ -763,6 +763,10 @@ $common-border: common-border-val()
   font-size: $small-icon-area-font-size
   line-height: $small-icon-area-dimension
 
+%tiny-icon-circle-icon
+  font-size: $tiny-icon-area-font-size
+  line-height: $tiny-icon-area-dimension
+
 %icon-circle-icon-dimensions
   height: $icon-area-dimension
   width: $icon-area-dimension
@@ -771,22 +775,27 @@ $common-border: common-border-val()
   height: $small-icon-area-dimension
   width: $small-icon-area-dimension
 
+%tiny-icon-circle-icon-dimensions
+  height: $tiny-icon-area-dimension
+  width: $tiny-icon-area-dimension
+
 @mixin icon-circle-icon($main: 'i', $add-dimensions: 'i, .color-link', $core: true, $size: large)
   #{$main} 
     @if $core
       @extend %icon-circle-icon-core
 
-    @if $size == small
-      @extend %small-icon-circle-icon
-
-    @else 
+    @if $size == large
       @extend %icon-circle-icon
 
+    @else if $size
+      @extend %#{$size}-icon-circle-icon
+
   #{$add-dimensions}
-    @if $size == small 
-      @extend %small-icon-circle-icon-dimensions
-    @else
+    @if $size == large 
       @extend %icon-circle-icon-dimensions
+
+    @else if $size
+      @extend %#{$size}-icon-circle-icon-dimensions
 
 %icon-color-circle-core
   left: 50%
@@ -801,15 +810,50 @@ $common-border: common-border-val()
 %small-icon-color-circle
   margin-left: -($small-icon-area-dimension/2)
 
+%tiny-icon-color-circle
+  margin-left: -($tiny-icon-area-dimension/2)
+
+%icon-color-circle-left
+  left: 0
+  top: 0
+  position: absolute
+  +border-radius(100%)
+  z-index: 1
+
 @mixin icon-color-circle($core: true, $size: large)
   @if $core
     @extend %icon-color-circle-core
 
-  @if $size == small 
-    @extend %small-icon-color-circle
-
-  @else 
+  @if $size == large 
     @extend %icon-color-circle
+
+  @else if $size
+    @extend %#{$size}-icon-color-circle
+
+@mixin fake-icon-core($color, $icon: 'map-marker', $child: '.block-title', $size: large, $layout: center)
+  &:before 
+    content: " " 
+    background: $color
+
+  // construct child selector
+  $child-select: '#{$child}:before'
+  $child-select-other: '&:before, #{$child}:before'
+
+  #{$child-select-other}
+    @if $layout == center
+      +icon-color-circle(true, $size)
+
+    @else if $layout
+      @extend %icon-color-circle-#{$layout}
+
+    text-align: center
+
+  // call icon styles
+  +icon-circle-icon($child-select, $child-select-other, true, $size)
+  
+  // icon
+  #{$child}
+    +icon-only($icon)
 
 @mixin fake-icon-circle-box($color, $icon: 'map-marker', $child: '.block-title', $size: large)
   position: relative
@@ -819,25 +863,24 @@ $common-border: common-border-val()
   @else 
     padding-top: rem-calc(100)
 
-  &:before 
-    content: " " 
-    background: $color
+  +fake-icon-core($color, $icon, $child, $size)
 
 
-  // construct child selector
-  $child-select: '#{$child}:before'
-  $child-select-other: '&:before, #{$child}:before'
-
-  #{$child-select-other}
-    +icon-color-circle(true, $size)
-    text-align: center
-
-  // call icon styles
-  +icon-circle-icon($child-select, $child-select-other, true, $size)
+@mixin fake-icon-circle-box-side($color, $icon: 'map-marker', $child: 'h3.title', $size: tiny, $layout: left)
+  position: relative
   
-  // icon
   #{$child}
-    +icon-only($icon)
+    @if $size == small
+      padding-#{$layout}: rem-calc(70)
+
+    @else if $size == tiny
+      padding-#{$layout}: rem-calc(50)
+      
+    @else 
+      padding-#{$layout}: rem-calc(100)
+
+
+  +fake-icon-core($color, $icon, $child, $size, $layout)
 
 
 

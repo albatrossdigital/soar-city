@@ -18,7 +18,7 @@
           </div>
           <?php endif; ?>
         </li>
-        <li class="toggle-off-canvas menu-toggle"><a class="right-off-canvas-toggle" href="#"><span><?php print $top_bar_menu_text; ?></span> <i class="fa-bars"></i></a></li>
+        <li class="toggle-off-canvas menu-toggle"><a class="right-off-canvas-toggle" href="#"><span><?php print $top_bar_menu_text; ?></span> <i class="<?php print $top_bar_menu_icon; ?>"></i></a></li>
         <li class="toggle-off-canvas search-toggle"><a id="search-toggle" class="right-off-canvas-toggle" href="#"><span><?php print t('Search'); ?></span> <i class="fa-search"></i></a></li>
       </ul>
       <aside class="right-off-canvas-menu top-bar-section">
@@ -48,7 +48,7 @@
       </div>
       <div class="medium-4 columns header-region-right">
         <?php if (!empty($page['sidebar_first'])): ?>
-          <a id="toggle-main-section-menu" href="#"><i class="fa-angle-left"></i><span><?php print t('Sub Menu'); ?></span></a>
+          <a id="toggle-main-section-menu" class="button secondary-alt small radius" href="#"><i class="fa-bars"></i><span><?php print t('Menu'); ?></span></a>
         <?php endif; ?>
         <?php print render($page['header']); ?>
       </div>
