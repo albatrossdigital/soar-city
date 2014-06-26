@@ -22,6 +22,18 @@ function baltimore_config_government_redirect() {
   drupal_goto(BALTIMORE_ARCHIVE . request_uri());
 }
 
+/**
+ * Make the "Send email" field checked by default on create new user page.
+ **/
 function baltimore_config_form_user_register_form_alter(&$form, $form_state) {
   $form['account']['notify']['#default_value'] = TRUE;
+}
+
+
+
+/**
+ * Hide the Delete SOLR index button on the Apachesolr config page (just to be safe!)
+ **/
+function baltimore_config_form_apachesolr_index_action_form_alter(&$form, $form_state) {
+  unset($form['action']['delete']);
 }
