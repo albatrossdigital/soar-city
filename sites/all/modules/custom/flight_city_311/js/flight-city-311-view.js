@@ -37,6 +37,7 @@ Drupal.behaviors.flight_city_311_view = {
 
       $secondary.bind('change', function(e) {
         if ($(this).val()) {
+          $('select[name^=search]').val('');
           $('select[name^=tid] option[value='+ $(this).val() +']').prop('selected', 'selected');
           $submit.trigger('click');
         }
@@ -59,7 +60,9 @@ Drupal.behaviors.flight_city_311_view = {
       function setPlaceholder() {
         $('.view-id-311_home.view-display-id-page').html(settings.service_request.placeholder);
       }
-      setPlaceholder();
+      if ($('.view-id-311_home.view-display-id-page').text().trim() == '') {
+        setPlaceholder();
+      }
 
       // Manually autosubmit the text search field
       var timeout;
