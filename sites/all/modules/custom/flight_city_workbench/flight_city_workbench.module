@@ -139,7 +139,7 @@ function _flight_city_workbench_pare_taxonomy_options(&$form, $fieldname) {
     // Set the only option as the default (for health)
     else {
       $form[$fieldname][LANGUAGE_NONE]['#default_value'] = array_keys($form[$fieldname][LANGUAGE_NONE]['#options']);
-      $form[$fieldname][LANGUAGE_NONE]['#access'] = FALSE;
+      //$form[$fieldname][LANGUAGE_NONE]['#access'] = FALSE;
     }
   }
 }
