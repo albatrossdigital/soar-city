@@ -10,10 +10,13 @@
         width: 35px
         padding: 5px
         margin-right: 10px
-        +opacity(.6)
+        +opacity(.5)
 
       a.iso-active
         +opacity(1)
+
+      a:hover
+        +opacity(.8)
 
       &.f-facebook a
         background-color: $blue-facebook
@@ -34,11 +37,23 @@
 .dcsns-content
   margin-bottom: 0
  
-  .stream
+  ul.stream
+    overflow: visible !important
+
     li,
     li.dcsns-facebook
       background: 1px solid $gray-light
       +border-radius(0)
+      padding-bottom: 40px
+
+    li.dcsns-flickr
+      padding-bottom: 50px
+      span.section-title
+        display: none
+
+    li.dcsns-vimeo
+      .section-text
+        display: none
 
     .section-share
       display: none
@@ -48,8 +63,8 @@
       color: $black !important
       background: none !important
 
-      a,
-      span
+      >a,
+      >span
         margin-left: 50px !important
         display: block
 
@@ -78,8 +93,13 @@
       background-color: $pink-flickr
     .dcsns-youtube img.icon
       background-color: $red-youtube
+    .dcsns-vimeo img.icon
+      background-color: $blue-vimeo
+    .dcsns-pinterest img.icon
+      background-color: $red-pinterest
     .dcsns-rss img.icon
       background-color: $orange-rss
+
 
 
 // Social stream wall
@@ -95,6 +115,9 @@
         width: 280px
         margin: 0 24px 34px 0
 
+body.page-connect
+  h1#page-title
+    margin-bottom: 0
 
 // Social stream block
 // ---------------------------------------------------------------------------- 

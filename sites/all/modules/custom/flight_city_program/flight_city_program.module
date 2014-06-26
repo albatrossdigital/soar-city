@@ -21,7 +21,7 @@ function flight_city_program_ds_fields_info($entity_type) {
   $fields[$entity_type] = array(
 
     // Views field simple renders a view
-    'social_stream' => array(
+    'program_icon_thumbnail' => array(
       'title' => t('Program icon or thumbnail'),
       'field_type' => DS_FIELD_TYPE_FUNCTION,
       'function' => '_flight_city_program_ds_icon_thumbnail_field',

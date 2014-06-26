@@ -1,0 +1,27 @@
+<?php
+
+define('BALTIMORE_ARCHIVE', 'http://archive.baltimorecity.gov');
+
+/**
+ * Implements hook_menu()
+ **/
+function baltimore_config_menu() {
+  $items['government/%'] = array(
+    'title' => 'Government Redirect',
+    'page callback' => 'baltimore_config_government_redirect',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Page callback to redriect to archive menu
+ **/
+function baltimore_config_government_redirect() {
+  drupal_goto(BALTIMORE_ARCHIVE . request_uri());
+}
+
+function baltimore_config_form_user_register_form_alter(&$form, $form_state) {
+  $form['account']['notify']['#default_value'] = TRUE;
+}

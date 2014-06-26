@@ -27,14 +27,13 @@ function social_stream_menu() {
  */
 function social_stream_render_wall() {
   if (strpos($_SERVER['SERVER_NAME'], 'www') !== FALSE) {
-    $settings = array('max_feeds' => 15);
+    $settings = array('max_feeds' => 10, 'limit' => 4);
   }
   else {
-    $settings = array('url' => url('js/json/social-stream/all'));
+    $settings = array('url' => url('js/json/social-stream/all'), 'limit' => 15);
   }
   $settings['type'] = 'wall';
   $settings['randomize_feed'] = TRUE;
-  $settings['limit'] = 4;
   return social_stream_render($settings);
 }
 
@@ -48,7 +47,7 @@ function social_stream_render($settings = array()) {
 
   $output['#attached']['js'][] = $path . '/inc/js/jquery.plugins.js';
   $output['#attached']['js'][] = $path . '/inc/js/jquery.site.js';
-  $output['#attached']['js'][] = $path . '/js/jquery.social.stream.1.5.4.min.js';
+  $output['#attached']['js'][] = $path . '/js/jquery.social.stream.1.5.4.js'; //min
   
   //$output['#markup'] = social_stream_process_json();
   if ($settings['type'] === 'wall') {
@@ -76,7 +75,7 @@ function social_stream_render($settings = array()) {
   $output['#attached']['js'][] = drupal_get_path('module', 'social_stream') . '/js/social-stream.js';
   $settings = array_merge(array(
     'image_path' => url($path . '/images/dcsns-dark/'),
-    'url' => url('js/json/social-stream/all/all'),
+    'url' => url('js/json/social-stream'),
     'type' => 'wall',
     'twitter_url' => url('rest/social-stream/twitter'),
     'limit' => 15,

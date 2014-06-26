@@ -5,3 +5,4 @@ robots.txt
 node_modules
 .bin
 *.sublime-workspace
+external_resources

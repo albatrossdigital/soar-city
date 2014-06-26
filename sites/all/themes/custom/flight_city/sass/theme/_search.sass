@@ -55,6 +55,9 @@ $search-button-size: 36px
     &:first-child
       border-top: 0
 
+    &.ac_over
+      background: scale-color($primary-color, $lightness: 94%)
+
     & > *
       display: block
       padding: $f-dropdown-list-padding
@@ -117,33 +120,13 @@ ol.search-results
 // *
 // ******************************************************
 
-+respond($small-only)
-  // Search block
-  // ------------------------------------------------------
-
-  #search-form
-
-    // hide in header region
-    .header-region-right &
-      display: none
-
-
-+respond($mobile-to-menu)
-
-
-
-+respond($past-menu)
-
 +respond($medium)
 
   // Search block
   // ------------------------------------------------------
 
   #search-form
-    clear: right
-    float: right
-    max-width: rem-calc(300)
-
-    // hide in topbar
-    .top-bar &
-      display: none
+    .header-region-right &
+      clear: right
+      float: right
+      max-width: rem-calc(300)

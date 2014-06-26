@@ -4817,11 +4817,11 @@ ul.pagination li {
 /* line 74, ../sass/vendor/foundation/components/_panels.scss */
 .panel {
   border-style: solid;
-  border-width: 1px;
-  border-color: #d8d8d8;
+  border-width: 0;
+  border-color: #f8e2a7;
   margin-bottom: 1.42857rem;
   padding: 1.42857rem;
-  background: #f2f2f2;
+  background: #fcf2d7;
 }
 /* line 52, ../sass/vendor/foundation/components/_panels.scss */
 .panel > :first-child {
@@ -4833,7 +4833,7 @@ ul.pagination li {
 }
 /* line 58, ../sass/vendor/foundation/components/_panels.scss */
 .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6, .panel p {
-  color: #333333;
+  color: #111111;
 }
 /* line 62, ../sass/vendor/foundation/components/_panels.scss */
 .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6 {
@@ -4847,7 +4847,7 @@ ul.pagination li {
 /* line 76, ../sass/vendor/foundation/components/_panels.scss */
 .panel.callout {
   border-style: solid;
-  border-width: 1px;
+  border-width: 0;
   border-color: #b9eefb;
   margin-bottom: 1.42857rem;
   padding: 1.42857rem;
@@ -4863,7 +4863,7 @@ ul.pagination li {
 }
 /* line 58, ../sass/vendor/foundation/components/_panels.scss */
 .panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6, .panel.callout p {
-  color: #333333;
+  color: #111111;
 }
 /* line 62, ../sass/vendor/foundation/components/_panels.scss */
 .panel.callout h1, .panel.callout h2, .panel.callout h3, .panel.callout h4, .panel.callout h5, .panel.callout h6 {
@@ -6605,6 +6605,11 @@ i[class^="fa"] {
 i[class^="fa"] {
   margin-right: 0.75em;
 }
+/* line 141, ../sass/components/_icons-fontawesome.sass */
+i[class^="fa"].icon-right {
+  margin-right: 0;
+  margin-left: 0.3em;
+}
 
 @-webkit-keyframes rotation {
   /* line 354, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
@@ -6655,39 +6660,39 @@ i[class^="fa"] {
 }
 
 /********************************** */
-/* line 358, ../sass/base/_mixins.sass */
+/* line 379, ../sass/base/_mixins.sass */
 h3 a, h4 a {
   color: #0076a3;
 }
-/* line 361, ../sass/base/_mixins.sass */
+/* line 382, ../sass/base/_mixins.sass */
 h3 a:hover, h4 a:hover {
   color: #005170;
 }
 
-/* line 382, ../sass/base/_mixins.sass */
+/* line 403, ../sass/base/_mixins.sass */
 h1 a, h2 a, h5 a, h6 a {
   color: #111111;
 }
-/* line 385, ../sass/base/_mixins.sass */
+/* line 406, ../sass/base/_mixins.sass */
 h1 a:hover, h2 a:hover, h5 a:hover, h6 a:hover {
   color: #0a83a1;
 }
-/* line 388, ../sass/base/_mixins.sass */
+/* line 409, ../sass/base/_mixins.sass */
 h1 a:active, h2 a:active, h5 a:active, h6 a:active {
   color: #07b1db;
 }
 
-/* line 407, ../sass/base/_mixins.sass */
+/* line 428, ../sass/base/_mixins.sass */
 h1 strong, strong h1, h2 strong, strong h2 {
   font-weight: 400;
 }
 
-/* line 410, ../sass/base/_mixins.sass */
+/* line 431, ../sass/base/_mixins.sass */
 h3, h4 {
   font-weight: 700;
 }
 
-/* line 418, ../sass/base/_mixins.sass */
+/* line 439, ../sass/base/_mixins.sass */
 .label-inline, h1, h2 {
   font-family: "ff-tisa-web-pro";
   font-style: normal;
@@ -6822,23 +6827,35 @@ h1 em, em h1, h2 em, em h2 {
   font-style: normal;
 }
 
-/* line 70, ../sass/base/_elements.sass */
+/* line 63, ../sass/base/_elements.sass */
+.vertical-center {
+  display: table;
+  height: 100%;
+}
+
+/* line 67, ../sass/base/_elements.sass */
+.vertical-center-inner {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* line 82, ../sass/base/_elements.sass */
 a:active {
   color: #07b1db;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 118, ../sass/base/_elements.sass */
+  /* line 130, ../sass/base/_elements.sass */
   h1 {
     font-size: 2.85714rem;
   }
 
-  /* line 121, ../sass/base/_elements.sass */
+  /* line 133, ../sass/base/_elements.sass */
   h2 {
     font-size: 2.14286rem;
   }
 
-  /* line 124, ../sass/base/_elements.sass */
+  /* line 136, ../sass/base/_elements.sass */
   h3 {
     font-size: 1.57143rem;
   }

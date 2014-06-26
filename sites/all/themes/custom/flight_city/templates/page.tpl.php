@@ -34,9 +34,16 @@
 
     <!--.l-header-region -->
     <section class="l-header-region row">
-      <div class="medium-8 columns header-branding">
+      <div class="medium-8 columns header-branding<?php if (empty($page['logo'])) { print ' no-logo'; } ?>">
+        <?php if (!empty($page['logo'])): ?>
+          <div class="region-logo">
+            <?php print render($page['logo']); ?>
+          </div>
+        <?php endif; ?>
         <?php if($entity_title): ?>
-          <h2 id="entity-title" class="title"><?php print $entity_title; ?></h2>
+          <div class="vertical-center"><div class="vertical-center-inner">
+            <h2 id="entity-title" class="title"><a href="/" title="Go to homepage"><?php print $entity_title; ?></a></h2>
+          </div></div>
         <?php endif; ?>
       </div>
       <div class="medium-4 columns header-region-right">
@@ -84,7 +91,7 @@
   <main role="main" class="l-main off-canvas-wrap" data-offcanvas><div class="inner-wrap"><div id="dnn_ContentPane" class="row">
     <div class="<?php print $main_grid; ?> main columns">
       <?php if (!empty($page['highlighted'])): ?>
-        <div class="highlight panel callout">
+        <div class="highlight panel">
           <?php print render($page['highlighted']); ?>
         </div>
       <?php endif; ?>

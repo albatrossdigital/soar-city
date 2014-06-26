@@ -11,8 +11,8 @@
   top: 0
   font-size: rem-calc(20)
   z-index: 1
-
-  a
+  
+  a 
     +c(link-yellow)
 
 
@@ -52,12 +52,17 @@
 //$off-menu-border: lighten($blue, 2%)
 
 .right-off-canvas-menu
-  .right-off-canvas-toggle
+
+  a
     +c(link-yellow)
+
+  .right-off-canvas-toggle
+    top: rem-calc(140)
+    border-top: 1px solid $gray-border
     padding-left: $column-gutter
     position: absolute
     font-size: 1rem
-    top: $topbar-height - rem-calc(5)
+    width: 100%
     z-index: 1
 
 
@@ -73,6 +78,10 @@
 
 // Main section sub-menu (sidebar)
 // ------------------------------------------------------
+
+#toggle-main-section-menu
+  display: block
+  margin-bottom: rem-calc(10)
 
 #toggle-main-section-menu-close
   +c(link-white)
@@ -107,7 +116,6 @@
 
     .menu-name-main-menu
       +expand-row()
-      padding-top: rem-calc(44)
 
       li a
         display: block
@@ -127,10 +135,28 @@
       +column-padding()
       overflow: hidden
 
+    .block-balt-apachesolr,
+    .block-gov-subscribe-link,
+    .block-gtranslate-gtranslate
+      .header-region-right &
+        display: none
+
     .block-balt-apachesolr
       margin-top: -$topbar-height
       //margin-bottom: rem-calc(10)
       padding-top: rem-calc(10)
+
+    .block-gov-subscribe-link
+      margin-top: rem-calc(-15)
+
+    .block-gov-subscribe-link,
+    .block-gtranslate-gtranslate
+      padding-left: $column-gutter
+
+    .menu-name-main-menu
+      border-top: 1px solid $gray-border
+      margin-top: rem-calc(36)
+      padding-top: rem-calc(14)
 
 
   // Main section sub-menu (sidebar)
@@ -157,6 +183,7 @@
   .right-off-canvas-menu
 
     .right-off-canvas-toggle
+      border-top: 0
       top: 0
 
     .menu-name-main-menu
@@ -167,6 +194,12 @@
 
   .search-toggle
     display: none
+
+  .block-balt-apachesolr,
+  .block-gov-subscribe-link,
+  .block-gtranslate-gtranslate
+    .top-bar &
+      display: none
 
 
   // Main section sub-menu (sidebar)
@@ -218,7 +251,7 @@
       +main-menu-style-horizontal()
       
       ul 
-        +clearfix
+        +clearfix(false)
         float: right
 
         li

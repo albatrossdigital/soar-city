@@ -7,11 +7,25 @@
   +views-see-more-header
 
 
-
 // *
 // * Media Queries
 // *
 // ******************************************************
+
++respond($small-only)
+  .bean-image-collection
+    .small-6,
+    .medium-4
+      margin-bottom: $paragraph-margin-bottom
+
+
+    .medium-4
+      text-align: center
+
+    .small-6
+      &:nth-child(2n+1)
+        clear: left
+  
 
 +respond($medium-up)
 

@@ -5,6 +5,8 @@
   Foundation.utils.register_media('mobile-to-menu', 'mobile-to-menu');
   Foundation.utils.register_media('past-menu', 'past-menu');
 
+  jQuery.fn.reverse = [].reverse;
+
 
   // Triggers callback after image is loaded
   function triggerImageSize($imageWrapper, callback) {
@@ -23,21 +25,25 @@
   domain = domain.substring(domain.indexOf('.') + 1);
   //var reg = RegExp('/[^#]|^mailto|' + window.location.host + '/');
 
+  // toggle items switch from header area
+  // to topbar on "past-menu" media query
+  // searchInTopbar == false if in header, true if in topbar 
+  var searchInTopbar = true;
+
   Drupal.behaviors.flight_city = {
     attach: function(context, settings) {
 
       // Open links in new window
       $("a[href^='http']").not("[href*='" + domain + "']").attr('target','_blank');
 
-      // searchform switches from header area
-      // to topbar on "past-menu" media query
-      // searchInTopbar == false if in header, true if in topbar 
-      var $searchForm = $('#search-form'),
-        $searchFormWrapper = $('.top-bar-section > .block-balt-apachesolr'),
-        $headerRegion = $('.l-header-region > .header-region-right'),
-        searchInTopbar = true,
-        $body = $('body'),
-        $page = $body.children('.page');
+        // toggle items switch from header area
+        // to topbar on "past-menu" media query
+        // searchInTopbar == false if in header, true if in topbar 
+        var $toggleItems = $('section.block-balt-apachesolr-balt-search-form, section.block-gtranslate-gtranslate, section.block-gov-subscribe-link'),
+          $headerRegion = $('.l-header-region > .header-region-right'),
+          $offCanvas = $('aside.right-off-canvas-menu'),
+          $body = $('body'),
+          $page = $body.children('.page');
 
       // toggle search from header to topbar
       function toggleSearch(topbar) {
@@ -46,7 +52,9 @@
         if(!topbar) {
           // only react if in topbar
           if(searchInTopbar) {
-            $headerRegion.append($searchForm);
+            $toggleItems.each(function() {
+              $headerRegion.prepend($(this));
+            });
             searchInTopbar = false;
           }
         }
@@ -54,7 +62,10 @@
         else {
           // only react if NOT in topbar
           if(!searchInTopbar) {
-            $searchFormWrapper.prepend($searchForm);
+            $toggleItems.reverse().each(function() {
+              $offCanvas.prepend($(this));
+            });
+            $toggleItems.reverse();
             searchInTopbar = true;
           }
         }

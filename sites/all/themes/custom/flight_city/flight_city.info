@@ -90,6 +90,7 @@ scripts[] = js/scripts.js
 
 regions[topbar]              = Topbar
 regions[header]              = Header
+regions[logo]                = Organization Crest
 regions[help]                = Help
 regions[highlighted]         = Highlighted
 regions[featured]            = Featured
