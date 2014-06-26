@@ -3,16 +3,33 @@
 // ---------------------------------------------------------------------------- 
 .page-answers
 
+  .header-region-right
+    .block-balt-apachesolr-balt-search-form
+      display: none
+
   .highlight
+    margin-bottom: $panel-margin-bottom*2
+
     .block
+
+    .block-balt-apachesolr
+      margin-bottom: 0
 
     form
       input[type="text"]
         +big-input()
 
+    #search-form .form-submit
+      top: rem-calc(6)
+
+
   .block-bean-citywide-faq-top-searches
-    .content
-      ul
+    ul
+      margin-bottom: 0
+
+
+    h4
+      margin-bottom: $header-bottom-margin
 
 
 .vocabulary-faq-category.view-mode-teaser
@@ -25,7 +42,7 @@
   ul
     +list-clear
 
-  .read-more
+  .more-link
     margin-top: .5em
 
 
@@ -91,5 +108,18 @@
     .highlight
       +clearfix(false)
 
-      .block
-        +grid-column(6)
+      .block:nth-child(2n)
+        +grid-column(7)
+
+      .block:nth-child(2n + 1)
+        +grid-column(5)
+
++respond($large-up)
+
+  // How do I landing page
+  // ---------------------------------------------------------------------------- 
+  .page-answers
+    .highlight
+      .block:nth-child(2n),
+      .block:nth-child(2n + 1)
+        width: grid-calc(6, 12)
