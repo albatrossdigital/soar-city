@@ -324,7 +324,7 @@ function flight_city_preprocess_search_result(&$vars) {
     $vars['classes_array'][] = 'bundle-' . $result['bundle'];
   }
 
-  dpm($result);
+  //dpm($result);
 }
 
 
