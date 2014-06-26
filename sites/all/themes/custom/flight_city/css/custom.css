@@ -828,23 +828,6 @@ html body.admin-menu > .page {
   display: none;
 }
 
-@media only screen and (min-width: 68.64286em) {
-  /* line 105, ../sass/layout/_page.sass */
-  .page {
-    background: #dddddd;
-  }
-  /* line 110, ../sass/layout/_page.sass */
-  .page:before {
-    background: white;
-    content: " ";
-    position: absolute;
-    top: 0;
-    height: 100%;
-    left: 50%;
-    margin-left: -37.85714rem;
-    width: 75.71429rem;
-  }
-}
 /* line 50, ../sass/layout/_header.sass */
 .l-header-region {
   padding-top: 0.71429rem;
@@ -1453,14 +1436,15 @@ p img:only-child {
 }
 /* line 3, ../sass/layout/_triptych.sass */
 .l-triptych {
+  background: #f3f3f3;
   padding-bottom: 6.42857rem;
   padding-top: 2.85714rem;
 }
-/* line 7, ../sass/layout/_triptych.sass */
+/* line 8, ../sass/layout/_triptych.sass */
 .l-triptych .block {
   margin-bottom: 3.21429rem;
 }
-/* line 10, ../sass/layout/_triptych.sass */
+/* line 11, ../sass/layout/_triptych.sass */
 .l-triptych form {
   border-style: solid;
   border-width: 0;
@@ -1494,13 +1478,13 @@ p img:only-child {
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 32, ../sass/layout/_triptych.sass */
+  /* line 33, ../sass/layout/_triptych.sass */
   .l-triptych form {
     margin-top: 1.78571rem;
   }
 }
 @media only screen and (min-width: 45.78571em) and (max-width: 58.92857em) {
-  /* line 39, ../sass/layout/_triptych.sass */
+  /* line 40, ../sass/layout/_triptych.sass */
   .l-triptych form {
     margin-right: 0;
     margin-left: 0;
@@ -3976,16 +3960,6 @@ ol.search-results .search-snippet-info {
     padding-top: 2.85714rem;
   }
 }
-@media only screen and (min-width: 68.64286em) {
-  /* line 349, ../sass/theme/_front-pages.sass */
-  .front.domain-main .page {
-    background: white;
-  }
-  /* line 352, ../sass/theme/_front-pages.sass */
-  .front.domain-main .page:before {
-    display: none;
-  }
-}
 /* line 9, ../sass/theme/_teasers.sass */
 .node-event.node-teaser,
 .node-event.view-mode-compact_teaser,
@@ -4797,20 +4771,6 @@ ol.search-results .search-snippet-info {
   overflow-x: hidden;
   overflow-y: auto;
 }
-/* line 30, ../sass/theme/_311-services.sass */
-.page-311-services .l-triptych {
-  padding-top: 0;
-}
-/* line 202, ../../../../../../profiles/flight/themes/custom/flight_base/sass/_mixins.sass */
-.page-311-services .l-triptych:before {
-  content: "";
-  display: block;
-  border-top: 1px solid #cccccc;
-  margin-left: 0.71429rem;
-  margin-right: 0.71429rem;
-  padding-bottom: 1.60714rem;
-  margin-top: 1.60714rem;
-}
 /* line 962, ../sass/base/_mixins.sass */
 .page-311-services .l-triptych .block-title {
   margin-top: 0.71429rem;
@@ -4896,11 +4856,11 @@ ol.search-results .search-snippet-info {
   padding: 0.71429rem 1.42857rem 0.71429rem 1.21429rem;
   text-align: left;
 }
-/* line 35, ../sass/theme/_311-services.sass */
+/* line 33, ../sass/theme/_311-services.sass */
 .page-311-services .l-triptych .block-title {
   text-align: center;
 }
-/* line 38, ../sass/theme/_311-services.sass */
+/* line 36, ../sass/theme/_311-services.sass */
 .page-311-services .triptych-first .block {
   position: relative;
   padding-top: 7.14286rem;
@@ -4914,7 +4874,7 @@ ol.search-results .search-snippet-info {
 .page-311-services .triptych-first .block:before, .page-311-services .triptych-first .block .block-title:before {
   text-align: center;
 }
-/* line 41, ../sass/theme/_311-services.sass */
+/* line 39, ../sass/theme/_311-services.sass */
 .page-311-services .triptych-middle .block {
   position: relative;
   padding-top: 7.14286rem;
@@ -4928,7 +4888,7 @@ ol.search-results .search-snippet-info {
 .page-311-services .triptych-middle .block:before, .page-311-services .triptych-middle .block .block-title:before {
   text-align: center;
 }
-/* line 44, ../sass/theme/_311-services.sass */
+/* line 42, ../sass/theme/_311-services.sass */
 .page-311-services .triptych-last .block {
   position: relative;
   padding-top: 7.14286rem;
@@ -4944,13 +4904,13 @@ ol.search-results .search-snippet-info {
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 59, ../sass/theme/_311-services.sass */
+  /* line 57, ../sass/theme/_311-services.sass */
   .page-311-services main .view-311-home.view-display-id-page {
     margin-top: 2.5em;
   }
 }
 @media only screen and (min-width: 59em) {
-  /* line 73, ../sass/theme/_311-services.sass */
+  /* line 71, ../sass/theme/_311-services.sass */
   .page-311-services .sidebar-first.sidebar form {
     border-style: solid;
     border-width: 0;

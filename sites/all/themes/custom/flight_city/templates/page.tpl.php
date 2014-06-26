@@ -200,7 +200,7 @@
 
   <?php if (!empty($page['triptych_first']) || !empty($page['triptych_middle']) || !empty($page['triptych_last'])): ?>
     <!--.triptych-->
-    <section class="l-triptych row">
+    <section class="l-triptych"><div class="row">
       <div class="triptych-first medium-4 columns">
         <?php print render($page['triptych_first']); ?>
       </div>
@@ -210,7 +210,7 @@
       <div class="triptych-last medium-4 columns">
         <?php print render($page['triptych_last']); ?>
       </div>
-    </section>
+    </div></section>
     <!--/.triptych -->
   <?php endif; ?>
 
