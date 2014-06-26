@@ -2037,12 +2037,12 @@ select {
 }
 /* line 31, ../sass/vendor/foundation/components/_accordion.scss */
 .accordion dd.active > a {
-  background: #e8e8e8;
+  background: #fdf8eb;
 }
 /* line 32, ../sass/vendor/foundation/components/_accordion.scss */
 .accordion dd > a {
-  background: #efefef;
-  color: #222222;
+  background: white;
+  color: #0a83a1;
   padding: 1.14286rem;
   display: block;
   font-family: "open-sans";
@@ -2050,17 +2050,17 @@ select {
 }
 /* line 39, ../sass/vendor/foundation/components/_accordion.scss */
 .accordion dd > a:hover {
-  background: #e3e3e3;
+  background: #f2f2f2;
 }
 /* line 42, ../sass/vendor/foundation/components/_accordion.scss */
 .accordion .content {
   display: none;
-  padding: 0.71429rem;
+  padding: 0.35714rem 2.5rem 3.21429rem;
 }
 /* line 45, ../sass/vendor/foundation/components/_accordion.scss */
 .accordion .content.active {
   display: block;
-  background: white;
+  background: #fdf8eb;
 }
 
 /* line 110, ../sass/vendor/foundation/components/_alert-boxes.scss */

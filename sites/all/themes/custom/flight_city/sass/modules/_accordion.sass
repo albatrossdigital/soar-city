@@ -1,0 +1,40 @@
+
+
+// Generic accordion style tweaks
+// ---------------------------------------------------------------------------- 
+.accordion 
+  dd
+    &:first-child > a
+      border-top: 1px solid $gray-light
+
+    &.active
+      border-bottom: 1px solid $gray-light
+
+      & > a
+        border-bottom: $accordion-navigation-active-bg-color
+        color: $black
+
+    &  > a
+      font-size: $h4-font-size
+      +f(weight-bold)
+      border-bottom: 1px solid $gray-light
+
+  .content
+
+  h6
+    margin-bottom: 0
+
+  ul.field-links
+    margin-top: 1em
+
+    li
+      +list-clear
+      margin: .5em 0
+
+      a
+        //padding-left: 3em
+        margin-left: 2em
+
+        &:before
+          //@todo
+          //content: '\f178'
