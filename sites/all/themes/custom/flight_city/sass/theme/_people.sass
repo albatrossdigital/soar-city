@@ -7,10 +7,16 @@
 .page-people-tiles
   +no-page-title
 
-.view-people .view-content > h3
-  +f(weight-normal)
-  font-size: $h3-font-size
-  margin-bottom: rem-calc(30)
+.view-people 
+  .view-content > h3
+    +f(weight-normal)
+    font-size: $h3-font-size
+    margin-bottom: rem-calc(30)
+
+  &.grid-teaser
+    .views-row
+      text-align: center
+
 
 
 // People nodes

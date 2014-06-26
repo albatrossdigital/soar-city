@@ -4975,13 +4975,17 @@ ol.search-results .search-snippet-info {
     line-height: 1.4;
   }
 }
-/* line 10, ../sass/theme/_people.sass */
+/* line 11, ../sass/theme/_people.sass */
 .view-people .view-content > h3 {
   font-size: 1.57143rem;
   margin-bottom: 2.14286rem;
 }
+/* line 17, ../sass/theme/_people.sass */
+.view-people.grid-teaser .views-row {
+  text-align: center;
+}
 
-/* line 24, ../sass/theme/_people.sass */
+/* line 30, ../sass/theme/_people.sass */
 .node-person h4 + h5 {
   margin-top: -0.7619rem;
 }
@@ -5003,7 +5007,7 @@ ol.search-results .search-snippet-info {
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 43, ../sass/theme/_people.sass */
+  /* line 49, ../sass/theme/_people.sass */
   .node-person.view-mode-full .field-name-field-picture img {
     margin-bottom: 0;
   }
