@@ -37,7 +37,7 @@ Drupal.behaviors.flight_city_311_view = {
 
       $secondary.bind('change', function(e) {
         if ($(this).val()) {
-          $('select[name^=search]').val('');
+          $('input[name^=search]').val('');
           $('select[name^=tid] option[value='+ $(this).val() +']').prop('selected', 'selected');
           $submit.trigger('click');
         }
@@ -71,6 +71,7 @@ Drupal.behaviors.flight_city_311_view = {
         if ($(this).val() != '') {
           timeout = setTimeout(function() {
             $submit.trigger('click');
+            $('select[name^=tid] option').prop('selected', '');
           }, 500);
         }
       });
