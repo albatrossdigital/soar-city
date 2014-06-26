@@ -15,7 +15,7 @@
 
 <?php foreach ($rows as $id => $row): ?>
   <?php $active = $id == 0 ? ' active' : ''; ?>
-  <dd<?php if ($classes_array[$id]) { print ' class="' . $classes_array[$id] .'"';  } ?>>
+  <dd<?php if ($classes_array[$id]) { print ' class="' . $classes_array[$id] . $active . '"';  } ?>>
     <?php print str_replace('class="content nid-', 'class="content'. $active .'" id="nid-', $row); ?>
   </dd>
 <?php endforeach; ?>

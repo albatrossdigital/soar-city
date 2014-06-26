@@ -57,11 +57,15 @@ function flight_city_preprocess_page(&$vars) {
     $vars['section_title'] = FALSE;
   }
 
-  // Set section title explicitly
+  // Set entity title
   if(!isset($vars['entity_title'])) {
     $current_domain = domain_get_domain();
     // Main top level domain
-    if($current_domain['is_default']) {
+    if($vars['default_domain'] = $current_domain['is_default']) {
+
+      // Set mobile main menu text
+      $vars['top_bar_menu_text'] = t('Menu');
+      $vars['top_bar_menu_icon'] = 'fa-bars';
 
       // are we home page?
       if($vars['is_front']) {
@@ -85,6 +89,13 @@ function flight_city_preprocess_page(&$vars) {
          ? $menu_title : FALSE;
       }
     }
+    // Other domain
+    else {
+      // Set mobile main menu text
+      $vars['top_bar_menu_text'] = t('Citywide');
+      $vars['top_bar_menu_icon'] = 'fa-globe';
+    }
+
     // Nothing set, so set to site name
     if(empty($vars['entity_title'])) {
       $vars['entity_title'] = $vars['site_name'];
@@ -300,9 +311,11 @@ function flight_city_preprocess_menu_block_wrapper(&$vars) {
 
 
 /**
- * Implements hook_preprocess_block_()
+ * Implements hook_preprocess_search_result()
  */
 function flight_city_preprocess_search_result(&$vars) {
+
+  $result = $vars['result'];
 
   if(isset($result['entity_type'])) {
     $vars['classes_array'][] = 'entity-' . $result['entity_type'];
@@ -310,6 +323,8 @@ function flight_city_preprocess_search_result(&$vars) {
   if(isset($result['bundle'])) {
     $vars['classes_array'][] = 'bundle-' . $result['bundle'];
   }
+
+  //dpm($result);
 }
 
 
