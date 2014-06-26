@@ -3,8 +3,14 @@
 // ---------------------------------------------------------------------------- 
 
 // hide page title, in lieu of views grouping display
-.page-people
+.page-people,
+.page-people-tiles
   +no-page-title
+
+.view-people .view-content > h3
+  +f(weight-normal)
+  font-size: $h3-font-size
+  margin-bottom: rem-calc(30)
 
 
 // People nodes

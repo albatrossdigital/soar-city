@@ -653,9 +653,36 @@ $common-border: common-border-val()
       float: none!important
       width: 100%
 
-@mixin no-page-title()
-  #page-title
+%no-page-title      
+  .main
+    padding-top: $header-bottom-margin
+
+  #page-title, #section-title
     +e(hide)
+
+  +respond($medium-up)
+    .main.medium-12
+      padding-top: rem-calc(15)
+
+
+@mixin no-page-title($extend: true, $query: mobile)
+  @if $extend
+    @extend %no-page-title
+    
+  @else
+    @if $query == mobile
+      .main 
+        padding-top: $header-bottom-margin
+
+      #page-title, #section-title
+        +e(hide)
+
+    @else
+      .main.medium-12
+        padding-top: rem-calc(15)
+
+
+
 
 
 @mixin background-box($padding: $small-region-pad-large)
