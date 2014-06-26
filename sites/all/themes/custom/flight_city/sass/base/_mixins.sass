@@ -668,7 +668,7 @@ $common-border: common-border-val()
 @mixin no-page-title($extend: true, $query: mobile)
   @if $extend
     @extend %no-page-title
-    
+
   @else
     @if $query == mobile
       .main 
@@ -682,13 +682,32 @@ $common-border: common-border-val()
         padding-top: rem-calc(15)
 
 
-
-
-
 @mixin background-box($padding: $small-region-pad-large)
   +b(gray)
   padding: $padding
 
+%highlight-as-sidebar    
+  +respond($medium-up)
+    .highlight
+      +grid-column(4)
+      padding: $panel-padding
+
+      & ~ div.node,
+      & ~ div.view
+        +grid-column(6.5)
+        margin-left: (grid-calc(1, 12)/2)
+
+  +respond($past-menu)
+    .highlight
+      width: grid-calc(3, 12)
+
+      & ~ div.node,
+      & ~ div.view
+        width: grid-calc(8 ,12)
+
+@mixin highlight-as-sidebar($extend: true)
+  @if $extend
+    @extend %highlight-as-sidebar 
 
 
 @mixin main-vertical-spacing($display: 'mobile')
