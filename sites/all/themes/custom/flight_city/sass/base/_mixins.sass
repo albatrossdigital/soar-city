@@ -974,7 +974,6 @@ $common-border: common-border-val()
         border: none
 
 
-
 // Side bar menu styles
 @mixin side-bar-menu($menu: 'ul.menu', $title: 'h2.block-title, h4', $active: 'a.active, li.active-trail a', $more-link: '.view-footer > a, .more-link a', $highlight: '.highlighted a')
  
@@ -1025,6 +1024,11 @@ $common-border: common-border-val()
       text-align: left
       +f(alt-alt)
       
+%side-bar-menu-default
+  +side-bar-menu('.item-list ul', '.block-title', 'li.active a')
+
+@mixin side-bar-menu-default()
+  @extend %side-bar-menu-default
 
 
 $main-menu-border-size: rem-calc(3)
