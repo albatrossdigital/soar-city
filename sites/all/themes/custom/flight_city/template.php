@@ -61,7 +61,7 @@ function flight_city_preprocess_page(&$vars) {
   if(!isset($vars['entity_title'])) {
     $current_domain = domain_get_domain();
     // Main top level domain
-    if($current_domain['is_default']) {
+    if($vars['default_domain'] = $current_domain['is_default']) {
 
       // Set mobile main menu text
       $vars['top_bar_menu_text'] = t('Menu');
