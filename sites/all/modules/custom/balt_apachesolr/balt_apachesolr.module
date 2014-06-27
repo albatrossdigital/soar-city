@@ -79,17 +79,67 @@ function balt_apachesolr_theme() {
   );
 }
 
+/**
+ * Returns field labels field().
+ */
+function _balt_apachesolr_fields_nice() {
+  return array(
+    BALT_APACHESOLR_ENTITY_FIELD => array(
+      '311 Category' => t('311 Services'),
+      'Payment Type'=> t('Online Payments'),
+      'How do I'=> t('How do I\'s'),
+      'Event' => t('Events'),
+      'Story' => t('News'),
+    )
+  );
+}
+
+/**
+ * Returns modified labels for fields().
+ * if $value = array(), adds all fields, and returns
+ */
+function _balt_apachesolr_label_nice($value, $field = BALT_APACHESOLR_ENTITY_FIELD, $concat = FALSE) {
+
+  $fields = _balt_apachesolr_fields_nice();
+  // modify value array
+  if(is_array($value)) {
+    foreach ($fields[$field] as $key => $label) {
+      $value[$field . ':' . $key] = $label; 
+    }
+    return $value;
+  }
+  // return single label
+  else {
+    return !empty($fields[$field][$value]) ? $fields[$field][$value] : $value;
+  }
+}
+
 
 /**
  * Helper function returns solr index key().
  */
-function _balt_apachesolr_index_key() {
-  $key = array(
-    'name'       => 'domain_id',
-    'multiple'   => TRUE,
-    'index_type' => 'integer',
-  );
-  return apachesolr_index_key($key);
+function _balt_apachesolr_index_key($field = 'domain_id') {
+  $key = array();
+  switch($field) {
+    case 'domain_id':
+      $key = array(
+        'name'       => 'domain_id',
+        'multiple'   => TRUE,
+        'index_type' => 'integer',
+      );
+      break;
+
+    case 'field_links':
+      $key = array(
+        'name'       => 'field_links',
+        'multiple'   => TRUE,
+        'index_type' => 'string',
+      );
+      break;
+  }
+  if(!empty($key)) {
+    return apachesolr_index_key($key);
+  }
 }
 
 function _balt_apachesolr_key_tester($key, $string) {
@@ -147,6 +197,9 @@ function _balt_apachesolr_get_solr_query_value($query) {
 function _balt_apachesolr_bundle_filters(&$query, $current_url) {
   if(_balt_apachesolr_key_tester($current_url, 'answers')) {
     $query[] = BALT_APACHESOLR_ENTITY_FIELD . ':How do I';
+  }
+  else if(_balt_apachesolr_key_tester($current_url, 'payments')) {
+    $query[] = BALT_APACHESOLR_ENTITY_FIELD . ':Payment Type';
   }
   else if(_balt_apachesolr_key_tester($current_url, '311')) {
     $query[] = BALT_APACHESOLR_ENTITY_FIELD . ':311 Category';
@@ -279,7 +332,6 @@ function balt_apachesolr_apachesolr_process_results(&$results) {
       $domain_display = str_replace('/', '', $matches[1]);
     }
     $results[$idx]['extra'] = array('small_link' => l($domain_display, $r['link']));   
-
     // No drupal domain info
     /*if(empty($r[$entity_type]->$key)) {
       break;
@@ -308,6 +360,8 @@ function balt_apachesolr_apachesolr_process_results(&$results) {
 * Implements hook_apachesolr_index_document_build().
 */
 function balt_apachesolr_apachesolr_index_document_build(ApacheSolrDocument $document, $entity, $entity_type, $env_id) {
+
+  // Add domain information
   if (!empty($entity->domains)) {
     // Load domains
     $all_domains = domain_domains();
@@ -341,8 +395,17 @@ function balt_apachesolr_apachesolr_index_document_build(ApacheSolrDocument $doc
       $document->setMultiValue($key, $domain);
     }
   }
-}
 
+  // Add link information
+  if (!empty($entity->field_links)) {
+    $key = _balt_apachesolr_index_key('field_links');
+    foreach ($entity->field_links[LANGUAGE_NONE] as $key => $value) {
+      $link =  $value['url'] . '|';
+      $link .= empty($value['title']) ? $value['url'] : $value['title'];
+      $document->setMultiValue($key, $link);
+    }
+  }
+}
 
 /*************************************
  *
@@ -430,7 +493,7 @@ function balt_apachesolr_autocomplete_answers($keys = '') {
   $query->addParam('fl', 'url');
   $query->addParam('fl', 'label');
   $query->addParam('fq', 'label:' . $last_part);
-  $query->addParam('fq', 'bundle_name:How do I');
+  $query->addParam('fq', BALT_APACHESOLR_ENTITY_FIELD . 'How do I');
   $query->addParam('q', '*:*');
   
   //dpm($query->getParams());
@@ -494,12 +557,24 @@ function balt_apachesolr_facetapi_facet_info(array $searcher_info) {
  * @see hook_facetapi_facet_info()
  */
 function balt_apachesolr_facetapi_facet_info_alter(array &$facet_info, array $searcher_info) {
+  // make nice labels
+  $facet_info['bundle_name']['map callback'] = 'balt_apachesolr_facetapi_bundle_map_callback';
+  // Set facets visible
   foreach ($facet_info as $key => $value) {
     $facet_info[$key]['facet mincount allowed'] = TRUE;
   }
 }
 
+function balt_apachesolr_facetapi_bundle_map_callback($variables) {
+  $map = array();
+  foreach($variables as $label) {
+    $map[$label] = _balt_apachesolr_label_nice($label);
+  }
+  return $map;
+}
+
 function balt_apachesolr_facetapi_facet_map_callback($variables) {
+  $map = array();
   foreach ($variables as $domain_id) {
     $domain = domain_load($domain_id);
     $map[$domain_id] = $domain['sitename'];
@@ -547,12 +622,8 @@ function balt_apachesolr_facetapi_switch_form_options_alter(&$options, $facet_na
   switch($facet_name) {
     case 'bundle_name':
       // Override options completely
-      $options = array(
-        'facetswitchreset' => t('All'),
-        'bundle_name:311 Category' => t('311 Services'),
-        'bundle_name:How do I' => t('How do I\'s'),
-        'bundle_name:Event' => t('Events'),
-        'bundle_name:Story' => t('News'),
-      );
+      $options = _balt_apachesolr_label_nice(array(
+        'facetswitchreset' => t('All')
+      ));
   }
 } 

@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 /**
  * Implements template_preprocess_html().
  *
@@ -281,6 +284,8 @@ function flight_city_preprocess_menu_block_wrapper(&$vars) {
   }
 }
 
+
+
 /**
  * Implements hook_preprocess_block_()
  */
@@ -311,6 +316,22 @@ function flight_city_preprocess_menu_block_wrapper(&$vars) {
 
 
 /**
+ * Returns HTML for a search keys facet item.
+ *
+ * @param $variables
+ *   An associative array containing the keys 'keys' and 'adapter'.
+ *
+ * @ingroup themeable
+ */
+function flight_city_preprocess_facetapi_link_active(&$vars) {
+  // Add domain id class specific class to link
+  if(strpos($vars['text'], 'im_domain_id') !== FALSE) {
+    $vars['options']['attributes']['class'][] = 'im_domain_id';
+  } 
+}
+
+
+/**
  * Implements hook_preprocess_search_result()
  */
 function flight_city_preprocess_search_result(&$vars) {
@@ -329,46 +350,7 @@ function flight_city_preprocess_search_result(&$vars) {
 
 
 
-//function flight_city_preprocess_views_view(&$variables) {
-//}
 
-/**
- * Implements template_preprocess_panels_pane().
- *
- */
-//function flight_city_preprocess_panels_pane(&$variables) {
-//}
-
-/**
- * Implements template_preprocess_views_views_fields().
- *
- */
-//function flight_city_preprocess_views_view_fields(&$variables) {
-//}
-
-/**
- * Implements theme_form_element_label()
- * Use foundation tooltips
- */
-//function flight_city_form_element_label($variables) {
-//  if (!empty($variables['element']['#title'])) {
-//    $variables['element']['#title'] = '<span class="secondary label">' . $variables['element']['#title'] . '</span>';
-//  }
-//  if (!empty($variables['element']['#description'])) {
-//    $variables['element']['#description'] = ' <span data-tooltip="top" class="has-tip tip-top" data-width="250" title="' . $variables['element']['#description'] . '">' . t('More information?') . '</span>';
-//  }
-//  return theme_form_element_label($variables);
-//}
-
-/**
- * Implements hook_preprocess_button().
- */
-//function flight_city_preprocess_button(&$variables) {
-//  $variables['element']['#attributes']['class'][] = 'button';
-//  if (isset($variables['element']['#parents'][0]) && $variables['element']['#parents'][0] == 'submit') {
-//    $variables['element']['#attributes']['class'][] = 'secondary';
-//  }
-//}
 
 /**
  * Implements hook_form_alter()

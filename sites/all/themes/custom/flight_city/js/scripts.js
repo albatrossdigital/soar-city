@@ -99,13 +99,22 @@
       });
 
       // Main section menu (entity submenu)
-      $('#toggle-main-section-menu, #toggle-main-section-menu-close', context).once('main-off-canvas', function() {
+      $('#toggle-main-section-menu, #toggle-main-section-menu-close, #toggle-filters', context).once('main-off-canvas', function() {
         $(this).click(function(e) {
           $('.l-main[data-offcanvas]').toggleClass('move-right');
           e.preventDefault();
         });
       });
 
+      
+      $('a.hide-show-toggle', context).once('main-off-canvas', function() {
+        $this = $(this);
+        $this.click(function(e) {
+          $this.toggleClass('open')
+               .parents('.hide-show-wrapper').find('.hide-show-content')
+               .slideToggle('fast');
+        });
+      });
 
       // orbits helper
       $('ul[data-orbit]', context).once('orbit-helper', function() {
