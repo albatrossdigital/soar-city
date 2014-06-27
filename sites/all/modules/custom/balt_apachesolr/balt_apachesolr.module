@@ -493,7 +493,7 @@ function balt_apachesolr_autocomplete_answers($keys = '') {
   $query->addParam('fl', 'url');
   $query->addParam('fl', 'label');
   $query->addParam('fq', 'label:' . $last_part);
-  $query->addParam('fq', BALT_APACHESOLR_ENTITY_FIELD . 'How do I');
+  $query->addParam('fq', BALT_APACHESOLR_ENTITY_FIELD . ':How do I');
   $query->addParam('q', '*:*');
   
   //dpm($query->getParams());
