@@ -43,10 +43,7 @@ h1, h2
   em, em &
     font-style: normal
 
-// Always normal
 h5
-  strong, strong &, 
-    //+f(weight-normal)
 
 h1, h2, h5, h6
   a 
@@ -55,6 +52,13 @@ h1, h2, h5, h6
 h3, h4
   a
     +c(link-alt)
+
+
+// Type
+//------------------------------------------
+
+strong, b
+  +f(weight-bold)
 
 
 // Layout

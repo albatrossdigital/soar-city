@@ -6688,7 +6688,7 @@ h1 strong, strong h1, h2 strong, strong h2 {
 }
 
 /* line 437, ../sass/base/_mixins.sass */
-h3, h4 {
+h3, h4, strong, b {
   font-weight: 700;
 }
 
@@ -6827,13 +6827,13 @@ h1 em, em h1, h2 em, em h2 {
   font-style: normal;
 }
 
-/* line 63, ../sass/base/_elements.sass */
+/* line 67, ../sass/base/_elements.sass */
 .vertical-center {
   display: table;
   height: 100%;
 }
 
-/* line 67, ../sass/base/_elements.sass */
+/* line 71, ../sass/base/_elements.sass */
 .vertical-center-inner {
   display: table-cell;
   vertical-align: middle;
@@ -6844,23 +6844,23 @@ h1 em, em h1, h2 em, em h2 {
   line-height: 1.4;
 }
 
-/* line 91, ../sass/base/_elements.sass */
+/* line 95, ../sass/base/_elements.sass */
 a:active {
   color: #07b1db;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 139, ../sass/base/_elements.sass */
+  /* line 143, ../sass/base/_elements.sass */
   h1 {
     font-size: 2.85714rem;
   }
 
-  /* line 142, ../sass/base/_elements.sass */
+  /* line 146, ../sass/base/_elements.sass */
   h2 {
     font-size: 2.14286rem;
   }
 
-  /* line 145, ../sass/base/_elements.sass */
+  /* line 149, ../sass/base/_elements.sass */
   h3 {
     font-size: 1.57143rem;
   }
