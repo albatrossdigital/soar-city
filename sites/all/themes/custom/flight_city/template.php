@@ -31,6 +31,26 @@ function flight_city_preprocess_html(&$vars) {
     'type' => 'file',
     'scope' => 'footer'
   ));
+
+  // add placeholder call
+  drupal_add_js('jQuery(function() {jQuery("input, textarea").placeholder();});',
+    array('type' => 'inline', 'scope' => 'footer', 'weight' => 100)
+  );
+
+  // add ie browser detector
+  $embed = 'var $buoop = {vs:{i:8,f:15,o:15,s:5.1,n:9}}; 
+    $buoop.ol = window.onload; 
+    window.onload=function(){ 
+      try {if ($buoop.ol) $buoop.ol();}catch (e) {} 
+      var e = document.createElement("script"); 
+      e.setAttribute("type", "text/javascript"); 
+      e.setAttribute("src", "//browser-update.org/update.js"); 
+      document.body.appendChild(e); 
+    }';
+
+  drupal_add_js($embed,
+    array('type' => 'inline', 'scope' => 'footer', 'weight' => 101)
+  );
 }
 
 
@@ -144,24 +164,6 @@ function flight_city_preprocess_page(&$vars) {
     $vars['sidebar_sec_grid'] = '';
   }
 
-
-  $embed = '<script type="text/javascript"> 
-    var $buoop = {vs:{i:8,f:15,o:15,s:5.1,n:9}}; 
-    $buoop.ol = window.onload; 
-    window.onload=function(){ 
-      try {if ($buoop.ol) $buoop.ol();}catch (e) {} 
-      var e = document.createElement("script"); 
-      e.setAttribute("type", "text/javascript"); 
-      e.setAttribute("src", "//browser-update.org/update.js"); 
-      document.body.appendChild(e); 
-    } 
-    </script> ';
-
-  $vars['page']['footer']['browser_update'] = array(
-    '#type' => 'markup',
-    '#markup' => $embed,
-    '#weight' => 101,
-  );
   //dpm($vars);
 }
 
