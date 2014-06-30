@@ -687,6 +687,18 @@ $common-border: common-border-val()
       .main.medium-12
         padding-top: rem-calc(15)
 
+%show-mobile-filter-label 
+  #toggle-main-section-menu
+    .menu-label
+      +e(hide)
+
+    .filter-label
+      display: inline
+
+
+@mixin show-mobile-filter-label()
+  @extend %show-mobile-filter-label
+
 
 @mixin background-box($padding: $small-region-pad-large)
   +b(gray)
@@ -1132,9 +1144,10 @@ $main-menu-border-size: rem-calc(3)
     padding-right: rem-calc(24)
 
 @mixin big-input()
+  height: auto
+  min-height: rem-calc(52)
   font-size: rem-calc(16)
   margin-bottom: rem-calc(10)
-  padding: ($form-spacing * 1.5)  $form-spacing
 
 
 @mixin big-form()

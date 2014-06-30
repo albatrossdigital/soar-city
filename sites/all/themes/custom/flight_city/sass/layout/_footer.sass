@@ -142,11 +142,10 @@
 
 +respond($medium-up)
 
-  .footer-top, 
-  .footer
-    z-index: 1
-  
   .l-footer
+    .block
+      position: relative
+      z-index: 1
 
     &:after
       +before-as-image(block, bottom, 0)
@@ -165,6 +164,10 @@
 
     form
       padding-left: rem-calc(125)
+
+  .block-bean-citywide-social-icon
+    a.social-icon
+      overflow: visible
 
   .block-bean-footer-logos
     float: left

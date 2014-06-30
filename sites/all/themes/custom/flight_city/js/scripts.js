@@ -98,6 +98,19 @@
         });
       });
 
+      // Make sure content matches sidebar
+      $('.page > .inner-wrap > .l-main > .inner-wrap', context).once('off-canvas-height', function() {
+        var offHeight = 0;
+        $('aside.right-off-canvas-menu, aside, aside.left-off-canvas-menu').each(function() {
+          var localHeight = 0;
+          $(this).children().each(function() {
+            localHeight += $(this).outerHeight();
+          });
+          offHeight = (offHeight < localHeight) ? localHeight : offHeight;
+        });
+        $(this).css({'min-height': offHeight});
+      });
+
       // Main section menu (entity submenu)
       $('#toggle-main-section-menu, #toggle-main-section-menu-close, #toggle-filters', context).once('main-off-canvas', function() {
         $(this).click(function(e) {
