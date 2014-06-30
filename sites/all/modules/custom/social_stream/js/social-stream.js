@@ -1,3 +1,70 @@
+
+//http://stackoverflow.com/questions/3629183/why-doesnt-indexof-work-on-an-array-ie8
+if (!Array.prototype.indexOf)
+{
+  Array.prototype.indexOf = function(elt)
+  {
+    var len = this.length >>> 0;
+
+    var from = Number(arguments[1]) || 0;
+    from = (from < 0)
+         ? Math.ceil(from)
+         : Math.floor(from);
+    if (from < 0)
+      from += len;
+
+    for (; from < len; from++)
+    {
+      if (from in this &&
+          this[from] === elt)
+        return from;
+    }
+    return -1;
+  };
+}
+
+// From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
+if (!Object.keys) {
+  Object.keys = (function () {
+    'use strict';
+    var hasOwnProperty = Object.prototype.hasOwnProperty,
+        hasDontEnumBug = !({toString: null}).propertyIsEnumerable('toString'),
+        dontEnums = [
+          'toString',
+          'toLocaleString',
+          'valueOf',
+          'hasOwnProperty',
+          'isPrototypeOf',
+          'propertyIsEnumerable',
+          'constructor'
+        ],
+        dontEnumsLength = dontEnums.length;
+
+    return function (obj) {
+      if (typeof obj !== 'object' && (typeof obj !== 'function' || obj === null)) {
+        throw new TypeError('Object.keys called on non-object');
+      }
+
+      var result = [], prop, i;
+
+      for (prop in obj) {
+        if (hasOwnProperty.call(obj, prop)) {
+          result.push(prop);
+        }
+      }
+
+      if (hasDontEnumBug) {
+        for (i = 0; i < dontEnumsLength; i++) {
+          if (hasOwnProperty.call(obj, dontEnums[i])) {
+            result.push(dontEnums[i]);
+          }
+        }
+      }
+      return result;
+    };
+  }());
+}
+
 (function ($) {
 
 Drupal.behaviors.social_stream = {
@@ -8,7 +75,7 @@ Drupal.behaviors.social_stream = {
 
     var display = {
       'twitter': {
-        out: 'intro,date,text,user',
+        out: 'intro,date,text,user'
       },
       'facebook': {
         out: 'intro,date,text,user'
@@ -33,7 +100,7 @@ Drupal.behaviors.social_stream = {
           return;
         }
         value = data[key];
-        if (added.indexOf(value.url) === -1) {
+        if (!added.hasOwnProperty(value.url)) {
           if (feeds[value.network] == undefined) {
             feeds[value.network] = [];
           }
@@ -119,7 +186,7 @@ Drupal.behaviors.social_stream = {
         //order: 'random',
         iconPath: settings.social_stream.image_path,
         imagePath: settings.social_stream.image_path,
-        height: settings.social_stream.height,
+        height: settings.social_stream.height
       });
 
       // Click on active social network
