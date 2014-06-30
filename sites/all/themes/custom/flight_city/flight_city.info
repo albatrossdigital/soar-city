@@ -46,6 +46,7 @@ stylesheets-conditional[lt IE 9][all][] = css/vendor/ie.css
 ; Modernizr acts as a shim for HTML5 elements for older browsers
 ; as well as detection for mobile devices.
 scripts[] = js/vendor/custom.modernizr.js
+scripts[] = js/vendor/placeholder.js
 scripts[] = js/vendor/qsa-polyfill-ie7.js
 ;scripts[] = js/vendor/rem.min.js
 
