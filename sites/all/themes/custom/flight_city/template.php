@@ -26,7 +26,8 @@ function flight_city_preprocess_html(&$vars) {
   // a a depth class
   $vars['classes_array'][] = 'menu-depth-' . count($breadcrumb);
   
-  drupal_add_js(drupal_get_path('theme', 'flight_city') . '/js/vendor/rem.min.js', array(
+  // @TODO switch back to min
+  drupal_add_js(drupal_get_path('theme', 'flight_city') . '/js/vendor/rem.js', array(
     'type' => 'file',
     'scope' => 'footer'
   ));
@@ -143,6 +144,24 @@ function flight_city_preprocess_page(&$vars) {
     $vars['sidebar_sec_grid'] = '';
   }
 
+
+  $embed = '<script type="text/javascript"> 
+    var $buoop = {vs:{i:8,f:15,o:15,s:5.1,n:9}}; 
+    $buoop.ol = window.onload; 
+    window.onload=function(){ 
+      try {if ($buoop.ol) $buoop.ol();}catch (e) {} 
+      var e = document.createElement("script"); 
+      e.setAttribute("type", "text/javascript"); 
+      e.setAttribute("src", "//browser-update.org/update.js"); 
+      document.body.appendChild(e); 
+    } 
+    </script> ';
+
+  $vars['page']['footer']['browser_update'] = array(
+    '#type' => 'markup',
+    '#markup' => $embed,
+    '#weight' => 101,
+  );
   //dpm($vars);
 }
 
