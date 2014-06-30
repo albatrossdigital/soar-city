@@ -728,6 +728,17 @@ $common-border: common-border-val()
     @extend %highlight-as-sidebar 
 
 
+// undo width restriction
+%full-width-main-section
+  +respond($medium-up)
+    .medium-8.main 
+      margin-left: 0
+      width: grid-calc(9, 12)
+
+@mixin full-width-main-section()
+  @extend %full-width-main-section
+
+
 @mixin main-vertical-spacing($display: 'mobile')
 
   @if $display == 'mobile'

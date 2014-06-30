@@ -13,7 +13,7 @@
       </div>
       <div class="medium-4 columns header-region-right">
         <?php if (!empty($page['sidebar_first'])): ?>
-          <a id="toggle-main-section-menu" href="#"><i class="fa-angle-left"></i><span><?php print t('Sub Menu'); ?></span></a>
+          <a id="toggle-main-section-menu" class="button secondary-alt small radius" href="#"><i class="fa-bars"></i><span class="menu-label"><?php print t('Menu'); ?></span><span class="filter-label"><?php print t('Show Filters'); ?></span></a>
         <?php endif; ?>
         <?php print render($page['header']); ?>
         <ul class="title-area">
