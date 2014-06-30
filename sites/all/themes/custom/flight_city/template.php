@@ -27,10 +27,10 @@ function flight_city_preprocess_html(&$vars) {
   $vars['classes_array'][] = 'menu-depth-' . count($breadcrumb);
   
   // @TODO switch back to min
-  drupal_add_js(drupal_get_path('theme', 'flight_city') . '/js/vendor/rem.js', array(
+  /*drupal_add_js(drupal_get_path('theme', 'flight_city') . '/js/vendor/rem.js', array(
     'type' => 'file',
     'scope' => 'footer'
-  ));
+  ));*/
 
   // add placeholder call
   drupal_add_js('jQuery(function() {jQuery("input, textarea").placeholder();});',

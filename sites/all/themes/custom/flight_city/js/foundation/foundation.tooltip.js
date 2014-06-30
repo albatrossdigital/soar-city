@@ -31,17 +31,17 @@
       var self = this,
           S = self.S;
 
-      self.create($(instance));
+      self.create(jQuery(instance));
 
-      $(this.scope)
+      jQuery(this.scope)
         .off('.tooltip')
         .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip touchstart.fndtn.tooltip MSPointerDown.fndtn.tooltip',
           '[' + this.attr_name() + ']', function (e) {
-          var $this = $(this),
+          var $this = jQuery(this),
               settings = $.extend({}, self.settings, self.data_options($this)),
               is_touch = false;
 
-          if (Modernizr.touch && /touchstart|MSPointerDown/i.test(e.type) && $(e.target).is('a')) {
+          if (Modernizr.touch && /touchstart|MSPointerDown/i.test(e.type) && jQuery(e.target).is('a')) {
             return false;
           }
 
@@ -55,7 +55,7 @@
               return;
             } else if(!settings.disable_for_touch && Modernizr.touch && /touchstart|MSPointerDown/i.test(e.type)) {
               e.preventDefault();
-              $(settings.tooltip_class + '.open').hide();
+              jQuery(settings.tooltip_class + '.open').hide();
               is_touch = true;
             }
 
@@ -74,17 +74,17 @@
         .on('mouseleave.fndtn.tooltip touchstart.fndtn.tooltip MSPointerDown.fndtn.tooltip', '[' + this.attr_name() + '].open', function (e) {
           if (/mouse/i.test(e.type) && self.ie_touch(e)) return false;
 
-          if($(this).data('tooltip-open-event-type') == 'touch' && e.type == 'mouseleave') {
+          if(jQuery(this).data('tooltip-open-event-type') == 'touch' && e.type == 'mouseleave') {
             return;
           }
-          else if($(this).data('tooltip-open-event-type') == 'mouse' && /MSPointerDown|touchstart/i.test(e.type)) {
-            self.convert_to_touch($(this));
+          else if(jQuery(this).data('tooltip-open-event-type') == 'mouse' && /MSPointerDown|touchstart/i.test(e.type)) {
+            self.convert_to_touch(jQuery(this));
           } else {
-            self.hide($(this));
+            self.hide(jQuery(this));
           }
         })
         .on('DOMNodeRemoved DOMAttrModified', '[' + this.attr_name() + ']:not(a)', function (e) {
-          self.hide($(this));
+          self.hide(jQuery(this));
         });
     },
 
@@ -105,7 +105,7 @@
           tip = null;
 
       if (selector) {
-        tip = $('span[data-selector="' + selector + '"]' + settings.tooltip_class);
+        tip = jQuery('span[data-selector="' + selector + '"]' + settings.tooltip_class);
       }
 
       return (typeof tip === 'object') ? tip : false;
@@ -132,7 +132,7 @@
         tip_template = window[settings.tip_template];
       }
 
-      var $tip = $(tip_template(this.selector($target), $('<div></div>').html($target.attr('title')).html())),
+      var $tip = jQuery(tip_template(this.selector($target), jQuery('<div></div>').html($target.attr('title')).html())),
           classes = this.inheritable_classes($target);
 
       $tip.addClass(classes).appendTo(settings.append_to);
@@ -175,7 +175,7 @@
       objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', target.offset().left);
 
       if (this.small()) {
-        objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', 12.5, $(this.scope).width());
+        objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', 12.5, jQuery(this.scope).width());
         tip.addClass('tip-override');
         objPos(nub, -nubHeight, 'auto', 'auto', target.offset().left);
       } else {
@@ -261,9 +261,9 @@
 
     off : function () {
       var self = this;
-      $(this.scope).off('.fndtn.tooltip');
-      $(this.settings.tooltip_class).each(function (i) {
-        $('[' + self.attr_name() + ']').eq(i).attr('title', $(this).text());
+      jQuery(this.scope).off('.fndtn.tooltip');
+      jQuery(this.settings.tooltip_class).each(function (i) {
+        jQuery('[' + self.attr_name() + ']').eq(i).attr('title', jQuery(this).text());
       }).remove();
     },
 

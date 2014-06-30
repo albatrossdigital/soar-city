@@ -369,3 +369,8 @@
 .lt-ie9 .top-bar-section a {
   text-decoration: none;
 }
+
+/* line 316, ../../sass/vendor/ie.scss */
+.l-footer:after {
+  display: none !important;
+}

@@ -26,13 +26,13 @@
     events : function() {
       var self = this;
 
-      $(this.scope)
+      jQuery(this.scope)
         .off('.slider')
         .on('mousedown.fndtn.slider touchstart.fndtn.slider pointerdown.fndtn.slider',
         '[' + self.attr_name() + '] .range-slider-handle', function(e) {
           if (!self.cache.active) {
             e.preventDefault();
-            self.set_active_slider($(e.target));
+            self.set_active_slider(jQuery(e.target));
           }
         })
         .on('mousemove.fndtn.slider touchmove.fndtn.slider pointermove.fndtn.slider', function(e) {
@@ -48,7 +48,7 @@
           self.settings.on_change();
         });
 
-      $(window)
+      jQuery(window)
         .on('resize.fndtn.slider', self.throttle(function(e) {
           self.reflow();
         }, 300));
@@ -106,11 +106,11 @@
       $handle.parent().children('input[type=hidden]').val(value);
 
       if (settings.input_id != '') {
-        $(settings.display_selector).each(function(){
+        jQuery(settings.display_selector).each(function(){
           if (this.hasOwnProperty('value')) {
-            $(this).val(value);
+            jQuery(this).val(value);
           } else {
-            $(this).text(value);
+            jQuery(this).text(value);
           }
         });
       }
@@ -133,14 +133,14 @@
 
     set_translate : function(ele, offset, vertical) {
       if (vertical) {
-        $(ele)
+        jQuery(ele)
           .css('-webkit-transform', 'translateY('+offset+'px)')
           .css('-moz-transform', 'translateY('+offset+'px)')
           .css('-ms-transform', 'translateY('+offset+'px)')
           .css('-o-transform', 'translateY('+offset+'px)')
           .css('transform', 'translateY('+offset+'px)');
       } else {
-        $(ele)
+        jQuery(ele)
           .css('-webkit-transform', 'translateX('+offset+'px)')
           .css('-moz-transform', 'translateX('+offset+'px)')
           .css('-ms-transform', 'translateX('+offset+'px)')
@@ -154,12 +154,12 @@
     },
 
     initialize_settings : function(handle) {
-      $.data(handle, 'bar', $(handle).parent());
-      $.data(handle, 'bar_o', $(handle).parent().offset().left);
-      $.data(handle, 'bar_w', $(handle).parent().outerWidth());
-      $.data(handle, 'handle_o', $(handle).offset().left);
-      $.data(handle, 'handle_w', $(handle).outerWidth());
-      $.data(handle, 'settings', $.extend({}, this.settings, this.data_options($(handle).parent())));
+      $.data(handle, 'bar', jQuery(handle).parent());
+      $.data(handle, 'bar_o', jQuery(handle).parent().offset().left);
+      $.data(handle, 'bar_w', jQuery(handle).parent().outerWidth());
+      $.data(handle, 'handle_o', jQuery(handle).offset().left);
+      $.data(handle, 'handle_w', jQuery(handle).outerWidth());
+      $.data(handle, 'settings', $.extend({}, this.settings, this.data_options(jQuery(handle).parent())));
     },
 
     set_initial_position : function($ele) {
@@ -171,26 +171,26 @@
 
     set_value : function(value) {
       var self = this;
-      $('[' + self.attr_name() + ']', this.scope).each(function(){
-        $(this).attr(self.attr_name(), value);
+      jQuery('[' + self.attr_name() + ']', this.scope).each(function(){
+        jQuery(this).attr(self.attr_name(), value);
       });
-      if (!!$(this.scope).attr(self.attr_name())) {
-        $(this.scope).attr(self.attr_name(), value);
+      if (!!jQuery(this.scope).attr(self.attr_name())) {
+        jQuery(this.scope).attr(self.attr_name(), value);
       }
       self.reflow();
     },
 
     reflow : function() {
       var self = this;
-      $('[' + this.attr_name() + ']').each(function() {
-        var handle = $(this).children('.range-slider-handle')[0],
-            val = $(this).attr(self.attr_name());
+      jQuery('[' + this.attr_name() + ']').each(function() {
+        var handle = jQuery(this).children('.range-slider-handle')[0],
+            val = jQuery(this).attr(self.attr_name());
         self.initialize_settings(handle);
 
         if (val) {
-          self.set_ui($(handle), parseFloat(val));
+          self.set_ui(jQuery(handle), parseFloat(val));
         } else {
-          self.set_initial_position($(this));
+          self.set_initial_position(jQuery(this));
         }
       });
     }

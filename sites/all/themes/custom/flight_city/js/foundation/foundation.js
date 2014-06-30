@@ -11,7 +11,7 @@
 
   var header_helpers = function (class_array) {
     var i = class_array.length;
-    var head = $('head');
+    var head = jQuery('head');
 
     while (i--) {
       if(head.has('.' + class_array[i]).length === 0) {
@@ -30,7 +30,7 @@
 
   // Enable FastClick if present
 
-  $(function() {
+  jQuery(function() {
     if (typeof FastClick !== 'undefined') {
       // Don't attach to body if undefined
       if (typeof document.body !== 'undefined') {
@@ -52,13 +52,13 @@
         } else {
           cont = context;
         }
-        return $(cont.querySelectorAll(selector));
+        return jQuery(cont.querySelectorAll(selector));
       }
 
-      return $(document.querySelectorAll(selector));
+      return jQuery(document.querySelectorAll(selector));
     }
 
-    return $(selector, context);
+    return jQuery(selector, context);
   };
 
   // Namespace functions.
@@ -96,23 +96,23 @@
 
   var bindings = function (method, options) {
     var self = this,
-        should_bind_events = !$(this).data(this.attr_name(true));
+        should_bind_events = !jQuery(this).data(this.attr_name(true));
 
     if (typeof method === 'string') {
       return this[method].call(this, options);
     }
 
-    if ($(this.scope).is('[' + this.attr_name() +']')) {
-      $(this.scope).data(this.attr_name(true) + '-init', $.extend({}, this.settings, (options || method), this.data_options($(this.scope))));
+    if (jQuery(this.scope).is('[' + this.attr_name() +']')) {
+      jQuery(this.scope).data(this.attr_name(true) + '-init', $.extend({}, this.settings, (options || method), this.data_options(jQuery(this.scope))));
 
       if (should_bind_events) {
         this.events(this.scope);
       }
 
     } else {
-      $('[' + this.attr_name() +']', this.scope).each(function () {
-        var should_bind_events = !$(this).data(self.attr_name(true) + '-init');
-        $(this).data(self.attr_name(true) + '-init', $.extend({}, self.settings, (options || method), self.data_options($(this))));
+      jQuery('[' + this.attr_name() +']', this.scope).each(function () {
+        var should_bind_events = !jQuery(this).data(self.attr_name(true) + '-init');
+        jQuery(this).data(self.attr_name(true) + '-init', $.extend({}, self.settings, (options || method), self.data_options(jQuery(this))));
 
         if (should_bind_events) {
           self.events(this);
@@ -279,14 +279,14 @@
     version : '5.2.2',
 
     media_queries : {
-      small : $('.foundation-mq-small').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
-      medium : $('.foundation-mq-medium').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
-      large : $('.foundation-mq-large').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
-      xlarge: $('.foundation-mq-xlarge').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
-      xxlarge: $('.foundation-mq-xxlarge').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, '')
+      small : jQuery('.foundation-mq-small').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
+      medium : jQuery('.foundation-mq-medium').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
+      large : jQuery('.foundation-mq-large').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
+      xlarge: jQuery('.foundation-mq-xlarge').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
+      xxlarge: jQuery('.foundation-mq-xxlarge').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, '')
     },
 
-    stylesheet : $('<style></style>').appendTo('head')[0].sheet,
+    stylesheet : jQuery('<style></style>').appendTo('head')[0].sheet,
 
     global: {
       namespace: undefined
@@ -297,7 +297,7 @@
           responses = [];
 
       // check RTL
-      this.rtl = /rtl/i.test($('html').attr('dir'));
+      this.rtl = /rtl/i.test(jQuery('html').attr('dir'));
 
       // set foundation global scope
       this.scope = scope || this.scope;
@@ -375,7 +375,7 @@
 
       // If the namespace has not been set (is undefined), try to read it out of the meta element. 
       // Otherwise use the globally defined namespace, even if it's empty ('')
-      var namespace = ( this.global.namespace === undefined ) ? $('.foundation-data-attribute-namespace').css('font-family') : this.global.namespace;
+      var namespace = ( this.global.namespace === undefined ) ? jQuery('.foundation-data-attribute-namespace').css('font-family') : this.global.namespace;
       
       // Finally, if the namsepace is either undefined or false, set it to an empty string. 
       // Otherwise use the namespace value.
@@ -528,8 +528,8 @@
       //    Class (String): Class name for the generated <meta> tag
       register_media : function (media, media_class) {
         if(Foundation.media_queries[media] === undefined) {
-          $('head').append('<meta class="' + media_class + '">');
-          Foundation.media_queries[media] = removeQuotes($('.' + media_class).css('font-family'));
+          jQuery('head').append('<meta class="' + media_class + '">');
+          Foundation.media_queries[media] = removeQuotes(jQuery('.' + media_class).css('font-family'));
         }
       },
 
@@ -570,7 +570,7 @@
         }
 
         images.each(function () {
-          single_image_loaded($(this), function () {
+          single_image_loaded(jQuery(this), function () {
             unloaded -= 1;
             if (unloaded === 0) {
               callback(images);

@@ -35,12 +35,12 @@
       }
       if (settings.bullets) {
         bullets_container.children().removeClass(settings.bullets_active_class);
-        $(bullets_container.children().get(index)).addClass(settings.bullets_active_class);
+        jQuery(bullets_container.children().get(index)).addClass(settings.bullets_active_class);
       }
     };
 
     self.update_active_link = function(index) {
-      var link = $('[data-orbit-link="'+self.slides().eq(index).attr('data-orbit-slide')+'"]');
+      var link = jQuery('[data-orbit-link="'+self.slides().eq(index).attr('data-orbit-slide')+'"]');
       link.siblings().removeClass(settings.bullets_active_class);
       link.addClass(settings.bullets_active_class);
     };
@@ -56,32 +56,32 @@
       }
 
       if (settings.navigation_arrows) {
-        container.append($('<a href="#"><span></span></a>').addClass(settings.prev_class));
-        container.append($('<a href="#"><span></span></a>').addClass(settings.next_class));
+        container.append(jQuery('<a href="#"><span></span></a>').addClass(settings.prev_class));
+        container.append(jQuery('<a href="#"><span></span></a>').addClass(settings.next_class));
       }
 
       if (settings.timer) {
-        timer_container = $('<div>').addClass(settings.timer_container_class);
+        timer_container = jQuery('<div>').addClass(settings.timer_container_class);
         timer_container.append('<span>');
         if (settings.timer_show_progress_bar) {
-            timer_container.append($('<div>').addClass(settings.timer_progress_class));
+            timer_container.append(jQuery('<div>').addClass(settings.timer_progress_class));
         }
         timer_container.addClass(settings.timer_paused_class);
         container.append(timer_container);
       }
 
       if (settings.slide_number) {
-        number_container = $('<div>').addClass(settings.slide_number_class);
+        number_container = jQuery('<div>').addClass(settings.slide_number_class);
         number_container.append('<span></span> ' + settings.slide_number_text + ' <span></span>');
         container.append(number_container);
       }
 
       if (settings.bullets) {
-        bullets_container = $('<ol>').addClass(settings.bullets_container_class);
+        bullets_container = jQuery('<ol>').addClass(settings.bullets_container_class);
         container.append(bullets_container);
         bullets_container.wrap('<div class="orbit-bullets-container"></div>');
         self.slides().each(function(idx, el) {
-          var bullet = $('<li>').attr('data-orbit-slide', idx);
+          var bullet = jQuery('<li>').attr('data-orbit-slide', idx);
           bullets_container.append(bullet);
         });
       }
@@ -108,8 +108,8 @@
         if (!settings.circular) return false;
         next_idx = slides.length - 1;
       }
-      var current = $(slides.get(idx))
-        , next = $(slides.get(next_idx));
+      var current = jQuery(slides.get(idx))
+        , next = jQuery(slides.get(next_idx));
       
       return [dir, current, next, next_idx];
     };
@@ -192,7 +192,7 @@
 
     self.link_custom = function(e) {
       e.preventDefault();
-      var link = $(this).attr('data-orbit-link');
+      var link = jQuery(this).attr('data-orbit-link');
       if ((typeof link === 'string') && (link = $.trim(link)) != "") {
         var slide = container.find('[data-orbit-slide='+link+']');
         if (slide.index() != -1) {
@@ -204,7 +204,7 @@
     };
 
     self.link_bullet = function(e) {    
-      var index = $(this).attr('data-orbit-slide');
+      var index = jQuery(this).attr('data-orbit-slide');
       if ((typeof index === 'string') && (index = $.trim(index)) != "") {
         if(isNaN(parseInt(index)))
         {
@@ -230,11 +230,11 @@
     }
     
     self.compute_dimensions = function() {
-      var current = $(self.slides().get(idx));
+      var current = jQuery(self.slides().get(idx));
       var h = current.height();
       if (!settings.variable_height) {
         self.slides().each(function(){
-          if ($(this).height() > h) { h = $(this).height(); }
+          if (jQuery(this).height() > h) { h = jQuery(this).height(); }
         });
       }
       slides_container.height(h);
@@ -370,8 +370,8 @@
         }
       });
       
-      $(document).on('click', '[data-orbit-link]', self.link_custom);
-      $(window).on('load resize', self.compute_dimensions);
+      jQuery(document).on('click', '[data-orbit-link]', self.link_custom);
+      jQuery(window).on('load resize', self.compute_dimensions);
       var children = this.slides().find('img');
       Foundation.utils.image_loaded(children, self.compute_dimensions);
       Foundation.utils.image_loaded(children, function() {
@@ -580,20 +580,20 @@
     },
 
     events : function (instance) {
-      var orbit_instance = new Orbit($(instance), $(instance).data('orbit-init'));
-      $(instance).data(self.name + '-instance', orbit_instance);
+      var orbit_instance = new Orbit(jQuery(instance), jQuery(instance).data('orbit-init'));
+      jQuery(instance).data(self.name + '-instance', orbit_instance);
     },
 
     reflow : function () {
       var self = this;
 
-      if ($(self.scope).is('[data-orbit]')) {
-        var $el = $(self.scope);
+      if (jQuery(self.scope).is('[data-orbit]')) {
+        var $el = jQuery(self.scope);
         var instance = $el.data(self.name + '-instance');
         instance.compute_dimensions();
       } else {
-        $('[data-orbit]', self.scope).each(function(idx, el) {
-          var $el = $(el);
+        jQuery('[data-orbit]', self.scope).each(function(idx, el) {
+          var $el = jQuery(el);
           var opts = self.data_options($el);
           var instance = $el.data(self.name + '-instance');
           instance.compute_dimensions();

@@ -27,7 +27,7 @@
       // Store the default active tabs which will be referenced when the
       // location hash is absent, as in the case of navigating the tabs and
       // returning to the first viewing via the browser Back button.
-      $('[' + this.attr_name() + '] > dd.active > a', this.scope).each(function () {
+      jQuery('[' + this.attr_name() + '] > dd.active > a', this.scope).each(function () {
         self.default_tab_hashes.push(this.hash);
       });
     },
@@ -36,25 +36,25 @@
       var self = this,
           S = this.S;
 
-      $(this.scope)
+      jQuery(this.scope)
         .off('.tab')
         // Click event: tab title
         .on('click.fndtn.tab', '[' + this.attr_name() + '] > dd > a', function (e) {
-          var settings = $(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
+          var settings = jQuery(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
           if (!settings.is_hover || Modernizr.touch) {
             e.preventDefault();
             e.stopPropagation();
-            self.toggle_active_tab($(this).parent());
+            self.toggle_active_tab(jQuery(this).parent());
           }
         })
         // Hover event: tab title
         .on('mouseenter.fndtn.tab', '[' + this.attr_name() + '] > dd > a', function (e) {
-          var settings = $(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
-          if (settings.is_hover) self.toggle_active_tab($(this).parent());
+          var settings = jQuery(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
+          if (settings.is_hover) self.toggle_active_tab(jQuery(this).parent());
         });
 
       // Location hash change event
-      $(window).on('hashchange.fndtn.tab', function (e) {
+      jQuery(window).on('hashchange.fndtn.tab', function (e) {
         e.preventDefault();
         self.handle_location_hash_change();
       });
@@ -64,30 +64,30 @@
       var self = this,
           S = this.S;
 
-      $('[' + this.attr_name() + ']', this.scope).each(function () {
-        var settings = $(this).data(self.attr_name(true) + '-init');
+      jQuery('[' + this.attr_name() + ']', this.scope).each(function () {
+        var settings = jQuery(this).data(self.attr_name(true) + '-init');
         if (settings.deep_linking) {
           // Match the location hash to a label
           var hash = self.scope.location.hash;
           if (hash != '') {
             // Check whether the location hash references a tab content div or
             // another element on the page (inside or outside the tab content div)
-            var hash_element = $(hash);
+            var hash_element = jQuery(hash);
             if (hash_element.hasClass('content') && hash_element.parent().hasClass('tab-content')) {
               // Tab content div
-              self.toggle_active_tab($('[' + self.attr_name() + '] > dd > a[href=' + hash + ']').parent());
+              self.toggle_active_tab(jQuery('[' + self.attr_name() + '] > dd > a[href=' + hash + ']').parent());
             } else {
               // Not the tab content div. If inside the tab content, find the
               // containing tab and toggle it as active.
               var hash_tab_container_id = hash_element.closest('.content').attr('id');
               if (hash_tab_container_id != undefined) {
-                self.toggle_active_tab($('[' + self.attr_name() + '] > dd > a[href=#' + hash_tab_container_id + ']').parent(), hash);
+                self.toggle_active_tab(jQuery('[' + self.attr_name() + '] > dd > a[href=#' + hash_tab_container_id + ']').parent(), hash);
               }
             }
           } else {
             // Reference the default tab hashes which were initialized in the init function
             for (var ind in self.default_tab_hashes) {
-              self.toggle_active_tab($('[' + self.attr_name() + '] > dd > a[href=' + self.default_tab_hashes[ind] + ']').parent());
+              self.toggle_active_tab(jQuery('[' + self.attr_name() + '] > dd > a[href=' + self.default_tab_hashes[ind] + ']').parent());
             }
           }
         }
@@ -99,19 +99,19 @@
           tabs = tab.closest('[' + this.attr_name() + ']'),
           anchor = tab.children('a').first(),
           target_hash = '#' + anchor.attr('href').split('#')[1],
-          target = $(target_hash),
+          target = jQuery(target_hash),
           siblings = tab.siblings(),
           settings = tabs.data(this.attr_name(true) + '-init');
 
       // allow usage of data-tab-content attribute instead of href
-      if ($(this).data(this.data_attr('tab-content'))) {
-        target_hash = '#' + $(this).data(this.data_attr('tab-content')).split('#')[1];
-        target = $(target_hash);
+      if (jQuery(this).data(this.data_attr('tab-content'))) {
+        target_hash = '#' + jQuery(this).data(this.data_attr('tab-content')).split('#')[1];
+        target = jQuery(target_hash);
       }
 
       if (settings.deep_linking) {
         // Get the scroll Y position prior to moving to the hash ID
-        var cur_ypos = $('body,html').scrollTop();
+        var cur_ypos = jQuery('body,html').scrollTop();
 
         // Update the location hash to preserve browser history
         // Note that the hash does not need to correspond to the
@@ -130,14 +130,14 @@
           if (location_hash == undefined || location_hash == target_hash) {
             tab.parent()[0].scrollIntoView();
           } else {
-            $(target_hash)[0].scrollIntoView();
+            jQuery(target_hash)[0].scrollIntoView();
           }
         } else {
           // Adjust the scrollbar to the Y position prior to setting the hash
           // Only do this for the tab content anchor, otherwise there will be
           // conflicts with in-tab anchor links nested in the tab-content div
           if (location_hash == undefined || location_hash == target_hash) {
-            $('body,html').scrollTop(cur_ypos);
+            jQuery('body,html').scrollTop(cur_ypos);
           }
         }
       }

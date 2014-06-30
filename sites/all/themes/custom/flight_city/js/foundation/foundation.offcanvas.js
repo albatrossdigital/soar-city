@@ -16,18 +16,18 @@
       var self = this,
           S = self.S;
 
-      $(this.scope).off('.offcanvas')
+      jQuery(this.scope).off('.offcanvas')
         .on('click.fndtn.offcanvas', '.left-off-canvas-toggle', function (e) {
           self.click_toggle_class(e, 'move-right');
         })
         .on('click.fndtn.offcanvas', '.left-off-canvas-menu a', function (e) {
-          $(".off-canvas-wrap").removeClass("move-right");
+          jQuery(".off-canvas-wrap").removeClass("move-right");
         })
         .on('click.fndtn.offcanvas', '.right-off-canvas-toggle', function (e) {
           self.click_toggle_class(e, 'move-left');
         })
         .on('click.fndtn.offcanvas', '.right-off-canvas-menu a', function (e) {
-          $(".off-canvas-wrap").removeClass("move-left");
+          jQuery(".off-canvas-wrap").removeClass("move-left");
         })
         .on('click.fndtn.offcanvas', '.exit-off-canvas', function (e) {
           self.click_remove_class(e, 'move-left');
@@ -37,12 +37,12 @@
 
     click_toggle_class: function(e, class_name) {
       e.preventDefault();
-      $(e.target).closest('.off-canvas-wrap').toggleClass(class_name);
+      jQuery(e.target).closest('.off-canvas-wrap').toggleClass(class_name);
     },
 
     click_remove_class: function(e, class_name) {
       e.preventDefault();
-      $('.off-canvas-wrap').removeClass(class_name);
+      jQuery('.off-canvas-wrap').removeClass(class_name);
     },
 
     reflow : function () {}
