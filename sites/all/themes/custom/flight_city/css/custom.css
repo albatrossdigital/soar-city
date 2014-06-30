@@ -1520,7 +1520,7 @@ p img:only-child {
 }
 /* line 986, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper {
-  width: 600%;
+  width: 606%;
   float: left;
   -webkit-transition: all ease-in;
   -webkit-transition-delay: 0.3s;
@@ -1530,27 +1530,27 @@ p img:only-child {
 }
 /* line 994, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper.level_1 {
-  margin-left: -100%;
+  margin-left: -101%;
 }
 /* line 994, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper.level_2 {
-  margin-left: -200%;
+  margin-left: -202%;
 }
 /* line 994, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper.level_3 {
-  margin-left: -300%;
+  margin-left: -303%;
 }
 /* line 994, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper.level_4 {
-  margin-left: -400%;
+  margin-left: -404%;
 }
 /* line 994, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper.level_5 {
-  margin-left: -500%;
+  margin-left: -505%;
 }
 /* line 994, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper.level_6 {
-  margin-left: -600%;
+  margin-left: -606%;
 }
 /* line 997, ../sass/base/_mixins.sass */
 [role=complementary] .block-domain-menu-block .menu-block-wrapper > div {

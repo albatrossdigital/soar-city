@@ -985,14 +985,14 @@ $common-border: common-border-val()
 
   #{$wrapper}
     //padding-right: ($levels - 1) * (100%)
-    width: $levels*(100%)
+    width: $levels*(101%)
     float: left
     +transition(all ease-in 0.3s)
 
     @for $i from 1 through ($levels)
 
       &.level_#{$i}
-        margin-left: ($i) * (-100%)
+        margin-left: ($i) * (-101%)
     
     & > div
       +side-bar-section($levels)
