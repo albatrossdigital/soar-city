@@ -1249,7 +1249,7 @@ $main-menu-border-size: rem-calc(3)
 @mixin calendar-box($first: '.date-display-single > *:first-child', $second: '.date-display-single > *:last-child')
   border: common-border-val($gray-border)
   text-align: center
-  padding: rem-calc(12 0)
+  padding: rem-calc(12 0 0 0)
   position: relative
   +f(alt-alt)
   text-transform: uppercase
@@ -1261,12 +1261,20 @@ $main-menu-border-size: rem-calc(3)
     width: 100%
   
   #{$first}
-    font-size: rem-calc(16)
+    font-size: rem-calc(14)
     letter-spacing: 0.1em
 
   #{$second}
-    font-size: rem-calc(36)
-    padding: rem-calc(12 0 6 0)
+    font-size: rem-calc(30)
+    padding: rem-calc(6 0 6 0)
+
+  +respond($medium)
+    #{$first}
+      font-size: rem-calc(16)
+
+    #{$second}
+      font-size: rem-calc(36)
+
 
 
 

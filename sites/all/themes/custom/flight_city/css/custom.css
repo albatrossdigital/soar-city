@@ -4365,7 +4365,7 @@ ol.search-results .search-info:last-child {
 .node-event.view-mode-compact_teaser .date-calendar {
   border: solid #dddddd 1px;
   text-align: center;
-  padding: 0.85714rem 0;
+  padding: 0.85714rem 0 0 0;
   position: relative;
   text-transform: uppercase;
 }
@@ -4383,14 +4383,26 @@ ol.search-results .search-info:last-child {
 /* line 1263, ../sass/base/_mixins.sass */
 .node-event.node-teaser .date-calendar .date-display-single > *:first-child,
 .node-event.view-mode-compact_teaser .date-calendar .date-display-single > *:first-child {
-  font-size: 1.14286rem;
+  font-size: 1rem;
   letter-spacing: 0.1em;
 }
 /* line 1267, ../sass/base/_mixins.sass */
 .node-event.node-teaser .date-calendar .date-display-single > *:last-child,
 .node-event.view-mode-compact_teaser .date-calendar .date-display-single > *:last-child {
-  font-size: 2.57143rem;
-  padding: 0.85714rem 0 0.42857rem 0;
+  font-size: 2.14286rem;
+  padding: 0.42857rem 0 0.42857rem 0;
+}
+@media only screen and (min-width: 45.78571em) {
+  /* line 1272, ../sass/base/_mixins.sass */
+  .node-event.node-teaser .date-calendar .date-display-single > *:first-child,
+  .node-event.view-mode-compact_teaser .date-calendar .date-display-single > *:first-child {
+    font-size: 1.14286rem;
+  }
+  /* line 1275, ../sass/base/_mixins.sass */
+  .node-event.node-teaser .date-calendar .date-display-single > *:last-child,
+  .node-event.view-mode-compact_teaser .date-calendar .date-display-single > *:last-child {
+    font-size: 2.57143rem;
+  }
 }
 
 /* line 11, ../sass/theme/_news.sass */
@@ -5040,8 +5052,8 @@ ol.search-results .search-info:last-child {
 }
 /* line 114, ../sass/theme/_social-stream.sass */
 #wall .dcsns-content .stream li {
-  width: 280px;
-  margin: 0 24px 34px 0;
+  width: 100%;
+  margin: 0 0 34px 0;
 }
 
 /* line 119, ../sass/theme/_social-stream.sass */
@@ -5111,4 +5123,13 @@ body.page-connect h1#page-title {
 /* line 168, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .dcsns-toolbar .controls {
   right: 5px;
+}
+
+@media only screen and (min-width: 45.78571em) {
+  /* line 189, ../sass/theme/_social-stream.sass */
+  #wall .dcsns-content .stream li {
+    margin-left: 1.66667%;
+    margin-right: 1.66667%;
+    width: 30%;
+  }
 }

@@ -112,8 +112,8 @@
   .dcsns-content
     .stream
       li
-        width: 280px
-        margin: 0 24px 34px 0
+        width: 100%
+        margin: 0 0 34px 0
 
 body.page-connect
   h1#page-title
@@ -167,3 +167,26 @@ body.page-connect
 
     .controls
       right: 5px
+
+
+// *
+// * Media Queries
+// *
+// ******************************************************
+
++respond($medium)
+
+  // Social stream wall
+  // ---------------------------------------------------------------------------- 
+
+  #wall
+
+    .dcsns-content
+      .stream
+        //margin-left: -5%
+        //margin-right: -5%
+
+        li
+          margin-left: (10%)/6
+          margin-right: (10%)/6
+          width: 30%
