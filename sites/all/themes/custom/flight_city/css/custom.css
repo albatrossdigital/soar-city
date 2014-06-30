@@ -2853,8 +2853,8 @@ ul[data-orbit] ~ .orbit-prev {
 }
 /* line 112, ../sass/components/_icons-fontawesome.sass */
 ul[data-orbit] ~ .orbit-prev, ul[data-orbit] ~ .orbit-prev:before {
-  height: 2.85714rem;
-  line-height: 2.85714rem;
+  height: 40px;
+  line-height: 40px;
   overflow: hidden;
   width: 2.85714rem;
 }
@@ -2869,8 +2869,8 @@ ul[data-orbit] ~ .orbit-next {
 }
 /* line 112, ../sass/components/_icons-fontawesome.sass */
 ul[data-orbit] ~ .orbit-next, ul[data-orbit] ~ .orbit-next:before {
-  height: 2.85714rem;
-  line-height: 2.85714rem;
+  height: 40px;
+  line-height: 40px;
   overflow: hidden;
   width: 2.85714rem;
 }
