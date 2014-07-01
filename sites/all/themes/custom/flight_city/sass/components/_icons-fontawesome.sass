@@ -250,6 +250,8 @@ $fa-var-bookmark-o: "\f097"
 $fa-var-briefcase: "\f0b1"
 $fa-var-btc: "\f15a"
 $fa-var-bug: "\f188"
+$fa-var-paw: "\f1b0"
+$fa-var-institution: "\f19c"
 $fa-var-building: "\f1ad"
 $fa-var-building-o: "\f0f7"
 $fa-var-bullhorn: "\f0a1"
@@ -3596,6 +3598,22 @@ $fa-include-css: true!default
 %fa-bug
   &:before
     content:  $fa-var-bug
+
+@if $fa-include-css
+  .#{$fa-css-prefix}-paw:before
+    content: $fa-var-paw
+
+%fa-paw
+  &:before
+    content:  $fa-var-paw
+
+@if $fa-include-css
+  .#{$fa-css-prefix}-institution:before
+    content: $fa-var-institution
+
+%fa-institution
+  &:before
+    content:  $fa-var-institution
 
 @if $fa-include-css
   .#{$fa-css-prefix}-vk:before
