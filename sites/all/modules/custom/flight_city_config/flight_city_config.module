@@ -167,3 +167,13 @@ function flight_city_config_form_file_entity_add_upload_alter(&$form, $form_stat
     $form['domain_file']['#access'] = FALSE;
   }
 }
+
+/**
+ * Implements hook_taxonomy_term_view()
+ * Redirect for event categories.
+ */
+function flight_city_config_taxonomy_term_view($term, $view_mode, $langcode) {
+  if ($term->vocabulary_machine_name === 'event_category' && $view_mode === 'full' && arg(0) === 'taxonomy' && arg(1) === 'term') {
+    drupal_goto('events/list', array('query' => array('category' => $term->tid)));
+  }
+}
