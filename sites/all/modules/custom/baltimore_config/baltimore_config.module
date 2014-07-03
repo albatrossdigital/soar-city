@@ -44,7 +44,6 @@ function baltimore_config_form_apachesolr_index_action_form_alter(&$form, $form_
 */
 function baltimore_config_views_pre_view($view, &$display_id, &$args) {
   if ($view->name === 'news' && $display_id === 'block') {
-    dpm('asdf');
     $domain = domain_get_domain();
     if ($domain['domain_id'] == 3) {
       $view->display_handler->options['use_more'] = 0;
