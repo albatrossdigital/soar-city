@@ -3373,6 +3373,12 @@ ul[data-orbit] ~ .orbit-next:before {
   margin-bottom: 1.78571rem;
 }
 
+@media only screen and (max-width: 45.71429em) {
+  /* line 15, ../sass/theme/_hero.sass */
+  .small-only-hide {
+    display: none;
+  }
+}
 /* line 6, ../sass/theme/_icon-box.sass */
 .field-collection-item-field-link-collection,
 .vocabulary-event-category.view-mode-teaser,
