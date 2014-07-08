@@ -106,7 +106,7 @@ function baltimore_govdelivery_subscribe_form($form, &$form_state, $topics = arr
     '#type' => 'textfield',
     '#size' => 20,
     '#required' => TRUE,
-    '#attributes' => array('placeholder' => t('Your email address')),
+    '#attributes' => array('placeholder' => t('Your email address'), 'alt' => t('Your email address')),
   );
   // @todo: make this work
   if (!empty($topics)) {
