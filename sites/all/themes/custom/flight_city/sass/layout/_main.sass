@@ -7,6 +7,15 @@
   padding-bottom: $small-main-block-spacing*2
 
 
+// Highlight
+// ----------------------------------------------------------------------------
+
+.highlight
+  // make views wigets full width
+  form
+    .views-exposed-widget
+      padding: 0
+      float: none 
 
 // Page title
 // ----------------------------------------------------------------------------
@@ -49,11 +58,7 @@
 .domain-main.views-page.menu-depth-1,
 .domain-main.page-events,
 .domain-main.page-connect
-  .main 
-    padding-top: $header-bottom-margin
-
-  #page-title, #section-title
-    +e(hide)
+  +no-page-title
 
 .main 
 
@@ -101,6 +106,9 @@
 .node .field
   line-height: $paragraph-line-height
 
+.extLinkIcon
+  background-repeat: no-repeat
+
 // tags
 
 .node
@@ -120,6 +128,17 @@
   +f(alt-alt-bold)
   +c(link-alt)
 
+// Links with icon arrow
+.arrow-link
+  display: block
+  padding-left: rem-calc(30)
+
+  +icon-only('long-arrow-right')
+
+  &:before
+    margin-left: rem-calc(-30)
+    width: rem-calc(30)
+
 
 // Addresses 
 
@@ -133,9 +152,20 @@
 p img:only-child
   margin-bottom: 0
 
+// slideshow in content
+
+.node ul[data-orbit]
+  margin-bottom: $paragraph-margin-bottom
+
 .node, .entity-bean, .block
   img, iframe
     margin-bottom: $paragraph-margin-bottom
+
+.field
+  &[class*='-image'],
+  &[class*='-picture']
+    text-align: center
+
 
 
 // *
@@ -159,14 +189,6 @@ p img:only-child
 
   // Main Content
   // ----------------------------------------------------------------------------
-
-  // page title hidden
-  .no-page-title,
-  .domain-main.views-page.menu-depth-1,
-  .domain-main.page-events,
-  .domain-main.page-connect
-    .main.medium-12
-      padding-top: rem-calc(15)
 
   .main 
     +main-vertical-spacing('medium')

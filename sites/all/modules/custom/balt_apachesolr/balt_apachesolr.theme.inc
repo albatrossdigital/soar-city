@@ -11,12 +11,13 @@
 function template_preprocess_balt_apachesolr_suggestion_box(&$variables) {
   $active = $variables['active-item'];
   $variables['additional_text'] = '';
+  $variables['hide_show'] = FALSE;
   if(isset($active)) {
     foreach ($variables['items'] as $item) {
       if($item['data']['active']) {
         $text = $item['data']['text'];
         $item['data']['text'] = t('entire site');
-        $variables['title_text'] = t('You\'re searching within the !site', array(
+        $variables['title_text'] = t('You\'re searching within the !site site.', array(
           '!site' => '<strong>' . $text . '</strong>',
         ));
         $variables['additional_text'] = t('Expand your search to the !expand.', array(
@@ -27,9 +28,11 @@ function template_preprocess_balt_apachesolr_suggestion_box(&$variables) {
     }
   }
   else {
-    $variables['title_text'] = t('You\'re searching the !site.  Filter by subsite:', array(
-      '!site' => '<strong>full site</strong>',
+    $variables['hide_show'] = TRUE;
+    $variables['title_text'] = t('You\'re searching the !site.', array(
+      '!site' => '<strong>full site</strong>'
     ));
+    $variables['hide_show_text'] = t('Filter by subsite');
     foreach($variables['items'] as &$item) {
       $item['data'] = theme_link($item['data']);
     }

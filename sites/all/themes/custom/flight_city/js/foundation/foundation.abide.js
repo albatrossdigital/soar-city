@@ -59,7 +59,7 @@
 
     events : function (scope) {
       var self = this,
-          form = $(scope).attr('novalidate', 'novalidate'),
+          form = jQuery(scope).attr('novalidate', 'novalidate'),
           settings = form.data(this.attr_name(true) + '-init') || {};
 
       this.invalid_attr = this.add_namespace('data-invalid');
@@ -67,11 +67,11 @@
       form
         .off('.abide')
         .on('submit.fndtn.abide validate.fndtn.abide', function (e) {
-          var is_ajax = /ajax/i.test($(this).attr(self.attr_name()));
-          return self.validate($(this).find('input, textarea, select').get(), e, is_ajax);
+          var is_ajax = /ajax/i.test(jQuery(this).attr(self.attr_name()));
+          return self.validate(jQuery(this).find('input, textarea, select').get(), e, is_ajax);
         })
         .on('reset', function() {
-          return self.reset($(this));
+          return self.reset(jQuery(this));
         })
         .find('input, textarea, select')
           .off('.abide')
@@ -90,14 +90,14 @@
 
     reset : function (form) {
       form.removeAttr(this.invalid_attr);
-      $(this.invalid_attr, form).removeAttr(this.invalid_attr);
-      $('.error', form).not('small').removeClass('error');
+      jQuery(this.invalid_attr, form).removeAttr(this.invalid_attr);
+      jQuery('.error', form).not('small').removeClass('error');
     },
 
     validate : function (els, e, is_ajax) {
       var validations = this.parse_patterns(els),
           validation_count = validations.length,
-          form = $(els[0]).closest('[data-' + this.attr_name(true) + ']'),
+          form = jQuery(els[0]).closest('[data-' + this.attr_name(true) + ']'),
           settings = form.data(this.attr_name(true) + '-init') || {},
           submit_event = /submit/.test(e.type);
 
@@ -107,7 +107,7 @@
         if (!validations[i] && (submit_event || is_ajax)) {
           if (settings.focus_on_invalid) els[i].focus();
           form.trigger('invalid');
-          $(els[i]).closest('[data-' + this.attr_name(true) + ']').attr(this.invalid_attr, '');
+          jQuery(els[i]).closest('[data-' + this.attr_name(true) + ']').attr(this.invalid_attr, '');
           return false;
         }
       }
@@ -158,18 +158,18 @@
     check_validation_and_apply_styles : function (el_patterns) {
       var i = el_patterns.length,
           validations = [],
-          form = $(el_patterns[0][0]).closest('[data-' + this.attr_name(true) + ']'),
+          form = jQuery(el_patterns[0][0]).closest('[data-' + this.attr_name(true) + ']'),
           settings = form.data(this.attr_name(true) + '-init') || {};
 
       while (i--) {
         var el = el_patterns[i][0],
             required = el_patterns[i][2],
             value = el.value,
-            direct_parent = $(el).parent(),
+            direct_parent = jQuery(el).parent(),
             validator = el.getAttribute(this.add_namespace('data-abide-validator')),
             is_radio = el.type === "radio",
             is_checkbox = el.type === "checkbox",
-            label = $('label[for="' + el.getAttribute('id') + '"]'),
+            label = jQuery('label[for="' + el.getAttribute('id') + '"]'),
             valid_length = (required) ? (el.value.length > 0) : true;
 
         var parent, valid;
@@ -192,30 +192,30 @@
           validations.push(valid);
 
           if (valid) {
-            $(el).removeAttr(this.invalid_attr);
+            jQuery(el).removeAttr(this.invalid_attr);
             parent.removeClass('error');
           } else {
-            $(el).attr(this.invalid_attr, '');
+            jQuery(el).attr(this.invalid_attr, '');
             parent.addClass('error');
           }
 
         } else {
 
           if (el_patterns[i][1].test(value) && valid_length ||
-            !required && el.value.length < 1 || $(el).attr('disabled')) {
-            $(el).removeAttr(this.invalid_attr);
+            !required && el.value.length < 1 || jQuery(el).attr('disabled')) {
+            jQuery(el).removeAttr(this.invalid_attr);
             parent.removeClass('error');
             if (label.length > 0 && settings.error_labels) label.removeClass('error');
 
             validations.push(true);
-            $(el).triggerHandler('valid');
+            jQuery(el).triggerHandler('valid');
           } else {
-            $(el).attr(this.invalid_attr, '');
+            jQuery(el).attr(this.invalid_attr, '');
             parent.addClass('error');
             if (label.length > 0 && settings.error_labels) label.addClass('error');
 
             validations.push(false);
-            $(el).triggerHandler('invalid');
+            jQuery(el).triggerHandler('invalid');
           }
         }
       }
@@ -224,7 +224,7 @@
     },
 
     valid_checkbox : function(el, required) {
-      var el = $(el),
+      var el = jQuery(el),
           valid = (el.is(':checked') || !required);
 
       if (valid) {
@@ -238,7 +238,7 @@
 
     valid_radio : function (el, required) {
       var name = el.getAttribute('name'),
-          group = $(el).closest('[data-' + this.attr_name(true) + ']').find("[name="+name+"]"),
+          group = jQuery(el).closest('[data-' + this.attr_name(true) + ']').find("[name="+name+"]"),
           count = group.length,
           valid = false;
 
@@ -250,9 +250,9 @@
       // Has to count up to make sure the focus gets applied to the top error
       for (var i=0; i < count; i++) {
         if (valid) {
-          $(group[i]).removeAttr(this.invalid_attr).parent().removeClass('error');
+          jQuery(group[i]).removeAttr(this.invalid_attr).parent().removeClass('error');
         } else {
-          $(group[i]).attr(this.invalid_attr, '').parent().addClass('error');
+          jQuery(group[i]).attr(this.invalid_attr, '').parent().addClass('error');
         }
       }
 
@@ -265,10 +265,10 @@
           valid = (from === to);
 
       if (valid) {
-        $(el).removeAttr(this.invalid_attr);
+        jQuery(el).removeAttr(this.invalid_attr);
         parent.removeClass('error');
       } else {
-        $(el).attr(this.invalid_attr, '');
+        jQuery(el).attr(this.invalid_attr, '');
         parent.addClass('error');
       }
 
@@ -276,8 +276,8 @@
     },
 
     valid_oneof: function(el, required, parent, doNotValidateOthers) {
-      var el = $(el),
-        others = $('[' + this.add_namespace('data-oneof') + ']'),
+      var el = jQuery(el),
+        others = jQuery('[' + this.add_namespace('data-oneof') + ']'),
         valid = others.filter(':checked').length > 0;
 
       if (valid) {

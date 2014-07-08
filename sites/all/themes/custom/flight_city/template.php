@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 /**
  * Implements template_preprocess_html().
  *
@@ -23,10 +26,31 @@ function flight_city_preprocess_html(&$vars) {
   // a a depth class
   $vars['classes_array'][] = 'menu-depth-' . count($breadcrumb);
   
-  drupal_add_js(drupal_get_path('theme', 'flight_city') . '/js/vendor/rem.min.js', array(
+  // @TODO switch back to min
+  /*drupal_add_js(drupal_get_path('theme', 'flight_city') . '/js/vendor/rem.js', array(
     'type' => 'file',
     'scope' => 'footer'
-  ));
+  ));*/
+
+  // add placeholder call
+  drupal_add_js('jQuery(function() {jQuery("input, textarea").placeholder();});',
+    array('type' => 'inline', 'scope' => 'footer', 'weight' => 100)
+  );
+
+  // add ie browser detector
+  $embed = 'var $buoop = {vs:{i:8,f:15,o:15,s:5.1,n:9}}; 
+    $buoop.ol = window.onload; 
+    window.onload=function(){ 
+      try {if ($buoop.ol) $buoop.ol();}catch (e) {} 
+      var e = document.createElement("script"); 
+      e.setAttribute("type", "text/javascript"); 
+      e.setAttribute("src", "//browser-update.org/update.js"); 
+      document.body.appendChild(e); 
+    }';
+
+  drupal_add_js($embed,
+    array('type' => 'inline', 'scope' => 'footer', 'weight' => 101)
+  );
 }
 
 
@@ -57,11 +81,15 @@ function flight_city_preprocess_page(&$vars) {
     $vars['section_title'] = FALSE;
   }
 
-  // Set section title explicitly
+  // Set entity title
   if(!isset($vars['entity_title'])) {
     $current_domain = domain_get_domain();
     // Main top level domain
-    if($current_domain['is_default']) {
+    if($vars['default_domain'] = $current_domain['is_default']) {
+
+      // Set mobile main menu text
+      $vars['top_bar_menu_text'] = t('Menu');
+      $vars['top_bar_menu_icon'] = 'fa-bars';
 
       // are we home page?
       if($vars['is_front']) {
@@ -85,6 +113,13 @@ function flight_city_preprocess_page(&$vars) {
          ? $menu_title : FALSE;
       }
     }
+    // Other domain
+    else {
+      // Set mobile main menu text
+      $vars['top_bar_menu_text'] = t('Citywide');
+      $vars['top_bar_menu_icon'] = 'fa-globe';
+    }
+
     // Nothing set, so set to site name
     if(empty($vars['entity_title'])) {
       $vars['entity_title'] = $vars['site_name'];
@@ -270,6 +305,8 @@ function flight_city_preprocess_menu_block_wrapper(&$vars) {
   }
 }
 
+
+
 /**
  * Implements hook_preprocess_block_()
  */
@@ -300,9 +337,27 @@ function flight_city_preprocess_menu_block_wrapper(&$vars) {
 
 
 /**
- * Implements hook_preprocess_block_()
+ * Returns HTML for a search keys facet item.
+ *
+ * @param $variables
+ *   An associative array containing the keys 'keys' and 'adapter'.
+ *
+ * @ingroup themeable
+ */
+function flight_city_preprocess_facetapi_link_active(&$vars) {
+  // Add domain id class specific class to link
+  if(strpos($vars['text'], 'im_domain_id') !== FALSE) {
+    $vars['options']['attributes']['class'][] = 'im_domain_id';
+  } 
+}
+
+
+/**
+ * Implements hook_preprocess_search_result()
  */
 function flight_city_preprocess_search_result(&$vars) {
+
+  $result = $vars['result'];
 
   if(isset($result['entity_type'])) {
     $vars['classes_array'][] = 'entity-' . $result['entity_type'];
@@ -310,50 +365,13 @@ function flight_city_preprocess_search_result(&$vars) {
   if(isset($result['bundle'])) {
     $vars['classes_array'][] = 'bundle-' . $result['bundle'];
   }
+
+  //dpm($result);
 }
 
 
 
-//function flight_city_preprocess_views_view(&$variables) {
-//}
 
-/**
- * Implements template_preprocess_panels_pane().
- *
- */
-//function flight_city_preprocess_panels_pane(&$variables) {
-//}
-
-/**
- * Implements template_preprocess_views_views_fields().
- *
- */
-//function flight_city_preprocess_views_view_fields(&$variables) {
-//}
-
-/**
- * Implements theme_form_element_label()
- * Use foundation tooltips
- */
-//function flight_city_form_element_label($variables) {
-//  if (!empty($variables['element']['#title'])) {
-//    $variables['element']['#title'] = '<span class="secondary label">' . $variables['element']['#title'] . '</span>';
-//  }
-//  if (!empty($variables['element']['#description'])) {
-//    $variables['element']['#description'] = ' <span data-tooltip="top" class="has-tip tip-top" data-width="250" title="' . $variables['element']['#description'] . '">' . t('More information?') . '</span>';
-//  }
-//  return theme_form_element_label($variables);
-//}
-
-/**
- * Implements hook_preprocess_button().
- */
-//function flight_city_preprocess_button(&$variables) {
-//  $variables['element']['#attributes']['class'][] = 'button';
-//  if (isset($variables['element']['#parents'][0]) && $variables['element']['#parents'][0] == 'submit') {
-//    $variables['element']['#attributes']['class'][] = 'secondary';
-//  }
-//}
 
 /**
  * Implements hook_form_alter()

@@ -1,14 +1,18 @@
 // Non-modular or client styles for the .l-triptych region.
 
 .l-triptych
+  background: $gray-lighter
   padding-bottom: $small-main-block-spacing*2
   padding-top: $small-main-spacing
+
+  // Add nice menus for triptychs
+  +side-bar-menu-default
 
   .block
     margin-bottom: $small-main-block-spacing
 
   form
-    +panel(lighten($gray, 18%))
+    +panel($gray)
     margin-left: 5%
     margin-right: 5%
 

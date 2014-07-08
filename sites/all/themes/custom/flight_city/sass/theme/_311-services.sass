@@ -4,10 +4,13 @@
 
   .l-main
 
-  .sidebar-first.sidebar
+  // treat highlight as sidebar
+  +highlight-as-sidebar
+
+  .block-views-exp-311-home-page
     h2.block-title
       font-size: $h3-font-size
-      +f(alt)
+      margin-bottom: $header-bottom-margin
 
     #secondary-wrapper
       overflow: visible!important
@@ -23,14 +26,11 @@
 
     .view-311-home.view-display-id-page
       
-      height: 300px
+      min-height: 300px
       overflow-x: hidden
       overflow-y: auto
 
   .l-triptych
-    +nice-row-border($column-gutter/2, $small-main-block-spacing/2, 1px solid $gray, top, hidden)
-    +side-bar-menu('.item-list ul, .block-bean > ul', '.block-title', 'li.active a')
-    padding-top: 0
 
     .block-title
       text-align: center
@@ -57,7 +57,7 @@
     main
 
       .view-311-home.view-display-id-page
-        margin-top: 2.5em
+        margin-top: rem-calc(18)
 
 
 +respond($past-menu)
@@ -66,9 +66,3 @@
   // ---------------------------------------------------------------------------- 
   .page-311-services
 
-    .l-main
-
-    .sidebar-first.sidebar
-
-      form
-        +panel()

@@ -98,14 +98,36 @@
         });
       });
 
+      // Make sure content matches sidebar
+      $('.page > .inner-wrap > .l-main > .inner-wrap', context).once('off-canvas-height', function() {
+        var offHeight = 0;
+        $('aside.right-off-canvas-menu, aside, aside.left-off-canvas-menu').each(function() {
+          var localHeight = 0;
+          $(this).children().each(function() {
+            localHeight += $(this).outerHeight();
+          });
+          offHeight = (offHeight < localHeight) ? localHeight : offHeight;
+        });
+        $(this).css({'min-height': offHeight});
+      });
+
       // Main section menu (entity submenu)
-      $('#toggle-main-section-menu, #toggle-main-section-menu-close', context).once('main-off-canvas', function() {
+      $('#toggle-main-section-menu, #toggle-main-section-menu-close, #toggle-filters', context).once('main-off-canvas', function() {
         $(this).click(function(e) {
           $('.l-main[data-offcanvas]').toggleClass('move-right');
           e.preventDefault();
         });
       });
 
+      
+      $('a.hide-show-toggle', context).once('main-off-canvas', function() {
+        $this = $(this);
+        $this.click(function(e) {
+          $this.toggleClass('open')
+               .parents('.hide-show-wrapper').find('.hide-show-content')
+               .slideToggle('fast');
+        });
+      });
 
       // orbits helper
       $('ul[data-orbit]', context).once('orbit-helper', function() {

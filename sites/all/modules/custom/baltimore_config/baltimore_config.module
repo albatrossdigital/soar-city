@@ -22,6 +22,33 @@ function baltimore_config_government_redirect() {
   drupal_goto(BALTIMORE_ARCHIVE . request_uri());
 }
 
+/**
+ * Make the "Send email" field checked by default on create new user page.
+ **/
 function baltimore_config_form_user_register_form_alter(&$form, $form_state) {
   $form['account']['notify']['#default_value'] = TRUE;
+}
+
+
+
+/**
+ * Hide the Delete SOLR index button on the Apachesolr config page (just to be safe!)
+ **/
+function baltimore_config_form_apachesolr_index_action_form_alter(&$form, $form_state) {
+  unset($form['action']['delete']);
+}
+
+/**
+* Implements hook_views_pre_views_pre_view().
+* Hack the View Newsroom link for Health
+*/
+function baltimore_config_views_pre_view($view, &$display_id, &$args) {
+  if ($view->name === 'news' && $display_id === 'block') {
+    $domain = domain_get_domain();
+    if ($domain['domain_id'] == 3) {
+      $view->display_handler->options['use_more'] = 0;
+      //$view->display_handler->display->page->handler->options->path = 'events';
+      //dpm($view->display_handler);
+    }
+  }
 }

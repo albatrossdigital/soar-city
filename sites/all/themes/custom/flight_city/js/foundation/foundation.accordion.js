@@ -19,19 +19,19 @@
     events : function () {
       var self = this;
       var S = this.S;
-      $(this.scope)
+      jQuery(this.scope)
       .off('.fndtn.accordion')
       .on('click.fndtn.accordion', '[' + this.attr_name() + '] dd > a', function (e) {
-        var accordion = $(this).closest('[' + self.attr_name() + ']'),
-            target = $('#' + this.href.split('#')[1]),
-            siblings = $('dd > .content', accordion),
-            aunts = $('dd', accordion),
+        var accordion = jQuery(this).closest('[' + self.attr_name() + ']'),
+            target = jQuery('#' + this.href.split('#')[1]),
+            siblings = jQuery('dd > .content', accordion),
+            aunts = jQuery('dd', accordion),
             settings = accordion.data(self.attr_name(true) + '-init'),
-            active_content = $('dd > .content.' + settings.active_class, accordion),
-            active_parent = $('dd.' + settings.active_class, accordion);
+            active_content = jQuery('dd > .content.' + settings.active_class, accordion),
+            active_parent = jQuery('dd.' + settings.active_class, accordion);
         e.preventDefault();
 
-        if (! $(this).closest('dl').is(accordion)) { return; }
+        if (! jQuery(this).closest('dl').is(accordion)) { return; }
 
         if (settings.toggleable && target.is(active_content)) {
           active_parent.toggleClass(settings.active_class, false);

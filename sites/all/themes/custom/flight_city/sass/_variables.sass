@@ -22,13 +22,16 @@ $black-true: #000
 
 $white: #fff
 
-$gray-lighter: #f3f3f3
-$gray-light: #e5e5e5
-$gray-border: #ddd
-$gray: #ccc
+
+$gray-dark-off: #686D72
 $gray-dark: #626262
 $gray-date: #707070
 $gray-bread-crumb: #7f7f7f
+$gray-border: #ddd
+$gray: #ccc
+$gray-light: #e5e5e5
+$gray-lighter: #f3f3f3
+
 
 $blue-black: #1a1c20
 $blue-darker: #24282c
@@ -38,6 +41,7 @@ $blue: #5eb5cb
 $blue-link: #0a83a1
 $blue-link-alt: #0076a3
 $blue-link-active: #07b1db
+$blue-faint: scale-color($blue-link, $lightness: 94%)
 
 $teal: #8cebff
 
@@ -47,6 +51,7 @@ $gold: #deb64b
 $yellow: #f2c54b
 $yellow-footer: #fcac31
 $yellow-faint: #fcf2d7
+$yellow-fainter: #fdf8eb
 
 $orange: #fa973f
 
@@ -92,7 +97,8 @@ $icon-area-font-size: rem-calc(40)
 $small-icon-area-dimension: 60px
 $small-icon-area-font-size: rem-calc(30)
 
-
+$tiny-icon-area-dimension: 35px
+$tiny-icon-area-font-size: rem-calc(18)
 
 
 // Layout
@@ -200,6 +206,7 @@ $body-font-weight: $font-weight-normal
 // We use these as default colors throughout
 $primary-color: $blue-link
 $secondary-color: $gray-light
+$secondary-alt-color: $gray-dark-off
 $alert-color: $red
 $success-color: $green
 $warning-color: $yellow
@@ -288,6 +295,7 @@ $header-bottom-margin: rem-calc(16)
 // We use these to control header font sizes
 $h1-font-size: rem-calc(40)
 $h2-font-size: rem-calc(30)
+$mobile-h1-size: $h2-font-size*.9
 $h3-font-size: rem-calc(22)
 $h4-font-size: rem-calc(16)
 $h5-font-size: rem-calc(16)
@@ -380,15 +388,15 @@ $list-ordered-side-margin: 1.75rem
 // $include-html-accordion-classes: $include-html-classes;
 
 // $accordion-navigation-padding: rem-calc(16);
-// $accordion-navigation-bg-color: #efefef  ;
-// $accordion-navigation-hover-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -5%);
-// $accordion-navigation-active-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -3%);
-// $accordion-navigation-font-color: #222;
+$accordion-navigation-bg-color: $white
+$accordion-navigation-hover-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -5%)
+$accordion-navigation-active-bg-color: $yellow-fainter
+$accordion-navigation-font-color: $anchor-font-color
 // $accordion-navigation-font-size: rem-calc(16);
 // $accordion-navigation-font-family: $body-font-family;
 
-// $accordion-content-padding: $column-gutter/2;
-// $accordion-content-active-bg-color: #fff;
+$accordion-content-padding: rem-calc(5 35 45)
+$accordion-content-active-bg-color: $yellow-fainter
 
 // Alert Boxes
 
@@ -512,7 +520,7 @@ $bg: $primary-color
 // $button-border-color: scale-color($bg, $lightness: $button-function-factor);
 
 // We use this to set the default radius used throughout the core.
-$button-radius: 0
+$button-radius: 3px
 $button-round: $global-rounded
 
 // We use this to set default opacity for disabled buttons.
@@ -1295,7 +1303,7 @@ $side-nav-divider-color: $gray-border
 // TOOLTIPS
 //
 
-$include-html-tooltip-classes: false
+//$include-html-tooltip-classes: false
 
 // $has-tip-border-bottom: dotted 1px #ccc;
 // $has-tip-font-weight: bold;

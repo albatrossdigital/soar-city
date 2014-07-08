@@ -24,62 +24,62 @@
       var self = this,
           S = self.S;
 
-      $(this.scope)
+      jQuery(this.scope)
         .off('.dropdown')
         .on('click.fndtn.dropdown', '[' + this.attr_name() + ']', function (e) {
-          var settings = $(this).data(self.attr_name(true) + '-init') || self.settings;
+          var settings = jQuery(this).data(self.attr_name(true) + '-init') || self.settings;
           if (!settings.is_hover || Modernizr.touch) {
             e.preventDefault();
-            self.toggle($(this));
+            self.toggle(jQuery(this));
           }
         })
         .on('mouseenter.fndtn.dropdown', '[' + this.attr_name() + '], [' + this.attr_name() + '-content]', function (e) {
-          var $this = $(this);
+          var $this = jQuery(this);
           clearTimeout(self.timeout);
 
           if ($this.data(self.data_attr())) {
-            var dropdown = $('#' + $this.data(self.data_attr())),
+            var dropdown = jQuery('#' + $this.data(self.data_attr())),
                 target = $this;
           } else {
             var dropdown = $this;
-                target = $("[" + self.attr_name() + "='" + dropdown.attr('id') + "']");
+                target = jQuery("[" + self.attr_name() + "='" + dropdown.attr('id') + "']");
           }
 
           var settings = target.data(self.attr_name(true) + '-init') || self.settings;
           
-          if($(e.target).data(self.data_attr()) && settings.is_hover) {
+          if(jQuery(e.target).data(self.data_attr()) && settings.is_hover) {
             self.closeall.call(self);
           }
           
           if (settings.is_hover) self.open.apply(self, [dropdown, target]);
         })
         .on('mouseleave.fndtn.dropdown', '[' + this.attr_name() + '], [' + this.attr_name() + '-content]', function (e) {
-          var $this = $(this);
+          var $this = jQuery(this);
           self.timeout = setTimeout(function () {
             if ($this.data(self.data_attr())) {
               var settings = $this.data(self.data_attr(true) + '-init') || self.settings;
-              if (settings.is_hover) self.close.call(self, $('#' + $this.data(self.data_attr())));
+              if (settings.is_hover) self.close.call(self, jQuery('#' + $this.data(self.data_attr())));
             } else {
-              var target = $('[' + self.attr_name() + '="' + $(this).attr('id') + '"]'),
+              var target = jQuery('[' + self.attr_name() + '="' + jQuery(this).attr('id') + '"]'),
                   settings = target.data(self.attr_name(true) + '-init') || self.settings;
               if (settings.is_hover) self.close.call(self, $this);
             }
           }.bind(this), 150);
         })
         .on('click.fndtn.dropdown', function (e) {
-          var parent = $(e.target).closest('[' + self.attr_name() + '-content]');
+          var parent = jQuery(e.target).closest('[' + self.attr_name() + '-content]');
 
-          if ($(e.target).data(self.data_attr()) || $(e.target).parent().data(self.data_attr())) {
+          if (jQuery(e.target).data(self.data_attr()) || jQuery(e.target).parent().data(self.data_attr())) {
             return;
           }
-          if (!($(e.target).data('revealId')) && 
-            (parent.length > 0 && ($(e.target).is('[' + self.attr_name() + '-content]') || 
+          if (!(jQuery(e.target).data('revealId')) && 
+            (parent.length > 0 && (jQuery(e.target).is('[' + self.attr_name() + '-content]') || 
               $.contains(parent.first()[0], e.target)))) {
             e.stopPropagation();
             return;
           }
 
-          self.close.call(self, $('[' + self.attr_name() + '-content]'));
+          self.close.call(self, jQuery('[' + self.attr_name() + '-content]'));
         })
         .on('opened.fndtn.dropdown', '[' + self.attr_name() + '-content]', function () {
             self.settings.opened.call(this);
@@ -88,7 +88,7 @@
             self.settings.closed.call(this);
         });
 
-      $(window)
+      jQuery(window)
         .off('.dropdown')
         .on('resize.fndtn.dropdown', self.throttle(function () {
           self.resize.call(self);
@@ -100,22 +100,22 @@
     close: function (dropdown) {
       var self = this;
       dropdown.each(function () {
-        if ($(this).hasClass(self.settings.active_class)) {
-          $(this)
+        if (jQuery(this).hasClass(self.settings.active_class)) {
+          jQuery(this)
             .css(Foundation.rtl ? 'right':'left', '-99999px')
             .removeClass(self.settings.active_class)
             .prev('[' + self.attr_name() + ']')
             .removeClass(self.settings.active_class);
 
-          $(this).trigger('closed', [dropdown]);
+          jQuery(this).trigger('closed', [dropdown]);
         }
       });
     },
 
     closeall: function() {
       var self = this;
-      $.each($('[' + this.attr_name() + '-content]'), function() {
-        self.close.call(self, $(this))
+      $.each(jQuery('[' + this.attr_name() + '-content]'), function() {
+        self.close.call(self, jQuery(this))
       });
     },
 
@@ -136,25 +136,25 @@
     },
 
     toggle : function (target) {
-      var dropdown = $('#' + target.data(this.data_attr()));
+      var dropdown = jQuery('#' + target.data(this.data_attr()));
       if (dropdown.length === 0) {
         // No dropdown found, not continuing
         return;
       }
 
-      this.close.call(this, $('[' + this.attr_name() + '-content]').not(dropdown));
+      this.close.call(this, jQuery('[' + this.attr_name() + '-content]').not(dropdown));
 
       if (dropdown.hasClass(this.settings.active_class)) {
         this.close.call(this, dropdown);
       } else {
-        this.close.call(this, $('[' + this.attr_name() + '-content]'))
+        this.close.call(this, jQuery('[' + this.attr_name() + '-content]'))
         this.open.call(this, dropdown, target);
       }
     },
 
     resize : function () {
-      var dropdown = $('[' + this.attr_name() + '-content].open'),
-          target = $("[" + this.attr_name() + "='" + dropdown.attr('id') + "']");
+      var dropdown = jQuery('[' + this.attr_name() + '-content].open'),
+          target = jQuery("[" + this.attr_name() + "='" + dropdown.attr('id') + "']");
 
       if (dropdown.length && target.length) {
         this.css(dropdown, target);
@@ -295,10 +295,10 @@
     },
 
     off: function () {
-      $(this.scope).off('.fndtn.dropdown');
-      $('html, body').off('.fndtn.dropdown');
-      $(window).off('.fndtn.dropdown');
-      $('[data-dropdown-content]').off('.fndtn.dropdown');
+      jQuery(this.scope).off('.fndtn.dropdown');
+      jQuery('html, body').off('.fndtn.dropdown');
+      jQuery(window).off('.fndtn.dropdown');
+      jQuery('[data-dropdown-content]').off('.fndtn.dropdown');
     },
 
     reflow : function () {}

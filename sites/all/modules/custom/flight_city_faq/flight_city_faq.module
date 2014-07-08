@@ -31,9 +31,8 @@ function flight_city_faq_node_view($node, $view_mode, $langcode) {
         drupal_goto('taxonomy/term/' . $parents[1]->tid, array('query' => array('tid' => $parents[0]->tid, 'nid' => $node->nid), 'fragment' => 'nid-' . $node->nid));
       }
       else {
-        drupal_goto('taxonomy/term/' . $parents[1]->tid, array('query' => array('nid' => $node->nid)));
+        drupal_goto('taxonomy/term/' . $parents[0]->tid, array('query' => array('nid' => $node->nid)));
       }
-
     }
     else {
       drupal_goto('answers', array('query' => array('nid' => $node->nid)));

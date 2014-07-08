@@ -11,8 +11,8 @@
 // h4, h5, h6 {}
 
 h1
-  font-size: $h2-font-size
-
+  font-size: $mobile-h1-size
+  
 h2
   font-size: $h3-font-size
 
@@ -43,10 +43,7 @@ h1, h2
   em, em &
     font-style: normal
 
-// Always normal
 h5
-  strong, strong &, 
-    //+f(weight-normal)
 
 h1, h2, h5, h6
   a 
@@ -55,6 +52,13 @@ h1, h2, h5, h6
 h3, h4
   a
     +c(link-alt)
+
+
+// Type
+//------------------------------------------
+
+strong, b
+  +f(weight-bold)
 
 
 // Layout
@@ -67,6 +71,15 @@ h3, h4
 .vertical-center-inner
   display: table-cell
   vertical-align: middle
+
+
+// Panel
+//-----------------------------------------------------------------------------
+
+.panel 
+  +all-headers()
+    line-height: $header-line-height
+
 
 
 // Anchors

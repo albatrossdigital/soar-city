@@ -26,22 +26,22 @@
       // initialize expedition offset
       self.set_expedition_position();
 
-      $(self.scope)
+      jQuery(self.scope)
         .off('.magellan')
         .on('click.fndtn.magellan', '[' + self.add_namespace('data-magellan-arrival') + '] a[href^="#"]', function (e) {
             e.preventDefault();
-            var expedition = $(this).closest('[' + self.attr_name() + ']'),
+            var expedition = jQuery(this).closest('[' + self.attr_name() + ']'),
                 settings = expedition.data('magellan-expedition-init');
 
             var hash = this.hash.split('#').join(''),
-                target = $("a[name='"+hash+"']");
-            if (target.length === 0) target = $('#'+hash);
+                target = jQuery("a[name='"+hash+"']");
+            if (target.length === 0) target = jQuery('#'+hash);
 
             // Account for expedition height if fixed position
             var scroll_top = target.offset().top;
             scroll_top = scroll_top - expedition.outerHeight();
 
-            $('html, body').stop().animate({
+            jQuery('html, body').stop().animate({
                 'scrollTop': scroll_top
             }, 700, 'swing', function () {
                 if(history.pushState) {
@@ -53,7 +53,7 @@
             });
         })
         .on('scroll.fndtn.magellan', self.throttle(this.check_for_arrivals.bind(this), settings.throttle_delay))
-        $(window).on('resize.fndtn.magellan', self.throttle(this.set_expedition_position.bind(this), settings.throttle_delay));
+        jQuery(window).on('resize.fndtn.magellan', self.throttle(this.set_expedition_position.bind(this), settings.throttle_delay));
     },
 
     check_for_arrivals : function() {
@@ -64,8 +64,8 @@
 
     set_expedition_position : function() {
       var self = this;
-      $('[' + this.attr_name() + '=fixed]', self.scope).each(function(idx, el) {
-        var expedition = $(this),
+      jQuery('[' + this.attr_name() + '=fixed]', self.scope).each(function(idx, el) {
+        var expedition = jQuery(this),
             styles = expedition.attr('styles'), // save styles
             top_offset;
 
@@ -79,10 +79,10 @@
 
     update_expedition_positions : function() {
       var self = this,
-          window_top_offset = $(window).scrollTop();
+          window_top_offset = jQuery(window).scrollTop();
 
-      $('[' + this.attr_name() + '=fixed]', self.scope).each(function() {
-        var expedition = $(this),
+      jQuery('[' + this.attr_name() + '=fixed]', self.scope).each(function() {
+        var expedition = jQuery(this),
             top_offset = expedition.data('magellan-top-offset');
 
         if (window_top_offset >= top_offset) {
@@ -105,10 +105,10 @@
 
     update_arrivals : function() {
       var self = this,
-          window_top_offset = $(window).scrollTop();
+          window_top_offset = jQuery(window).scrollTop();
 
-      $('[' + this.attr_name() + ']', self.scope).each(function() {
-        var expedition = $(this),
+      jQuery('[' + this.attr_name() + ']', self.scope).each(function() {
+        var expedition = jQuery(this),
             settings = settings = expedition.data(self.attr_name(true) + '-init'),
             offsets = self.offsets(expedition, window_top_offset),
             arrivals = expedition.find('[' + self.add_namespace('data-magellan-arrival') + ']'),
@@ -133,13 +133,13 @@
           viewport_offset = window_offset;
 
       return expedition.find('[' + self.add_namespace('data-magellan-arrival') + ']').map(function(idx, el) {
-        var name = $(this).data(self.data_attr('magellan-arrival')),
-            dest = $('[' + self.add_namespace('data-magellan-destination') + '=' + name + ']');
+        var name = jQuery(this).data(self.data_attr('magellan-arrival')),
+            dest = jQuery('[' + self.add_namespace('data-magellan-destination') + '=' + name + ']');
         if (dest.length > 0) {
           var top_offset = dest.offset().top - settings.destination_threshold - expedition.outerHeight();
           return {
             destination : dest,
-            arrival : $(this),
+            arrival : jQuery(this),
             top_offset : top_offset,
             viewport_offset : viewport_offset
           }
@@ -160,14 +160,14 @@
     },
 
     off : function () {
-      $(this.scope).off('.magellan');
-      $(window).off('.magellan');
+      jQuery(this.scope).off('.magellan');
+      jQuery(window).off('.magellan');
     },
 
     reflow : function () {
       var self = this;
       // remove placeholder expeditions used for height calculation purposes
-      $('[' + self.add_namespace('data-magellan-expedition-clone') + ']', self.scope).remove();
+      jQuery('[' + self.add_namespace('data-magellan-expedition-clone') + ']', self.scope).remove();
     }
   };
 }(jQuery, this, this.document));

@@ -67,6 +67,9 @@
   ul 
     +list-clear
 
+    li
+      margin-left: 0
+
   form
     +sleek-form(true, true)
 
@@ -112,10 +115,10 @@
   .l-footer-top
 
   .block-baltimore-govdelivery-subscribe p,
-  .block-bean-citywide-social-icons
+  .block-bean-citywide-social-icon
     +max-width-center(rem-calc(222))
   
-  .block-bean-citywide-social-icons
+  .block-bean-citywide-social-icon
 
     li:nth-child(3) a.social-icon
       margin-right: 0!important
@@ -141,8 +144,11 @@
 
 
 +respond($medium-up)
-  
+
   .l-footer
+    .block
+      position: relative
+      z-index: 1
 
     &:after
       +before-as-image(block, bottom, 0)
@@ -150,9 +156,6 @@
       left: 0
       +opacity(0.03)
       z-index: 0
-
-    .columns
-      z-index: 1
 
   .l-footer-sections-bottom
     padding-top: $medium-region-pad-large*2
@@ -164,6 +167,10 @@
 
     form
       padding-left: rem-calc(125)
+
+  .block-bean-citywide-social-icon
+    a.social-icon
+      overflow: visible
 
   .block-bean-footer-logos
     float: left

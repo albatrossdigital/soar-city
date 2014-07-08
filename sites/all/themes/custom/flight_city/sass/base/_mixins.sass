@@ -400,6 +400,12 @@ $full-common: sprite-map("full-common/*.png")
   &:hover
     color: darken($yellow, 10%)
 
+%color-link-alert
+  color: $alert-color
+
+  &:hover
+    color: darken($alert-color, 10%)
+
 %color-link-header
   color: $black
 
@@ -653,15 +659,84 @@ $common-border: common-border-val()
       float: none!important
       width: 100%
 
-@mixin no-page-title()
-  #page-title
+%no-page-title      
+  .main
+    padding-top: $header-bottom-margin
+
+  #page-title, #section-title
     +e(hide)
+
+  +respond($medium-up)
+    .main.medium-12
+      padding-top: rem-calc(15)
+
+
+@mixin no-page-title($extend: true, $query: mobile)
+  @if $extend
+    @extend %no-page-title
+
+  @else
+    @if $query == mobile
+      .main 
+        padding-top: $header-bottom-margin
+
+      #page-title, #section-title
+        +e(hide)
+
+    @else
+      .main.medium-12
+        padding-top: rem-calc(15)
+
+%show-mobile-filter-label 
+  #toggle-main-section-menu
+    .menu-label
+      +e(hide)
+
+    .filter-label
+      display: inline
+
+
+@mixin show-mobile-filter-label()
+  @extend %show-mobile-filter-label
 
 
 @mixin background-box($padding: $small-region-pad-large)
   +b(gray)
   padding: $padding
 
+%highlight-as-sidebar    
+  +respond($medium-up)
+    .highlight
+      +grid-column(4)
+      padding: $panel-padding
+
+      & ~ div.node,
+      & ~ div.view
+        +grid-column(6.5)
+        margin-left: (grid-calc(1, 12)/2)
+
+  +respond($past-menu)
+    .highlight
+      width: grid-calc(3, 12)
+
+      & ~ div.node,
+      & ~ div.view
+        width: grid-calc(8 ,12)
+
+@mixin highlight-as-sidebar($extend: true)
+  @if $extend
+    @extend %highlight-as-sidebar 
+
+
+// undo width restriction
+%full-width-main-section
+  +respond($medium-up)
+    .medium-8.main 
+      margin-left: 0
+      width: grid-calc(9, 12)
+
+@mixin full-width-main-section()
+  @extend %full-width-main-section
 
 
 @mixin main-vertical-spacing($display: 'mobile')
@@ -763,6 +838,10 @@ $common-border: common-border-val()
   font-size: $small-icon-area-font-size
   line-height: $small-icon-area-dimension
 
+%tiny-icon-circle-icon
+  font-size: $tiny-icon-area-font-size
+  line-height: $tiny-icon-area-dimension
+
 %icon-circle-icon-dimensions
   height: $icon-area-dimension
   width: $icon-area-dimension
@@ -771,22 +850,27 @@ $common-border: common-border-val()
   height: $small-icon-area-dimension
   width: $small-icon-area-dimension
 
+%tiny-icon-circle-icon-dimensions
+  height: $tiny-icon-area-dimension
+  width: $tiny-icon-area-dimension
+
 @mixin icon-circle-icon($main: 'i', $add-dimensions: 'i, .color-link', $core: true, $size: large)
   #{$main} 
     @if $core
       @extend %icon-circle-icon-core
 
-    @if $size == small
-      @extend %small-icon-circle-icon
-
-    @else 
+    @if $size == large
       @extend %icon-circle-icon
 
+    @else if $size
+      @extend %#{$size}-icon-circle-icon
+
   #{$add-dimensions}
-    @if $size == small 
-      @extend %small-icon-circle-icon-dimensions
-    @else
+    @if $size == large 
       @extend %icon-circle-icon-dimensions
+
+    @else if $size
+      @extend %#{$size}-icon-circle-icon-dimensions
 
 %icon-color-circle-core
   left: 50%
@@ -801,15 +885,50 @@ $common-border: common-border-val()
 %small-icon-color-circle
   margin-left: -($small-icon-area-dimension/2)
 
+%tiny-icon-color-circle
+  margin-left: -($tiny-icon-area-dimension/2)
+
+%icon-color-circle-left
+  left: 0
+  top: 0
+  position: absolute
+  +border-radius(100%)
+  z-index: 1
+
 @mixin icon-color-circle($core: true, $size: large)
   @if $core
     @extend %icon-color-circle-core
 
-  @if $size == small 
-    @extend %small-icon-color-circle
-
-  @else 
+  @if $size == large 
     @extend %icon-color-circle
+
+  @else if $size
+    @extend %#{$size}-icon-color-circle
+
+@mixin fake-icon-core($color, $icon: 'map-marker', $child: '.block-title', $size: large, $layout: center)
+  &:before 
+    content: " " 
+    background: $color
+
+  // construct child selector
+  $child-select: '#{$child}:before'
+  $child-select-other: '&:before, #{$child}:before'
+
+  #{$child-select-other}
+    @if $layout == center
+      +icon-color-circle(true, $size)
+
+    @else if $layout
+      @extend %icon-color-circle-#{$layout}
+
+    text-align: center
+
+  // call icon styles
+  +icon-circle-icon($child-select, $child-select-other, true, $size)
+  
+  // icon
+  #{$child}
+    +icon-only($icon)
 
 @mixin fake-icon-circle-box($color, $icon: 'map-marker', $child: '.block-title', $size: large)
   position: relative
@@ -819,25 +938,24 @@ $common-border: common-border-val()
   @else 
     padding-top: rem-calc(100)
 
-  &:before 
-    content: " " 
-    background: $color
+  +fake-icon-core($color, $icon, $child, $size)
 
 
-  // construct child selector
-  $child-select: '#{$child}:before'
-  $child-select-other: '&:before, #{$child}:before'
-
-  #{$child-select-other}
-    +icon-color-circle(true, $size)
-    text-align: center
-
-  // call icon styles
-  +icon-circle-icon($child-select, $child-select-other, true, $size)
+@mixin fake-icon-circle-box-side($color, $icon: 'map-marker', $child: 'h3.title', $size: tiny, $layout: left)
+  position: relative
   
-  // icon
   #{$child}
-    +icon-only($icon)
+    @if $size == small
+      padding-#{$layout}: rem-calc(70)
+
+    @else if $size == tiny
+      padding-#{$layout}: rem-calc(50)
+      
+    @else 
+      padding-#{$layout}: rem-calc(100)
+
+
+  +fake-icon-core($color, $icon, $child, $size, $layout)
 
 
 
@@ -867,14 +985,14 @@ $common-border: common-border-val()
 
   #{$wrapper}
     //padding-right: ($levels - 1) * (100%)
-    width: $levels*(100%)
+    width: $levels*(101%)
     float: left
     +transition(all ease-in 0.3s)
 
     @for $i from 1 through ($levels)
 
       &.level_#{$i}
-        margin-left: ($i) * (-100%)
+        margin-left: ($i) * (-101%)
     
     & > div
       +side-bar-section($levels)
@@ -883,7 +1001,6 @@ $common-border: common-border-val()
       a
         +nice-icon(chevron-left)
         border: none
-
 
 
 // Side bar menu styles
@@ -936,6 +1053,11 @@ $common-border: common-border-val()
       text-align: left
       +f(alt-alt)
       
+%side-bar-menu-default
+  +side-bar-menu('.item-list ul', '.block-title', 'li.active a')
+
+@mixin side-bar-menu-default()
+  @extend %side-bar-menu-default
 
 
 $main-menu-border-size: rem-calc(3)
@@ -1033,9 +1155,10 @@ $main-menu-border-size: rem-calc(3)
     padding-right: rem-calc(24)
 
 @mixin big-input()
+  height: auto
+  min-height: rem-calc(52)
   font-size: rem-calc(16)
   margin-bottom: rem-calc(10)
-  padding: ($form-spacing * 1.5)  $form-spacing
 
 
 @mixin big-form()
@@ -1126,7 +1249,7 @@ $main-menu-border-size: rem-calc(3)
 @mixin calendar-box($first: '.date-display-single > *:first-child', $second: '.date-display-single > *:last-child')
   border: common-border-val($gray-border)
   text-align: center
-  padding: rem-calc(12 0)
+  padding: rem-calc(12 0 0 0)
   position: relative
   +f(alt-alt)
   text-transform: uppercase
@@ -1138,12 +1261,20 @@ $main-menu-border-size: rem-calc(3)
     width: 100%
   
   #{$first}
-    font-size: rem-calc(16)
+    font-size: rem-calc(14)
     letter-spacing: 0.1em
 
   #{$second}
-    font-size: rem-calc(36)
-    padding: rem-calc(12 0 6 0)
+    font-size: rem-calc(30)
+    padding: rem-calc(6 0 6 0)
+
+  +respond($medium)
+    #{$first}
+      font-size: rem-calc(16)
+
+    #{$second}
+      font-size: rem-calc(36)
+
 
 
 

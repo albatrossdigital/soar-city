@@ -13,7 +13,7 @@
       </div>
       <div class="medium-4 columns header-region-right">
         <?php if (!empty($page['sidebar_first'])): ?>
-          <a id="toggle-main-section-menu" href="#"><i class="fa-angle-left"></i><span><?php print t('Sub Menu'); ?></span></a>
+          <a id="toggle-main-section-menu" class="button secondary-alt small radius" href="#"><i class="fa-bars"></i><span class="menu-label"><?php print t('Menu'); ?></span><span class="filter-label"><?php print t('Show Filters'); ?></span></a>
         <?php endif; ?>
         <?php print render($page['header']); ?>
         <ul class="title-area">
@@ -177,7 +177,7 @@
 
   <?php if (!empty($page['triptych_first']) || !empty($page['triptych_middle']) || !empty($page['triptych_last'])): ?>
     <!--.triptych-->
-    <section class="l-triptych row">
+    <section class="l-triptych"><div class="row">
       <div class="triptych-first medium-4 columns">
         <?php print render($page['triptych_first']); ?>
       </div>
@@ -187,7 +187,7 @@
       <div class="triptych-last medium-4 columns">
         <?php print render($page['triptych_last']); ?>
       </div>
-    </section>
+    </div></section>
     <!--/.triptych -->
   <?php endif; ?>
 

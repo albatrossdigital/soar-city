@@ -15,7 +15,7 @@
           </div>
           <?php endif; ?>
         </li>
-        <li class="toggle-off-canvas menu-toggle"><a class="right-off-canvas-toggle" href="#"><span><?php print $top_bar_menu_text; ?></span> <i class="fa-bars"></i></a></li>
+        <li class="toggle-off-canvas menu-toggle"><a class="right-off-canvas-toggle" href="#"><span><?php print $top_bar_menu_text; ?></span> <i class="<?php print $top_bar_menu_icon; ?>"></i></a></li>
         <li class="toggle-off-canvas search-toggle"><a id="search-toggle" class="right-off-canvas-toggle" href="#"><span><?php print t('Search'); ?></span> <i class="fa-search"></i></a></li>
       </ul>
       <aside class="right-off-canvas-menu top-bar-section">
@@ -39,13 +39,19 @@
         <?php endif; ?>
         <?php if($entity_title): ?>
           <div class="vertical-center"><div class="vertical-center-inner">
-            <h2 id="entity-title" class="title"><?php print $entity_title; ?></h2>
+            <h2 id="entity-title" class="title">
+              <?php if(!$default_domain): ?>
+                <a href="/" title="Go to homepage"><?php print $entity_title; ?></a>
+              <?php else: ?>
+                <?php print $entity_title; ?>
+              <?php endif; ?>
+            </h2>
           </div></div>
         <?php endif; ?>
       </div>
       <div class="medium-4 columns header-region-right">
         <?php if (!empty($page['sidebar_first'])): ?>
-          <a id="toggle-main-section-menu" href="#"><i class="fa-angle-left"></i><span><?php print t('Sub Menu'); ?></span></a>
+          <a id="toggle-main-section-menu" class="button secondary-alt small radius" href="#"><i class="fa-bars"></i><span class="menu-label"><?php print t('Menu'); ?></span><span class="filter-label"><?php print t('Show Filters'); ?></span></a>
         <?php endif; ?>
         <?php print render($page['header']); ?>
       </div>

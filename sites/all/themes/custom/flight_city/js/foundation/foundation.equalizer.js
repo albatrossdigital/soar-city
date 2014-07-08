@@ -19,7 +19,7 @@
     },
 
     events : function () {
-      $(window).off('.equalizer').on('resize.fndtn.equalizer', function(e){
+      jQuery(window).off('.equalizer').on('resize.fndtn.equalizer', function(e){
         this.reflow();
       }.bind(this));
     },
@@ -35,14 +35,14 @@
       equalizer.trigger('before-height-change');
       vals.height('inherit');
       vals.each(function(){
-        var el = $(this);
+        var el = jQuery(this);
         if (el.offset().top !== firstTopOffset) {
           isStacked = true;
         }
       });
       if (isStacked) return;
 
-      var heights = vals.map(function(){ return $(this).outerHeight() }).get();
+      var heights = vals.map(function(){ return jQuery(this).outerHeight() }).get();
       if (settings.use_tallest) {
         var max = Math.max.apply(null, heights);
         vals.css('height', max);
@@ -57,9 +57,9 @@
     reflow : function () {
       var self = this;
 
-      $('[' + this.attr_name() + ']', this.scope).each(function(){
-        var $eq_target = $(this);
-        self.image_loaded($('img', this), function(){
+      jQuery('[' + this.attr_name() + ']', this.scope).each(function(){
+        var $eq_target = jQuery(this);
+        self.image_loaded(jQuery('img', this), function(){
           self.equalize($eq_target)
         });
       });

@@ -1,6 +1,7 @@
 
 
 // Define new media query
+// ---------------------------------------------------------------------------- 
 
 meta.mobile-to-menu
   font-family: "/#{$mobile-to-menu}/"
@@ -14,14 +15,29 @@ meta.small-only
   font-family: "/#{$small-only}/"
   min-width: upper-bound($small-range)
 
+
+// Html / body
+// ---------------------------------------------------------------------------- 
+
+html,body
+  max-width: 100%
+
+body
+  line-height: 1.3
+
+
+// Admin-menu
+// ---------------------------------------------------------------------------- 
+
 html body.admin-menu
   margin-top: 0px !important
 
   & > .page
     margin-top: rem-calc(30)
 
-html,body
-  max-width: 100%
+
+// Foundation override
+// ---------------------------------------------------------------------------- 
 
 .row > .row
   +expand-row(0)
@@ -33,7 +49,9 @@ html,body
     float: left
 
 
+
 // Hide other page elements on help pages, popups
+// ---------------------------------------------------------------------------- 
 
 .node-type-help
   .page
@@ -63,6 +81,9 @@ html,body
   .l-footer-top, .l-footer-sections-top, .l-footer-sections-bottom
     +e(hide)
 
+
+
+
 // *
 // * Media Queries
 // *
@@ -81,17 +102,17 @@ html,body
 +respond($large)
   
   // Add bordered appearance
-  .page 
-    background: $gray-border
+  //.page 
+    //background: $gray-border
 
-    $background-width: $row-width + rem-calc(60)
+    //$background-width: $row-width + rem-calc(60)
 
-    &:before
-      background: $white
-      content: " "
-      position: absolute
-      top: 0
-      height: 100%
-      left: 50%
-      margin-left: -($background-width/2)
-      width: $background-width
+    //&:before
+      //background: $white
+      //content: " "
+      //position: absolute
+      //top: 0
+      //height: 100%
+      //left: 50%
+      //margin-left: -($background-width/2)
+      //width: $background-width

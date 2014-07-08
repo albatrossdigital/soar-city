@@ -121,20 +121,25 @@ function flight_city_workbench_taxonomy_term_insert($term) {
 }
 
 
-
-
 /**
  * Helper function removes the parent taxonomy menu item and strips out the leading "-".
  */
 function _flight_city_workbench_pare_taxonomy_options(&$form, $fieldname) {
   if (!empty($form[$fieldname])) {
-    foreach ($form[$fieldname][LANGUAGE_NONE]['#options'] as $key => $value) {
-      if (strpos($value, '-') !== 0) {
-        unset($form[$fieldname][LANGUAGE_NONE]['#options'][$key]);
+    if (count($form[$fieldname][LANGUAGE_NONE]['#options']) > 1) {
+      foreach ($form[$fieldname][LANGUAGE_NONE]['#options'] as $key => $value) {
+        if (strpos($value, '-') !== 0) {
+          unset($form[$fieldname][LANGUAGE_NONE]['#options'][$key]);
+        }
+        else {
+          $form[$fieldname][LANGUAGE_NONE]['#options'][$key] = substr($value, 1);
+        }
       }
-      else {
-        $form[$fieldname][LANGUAGE_NONE]['#options'][$key] = substr($value, 1);
-      }
+    }
+    // Set the only option as the default (for health)
+    else {
+      $form[$fieldname][LANGUAGE_NONE]['#default_value'] = array_keys($form[$fieldname][LANGUAGE_NONE]['#options']);
+      //$form[$fieldname][LANGUAGE_NONE]['#access'] = FALSE;
     }
   }
 }

@@ -19,7 +19,7 @@
       opened: function(){},
       close: function(){},
       closed: function(){},
-      bg : $('.reveal-modal-bg'),
+      bg : jQuery('.reveal-modal-bg'),
       css : {
         open : {
           'opacity': 0,
@@ -43,13 +43,13 @@
       var self = this,
           S = self.S;
 
-      $(this.scope)
+      jQuery(this.scope)
         .off('.reveal')
         .on('click.fndtn.reveal', '[' + this.add_namespace('data-reveal-id') + ']', function (e) {
           e.preventDefault();
 
           if (!self.locked) {
-            var element = $(this),
+            var element = jQuery(this),
                 ajax = element.data(self.data_attr('reveal-ajax'));
 
             self.locked = true;
@@ -64,14 +64,14 @@
           }
         });
 
-      $(document)
+      jQuery(document)
         .on('touchend.fndtn.reveal click.fndtn.reveal', this.close_targets(), function (e) {
 
           e.preventDefault();
 
           if (!self.locked) {
-            var settings = $('[' + self.attr_name() + '].open').data(self.attr_name(true) + '-init'),
-                bg_clicked = $(e.target)[0] === $('.' + settings.bg_class)[0];
+            var settings = jQuery('[' + self.attr_name() + '].open').data(self.attr_name(true) + '-init'),
+                bg_clicked = jQuery(e.target)[0] === jQuery('.' + settings.bg_class)[0];
 
             if (bg_clicked) {
               if (settings.close_on_background_click) {
@@ -82,12 +82,12 @@
             }
 
             self.locked = true;
-            self.close.call(self, bg_clicked ? $('[' + self.attr_name() + '].open') : $(this).closest('[' + self.attr_name() + ']'));
+            self.close.call(self, bg_clicked ? jQuery('[' + self.attr_name() + '].open') : jQuery(this).closest('[' + self.attr_name() + ']'));
           }
         });
 
-      if($('[' + self.attr_name() + ']', this.scope).length > 0) {
-        $(this.scope)
+      if(jQuery('[' + self.attr_name() + ']', this.scope).length > 0) {
+        jQuery(this.scope)
           // .off('.reveal')
           .on('open.fndtn.reveal', this.settings.open)
           .on('opened.fndtn.reveal', this.settings.opened)
@@ -96,7 +96,7 @@
           .on('closed.fndtn.reveal', this.settings.closed)
           .on('closed.fndtn.reveal', this.close_video);
       } else {
-        $(this.scope)
+        jQuery(this.scope)
           // .off('.reveal')
           .on('open.fndtn.reveal', '[' + self.attr_name() + ']', this.settings.open)
           .on('opened.fndtn.reveal', '[' + self.attr_name() + ']', this.settings.opened)
@@ -114,8 +114,8 @@
       var self = this;
 
       // PATCH #1: fixing multiple keyup event trigger from single key press
-      $('body').off('keyup.fndtn.reveal').on('keyup.fndtn.reveal', function ( event ) {
-        var open_modal = $('[' + self.attr_name() + '].open'),
+      jQuery('body').off('keyup.fndtn.reveal').on('keyup.fndtn.reveal', function ( event ) {
+        var open_modal = jQuery('[' + self.attr_name() + '].open'),
             settings = open_modal.data(self.attr_name(true) + '-init');
         // PATCH #2: making sure that the close event can be called only while unlocked,
         //           so that multiple keyup.fndtn.reveal events don't prevent clean closing of the reveal window.
@@ -129,7 +129,7 @@
 
     // PATCH #3: turning on key up capture only when a reveal window is open
     key_up_off : function (scope) {
-      $('body').off('keyup.fndtn.reveal');
+      jQuery('body').off('keyup.fndtn.reveal');
       return true;
     },
 
@@ -137,20 +137,20 @@
       var self = this;
       if (target) {
         if (typeof target.selector !== 'undefined') {
-          var modal = $('#' + target.data(self.data_attr('reveal-id')));
+          var modal = jQuery('#' + target.data(self.data_attr('reveal-id')));
         } else {
-          var modal = $(this.scope);
+          var modal = jQuery(this.scope);
 
           ajax_settings = target;
         }
       } else {
-        var modal = $(this.scope);
+        var modal = jQuery(this.scope);
       }
 
       var settings = modal.data(self.attr_name(true) + '-init');
 
       if (!modal.hasClass('open')) {
-        var open_modal = $('[' + self.attr_name() + '].open');
+        var open_modal = jQuery('[' + self.attr_name() + '].open');
 
         if (typeof modal.data('css-top') === 'undefined') {
           modal.data('css-top', parseInt(modal.css('top'), 10))
@@ -186,7 +186,7 @@
               }
 
               modal.html(data);
-              $(modal).foundation('section', 'reflow');
+              jQuery(modal).foundation('section', 'reflow');
 
               if (open_modal.length > 0) {
                 self.hide(open_modal, settings.css.close);
@@ -201,8 +201,8 @@
     },
 
     close : function (modal) {
-      var modal = modal && modal.length ? modal : $(this.scope),
-          open_modals = $('[' + this.attr_name() + '].open'),
+      var modal = modal && modal.length ? modal : jQuery(this.scope),
+          open_modals = jQuery('[' + this.attr_name() + '].open'),
           settings = modal.data(this.attr_name(true) + '-init');
 
       if (open_modals.length > 0) {
@@ -227,8 +227,8 @@
     toggle_bg : function (modal) {
       var settings = modal.data(this.attr_name(true));
 
-      if ($('.' + this.settings.bg_class).length === 0) {
-        this.settings.bg = $('<div />', {'class': this.settings.bg_class})
+      if (jQuery('.' + this.settings.bg_class).length === 0) {
+        this.settings.bg = jQuery('<div />', {'class': this.settings.bg_class})
           .appendTo('body').hide();
       }
 
@@ -260,9 +260,9 @@
           this.locked = false;
         }
         if (animData.pop) {
-          css.top = $(window).scrollTop() - el.data('offset') + 'px';
+          css.top = jQuery(window).scrollTop() - el.data('offset') + 'px';
           var end_css = {
-            top: $(window).scrollTop() + el.data('css-top') + 'px',
+            top: jQuery(window).scrollTop() + el.data('css-top') + 'px',
             opacity: 1
           };
 
@@ -278,7 +278,7 @@
         }
 
         if (animData.fade) {
-          css.top = $(window).scrollTop() + el.data('css-top') + 'px';
+          css.top = jQuery(window).scrollTop() + el.data('css-top') + 'px';
           var end_css = {opacity: 1};
 
           return setTimeout(function () {
@@ -317,7 +317,7 @@
         }
         if (animData.pop) {
           var end_css = {
-            top: - $(window).scrollTop() - el.data('offset') + 'px',
+            top: - jQuery(window).scrollTop() - el.data('offset') + 'px',
             opacity: 0
           };
 
@@ -358,8 +358,8 @@
     },
 
     close_video : function (e) {
-      var video = $('.flex-video', e.target),
-          iframe = $('iframe', video);
+      var video = jQuery('.flex-video', e.target),
+          iframe = jQuery('iframe', video);
 
       if (iframe.length > 0) {
         iframe.attr('data-src', iframe[0].src);
@@ -369,7 +369,7 @@
     },
 
     open_video : function (e) {
-      var video = $('.flex-video', e.target),
+      var video = jQuery('.flex-video', e.target),
           iframe = video.find('iframe');
 
       if (iframe.length > 0) {
@@ -402,7 +402,7 @@
     },
 
     off : function () {
-      $(this.scope).off('.fndtn.reveal');
+      jQuery(this.scope).off('.fndtn.reveal');
     },
 
     reflow : function () {}

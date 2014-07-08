@@ -2,6 +2,14 @@
 // Event views
 // ---------------------------------------------------------------------------- 
 
+// show filter text instead of menu
+.page-events.domain-main
+  +show-mobile-filter-label()
+
+// make full width
+.page-events.menu-depth-1
+  +full-width-main-section
+
 .block-views-calendar-block-4,
 .block-views-calendar-block-2
   +views-see-more-footer-button

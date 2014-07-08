@@ -4,11 +4,30 @@
 * Puts the currently highlighted suggestion into the autocomplete field.
 * Overridden from misc/autocomplete.js to add an event trigger on autocomplete
 */
-Drupal.jsAC.prototype.select = function (node) {
-  this.input.value = $(node).data('autocompleteValue');
-  // Custom: add an event trigger
-  $(this.input).trigger('autocompleteSelect', [node]);
-};
+if (Drupal.jsAC) {
+  Drupal.jsAC.prototype.select = function (node) {
+    this.input.value = $(node).data('autocompleteValue');
+    // Custom: add an event trigger
+    $(this.input).trigger('autocompleteSelect', [node]);
+  };
+
+  Drupal.jsAC.prototype.hidePopup = function (keycode) {
+    // Select item if the right key or mousebutton was pressed.
+    if (this.selected && ((keycode && keycode != 46 && keycode != 8 && keycode != 27) || !keycode)) {
+      this.input.value = $(this.selected).data('autocompleteValue');
+      // Custom: add an event trigger
+      $(this.input).trigger('autocompleteSelect');
+    }
+    // Hide popup.
+    var popup = this.popup;
+    if (popup) {
+      this.popup = null;
+      $(popup).fadeOut('fast', function () { $(popup).remove(); });
+    }
+    this.selected = false;
+    $(this.ariaLive).empty();
+  };
+}
 
 Drupal.behaviors.flightAddressHelper = {
   attach: function(context, settings) { //new attach function

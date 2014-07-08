@@ -1,5 +1,9 @@
 $search-button-size: 36px
 
+// show filter text instead of menu
+.page-search
+  +show-mobile-filter-label()
+
 // Search forms
 // ------------------------------------------------------
 
@@ -37,7 +41,8 @@ $search-button-size: 36px
 // Autocomplete results
 // ------------------------------------------------------
 
-.ac_results 
+.ac_results
+  z-index: 3 
 
   .admin-menu &
     margin-top: rem-calc(-30)
@@ -75,8 +80,37 @@ $search-button-size: 36px
 // facets
 // ------------------------------------------------------
 
+.block-current-search-active-filters
+  margin-bottom: 0!important
+  +clearfix()
+
+  .item-list 
+
+    ul
+      +list-clear()
+
+      li
+        margin-left: 0
+    
+    li > a
+      float: left
+      margin-right: rem-calc(10)
+      +icon-button-replace($fa-var-times-circle-o, 24px)
+      +c(link-alert)
+
+    h5
+      +common-border
+      padding-bottom: $paragraph-margin-bottom
+      margin-bottom: $paragraph-margin-bottom
+
+    .im_domain_id
+      display: none!important
+
+ 
+
+
 // search result info
-.block-current-search
+.block-current-search-standard
   +common-border
 
   .result-0
@@ -85,10 +119,15 @@ $search-button-size: 36px
   .main &
     margin-bottom: rem-calc(25)
 
+.block-facetapi
+  a.hide-show-toggle
+    +c(link-alt)
 
 // Domain notification
 ul.facetapi-facetapi-suggestion
   +list-clear()
+
+  
 
 
 // search results
@@ -112,7 +151,27 @@ ol.search-results
 
   .search-snippet-info
     padding-left: 0
-    
+
+  .search-info:last-child
+    margin-bottom: 0
+
+.search-result
+  +nice-teaser-border(notrow)
+
+  &.bundle-payment_type,
+  &.bundle-faq
+    h3
+      padding-top: rem-calc(5)
+
+  &.bundle-payment_type
+    +fake-icon-circle-box-side($red, 'money')
+
+  &.bundle-faq
+    +fake-icon-circle-box-side($blue, 'question')
+  
+  &:last-child
+    &:after
+      border: 0
 
 
 // *
@@ -130,3 +189,9 @@ ol.search-results
       clear: right
       float: right
       max-width: rem-calc(300)
+
+  // facets
+  // ------------------------------------------------------
+
+  #toggle-filters
+    display: none

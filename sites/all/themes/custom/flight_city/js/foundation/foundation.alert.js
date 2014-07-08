@@ -18,20 +18,20 @@
       var self = this,
           S = this.S;
 
-      $(this.scope).off('.alert').on('click.fndtn.alert', '[' + this.attr_name() + '] a.close', function (e) {
-          var alertBox = $(this).closest('[' + self.attr_name() + ']'),
+      jQuery(this.scope).off('.alert').on('click.fndtn.alert', '[' + this.attr_name() + '] a.close', function (e) {
+          var alertBox = jQuery(this).closest('[' + self.attr_name() + ']'),
               settings = alertBox.data(self.attr_name(true) + '-init') || self.settings;
 
         e.preventDefault();
         if ('transitionend' in window || 'webkitTransitionEnd' in window || 'oTransitionEnd' in window) {
           alertBox.addClass("alert-close");
           alertBox.on('transitionend webkitTransitionEnd oTransitionEnd', function(e) {
-            $(this).trigger('close').remove();
+            jQuery(this).trigger('close').remove();
             settings.callback();
           });
         } else {
           alertBox.fadeOut(300, function () {
-            $(this).trigger('close').remove();
+            jQuery(this).trigger('close').remove();
             settings.callback();
           });
         }

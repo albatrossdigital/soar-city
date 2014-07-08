@@ -17,6 +17,9 @@
   .main
     padding-top: rem-calc(10)
 
+  // full width main
+  +full-width-main-section
+
   
   &:not(.domain-main)
     // all main blocks except for first 2
@@ -144,7 +147,6 @@
       +column-padding()
 
   .l-triptych
-    +side-bar-menu('.item-list ul', '.block-title', 'li.active a')
 
     .block-title
       text-align: center
@@ -250,11 +252,6 @@
   // Main Content
   // ----------------------------------------------------------------------------
 
-  // center main in columns
-  .front .medium-8.main
-    margin-left: 0
-    width: grid-calc(9, 12)
-
   .front
 
     &:not(.domain-main)
@@ -344,10 +341,11 @@
   // Uber front
   // ----------------------------------------------------------------------------
   
-  .front.domain-main
+  // remove bordered appearance
+  //.front.domain-main
 
-    .page
-      background: $white
+    //.page
+      //background: $white
 
-      &:before
-        display: none
+      //&:before
+        //display: none

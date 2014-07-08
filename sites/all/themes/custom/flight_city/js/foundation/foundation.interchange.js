@@ -40,8 +40,8 @@
           // ex. trigger(), trigger([a, b, c]), or trigger(a, b, c)
           //
           // This allows you to bind a callback like so:
-          // $('#interchangeContainer').on('replace', function (e, a, b, c) {
-          //   console.log($(this).html(), a, b, c);
+          // jQuery('#interchangeContainer').on('replace', function (e, a, b, c) {
+          //   console.log(jQuery(this).html(), a, b, c);
           // });
 
           if (/IMG/.test(el[0].nodeName)) {
@@ -58,7 +58,7 @@
           if (last_path == path) return;
 
           if (/\.(gif|jpg|jpeg|tiff|png)([?#].*)?/i.test(path)) {
-            $(el).css('background-image', 'url('+path+')');
+            jQuery(el).css('background-image', 'url('+path+')');
             el.data('interchange-last-path', path);
             return trigger(path);
           }
@@ -94,7 +94,7 @@
     events : function () {
       var self = this, prevMediaHash;
 
-      $(window)
+      jQuery(window)
         .off('.interchange')
         .on('resize.fndtn.interchange', self.throttle(function () {
             var currMediaHash = self.get_media_hash();
@@ -140,7 +140,7 @@
       var count = scenarios.length;
 
       if (count > 0) {
-        var el = $('[' + this.add_namespace('data-uuid') + '="' + uuid + '"]');
+        var el = jQuery('[' + this.add_namespace('data-uuid') + '="' + uuid + '"]');
 
         while (count--) {
           var mq, rule = scenarios[count][2];
@@ -167,7 +167,7 @@
     },
 
     update_images : function () {
-      var images = $('img[' + this.data_attr + ']'),
+      var images = jQuery('img[' + this.data_attr + ']'),
           count = images.length,
           i = count,
           loaded_count = 0,
@@ -197,7 +197,7 @@
     },
 
     update_nodes : function () {
-      var nodes = $('[' + this.data_attr + ']').not('img'),
+      var nodes = jQuery('[' + this.data_attr + ']').not('img'),
           count = nodes.length,
           i = count,
           loaded_count = 0,
@@ -228,10 +228,10 @@
       var i = this['cached_' + type].length;
 
       while (i--) {
-        this.object($(this['cached_' + type][i]));
+        this.object(jQuery(this['cached_' + type][i]));
       }
 
-      return $(window).trigger('resize');
+      return jQuery(window).trigger('resize');
     },
 
     parse_params : function (path, directive, mq) {

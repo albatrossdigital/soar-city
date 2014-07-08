@@ -3,6 +3,21 @@ Copyright (c) 2003-2013, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
+CKEDITOR.on(
+   'instanceReady',
+   function(ev) {
+      var $script = document.createElement('script'),
+         $editor_instance = CKEDITOR.instances[ev.editor.name];
+
+      $script.src = '//use.typekit.com/tyn0pry.js';
+      $script.onload = function() {
+         try{$editor_instance.window.$.Typekit.load();}catch(e){}
+      };
+
+      $editor_instance.document.getHead().$.appendChild($script);
+   }
+);
+
 /*
  WARNING: clear browser's cache after you modify this file.
  If you don't do this, you may notice that browser is ignoring all your changes.

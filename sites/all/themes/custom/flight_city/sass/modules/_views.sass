@@ -10,12 +10,20 @@
 // Nice spaced out teasers for equalizer rows
 // ----------------------------------------------------------------------------
 
+
 [data-equalizer]
   .views-row.columns
     +nice-row-border(0, rem-calc(22), 1px solid $gray, bottom, hidden)
 
+    &.no-border
+      display: none
+
     [data-equalizer-watch]
       margin-bottom: 0
+
+  &:last-child
+    .views-row.columns:last-child:after
+      border: 0
 
 
 
@@ -115,6 +123,19 @@ $border-padding: rem-calc(35)
     &:last-child
       .views-row.columns:after
         border-bottom: 0
+
+    &.medium-border.row
+      +nice-row-border($column-gutter/2, $border-padding, 1px solid $gray, top, false)
+
+      &:first-child, h3 + &
+        &:before
+          display: none
+
+      & + h3
+        margin-top: $border-padding
+
+    .views-row.columns.medium-no-border:after
+      display: none
 
 
 

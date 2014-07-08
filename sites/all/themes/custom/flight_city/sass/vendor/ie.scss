@@ -312,6 +312,12 @@
   }
 }
 
+
+.l-footer:after {
+  display: none!important;
+}
+
+
 // to add support for IE8 or below, use in your scss like so:
 //.lt-ie9 {
 //  @include columnFix;
