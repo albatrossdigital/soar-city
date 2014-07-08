@@ -612,9 +612,6 @@ if (defined('PANTHEON_ENVIRONMENT')) {
 // ApacheSolr Settings.
 //$conf['apachesolr_environments']['solr']['url'] = 'http://us.opensolr.com/solr/prod_balt_if';
 
-// Explicitly set defType
-$conf['apachesolr_environments']['solr']['conf']['apachesolr_query_type'] = 'dismax';
-
 // Redirect all domains to TLD
 if (
   (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') || 
@@ -647,13 +644,22 @@ if (
     
 
     // @todo
-    /*
+    
     // Memcache settings  
     $conf['cache_backends'][] = 'sites/all/modules/contrib/memcache/memcache.inc';
     // The 'cache_form' bin must be assigned no non-volatile storage.
     $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
     $conf['cache_default_class'] = 'MemCacheDrupal';
-    $conf['memcache_key_prefix'] = 'rockcorps' . $_ENV['AH_SITE_ENVIRONMENT'];*/
+    $conf['memcache_key_prefix'] = 'blackmesh' . $_SERVER['BLACKMESH_ENV'];
+
+    // Varnish settings
+    // Add Varnish as the page cache handler.
+    $conf['cache_backends'] = array('sites/all/modules/varnish/varnish.cache.inc');
+    // Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs
+    // to be disabled.
+    $conf['page_cache_invoke_hooks'] = FALSE;
+    // Setup Varnish with Expire
+     $conf['cache_class_external_varnish_page'] = 'VarnishCache';
   }
   
 }
