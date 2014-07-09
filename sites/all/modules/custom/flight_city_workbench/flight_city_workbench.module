@@ -228,16 +228,13 @@ function flight_city_workbench_node_presave($node) {
  * Set the 'promote_main' flag status depending on the citywide domain promotion status.
  */
 //@todo: do we need this???
-/*function flight_city_workbench_entity_presave($entity, $type) {
+function flight_city_workbench_entity_presave($entity, $type) {
   if ($entity_type === 'flagging' && $enity->flag_name === 'promote_main' && $entity->entity_type === 'node') {
     $node = node_load($entity->entity_id);
-    dpm($node);
-    //$flagging->field_flag_status['und'][0]['value'] = 1;
+    $entity->field_flag_status['und'][0]['value'] = (int)!empty($node->domains[1]);
+    dpm($entity);
   }
-  //dpm($type);
-  //dpm($entity);
-  //if ($type === '')
-}*/
+}
 
 
 /******************************* BLOCKS *********************************** */
