@@ -245,6 +245,7 @@ function balt_apachesolr_build_apachesolr_form() {
   // Modify appearance
   $form['basic']['keys']['#attributes'] = array(
     'placeholder' => t('Search'),
+    'alt' => t('Search'),
     'class' => array('no-labels')
   );
   // Explicitly add autocomplete

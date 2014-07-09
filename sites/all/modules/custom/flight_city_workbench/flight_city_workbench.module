@@ -199,6 +199,43 @@ function flight_city_workbench_pathauto_alias_alter(&$alias, $context) {
 }
 
 
+/**
+ * Implements hook_domain_grant_all_alter.
+ * Allow superadmins to see content from all domains on admin pages.
+ */
+function flight_city_workbench_domain_grant_all_alter(&$grant, $options) {
+  $base_path = arg(0);
+  if ($base_path == 'admin' && user_access('review content for all domains')) {
+    $grant = TRUE;
+  }
+}
+
+/**
+ * Implements hook_domain_grant_all_alter.
+ * Set the 'promote_main' flag status depending on the citywide domain promotion status.
+ */
+function flight_city_workbench_node_presave($node) {
+  if ($flag = flag_get_entity_flags('node', $node->nid, 'promote_main')) {
+    foreach($flag as $flagging_object) { $flagging_id = $flagging_object->flagging_id; }
+    $flagging = entity_load_single('flagging', $flagging_id);
+    $flagging->field_flag_status['und'][0]['value'] = (int)!empty($node->domains[1]);
+    entity_save('flagging', $flagging);
+  }
+}
+
+/**
+ * Implements hook_domain_grant_all_alter.
+ * Set the 'promote_main' flag status depending on the citywide domain promotion status.
+ */
+//@todo: do we need this???
+function flight_city_workbench_entity_presave($entity, $type) {
+  if ($entity_type === 'flagging' && $enity->flag_name === 'promote_main' && $entity->entity_type === 'node') {
+    $node = node_load($entity->entity_id);
+    $entity->field_flag_status['und'][0]['value'] = (int)!empty($node->domains[1]);
+    dpm($entity);
+  }
+}
+
 
 /******************************* BLOCKS *********************************** */
 
@@ -309,6 +346,7 @@ function flight_city_workbench_node_promote_form_submit($form, &$form_state) {
     $node = $form_state['values']['node'];
     $node->domains[$default_domain['domain_id']] = $default_domain['domain_id'];
     node_save($node);
+    // Note the flag status is changed in flight_city_workbench_node_presave() above.
   }
   // Reject. Unflag the node.
   else {
@@ -324,3 +362,4 @@ function flight_city_workbench_node_promote_form_submit($form, &$form_state) {
     }
   }
 }
+
