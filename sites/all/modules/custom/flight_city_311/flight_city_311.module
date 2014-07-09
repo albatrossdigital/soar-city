@@ -65,7 +65,7 @@ function flight_city_311_block_view($delta = '') {
       //$block['content'] = drupal_render($form);
       
       // @todo: temp?
-      $block['content'] = '<p class="medium-text-center"><a class="button" href="http://csr.baltimorecity.gov/Search.aspx" target="_blank">Check Status</a></p><p class="medium-text-center">You will need your 10-digit service request number (08-00001254).</p>';
+      $block['content'] = '<p class="medium-text-center">You will need your 10-digit service request number (08-00001254).</p><p class="medium-text-center"><a class="button" href="http://csr.baltimorecity.gov/Search.aspx" target="_blank">Check Status</a></p>';
       break;
   }
 
