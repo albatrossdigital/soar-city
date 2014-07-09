@@ -199,6 +199,19 @@ function flight_city_workbench_pathauto_alias_alter(&$alias, $context) {
 }
 
 
+/**
+ * Implements hook_domain_grant_all_alter.
+ * Allow superadmins to see content from all domains on admin pages.
+ */
+function flight_city_workbench_domain_grant_all_alter(&$grant, $options) {
+  $base_path = arg(0);
+  if ($base_path == 'admin' && user_access('review content for all domains')) {
+    $grant = TRUE;
+  }
+}
+
+
+
 
 /******************************* BLOCKS *********************************** */
 
