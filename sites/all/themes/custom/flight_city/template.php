@@ -129,7 +129,7 @@ function flight_city_preprocess_page(&$vars) {
   // Set logo to link default
   // @TODO be smarter about this
   //$default_domain = domain_default(FALSE, FALSE);
-  $vars['linked_logo'] = l($vars['logo_img'], 'http://www.baltimore.ifsight.com'/* . $default_domain['subdomain']*/,
+  $vars['linked_logo'] = l($vars['logo_img'], 'http://www.baltimorecity.gov'/* . $default_domain['subdomain']*/,
     array(
       'html' => TRUE,
       'external' => TRUE
