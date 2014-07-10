@@ -85,13 +85,11 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
       }
     }
     $form['#validate'][] = 'flight_city_workbench_form_node_validate';
-    dpm($form);
 
     // Limit the menu options to Workbench Editorial sections
     if (!empty($form['menu']) && !user_access('workbench view full menu tree')) {
       $options = $form['workbench_access']['workbench_access']['#options'];
       unset($options['']);
-      dpm($form['menu']['link']['parent']);
       $keys = array_keys($form['menu']['link']['parent']['#options']);
       $arr = explode(':', $keys[0]);
       $mid = $arr[0];
@@ -179,7 +177,6 @@ function flight_city_workbench_form_node_validate($form, &$form_state) {
  * Limit the editorial sections that editors can assign users to.
  */
 function flight_city_workbench_form_workbench_access_user_form_alter(&$form, $form_state) {
-  dpm(variable_get('menu_main_links_source', 'main-menu'));
   global $user;
   $mid = variable_get('menu_main_links_source', 'main-menu');
   foreach ($form['sections'] as $key => $section) {
@@ -282,9 +279,7 @@ function flight_city_workbench_block_view($delta = '') {
         $block['content'] = '<div class="alert-box secondary">' . drupal_render($form) . '</div>';
       }
       elseif (user_access('request promotion to main')) { // @todo: fix
-        dpm('b');
         $block['content'] = flight_city_workbench_node_promote_lookup($node);
-        dpm($block);
         $block['content'] = !empty($block['content']) ? '<div class="alert-box secondary">' . $block['content'] . '</div>' : NULL;
       }
       break;
