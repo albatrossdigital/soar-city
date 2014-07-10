@@ -163,12 +163,12 @@ Drupal.behaviors.social_stream = {
 
       feeds.instagram = undefined;
 
-      if (!feeds.rss.length) {
+      if (feeds.rss.length === 0) {
         feeds.rss = undefined;
       }
 
-      //console.log(data);
-      //console.log(feeds);
+      console.log(data);
+      console.log(feeds);
       //return;
 
       $('#social-stream').dcSocialStream({
