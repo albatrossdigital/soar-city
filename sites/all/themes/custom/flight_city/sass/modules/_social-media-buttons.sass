@@ -68,6 +68,12 @@ a.social-icon.Govdelivery
 a.social-icon.Social.Wall
   +icon-only(comments)
 
+a.social-icon.WordPress
+  +icon-only(wordpress)
+
+a.social-icon.Blog
+  display: none
+
 
 
 // Share 42
@@ -147,13 +153,16 @@ a.social-icon
     background: $pink-dribbble
 
   &.Vimeo
-    background: $blue-twitter
+    background: $blue-vimeo
 
   &.Govdelivery
     background: $gray-dark
 
   &.Social.Wall
     background: $black
+
+  &.WordPress
+    background: $blue-wordpress
 
   &.larger-icon
     +icon-button-resize(45px, rem-calc(25))

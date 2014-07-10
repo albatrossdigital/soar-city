@@ -54,7 +54,7 @@ i[class^="fa"], [role=complementary] .block-domain-menu-block .menu-block-wrappe
 .l-triptych .item-list ul .highlighted a:after, .view-faq-home.view-display-id-block_1 .item-list ul .highlighted a:after, .arrow-link:before, [role=complementary] .block > ul .highlighted a:after, [role=complementary] .block .menu-block-wrapper ul .highlighted a:after, [role=complementary] .block .item-list > ul .highlighted a:after, .draggable a.tabledrag-handle:before, .block-views-exp-organizations-page .form-item-combine:before, .share42-item:nth-child(4) a:before, .share42-item:first-child a:before,
 a.social-icon.Facebook:before, .share42-item:nth-child(3) a:before,
 a.social-icon.Twitter:before, .share42-item:nth-child(2) a:before,
-a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, a.social-icon.Govdelivery:before, a.social-icon.Social.Wall:before, .breadcrumbs li:first-child a:before, .button.icon-play:before, #search-form .form-submit:before, .block-current-search-active-filters .item-list li > a:before, .search-result.bundle-payment_type h3.title:before, .search-result.bundle-faq h3.title:before, .front.domain-main .triptych-first .block .block-title:before, .front.domain-main .triptych-middle .block .block-title:before, .front.domain-main .triptych-last .block .block-title:before, .block-views-exp-calendar-list .views-widget-filter-combine .views-widget:before, .page-payments.domain-main .triptych-first .block .block-title:before, .page-payments.domain-main .triptych-middle .block .block-title:before, .page-payments.domain-main .triptych-last .block .block-title:before, .vocabulary-payment-type.view-mode-full .icon-box [class*="fa-"]:before, .page-311-services .block-views-exp-311-home-page .form-item-search:before, .page-311-services .triptych-first .block .block-title:before, .page-311-services .triptych-middle .block .block-title:before, .page-311-services .triptych-last .block .block-title:before {
+a.social-icon.Googleplus:before, a.social-icon.Linkedin:before, a.social-icon.Flickr:before, a.social-icon.Youtube:before, a.social-icon.Pinterest:before, a.social-icon.Rss:before, a.social-icon.Dribbble:before, a.social-icon.Vimeo:before, a.social-icon.Govdelivery:before, a.social-icon.Social.Wall:before, a.social-icon.WordPress:before, .breadcrumbs li:first-child a:before, .button.icon-play:before, #search-form .form-submit:before, .block-current-search-active-filters .item-list li > a:before, .search-result.bundle-payment_type h3.title:before, .search-result.bundle-faq h3.title:before, .front.domain-main .triptych-first .block .block-title:before, .front.domain-main .triptych-middle .block .block-title:before, .front.domain-main .triptych-last .block .block-title:before, .block-views-exp-calendar-list .views-widget-filter-combine .views-widget:before, .page-payments.domain-main .triptych-first .block .block-title:before, .page-payments.domain-main .triptych-middle .block .block-title:before, .page-payments.domain-main .triptych-last .block .block-title:before, .vocabulary-payment-type.view-mode-full .icon-box [class*="fa-"]:before, .page-311-services .block-views-exp-311-home-page .form-item-search:before, .page-311-services .triptych-first .block .block-title:before, .page-311-services .triptych-middle .block .block-title:before, .page-311-services .triptych-last .block .block-title:before {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -186,17 +186,22 @@ a.social-icon.Flickr:before {
   content: "\f16e";
 }
 
-/* line 3479, ../sass/components/_icons-fontawesome.sass */
+/* line 3415, ../sass/components/_icons-fontawesome.sass */
+a.social-icon.WordPress:before {
+  content: "\f19a";
+}
+
+/* line 3487, ../sass/components/_icons-fontawesome.sass */
 .arrow-link:before {
   content: "\f178";
 }
 
-/* line 3519, ../sass/components/_icons-fontawesome.sass */
+/* line 3527, ../sass/components/_icons-fontawesome.sass */
 a.social-icon.Dribbble:before {
   content: "\f17d";
 }
 
-/* line 3704, ../sass/components/_icons-fontawesome.sass */
+/* line 3712, ../sass/components/_icons-fontawesome.sass */
 a.social-icon.Vimeo:before {
   content: "\f194";
 }
@@ -2579,11 +2584,16 @@ li:last-child a.social-icon,
   margin-right: 0 !important;
 }
 
-/* line 76, ../sass/modules/_social-media-buttons.sass */
+/* line 74, ../sass/modules/_social-media-buttons.sass */
+a.social-icon.Blog {
+  display: none;
+}
+
+/* line 82, ../sass/modules/_social-media-buttons.sass */
 .share42init {
   min-width: 15.71429rem;
 }
-/* line 79, ../sass/modules/_social-media-buttons.sass */
+/* line 85, ../sass/modules/_social-media-buttons.sass */
 .share42init:before {
   display: inline;
   content: "Share ";
@@ -2595,11 +2605,11 @@ li:last-child a.social-icon,
   padding-right: 1.07143rem;
 }
 
-/* line 90, ../sass/modules/_social-media-buttons.sass */
+/* line 96, ../sass/modules/_social-media-buttons.sass */
 #share42 {
   float: right;
 }
-/* line 93, ../sass/modules/_social-media-buttons.sass */
+/* line 99, ../sass/modules/_social-media-buttons.sass */
 #share42, #share42:hover {
   background: none;
   border: 0;
@@ -2611,17 +2621,17 @@ li:last-child a.social-icon,
   height: 33px;
 }
 
-/* line 101, ../sass/modules/_social-media-buttons.sass */
+/* line 107, ../sass/modules/_social-media-buttons.sass */
 .share42-item {
   margin: 0 !important;
 }
-/* line 104, ../sass/modules/_social-media-buttons.sass */
+/* line 110, ../sass/modules/_social-media-buttons.sass */
 .share42-item a {
   background: #b6b6b8 !important;
   line-height: 33px !important;
 }
 
-/* line 113, ../sass/modules/_social-media-buttons.sass */
+/* line 119, ../sass/modules/_social-media-buttons.sass */
 .view-mode-social .group-right ul,
 ul.social-links {
   list-style: none;
@@ -2634,60 +2644,64 @@ ul.social-links li {
   display: inline-block;
 }
 
-/* line 117, ../sass/modules/_social-media-buttons.sass */
+/* line 123, ../sass/modules/_social-media-buttons.sass */
 ul.social-links {
   text-align: center;
 }
 
-/* line 122, ../sass/modules/_social-media-buttons.sass */
+/* line 128, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Facebook {
   background: #3460a1;
 }
-/* line 125, ../sass/modules/_social-media-buttons.sass */
+/* line 131, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Twitter {
   background: #28aae1;
 }
-/* line 128, ../sass/modules/_social-media-buttons.sass */
+/* line 134, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Googleplus {
   background: #28aae1;
 }
-/* line 131, ../sass/modules/_social-media-buttons.sass */
+/* line 137, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Linkedin {
   background: #136d9d;
 }
-/* line 134, ../sass/modules/_social-media-buttons.sass */
+/* line 140, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Flickr {
   background: #ed2a90;
 }
-/* line 137, ../sass/modules/_social-media-buttons.sass */
+/* line 143, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Youtube {
   background: #ee3138;
 }
-/* line 140, ../sass/modules/_social-media-buttons.sass */
+/* line 146, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Pinterest {
   background: #cc2127;
 }
-/* line 143, ../sass/modules/_social-media-buttons.sass */
+/* line 149, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Rss {
   background: #28aae1;
 }
-/* line 146, ../sass/modules/_social-media-buttons.sass */
+/* line 152, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Dribbble {
   background: #ef548f;
 }
-/* line 149, ../sass/modules/_social-media-buttons.sass */
+/* line 155, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Vimeo {
-  background: #28aae1;
+  background: #16bbed;
 }
-/* line 152, ../sass/modules/_social-media-buttons.sass */
+/* line 158, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Govdelivery {
   background: #626262;
 }
-/* line 155, ../sass/modules/_social-media-buttons.sass */
+/* line 161, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.Social.Wall {
   background: #111111;
 }
-/* line 158, ../sass/modules/_social-media-buttons.sass */
+/* line 164, ../sass/modules/_social-media-buttons.sass */
+a.social-icon.WordPress {
+  background: #22769b;
+}
+/* line 167, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.larger-icon {
   height: 45px;
   width: 45px;
@@ -2699,21 +2713,21 @@ a.social-icon.larger-icon:before {
   line-height: 45px;
   width: 45px;
 }
-/* line 163, ../sass/modules/_social-media-buttons.sass */
+/* line 172, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.blue-link:before {
   color: #5eb5cb !important;
 }
-/* line 167, ../sass/modules/_social-media-buttons.sass */
+/* line 176, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.transparent {
   background: rgba(255, 255, 255, 0.4) !important;
 }
-/* line 170, ../sass/modules/_social-media-buttons.sass */
+/* line 179, ../sass/modules/_social-media-buttons.sass */
 a.social-icon.transparent:hover {
   background: rgba(255, 255, 255, 0.75) !important;
 }
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 187, ../sass/modules/_social-media-buttons.sass */
+  /* line 196, ../sass/modules/_social-media-buttons.sass */
   .share42init {
     text-align: right;
   }
@@ -5091,7 +5105,12 @@ body.page-connect h1#page-title {
   margin-bottom: 0;
 }
 
-/* line 125, ../sass/theme/_social-stream.sass */
+/* line 126, ../sass/theme/_social-stream.sass */
+.main section.block-views-9980cb8b4a2a2a43e24bf18cc59d538c {
+  margin-bottom: 1em;
+}
+
+/* line 129, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream {
   background: transparent;
   -webkit-border-radius: 0;
@@ -5101,47 +5120,47 @@ body.page-connect h1#page-title {
   border-radius: 0;
   padding: 0;
 }
-/* line 131, ../sass/theme/_social-stream.sass */
+/* line 135, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .stream li {
   padding-bottom: 10px;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
-/* line 137, ../sass/theme/_social-stream.sass */
+/* line 141, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .stream .clear {
   display: none;
 }
-/* line 140, ../sass/theme/_social-stream.sass */
+/* line 144, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .stream .section-intro,
 .field-name-social-stream #social-stream .stream .section-user {
   padding: 0;
 }
-/* line 145, ../sass/theme/_social-stream.sass */
+/* line 149, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .stream .section-intro a,
 .field-name-social-stream #social-stream .stream .section-intro span {
   float: left;
 }
-/* line 149, ../sass/theme/_social-stream.sass */
+/* line 153, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .stream .section-intro span {
   margin-left: 0 !important;
 }
-/* line 152, ../sass/theme/_social-stream.sass */
+/* line 156, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .stream .section-user {
   margin-top: 0.5em;
 }
-/* line 154, ../sass/theme/_social-stream.sass */
+/* line 158, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .stream .section-user a {
   margin-left: 40px !important;
 }
-/* line 157, ../sass/theme/_social-stream.sass */
+/* line 161, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .stream .icon {
   position: absolute;
   bottom: 20px;
   left: 10px;
   margin: 0;
 }
-/* line 164, ../sass/theme/_social-stream.sass */
+/* line 168, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .dcsns-toolbar {
   background-color: #e5e5e5;
   -webkit-border-radius: 0;
@@ -5149,19 +5168,24 @@ body.page-connect h1#page-title {
   -ms-border-radius: 0;
   -o-border-radius: 0;
   border-radius: 0;
+  height: 30px;
 }
-/* line 168, ../sass/theme/_social-stream.sass */
+/* line 173, ../sass/theme/_social-stream.sass */
 .field-name-social-stream #social-stream .dcsns-toolbar .controls {
   right: 5px;
 }
+/* line 176, ../sass/theme/_social-stream.sass */
+.field-name-social-stream #social-stream .dcsns-toolbar .option-set.filter {
+  display: none;
+}
 
 @media only screen and (min-width: 45.78571em) {
-  /* line 185, ../sass/theme/_social-stream.sass */
+  /* line 193, ../sass/theme/_social-stream.sass */
   #wall .dcsns-content .stream {
     margin-left: -1.66667%;
     margin-right: -1.66667%;
   }
-  /* line 189, ../sass/theme/_social-stream.sass */
+  /* line 197, ../sass/theme/_social-stream.sass */
   #wall .dcsns-content .stream li {
     margin-left: 1.66667%;
     margin-right: 1.66667%;
