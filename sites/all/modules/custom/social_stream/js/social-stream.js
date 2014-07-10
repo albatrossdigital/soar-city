@@ -167,8 +167,8 @@ Drupal.behaviors.social_stream = {
         feeds.rss = undefined;
       }
 
-      console.log(data);
-      console.log(feeds);
+      //console.log(data);
+      //console.log(feeds);
       //return;
 
       $('#social-stream').dcSocialStream({
