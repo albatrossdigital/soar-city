@@ -56,12 +56,8 @@ DirectoryIndex index.php index.html index.htm
 <IfModule mod_rewrite.c>
   RewriteEngine on
 
-# Baltimore-city specific redirects
-RewriteEngine On
-#RewriteRule ^css/(.*)$ http://archive.baltimorecity.gov/css/$1[R=301,L]
-#RewriteRule ^Portals/(.*)$ http://archive.baltimorecity.gov/Portals/$1 [R=301,L]
-#RewriteRule ^favicon\.ico$ http://www\.baltimorecity\.gov/sites/all/themes/custom/flight_city/favicon\.ico [R=301,L]
-
+  # Baltimore-city specific redirects
+  RewriteEngine On
 
   # Set "protossl" to "s" if we were accessed via https://.  This is used later
   # if you enable "www." stripping or enforcement, in order to ensure that
@@ -96,9 +92,9 @@ RewriteEngine On
   # To redirect all users to access the site WITH the 'www.' prefix,
   # (http://example.com/... will be redirected to http://www.example.com/...)
   # uncomment the following:
-  RewriteCond %{HTTP_HOST} .
-  RewriteCond %{HTTP_HOST} !^www\. [NC]
-  RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  #RewriteCond %{HTTP_HOST} .
+  #RewriteCond %{HTTP_HOST} !^www\. [NC]
+  #RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
   #
   # To redirect all users to access the site WITHOUT the 'www.' prefix,
   # (http://www.example.com/... will be redirected to http://example.com/...)
@@ -117,10 +113,10 @@ RewriteEngine On
   # RewriteBase /
 
 
-# Baltimore-specific redirects for old assets linked to www.baltimorecity.gov
-RewriteRule ^css/(.*)$ http://archive.baltimorecity.gov/css/$1 [R=301,L]
-RewriteRule ^Portals/(.*)$ http://archive.baltimorecity.gov/Portals/$1 [R=301,L]
-RewriteRule ^favicon\.ico$ http://www\.baltimorecity\.gov/sites/all/themes/custom/flight_city/favicon\.ico [R=301,L]
+  # Baltimore-specific redirects for old assets linked to www.baltimorecity.gov
+  RewriteRule ^css/(.*)$ http://archive.baltimorecity.gov/css/$1 [R=301,L]
+  RewriteRule ^Portals/(.*)$ http://archive.baltimorecity.gov/Portals/$1 [R=301,L]
+  RewriteRule ^favicon\.ico$ http://www\.baltimorecity\.gov/sites/all/themes/custom/flight_city/favicon\.ico [R=301,L]
 
 
 
