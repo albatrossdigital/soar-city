@@ -323,7 +323,7 @@ ini_set('session.cookie_lifetime', 2000000);
  * between your various domains. Make sure to always start the $cookie_domain
  * with a leading dot, as per RFC 2109.
  */
-//$cookie_domain = '.baltimore.ifsight.com';
+$cookie_domain = '.baltimorecity.gov';
 
 /**
  * Variable overrides:
@@ -567,7 +567,7 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
 
 // Set up db settings for Blackmesh.
 // We do this here because they need to be set in drush to avoid fatal errors.
-/*if (!isset($_SERVER['PANTHEON_SITE_NAME'])) {
+if (!isset($_SERVER['PANTHEON_SITE_NAME'])) {
   $databases['default']['default'] = array(
     'driver' => 'mysql',
     'database' => 'baltimore',
@@ -576,7 +576,7 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
     'host' => '548eldb01.blackmesh.com',
     'prefix' => '',
   );
-}*/
+}
 
 
 # Make domain access work on Pantheon
@@ -618,11 +618,11 @@ if (
   (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod')
 ) {
   // @todo: For launch: change.
-  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 1;
+  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 0;
   $conf['apachesolr_environments']['solr']['url'] = 'http://us.opensolr.com/solr/prod_balt_if';
 
   // @todo: For launch: change.
-  $cookie_domain = '.baltimore.ifsight.com';
+  $cookie_domain = '.baltimorecity.gov';
 
   //if ($_SERVER['HTTP_HOST'] != 'baltimorecity.com') {
   //  header('HTTP/1.0 301 Moved Permanently'); 
@@ -632,16 +632,21 @@ if (
 
   // Force caching on the live site
   // @todo: For launch: enable.
-  /*$conf['cache'] = 1;
+  /*$conf['block_cache'] = 1;
+  $conf['cache_lifetime'] = 1800; // 30 min
+  $conf['page_cache_maximum_age'] = 3600; // 1 hr
+  $conf['page_compression'] = 1;
+  $conf['preprocess_css'] = 1;
+  */
+  if (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod') {
+
+$conf['cache'] = 1;
   $conf['block_cache'] = 1;
   $conf['cache_lifetime'] = 1800; // 30 min
   $conf['page_cache_maximum_age'] = 3600; // 1 hr
   $conf['page_compression'] = 1;
   $conf['preprocess_css'] = 1;
-  $conf['preprocess_js'] = 1;
-  */
-  if (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod') {
-    
+   
 
     // @todo
     
@@ -654,7 +659,7 @@ if (
 
     // Varnish settings
     // Add Varnish as the page cache handler.
-    $conf['cache_backends'] = array('sites/all/modules/varnish/varnish.cache.inc');
+    $conf['cache_backends'][] = 'sites/all/modules/contrib/varnish/varnish.cache.inc';
     // Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs
     // to be disabled.
     $conf['page_cache_invoke_hooks'] = FALSE;
@@ -665,12 +670,12 @@ if (
 }
 elseif (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
   //$conf['apachesolr_environments']['solr']['url'] = 'http://ny.opensolr.com/solr/test_if_balt';
-  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 0;
+  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 1;
   $cookie_domain = '.baltimore.ifsight.com';
 }
 else {
-  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 1;
-  $cookie_domain = '.baltimore.ifsight.com';
+  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 0;
+  $cookie_domain = '.baltimorecity.gov';
 }
 
 // Ifsight-specific api settings
@@ -684,3 +689,14 @@ $conf['media_inkfilepicker_key'] = 'ATxjuAKOSdK6lcZxoK2Awz';
 # Make domain access work on Pantheon
 # See http://helpdesk.getpantheon.com/customer/portal/articles/381152-reading-pantheon-environment-configuration for details
 require_once DRUPAL_ROOT . '/sites/all/modules/contrib/domain/settings.inc';
+
+  $conf['cache'] = 1;
+  $conf['block_cache'] = 1;
+  $conf['cache_lifetime'] = 600; // 10 min
+  $conf['page_cache_maximum_age'] = 300; // 5 min
+  $conf['page_compression'] = 1;
+  $conf['preprocess_css'] = 1;
+  $conf['preprocess_js'] = 1;
+
+
+
