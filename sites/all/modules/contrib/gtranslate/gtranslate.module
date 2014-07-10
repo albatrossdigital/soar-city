@@ -116,7 +116,7 @@ EOT;
                             default: break;
                         }
 
-                        $block_content .= '<a href="javascript:doGTranslate(\''.variable_get('gtranslate_main_lang', 'en').'|'.$lang.'\')" title="'.$lang_name.'" class="gtflag" style="font-size:'.variable_get('gtranslate_flag_size', '16').'px;padding:1px 0;background-repeat:no-repeat;background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.base_path().drupal_get_path('module', 'gtranslate').'/gtranslate-files/blank.png" height="'.variable_get('gtranslate_flag_size', '16').'" width="'.variable_get('gtranslate_flag_size', '16').'" style="border:0;vertical-align:top;" " /></a> ';
+                        $block_content .= '<a href="javascript:doGTranslate(\''.variable_get('gtranslate_main_lang', 'en').'|'.$lang.'\')" title="'.$lang_name.'" class="gtflag" style="font-size:'.variable_get('gtranslate_flag_size', '16').'px;padding:1px 0;background-repeat:no-repeat;background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.base_path().drupal_get_path('module', 'gtranslate').'/gtranslate-files/blank.png" height="'.variable_get('gtranslate_flag_size', '16').'" width="'.variable_get('gtranslate_flag_size', '16').'" style="border:0;vertical-align:top;" /></a> ';
                     }
 
                     if($i == 7) {
@@ -168,7 +168,7 @@ EOT;
                             default: break;
                         }
 
-                        $block_content .= '<a href="javascript:doGTranslate(\''.variable_get('gtranslate_main_lang', 'en').'|'.$lang.'\')" title="'.$lang_name.'" class="gtflag" style="font-size:'.variable_get('gtranslate_flag_size', '16').'px;padding:1px 0;background-repeat:no-repeat;background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.base_path().drupal_get_path('module', 'gtranslate').'/gtranslate-files/blank.png" height="'.variable_get('gtranslate_flag_size', '16').'" width="'.variable_get('gtranslate_flag_size', '16').'" style="border:0;vertical-align:top;" " /></a> ';
+                        $block_content .= '<a href="javascript:doGTranslate(\''.variable_get('gtranslate_main_lang', 'en').'|'.$lang.'\')" title="'.$lang_name.'" class="gtflag" style="font-size:'.variable_get('gtranslate_flag_size', '16').'px;padding:1px 0;background-repeat:no-repeat;background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.base_path().drupal_get_path('module', 'gtranslate').'/gtranslate-files/blank.png" height="'.variable_get('gtranslate_flag_size', '16').'" width="'.variable_get('gtranslate_flag_size', '16').'" style="border:0;vertical-align:top;" /></a> ';
                     }
 
                     if($i == 7) {
@@ -275,7 +275,7 @@ EOT;
                             default: break;
                         }
 
-                        $block_content .= '<a href="javascript:doGTranslate(\''.variable_get('gtranslate_main_lang', 'en').'|'.$lang.'\')" title="'.$lang_name.'" class="gtflag" style="font-size:'.variable_get('gtranslate_flag_size', '16').'px;padding:1px 0;background-repeat:no-repeat;background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.base_path().drupal_get_path('module', 'gtranslate').'/gtranslate-files/blank.png" height="'.variable_get('gtranslate_flag_size', '16').'" width="'.variable_get('gtranslate_flag_size', '16').'" style="border:0;vertical-align:top;" " /></a> ';
+                        $block_content .= '<a href="javascript:doGTranslate(\''.variable_get('gtranslate_main_lang', 'en').'|'.$lang.'\')" title="'.$lang_name.'" class="gtflag" style="font-size:'.variable_get('gtranslate_flag_size', '16').'px;padding:1px 0;background-repeat:no-repeat;background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.base_path().drupal_get_path('module', 'gtranslate').'/gtranslate-files/blank.png" height="'.variable_get('gtranslate_flag_size', '16').'" width="'.variable_get('gtranslate_flag_size', '16').'" style="border:0;vertical-align:top;" /></a> ';
                     }
 
                     if($i == 7) {
@@ -327,7 +327,7 @@ EOT;
                             default: break;
                         }
 
-                        $block_content .= '<a href="javascript:doGTranslate(\''.variable_get('gtranslate_main_lang', 'en').'|'.$lang.'\')" title="'.$lang_name.'" class="gtflag" style="font-size:'.variable_get('gtranslate_flag_size', '16').'px;padding:1px 0;background-repeat:no-repeat;background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.base_path().drupal_get_path('module', 'gtranslate').'/gtranslate-files/blank.png" height="'.variable_get('gtranslate_flag_size', '16').'" width="'.variable_get('gtranslate_flag_size', '16').'" style="border:0;vertical-align:top;" " /></a> ';
+                        $block_content .= '<a href="javascript:doGTranslate(\''.variable_get('gtranslate_main_lang', 'en').'|'.$lang.'\')" title="'.$lang_name.'" class="gtflag" style="font-size:'.variable_get('gtranslate_flag_size', '16').'px;padding:1px 0;background-repeat:no-repeat;background-position:-'.$flag_x.'px -'.$flag_y.'px;"><img src="'.base_path().drupal_get_path('module', 'gtranslate').'/gtranslate-files/blank.png" height="'.variable_get('gtranslate_flag_size', '16').'" width="'.variable_get('gtranslate_flag_size', '16').'" style="border:0;vertical-align:top;" /></a> ';
                     }
 
                     if($i == 7) {
