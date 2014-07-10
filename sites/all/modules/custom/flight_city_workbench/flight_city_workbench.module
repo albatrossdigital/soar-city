@@ -108,6 +108,9 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
       $form['workbench_access']['workbench_access']['#default_value'] = array($keys[1]);
     }
 
+    // Change label
+    $form['options']['promote']['#title'] = t('Promote to Agency Front Page');
+
     // Hide the parent story type taxonomy term option
     _flight_city_workbench_pare_taxonomy_options($form, 'field_story_type');
     _flight_city_workbench_pare_taxonomy_options($form, 'field_faq_category');
