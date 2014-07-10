@@ -38,6 +38,15 @@ function baltimore_config_form_apachesolr_index_action_form_alter(&$form, $form_
   unset($form['action']['delete']);
 }
 
+
+/**
+* Implements hook_apachesolr_query_prepare().
+* Exclude help content from search results.
+*/
+function baltimore_config_apachesolr_query_prepare($query) {
+    $query->addFilter('bundle', 'help', TRUE);
+}
+
 /**
 * Implements hook_views_pre_views_pre_view().
 * Hack the View Newsroom link for Health
@@ -52,3 +61,5 @@ function baltimore_config_views_pre_view($view, &$display_id, &$args) {
     }
   }
 }
+
+

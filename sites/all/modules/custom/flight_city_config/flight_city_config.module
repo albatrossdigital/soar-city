@@ -112,7 +112,7 @@ function flight_city_config_navbar() {
     'tab' => array(
       '#type' => 'link',
       '#title' => t('Help'),
-      '#href' => 'http://www.baltimore.ifsight.com/help#page-title',
+      '#href' => 'http://www.baltimorecity.gov/help',
       '#options' => array(
         'attributes' => array(
           'title' => t('My Workbench'),

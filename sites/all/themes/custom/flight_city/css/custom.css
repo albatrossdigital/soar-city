@@ -2232,8 +2232,31 @@ fieldset legend {
   margin-bottom: 1em;
 }
 
+/* line 211, ../sass/components/_forms.sass */
+.webform-component-date,
+.webform-component-time {
+  min-height: 6.5em;
+}
+/* line 215, ../sass/components/_forms.sass */
+.webform-component-date select,
+.webform-component-time select {
+  width: 27%;
+  margin-right: 1%;
+  display: inline;
+}
+/* line 220, ../sass/components/_forms.sass */
+.webform-component-date .form-radios,
+.webform-component-time .form-radios {
+  float: right;
+}
+
+/* line 224, ../sass/components/_forms.sass */
+.webform-component .description {
+  margin-bottom: 1.1em;
+}
+
 @media only screen and (min-width: 45.78571em) {
-  /* line 217, ../sass/components/_forms.sass */
+  /* line 237, ../sass/components/_forms.sass */
   .page-user.not-logged-in div.main > ul.button-group, .page-user.not-logged-in div.main > form {
     max-width: 75%;
     margin-right: auto;
@@ -2241,11 +2264,11 @@ fieldset legend {
     float: none;
     display: block;
   }
-  /* line 221, ../sass/components/_forms.sass */
+  /* line 241, ../sass/components/_forms.sass */
   .page-user.not-logged-in div.main > form {
     padding: 5.35714rem;
   }
-  /* line 224, ../sass/components/_forms.sass */
+  /* line 244, ../sass/components/_forms.sass */
   .page-user.not-logged-in div.main > form > div {
     max-width: 25rem;
     margin-right: auto;
@@ -2255,24 +2278,24 @@ fieldset legend {
   }
 }
 @media only screen and (min-width: 59em) {
-  /* line 241, ../sass/components/_forms.sass */
+  /* line 261, ../sass/components/_forms.sass */
   .locality-block .form-item:first-child {
     margin-right: 2%;
     width: 44%;
   }
-  /* line 245, ../sass/components/_forms.sass */
+  /* line 265, ../sass/components/_forms.sass */
   .locality-block .form-item:nth-child(2) {
     margin-right: 2%;
     width: 34%;
   }
-  /* line 249, ../sass/components/_forms.sass */
+  /* line 269, ../sass/components/_forms.sass */
   .locality-block .form-item:last-child {
     margin-right: 0;
     width: 18%;
   }
 }
 @media only screen and (min-width: 68.64286em) {
-  /* line 256, ../sass/components/_forms.sass */
+  /* line 276, ../sass/components/_forms.sass */
   .page-user.not-logged-in div.main > ul.button-group, .page-user.not-logged-in div.main > form {
     max-width: 60%;
   }
