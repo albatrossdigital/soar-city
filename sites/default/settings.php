@@ -1,7 +1,4 @@
 <?php
-//  error_reporting(E_ALL);
-//  ini_set('display_errors', TRUE);
-//  ini_set('display_startup_errors', TRUE);
 /**
  * @file
  * Drupal site-specific configuration file.
@@ -323,7 +320,8 @@ ini_set('session.cookie_lifetime', 2000000);
  * between your various domains. Make sure to always start the $cookie_domain
  * with a leading dot, as per RFC 2109.
  */
-$cookie_domain = '.baltimorecity.gov';
+// This is set in the per-domain settings below
+//$cookie_domain = '.baltimorecity.gov';
 
 /**
  * Variable overrides:
@@ -609,74 +607,51 @@ if (defined('PANTHEON_ENVIRONMENT')) {
   $conf['page_cache_maximum_age'] = 300;
 }*/
 
-// ApacheSolr Settings.
-//$conf['apachesolr_environments']['solr']['url'] = 'http://us.opensolr.com/solr/prod_balt_if';
 
-// Redirect all domains to TLD
-if (
-  (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'live') || 
-  (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod')
-) {
-  // @todo: For launch: change.
+if (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod') {
+  
+  // ApacheSolr settings
   $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 0;
   $conf['apachesolr_environments']['solr']['url'] = 'http://us.opensolr.com/solr/prod_balt_if';
 
   // @todo: For launch: change.
   $cookie_domain = '.baltimorecity.gov';
 
-  //if ($_SERVER['HTTP_HOST'] != 'baltimorecity.com') {
-  //  header('HTTP/1.0 301 Moved Permanently'); 
-  //  header('Location: http://www.baltimorecity.gov'. $_SERVER['REQUEST_URI']); 
-  //  exit();
-  //}
-
-  // Force caching on the live site
-  // @todo: For launch: enable.
-  /*$conf['block_cache'] = 1;
-  $conf['cache_lifetime'] = 1800; // 30 min
-  $conf['page_cache_maximum_age'] = 3600; // 1 hr
-  $conf['page_compression'] = 1;
-  $conf['preprocess_css'] = 1;
-  */
-  if (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod') {
-
-$conf['cache'] = 1;
+  $conf['cache'] = 1;
   $conf['block_cache'] = 1;
   $conf['cache_lifetime'] = 1800; // 30 min
   $conf['page_cache_maximum_age'] = 3600; // 1 hr
   $conf['page_compression'] = 1;
   $conf['preprocess_css'] = 1;
    
-
-    // @todo
     
-    // Memcache settings  
-    $conf['cache_backends'][] = 'sites/all/modules/contrib/memcache/memcache.inc';
-    // The 'cache_form' bin must be assigned no non-volatile storage.
-    $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
-    $conf['cache_default_class'] = 'MemCacheDrupal';
-    $conf['memcache_key_prefix'] = 'blackmesh' . $_SERVER['BLACKMESH_ENV'];
+  // Memcache settings  
+  $conf['cache_backends'][] = 'sites/all/modules/contrib/memcache/memcache.inc';
+  // The 'cache_form' bin must be assigned no non-volatile storage.
+  $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+  $conf['cache_default_class'] = 'MemCacheDrupal';
+  $conf['memcache_key_prefix'] = 'blackmesh' . $_SERVER['BLACKMESH_ENV'];
 
-    // Varnish settings
-    // Add Varnish as the page cache handler.
-    $conf['cache_backends'][] = 'sites/all/modules/contrib/varnish/varnish.cache.inc';
-    // Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs
-    // to be disabled.
-    $conf['page_cache_invoke_hooks'] = FALSE;
-    // Setup Varnish with Expire
-     $conf['cache_class_external_varnish_page'] = 'VarnishCache';
-  }
-  
+  // Varnish settings
+  // Add Varnish as the page cache handler.
+  $conf['cache_backends'][] = 'sites/all/modules/contrib/varnish/varnish.cache.inc';
+  // Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs
+  // to be disabled.
+  $conf['page_cache_invoke_hooks'] = FALSE;
+  // Setup Varnish with Expire
+   $conf['cache_class_external_varnish_page'] = 'VarnishCache';  
 }
 elseif (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
   //$conf['apachesolr_environments']['solr']['url'] = 'http://ny.opensolr.com/solr/test_if_balt';
   $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 1;
+  $conf['apachesolr_environments']['solr']['url'] = 'http://us.opensolr.com/solr/prod_balt_if';
+
   $cookie_domain = '.baltimore.ifsight.com';
 }
-else {
-  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 0;
-  $cookie_domain = '.baltimorecity.gov';
-}
+//else {
+//  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 0;
+//  $cookie_domain = '.baltimorecity.gov';
+//}
 
 // Ifsight-specific api settings
 //$conf['smtp_host'] = 'smtp.sendgrid.com';
@@ -690,6 +665,10 @@ $conf['media_inkfilepicker_key'] = 'ATxjuAKOSdK6lcZxoK2Awz';
 # See http://helpdesk.getpantheon.com/customer/portal/articles/381152-reading-pantheon-environment-configuration for details
 require_once DRUPAL_ROOT . '/sites/all/modules/contrib/domain/settings.inc';
 
+
+// Caching settings need to come after the domain settings.php settings to avoid being overwritten.
+if (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod') {
+
   $conf['cache'] = 1;
   $conf['block_cache'] = 1;
   $conf['cache_lifetime'] = 600; // 10 min
@@ -698,5 +677,6 @@ require_once DRUPAL_ROOT . '/sites/all/modules/contrib/domain/settings.inc';
   $conf['preprocess_css'] = 1;
   $conf['preprocess_js'] = 1;
 
+}
 
 
