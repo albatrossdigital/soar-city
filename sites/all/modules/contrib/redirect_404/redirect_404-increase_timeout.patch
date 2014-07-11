@@ -1,0 +1,13 @@
+diff --git a/redirect_404.module b/redirect_404.module
+index 3ebde5f..3693b00 100644
+--- a/redirect_404.module
++++ b/redirect_404.module
+@@ -159,7 +159,7 @@ function redirect_404() {
+       else {
+         $path = str_replace('/[request_uri]', $request, $path);
+       }
+-      $header_info = drupal_http_request($path, array('method' => 'HEAD', 'timeout' => 2));
++      $header_info = drupal_http_request($path, array('method' => 'HEAD', 'timeout' => 10));
+       if ($header_info->code >= 200 && $header_info->code <= 250) {
+         // We found the actual document on this server, set to 302 Found.
+         $new_status = (isset($header_info->redirect_code)) ? $header_info->redirect_code . ' ' . $header_info->status_message : '302 Found';
