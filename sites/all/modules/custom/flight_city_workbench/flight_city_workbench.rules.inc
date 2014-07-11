@@ -17,7 +17,7 @@ function flight_city_workbench_rules_action_info() {
   );
   $items['flight_city_workbench_moderation_load_current_revision'] = array(
     'label' => t("Load current node revision"),
-    'group' => t("Node"),
+    'group' => t("Flight Workbench"),
     'base' => 'flight_city_workbench_moderation_load_current_revision_rules_action',
 
     'parameter' => array(
