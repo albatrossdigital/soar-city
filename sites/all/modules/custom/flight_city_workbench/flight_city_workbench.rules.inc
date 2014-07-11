@@ -54,9 +54,16 @@ function flight_city_workbench_rules_action_info() {
  */
 function flight_city_workbench_moderation_load_current_revision_rules_action($node) {
   $node_revision = workbench_moderation_node_current_load($node);
-  $revision_author = user_load($node_revision->workbench_moderation['current']->uid);
-  dpm($node_revision);
+  /*$revision_uid = $node_revision->workbench_moderation['my_revision']->revision_uid;
+  dpm($revision_uid);
   dpm($node);
+  dpm($node->workbench_moderation['my_revision']);
+  dpm($node_revision->workbench_moderation['my_revision']);
+  */
+  $revision_uid = $node->revision_uid;
+  $revision_uid = !empty($revision_uid) ? $revision_uid : $node->uid;
+  $revision_author = user_load($revision_uid);
+
   return array(
     'node' => $node, 
     'node_revision' => $node_revision, 
