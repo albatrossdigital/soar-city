@@ -76,13 +76,14 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
     if (!empty($form['#node']) && $form['#node']->nid && !empty($domain_paths[$form['#node']->type]) && $domain_paths[$form['#node']->type]) {
       $domain = domain_get_domain();
       $path = $form['domain_path'][$domain['domain_id']]['#default_value'];
-      $form['path']['alias']['#default_value'] = $path;
+      // @todo: Reenable?
+      //$form['path']['alias']['#default_value'] = $path;
       //$form['domain_path']['#access'] = FALSE;
-      foreach($form['domain_path'] as $key => $field) { 
-        if ($field['#type'] === 'textfield' && !empty($field['#default_value'])) {
-          $form['domain_path'][$key]['#default_value'] = '';
-        }
-      }
+      //foreach($form['domain_path'] as $key => $field) { 
+      //  if ($field['#type'] === 'textfield' && !empty($field['#default_value'])) {
+      //    $form['domain_path'][$key]['#default_value'] = '';
+      //  }
+      //}
     }
     $form['#validate'][] = 'flight_city_workbench_form_node_validate';
 
