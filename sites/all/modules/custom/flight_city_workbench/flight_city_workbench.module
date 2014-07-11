@@ -7,9 +7,16 @@
 include_once 'flight_city_workbench.features.inc';
 
 
+define('FCW_PROMOTE', t('Promote to citywide site'));
+define('FCW_REQUEST_PROMOTION', t('Promote to citywide site'));
+
 
 function flight_city_workbench_permission() {
   return array(
+    'request promotion to main' => array(
+      'title' => t('Request that content be promoted to citywide site'),
+      'description' => t('Request that content be promoted to citywide site.'),
+    ),
     'promote content to main' => array(
       'title' => t('Promote content to citywide site'),
       'description' => t('Promote content that has been requested to be promoted to citywide site.'),
@@ -67,7 +74,9 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
     // Make pathauto work with domain module
     $domain_paths = variable_get('flight_city_workbench_path_bundles', array());
     if (!empty($form['#node']) && $form['#node']->nid && !empty($domain_paths[$form['#node']->type]) && $domain_paths[$form['#node']->type]) {
-      $form['path']['alias']['#default_value'] = check_plain($form['domain_path']['current']['#markup']);
+      $domain = domain_get_domain();
+      $path = $form['domain_path'][$domain['domain_id']]['#default_value'];
+      $form['path']['alias']['#default_value'] = $path;
       //$form['domain_path']['#access'] = FALSE;
       foreach($form['domain_path'] as $key => $field) { 
         if ($field['#type'] === 'textfield' && !empty($field['#default_value'])) {
@@ -81,7 +90,6 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
     if (!empty($form['menu']) && !user_access('workbench view full menu tree')) {
       $options = $form['workbench_access']['workbench_access']['#options'];
       unset($options['']);
-      dpm($form['menu']['link']['parent']);
       $keys = array_keys($form['menu']['link']['parent']['#options']);
       $arr = explode(':', $keys[0]);
       $mid = $arr[0];
@@ -97,6 +105,9 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
       $keys = array_keys($form['workbench_access']['workbench_access']['#options']);
       $form['workbench_access']['workbench_access']['#default_value'] = array($keys[1]);
     }
+
+    // Change label
+    $form['options']['promote']['#title'] = t('Promote to Agency Front Page');
 
     // Hide the parent story type taxonomy term option
     _flight_city_workbench_pare_taxonomy_options($form, 'field_story_type');
@@ -166,7 +177,6 @@ function flight_city_workbench_form_node_validate($form, &$form_state) {
  * Limit the editorial sections that editors can assign users to.
  */
 function flight_city_workbench_form_workbench_access_user_form_alter(&$form, $form_state) {
-  dpm(variable_get('menu_main_links_source', 'main-menu'));
   global $user;
   $mid = variable_get('menu_main_links_source', 'main-menu');
   foreach ($form['sections'] as $key => $section) {
@@ -232,7 +242,6 @@ function flight_city_workbench_entity_presave($entity, $type) {
   if ($entity_type === 'flagging' && $enity->flag_name === 'promote_main' && $entity->entity_type === 'node') {
     $node = node_load($entity->entity_id);
     $entity->field_flag_status['und'][0]['value'] = (int)!empty($node->domains[1]);
-    dpm($entity);
   }
 }
 
@@ -265,11 +274,11 @@ function flight_city_workbench_block_view($delta = '') {
       }
       $node = node_load(intval(arg(1)));
       //$block['title'] = t('Sign up for updates');
-      if (!empty($types[$node->type]) && user_access('promote content to main')) {
+      if (!empty($types[$node->type]) && (user_access('request promotion to main') || user_access('promote content to main'))) {
         $form = drupal_get_form('flight_city_workbench_node_promote_form', $node);
         $block['content'] = '<div class="alert-box secondary">' . drupal_render($form) . '</div>';
       }
-      elseif (user_access('promote content to main')) { // @todo: fix
+      elseif (user_access('request promotion to main')) { // @todo: fix
         $block['content'] = flight_city_workbench_node_promote_lookup($node);
         $block['content'] = !empty($block['content']) ? '<div class="alert-box secondary">' . $block['content'] . '</div>' : NULL;
       }
@@ -296,41 +305,51 @@ function flight_city_workbench_node_promote_lookup($node) {
  * The subscribe form.
  */
 function flight_city_workbench_node_promote_form($form, &$form_state, $node) {  
-  
-  $form['node'] = array(
-    '#type' => 'value',
-    '#value' => $node,
-  );
-  $form['promote'] = array(
-    '#type' => 'submit',
-    '#value' => t('Promote to citywide site'),
-    '#attributes' => array('class' => array('button', 'tiny')),
-  );
   $default_domain = domain_default(FALSE, FALSE);
   $promoted = isset($node->domains[$default_domain['domain_id']]) 
     && ($node->domains[$default_domain['domain_id']] === $default_domain['domain_id']);
 
+  $form['node'] = array(
+    '#type' => 'value',
+    '#value' => $node,
+  );
+
   if($fids = flag_get_entity_flags('node', $node->nid) || $promoted) {
-    $form['flag'] = array(
-      '#type' => 'value',
-      '#value' => $fids[0]['promote_main'],
-    );
-    $form['reject'] = array(
-      '#type' => 'submit',
-      '#value' => $promoted ? t('Unpromote') : t('Reject request'),
-      '#attributes' => array('class' => array('alert', 'button', 'tiny')),
-    );
+    if (!$promoted || user_access('promote content to main')) {
+      $form['flag'] = array(
+        '#type' => 'value',
+        '#value' => $fids[0]['promote_main'],
+      );
+      $form['reject'] = array(
+        '#type' => 'submit',
+        '#value' => $promoted ? t('Unpromote') : user_access('promote content to main') ? t('Reject request') : t('Cancel request'),
+        '#attributes' => array('class' => array('alert', 'button', 'tiny')),
+      );
+    }
+
     $default_domain = domain_default(FALSE, FALSE);
     if ($promoted) {
       unset($form['promote']);
       $text = t('Post is currently promoted to the citywide site');
     }
     else {
+      if (user_access('promote content to main')) {
+        $form['promote'] = array(
+          '#type' => 'submit',
+          '#value' => FCW_PROMOTE,
+          '#attributes' => array('class' => array('button', 'tiny')),
+        );
+      }
       $text = t('Promotion requested');
     }
     //$form['promote_description']['#markup'] = t('Promotion requested by !name !ago ago', array('!name' => , '!ago' => format_interval()));
   }
   else {
+    $form['promote'] = array(
+      '#type' => 'submit',
+      '#value' => user_access('promote content to main') ? FCW_PROMOTE : FCW_REQUEST_PROMOTION,
+      '#attributes' => array('class' => array('button', 'tiny')),
+    );
     $text = t('(no promotion has been requested)');
   }
   $form['promote_description']['#markup'] = $text;
@@ -339,23 +358,34 @@ function flight_city_workbench_node_promote_form($form, &$form_state, $node) {
 }
 
 function flight_city_workbench_node_promote_form_submit($form, &$form_state) {
+  global $user;
+  $node = $form_state['values']['node'];
   $default_domain = domain_default(FALSE, FALSE);
+  $flag = flag_get_flag('promote_main');
   // Promote.
-  if ($form_state['values']['op'] === $form_state['values']['promote']) {
+  if ($form_state['values']['op'] === FCW_PROMOTE) {
+    // Create flag
+    $flag->flag('flag', $node->nid);
     // Add the default domain to the node.
-    $node = $form_state['values']['node'];
-    $node->domains[$default_domain['domain_id']] = $default_domain['domain_id'];
-    node_save($node);
-    // Note the flag status is changed in flight_city_workbench_node_presave() above.
+    if (user_access('promote content to main')) {
+      $node = $node;
+      $node->domains[$default_domain['domain_id']] = $default_domain['domain_id'];
+      node_save($node);
+    }
+  }
+  // Request promotion.
+  elseif ($form_state['values']['op'] === FCW_REQUEST_PROMOTION) {
+    // Create flag
+    $flag->flag('flag', $node->nid);
   }
   // Reject. Unflag the node.
   else {
-    global $user;
-    if (flag('unflag', 'promote_main', $form_state['values']['node']->nid, $user)) {
-      $node = $form_state['values']['node'];
-      unset($node->domains[$default_domain['domain_id']]);
-      node_save($node);
-      drupal_set_message('This post has been rejected for promotion');
+    if ($flag->flag('unflag', $node->nid)) {
+      if (!empty($node->domains[$default_domain['domain_id']])) {
+        unset($node->domains[$default_domain['domain_id']]);
+        node_save($node);
+      }
+      drupal_set_message('This post has been rejected for promotion.');
     }
     else {
       drupal_set_message('Something went wrong and we could not reject this post for promotion. Please try again.', 'error');

@@ -3408,6 +3408,14 @@ $fa-include-css: true!default
     content:  $fa-var-flickr
 
 @if $fa-include-css
+  .#{$fa-css-prefix}-wordpress:before
+    content: $fa-var-wordpress
+
+%fa-wordpress
+  &:before
+    content:  $fa-var-wordpress
+
+@if $fa-include-css
   .#{$fa-css-prefix}-adn:before
     content: $fa-var-adn
 

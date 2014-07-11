@@ -105,3 +105,41 @@ function flight_city_311_search_form($form, &$form_state, $topics = array()) {
   );
   return $form;
 }
+
+
+
+
+/******************************* DISPLAY SUITE ***************************** */
+
+/**
+ * Implements hook_ds_fields_info().
+ */
+function flight_city_311_ds_fields_info($entity_type) {
+  $fields = array();  
+  $fields['node'] = array(
+    // Views field simple renders a view
+    'organization_link' => array(
+      'title' => t('Organization Link'),
+      'field_type' => DS_FIELD_TYPE_FUNCTION,
+      'function' => '_flight_city_311_ds_organization_link',
+      'properties' => array(
+      ),
+    ),
+  );
+
+  return $fields;
+}
+
+/**
+ * Output field
+ */
+function _flight_city_311_ds_organization_link(array $field) {
+  $node = $field['entity'];
+  if (!empty($node->field_organization)) {
+    $organization_node = node_load($node->field_organization[LANGUAGE_NONE][0]['target_id']);
+    if (!empty($organization_node->field_url)) {
+      return l($organization_node->title, $organization_node->field_url[LANGUAGE_NONE][0]['url'], array('attributes' => array('title' => t('View the !title website', array('!title' => $organization_node->title)))));
+    }
+  }
+  return;
+}

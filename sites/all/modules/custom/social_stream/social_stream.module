@@ -28,7 +28,7 @@ function social_stream_menu() {
 function social_stream_render_wall() {
   $domain = domain_get_domain();
   if ($domain['domain_id'] != 1) {
-    $settings = array('max_feeds' => 10, 'limit' => 4);
+    $settings = array('url' => url('js/json/social-stream/all'), 'max_feeds' => 10, 'limit' => 4);
   }
   else {
     $settings = array('url' => url('js/json/social-stream/all'), 'limit' => 15);

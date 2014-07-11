@@ -76,7 +76,12 @@ Drupal.behaviors.flight_city_311_view = {
         }
       });
 
-    })
+    });
+
+    // Fix the edit links
+    $('.views-field-edit-term a', context).each(function() {
+      $(this).attr('href', $(this).attr('href').replace('destination', 'destination1') + '&destination=311-services');
+    });
 
   }
 };

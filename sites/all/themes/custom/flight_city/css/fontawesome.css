@@ -1728,198 +1728,203 @@ i[class^="fa"].icon-right {
 }
 
 /* line 3411, ../sass/components/_icons-fontawesome.sass */
+.fa-wordpress:before {
+  content: "\f19a";
+}
+
+/* line 3419, ../sass/components/_icons-fontawesome.sass */
 .fa-adn:before {
   content: "\f170";
 }
 
-/* line 3419, ../sass/components/_icons-fontawesome.sass */
+/* line 3427, ../sass/components/_icons-fontawesome.sass */
 .fa-bitbucket:before {
   content: "\f171";
 }
 
-/* line 3427, ../sass/components/_icons-fontawesome.sass */
+/* line 3435, ../sass/components/_icons-fontawesome.sass */
 .fa-bitbucket-square:before {
   content: "\f172";
 }
 
-/* line 3435, ../sass/components/_icons-fontawesome.sass */
+/* line 3443, ../sass/components/_icons-fontawesome.sass */
 .fa-tumblr:before {
   content: "\f173";
 }
 
-/* line 3443, ../sass/components/_icons-fontawesome.sass */
+/* line 3451, ../sass/components/_icons-fontawesome.sass */
 .fa-tumblr-square:before {
   content: "\f174";
 }
 
-/* line 3451, ../sass/components/_icons-fontawesome.sass */
+/* line 3459, ../sass/components/_icons-fontawesome.sass */
 .fa-long-arrow-down:before {
   content: "\f175";
 }
 
-/* line 3459, ../sass/components/_icons-fontawesome.sass */
+/* line 3467, ../sass/components/_icons-fontawesome.sass */
 .fa-long-arrow-up:before {
   content: "\f176";
 }
 
-/* line 3467, ../sass/components/_icons-fontawesome.sass */
+/* line 3475, ../sass/components/_icons-fontawesome.sass */
 .fa-long-arrow-left:before {
   content: "\f177";
 }
 
-/* line 3475, ../sass/components/_icons-fontawesome.sass */
+/* line 3483, ../sass/components/_icons-fontawesome.sass */
 .fa-long-arrow-right:before {
   content: "\f178";
 }
 
-/* line 3483, ../sass/components/_icons-fontawesome.sass */
+/* line 3491, ../sass/components/_icons-fontawesome.sass */
 .fa-apple:before {
   content: "\f179";
 }
 
-/* line 3491, ../sass/components/_icons-fontawesome.sass */
+/* line 3499, ../sass/components/_icons-fontawesome.sass */
 .fa-windows:before {
   content: "\f17a";
 }
 
-/* line 3499, ../sass/components/_icons-fontawesome.sass */
+/* line 3507, ../sass/components/_icons-fontawesome.sass */
 .fa-android:before {
   content: "\f17b";
 }
 
-/* line 3507, ../sass/components/_icons-fontawesome.sass */
+/* line 3515, ../sass/components/_icons-fontawesome.sass */
 .fa-linux:before {
   content: "\f17c";
 }
 
-/* line 3515, ../sass/components/_icons-fontawesome.sass */
+/* line 3523, ../sass/components/_icons-fontawesome.sass */
 .fa-dribbble:before {
   content: "\f17d";
 }
 
-/* line 3523, ../sass/components/_icons-fontawesome.sass */
+/* line 3531, ../sass/components/_icons-fontawesome.sass */
 .fa-skype:before {
   content: "\f17e";
 }
 
-/* line 3531, ../sass/components/_icons-fontawesome.sass */
+/* line 3539, ../sass/components/_icons-fontawesome.sass */
 .fa-foursquare:before {
   content: "\f180";
 }
 
-/* line 3539, ../sass/components/_icons-fontawesome.sass */
+/* line 3547, ../sass/components/_icons-fontawesome.sass */
 .fa-trello:before {
   content: "\f181";
 }
 
-/* line 3547, ../sass/components/_icons-fontawesome.sass */
+/* line 3555, ../sass/components/_icons-fontawesome.sass */
 .fa-female:before {
   content: "\f182";
 }
 
-/* line 3555, ../sass/components/_icons-fontawesome.sass */
+/* line 3563, ../sass/components/_icons-fontawesome.sass */
 .fa-male:before {
   content: "\f183";
 }
 
-/* line 3563, ../sass/components/_icons-fontawesome.sass */
+/* line 3571, ../sass/components/_icons-fontawesome.sass */
 .fa-gittip:before {
   content: "\f184";
 }
 
-/* line 3571, ../sass/components/_icons-fontawesome.sass */
+/* line 3579, ../sass/components/_icons-fontawesome.sass */
 .fa-sun-o:before {
   content: "\f185";
 }
 
-/* line 3579, ../sass/components/_icons-fontawesome.sass */
+/* line 3587, ../sass/components/_icons-fontawesome.sass */
 .fa-moon-o:before {
   content: "\f186";
 }
 
-/* line 3587, ../sass/components/_icons-fontawesome.sass */
+/* line 3595, ../sass/components/_icons-fontawesome.sass */
 .fa-archive:before {
   content: "\f187";
 }
 
-/* line 3595, ../sass/components/_icons-fontawesome.sass */
+/* line 3603, ../sass/components/_icons-fontawesome.sass */
 .fa-bug:before {
   content: "\f188";
 }
 
-/* line 3603, ../sass/components/_icons-fontawesome.sass */
+/* line 3611, ../sass/components/_icons-fontawesome.sass */
 .fa-paw:before {
   content: "\f1b0";
 }
 
-/* line 3611, ../sass/components/_icons-fontawesome.sass */
+/* line 3619, ../sass/components/_icons-fontawesome.sass */
 .fa-institution:before {
   content: "\f19c";
 }
 
-/* line 3619, ../sass/components/_icons-fontawesome.sass */
+/* line 3627, ../sass/components/_icons-fontawesome.sass */
 .fa-vk:before {
   content: "\f189";
 }
 
-/* line 3627, ../sass/components/_icons-fontawesome.sass */
+/* line 3635, ../sass/components/_icons-fontawesome.sass */
 .fa-weibo:before {
   content: "\f18a";
 }
 
-/* line 3635, ../sass/components/_icons-fontawesome.sass */
+/* line 3643, ../sass/components/_icons-fontawesome.sass */
 .fa-renren:before {
   content: "\f18b";
 }
 
-/* line 3643, ../sass/components/_icons-fontawesome.sass */
+/* line 3651, ../sass/components/_icons-fontawesome.sass */
 .fa-pagelines:before {
   content: "\f18c";
 }
 
-/* line 3651, ../sass/components/_icons-fontawesome.sass */
+/* line 3659, ../sass/components/_icons-fontawesome.sass */
 .fa-stack-exchange:before {
   content: "\f18d";
 }
 
-/* line 3659, ../sass/components/_icons-fontawesome.sass */
+/* line 3667, ../sass/components/_icons-fontawesome.sass */
 .fa-arrow-circle-o-right:before {
   content: "\f18e";
 }
 
-/* line 3667, ../sass/components/_icons-fontawesome.sass */
+/* line 3675, ../sass/components/_icons-fontawesome.sass */
 .fa-arrow-circle-o-left:before {
   content: "\f190";
 }
 
-/* line 3675, ../sass/components/_icons-fontawesome.sass */
+/* line 3683, ../sass/components/_icons-fontawesome.sass */
 .fa-toggle-left:before,
 .fa-caret-square-o-left:before {
   content: "\f191";
 }
 
-/* line 3684, ../sass/components/_icons-fontawesome.sass */
+/* line 3692, ../sass/components/_icons-fontawesome.sass */
 .fa-dot-circle-o:before {
   content: "\f192";
 }
 
-/* line 3692, ../sass/components/_icons-fontawesome.sass */
+/* line 3700, ../sass/components/_icons-fontawesome.sass */
 .fa-wheelchair:before {
   content: "\f193";
 }
 
-/* line 3700, ../sass/components/_icons-fontawesome.sass */
+/* line 3708, ../sass/components/_icons-fontawesome.sass */
 .fa-vimeo-square:before {
   content: "\f194";
 }
 
-/* line 3708, ../sass/components/_icons-fontawesome.sass */
+/* line 3716, ../sass/components/_icons-fontawesome.sass */
 .fa-turkish-lira:before,
 .fa-try:before {
   content: "\f195";
 }
 
-/* line 3717, ../sass/components/_icons-fontawesome.sass */
+/* line 3725, ../sass/components/_icons-fontawesome.sass */
 .fa-plus-square-o:before {
   content: "\f196";
 }
