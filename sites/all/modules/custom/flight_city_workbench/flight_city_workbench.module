@@ -75,17 +75,18 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
     $domain_paths = variable_get('flight_city_workbench_path_bundles', array());
     if (!empty($form['#node']) && $form['#node']->nid && !empty($domain_paths[$form['#node']->type]) && $domain_paths[$form['#node']->type]) {
       $domain = domain_get_domain();
-      $path = $form['domain_path'][$domain['domain_id']]['#default_value'];
-      // @todo: Reenable?
-      //$form['path']['alias']['#default_value'] = $path;
+      $path = $form['domain_path'][$form['#node']->domain_source]['#default_value'];
+
+      $form['path']['alias']['#default_value'] = $path;
       //$form['domain_path']['#access'] = FALSE;
-      //foreach($form['domain_path'] as $key => $field) { 
-      //  if ($field['#type'] === 'textfield' && !empty($field['#default_value'])) {
-      //    $form['domain_path'][$key]['#default_value'] = '';
-      //  }
-      //}
+      foreach($form['domain_path'] as $key => $field) { 
+        if ($field['#type'] === 'textfield' && !empty($field['#default_value'])) {
+          $form['domain_path'][$key]['#default_value'] = '';
+        }
+      }
     }
     $form['#validate'][] = 'flight_city_workbench_form_node_validate';
+    dpm($form);
 
     // Limit the menu options to Workbench Editorial sections
     if (!empty($form['menu']) && !user_access('workbench view full menu tree')) {
