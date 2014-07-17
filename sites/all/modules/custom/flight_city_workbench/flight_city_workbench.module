@@ -86,6 +86,7 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
       }
     }
     $form['#validate'][] = 'flight_city_workbench_form_node_validate';
+    dpm($form);
 
     // Limit the menu options to Workbench Editorial sections
     if (!empty($form['menu']) && !user_access('workbench view full menu tree')) {

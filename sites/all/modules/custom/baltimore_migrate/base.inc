@@ -199,7 +199,7 @@ class BaltimoreContentMigration extends Migration {
       foreach($xpath->query('//a[@href]') as $node) {
         $url = $node->getAttribute('href');
         $url = strpos($url, 'http://') === FALSE ? $this->arguments['base_url'].$url : $url;
-        if (!empty($url) && strpos($url, $this->arguments['base_url']) !== FALSE) {
+        if (!empty($url) && strpos($url, $this->arguments['base_url']) !== FALSE && strpos($url, 'mailto:') === FALSE) {
           $extension = end(explode('.', $url));
           //dpm($url);
           //dpm($extension);
@@ -234,6 +234,7 @@ class BaltimoreContentMigration extends Migration {
       }*/
 
       $row->body = '';
+      dpm($this->arguments['xpath']);
       foreach ($xpath->query($this->arguments['xpath']) as $i => $node) {
         $row->body .= $node->ownerDocument->saveHTML($node);
       }
@@ -244,12 +245,15 @@ class BaltimoreContentMigration extends Migration {
     else {
       $row->body = '';
     }
+    dpm($row->body);
   }
 
   public function prepare($entity, stdClass $row){
 
     // Set the domain
-    $entity->domains[$this->arguments['domain']] = $this->arguments['domain'];
+    $entity->domains = array($this->arguments['domain'] => $this->arguments['domain']);
+    $entity->domain_source = $this->arguments['domain'];
+    $entity->subdomains = array($this->arguments['subdomain']);
 
     // Override the default node type, if specified
     if (!empty($row->type)) {
@@ -270,7 +274,7 @@ class BaltimoreContentMigration extends Migration {
       'plid' => 0,
       'enabled' => 1,
     );
-    //dpm($entity);
+    dpm($entity);
   }
 
   function complete($entity, $row) {
@@ -318,7 +322,14 @@ function _baltimore_migrate_save_file($url, $destination) {
     $file = system_retrieve_file($url, $destination, TRUE);
     if (!empty($file->fid)) {
       $file->filename = $filename;
-      file_save($file);
+      try {
+        file_save($file);
+      }
+      catch (Exception $e) {
+        dpm('could not save file');
+        dpm($file);
+      }
+      
     }
     return $file;
   //}
@@ -329,8 +340,10 @@ function _baltimore_migrate_save_file($url, $destination) {
 
 function _baltimore_migrate_strip_tags($text) {
   $text = str_replace('<br><br>', '</p><p>', $text);
+  $text = str_replace(array('<h2>','</h2>', '<div oncontextmenu="return true;>'), array('<h3>','</h3>', '<br><br><div oncontextmenu="return true;>'), $text);
   $text = strip_tags($text, '<p><a><h2><h3><h4><h5><strong><b><i><em><cite><blockquote><table><tr><td><scode><thead><tbody><img><ul><ol><li><dt><dd><sub><cite>');
   $text = trim($text);
+  //$text = str_replace("\n\n", '</p><p>', $text);
   return $text;
 }
 

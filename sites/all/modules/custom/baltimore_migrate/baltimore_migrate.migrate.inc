@@ -81,6 +81,44 @@ function baltimore_migrate_migrate_api() {
       'file_destination' => 'public://health/legacy',
       'create_redirect' => TRUE,
     ),
+
+    // Tier-1 simple Agencies
+    'BaltimoreWarMemorialContent' => array(
+      'class_name' => 'BaltimoreWarMemorialContentMigration',
+      'domain' => 5,
+      'subdomain' => 'War Memorial Commission',
+      'menu_name' => '480eeaeaeab4db3c8327ed0d9871c83c',
+      'url' => DRUPAL_ROOT . '/WORKING/data/warmemorial-content.csv',
+      'base_url' => 'http://warmemorial.baltimorecity.gov/',
+      'default_section' => '1212',
+      'xpath' => '//div[@id="dnn_ContentPane"]',
+      'file_destination' => 'public://warmemorial/legacy',
+      'create_redirect' => TRUE,
+    ),
+    'BaltimoreLaborCommissionContent' => array(
+      'class_name' => 'BaltimoreLaborCommissionContentMigration',
+      'domain' => 7,
+      'subdomain' => 'Labor Commissioner\'s Office',
+      'menu_name' => '0314cec21ebb781fa0fbf81350645138',
+      'url' => DRUPAL_ROOT . '/WORKING/data/labor-commissioner-content.csv',
+      'base_url' => 'http://www.baltimorecity.gov/',
+      'default_section' => '1213',
+      'xpath' => '//div[@id="dnn_ContentPane"]',
+      'file_destination' => 'public://labor-commissioner/legacy',
+      'create_redirect' => TRUE,
+    ),
+    'BaltimoreLawContent' => array(
+      'class_name' => 'BaltimoreLawContentMigration',
+      'domain' => 6,
+      'subdomain' => 'Baltimore City Law Department',
+      'menu_name' => 'f18a4d7eb2d32b3f139819ad68d1853d',
+      'url' => DRUPAL_ROOT . '/WORKING/data/law-content.csv',
+      'base_url' => 'http://www.baltimorecity.gov/',
+      'default_section' => '1211',
+      'xpath' => '//div[@id="dnn_ContentPane"]',
+      'file_destination' => 'public://law/legacy',
+      'create_redirect' => TRUE,
+    ),
   );
 
   $api = array(
