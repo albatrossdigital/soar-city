@@ -179,7 +179,7 @@ function flight_city_workbench_form_node_validate($form, &$form_state) {
  * Limit the editorial sections that editors can assign users to.
  */
 function flight_city_workbench_form_workbench_access_user_form_alter(&$form, $form_state) {
-  global $user;
+  /*global $user;
   $mid = variable_get('menu_main_links_source', 'main-menu');
   foreach ($form['sections'] as $key => $section) {
     //if (strpos($key, '#') === FALSE && ($key != $mid || empty($user->workbench_access[$key]))) {
@@ -188,6 +188,7 @@ function flight_city_workbench_form_workbench_access_user_form_alter(&$form, $fo
     }
   }
   $form['sections'][$mid]['#collapsed'] = FALSE;
+  */
 }
 
 
