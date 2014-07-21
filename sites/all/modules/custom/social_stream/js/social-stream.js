@@ -191,9 +191,14 @@ Drupal.behaviors.social_stream = {
 
       // Click on active social network
       if(window.location.hash) {
-        setTimeout(function() {
-          $('#wall li>a[rel='+ window.location.hash.replace('#', '') +']').trigger('click');
-        }, 2000);
+        setTimeout(on_hashchange, 10000);
+      }
+      $(window).on('hashchange', on_hashchange);
+      function on_hashchange() {
+        var hash = window.location.hash.replace('#', '');
+        if (hash != 'filter') {
+          $('#wall li>a[rel='+ hash +']').trigger('click');
+        }
       }
 
     });
