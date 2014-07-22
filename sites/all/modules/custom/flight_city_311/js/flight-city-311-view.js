@@ -21,11 +21,11 @@ Drupal.behaviors.flight_city_311_view = {
         if (value != 'All') {
           if (text.charAt(0) === '-') {
             text = text.substr(1);
-            secondary[last][value] = text;
+            secondary[last].push({'value': value, 'text': text});
           }
           else {
             last = value;
-            secondary[last] = {};
+            secondary[last] = [];
             $primary.append('<option value="'+ value +'">'+ text +'</option>');
           }
         }
@@ -46,8 +46,8 @@ Drupal.behaviors.flight_city_311_view = {
       function buildSecondary(primary) {
         $secondary.html('').append('<option value="">- Select -</option>');
         if (primary) {
-          $.each(secondary[primary], function (value, text) {
-            $secondary.append('<option value="'+ value +'">'+ text +'</option>');
+          $.each(secondary[primary], function (value, item) {
+            $secondary.append('<option value="'+ item.value +'">'+ item.text +'</option>');
           });
           $secondaryWrapper.slideDown();
         }
@@ -70,8 +70,9 @@ Drupal.behaviors.flight_city_311_view = {
         window.clearTimeout(timeout);
         if ($(this).val() != '') {
           timeout = setTimeout(function() {
+            $('select[name^=tid] option, #tid-select-primary option, #tid-select-secondary').prop('selected', '');
+            $secondaryWrapper.slideUp();
             $submit.trigger('click');
-            $('select[name^=tid] option').prop('selected', '');
           }, 500);
         }
       });
