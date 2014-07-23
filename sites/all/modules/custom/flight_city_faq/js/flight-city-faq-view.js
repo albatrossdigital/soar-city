@@ -31,12 +31,6 @@ Drupal.behaviors.flight_city_faq_view = {
         e.preventDefault();
       });
     });
-
-    // Open active nid
-    if(window.location.hash) {
-      $(window.location.hash).parent().find('a:eq(0)').trigger('click');
-    }
-
   }
 };
 

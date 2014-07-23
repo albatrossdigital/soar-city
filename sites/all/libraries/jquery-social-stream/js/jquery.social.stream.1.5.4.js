@@ -534,8 +534,11 @@
 					break;
 				}
 				if(error == ''){
+					var cutoff = new Date - 90 * 24 * 60 * 60 * 1000; // 90 days
+
 					$.each(a, function(i,item){
-						if(i < n){
+						var date = item.published != undefined ? item.published : item.publishedDate != undefined ? item.publishedDate : item.upload_date != undefined ? item.upload_date : undefined;
+						if(i < n && (date == undefined || new Date(date) > cutoff)){
 							var html = [], q = item.link, u='<a href="'+href+'">'+id+'</a>', w='', x = '<a href="'+q+'">'+item.title+'</a>', y='', z='', zz='', m='', d = item.publishedDate, sq = q, st = item.title, s = '';
 							switch(type)
 							{
