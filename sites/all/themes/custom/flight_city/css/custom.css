@@ -288,7 +288,7 @@ a.social-icon.Vimeo:before {
 .domain-main.page-connect #section-title, .page-people #section-title,
 .page-people-tiles #section-title, .node-type-person #section-title, .page-search #toggle-main-section-menu .menu-label, .page-events.domain-main #toggle-main-section-menu .menu-label, .node-type-help #admin-menu,
 .node-type-help #navbar-administration, .node-type-help .l-header, .node-type-help .l-footer-top, .node-type-help .l-footer-sections-top, .node-type-help .l-footer-sections-bottom, .l-footer-top .block-baltimore-govdelivery h2.block-title, .l-footer-sections-bottom form label, .l-footer-sections-bottom form .grippie, .no-labels label,
-.no-label label, .js .block-views-exp-organizations-page .views-widget-filter-field_organization_category_tid select, .search-toggle span, #toggle-main-section-menu .filter-label, #search-form .form-type-textfield label, .front ul.breadcrumbs, .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item label,
+.no-label label, .js .block-views-exp-organizations-page .views-widget-filter-field_organization_category_tid select, .search-toggle span, #toggle-main-section-menu .filter-label, .webform-confirmation ~ .links, #search-form .form-type-textfield label, .front ul.breadcrumbs, .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item label,
 .block-views-exp-calendar-list .views-widget-filter-field_date_value .form-item .description {
   display: none;
 }
