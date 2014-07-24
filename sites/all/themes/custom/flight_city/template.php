@@ -38,7 +38,10 @@ function flight_city_preprocess_html(&$vars) {
   );
 
   // add ie browser detector
-  $embed = 'var $buoop = {vs:{i:8,f:15,o:15,s:5.1,n:9}}; 
+  $embed = 'var $buoop = {
+      vs: {i:8,f:15,o:15,s:5.1,n:9},
+      reminder: 1
+    }; 
     $buoop.ol = window.onload; 
     window.onload=function(){ 
       try {if ($buoop.ol) $buoop.ol();}catch (e) {} 
