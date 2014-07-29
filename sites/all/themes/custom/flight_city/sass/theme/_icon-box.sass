@@ -109,6 +109,21 @@
 // *
 // ******************************************************
 
++respond($menu-only)
+
+  // Home page icons are 7 across now instead of 6
+
+  .seven-across
+    .medium-12-7
+      margin-bottom: $small-region-pad-large
+      width: grid-calc(3, 12)
+
+      &:nth-child(5)
+        clear: left
+        margin-left: grid-calc(1.5, 12)
+
+
+
 +respond($medium-up)
 
   // Wrapper as full link
@@ -126,3 +141,7 @@
 
     .group-left
       margin-bottom: 0
+
+
++respond($past-menu)
+
