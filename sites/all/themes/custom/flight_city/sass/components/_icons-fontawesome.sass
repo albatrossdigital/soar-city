@@ -3732,5 +3732,8 @@ $fa-include-css: true!default
 
 %fa-database
   &:before
-    content:  $fa-var-database
+    content: $fa-var-database
 
+@if $fa-include-css
+  .#{$fa-css-prefix}-database:before
+    content: $fa-var-database

@@ -1928,3 +1928,8 @@ i[class^="fa"].icon-right {
 .fa-plus-square-o:before {
   content: "\f196";
 }
+
+/* line 3738, ../sass/components/_icons-fontawesome.sass */
+.fa-database:before {
+  content: "\f1c0";
+}
