@@ -21,10 +21,10 @@ function flight_city_workbench_permission() {
       'title' => t('Promote content to citywide site'),
       'description' => t('Promote content that has been requested to be promoted to citywide site.'),
     ),
-    'workbench view full menu tree' => array(
+    /*'workbench view full menu tree' => array(
       'title' => t('View the full menu tree'),
       'description' => t('Do not rewrite the menu tree on a node add page based on Editorial Sections.'),
-    ),
+    ),*/
   );
 }
 
@@ -86,20 +86,31 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
       }
     }
     $form['#validate'][] = 'flight_city_workbench_form_node_validate';
-    dpm($form);
+    //dpm($form);
 
     // Limit the menu options to Workbench Editorial sections
     if (!empty($form['menu']) && !user_access('workbench view full menu tree')) {
-      $options = $form['workbench_access']['workbench_access']['#options'];
-      unset($options['']);
+      $menu_items = $form['menu']['link']['parent']['#options'];
+      $sections = $form['workbench_access']['workbench_access']['#options'];
+      unset($sections['']);
       $keys = array_keys($form['menu']['link']['parent']['#options']);
       $arr = explode(':', $keys[0]);
       $mid = $arr[0];
       $keyed_options = array();
-      foreach ($options as $key => $option)  {
-        $keyed_options[$mid .':'. $key] = $option;
+      foreach ($sections as $key => $section) {
+        $section = trim($section);
+        foreach ($menu_items as $item) {
+          if (strpos($item, $section) !== FALSE) {
+            $keyed_options[$mid .':'. $key] = $section;
+          }
+        }
       }
-      $form['menu']['link']['parent']['#options'] = $keyed_options;
+      // Gracefully degrade (show full menu structure) if we didn't find enough matches to avoid issues
+      // with menu items losing their parent.
+      if (count($keyed_options) >= count($sections)) {
+        $form['menu']['link']['parent']['#options'] = $keyed_options;
+      }
+
     }
 
     // Set the default Workbench section if there is only one option
