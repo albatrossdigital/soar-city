@@ -21,10 +21,10 @@ function flight_city_workbench_permission() {
       'title' => t('Promote content to citywide site'),
       'description' => t('Promote content that has been requested to be promoted to citywide site.'),
     ),
-    /*'workbench view full menu tree' => array(
+    'workbench view full menu tree' => array(
       'title' => t('View the full menu tree'),
       'description' => t('Do not rewrite the menu tree on a node add page based on Editorial Sections.'),
-    ),*/
+    ),
   );
 }
 
