@@ -3,7 +3,7 @@
 .front
 
 
-// Main Content
+// Front pages
 // ----------------------------------------------------------------------------
 
 .front
@@ -31,6 +31,23 @@
 
       .block
         //margin-bottom: 1em
+
+
+  // Side by side video / news
+  // ----------------------------------------------------------------------------
+
+  // single news item
+  .block-views-news-block-3
+    padding-left: 0
+
+    .more-link
+      padding: 0
+
+  // Video highlight block
+  .block-bean-mayor-video-block
+  
+    & + *
+      clear: both
 
 
 
@@ -193,6 +210,24 @@
   
 
 +respond($small-only)
+
+  // Front pages
+  // ----------------------------------------------------------------------------
+
+  .front
+    
+    // Side by side video / news
+    // ----------------------------------------------------------------------------
+
+    .block-views-news-block-3,
+    .block-bean-mayor-video-block
+      padding-left: 0
+      padding-right: 0
+    
+    // Video highlight block
+    .block-bean-mayor-video-block
+
+
   // Uber front
   // ----------------------------------------------------------------------------
   
@@ -222,6 +257,7 @@
       text-align: center
 
 +respond($menu-only)
+
   // Uber front
   // ----------------------------------------------------------------------------
   
@@ -261,6 +297,22 @@
 
       .block[class$="featured-programs"]
         +block-with-top-border(medium, false)
+
+    // Side by side video / news
+    // ----------------------------------------------------------------------------
+    
+    // single news item
+    .block-views-news-block-3
+      padding-left: 0
+
+      .more-link
+        margin-top: $paragraph-margin-bottom
+
+    // Video highlight block
+    .block-bean-mayor-video-block
+      padding-right: 0
+      padding-top: rem-calc(104)!important
+
 
   // Uber front
   // ----------------------------------------------------------------------------

@@ -695,6 +695,7 @@ $fa-var-yen: "\f157"
 $fa-var-youtube: "\f167"
 $fa-var-youtube-play: "\f16a"
 $fa-var-youtube-square: "\f166"
+$fa-var-database: "\f1c0"
 
 //-- END --// 
 
@@ -3729,3 +3730,10 @@ $fa-include-css: true!default
   &:before
     content:  $fa-var-plus-square-o
 
+%fa-database
+  &:before
+    content: $fa-var-database
+
+@if $fa-include-css
+  .#{$fa-css-prefix}-database:before
+    content: $fa-var-database
