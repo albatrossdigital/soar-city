@@ -693,6 +693,5 @@ elseif (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMEN
   $conf['page_compression'] = 1;
   $conf['preprocess_css'] = 1;
   $conf['preprocess_js'] = 1;
-  print_r($conf);
-
+  
 }
