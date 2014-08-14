@@ -60,9 +60,10 @@ class FacetapiWidgetSuggestion extends FacetapiWidgetLinks {
    * @see FacetapiWidgetLinks::buildListItems()
    */
   public function execute() {
-    $element = &$this->build[$this->facet['field alias']];
+    $field = $this->facet['field alias'];
+    $element = &$this->build[$field];
     // Allow other modules to alter
-    drupal_alter('balt_apachesolr_suggestion_items', $element, $this->facet['field alias']);
+    drupal_alter('balt_apachesolr_suggestion_items', $element, $field);
     $element['#active-item'] = NULL;
     // Sets each item's theme hook, builds item list.
     $this->setThemeHooks($element);

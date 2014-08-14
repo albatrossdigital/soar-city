@@ -81,9 +81,9 @@ class FacetapiSwitchWidget extends FacetapiWidgetLinks {
 
     foreach ($element as $item) {
       if (empty($item['#item_children'])) {
-        if (!$item['#active'] || ($item['#active'] && !$settings['remove_selected'])) {
+        if (!$item['#active'] || ($item['#active'] && empty($settings['remove_selected']))) {
           $key = $this->getOptionKey($item);
-          $options[$key] = $settings['add_count'] ? $item['#markup'] . ' (' . $item['#count'] . ')' : $item['#markup'];
+          $options[$key] = !empty($settings['add_count']) ? $item['#markup'] . ' (' . $item['#count'] . ')' : $item['#markup'];
         }
       }
       else {
