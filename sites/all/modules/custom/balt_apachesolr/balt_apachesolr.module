@@ -129,6 +129,14 @@ function _balt_apachesolr_index_key($field = 'domain_id') {
       );
       break;
 
+    case 'domain_valid':
+      $key = array(
+        'name'       => 'domain_valid',
+        'multiple'   => FALSE,
+        'index_type' => 'boolean',
+      );
+      break;
+
     case 'field_links':
       $key = array(
         'name'       => 'field_links',
@@ -303,6 +311,9 @@ function balt_apachesolr_build_apachesolr_form() {
 function balt_apachesolr_apachesolr_query_alter($query) {
   // Add domain key to filter all queries.
   $query->addParam('fl', 'im_domain_id');
+  // Add valid key
+  $query->addParam('fl', 'bs_domain_valid');
+  $query->addFilter('-bs_domain_valid', 'false');
 }
 
 
@@ -384,7 +395,14 @@ function balt_apachesolr_apachesolr_index_document_build(ApacheSolrDocument $doc
     else {
       $domains = $entity->domains;
     }
+    $domain_valid = TRUE;
     foreach($domains as $domain) {
+
+      // Check if domains are disabled
+      if(empty($all_domains[$domain]['valid'])) {
+        $domain_valid = FALSE;
+      }
+
       // The gid in the {domain} table is unsigned, but the domain module makes
       // it -1 for the deault domain. Also apache doesn't like it if we query
       // for domain id -1.
@@ -395,6 +413,10 @@ function balt_apachesolr_apachesolr_index_document_build(ApacheSolrDocument $doc
       // Add domain key to document.
       $document->setMultiValue($key, $domain);
     }
+    // Set content is valid
+    $key = _balt_apachesolr_index_key('domain_valid');
+    $document->setField($key, $domain_valid);
+    //exit();
   }
 
   // Add link information
@@ -608,9 +630,15 @@ function balt_apachesolr_balt_apachesolr_suggestion_items_alter(&$element, $face
   
   switch($facet_name) {
     case BALT_APACHESOLR_DOMAIN_FIELD:
-      $default = domain_default(FALSE, FALSE);
-      if(isset($element[$default['domain_id']])) {
-        unset($element[$default['domain_id']]);
+      $all_domains = domain_domains();
+      foreach($all_domains as $domain) {
+        // if default remove (since it in not part of the list)
+        // or if the domain is not currently enabled
+        if($domain['is_default'] || empty($domain['valid'])) {
+          if(isset($element[$domain['domain_id']])) {
+            unset($element[$domain['domain_id']]);
+          }
+        }
       }
       break;
   }

@@ -639,7 +639,7 @@ if (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod') {
   // to be disabled.
   $conf['page_cache_invoke_hooks'] = FALSE;
   // Setup Varnish with Expire
-   $conf['cache_class_external_varnish_page'] = 'VarnishCache';  
+  $conf['cache_class_external_varnish_page'] = 'VarnishCache';  
 }
 elseif (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
   //$conf['apachesolr_environments']['solr']['url'] = 'http://ny.opensolr.com/solr/test_if_balt';
@@ -684,5 +684,14 @@ if (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod') {
   $conf['preprocess_js'] = 1;
 
 }
-
-
+elseif (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
+  
+  $conf['cache'] = 1;
+  $conf['block_cache'] = 1;
+  $conf['cache_lifetime'] = 600; // 10 min
+  $conf['page_cache_maximum_age'] = 300; // 5 min
+  $conf['page_compression'] = 1;
+  $conf['preprocess_css'] = 1;
+  $conf['preprocess_js'] = 1;
+  
+}
