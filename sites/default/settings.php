@@ -689,7 +689,7 @@ if (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod') {
 }
 elseif (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
   
-  
+  /*
   $conf['cache'] = 1;
   $conf['block_cache'] = 1;
   $conf['cache_lifetime'] = 0; // 10 min
@@ -697,6 +697,6 @@ elseif (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMEN
   $conf['page_compression'] = 1;
   $conf['preprocess_css'] = 1;
   $conf['preprocess_js'] = 1;
-  
+  */
 
 }
