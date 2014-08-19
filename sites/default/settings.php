@@ -617,13 +617,14 @@ if (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod') {
   // @todo: For launch: change.
   $cookie_domain = '.baltimorecity.gov';
 
+  /*
   $conf['cache'] = 1;
   $conf['block_cache'] = 1;
   $conf['cache_lifetime'] = 1800; // 30 min
   $conf['page_cache_maximum_age'] = 3600; // 1 hr
   $conf['page_compression'] = 1;
   $conf['preprocess_css'] = 1;
-   
+  */
     
   // Memcache settings  
   $conf['cache_backends'][] = 'sites/all/modules/contrib/memcache/memcache.inc';
@@ -675,6 +676,7 @@ require_once DRUPAL_ROOT . '/sites/all/modules/contrib/domain/settings.inc';
 // Caching settings need to come after the domain settings.php settings to avoid being overwritten.
 if (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod') {
 
+  /*
   $conf['cache'] = 1;
   $conf['block_cache'] = 1;
   $conf['cache_lifetime'] = 0; // 10 min
@@ -682,10 +684,12 @@ if (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod') {
   $conf['page_compression'] = 1;
   $conf['preprocess_css'] = 1;
   $conf['preprocess_js'] = 1;
+  */
 
 }
 elseif (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
   
+  /*
   $conf['cache'] = 1;
   $conf['block_cache'] = 1;
   $conf['cache_lifetime'] = 0; // 10 min
@@ -693,5 +697,6 @@ elseif (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMEN
   $conf['page_compression'] = 1;
   $conf['preprocess_css'] = 1;
   $conf['preprocess_js'] = 1;
-  
+  */
+
 }
