@@ -99,9 +99,9 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
       $keyed_options = array();
       foreach ($sections as $key => $section) {
         $section = trim($section);
-        foreach ($menu_items as $item) {
+        foreach ($menu_items as $item_key => $item) {
           if (strpos($item, $section) !== FALSE) {
-            $keyed_options[$mid .':'. $key] = $section;
+            $keyed_options[$item_key] = $section;
           }
         }
       }
