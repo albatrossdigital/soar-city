@@ -92,6 +92,8 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
     if (!empty($form['menu']) && !user_access('workbench view full menu tree')) {
       $menu_items = $form['menu']['link']['parent']['#options'];
       $sections = $form['workbench_access']['workbench_access']['#options'];
+      $default = $form['workbench_access']['workbench_access']['#default_value'];
+      $is_admin = FALSE;  // Is this person a member of the root site section?
       unset($sections['']);
       $keys = array_keys($form['menu']['link']['parent']['#options']);
       $arr = explode(':', $keys[0]);
@@ -101,16 +103,23 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
         $section = trim($section);
         foreach ($menu_items as $item_key => $item) {
           if (strpos($item, $section) !== FALSE) {
-            $keyed_options[$item_key] = $section;
+            if (strpos(substr($section, 0, 2), '-') === FALSE) {
+              $is_admin = TRUE;
+            }
+            $keyed_options[$item_key] = $item;
           }
         }
       }
       // Gracefully degrade (show full menu structure) if we didn't find enough matches to avoid issues
       // with menu items losing their parent.
-      if (count($keyed_options) >= count($sections)) {
-        $form['menu']['link']['parent']['#options'] = $keyed_options;
+      if (!$is_admin) {
+        if (count($keyed_options) >= count($sections)) {
+          $form['menu']['link']['parent']['#options'] = $keyed_options;
+        }
+        else {
+          $form['menu']['link']['parent']['#type'] = 'hidden';
+        }
       }
-
     }
 
     // Set the default Workbench section if there is only one option
