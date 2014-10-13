@@ -103,7 +103,7 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
         $section = trim($section);
         foreach ($menu_items as $item_key => $item) {
           if (strpos($item, $section) !== FALSE) {
-            if (strpos(substr($section, 0, 2), '-') === FALSE) {
+            if (strpos(substr($item, 0, 2), '-') === FALSE) {
               $is_admin = TRUE;
             }
             $keyed_options[$item_key] = $item;
