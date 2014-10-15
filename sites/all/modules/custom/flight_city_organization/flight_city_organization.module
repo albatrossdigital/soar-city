@@ -7,6 +7,17 @@
 include_once 'flight_city_organization.features.inc';
 
 /**
+ * Implements hook_node_view()
+ * Redirect.
+ */
+function flight_city_organization_node_view($node, $view_mode, $langcode) {
+  if ($node->type === 'organization' && $view_mode === 'full' && arg(0) === 'node' && !empty($node->field_url)) {
+    drupal_goto($node->field_url[LANGUAGE_NONE][0]['url']);
+  }
+}
+
+
+/**
  * Implements hook_preprocess_views_view()
  */
 function flight_city_organization_form_views_exposed_form_alter(&$form, $form_state) {
