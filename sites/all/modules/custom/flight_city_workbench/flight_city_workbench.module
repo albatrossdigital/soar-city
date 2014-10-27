@@ -70,11 +70,15 @@ function flight_city_workbench_menu_alter(&$items) {
  */
 function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
   if (strpos($form_id, '_node_form')) {
+
+    // Load active domain
+    $domain = domain_get_domain();
+    // New node?
+    $existing_node = !empty($form['#node']) && $form['#node']->nid;
     
     // Make pathauto work with domain module
     $domain_paths = variable_get('flight_city_workbench_path_bundles', array());
-    if (!empty($form['#node']) && $form['#node']->nid && !empty($domain_paths[$form['#node']->type]) && $domain_paths[$form['#node']->type]) {
-      $domain = domain_get_domain();
+    if ($existing_node && !empty($domain_paths[$form['#node']->type]) && $domain_paths[$form['#node']->type]) {
       $path = $form['domain_path'][$form['#node']->domain_source]['#default_value'];
 
       $form['path']['alias']['#default_value'] = $path;
@@ -86,7 +90,26 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
       }
     }
     $form['#validate'][] = 'flight_city_workbench_form_node_validate';
-    //dpm($form);
+
+    // Give domain options appropriate defaults for new nodes
+    if(!$existing_node && !empty($form['domain'])) {
+
+      $domain_id = $domain['domain_id'];
+
+      // Domain publishing
+      if(  !empty($form['domain']['domains'])
+        && isset($form['domain']['domains']['#options'][$domain_id])) {
+        
+        $form['domain']['domains']['#default_value'] = array($domain_id);
+      }
+
+      // Do domain source
+      if(  !empty($form['domain']['domain_source'])
+        && isset($form['domain']['domain_source']['#options'][$domain_id])) {
+
+        $form['domain']['domain_source']['#default_value'] = $domain_id;
+      }
+    }
 
     // Limit the menu options to Workbench Editorial sections
     if (!empty($form['menu']) && !user_access('workbench view full menu tree')) {
