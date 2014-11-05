@@ -72,7 +72,7 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
   if (strpos($form_id, '_node_form')) {
     
     // Make pathauto work with domain module
-    $domain_paths = variable_get('flight_city_workbench_path_bundles', array());
+    /*$domain_paths = variable_get('flight_city_workbench_path_bundles', array());
     if (!empty($form['#node']) && $form['#node']->nid && !empty($domain_paths[$form['#node']->type]) && $domain_paths[$form['#node']->type]) {
       $domain = domain_get_domain();
       $path = $form['domain_path'][$form['#node']->domain_source]['#default_value'];
@@ -81,11 +81,11 @@ function flight_city_workbench_form_alter(&$form, $form_state, $form_id) {
       //$form['domain_path']['#access'] = FALSE;
       foreach($form['domain_path'] as $key => $field) { 
         if ($field['#type'] === 'textfield' && !empty($field['#default_value'])) {
-          $form['domain_path'][$key]['#default_value'] = '';
+          //$form['domain_path'][$key]['#default_value'] = '';
         }
       }
     }
-    $form['#validate'][] = 'flight_city_workbench_form_node_validate';
+    $form['#validate'][] = 'flight_city_workbench_form_node_validate';*/
     //dpm($form);
 
     // Limit the menu options to Workbench Editorial sections
@@ -218,7 +218,7 @@ function flight_city_workbench_form_workbench_access_user_form_alter(&$form, $fo
  * For domain/pathauto integration.
  */
 function flight_city_workbench_pathauto_alias_alter(&$alias, $context) {
-  $node = $context['data']['node'];
+  /*$node = $context['data']['node'];
   $domain_paths = variable_get('flight_city_workbench_path_bundles', array());
   if (!empty($domain_paths[$node->type]) && $domain_paths[$node->type]) {
     foreach ($node->domains as $key => $value) {
@@ -228,7 +228,7 @@ function flight_city_workbench_pathauto_alias_alter(&$alias, $context) {
     }
     domain_path_node_insert($node);
     $alias = NULL;
-  }
+  }*/
 }
 
 
