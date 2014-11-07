@@ -1,0 +1,13 @@
+diff --git a/plugins/link/plugin.js b/plugins/link/plugin.js
+index 2a807f5..217f304 100644
+--- a/plugins/link/plugin.js
++++ b/plugins/link/plugin.js
+@@ -102,7 +102,7 @@
+           return function() {
+             var process = false;
+             if ((this.getValueOf('info', 'linkType') == 'drupal') && !this._.selectedElement) {
+-              var ranges = editor.getSelection().getRanges(true);
++              var ranges = editor.getSelection().getRanges();
+               if ((ranges.length == 1) && ranges[0].collapsed) {
+                 process = true;
+               }

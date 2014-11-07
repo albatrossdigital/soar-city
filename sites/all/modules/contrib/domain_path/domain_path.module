@@ -351,8 +351,10 @@ function domain_path_node_validate($node, $form, &$form_state) {
   foreach ($paths as $domain_id => $path) {
     $key = ($domain_id == -1) ? 0 : $domain_id;
     if (!empty($path) && $path == $alias) {
-      form_set_error("domain_path][$key", t('Domain path %alias may not match the default path alias. You may leave the element blank.', array('%alias' => $path)));
-      $set_message = TRUE;
+      // Delete aliases instead of ...
+      $form_state['values']['domain_path']['domain_path_delete'] = 1;
+      //form_set_error("domain_path][$key", t('Domain path %alias may not match the default path alias. You may leave the element blank.', array('%alias' => $path)));
+      //$set_message = TRUE;
     }
     elseif (!empty($path)) {
       $query = db_query("SELECT COUNT(dpid) FROM {domain_path}
