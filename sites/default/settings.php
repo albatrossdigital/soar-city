@@ -210,15 +210,6 @@
  * @endcode
  */
 $databases = array();
-  $databases['default']['default'] = array(
-    'driver' => 'mysql',
-    'database' => 'baltimore',
-    'username' => 'root',
-    'password' => 'maith',
-    'host' => 'localhost',
-    'prefix' => '',
-    'collation' => 'utf8_general_ci',
-  );
 
 /**
  * Access control for update.php script.
@@ -330,7 +321,7 @@ ini_set('session.cookie_lifetime', 2000000);
  * with a leading dot, as per RFC 2109.
  */
 // This is set in the per-domain settings below
-$cookie_domain = '.baltimore.local';
+//$cookie_domain = '.baltimorecity.gov';
 
 /**
  * Variable overrides:
@@ -570,15 +561,138 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  */
 # $conf['pressflow_smart_start'] = TRUE;
 
- 
-  $conf['cache'] = 0;
-  $conf['block_cache'] = 0;
-  $conf['cache_lifetime'] = 0; // 10 min
-  $conf['page_cache_maximum_age'] = 0; // 5 min
-  $conf['page_compression'] = 0;
-  $conf['preprocess_css'] = 0;
-  $conf['preprocess_js'] = 0;
+
+
+// Set up db settings for Blackmesh.
+// We do this here because they need to be set in drush to avoid fatal errors.
+if (!isset($_SERVER['PANTHEON_SITE_NAME'])) {
+  $databases['default']['default'] = array(
+    'driver' => 'mysql',
+    'database' => 'baltimore',
+    'username' => 'baltimore',
+    'password' => 'B8DaqM5d`j$O',
+    'host' => '548eldb01.blackmesh.com',
+    'prefix' => '',
+  );
+}
+
+
+# Make domain access work on Pantheon
+# See http://helpdesk.getpantheon.com/customer/portal/articles/381152-reading-pantheon-environment-configuration for details
+if (isset($_SERVER['PANTHEON_ENVIRONMENT'])) {
+  extract(json_decode($_SERVER['PRESSFLOW_SETTINGS'], TRUE));
+}
 
 
 
+// All Pantheon Environments.
+/*if (defined('PANTHEON_ENVIRONMENT')) {
+  // Use Redis for caching.
+  $conf['redis_client_interface'] = 'PhpRedis';
+  $conf['cache_backends'][] = 'sites/all/modules/contrib/redis/redis.autoload.inc';
+  $conf['cache_default_class'] = 'Redis_Cache';
+  $conf['cache_prefix'] = array('default' => 'pantheon-redis');
+  // Do not use Redis for cache_form (no performance difference).
+  $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+  // Use Redis for Drupal locks (semaphore).
+  $conf['lock_inc'] = 'sites/all/modules/contrib/redis/redis.lock.inc';
+}
+
+// Optional Pantheon redis settings.
+if (defined('PANTHEON_ENVIRONMENT')) {
+  // High performance - no hook_boot(), no hook_exit(), ignores Drupal IP blacklists.
+  $conf['page_cache_without_database'] = TRUE;
+  $conf['page_cache_invoke_hooks'] = FALSE;
+  // Explicitly set page_cache_maximum_age as database won't be available.
+  $conf['page_cache_maximum_age'] = 300;
+}*/
+
+
+if (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod') {
+  
+  // ApacheSolr settings
+  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 0;
+  $conf['apachesolr_environments']['solr']['url'] = 'http://us.opensolr.com/solr/prod_balt_if';
+
+  // @todo: For launch: change.
+  $cookie_domain = '.baltimorecity.gov';
+
+  /*
+  $conf['cache'] = 1;
+  $conf['block_cache'] = 1;
+  $conf['cache_lifetime'] = 1800; // 30 min
+  $conf['page_cache_maximum_age'] = 3600; // 1 hr
+  $conf['page_compression'] = 1;
+  $conf['preprocess_css'] = 1;
+  */
+    
+  // Memcache settings  
+  $conf['cache_backends'][] = 'sites/all/modules/contrib/memcache/memcache.inc';
+  // The 'cache_form' bin must be assigned no non-volatile storage.
+  $conf['cache_class_cache_form'] = 'DrupalDatabaseCache';
+  $conf['cache_default_class'] = 'MemCacheDrupal';
+  $conf['memcache_key_prefix'] = 'blackmesh' . $_SERVER['BLACKMESH_ENV'];
+
+  // Varnish settings
+  // Add Varnish as the page cache handler.
+  $conf['cache_backends'][] = 'sites/all/modules/contrib/varnish/varnish.cache.inc';
+  // Drupal 7 does not cache pages when we invoke hooks during bootstrap. This needs
+  // to be disabled.
+  $conf['page_cache_invoke_hooks'] = FALSE;
+  // Setup Varnish with Expire
+  $conf['cache_class_external_varnish_page'] = 'VarnishCache';  
+}
+elseif (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
+  //$conf['apachesolr_environments']['solr']['url'] = 'http://ny.opensolr.com/solr/test_if_balt';
+  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 1;
+  $conf['apachesolr_environments']['solr']['url'] = 'http://us.opensolr.com/solr/prod_balt_if';
+
+  $cookie_domain = '.baltimore.ifsight.com';
+}
+elseif (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
+  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 1;
+  $conf['apachesolr_environments']['solr']['url'] = 'http://us.opensolr.com/solr/prod_balt_if';
+
+  $cookie_domain = '.dev.baltimore.ifsight.com';
+}
+//else {
+//  $conf['apachesolr_environments']['solr']['conf']['apachesolr_read_only'] = 0;
+//  $cookie_domain = '.baltimorecity.gov';
+//}
+
+// Ifsight-specific api settings
+//$conf['smtp_host'] = 'smtp.sendgrid.com';
+//$conf['smtp_username'] = 'ifsight';
+//$conf['smtp_password'] = 'jaayo23gao';
+
+$conf['media_inkfilepicker_key'] = 'ATxjuAKOSdK6lcZxoK2Awz';
+
+
+# Make domain access work on Pantheon
+# See http://helpdesk.getpantheon.com/customer/portal/articles/381152-reading-pantheon-environment-configuration for details
 require_once DRUPAL_ROOT . '/sites/all/modules/contrib/domain/settings.inc';
+
+
+// Caching settings need to come after the domain settings.php settings to avoid being overwritten.
+if (isset($_SERVER['BLACKMESH_ENV']) && $_SERVER['BLACKMESH_ENV'] === 'prod') {
+  
+  $conf['cache'] = 1;
+  $conf['block_cache'] = 1;
+  $conf['cache_lifetime'] = 0; // 10 min
+  $conf['page_cache_maximum_age'] = 300; // 5 min
+  $conf['page_compression'] = 1;
+  $conf['preprocess_css'] = 1;
+  $conf['preprocess_js'] = 1;
+
+}
+elseif (isset($_SERVER['PANTHEON_ENVIRONMENT']) && $_SERVER['PANTHEON_ENVIRONMENT'] === 'test') {
+  
+  $conf['cache'] = 1;
+  $conf['block_cache'] = 1;
+  $conf['cache_lifetime'] = 0; // 10 min
+  $conf['page_cache_maximum_age'] = 60; // 5 min
+  $conf['page_compression'] = 1;
+  $conf['preprocess_css'] = 1;
+  $conf['preprocess_js'] = 1;
+  
+}
