@@ -410,6 +410,11 @@ function bean_bean_cache_clear() {
 
   // Flush caches.
   cache_clear_all('bean_plugins', 'cache');
+
+  if (module_exists('block')) {
+    cache_clear_all(NULL, 'cache_block');
+  }
+  cache_clear_all(NULL, 'cache_page');
 }
 
 /**
