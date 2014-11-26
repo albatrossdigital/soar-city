@@ -372,7 +372,7 @@ function theme_form_builder_wrapper($variables) {
 
   $output .= '<div id="form-builder">';
   if (isset($element['#title'])) {
-    $output .= '<h3 class="form-builder-title">' . $element['#title'] . '</h3>';
+    $output .= '<h3 class="form-builder-title">' . check_plain($element['#title']) . '</h3>';
   }
 
   // Add the contents of the form and close the wrappers.
@@ -434,7 +434,7 @@ function theme_form_builder_element_wrapper($variables) {
  */
 function theme_form_builder_empty_form($variables) {
   $output = '';
-  $output .= '<div class="form-builder-empty-form form-builder-empty-placeholder">';
+  $output .= '<div class="form-builder-wrapper form-builder-empty-form form-builder-empty-placeholder">';
   $output .= '<span>' . t('Drag a field from the palette to add it to this form.') . '</span>';
   $output .= '</div>';
   return $output;

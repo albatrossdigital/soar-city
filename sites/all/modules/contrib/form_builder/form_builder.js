@@ -414,9 +414,14 @@ Drupal.formBuilder.addField = function(e) {
   if (!$link.parent().is('.form-builder-palette-element')) {
     return;
   }
+  var $palette = $link.parent();
+  if ($palette.hasClass('form-builder-unique') || $palette.hasClass('form-builder-wrapper')) {
+    $palette.hide();
+  }
 
-  var name = Drupal.formBuilder.newFieldName();
+  var name = Drupal.formBuilder.newFieldName($link.parent());
   var $placeholder = Drupal.formBuilder.ajaxPlaceholder(name);
+  var $lastWrapper = $('#form-builder').find('.form-builder-wrapper:last');
 
   // Show loading indicators.
   $link.addClass('progress');
@@ -441,7 +446,12 @@ Drupal.formBuilder.addField = function(e) {
     }
   });
 
-  $placeholder.insertAfter($('#form-builder').find('.form-builder-wrapper:last'));
+  if ($lastWrapper.is('.form-builder-empty-placeholder')) {
+    $lastWrapper.replaceWith($placeholder);
+  }
+  else {
+    $placeholder.insertAfter($lastWrapper);
+  }
 
   Drupal.formBuilder.updatingElement = true;
 
@@ -536,8 +546,8 @@ Drupal.formBuilder.elementChange = function() {
       success: Drupal.formBuilder.updateElement,
       dataType: 'json',
       data: {
-        '_triggering_element_name': 'op',
-      },
+        '_triggering_element_name': 'op'
+      }
     });
   }
 
@@ -712,10 +722,8 @@ Drupal.formBuilder.createDropTargets = function(draggable, helper) {
   var $elements = $('#form-builder .form-builder-wrapper:not(.form-builder-empty-placeholder)').not(draggable).not(helper);
 
   if ($elements.length == 0) {
-    // There are no form elements, insert a placeholder
-    var $formBuilder = $('#form-builder');
-    $placeholder.height($formBuilder.height());
-    $placeholder.appendTo($formBuilder);
+    // There are no form elements, show the placeholder
+    $('#form-builder .form-builder-empty-form').show();
   }
   else {
     $elements.each(function(i) {
@@ -725,6 +733,8 @@ Drupal.formBuilder.createDropTargets = function(draggable, helper) {
         $placeholder.clone().insertBefore(this);
       }
     });
+    // Add a class to the last placeholder so it can be larger.
+    $('#form-builder .form-builder-placeholder:last').addClass('form-builder-placeholder-last');
   }
 
   // Enable the drop targets
@@ -732,7 +742,7 @@ Drupal.formBuilder.createDropTargets = function(draggable, helper) {
     greedy: true,
     scope: 'form-builder',
     tolerance: 'pointer',
-    drop: Drupal.formBuilder.dropElement,
+    deactivate: Drupal.formBuilder.dropElement,
     over: Drupal.formBuilder.dropHover,
     out: Drupal.formBuilder.dropHover
   });
@@ -747,14 +757,16 @@ Drupal.formBuilder.createDropTargets = function(draggable, helper) {
 Drupal.formBuilder.dropElement = function (event, ui) {
   var $element = ui.draggable;
   var $placeholder = $(this);
-  
+
+  // This callback is triggered for every placeholder, but only one should be
+  // active. For all other placeholders, we don't do any processing.
+  if (!$placeholder.is('.form-builder-placeholder-hover')) {
+    return;
+  }
+
   // If the element is a new field from the palette, update it with a real field.
   if ($element.is('.form-builder-palette-element')) {
-    var name = Drupal.formBuilder.newFieldName();
-    // If this is a "unique" element, its element ID is hard-coded.
-    if ($element.is('.form-builder-unique')) {
-      name = $element.get(0).className.replace(/^.*?form-builder-element-([a-z0-9_]+).*?$/, '$1');
-    }
+    var name = Drupal.formBuilder.newFieldName($element);
 
     var $ajaxPlaceholder = Drupal.formBuilder.ajaxPlaceholder(name);
 
@@ -788,6 +800,8 @@ Drupal.formBuilder.dropElement = function (event, ui) {
  * Adjusts the placeholder height for drop targets as they are hovered-over.
  */
 Drupal.formBuilder.dropHover = function (event, ui) {
+  var $placeholder = $(this);
+
   if (event.type == 'dropover') {
     // In the event that two droppables overlap, the latest one acts as the drop
     // target. If there is previous active droppable hide it temporarily.
@@ -795,11 +809,14 @@ Drupal.formBuilder.dropHover = function (event, ui) {
       $(Drupal.formBuilder.activeDropzone).css('display', 'none');
       Drupal.formBuilder.previousDropzones.push(Drupal.formBuilder.activeDropzone);
     }
-    $(this).css({ height: ui.helper.height() + 'px', display: ''}).addClass('form-builder-placeholder-hover');
+    if (!$placeholder.hasClass('form-builder-empty-placeholder')) {
+      $placeholder.css({ height: ui.helper.height() + 'px', display: ''});
+    }
+    $placeholder.addClass('form-builder-placeholder-hover');
     Drupal.formBuilder.activeDropzone = this;
   }
   else {
-    $(this).css({ height: '', display: '' }).removeClass('form-builder-placeholder-hover');
+    $placeholder.css({ height: '', display: '' }).removeClass('form-builder-placeholder-hover');
 
     // If this was active drop target, we remove the active state.
     if (Drupal.formBuilder.activeDropzone && Drupal.formBuilder.activeDropzone == this) {
@@ -808,7 +825,7 @@ Drupal.formBuilder.dropHover = function (event, ui) {
     // If there is a previous drop target that was hidden, restore it.
     if (Drupal.formBuilder.previousDropzones.length) {
       $(Drupal.formBuilder.previousDropzones).css('display', '');
-      Drupal.formBuilder.activeDropzone = Drupal.formBuilder.previousDropzones.pop;
+      Drupal.formBuilder.activeDropzone = Drupal.formBuilder.previousDropzones.pop();
     }
   }
 };
@@ -828,6 +845,7 @@ Drupal.formBuilder.stopDrag = function(e, ui) {
     if ($this.hasClass('form-builder-unique') || $this.hasClass('form-builder-wrapper')) {
       $this.show();
     }
+    Drupal.formBuilder.activeDragUi = false;
   }
 
   // Remove the placeholders and reset the hover state for all for elements
@@ -935,8 +953,14 @@ Drupal.formBuilder.closeActive = function(callback) {
 /**
  * Returns a unique machine name that can be used for a new form field.
  */
-Drupal.formBuilder.newFieldName = function() {
-  return 'new_' + new Date().getTime();
+Drupal.formBuilder.newFieldName = function($element) {
+  // If this is a "unique" element, its element ID is hard-coded.
+  if ($element && $element.is('.form-builder-unique')) {
+    return $element.get(0).className.replace(/^.*?form-builder-element-([a-z0-9_]+).*?$/, '$1');
+  }
+  else {
+    return 'new_' + new Date().getTime();
+  }
 };
 
 /**
