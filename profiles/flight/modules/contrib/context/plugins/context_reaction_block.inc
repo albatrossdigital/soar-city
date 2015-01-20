@@ -77,19 +77,7 @@ class context_reaction_block extends context_reaction {
             '#weight' => $block->weight,
             '#type' => 'markup',
             '#tree' => TRUE,
-            'title' => array(
-              '#attributes' => array('class' => array('block-title')),
-              '#default_value' => isset($block->title) ? $block->title : '',
-              '#type' => 'textfield',
-              '#size' => 30,
-              '#field_prefix' => t('Custom Title:'),
-            ),
-            'weight' => array(
-              '#attributes' => array('class' => array('block-weight', 'tabledrag-hide')),
-              '#type' => 'weight',
-              '#delta' => $weight_delta,
-              '#default_value' => $block->weight,
-            ),
+            'weight' => array('#type' => 'weight', '#delta' => $weight_delta, '#default_value' => $block->weight),
           );
         }
       }
@@ -120,7 +108,6 @@ class context_reaction_block extends context_reaction {
             'delta' => $block_info[$data->bid]->delta,
             'region' => $region,
             'weight' => $data->weight,
-            'title' => $data->title,
           );
         }
       }
@@ -390,8 +377,7 @@ class context_reaction_block extends context_reaction {
             if (isset($info[$bid])) {
               $block = (object) array_merge((array) $info[$bid], $context_block);
               $block->context = $context->name;
-              // Use the block title as the subject.
-              $block->subject = isset($info[$block->bid]->title) ? $info[$block->bid]->title : NULL;
+              $block->title = isset($info[$block->bid]->title) ? $info[$block->bid]->title : NULL;
               $block->cache = isset($info[$block->bid]->cache) ? $info[$block->bid]->cache : DRUPAL_NO_CACHE;
               $context_blocks[$block->region][$block->bid] = $block;
             }
@@ -402,6 +388,17 @@ class context_reaction_block extends context_reaction {
       $this->is_editable_check($context_blocks);
       global $theme;
       $active_regions = $this->system_region_list($theme);
+
+      // Make context renders regions in the same order as core.
+      $_context_blocks = array();
+      foreach ($active_regions as $r => $name) {
+        if (isset($context_blocks[$r])) {
+          $_context_blocks[$r] = $context_blocks[$r];
+        }
+      }
+      $context_blocks = $_context_blocks;
+      unset($_context_blocks);
+
       foreach ($context_blocks as $r => $blocks) {
         //only render blocks in an active region
         if (array_key_exists($r, $active_regions)) {
@@ -571,7 +568,6 @@ class context_reaction_block extends context_reaction {
             (!isset($region) || (!empty($region) && $block['region'] == $region)) // No region specified or regions match.
           ) {
             $context_block = $block_info["{$block['module']}-{$block['delta']}"];
-            $context_block->title = isset($block['title']) ? $block['title'] : '';
             $context_block->weight = $block['weight'];
             $context_block->region = $block['region'];
             $context_block->context = !empty($context->name) ? $context->name : 'tempname';
