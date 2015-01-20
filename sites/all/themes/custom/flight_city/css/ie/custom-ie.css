@@ -223,7 +223,7 @@ a.social-icon.WordPress:before {
   min-height: 1%;
 }
 
-/********************************** */
+/*********************************** */
 /* line 334, ../sass/base/_mixins.sass */
 .no-page-title #page-title,
 .domain-main.views-page.menu-depth-1 #page-title,
@@ -1910,7 +1910,7 @@ p img:only-child {
   margin-top: 3.9999400000000005px;
   height: 15px;
   width: 15px;
-  text-indent: -150px;
+  text-indent: -1500px;
 }
 /* line 158, ../sass/components/fontawesome/_fontawesome.sass */
 .draggable a.tabledrag-handle:before {
@@ -2466,7 +2466,7 @@ button.secondary-alt:focus {
 a.social-icon {
   height: 33px;
   width: 33px;
-  text-indent: -330px;
+  text-indent: -3300px;
   -moz-border-radius: 100%;
   -webkit-border-radius: 100%;
   border-radius: 100%;
@@ -2621,7 +2621,7 @@ a.social-icon.WordPress {
 a.social-icon.larger-icon {
   height: 45px;
   width: 45px;
-  text-indent: -450px;
+  text-indent: -4500px;
 }
 /* line 168, ../sass/components/fontawesome/_fontawesome.sass */
 a.social-icon.larger-icon:before {
@@ -2764,7 +2764,7 @@ a.social-icon.transparent:hover {
   color: #7f7f7f;
   height: 26px;
   width: 26px;
-  text-indent: -260px;
+  text-indent: -2600px;
 }
 /* line 158, ../sass/components/fontawesome/_fontawesome.sass */
 .breadcrumbs li:first-child a:before {
@@ -3253,7 +3253,7 @@ ul[data-orbit] ~ .orbit-next:before {
 .button.icon-play {
   height: 40.99998px;
   width: 40.99998px;
-  text-indent: -409.99994000000004px;
+  text-indent: -4099.99996px;
   font-size: 1em !important;
   position: absolute;
   margin-bottom: 0;
@@ -3459,7 +3459,7 @@ ul[data-orbit] ~ .orbit-next:before {
   font-weight: normal;
   height: 36px;
   width: 36px;
-  text-indent: -360px;
+  text-indent: -3600px;
   position: absolute;
   right: 1px;
   top: 1px;
@@ -3571,7 +3571,7 @@ ul[data-orbit] ~ .orbit-next:before {
   margin-right: 10.00006px;
   height: 24px;
   width: 24px;
-  text-indent: -240px;
+  text-indent: -2400px;
 }
 /* line 158, ../sass/components/fontawesome/_fontawesome.sass */
 .block-current-search-active-filters .item-list li > a:before {
