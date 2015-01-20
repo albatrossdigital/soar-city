@@ -1,0 +1,142 @@
+From 220e1477d38cf4c321226d5a35f17f2cb9ec7494 Mon Sep 17 00:00:00 2001
+From: James Sansbury <james.sansbury@lullabot.com>
+Date: Thu, 2 May 2013 14:11:11 -0400
+Subject: [PATCH] Issue #795058 by peterpoe, desarrollo2.0, muffinzap, q0rban:
+ Allow overriding of block titles in Context UI.
+
+---
+ plugins/context_reaction_block.inc     |   19 +++++++++++++++++--
+ plugins/context_reaction_block.js      |   27 ++++++++++++++++++---------
+ theme/context_reaction_block.theme.inc |    9 +++++++--
+ 3 files changed, 42 insertions(+), 13 deletions(-)
+
+diff --git a/plugins/context_reaction_block.inc b/plugins/context_reaction_block.inc
+index c1a0ab1..4c1e42b 100644
+--- a/plugins/context_reaction_block.inc
++++ b/plugins/context_reaction_block.inc
+@@ -71,7 +71,19 @@ class context_reaction_block extends context_reaction {
+             '#weight' => $block->weight,
+             '#type' => 'markup',
+             '#tree' => TRUE,
+-            'weight' => array('#type' => 'weight', '#delta' => $weight_delta, '#default_value' => $block->weight),
++            'title' => array(
++              '#attributes' => array('class' => array('block-title')),
++              '#default_value' => isset($block->title) ? $block->title : '',
++              '#type' => 'textfield',
++              '#size' => 30,
++              '#field_prefix' => t('Custom Title:'),
++            ),
++            'weight' => array(
++              '#attributes' => array('class' => array('block-weight', 'tabledrag-hide')),
++              '#type' => 'weight',
++              '#delta' => $weight_delta,
++              '#default_value' => $block->weight,
++            ),
+           );
+         }
+       }
+@@ -102,6 +114,7 @@ class context_reaction_block extends context_reaction {
+             'delta' => $block_info[$data->bid]->delta,
+             'region' => $region,
+             'weight' => $data->weight,
++            'title' => $data->title,
+           );
+         }
+       }
+@@ -379,7 +392,8 @@ class context_reaction_block extends context_reaction {
+             if (isset($info[$bid])) {
+               $block = (object) array_merge((array) $info[$bid], $context_block);
+               $block->context = $context->name;
+-              $block->title = isset($info[$block->bid]->title) ? $info[$block->bid]->title : NULL;
++              // Use the block title as the subject.
++              $block->subject = isset($info[$block->bid]->title) ? $info[$block->bid]->title : NULL;
+               $block->cache = isset($info[$block->bid]->cache) ? $info[$block->bid]->cache : DRUPAL_NO_CACHE;
+               $context_blocks[$block->region][$block->bid] = $block;
+             }
+@@ -550,6 +564,7 @@ class context_reaction_block extends context_reaction {
+             (!isset($region) || (!empty($region) && $block['region'] == $region)) // No region specified or regions match.
+           ) {
+             $context_block = $block_info["{$block['module']}-{$block['delta']}"];
++            $context_block->title = isset($block['title']) ? $block['title'] : '';
+             $context_block->weight = $block['weight'];
+             $context_block->region = $block['region'];
+             $context_block->context = !empty($context->name) ? $context->name : 'tempname';
+diff --git a/plugins/context_reaction_block.js b/plugins/context_reaction_block.js
+index b51e2f3..fee1739 100644
+--- a/plugins/context_reaction_block.js
++++ b/plugins/context_reaction_block.js
+@@ -56,9 +56,10 @@ DrupalContextBlockForm = function(blockForm) {
+       var region = $(this).attr('id').split('context-blockform-region-')[1];
+       var blocks = [];
+       $('tr', $(this)).each(function() {
+-        var bid = $(this).attr('id');
+-        var weight = $(this).find('select,input').first().val();
+-        blocks.push({'bid' : bid, 'weight' : weight});
++        var bid = $(this).attr('id'),
++            weight = $(this).find('.block-weight').first().val(),
++            title = $(this).find('.block-title').first().val();
++        blocks.push({'bid' : bid, 'weight' : weight, 'title': title});
+       });
+       Drupal.contextBlockForm.state[region] = blocks;
+     });
+@@ -119,10 +120,11 @@ DrupalContextBlockForm = function(blockForm) {
+ 
+         selected.each(function() {
+           // create new block markup
+-          var block = document.createElement('tr');
+-          var text = $(this).parents('div.form-item').eq(0).hide().children('label').text();
+-          var select = '<div class="form-item form-type-select"><select class="tabledrag-hide form-select">';
+-          var i;
++          var block = document.createElement('tr'),
++              text = $(this).parents('div.form-item').eq(0).hide().children('label').text(),
++              select = '<div class="form-item form-type-select"><select class="tabledrag-hide form-select block-weight">',
++              bid = $(this).attr('value'),
++              i;
+           weight_warn = true;
+           var selected_weight = max_weight_option;
+           if (max_weight_option >= (1 + +max_observed_weight)) {
+@@ -138,9 +140,16 @@ DrupalContextBlockForm = function(blockForm) {
+             select += '>' + i + '</option>';
+           }
+           select += '</select></div>';
+-          $(block).attr('id', $(this).attr('value')).addClass('draggable');
+-          $(block).html("<td>"+ text + "</td><td>" + select + "</td><td><a href='' class='remove'>X</a></td>");
+ 
++          // Now add the title textfield.
++          var title = '<div class="form-item form-type-textfield">',
++              titleName = 'reactions[plugins][block][blocks][' + region + '][' + bid + '][title]';
++          title += '<span class="field-prefix">' + Drupal.t('Custom Title:') + '</span> ';
++          title += '<input type="text" class="form-text block-title" maxlength="128" size="30" value="" name="' + titleName + '" >';
++          title += '</div>';
++
++          $(block).attr('id', $(this).attr('value')).addClass('draggable');
++          $(block).html("<td>" + text + "</td><td>" + title + "</td><td>" + select + "</td><td><a href='' class='remove'>X</a></td>");
+           // add block item to region
+           //TODO : Fix it so long blocks don't get stuck when added to top regions and dragged towards bottom regions
+           Drupal.tableDrag[base].makeDraggable(block);
+diff --git a/theme/context_reaction_block.theme.inc b/theme/context_reaction_block.theme.inc
+index c103bab..c5fd9f4 100644
+--- a/theme/context_reaction_block.theme.inc
++++ b/theme/context_reaction_block.theme.inc
+@@ -40,11 +40,16 @@ function theme_context_block_regions_form($vars) {
+     drupal_add_tabledrag($attr['id'], 'order', 'sibling', 'tabledrag-hide', NULL, NULL, FALSE);
+     $rows = array();
+     foreach (element_children($form[$region]) as $id) {
+-      $form[$region][$id]['weight']['#attributes'] = array('class' => array('tabledrag-hide'));
+       $label = $form[$region][$id]['#value'];
+       $remove = l(t('X'), $_GET['q'], array('fragment' => 'remove', 'attributes' => array('class' => array('remove'))));
++      $row = array(
++        $label,
++        drupal_render($form[$region][$id]['title']),
++        drupal_render($form[$region][$id]['weight']),
++        $remove,
++      );
+       $rows[] = array(
+-        'data' => array($label, drupal_render($form[$region][$id]['weight']), $remove),
++        'data' => $row,
+         'class' => array('draggable'),
+         'id' => $id,
+       );
+-- 
+1.7.10.4
+

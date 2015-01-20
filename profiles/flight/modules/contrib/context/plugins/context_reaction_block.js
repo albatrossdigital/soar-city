@@ -56,9 +56,10 @@ DrupalContextBlockForm = function(blockForm) {
       var region = $(this).attr('id').split('context-blockform-region-')[1];
       var blocks = [];
       $('tr', $(this)).each(function() {
-        var bid = $(this).attr('id');
-        var weight = $(this).find('select,input').first().val();
-        blocks.push({'bid' : bid, 'weight' : weight});
+        var bid = $(this).attr('id'),
+            weight = $(this).find('.block-weight').first().val(),
+            title = $(this).find('.block-title').first().val();
+        blocks.push({'bid' : bid, 'weight' : weight, 'title': title});
       });
       Drupal.contextBlockForm.state[region] = blocks;
     });
@@ -119,10 +120,11 @@ DrupalContextBlockForm = function(blockForm) {
 
         selected.each(function() {
           // create new block markup
-          var block = document.createElement('tr');
-          var text = $(this).parents('div.form-item').eq(0).hide().children('label').text();
-          var select = '<div class="form-item form-type-select"><select class="tabledrag-hide form-select">';
-          var i;
+          var block = document.createElement('tr'),
+              text = $(this).parents('div.form-item').eq(0).hide().children('label').text(),
+              select = '<div class="form-item form-type-select"><select class="tabledrag-hide form-select block-weight">',
+              bid = $(this).attr('value'),
+              i;
           weight_warn = true;
           var selected_weight = max_weight_option;
           if (max_weight_option >= (1 + +max_observed_weight)) {
@@ -138,9 +140,16 @@ DrupalContextBlockForm = function(blockForm) {
             select += '>' + i + '</option>';
           }
           select += '</select></div>';
-          $(block).attr('id', $(this).attr('value')).addClass('draggable');
-          $(block).html("<td>"+ text + "</td><td>" + select + "</td><td><a href='' class='remove'>X</a></td>");
 
+          // Now add the title textfield.
+          var title = '<div class="form-item form-type-textfield">',
+              titleName = 'reactions[plugins][block][blocks][' + region + '][' + bid + '][title]';
+          title += '<span class="field-prefix">' + Drupal.t('Custom Title:') + '</span> ';
+          title += '<input type="text" class="form-text block-title" maxlength="128" size="30" value="" name="' + titleName + '" >';
+          title += '</div>';
+
+          $(block).attr('id', $(this).attr('value')).addClass('draggable');
+          $(block).html("<td>" + text + "</td><td>" + title + "</td><td>" + select + "</td><td><a href='' class='remove'>X</a></td>");
           // add block item to region
           //TODO : Fix it so long blocks don't get stuck when added to top regions and dragged towards bottom regions
           Drupal.tableDrag[base].makeDraggable(block);
